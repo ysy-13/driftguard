@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://driftguard.local/schemas/task_drift_coverage_schema_v1.json",
+  "title": "DriftGuard Task-Drift Coverage v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "drift_case_version", "coverage"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "drift_case_version": {"const": "1.0"},
+    "coverage": {"type": "array", "items": {"$ref": "#/$defs/coverageEntry"}}
+  },
+  "$defs": {
+    "instance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instance_id", "base_task_id", "evaluation_role", "held_out", "patch_evidence", "instruction", "argument_overrides", "fixture_overrides"],
+      "properties": {
+        "instance_id": {"type": "string", "pattern": "^(ICD|RSD|WPD|SED)-0[1-5]-(D[1-9][0-9]*|F[1-9][0-9]*)$"},
+        "base_task_id": {"type": "string", "pattern": "^[ACF][0-9]{2}$"},
+        "evaluation_role": {"enum": ["detection", "future_transfer"]},
+        "held_out": {"type": "boolean"},
+        "patch_evidence": {"type": "boolean"},
+        "instruction": {"type": "string", "minLength": 1},
+        "argument_overrides": {"type": "object"},
+        "fixture_overrides": {"type": "object", "propertyNames": {"pattern": "^/repositories/"}}
+      }
+    },
+    "coverageEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["drift_id", "target_tool", "detection_instances", "future_transfer_instances", "regression_tasks", "control_tasks"],
+      "properties": {
+        "drift_id": {"type": "string", "pattern": "^(ICD|RSD|WPD|SED)-0[1-5]$"},
+        "target_tool": {"type": "string", "minLength": 1},
+        "detection_instances": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/instance"}},
+        "future_transfer_instances": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/instance"}},
+        "regression_tasks": {"type": "array", "minItems": 3, "uniqueItems": true, "items": {"type": "string", "pattern": "^[ACF][0-9]{2}$"}},
+        "control_tasks": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^[ACF][0-9]{2}$"}}
+      }
+    }
+  }
+}

@@ -1,0 +1,799 @@
+openapi: 3.1.0
+info:
+  title: DriftGuard Software Engineering Sandbox API
+  version: 1.0.0
+  description: >-
+    Canonical version 1 contract shared by the initially identical displayed
+    specification and runtime contract in the DriftGuard benchmark.
+servers:
+  - url: http://localhost:8000
+tags:
+  - name: Repository
+  - name: Issue
+  - name: Pipeline
+  - name: Membership
+security:
+  - SandboxBearerAuth: []
+
+paths:
+  /repositories/{repo_id}:
+    get:
+      tags: [Repository]
+      summary: Get repository details
+      operationId: get_repository
+      x-canonical-tool-id: T01
+      x-canonical-contract-version: "1.0"
+      x-effect-type: read
+      x-idempotent: true
+      x-required-permission: repository:read
+      x-preconditions:
+        - The repository exists.
+      x-state-effects: []
+      parameters:
+        - $ref: '#/components/parameters/RepoId'
+      responses:
+        '200':
+          description: Repository found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RepositorySuccess'
+        default:
+          $ref: '#/components/responses/ApiErrorResponse'
+    patch:
+      tags: [Repository]
+      summary: Update repository settings
+      operationId: update_repository
+      x-canonical-tool-id: T02
+      x-canonical-contract-version: "1.0"
+      x-effect-type: write
+      x-idempotent: true
+      x-required-permission: repository:admin
+      x-preconditions:
+        - The repository exists.
+        - The repository is not archived.
+        - At least one mutable field is supplied.
+        - A supplied default_branch already exists in the repository.
+      x-state-effects:
+        - Only explicitly supplied fields are modified.
+        - Omitted fields remain unchanged.
+      parameters:
+        - $ref: '#/components/parameters/RepoId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRepositoryRequest'
+      responses:
+        '200':
+          description: Repository updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RepositorySuccess'
+        default:
+          $ref: '#/components/responses/ApiErrorResponse'
+
+  /repositories/{repo_id}/issues:
+    post:
+      tags: [Issue]
+      summary: Create an issue
+      operationId: create_issue
+      x-canonical-tool-id: T03
+      x-canonical-contract-version: "1.0"
+      x-effect-type: write
+      x-idempotent: false
+      x-required-permission: issues:write
+      x-preconditions:
+        - The repository exists.
+        - Issues are enabled for the repository.
+      x-state-effects:
+        - A new issue is created.
+        - The initial state is open.
+        - The initial assignee is null.
+        - The initial resolution is null.
+      parameters:
+        - $ref: '#/components/parameters/RepoId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateIssueRequest'
+      responses:
+        '201':
+          description: Issue created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssueSuccess'
+        default:
+          $ref: '#/components/responses/ApiErrorResponse'
+
+  /repositories/{repo_id}/issues/{issue_id}:
+    get:
+      tags: [Issue]
+      summary: Get an issue
+      operationId: get_issue
+      x-canonical-tool-id: T04
+      x-canonical-contract-version: "1.0"
+      x-effect-type: read
+      x-idempotent: true
+      x-required-permission: issues:read
+      x-preconditions:
+        - The repository and issue exist.
+      x-state-effects: []
+      parameters:
+        - $ref: '#/components/parameters/RepoId'
+        - $ref: '#/components/parameters/IssueId'
+      responses:
+        '200':
+          description: Issue found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssueSuccess'
+        default:
+          $ref: '#/components/responses/ApiErrorResponse'
+
+  /repositories/{repo_id}/issues/{issue_id}/assignee:
+    put:
+      tags: [Issue]
+      summary: Assign an open issue
+      operationId: assign_issue
+      x-canonical-tool-id: T05
+      x-canonical-contract-version: "1.0"
+      x-effect-type: write
+      x-idempotent: true
+      x-required-permission: issues:write
+      x-preconditions:
+        - The issue exists and is open.
+        - The assignee is an active repository member.
+        - The assignee has at least the triage role.
+      x-state-effects:
+        - issue.assignee is updated to the specified username.
+        - All other issue fields remain unchanged.
+      parameters:
+        - $ref: '#/components/parameters/RepoId'
+        - $ref: '#/components/parameters/IssueId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssignIssueRequest'
+      responses:
+        '200':
+          description: Issue assigned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssueSuccess'
+        default:
+          $ref: '#/components/responses/ApiErrorResponse'
+
+  /repositories/{repo_id}/issues/{issue_id}/close:
+    post:
+      tags: [Issue]
+      summary: Close an open issue
+      operationId: close_issue
+      x-canonical-tool-id: T06
+      x-canonical-contract-version: "1.0"
+      x-effect-type: write
+      x-idempotent: true
+      x-required-permission: issues:write
+      x-preconditions:
+        - The issue exists and is open.
+      x-state-effects:
+        - state becomes closed.
+        - resolution is recorded.
+        - closed_at is recorded.
+        - updated_at is updated.
+      parameters:
+        - $ref: '#/components/parameters/RepoId'
+        - $ref: '#/components/parameters/IssueId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CloseIssueRequest'
+      responses:
+        '200':
+          description: Issue closed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssueSuccess'
+        default:
+          $ref: '#/components/responses/ApiErrorResponse'
+
+  /repositories/{repo_id}/workflows/{workflow_id}/runs:
+    post:
+      tags: [Pipeline]
+      summary: Trigger a workflow pipeline run
+      operationId: trigger_pipeline
+      x-canonical-tool-id: T07
+      x-canonical-contract-version: "1.0"
+      x-effect-type: write
+      x-idempotent: false
+      x-required-permission: actions:write
+      x-preconditions:
+        - The repository and workflow exist.
+        - The workflow is active.
+        - The requested ref exists.
+      x-state-effects:
+        - A new PipelineRun is created with status queued.
+        - conclusion is null.
+        - attempt is 1.
+        - retried_from is null.
+      parameters:
+        - $ref: '#/components/parameters/RepoId'
+        - $ref: '#/components/parameters/WorkflowId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TriggerPipelineRequest'
+      responses:
+        '201':
+          description: Pipeline run created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineSuccess'
+        default:
+          $ref: '#/components/responses/ApiErrorResponse'
+
+  /repositories/{repo_id}/pipeline-runs/{run_id}:
+    get:
+      tags: [Pipeline]
+      summary: Get pipeline run status
+      operationId: get_pipeline_status
+      x-canonical-tool-id: T08
+      x-canonical-contract-version: "1.0"
+      x-effect-type: read
+      x-idempotent: true
+      x-required-permission: actions:read
+      x-preconditions:
+        - The pipeline run exists.
+      x-state-effects: []
+      parameters:
+        - $ref: '#/components/parameters/RepoId'
+        - $ref: '#/components/parameters/RunId'
+      responses:
+        '200':
+          description: Pipeline run found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineSuccess'
+        default:
+          $ref: '#/components/responses/ApiErrorResponse'
+
+  /repositories/{repo_id}/pipeline-runs/{run_id}/retry:
+    post:
+      tags: [Pipeline]
+      summary: Retry a completed pipeline run
+      operationId: retry_pipeline
+      x-canonical-tool-id: T09
+      x-canonical-contract-version: "1.0"
+      x-effect-type: write
+      x-idempotent: false
+      x-required-permission: actions:write
+      x-preconditions:
+        - The pipeline run exists and has status completed.
+        - The pipeline conclusion is failure or cancelled.
+      x-state-effects:
+        - The existing run is updated and its run_id is preserved.
+        - attempt is incremented by one.
+        - status becomes queued.
+        - conclusion becomes null.
+        - retried_from records the previous attempt number.
+      parameters:
+        - $ref: '#/components/parameters/RepoId'
+        - $ref: '#/components/parameters/RunId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RetryPipelineRequest'
+      responses:
+        '201':
+          description: Existing pipeline run queued for another attempt.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineSuccess'
+        default:
+          $ref: '#/components/responses/ApiErrorResponse'
+
+  /repositories/{repo_id}/members/{username}:
+    put:
+      tags: [Membership]
+      summary: Add an active repository member
+      operationId: add_member
+      x-canonical-tool-id: T10
+      x-canonical-contract-version: "1.0"
+      x-effect-type: write
+      x-idempotent: conditional
+      x-required-permission: repository:admin
+      x-preconditions:
+        - The repository and user exist.
+        - The user is not already an active member.
+      x-state-effects:
+        - An active membership is created.
+        - role is the specified value or read by default.
+        - base_permission is computed from role.
+      parameters:
+        - $ref: '#/components/parameters/RepoId'
+        - $ref: '#/components/parameters/Username'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddMemberRequest'
+      responses:
+        '201':
+          description: Active member added.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberSuccess'
+        default:
+          $ref: '#/components/responses/ApiErrorResponse'
+    get:
+      tags: [Membership]
+      summary: Get an active repository member
+      operationId: get_member
+      x-canonical-tool-id: T11
+      x-canonical-contract-version: "1.0"
+      x-effect-type: read
+      x-idempotent: true
+      x-required-permission: metadata:read
+      x-preconditions:
+        - The repository and active membership exist.
+      x-state-effects: []
+      parameters:
+        - $ref: '#/components/parameters/RepoId'
+        - $ref: '#/components/parameters/Username'
+      responses:
+        '200':
+          description: Active member found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberSuccess'
+        default:
+          $ref: '#/components/responses/ApiErrorResponse'
+    patch:
+      tags: [Membership]
+      summary: Update an active member's role
+      operationId: update_member_role
+      x-canonical-tool-id: T12
+      x-canonical-contract-version: "1.0"
+      x-effect-type: write
+      x-idempotent: true
+      x-required-permission: repository:admin
+      x-preconditions:
+        - The repository and active membership exist.
+        - The operation does not demote the repository's last admin.
+      x-state-effects:
+        - role is updated.
+        - base_permission is updated.
+        - updated_at is updated.
+        - All other membership fields remain unchanged.
+      parameters:
+        - $ref: '#/components/parameters/RepoId'
+        - $ref: '#/components/parameters/Username'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMemberRoleRequest'
+      responses:
+        '200':
+          description: Member role updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberSuccess'
+        default:
+          $ref: '#/components/responses/ApiErrorResponse'
+
+components:
+  securitySchemes:
+    SandboxBearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: sandbox-token
+
+  parameters:
+    RepoId:
+      name: repo_id
+      in: path
+      required: true
+      schema:
+        type: string
+        minLength: 1
+        pattern: '^[A-Za-z0-9._-]+$'
+    IssueId:
+      name: issue_id
+      in: path
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+    WorkflowId:
+      name: workflow_id
+      in: path
+      required: true
+      schema:
+        type: string
+        minLength: 1
+    RunId:
+      name: run_id
+      in: path
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+    Username:
+      name: username
+      in: path
+      required: true
+      schema:
+        type: string
+        minLength: 1
+        pattern: '^[A-Za-z0-9-]+$'
+
+  responses:
+    ApiErrorResponse:
+      description: >-
+        Error response. Status meanings are 400 BAD_REQUEST, 403
+        PERMISSION_DENIED, 404 NOT_FOUND, 409 PRECONDITION_FAILED, 422
+        VALIDATION_ERROR, 429 RATE_LIMITED, and 503 SERVICE_UNAVAILABLE.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+
+  schemas:
+    Repository:
+      type: object
+      additionalProperties: false
+      required:
+        - repo_id
+        - name
+        - description
+        - visibility
+        - default_branch
+        - issues_enabled
+        - archived
+      properties:
+        repo_id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        visibility:
+          type: string
+          enum: [public, private]
+        default_branch:
+          type: string
+        issues_enabled:
+          type: boolean
+        archived:
+          type: boolean
+
+    Issue:
+      type: object
+      additionalProperties: false
+      required:
+        - issue_id
+        - repo_id
+        - title
+        - body
+        - priority
+        - state
+        - assignee
+        - resolution
+        - created_at
+        - updated_at
+        - closed_at
+      properties:
+        issue_id:
+          type: integer
+          minimum: 1
+        repo_id:
+          type: string
+        title:
+          type: string
+        body:
+          type: string
+        priority:
+          type: string
+          enum: [low, medium, high]
+        state:
+          type: string
+          enum: [open, closed]
+        assignee:
+          type: [string, "null"]
+        resolution:
+          type: [string, "null"]
+          enum: [completed, not_planned, null]
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        closed_at:
+          type: [string, "null"]
+          format: date-time
+
+    PipelineRun:
+      type: object
+      additionalProperties: false
+      required:
+        - run_id
+        - repo_id
+        - workflow_id
+        - ref
+        - status
+        - conclusion
+        - attempt
+        - retried_from
+        - created_at
+        - updated_at
+      properties:
+        run_id:
+          type: integer
+          minimum: 1
+        repo_id:
+          type: string
+        workflow_id:
+          type: string
+        ref:
+          type: string
+        status:
+          type: string
+          enum: [queued, in_progress, completed]
+        conclusion:
+          type: [string, "null"]
+          enum: [success, failure, cancelled, null]
+        attempt:
+          type: integer
+          minimum: 1
+        retried_from:
+          type: [integer, "null"]
+          minimum: 1
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    Member:
+      type: object
+      additionalProperties: false
+      description: >-
+        Role to base_permission mapping: read to read; triage to read; write to
+        write; maintain to write; admin to admin.
+      required:
+        - repo_id
+        - username
+        - role
+        - base_permission
+        - membership_state
+        - added_at
+        - updated_at
+      properties:
+        repo_id:
+          type: string
+        username:
+          type: string
+        role:
+          type: string
+          enum: [read, triage, write, maintain, admin]
+        base_permission:
+          type: string
+          enum: [read, write, admin]
+        membership_state:
+          type: string
+          enum: [active]
+        added_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    UpdateRepositoryRequest:
+      type: object
+      additionalProperties: false
+      minProperties: 1
+      properties:
+        description:
+          type: string
+          maxLength: 500
+        default_branch:
+          type: string
+          minLength: 1
+        issues_enabled:
+          type: boolean
+
+    CreateIssueRequest:
+      type: object
+      additionalProperties: false
+      required: [title]
+      properties:
+        title:
+          type: string
+          minLength: 1
+          maxLength: 256
+        body:
+          type: string
+          default: ""
+          maxLength: 10000
+        priority:
+          type: string
+          enum: [low, medium, high]
+          default: medium
+
+    AssignIssueRequest:
+      type: object
+      additionalProperties: false
+      required: [assignee]
+      properties:
+        assignee:
+          type: string
+          minLength: 1
+          pattern: '^[A-Za-z0-9-]+$'
+
+    CloseIssueRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        resolution:
+          type: string
+          enum: [completed, not_planned]
+          default: completed
+
+    PipelineInputValue:
+      anyOf:
+        - type: string
+        - type: number
+        - type: integer
+        - type: boolean
+
+    TriggerPipelineRequest:
+      type: object
+      additionalProperties: false
+      required: [ref]
+      properties:
+        ref:
+          type: string
+          minLength: 1
+        inputs:
+          type: object
+          maxProperties: 25
+          additionalProperties:
+            $ref: '#/components/schemas/PipelineInputValue'
+
+    RetryPipelineRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        failed_only:
+          type: boolean
+          default: true
+
+    AddMemberRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        role:
+          type: string
+          enum: [read, triage, write, maintain, admin]
+          default: read
+
+    UpdateMemberRoleRequest:
+      type: object
+      additionalProperties: false
+      required: [role]
+      properties:
+        role:
+          type: string
+          enum: [read, triage, write, maintain, admin]
+
+    RepositorySuccess:
+      type: object
+      additionalProperties: false
+      required: [ok, data]
+      properties:
+        ok:
+          type: boolean
+          const: true
+        data:
+          $ref: '#/components/schemas/Repository'
+
+    IssueSuccess:
+      type: object
+      additionalProperties: false
+      required: [ok, data]
+      properties:
+        ok:
+          type: boolean
+          const: true
+        data:
+          $ref: '#/components/schemas/Issue'
+
+    PipelineSuccess:
+      type: object
+      additionalProperties: false
+      required: [ok, data]
+      properties:
+        ok:
+          type: boolean
+          const: true
+        data:
+          $ref: '#/components/schemas/PipelineRun'
+
+    MemberSuccess:
+      type: object
+      additionalProperties: false
+      required: [ok, data]
+      properties:
+        ok:
+          type: boolean
+          const: true
+        data:
+          $ref: '#/components/schemas/Member'
+
+    ApiError:
+      type: object
+      additionalProperties: false
+      required: [ok, error]
+      properties:
+        ok:
+          type: boolean
+          const: false
+        error:
+          $ref: '#/components/schemas/ErrorDetail'
+      example:
+        ok: false
+        error:
+          code: VALIDATION_ERROR
+          message: 'Missing required field: title'
+          field: title
+          retryable: false
+
+    ErrorDetail:
+      type: object
+      additionalProperties: false
+      required: [code, message, field, retryable]
+      properties:
+        code:
+          type: string
+          enum:
+            - BAD_REQUEST
+            - PERMISSION_DENIED
+            - NOT_FOUND
+            - PRECONDITION_FAILED
+            - VALIDATION_ERROR
+            - RATE_LIMITED
+            - SERVICE_UNAVAILABLE
+        message:
+          type: string
+        field:
+          type: [string, "null"]
+        retryable:
+          type: boolean

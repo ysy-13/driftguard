@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://driftguard.local/schemas/attribution_protocol_schema_v1.json",
+  "title": "DriftGuard Attribution Protocol v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol_version", "labels", "decision_point", "minimum_independent_drift_evidence", "same_request_retry_counts_as_independent", "transient_evidence_excluded", "patch_policy", "metrics"],
+  "properties": {
+    "protocol_version": {"const": "1.0"},
+    "labels": {"type": "array", "uniqueItems": true, "minItems": 3, "maxItems": 3, "items": {"enum": ["agent_error", "transient_failure", "persistent_drift"]}},
+    "decision_point": {"const": 5},
+    "minimum_independent_drift_evidence": {"type": "integer", "minimum": 2},
+    "same_request_retry_counts_as_independent": {"const": false},
+    "transient_evidence_excluded": {"type": "array", "uniqueItems": true, "items": {"enum": ["RATE_LIMITED", "SERVICE_UNAVAILABLE", "TIMEOUT"]}},
+    "patch_policy": {
+      "type": "object", "additionalProperties": false,
+      "required": ["agent_error", "transient_failure", "persistent_drift"],
+      "properties": {
+        "agent_error": {"$ref": "#/$defs/forbiddenPatch"},
+        "transient_failure": {"$ref": "#/$defs/forbiddenPatch"},
+        "persistent_drift": {"$ref": "#/$defs/driftPatch"}
+      }
+    },
+    "metrics": {
+      "type": "array", "uniqueItems": true,
+      "items": {"enum": ["attribution_accuracy", "macro_precision", "macro_recall", "macro_f1", "per_class_precision", "per_class_recall", "confusion_matrix", "false_patch_rate_agent_error", "false_patch_rate_transient_failure", "missed_drift_rate", "detection_delay"]}
+    }
+  },
+  "$defs": {
+    "forbiddenPatch": {
+      "type": "object", "additionalProperties": false,
+      "required": ["persistent_patch_allowed", "patch_is_false_positive"],
+      "properties": {"persistent_patch_allowed": {"const": false}, "patch_is_false_positive": {"const": true}}
+    },
+    "driftPatch": {
+      "type": "object", "additionalProperties": false,
+      "required": ["persistent_patch_allowed", "patch_is_false_positive", "activation_requirements"],
+      "properties": {
+        "persistent_patch_allowed": {"const": true},
+        "patch_is_false_positive": {"const": false},
+        "activation_requirements": {
+          "type": "array", "uniqueItems": true,
+          "items": {"enum": ["generated_call_conforms_to_displayed_spec", "two_independent_failures", "exclude_transient_errors", "patch_explains_all_failures", "probe_succeeds", "three_regression_tasks_pass", "unsafe_write_rate_zero"]}
+        }
+      }
+    }
+  }
+}

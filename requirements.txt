@@ -1,0 +1,4 @@
+PyYAML>=6.0,<7
+jsonschema>=4.23,<5
+openapi-spec-validator>=0.7,<0.8
+pytest>=8,<9

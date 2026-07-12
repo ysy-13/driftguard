@@ -1,0 +1,550 @@
+{
+  "schema_version": "1.0",
+  "canonical_contract_version": "1.0",
+  "fixture_id": "S0",
+  "reset_policy": "isolated",
+  "tasks": [
+    {
+      "task_id": "A01", "category": "atomic", "split": "calibration", "actor_id": "agent_admin",
+      "instruction": "Tell me the default branch, visibility, and whether issues are enabled for alpha-api.",
+      "initial_state": "S0",
+      "oracle_plan": [{"step_id": "s1", "tool": "get_repository", "arguments": {"repo_id": "R1"}}],
+      "success_assertions": [],
+      "answer_assertions": [
+        {"target": "answer", "key": "default_branch", "operator": "eq", "value": "main"},
+        {"target": "answer", "key": "visibility", "operator": "eq", "value": "public"},
+        {"target": "answer", "key": "issues_enabled", "operator": "eq", "value": true}
+      ],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": []}],
+      "max_tool_calls": 2, "reset_after": true
+    },
+    {
+      "task_id": "A02", "category": "atomic", "split": "calibration", "actor_id": "agent_admin",
+      "instruction": "Change the description of alpha-api to \"Core authentication API\".",
+      "initial_state": "S0",
+      "oracle_plan": [{"step_id": "s1", "tool": "update_repository", "arguments": {"repo_id": "R1", "description": "Core authentication API"}}],
+      "success_assertions": [{"target": "state", "path": "/repositories/R1/description", "operator": "eq", "value": "Core authentication API"}],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/description"]}],
+      "max_tool_calls": 2, "reset_after": true
+    },
+    {
+      "task_id": "A03", "category": "atomic", "split": "calibration", "actor_id": "agent_admin",
+      "instruction": "Change the default branch of alpha-api to develop.",
+      "initial_state": "S0",
+      "oracle_plan": [{"step_id": "s1", "tool": "update_repository", "arguments": {"repo_id": "R1", "default_branch": "develop"}}],
+      "success_assertions": [{"target": "state", "path": "/repositories/R1/default_branch", "operator": "eq", "value": "develop"}],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/default_branch"]}],
+      "max_tool_calls": 2, "reset_after": true
+    },
+    {
+      "task_id": "A04", "category": "atomic", "split": "calibration", "actor_id": "agent_admin",
+      "instruction": "Create a high-priority issue titled \"Fix token refresh failure\" in alpha-api.",
+      "initial_state": "S0",
+      "oracle_plan": [{"step_id": "s1", "tool": "create_issue", "arguments": {"repo_id": "R1", "title": "Fix token refresh failure", "priority": "high"}}],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/issues/105", "operator": "exists"},
+        {"target": "state", "path": "/repositories/R1/issues/105/repo_id", "operator": "eq", "value": "R1"},
+        {"target": "state", "path": "/repositories/R1/issues/105/title", "operator": "eq", "value": "Fix token refresh failure"},
+        {"target": "state", "path": "/repositories/R1/issues/105/priority", "operator": "eq", "value": "high"},
+        {"target": "state", "path": "/repositories/R1/issues/105/state", "operator": "eq", "value": "open"},
+        {"target": "state", "path": "/repositories/R1/issues/105/assignee", "operator": "is_null"},
+        {"target": "state", "path": "/repositories/R1/issues/105/resolution", "operator": "is_null"},
+        {"target": "state", "path": "/next_ids/R1/issue_id", "operator": "eq", "value": 106}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/issues/105/**", "/next_ids/R1/issue_id"]}],
+      "max_tool_calls": 2, "reset_after": true
+    },
+    {
+      "task_id": "A05", "category": "atomic", "split": "calibration", "actor_id": "agent_admin",
+      "instruction": "Report the state and assignee of issue 102 in alpha-api.",
+      "initial_state": "S0",
+      "oracle_plan": [{"step_id": "s1", "tool": "get_issue", "arguments": {"repo_id": "R1", "issue_id": 102}}],
+      "success_assertions": [],
+      "answer_assertions": [
+        {"target": "answer", "key": "state", "operator": "eq", "value": "open"},
+        {"target": "answer", "key": "assignee", "operator": "eq", "value": "bob"}
+      ],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": []}],
+      "max_tool_calls": 2, "reset_after": true
+    },
+    {
+      "task_id": "A06", "category": "atomic", "split": "calibration", "actor_id": "agent_admin",
+      "instruction": "Assign issue 101 in alpha-api to bob.",
+      "initial_state": "S0",
+      "oracle_plan": [{"step_id": "s1", "tool": "assign_issue", "arguments": {"repo_id": "R1", "issue_id": 101, "assignee": "bob"}}],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/issues/101/assignee", "operator": "eq", "value": "bob"},
+        {"target": "state", "path": "/repositories/R1/issues/101/state", "operator": "eq", "value": "open"}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/issues/101/**"]}],
+      "max_tool_calls": 2, "reset_after": true
+    },
+    {
+      "task_id": "A07", "category": "atomic", "split": "calibration", "actor_id": "agent_admin",
+      "instruction": "Close issue 102 in alpha-api with the completed resolution.",
+      "initial_state": "S0",
+      "oracle_plan": [{"step_id": "s1", "tool": "close_issue", "arguments": {"repo_id": "R1", "issue_id": 102, "resolution": "completed"}}],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/issues/102/state", "operator": "eq", "value": "closed"},
+        {"target": "state", "path": "/repositories/R1/issues/102/resolution", "operator": "eq", "value": "completed"},
+        {"target": "state", "path": "/repositories/R1/issues/102/closed_at", "operator": "not_null"},
+        {"target": "state", "path": "/repositories/R1/issues/102/assignee", "operator": "eq", "value": "bob"}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/issues/102/**"]}],
+      "max_tool_calls": 2, "reset_after": true
+    },
+    {
+      "task_id": "A08", "category": "atomic", "split": "calibration", "actor_id": "agent_admin",
+      "instruction": "Trigger the ci workflow on the release branch in alpha-api.",
+      "initial_state": "S0",
+      "oracle_plan": [{"step_id": "s1", "tool": "trigger_pipeline", "arguments": {"repo_id": "R1", "workflow_id": "ci", "ref": "release"}}],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/pipeline_runs/504", "operator": "exists"},
+        {"target": "state", "path": "/repositories/R1/pipeline_runs/504/workflow_id", "operator": "eq", "value": "ci"},
+        {"target": "state", "path": "/repositories/R1/pipeline_runs/504/ref", "operator": "eq", "value": "release"},
+        {"target": "state", "path": "/repositories/R1/pipeline_runs/504/status", "operator": "eq", "value": "queued"},
+        {"target": "state", "path": "/repositories/R1/pipeline_runs/504/conclusion", "operator": "is_null"},
+        {"target": "state", "path": "/repositories/R1/pipeline_runs/504/attempt", "operator": "eq", "value": 1},
+        {"target": "state", "path": "/next_ids/R1/run_id", "operator": "eq", "value": 505}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/pipeline_runs/504/**", "/next_ids/R1/run_id"]}],
+      "max_tool_calls": 2, "reset_after": true
+    },
+    {
+      "task_id": "A09", "category": "atomic", "split": "calibration", "actor_id": "agent_admin",
+      "instruction": "Report the current status and conclusion of pipeline run 503 in alpha-api.",
+      "initial_state": "S0",
+      "oracle_plan": [{"step_id": "s1", "tool": "get_pipeline_status", "arguments": {"repo_id": "R1", "run_id": 503}}],
+      "success_assertions": [],
+      "answer_assertions": [
+        {"target": "answer", "key": "status", "operator": "eq", "value": "in_progress"},
+        {"target": "answer", "key": "conclusion", "operator": "is_null"}
+      ],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": []}],
+      "max_tool_calls": 2, "reset_after": true
+    },
+    {
+      "task_id": "A10", "category": "atomic", "split": "calibration", "actor_id": "agent_admin",
+      "instruction": "Retry failed pipeline run 501 in alpha-api.",
+      "initial_state": "S0",
+      "oracle_plan": [{"step_id": "s1", "tool": "retry_pipeline", "arguments": {"repo_id": "R1", "run_id": 501, "failed_only": true}}],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/pipeline_runs/501/attempt", "operator": "eq", "value": 2},
+        {"target": "state", "path": "/repositories/R1/pipeline_runs/501/status", "operator": "eq", "value": "queued"},
+        {"target": "state", "path": "/repositories/R1/pipeline_runs/501/conclusion", "operator": "is_null"},
+        {"target": "state", "path": "/repositories/R1/pipeline_runs/501/retried_from", "operator": "eq", "value": 1},
+        {"target": "state", "path": "/repositories/R1/pipeline_runs/504", "operator": "not_exists"}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/pipeline_runs/501/**"]}],
+      "max_tool_calls": 2, "reset_after": true
+    },
+    {
+      "task_id": "A11", "category": "atomic", "split": "calibration", "actor_id": "agent_admin",
+      "instruction": "Add erin to alpha-api with the triage role.",
+      "initial_state": "S0",
+      "oracle_plan": [{"step_id": "s1", "tool": "add_member", "arguments": {"repo_id": "R1", "username": "erin", "role": "triage"}}],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/members/erin", "operator": "exists"},
+        {"target": "state", "path": "/repositories/R1/members/erin/role", "operator": "eq", "value": "triage"},
+        {"target": "state", "path": "/repositories/R1/members/erin/base_permission", "operator": "eq", "value": "read"},
+        {"target": "state", "path": "/repositories/R1/members/erin/membership_state", "operator": "eq", "value": "active"}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/members/erin/**"]}],
+      "max_tool_calls": 2, "reset_after": true
+    },
+    {
+      "task_id": "A12", "category": "atomic", "split": "calibration", "actor_id": "agent_admin",
+      "instruction": "Report bob's role and base permission in alpha-api.",
+      "initial_state": "S0",
+      "oracle_plan": [{"step_id": "s1", "tool": "get_member", "arguments": {"repo_id": "R1", "username": "bob"}}],
+      "success_assertions": [],
+      "answer_assertions": [
+        {"target": "answer", "key": "role", "operator": "eq", "value": "write"},
+        {"target": "answer", "key": "base_permission", "operator": "eq", "value": "write"}
+      ],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": []}],
+      "max_tool_calls": 2, "reset_after": true
+    },
+    {
+      "task_id": "A13", "category": "atomic", "split": "calibration", "actor_id": "agent_admin",
+      "instruction": "Promote dave to the write role in alpha-api.",
+      "initial_state": "S0",
+      "oracle_plan": [{"step_id": "s1", "tool": "update_member_role", "arguments": {"repo_id": "R1", "username": "dave", "role": "write"}}],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/members/dave/role", "operator": "eq", "value": "write"},
+        {"target": "state", "path": "/repositories/R1/members/dave/base_permission", "operator": "eq", "value": "write"}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/members/dave/**"]}],
+      "max_tool_calls": 2, "reset_after": true
+    },
+
+    {
+      "task_id": "C01", "category": "composition", "split": "detection", "actor_id": "agent_admin",
+      "instruction": "Create a high-priority issue titled \"Add refresh-token tests\" in alpha-api and assign it to bob.",
+      "initial_state": "S0",
+      "oracle_plan": [
+        {"step_id": "s1", "tool": "create_issue", "arguments": {"repo_id": "R1", "title": "Add refresh-token tests", "priority": "high"}},
+        {"step_id": "s2", "tool": "assign_issue", "arguments": {"repo_id": "R1", "issue_id": "$steps.s1.data.issue_id", "assignee": "bob"}}
+      ],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/issues/105", "operator": "exists"},
+        {"target": "state", "path": "/repositories/R1/issues/105/priority", "operator": "eq", "value": "high"},
+        {"target": "state", "path": "/repositories/R1/issues/105/state", "operator": "eq", "value": "open"},
+        {"target": "state", "path": "/repositories/R1/issues/105/assignee", "operator": "eq", "value": "bob"},
+        {"target": "state", "path": "/next_ids/R1/issue_id", "operator": "eq", "value": 106}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/issues/105/**", "/next_ids/R1/issue_id"]}],
+      "max_tool_calls": 4, "reset_after": true
+    },
+    {
+      "task_id": "C02", "category": "composition", "split": "detection", "actor_id": "agent_admin",
+      "instruction": "Assign issue 101 in alpha-api to bob and then close it with the completed resolution.",
+      "initial_state": "S0",
+      "oracle_plan": [
+        {"step_id": "s1", "tool": "assign_issue", "arguments": {"repo_id": "R1", "issue_id": 101, "assignee": "bob"}},
+        {"step_id": "s2", "tool": "close_issue", "arguments": {"repo_id": "R1", "issue_id": 101, "resolution": "completed"}}
+      ],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/issues/101/assignee", "operator": "eq", "value": "bob"},
+        {"target": "state", "path": "/repositories/R1/issues/101/state", "operator": "eq", "value": "closed"},
+        {"target": "state", "path": "/repositories/R1/issues/101/resolution", "operator": "eq", "value": "completed"},
+        {"target": "state", "path": "/repositories/R1/issues/101/closed_at", "operator": "not_null"}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/issues/101/**"]}],
+      "max_tool_calls": 4, "reset_after": true
+    },
+    {
+      "task_id": "C03", "category": "composition", "split": "detection", "actor_id": "agent_admin",
+      "instruction": "Create an issue titled \"Remove unused login flag\" in alpha-api, assign it to carol, and close it as not planned.",
+      "initial_state": "S0",
+      "oracle_plan": [
+        {"step_id": "s1", "tool": "create_issue", "arguments": {"repo_id": "R1", "title": "Remove unused login flag"}},
+        {"step_id": "s2", "tool": "assign_issue", "arguments": {"repo_id": "R1", "issue_id": "$steps.s1.data.issue_id", "assignee": "carol"}},
+        {"step_id": "s3", "tool": "close_issue", "arguments": {"repo_id": "R1", "issue_id": "$steps.s1.data.issue_id", "resolution": "not_planned"}}
+      ],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/issues/105", "operator": "exists"},
+        {"target": "state", "path": "/repositories/R1/issues/105/priority", "operator": "eq", "value": "medium"},
+        {"target": "state", "path": "/repositories/R1/issues/105/assignee", "operator": "eq", "value": "carol"},
+        {"target": "state", "path": "/repositories/R1/issues/105/state", "operator": "eq", "value": "closed"},
+        {"target": "state", "path": "/repositories/R1/issues/105/resolution", "operator": "eq", "value": "not_planned"},
+        {"target": "state", "path": "/next_ids/R1/issue_id", "operator": "eq", "value": 106}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/issues/105/**", "/next_ids/R1/issue_id"]}],
+      "max_tool_calls": 5, "reset_after": true
+    },
+    {
+      "task_id": "C04", "category": "conditional", "split": "detection", "actor_id": "agent_admin",
+      "instruction": "Check issue 101 in alpha-api. If it has no assignee, assign it to carol.",
+      "initial_state": "S0",
+      "oracle_plan": [
+        {"step_id": "s1", "tool": "get_issue", "arguments": {"repo_id": "R1", "issue_id": 101}},
+        {"step_id": "s2", "when": {"source": "$steps.s1.data.assignee", "operator": "is_null"}, "tool": "assign_issue", "arguments": {"repo_id": "R1", "issue_id": 101, "assignee": "carol"}}
+      ],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/issues/101/assignee", "operator": "eq", "value": "carol"},
+        {"target": "state", "path": "/repositories/R1/issues/101/state", "operator": "eq", "value": "open"}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/issues/101/**"]}],
+      "max_tool_calls": 4, "reset_after": true
+    },
+    {
+      "task_id": "C05", "category": "conditional", "split": "detection", "actor_id": "agent_admin",
+      "instruction": "Check whether issues are enabled for alpha-api. If they are enabled, create an issue titled \"Review authentication logs\".",
+      "initial_state": "S0",
+      "oracle_plan": [
+        {"step_id": "s1", "tool": "get_repository", "arguments": {"repo_id": "R1"}},
+        {"step_id": "s2", "when": {"source": "$steps.s1.data.issues_enabled", "operator": "eq", "value": true}, "tool": "create_issue", "arguments": {"repo_id": "R1", "title": "Review authentication logs"}}
+      ],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/issues/105", "operator": "exists"},
+        {"target": "state", "path": "/repositories/R1/issues/105/title", "operator": "eq", "value": "Review authentication logs"},
+        {"target": "state", "path": "/repositories/R1/issues/105/priority", "operator": "eq", "value": "medium"},
+        {"target": "state", "path": "/repositories/R1/issues/105/state", "operator": "eq", "value": "open"},
+        {"target": "state", "path": "/next_ids/R1/issue_id", "operator": "eq", "value": 106}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/issues/105/**", "/next_ids/R1/issue_id"]}],
+      "max_tool_calls": 4, "reset_after": true
+    },
+    {
+      "task_id": "C06", "category": "conditional", "split": "detection", "actor_id": "agent_admin",
+      "instruction": "Check pipeline run 501 in alpha-api. If it failed, retry it.",
+      "initial_state": "S0",
+      "oracle_plan": [
+        {"step_id": "s1", "tool": "get_pipeline_status", "arguments": {"repo_id": "R1", "run_id": 501}},
+        {"step_id": "s2", "when": {"source": "$steps.s1.data.conclusion", "operator": "eq", "value": "failure"}, "tool": "retry_pipeline", "arguments": {"repo_id": "R1", "run_id": 501, "failed_only": true}}
+      ],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/pipeline_runs/501/attempt", "operator": "eq", "value": 2},
+        {"target": "state", "path": "/repositories/R1/pipeline_runs/501/status", "operator": "eq", "value": "queued"},
+        {"target": "state", "path": "/repositories/R1/pipeline_runs/501/conclusion", "operator": "is_null"},
+        {"target": "state", "path": "/repositories/R1/pipeline_runs/501/retried_from", "operator": "eq", "value": 1}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/pipeline_runs/501/**"]}],
+      "max_tool_calls": 4, "reset_after": true
+    },
+    {
+      "task_id": "C07", "category": "conditional", "split": "detection", "actor_id": "agent_admin",
+      "instruction": "Check pipeline run 601 in beta-web. If it was cancelled, retry it and report the new status.",
+      "initial_state": "S0",
+      "oracle_plan": [
+        {"step_id": "s1", "tool": "get_pipeline_status", "arguments": {"repo_id": "R2", "run_id": 601}},
+        {"step_id": "s2", "when": {"source": "$steps.s1.data.conclusion", "operator": "eq", "value": "cancelled"}, "tool": "retry_pipeline", "arguments": {"repo_id": "R2", "run_id": 601}},
+        {"step_id": "s3", "tool": "get_pipeline_status", "arguments": {"repo_id": "R2", "run_id": 601}}
+      ],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R2/pipeline_runs/601/attempt", "operator": "eq", "value": 2},
+        {"target": "state", "path": "/repositories/R2/pipeline_runs/601/status", "operator": "eq", "value": "queued"},
+        {"target": "state", "path": "/repositories/R2/pipeline_runs/601/conclusion", "operator": "is_null"},
+        {"target": "state", "path": "/repositories/R2/pipeline_runs/601/retried_from", "operator": "eq", "value": 1}
+      ],
+      "answer_assertions": [{"target": "answer", "key": "status", "operator": "eq", "value": "queued"}],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R2/pipeline_runs/601/**"]}],
+      "max_tool_calls": 5, "reset_after": true
+    },
+    {
+      "task_id": "C08", "category": "conditional", "split": "detection", "actor_id": "agent_admin",
+      "instruction": "Check dave's role in alpha-api. If it is below write, promote him to write.",
+      "initial_state": "S0",
+      "oracle_plan": [
+        {"step_id": "s1", "tool": "get_member", "arguments": {"repo_id": "R1", "username": "dave"}},
+        {"step_id": "s2", "when": {"source": "$steps.s1.data.role", "operator": "role_below", "value": "write"}, "tool": "update_member_role", "arguments": {"repo_id": "R1", "username": "dave", "role": "write"}}
+      ],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/members/dave/role", "operator": "eq", "value": "write"},
+        {"target": "state", "path": "/repositories/R1/members/dave/base_permission", "operator": "eq", "value": "write"}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/members/dave/**"]}],
+      "max_tool_calls": 4, "reset_after": true
+    },
+    {
+      "task_id": "C09", "category": "composition", "split": "detection", "actor_id": "agent_admin",
+      "instruction": "Add erin to alpha-api with the read role, then promote her to triage.",
+      "initial_state": "S0",
+      "oracle_plan": [
+        {"step_id": "s1", "tool": "add_member", "arguments": {"repo_id": "R1", "username": "erin", "role": "read"}},
+        {"step_id": "s2", "tool": "update_member_role", "arguments": {"repo_id": "R1", "username": "erin", "role": "triage"}}
+      ],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/members/erin/role", "operator": "eq", "value": "triage"},
+        {"target": "state", "path": "/repositories/R1/members/erin/base_permission", "operator": "eq", "value": "read"},
+        {"target": "state", "path": "/repositories/R1/members/erin/membership_state", "operator": "eq", "value": "active"}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/members/erin/**"]}],
+      "max_tool_calls": 4, "reset_after": true
+    },
+    {
+      "task_id": "C10", "category": "composition", "split": "detection", "actor_id": "agent_admin",
+      "instruction": "Change the default branch of alpha-api to develop, then trigger the ci workflow on the new default branch.",
+      "initial_state": "S0",
+      "oracle_plan": [
+        {"step_id": "s1", "tool": "update_repository", "arguments": {"repo_id": "R1", "default_branch": "develop"}},
+        {"step_id": "s2", "tool": "trigger_pipeline", "arguments": {"repo_id": "R1", "workflow_id": "ci", "ref": "$steps.s1.data.default_branch"}}
+      ],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/default_branch", "operator": "eq", "value": "develop"},
+        {"target": "state", "path": "/repositories/R1/pipeline_runs/504", "operator": "exists"},
+        {"target": "state", "path": "/repositories/R1/pipeline_runs/504/ref", "operator": "eq", "value": "develop"},
+        {"target": "state", "path": "/repositories/R1/pipeline_runs/504/workflow_id", "operator": "eq", "value": "ci"},
+        {"target": "state", "path": "/repositories/R1/pipeline_runs/504/status", "operator": "eq", "value": "queued"},
+        {"target": "state", "path": "/next_ids/R1/run_id", "operator": "eq", "value": 505}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/default_branch", "/repositories/R1/pipeline_runs/504/**", "/next_ids/R1/run_id"]}],
+      "max_tool_calls": 4, "reset_after": true
+    },
+    {
+      "task_id": "C11", "category": "conditional", "split": "detection", "actor_id": "agent_admin",
+      "instruction": "Check issue 104 in alpha-api. If it is assigned to carol, close it with the completed resolution.",
+      "initial_state": "S0",
+      "oracle_plan": [
+        {"step_id": "s1", "tool": "get_issue", "arguments": {"repo_id": "R1", "issue_id": 104}},
+        {"step_id": "s2", "when": {"source": "$steps.s1.data.assignee", "operator": "eq", "value": "carol"}, "tool": "close_issue", "arguments": {"repo_id": "R1", "issue_id": 104, "resolution": "completed"}}
+      ],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/issues/104/assignee", "operator": "eq", "value": "carol"},
+        {"target": "state", "path": "/repositories/R1/issues/104/state", "operator": "eq", "value": "closed"},
+        {"target": "state", "path": "/repositories/R1/issues/104/resolution", "operator": "eq", "value": "completed"}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/issues/104/**"]}],
+      "max_tool_calls": 4, "reset_after": true
+    },
+
+    {
+      "task_id": "F01", "category": "cross_module", "split": "future_transfer", "actor_id": "agent_admin",
+      "instruction": "Check pipeline run 501 in alpha-api. If the CI run failed, create a high-priority issue titled \"CI failure on main\".",
+      "initial_state": "S0",
+      "oracle_plan": [
+        {"step_id": "s1", "tool": "get_pipeline_status", "arguments": {"repo_id": "R1", "run_id": 501}},
+        {"step_id": "s2", "when": {"source": "$steps.s1.data.conclusion", "operator": "eq", "value": "failure"}, "tool": "create_issue", "arguments": {"repo_id": "R1", "title": "CI failure on main", "priority": "high"}}
+      ],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/issues/105", "operator": "exists"},
+        {"target": "state", "path": "/repositories/R1/issues/105/title", "operator": "eq", "value": "CI failure on main"},
+        {"target": "state", "path": "/repositories/R1/issues/105/priority", "operator": "eq", "value": "high"},
+        {"target": "state", "path": "/repositories/R1/issues/105/state", "operator": "eq", "value": "open"},
+        {"target": "state", "path": "/next_ids/R1/issue_id", "operator": "eq", "value": 106}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/issues/105/**", "/next_ids/R1/issue_id"]}],
+      "max_tool_calls": 4, "reset_after": true
+    },
+    {
+      "task_id": "F02", "category": "cross_module", "split": "future_transfer", "actor_id": "agent_admin",
+      "instruction": "Add frank to alpha-api with the maintain role and assign issue 101 to him.",
+      "initial_state": "S0",
+      "oracle_plan": [
+        {"step_id": "s1", "tool": "add_member", "arguments": {"repo_id": "R1", "username": "frank", "role": "maintain"}},
+        {"step_id": "s2", "tool": "assign_issue", "arguments": {"repo_id": "R1", "issue_id": 101, "assignee": "frank"}}
+      ],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/members/frank/role", "operator": "eq", "value": "maintain"},
+        {"target": "state", "path": "/repositories/R1/members/frank/base_permission", "operator": "eq", "value": "write"},
+        {"target": "state", "path": "/repositories/R1/members/frank/membership_state", "operator": "eq", "value": "active"},
+        {"target": "state", "path": "/repositories/R1/issues/101/assignee", "operator": "eq", "value": "frank"}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/members/frank/**", "/repositories/R1/issues/101/**"]}],
+      "max_tool_calls": 4, "reset_after": true
+    },
+    {
+      "task_id": "F03", "category": "cross_module", "split": "future_transfer", "actor_id": "agent_admin",
+      "instruction": "Create an issue titled \"Prepare release validation\" in alpha-api, assign it to bob, and trigger the ci workflow on the release branch.",
+      "initial_state": "S0",
+      "oracle_plan": [
+        {"step_id": "s1", "tool": "create_issue", "arguments": {"repo_id": "R1", "title": "Prepare release validation"}},
+        {"step_id": "s2", "tool": "assign_issue", "arguments": {"repo_id": "R1", "issue_id": "$steps.s1.data.issue_id", "assignee": "bob"}},
+        {"step_id": "s3", "tool": "trigger_pipeline", "arguments": {"repo_id": "R1", "workflow_id": "ci", "ref": "release"}}
+      ],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/issues/105", "operator": "exists"},
+        {"target": "state", "path": "/repositories/R1/issues/105/title", "operator": "eq", "value": "Prepare release validation"},
+        {"target": "state", "path": "/repositories/R1/issues/105/priority", "operator": "eq", "value": "medium"},
+        {"target": "state", "path": "/repositories/R1/issues/105/assignee", "operator": "eq", "value": "bob"},
+        {"target": "state", "path": "/repositories/R1/issues/105/state", "operator": "eq", "value": "open"},
+        {"target": "state", "path": "/repositories/R1/pipeline_runs/504", "operator": "exists"},
+        {"target": "state", "path": "/repositories/R1/pipeline_runs/504/workflow_id", "operator": "eq", "value": "ci"},
+        {"target": "state", "path": "/repositories/R1/pipeline_runs/504/ref", "operator": "eq", "value": "release"},
+        {"target": "state", "path": "/repositories/R1/pipeline_runs/504/status", "operator": "eq", "value": "queued"},
+        {"target": "state", "path": "/next_ids/R1/issue_id", "operator": "eq", "value": 106},
+        {"target": "state", "path": "/next_ids/R1/run_id", "operator": "eq", "value": 505}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/issues/105/**", "/next_ids/R1/issue_id", "/repositories/R1/pipeline_runs/504/**", "/next_ids/R1/run_id"]}],
+      "max_tool_calls": 6, "reset_after": true
+    },
+    {
+      "task_id": "F04", "category": "cross_module", "split": "future_transfer", "actor_id": "agent_admin",
+      "instruction": "Change the description of alpha-api to \"Authentication and authorization API\" and create an issue titled \"Refresh API documentation\".",
+      "initial_state": "S0",
+      "oracle_plan": [
+        {"step_id": "s1", "tool": "update_repository", "arguments": {"repo_id": "R1", "description": "Authentication and authorization API"}},
+        {"step_id": "s2", "tool": "create_issue", "arguments": {"repo_id": "R1", "title": "Refresh API documentation"}}
+      ],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/description", "operator": "eq", "value": "Authentication and authorization API"},
+        {"target": "state", "path": "/repositories/R1/issues/105", "operator": "exists"},
+        {"target": "state", "path": "/repositories/R1/issues/105/title", "operator": "eq", "value": "Refresh API documentation"},
+        {"target": "state", "path": "/repositories/R1/issues/105/priority", "operator": "eq", "value": "medium"},
+        {"target": "state", "path": "/repositories/R1/issues/105/state", "operator": "eq", "value": "open"},
+        {"target": "state", "path": "/next_ids/R1/issue_id", "operator": "eq", "value": 106}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/description", "/repositories/R1/issues/105/**", "/next_ids/R1/issue_id"]}],
+      "max_tool_calls": 4, "reset_after": true
+    },
+    {
+      "task_id": "F05", "category": "cross_module", "split": "future_transfer", "actor_id": "agent_admin",
+      "instruction": "Find the default branch of beta-web and trigger the ci workflow on that branch.",
+      "initial_state": "S0",
+      "oracle_plan": [
+        {"step_id": "s1", "tool": "get_repository", "arguments": {"repo_id": "R2"}},
+        {"step_id": "s2", "tool": "trigger_pipeline", "arguments": {"repo_id": "R2", "workflow_id": "ci", "ref": "$steps.s1.data.default_branch"}}
+      ],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R2/pipeline_runs/602", "operator": "exists"},
+        {"target": "state", "path": "/repositories/R2/pipeline_runs/602/workflow_id", "operator": "eq", "value": "ci"},
+        {"target": "state", "path": "/repositories/R2/pipeline_runs/602/ref", "operator": "eq", "value": "main"},
+        {"target": "state", "path": "/repositories/R2/pipeline_runs/602/status", "operator": "eq", "value": "queued"},
+        {"target": "state", "path": "/repositories/R2/pipeline_runs/602/conclusion", "operator": "is_null"},
+        {"target": "state", "path": "/repositories/R2/pipeline_runs/602/attempt", "operator": "eq", "value": 1},
+        {"target": "state", "path": "/next_ids/R2/run_id", "operator": "eq", "value": 603}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R2/pipeline_runs/602/**", "/next_ids/R2/run_id"]}],
+      "max_tool_calls": 4, "reset_after": true
+    },
+    {
+      "task_id": "F06", "category": "cross_module", "split": "future_transfer", "actor_id": "agent_admin",
+      "instruction": "Check pipeline run 502 in alpha-api. If it succeeded, close issue 102 with the completed resolution. Otherwise, do not modify the issue.",
+      "initial_state": "S0",
+      "oracle_plan": [
+        {"step_id": "s1", "tool": "get_pipeline_status", "arguments": {"repo_id": "R1", "run_id": 502}},
+        {"step_id": "s2", "when": {"source": "$steps.s1.data.conclusion", "operator": "eq", "value": "success"}, "tool": "close_issue", "arguments": {"repo_id": "R1", "issue_id": 102, "resolution": "completed"}}
+      ],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/issues/102/state", "operator": "eq", "value": "closed"},
+        {"target": "state", "path": "/repositories/R1/issues/102/resolution", "operator": "eq", "value": "completed"},
+        {"target": "state", "path": "/repositories/R1/issues/102/assignee", "operator": "eq", "value": "bob"}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/issues/102/**"]}],
+      "max_tool_calls": 4, "reset_after": true
+    },
+    {
+      "task_id": "F07", "category": "cross_module", "split": "future_transfer", "actor_id": "agent_admin",
+      "instruction": "Check whether carol is an active member of alpha-api with at least the triage role. If she is, assign issue 101 to her and close it with the completed resolution.",
+      "initial_state": "S0",
+      "oracle_plan": [
+        {"step_id": "s1", "tool": "get_member", "arguments": {"repo_id": "R1", "username": "carol"}},
+        {"step_id": "s2", "when": {"operator": "all", "conditions": [{"source": "$steps.s1.data.membership_state", "operator": "eq", "value": "active"}, {"source": "$steps.s1.data.role", "operator": "role_at_least", "value": "triage"}]}, "tool": "assign_issue", "arguments": {"repo_id": "R1", "issue_id": 101, "assignee": "carol"}},
+        {"step_id": "s3", "when": {"operator": "all", "conditions": [{"source": "$steps.s1.data.membership_state", "operator": "eq", "value": "active"}, {"source": "$steps.s1.data.role", "operator": "role_at_least", "value": "triage"}]}, "tool": "close_issue", "arguments": {"repo_id": "R1", "issue_id": 101, "resolution": "completed"}}
+      ],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/issues/101/assignee", "operator": "eq", "value": "carol"},
+        {"target": "state", "path": "/repositories/R1/issues/101/state", "operator": "eq", "value": "closed"},
+        {"target": "state", "path": "/repositories/R1/issues/101/resolution", "operator": "eq", "value": "completed"}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/issues/101/**"]}],
+      "max_tool_calls": 6, "reset_after": true
+    },
+    {
+      "task_id": "F08", "category": "cross_module", "split": "future_transfer", "actor_id": "agent_admin",
+      "instruction": "Check the settings of alpha-api and issue 101. If issues are enabled and issue 101 is still open, assign it to bob.",
+      "initial_state": "S0",
+      "oracle_plan": [
+        {"step_id": "s1", "tool": "get_repository", "arguments": {"repo_id": "R1"}},
+        {"step_id": "s2", "tool": "get_issue", "arguments": {"repo_id": "R1", "issue_id": 101}},
+        {"step_id": "s3", "when": {"operator": "all", "conditions": [{"source": "$steps.s1.data.issues_enabled", "operator": "eq", "value": true}, {"source": "$steps.s2.data.state", "operator": "eq", "value": "open"}]}, "tool": "assign_issue", "arguments": {"repo_id": "R1", "issue_id": 101, "assignee": "bob"}}
+      ],
+      "success_assertions": [
+        {"target": "state", "path": "/repositories/R1/issues/101/assignee", "operator": "eq", "value": "bob"},
+        {"target": "state", "path": "/repositories/R1/issues/101/state", "operator": "eq", "value": "open"},
+        {"target": "state", "path": "/repositories/R1/default_branch", "operator": "eq", "value": "main"},
+        {"target": "state", "path": "/repositories/R1/issues_enabled", "operator": "eq", "value": true}
+      ],
+      "answer_assertions": [],
+      "forbidden_assertions": [{"operator": "unchanged_outside", "allowed_paths": ["/repositories/R1/issues/101/**"]}],
+      "max_tool_calls": 6, "reset_after": true
+    }
+  ]
+}

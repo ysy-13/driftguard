@@ -1,0 +1,103 @@
+{
+  "fixture_id": "S0",
+  "schema_version": "1.0",
+  "canonical_contract_version": "1.0",
+  "clock": "2026-01-01T00:00:00Z",
+  "next_ids": {
+    "R1": {"issue_id": 105, "run_id": 504},
+    "R2": {"issue_id": 202, "run_id": 602}
+  },
+  "users": {
+    "alice": {"username": "alice", "active": true},
+    "bob": {"username": "bob", "active": true},
+    "carol": {"username": "carol", "active": true},
+    "dave": {"username": "dave", "active": true},
+    "erin": {"username": "erin", "active": true},
+    "frank": {"username": "frank", "active": true}
+  },
+  "actors": {
+    "agent_admin": {
+      "actor_id": "agent_admin",
+      "permissions": [
+        "repository:read",
+        "repository:admin",
+        "issues:read",
+        "issues:write",
+        "actions:read",
+        "actions:write",
+        "metadata:read"
+      ]
+    }
+  },
+  "repositories": {
+    "R1": {
+      "repo_id": "R1",
+      "name": "alpha-api",
+      "description": "Legacy API service",
+      "visibility": "public",
+      "default_branch": "main",
+      "issues_enabled": true,
+      "archived": false,
+      "branches": ["main", "develop", "release"],
+      "workflows": {
+        "ci": {"workflow_id": "ci", "name": "Continuous Integration", "state": "active"},
+        "security": {"workflow_id": "security", "name": "Security Scan", "state": "active"}
+      },
+      "members": {
+        "alice": {"repo_id": "R1", "username": "alice", "role": "admin", "base_permission": "admin", "membership_state": "active", "added_at": "2025-01-01T00:00:00Z", "updated_at": "2025-01-01T00:00:00Z"},
+        "bob": {"repo_id": "R1", "username": "bob", "role": "write", "base_permission": "write", "membership_state": "active", "added_at": "2025-01-02T00:00:00Z", "updated_at": "2025-01-02T00:00:00Z"},
+        "carol": {"repo_id": "R1", "username": "carol", "role": "triage", "base_permission": "read", "membership_state": "active", "added_at": "2025-01-03T00:00:00Z", "updated_at": "2025-01-03T00:00:00Z"},
+        "dave": {"repo_id": "R1", "username": "dave", "role": "read", "base_permission": "read", "membership_state": "active", "added_at": "2025-01-04T00:00:00Z", "updated_at": "2025-01-04T00:00:00Z"}
+      },
+      "issues": {
+        "101": {"issue_id": 101, "repo_id": "R1", "title": "Login request fails", "body": "Token refresh requests return an error.", "priority": "high", "state": "open", "assignee": null, "resolution": null, "created_at": "2025-12-01T09:00:00Z", "updated_at": "2025-12-01T09:00:00Z", "closed_at": null},
+        "102": {"issue_id": 102, "repo_id": "R1", "title": "Update API documentation", "body": "Refresh the authentication API documentation.", "priority": "medium", "state": "open", "assignee": "bob", "resolution": null, "created_at": "2025-12-02T09:00:00Z", "updated_at": "2025-12-02T09:00:00Z", "closed_at": null},
+        "103": {"issue_id": 103, "repo_id": "R1", "title": "Remove deprecated endpoint", "body": "Remove the deprecated login endpoint.", "priority": "low", "state": "closed", "assignee": "alice", "resolution": "completed", "created_at": "2025-11-01T09:00:00Z", "updated_at": "2025-12-03T10:00:00Z", "closed_at": "2025-12-03T10:00:00Z"},
+        "104": {"issue_id": 104, "repo_id": "R1", "title": "Improve error messages", "body": "Return clearer authentication errors.", "priority": "medium", "state": "open", "assignee": "carol", "resolution": null, "created_at": "2025-12-04T09:00:00Z", "updated_at": "2025-12-04T09:00:00Z", "closed_at": null}
+      },
+      "pipeline_runs": {
+        "501": {"run_id": 501, "repo_id": "R1", "workflow_id": "ci", "ref": "main", "status": "completed", "conclusion": "failure", "attempt": 1, "retried_from": null, "created_at": "2025-12-20T08:00:00Z", "updated_at": "2025-12-20T08:10:00Z"},
+        "502": {"run_id": 502, "repo_id": "R1", "workflow_id": "ci", "ref": "develop", "status": "completed", "conclusion": "success", "attempt": 1, "retried_from": null, "created_at": "2025-12-21T08:00:00Z", "updated_at": "2025-12-21T08:10:00Z"},
+        "503": {"run_id": 503, "repo_id": "R1", "workflow_id": "security", "ref": "main", "status": "in_progress", "conclusion": null, "attempt": 1, "retried_from": null, "created_at": "2025-12-31T23:55:00Z", "updated_at": "2025-12-31T23:59:00Z"}
+      }
+    },
+    "R2": {
+      "repo_id": "R2",
+      "name": "beta-web",
+      "description": "Customer web application",
+      "visibility": "private",
+      "default_branch": "main",
+      "issues_enabled": true,
+      "archived": false,
+      "branches": ["main", "staging"],
+      "workflows": {
+        "ci": {"workflow_id": "ci", "name": "Continuous Integration", "state": "active"},
+        "deploy": {"workflow_id": "deploy", "name": "Production Deployment", "state": "disabled"}
+      },
+      "members": {
+        "alice": {"repo_id": "R2", "username": "alice", "role": "admin", "base_permission": "admin", "membership_state": "active", "added_at": "2025-02-01T00:00:00Z", "updated_at": "2025-02-01T00:00:00Z"},
+        "bob": {"repo_id": "R2", "username": "bob", "role": "maintain", "base_permission": "write", "membership_state": "active", "added_at": "2025-02-02T00:00:00Z", "updated_at": "2025-02-02T00:00:00Z"}
+      },
+      "issues": {
+        "201": {"issue_id": 201, "repo_id": "R2", "title": "Fix mobile layout", "body": "Correct the mobile navigation layout.", "priority": "high", "state": "open", "assignee": null, "resolution": null, "created_at": "2025-12-10T09:00:00Z", "updated_at": "2025-12-10T09:00:00Z", "closed_at": null}
+      },
+      "pipeline_runs": {
+        "601": {"run_id": 601, "repo_id": "R2", "workflow_id": "ci", "ref": "main", "status": "completed", "conclusion": "cancelled", "attempt": 1, "retried_from": null, "created_at": "2025-12-22T08:00:00Z", "updated_at": "2025-12-22T08:10:00Z"}
+      }
+    },
+    "R3": {
+      "repo_id": "R3",
+      "name": "legacy-service",
+      "description": "Archived legacy service",
+      "visibility": "private",
+      "default_branch": "master",
+      "issues_enabled": false,
+      "archived": true,
+      "branches": ["master"],
+      "workflows": {},
+      "members": {},
+      "issues": {},
+      "pipeline_runs": {}
+    }
+  }
+}

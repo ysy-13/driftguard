@@ -1,0 +1,189 @@
+{
+  "schema_version": "1.0",
+  "drift_case_version": "1.0",
+  "coverage": [
+    {
+      "drift_id": "ICD-01", "target_tool": "create_issue",
+      "detection_instances": [
+        {"instance_id": "ICD-01-D1", "base_task_id": "C05", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "When issues are enabled, create Review authentication logs without specifying priority.", "argument_overrides": {}, "fixture_overrides": {}},
+        {"instance_id": "ICD-01-D2", "base_task_id": "C03", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Create Remove unused login flag using the canonical default priority.", "argument_overrides": {"repo_id": "R2", "title": "Review mobile error logs"}, "fixture_overrides": {}}
+      ],
+      "future_transfer_instances": [{"instance_id": "ICD-01-F1", "base_task_id": "F04", "evaluation_role": "future_transfer", "held_out": true, "patch_evidence": false, "instruction": "Held out: revise beta-web description and create a documentation issue with default priority.", "argument_overrides": {"repo_id": "R2", "title": "Refresh mobile documentation"}, "fixture_overrides": {}}],
+      "regression_tasks": ["A01", "A05", "A09"], "control_tasks": ["A04", "C01", "F01"]
+    },
+    {
+      "drift_id": "ICD-02", "target_tool": "trigger_pipeline",
+      "detection_instances": [
+        {"instance_id": "ICD-02-D1", "base_task_id": "A08", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Trigger alpha-api CI on release using canonical ref.", "argument_overrides": {}, "fixture_overrides": {}},
+        {"instance_id": "ICD-02-D2", "base_task_id": "C10", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Change alpha-api default to develop and trigger CI using that ref.", "argument_overrides": {}, "fixture_overrides": {}}
+      ],
+      "future_transfer_instances": [{"instance_id": "ICD-02-F1", "base_task_id": "F05", "evaluation_role": "future_transfer", "held_out": true, "patch_evidence": false, "instruction": "Held out: discover beta-web default branch and trigger CI on it.", "argument_overrides": {"repo_id": "R2", "workflow_id": "ci"}, "fixture_overrides": {}}],
+      "regression_tasks": ["A01", "A05", "A12"], "control_tasks": []
+    },
+    {
+      "drift_id": "ICD-03", "target_tool": "assign_issue",
+      "detection_instances": [
+        {"instance_id": "ICD-03-D1", "base_task_id": "A06", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Assign alpha-api issue 101 to bob.", "argument_overrides": {}, "fixture_overrides": {}},
+        {"instance_id": "ICD-03-D2", "base_task_id": "C01", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Create a test issue and assign its returned ID to bob.", "argument_overrides": {"assignee": "carol"}, "fixture_overrides": {}}
+      ],
+      "future_transfer_instances": [{"instance_id": "ICD-03-F1", "base_task_id": "F08", "evaluation_role": "future_transfer", "held_out": true, "patch_evidence": false, "instruction": "Held out: after checking settings and issue state, assign issue 101 to carol.", "argument_overrides": {"assignee": "carol"}, "fixture_overrides": {}}],
+      "regression_tasks": ["A01", "A05", "A09"], "control_tasks": []
+    },
+    {
+      "drift_id": "ICD-04", "target_tool": "retry_pipeline",
+      "detection_instances": [
+        {"instance_id": "ICD-04-D1", "base_task_id": "A10", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Retry alpha-api run 501 while relying on the canonical failed_only default.", "argument_overrides": {"omit": ["failed_only"]}, "fixture_overrides": {}},
+        {"instance_id": "ICD-04-D2", "base_task_id": "C06", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "After observing failure, retry run 501 without failed_only.", "argument_overrides": {"omit": ["failed_only"]}, "fixture_overrides": {}}
+      ],
+      "future_transfer_instances": [{"instance_id": "ICD-04-F1", "base_task_id": "C07", "evaluation_role": "future_transfer", "held_out": true, "patch_evidence": false, "instruction": "Held out: inspect cancelled beta-web run 601 and retry without failed_only.", "argument_overrides": {"repo_id": "R2", "run_id": 601, "omit": ["failed_only"]}, "fixture_overrides": {}}],
+      "regression_tasks": ["A01", "A05", "A12"], "control_tasks": ["A10", "C06"]
+    },
+    {
+      "drift_id": "ICD-05", "target_tool": "update_member_role",
+      "detection_instances": [
+        {"instance_id": "ICD-05-D1", "base_task_id": "A13", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Promote dave from read to canonical write.", "argument_overrides": {}, "fixture_overrides": {}},
+        {"instance_id": "ICD-05-D2", "base_task_id": "C08", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Check dave and promote him to canonical write when below it.", "argument_overrides": {}, "fixture_overrides": {}}
+      ],
+      "future_transfer_instances": [{"instance_id": "ICD-05-F1", "base_task_id": "C08", "evaluation_role": "future_transfer", "held_out": true, "patch_evidence": false, "instruction": "Held out: promote a fixture-scoped beta-web member erin from read to write.", "argument_overrides": {"repo_id": "R2", "username": "erin", "role": "write"}, "fixture_overrides": {"/repositories/R2/members/erin": {"role": "read", "base_permission": "read", "membership_state": "active"}}}],
+      "regression_tasks": ["A01", "A05", "A09"], "control_tasks": []
+    },
+
+    {
+      "drift_id": "RSD-01", "target_tool": "create_issue",
+      "detection_instances": [
+        {"instance_id": "RSD-01-D1", "base_task_id": "C01", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Create an issue and consume its canonical issue_id for assignment.", "argument_overrides": {}, "fixture_overrides": {}},
+        {"instance_id": "RSD-01-D2", "base_task_id": "C03", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Create an issue and reuse issue_id for assign and close.", "argument_overrides": {"title": "Remove stale beta flag"}, "fixture_overrides": {}}
+      ],
+      "future_transfer_instances": [{"instance_id": "RSD-01-F1", "base_task_id": "F03", "evaluation_role": "future_transfer", "held_out": true, "patch_evidence": false, "instruction": "Held out: create a release issue, assign its returned identifier, then trigger CI.", "argument_overrides": {"title": "Validate staging release"}, "fixture_overrides": {}}],
+      "regression_tasks": ["A01", "A05", "A09"], "control_tasks": []
+    },
+    {
+      "drift_id": "RSD-02", "target_tool": "get_pipeline_status",
+      "detection_instances": [
+        {"instance_id": "RSD-02-D1", "base_task_id": "C06", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Read run 501 status and conclusion before conditional retry.", "argument_overrides": {}, "fixture_overrides": {}},
+        {"instance_id": "RSD-02-D2", "base_task_id": "C07", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Read cancelled run 601 and report its post-retry status.", "argument_overrides": {}, "fixture_overrides": {}}
+      ],
+      "future_transfer_instances": [{"instance_id": "RSD-02-F1", "base_task_id": "F06", "evaluation_role": "future_transfer", "held_out": true, "patch_evidence": false, "instruction": "Held out: inspect successful run 502 before conditionally closing an issue.", "argument_overrides": {"run_id": 502}, "fixture_overrides": {}}],
+      "regression_tasks": ["A01", "A05", "A12"], "control_tasks": []
+    },
+    {
+      "drift_id": "RSD-03", "target_tool": "get_member",
+      "detection_instances": [
+        {"instance_id": "RSD-03-D1", "base_task_id": "A12", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Report bob's canonical role and base permission.", "argument_overrides": {}, "fixture_overrides": {}},
+        {"instance_id": "RSD-03-D2", "base_task_id": "C08", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Read dave's role before conditional promotion.", "argument_overrides": {}, "fixture_overrides": {}}
+      ],
+      "future_transfer_instances": [{"instance_id": "RSD-03-F1", "base_task_id": "F07", "evaluation_role": "future_transfer", "held_out": true, "patch_evidence": false, "instruction": "Held out: verify carol's nested membership permissions before issue work.", "argument_overrides": {"username": "carol"}, "fixture_overrides": {}}],
+      "regression_tasks": ["A01", "A05", "A09"], "control_tasks": []
+    },
+    {
+      "drift_id": "RSD-04", "target_tool": "get_repository",
+      "detection_instances": [
+        {"instance_id": "RSD-04-D1", "base_task_id": "A01", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Report alpha-api default branch and settings.", "argument_overrides": {}, "fixture_overrides": {}},
+        {"instance_id": "RSD-04-D2", "base_task_id": "C05", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Read repository settings before creating an issue.", "argument_overrides": {}, "fixture_overrides": {}}
+      ],
+      "future_transfer_instances": [{"instance_id": "RSD-04-F1", "base_task_id": "F05", "evaluation_role": "future_transfer", "held_out": true, "patch_evidence": false, "instruction": "Held out: discover beta-web default branch for a CI trigger.", "argument_overrides": {"repo_id": "R2"}, "fixture_overrides": {}}],
+      "regression_tasks": ["A05", "A09", "A12"], "control_tasks": []
+    },
+    {
+      "drift_id": "RSD-05", "target_tool": "retry_pipeline",
+      "detection_instances": [
+        {"instance_id": "RSD-05-D1", "base_task_id": "A10", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Retry run 501 and inspect canonical attempt.", "argument_overrides": {}, "fixture_overrides": {}},
+        {"instance_id": "RSD-05-D2", "base_task_id": "C06", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Conditionally retry failed run and verify attempt increment.", "argument_overrides": {}, "fixture_overrides": {}}
+      ],
+      "future_transfer_instances": [{"instance_id": "RSD-05-F1", "base_task_id": "C07", "evaluation_role": "future_transfer", "held_out": true, "patch_evidence": false, "instruction": "Held out: retry beta-web cancelled run and inspect the runtime attempt field.", "argument_overrides": {"repo_id": "R2", "run_id": 601}, "fixture_overrides": {}}],
+      "regression_tasks": ["A01", "A05", "A12"], "control_tasks": []
+    },
+
+    {
+      "drift_id": "WPD-01", "target_tool": "close_issue",
+      "detection_instances": [
+        {"instance_id": "WPD-01-D1", "base_task_id": "A07", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Close unassigned alpha-api issue 101.", "argument_overrides": {"repo_id": "R1", "issue_id": 101}, "fixture_overrides": {}},
+        {"instance_id": "WPD-01-D2", "base_task_id": "A07", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Close unassigned beta-web issue 201.", "argument_overrides": {"repo_id": "R2", "issue_id": 201}, "fixture_overrides": {}}
+      ],
+      "future_transfer_instances": [{"instance_id": "WPD-01-F1", "base_task_id": "F06", "evaluation_role": "future_transfer", "held_out": true, "patch_evidence": false, "instruction": "Held out: after successful CI, close a fixture-scoped unassigned issue.", "argument_overrides": {"issue_id": 101}, "fixture_overrides": {}}],
+      "regression_tasks": ["A01", "A05", "A09"], "control_tasks": ["A07"]
+    },
+    {
+      "drift_id": "WPD-02", "target_tool": "retry_pipeline",
+      "detection_instances": [
+        {"instance_id": "WPD-02-D1", "base_task_id": "A10", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Retry run 501 without an episode verification token.", "argument_overrides": {}, "fixture_overrides": {}},
+        {"instance_id": "WPD-02-D2", "base_task_id": "C06", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Read failure then retry while binding no token.", "argument_overrides": {}, "fixture_overrides": {}}
+      ],
+      "future_transfer_instances": [{"instance_id": "WPD-02-F1", "base_task_id": "C07", "evaluation_role": "future_transfer", "held_out": true, "patch_evidence": false, "instruction": "Held out: verify and retry cancelled beta-web run 601 with a runtime token.", "argument_overrides": {"repo_id": "R2", "run_id": 601}, "fixture_overrides": {}}],
+      "regression_tasks": ["A01", "A05", "A12"], "control_tasks": []
+    },
+    {
+      "drift_id": "WPD-03", "target_tool": "assign_issue",
+      "detection_instances": [
+        {"instance_id": "WPD-03-D1", "base_task_id": "A06", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Assign issue 101 without first verifying bob in this episode.", "argument_overrides": {}, "fixture_overrides": {}},
+        {"instance_id": "WPD-03-D2", "base_task_id": "C01", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Create then assign to bob without a membership verification binding.", "argument_overrides": {}, "fixture_overrides": {}}
+      ],
+      "future_transfer_instances": [{"instance_id": "WPD-03-F1", "base_task_id": "F08", "evaluation_role": "future_transfer", "held_out": true, "patch_evidence": false, "instruction": "Held out: verify bob membership before conditionally assigning issue 101.", "argument_overrides": {"assignee": "bob"}, "fixture_overrides": {}}],
+      "regression_tasks": ["A01", "A05", "A09"], "control_tasks": []
+    },
+    {
+      "drift_id": "WPD-04", "target_tool": "update_member_role",
+      "detection_instances": [
+        {"instance_id": "WPD-04-D1", "base_task_id": "A13", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Attempt direct read-to-write promotion for dave.", "argument_overrides": {}, "fixture_overrides": {}},
+        {"instance_id": "WPD-04-D2", "base_task_id": "C08", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Conditionally promote dave directly from read to write.", "argument_overrides": {}, "fixture_overrides": {}}
+      ],
+      "future_transfer_instances": [{"instance_id": "WPD-04-F1", "base_task_id": "C08", "evaluation_role": "future_transfer", "held_out": true, "patch_evidence": false, "instruction": "Held out: promote fixture-scoped erin through triage to write.", "argument_overrides": {"repo_id": "R2", "username": "erin", "role": "write"}, "fixture_overrides": {"/repositories/R2/members/erin": {"role": "read", "base_permission": "read", "membership_state": "active"}}}],
+      "regression_tasks": ["A01", "A05", "A09"], "control_tasks": []
+    },
+    {
+      "drift_id": "WPD-05", "target_tool": "add_member",
+      "detection_instances": [
+        {"instance_id": "WPD-05-D1", "base_task_id": "A11", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Add erin directly with triage.", "argument_overrides": {}, "fixture_overrides": {}},
+        {"instance_id": "WPD-05-D2", "base_task_id": "F02", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Add frank directly with maintain before assignment.", "argument_overrides": {}, "fixture_overrides": {}}
+      ],
+      "future_transfer_instances": [{"instance_id": "WPD-05-F1", "base_task_id": "C09", "evaluation_role": "future_transfer", "held_out": true, "patch_evidence": false, "instruction": "Held out: add frank as read and then promote to maintain.", "argument_overrides": {"username": "frank", "role": "maintain"}, "fixture_overrides": {}}],
+      "regression_tasks": ["A01", "A05", "A09"], "control_tasks": ["C09"]
+    },
+
+    {
+      "drift_id": "SED-01", "target_tool": "close_issue",
+      "detection_instances": [
+        {"instance_id": "SED-01-D1", "base_task_id": "A07", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Close issue 102 and compare response to immediate state.", "argument_overrides": {}, "fixture_overrides": {}},
+        {"instance_id": "SED-01-D2", "base_task_id": "C02", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Assign and close issue 101, then inspect persisted state.", "argument_overrides": {}, "fixture_overrides": {}}
+      ],
+      "future_transfer_instances": [{"instance_id": "SED-01-F1", "base_task_id": "F06", "evaluation_role": "future_transfer", "held_out": true, "patch_evidence": false, "instruction": "Held out: conditionally close issue 102 and verify the postcondition.", "argument_overrides": {"issue_id": 102}, "fixture_overrides": {}}],
+      "regression_tasks": ["A01", "A05", "A09"], "control_tasks": []
+    },
+    {
+      "drift_id": "SED-02", "target_tool": "update_member_role",
+      "detection_instances": [
+        {"instance_id": "SED-02-D1", "base_task_id": "A13", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Promote dave and compare response with membership state.", "argument_overrides": {}, "fixture_overrides": {}},
+        {"instance_id": "SED-02-D2", "base_task_id": "C08", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Conditionally update dave and verify stored role.", "argument_overrides": {}, "fixture_overrides": {}}
+      ],
+      "future_transfer_instances": [{"instance_id": "SED-02-F1", "base_task_id": "C09", "evaluation_role": "future_transfer", "held_out": true, "patch_evidence": false, "instruction": "Held out: add erin then update and verify her persisted triage role.", "argument_overrides": {"username": "erin", "role": "triage"}, "fixture_overrides": {}}],
+      "regression_tasks": ["A01", "A05", "A09"], "control_tasks": []
+    },
+    {
+      "drift_id": "SED-03", "target_tool": "add_member",
+      "detection_instances": [
+        {"instance_id": "SED-03-D1", "base_task_id": "A11", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Add erin and inspect membership immediately.", "argument_overrides": {}, "fixture_overrides": {}},
+        {"instance_id": "SED-03-D2", "base_task_id": "C09", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Add erin then immediately attempt role update.", "argument_overrides": {}, "fixture_overrides": {}}
+      ],
+      "future_transfer_instances": [{"instance_id": "SED-03-F1", "base_task_id": "F02", "evaluation_role": "future_transfer", "held_out": true, "patch_evidence": false, "instruction": "Held out: add frank, verify active membership, then assign issue 101.", "argument_overrides": {"username": "frank"}, "fixture_overrides": {}}],
+      "regression_tasks": ["A01", "A05", "A09"], "control_tasks": []
+    },
+    {
+      "drift_id": "SED-04", "target_tool": "retry_pipeline",
+      "detection_instances": [
+        {"instance_id": "SED-04-D1", "base_task_id": "A10", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Retry run 501 and inspect resource identity changes.", "argument_overrides": {}, "fixture_overrides": {}},
+        {"instance_id": "SED-04-D2", "base_task_id": "C06", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Conditionally retry failure and compare run collections.", "argument_overrides": {}, "fixture_overrides": {}}
+      ],
+      "future_transfer_instances": [{"instance_id": "SED-04-F1", "base_task_id": "C07", "evaluation_role": "future_transfer", "held_out": true, "patch_evidence": false, "instruction": "Held out: retry cancelled beta-web run and follow the returned new run identity.", "argument_overrides": {"repo_id": "R2", "run_id": 601}, "fixture_overrides": {}}],
+      "regression_tasks": ["A01", "A05", "A12"], "control_tasks": []
+    },
+    {
+      "drift_id": "SED-05", "target_tool": "update_repository",
+      "detection_instances": [
+        {"instance_id": "SED-05-D1", "base_task_id": "A03", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Update alpha-api default branch and inspect immediate state.", "argument_overrides": {}, "fixture_overrides": {}},
+        {"instance_id": "SED-05-D2", "base_task_id": "C10", "evaluation_role": "detection", "held_out": false, "patch_evidence": true, "instruction": "Update default branch then immediately trigger a dependent pipeline.", "argument_overrides": {}, "fixture_overrides": {}}
+      ],
+      "future_transfer_instances": [{"instance_id": "SED-05-F1", "base_task_id": "C10", "evaluation_role": "future_transfer", "held_out": true, "patch_evidence": false, "instruction": "Held out: update beta-web default to staging, verify it, then trigger CI.", "argument_overrides": {"repo_id": "R2", "default_branch": "staging", "ref": "staging"}, "fixture_overrides": {}}],
+      "regression_tasks": ["A01", "A05", "A09"], "control_tasks": ["A02", "F04"]
+    }
+  ]
+}

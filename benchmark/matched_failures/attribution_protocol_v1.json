@@ -1,0 +1,38 @@
+{
+  "protocol_version": "1.0",
+  "labels": ["agent_error", "transient_failure", "persistent_drift"],
+  "decision_point": 5,
+  "minimum_independent_drift_evidence": 2,
+  "same_request_retry_counts_as_independent": false,
+  "transient_evidence_excluded": ["RATE_LIMITED", "SERVICE_UNAVAILABLE", "TIMEOUT"],
+  "patch_policy": {
+    "agent_error": {"persistent_patch_allowed": false, "patch_is_false_positive": true},
+    "transient_failure": {"persistent_patch_allowed": false, "patch_is_false_positive": true},
+    "persistent_drift": {
+      "persistent_patch_allowed": true,
+      "patch_is_false_positive": false,
+      "activation_requirements": [
+        "generated_call_conforms_to_displayed_spec",
+        "two_independent_failures",
+        "exclude_transient_errors",
+        "patch_explains_all_failures",
+        "probe_succeeds",
+        "three_regression_tasks_pass",
+        "unsafe_write_rate_zero"
+      ]
+    }
+  },
+  "metrics": [
+    "attribution_accuracy",
+    "macro_precision",
+    "macro_recall",
+    "macro_f1",
+    "per_class_precision",
+    "per_class_recall",
+    "confusion_matrix",
+    "false_patch_rate_agent_error",
+    "false_patch_rate_transient_failure",
+    "missed_drift_rate",
+    "detection_delay"
+  ]
+}

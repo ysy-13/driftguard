@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://driftguard.local/schemas/evidence_bundle_schema_v1.json",
+  "title": "DriftGuard Diagnoser-Visible Evidence Bundle v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["scenario_id", "episode_id", "user_task", "displayed_spec", "generated_call", "runtime_response", "pre_state", "post_state", "state_diff", "recent_history"],
+  "properties": {
+    "scenario_id": {"type": "string", "minLength": 1},
+    "episode_id": {"type": "string", "minLength": 1},
+    "user_task": {"type": "string", "minLength": 1},
+    "displayed_spec": {"type": "object"},
+    "generated_call": {"type": "object"},
+    "runtime_response": {"type": "object"},
+    "pre_state": {"type": "object"},
+    "post_state": {"type": "object"},
+    "state_diff": {"type": "array"},
+    "recent_history": {"type": "array"},
+    "candidate_probe_result": {"type": ["object", "null"]}
+  }
+}

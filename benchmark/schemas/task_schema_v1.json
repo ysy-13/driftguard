@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://driftguard.local/schemas/task_schema_v1.json",
+  "title": "DriftGuard Canonical Tasks v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "canonical_contract_version", "fixture_id", "reset_policy", "tasks"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "canonical_contract_version": {"const": "1.0"},
+    "fixture_id": {"const": "S0"},
+    "reset_policy": {"const": "isolated"},
+    "tasks": {"type": "array", "items": {"$ref": "#/$defs/task"}}
+  },
+  "$defs": {
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["operator"],
+      "properties": {
+        "source": {"type": "string", "minLength": 1},
+        "operator": {"enum": ["eq", "neq", "is_null", "not_null", "role_at_least", "role_below", "all"]},
+        "value": {},
+        "conditions": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/condition"}}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"operator": {"const": "all"}}, "required": ["operator"]},
+          "then": {"required": ["conditions"]},
+          "else": {"required": ["source"]}
+        },
+        {
+          "if": {"properties": {"operator": {"enum": ["eq", "neq", "role_at_least", "role_below"]}}, "required": ["operator"]},
+          "then": {"required": ["value"]}
+        }
+      ]
+    },
+    "oracleStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["step_id", "tool", "arguments"],
+      "properties": {
+        "step_id": {"type": "string", "minLength": 1},
+        "when": {"$ref": "#/$defs/condition"},
+        "tool": {"type": "string", "minLength": 1},
+        "arguments": {"type": "object"}
+      }
+    },
+    "stateAssertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target", "path", "operator"],
+      "properties": {
+        "target": {"const": "state"},
+        "path": {"type": "string", "pattern": "^/"},
+        "operator": {"enum": ["eq", "exists", "not_exists", "is_null", "not_null"]},
+        "value": {}
+      },
+      "allOf": [{"if": {"properties": {"operator": {"const": "eq"}}, "required": ["operator"]}, "then": {"required": ["value"]}}]
+    },
+    "answerAssertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target", "key", "operator"],
+      "properties": {
+        "target": {"const": "answer"},
+        "key": {"type": "string", "minLength": 1},
+        "operator": {"enum": ["eq", "exists", "not_exists", "is_null", "not_null"]},
+        "value": {}
+      },
+      "allOf": [{"if": {"properties": {"operator": {"const": "eq"}}, "required": ["operator"]}, "then": {"required": ["value"]}}]
+    },
+    "forbiddenAssertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["operator", "allowed_paths"],
+      "properties": {
+        "operator": {"const": "unchanged_outside"},
+        "allowed_paths": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^/"}}
+      }
+    },
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["task_id", "category", "split", "actor_id", "instruction", "initial_state", "oracle_plan", "success_assertions", "answer_assertions", "forbidden_assertions", "max_tool_calls", "reset_after"],
+      "properties": {
+        "task_id": {"type": "string", "pattern": "^[ACF][0-9]{2}$"},
+        "category": {"enum": ["atomic", "conditional", "composition", "cross_module"]},
+        "split": {"enum": ["calibration", "detection", "future_transfer"]},
+        "actor_id": {"type": "string", "minLength": 1},
+        "instruction": {"type": "string", "minLength": 1},
+        "initial_state": {"const": "S0"},
+        "oracle_plan": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/oracleStep"}},
+        "success_assertions": {"type": "array", "items": {"$ref": "#/$defs/stateAssertion"}},
+        "answer_assertions": {"type": "array", "items": {"$ref": "#/$defs/answerAssertion"}},
+        "forbidden_assertions": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/forbiddenAssertion"}},
+        "max_tool_calls": {"type": "integer", "minimum": 1},
+        "reset_after": {"type": "boolean"}
+      }
+    }
+  }
+}
