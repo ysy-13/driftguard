@@ -117,3 +117,44 @@ python scripts/validate_drifts.py
 python scripts/validate_matched_failures.py
 pytest -q
 ```
+
+## Phase 5: Deterministic Canonical Sandbox
+
+Phase 5 adds the first executable canonical environment. A `StateStore` creates
+an isolated deep copy of S0 for every task, while `DeterministicClock` advances
+exactly one second after each successful write and resets with the fixture. The
+canonical OpenAPI is loaded into a contract registry that supplies flattened
+tool inputs, permissions, defaults, effect metadata, and success schemas to the
+same `SandboxService` used by both Oracle execution and HTTP requests.
+
+All 12 canonical tool handlers implement repository, issue, pipeline, and
+membership behavior without any drift. Calls produce immutable-style results,
+pre/post snapshots, deterministic JSON-Pointer state diffs, and audit records
+outside business state. The data-driven Oracle runner resolves step bindings
+and conditions, evaluates state/answer/forbidden assertions, and runs every one
+of the 32 tasks independently from S0 with deterministic replay.
+
+FastAPI is only a thin local experiment adapter: its 12 public method/path and
+operation IDs come from the same registry and delegate directly to
+`SandboxService.call_tool()`. `/internal/reset` is hidden from its OpenAPI. This
+phase has no drift injection, LLM, Agent, classifier, or patch execution.
+
+Install and run:
+
+```bash
+python -m pip install -r requirements.txt
+python -m pip install -e .
+
+python scripts/validate_openapi.py
+python scripts/validate_tasks.py
+python scripts/validate_drifts.py
+python scripts/validate_matched_failures.py
+python scripts/run_oracle.py
+pytest -q
+```
+
+Optionally start the local-only API sandbox:
+
+```bash
+uvicorn driftguard.api.app:app --reload
+```

@@ -1,0 +1,2812 @@
+{
+  "canonical_contract_version": "1.0",
+  "fixture_id": "S0",
+  "run_version": "1.0",
+  "summary": {
+    "deterministic_replay_passed": 32,
+    "failed": 0,
+    "forbidden_side_effects": 0,
+    "passed": 32,
+    "tasks": 32
+  },
+  "tasks": [
+    {
+      "actual_tool_calls": 1,
+      "answer": {
+        "default_branch": "main",
+        "issues_enabled": true,
+        "visibility": "public"
+      },
+      "assertion_results": {
+        "actual_tool_calls": 1,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 1,
+        "state_assertions_passed": true,
+        "task_id": "A01",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "repo_id": "R1"
+          },
+          "payload": {
+            "data": {
+              "archived": false,
+              "default_branch": "main",
+              "description": "Legacy API service",
+              "issues_enabled": true,
+              "name": "alpha-api",
+              "repo_id": "R1",
+              "visibility": "public"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s1",
+          "tool": "get_repository"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "A01",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 1,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 1,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 1,
+        "state_assertions_passed": true,
+        "task_id": "A02",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": "Core authentication API",
+          "before": "Legacy API service",
+          "op": "replace",
+          "path": "/repositories/R1/description"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "description": "Core authentication API",
+            "repo_id": "R1"
+          },
+          "payload": {
+            "data": {
+              "archived": false,
+              "default_branch": "main",
+              "description": "Core authentication API",
+              "issues_enabled": true,
+              "name": "alpha-api",
+              "repo_id": "R1",
+              "visibility": "public"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s1",
+          "tool": "update_repository"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "A02",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 1,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 1,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 1,
+        "state_assertions_passed": true,
+        "task_id": "A03",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": "develop",
+          "before": "main",
+          "op": "replace",
+          "path": "/repositories/R1/default_branch"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "default_branch": "develop",
+            "repo_id": "R1"
+          },
+          "payload": {
+            "data": {
+              "archived": false,
+              "default_branch": "develop",
+              "description": "Legacy API service",
+              "issues_enabled": true,
+              "name": "alpha-api",
+              "repo_id": "R1",
+              "visibility": "public"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s1",
+          "tool": "update_repository"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "A03",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 1,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 1,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 1,
+        "state_assertions_passed": true,
+        "task_id": "A04",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": 106,
+          "before": 105,
+          "op": "replace",
+          "path": "/next_ids/R1/issue_id"
+        },
+        {
+          "after": {
+            "assignee": null,
+            "body": "",
+            "closed_at": null,
+            "created_at": "2026-01-01T00:00:01Z",
+            "issue_id": 105,
+            "priority": "high",
+            "repo_id": "R1",
+            "resolution": null,
+            "state": "open",
+            "title": "Fix token refresh failure",
+            "updated_at": "2026-01-01T00:00:01Z"
+          },
+          "op": "add",
+          "path": "/repositories/R1/issues/105"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "priority": "high",
+            "repo_id": "R1",
+            "title": "Fix token refresh failure"
+          },
+          "payload": {
+            "data": {
+              "assignee": null,
+              "body": "",
+              "closed_at": null,
+              "created_at": "2026-01-01T00:00:01Z",
+              "issue_id": 105,
+              "priority": "high",
+              "repo_id": "R1",
+              "resolution": null,
+              "state": "open",
+              "title": "Fix token refresh failure",
+              "updated_at": "2026-01-01T00:00:01Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 201,
+          "step_id": "s1",
+          "tool": "create_issue"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "A04",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 1,
+      "answer": {
+        "assignee": "bob",
+        "state": "open"
+      },
+      "assertion_results": {
+        "actual_tool_calls": 1,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 1,
+        "state_assertions_passed": true,
+        "task_id": "A05",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "issue_id": 102,
+            "repo_id": "R1"
+          },
+          "payload": {
+            "data": {
+              "assignee": "bob",
+              "body": "Refresh the authentication API documentation.",
+              "closed_at": null,
+              "created_at": "2025-12-02T09:00:00Z",
+              "issue_id": 102,
+              "priority": "medium",
+              "repo_id": "R1",
+              "resolution": null,
+              "state": "open",
+              "title": "Update API documentation",
+              "updated_at": "2025-12-02T09:00:00Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s1",
+          "tool": "get_issue"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "A05",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 1,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 1,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 1,
+        "state_assertions_passed": true,
+        "task_id": "A06",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": "bob",
+          "before": null,
+          "op": "replace",
+          "path": "/repositories/R1/issues/101/assignee"
+        },
+        {
+          "after": "2026-01-01T00:00:01Z",
+          "before": "2025-12-01T09:00:00Z",
+          "op": "replace",
+          "path": "/repositories/R1/issues/101/updated_at"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "assignee": "bob",
+            "issue_id": 101,
+            "repo_id": "R1"
+          },
+          "payload": {
+            "data": {
+              "assignee": "bob",
+              "body": "Token refresh requests return an error.",
+              "closed_at": null,
+              "created_at": "2025-12-01T09:00:00Z",
+              "issue_id": 101,
+              "priority": "high",
+              "repo_id": "R1",
+              "resolution": null,
+              "state": "open",
+              "title": "Login request fails",
+              "updated_at": "2026-01-01T00:00:01Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s1",
+          "tool": "assign_issue"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "A06",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 1,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 1,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 1,
+        "state_assertions_passed": true,
+        "task_id": "A07",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": "2026-01-01T00:00:01Z",
+          "before": null,
+          "op": "replace",
+          "path": "/repositories/R1/issues/102/closed_at"
+        },
+        {
+          "after": "completed",
+          "before": null,
+          "op": "replace",
+          "path": "/repositories/R1/issues/102/resolution"
+        },
+        {
+          "after": "closed",
+          "before": "open",
+          "op": "replace",
+          "path": "/repositories/R1/issues/102/state"
+        },
+        {
+          "after": "2026-01-01T00:00:01Z",
+          "before": "2025-12-02T09:00:00Z",
+          "op": "replace",
+          "path": "/repositories/R1/issues/102/updated_at"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "issue_id": 102,
+            "repo_id": "R1",
+            "resolution": "completed"
+          },
+          "payload": {
+            "data": {
+              "assignee": "bob",
+              "body": "Refresh the authentication API documentation.",
+              "closed_at": "2026-01-01T00:00:01Z",
+              "created_at": "2025-12-02T09:00:00Z",
+              "issue_id": 102,
+              "priority": "medium",
+              "repo_id": "R1",
+              "resolution": "completed",
+              "state": "closed",
+              "title": "Update API documentation",
+              "updated_at": "2026-01-01T00:00:01Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s1",
+          "tool": "close_issue"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "A07",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 1,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 1,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 1,
+        "state_assertions_passed": true,
+        "task_id": "A08",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": 505,
+          "before": 504,
+          "op": "replace",
+          "path": "/next_ids/R1/run_id"
+        },
+        {
+          "after": {
+            "attempt": 1,
+            "conclusion": null,
+            "created_at": "2026-01-01T00:00:01Z",
+            "ref": "release",
+            "repo_id": "R1",
+            "retried_from": null,
+            "run_id": 504,
+            "status": "queued",
+            "updated_at": "2026-01-01T00:00:01Z",
+            "workflow_id": "ci"
+          },
+          "op": "add",
+          "path": "/repositories/R1/pipeline_runs/504"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "ref": "release",
+            "repo_id": "R1",
+            "workflow_id": "ci"
+          },
+          "payload": {
+            "data": {
+              "attempt": 1,
+              "conclusion": null,
+              "created_at": "2026-01-01T00:00:01Z",
+              "ref": "release",
+              "repo_id": "R1",
+              "retried_from": null,
+              "run_id": 504,
+              "status": "queued",
+              "updated_at": "2026-01-01T00:00:01Z",
+              "workflow_id": "ci"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 201,
+          "step_id": "s1",
+          "tool": "trigger_pipeline"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "A08",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 1,
+      "answer": {
+        "conclusion": null,
+        "status": "in_progress"
+      },
+      "assertion_results": {
+        "actual_tool_calls": 1,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 1,
+        "state_assertions_passed": true,
+        "task_id": "A09",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "repo_id": "R1",
+            "run_id": 503
+          },
+          "payload": {
+            "data": {
+              "attempt": 1,
+              "conclusion": null,
+              "created_at": "2025-12-31T23:55:00Z",
+              "ref": "main",
+              "repo_id": "R1",
+              "retried_from": null,
+              "run_id": 503,
+              "status": "in_progress",
+              "updated_at": "2025-12-31T23:59:00Z",
+              "workflow_id": "security"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s1",
+          "tool": "get_pipeline_status"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "A09",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 1,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 1,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 1,
+        "state_assertions_passed": true,
+        "task_id": "A10",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": 2,
+          "before": 1,
+          "op": "replace",
+          "path": "/repositories/R1/pipeline_runs/501/attempt"
+        },
+        {
+          "after": null,
+          "before": "failure",
+          "op": "replace",
+          "path": "/repositories/R1/pipeline_runs/501/conclusion"
+        },
+        {
+          "after": 1,
+          "before": null,
+          "op": "replace",
+          "path": "/repositories/R1/pipeline_runs/501/retried_from"
+        },
+        {
+          "after": "queued",
+          "before": "completed",
+          "op": "replace",
+          "path": "/repositories/R1/pipeline_runs/501/status"
+        },
+        {
+          "after": "2026-01-01T00:00:01Z",
+          "before": "2025-12-20T08:10:00Z",
+          "op": "replace",
+          "path": "/repositories/R1/pipeline_runs/501/updated_at"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "failed_only": true,
+            "repo_id": "R1",
+            "run_id": 501
+          },
+          "payload": {
+            "data": {
+              "attempt": 2,
+              "conclusion": null,
+              "created_at": "2025-12-20T08:00:00Z",
+              "ref": "main",
+              "repo_id": "R1",
+              "retried_from": 1,
+              "run_id": 501,
+              "status": "queued",
+              "updated_at": "2026-01-01T00:00:01Z",
+              "workflow_id": "ci"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 201,
+          "step_id": "s1",
+          "tool": "retry_pipeline"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "A10",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 1,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 1,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 1,
+        "state_assertions_passed": true,
+        "task_id": "A11",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": {
+            "added_at": "2026-01-01T00:00:01Z",
+            "base_permission": "read",
+            "membership_state": "active",
+            "repo_id": "R1",
+            "role": "triage",
+            "updated_at": "2026-01-01T00:00:01Z",
+            "username": "erin"
+          },
+          "op": "add",
+          "path": "/repositories/R1/members/erin"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "repo_id": "R1",
+            "role": "triage",
+            "username": "erin"
+          },
+          "payload": {
+            "data": {
+              "added_at": "2026-01-01T00:00:01Z",
+              "base_permission": "read",
+              "membership_state": "active",
+              "repo_id": "R1",
+              "role": "triage",
+              "updated_at": "2026-01-01T00:00:01Z",
+              "username": "erin"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 201,
+          "step_id": "s1",
+          "tool": "add_member"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "A11",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 1,
+      "answer": {
+        "base_permission": "write",
+        "role": "write"
+      },
+      "assertion_results": {
+        "actual_tool_calls": 1,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 1,
+        "state_assertions_passed": true,
+        "task_id": "A12",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "repo_id": "R1",
+            "username": "bob"
+          },
+          "payload": {
+            "data": {
+              "added_at": "2025-01-02T00:00:00Z",
+              "base_permission": "write",
+              "membership_state": "active",
+              "repo_id": "R1",
+              "role": "write",
+              "updated_at": "2025-01-02T00:00:00Z",
+              "username": "bob"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s1",
+          "tool": "get_member"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "A12",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 1,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 1,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 1,
+        "state_assertions_passed": true,
+        "task_id": "A13",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": "write",
+          "before": "read",
+          "op": "replace",
+          "path": "/repositories/R1/members/dave/base_permission"
+        },
+        {
+          "after": "write",
+          "before": "read",
+          "op": "replace",
+          "path": "/repositories/R1/members/dave/role"
+        },
+        {
+          "after": "2026-01-01T00:00:01Z",
+          "before": "2025-01-04T00:00:00Z",
+          "op": "replace",
+          "path": "/repositories/R1/members/dave/updated_at"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "repo_id": "R1",
+            "role": "write",
+            "username": "dave"
+          },
+          "payload": {
+            "data": {
+              "added_at": "2025-01-04T00:00:00Z",
+              "base_permission": "write",
+              "membership_state": "active",
+              "repo_id": "R1",
+              "role": "write",
+              "updated_at": "2026-01-01T00:00:01Z",
+              "username": "dave"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s1",
+          "tool": "update_member_role"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "A13",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 2,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 2,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 2,
+        "state_assertions_passed": true,
+        "task_id": "C01",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": 106,
+          "before": 105,
+          "op": "replace",
+          "path": "/next_ids/R1/issue_id"
+        },
+        {
+          "after": {
+            "assignee": "bob",
+            "body": "",
+            "closed_at": null,
+            "created_at": "2026-01-01T00:00:01Z",
+            "issue_id": 105,
+            "priority": "high",
+            "repo_id": "R1",
+            "resolution": null,
+            "state": "open",
+            "title": "Add refresh-token tests",
+            "updated_at": "2026-01-01T00:00:02Z"
+          },
+          "op": "add",
+          "path": "/repositories/R1/issues/105"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "priority": "high",
+            "repo_id": "R1",
+            "title": "Add refresh-token tests"
+          },
+          "payload": {
+            "data": {
+              "assignee": null,
+              "body": "",
+              "closed_at": null,
+              "created_at": "2026-01-01T00:00:01Z",
+              "issue_id": 105,
+              "priority": "high",
+              "repo_id": "R1",
+              "resolution": null,
+              "state": "open",
+              "title": "Add refresh-token tests",
+              "updated_at": "2026-01-01T00:00:01Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 201,
+          "step_id": "s1",
+          "tool": "create_issue"
+        },
+        {
+          "arguments": {
+            "assignee": "bob",
+            "issue_id": 105,
+            "repo_id": "R1"
+          },
+          "payload": {
+            "data": {
+              "assignee": "bob",
+              "body": "",
+              "closed_at": null,
+              "created_at": "2026-01-01T00:00:01Z",
+              "issue_id": 105,
+              "priority": "high",
+              "repo_id": "R1",
+              "resolution": null,
+              "state": "open",
+              "title": "Add refresh-token tests",
+              "updated_at": "2026-01-01T00:00:02Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s2",
+          "tool": "assign_issue"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "C01",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 2,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 2,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 2,
+        "state_assertions_passed": true,
+        "task_id": "C02",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": "bob",
+          "before": null,
+          "op": "replace",
+          "path": "/repositories/R1/issues/101/assignee"
+        },
+        {
+          "after": "2026-01-01T00:00:02Z",
+          "before": null,
+          "op": "replace",
+          "path": "/repositories/R1/issues/101/closed_at"
+        },
+        {
+          "after": "completed",
+          "before": null,
+          "op": "replace",
+          "path": "/repositories/R1/issues/101/resolution"
+        },
+        {
+          "after": "closed",
+          "before": "open",
+          "op": "replace",
+          "path": "/repositories/R1/issues/101/state"
+        },
+        {
+          "after": "2026-01-01T00:00:02Z",
+          "before": "2025-12-01T09:00:00Z",
+          "op": "replace",
+          "path": "/repositories/R1/issues/101/updated_at"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "assignee": "bob",
+            "issue_id": 101,
+            "repo_id": "R1"
+          },
+          "payload": {
+            "data": {
+              "assignee": "bob",
+              "body": "Token refresh requests return an error.",
+              "closed_at": null,
+              "created_at": "2025-12-01T09:00:00Z",
+              "issue_id": 101,
+              "priority": "high",
+              "repo_id": "R1",
+              "resolution": null,
+              "state": "open",
+              "title": "Login request fails",
+              "updated_at": "2026-01-01T00:00:01Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s1",
+          "tool": "assign_issue"
+        },
+        {
+          "arguments": {
+            "issue_id": 101,
+            "repo_id": "R1",
+            "resolution": "completed"
+          },
+          "payload": {
+            "data": {
+              "assignee": "bob",
+              "body": "Token refresh requests return an error.",
+              "closed_at": "2026-01-01T00:00:02Z",
+              "created_at": "2025-12-01T09:00:00Z",
+              "issue_id": 101,
+              "priority": "high",
+              "repo_id": "R1",
+              "resolution": "completed",
+              "state": "closed",
+              "title": "Login request fails",
+              "updated_at": "2026-01-01T00:00:02Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s2",
+          "tool": "close_issue"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "C02",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 3,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 3,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 3,
+        "state_assertions_passed": true,
+        "task_id": "C03",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": 106,
+          "before": 105,
+          "op": "replace",
+          "path": "/next_ids/R1/issue_id"
+        },
+        {
+          "after": {
+            "assignee": "carol",
+            "body": "",
+            "closed_at": "2026-01-01T00:00:03Z",
+            "created_at": "2026-01-01T00:00:01Z",
+            "issue_id": 105,
+            "priority": "medium",
+            "repo_id": "R1",
+            "resolution": "not_planned",
+            "state": "closed",
+            "title": "Remove unused login flag",
+            "updated_at": "2026-01-01T00:00:03Z"
+          },
+          "op": "add",
+          "path": "/repositories/R1/issues/105"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "repo_id": "R1",
+            "title": "Remove unused login flag"
+          },
+          "payload": {
+            "data": {
+              "assignee": null,
+              "body": "",
+              "closed_at": null,
+              "created_at": "2026-01-01T00:00:01Z",
+              "issue_id": 105,
+              "priority": "medium",
+              "repo_id": "R1",
+              "resolution": null,
+              "state": "open",
+              "title": "Remove unused login flag",
+              "updated_at": "2026-01-01T00:00:01Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 201,
+          "step_id": "s1",
+          "tool": "create_issue"
+        },
+        {
+          "arguments": {
+            "assignee": "carol",
+            "issue_id": 105,
+            "repo_id": "R1"
+          },
+          "payload": {
+            "data": {
+              "assignee": "carol",
+              "body": "",
+              "closed_at": null,
+              "created_at": "2026-01-01T00:00:01Z",
+              "issue_id": 105,
+              "priority": "medium",
+              "repo_id": "R1",
+              "resolution": null,
+              "state": "open",
+              "title": "Remove unused login flag",
+              "updated_at": "2026-01-01T00:00:02Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s2",
+          "tool": "assign_issue"
+        },
+        {
+          "arguments": {
+            "issue_id": 105,
+            "repo_id": "R1",
+            "resolution": "not_planned"
+          },
+          "payload": {
+            "data": {
+              "assignee": "carol",
+              "body": "",
+              "closed_at": "2026-01-01T00:00:03Z",
+              "created_at": "2026-01-01T00:00:01Z",
+              "issue_id": 105,
+              "priority": "medium",
+              "repo_id": "R1",
+              "resolution": "not_planned",
+              "state": "closed",
+              "title": "Remove unused login flag",
+              "updated_at": "2026-01-01T00:00:03Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s3",
+          "tool": "close_issue"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "C03",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 2,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 2,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 2,
+        "state_assertions_passed": true,
+        "task_id": "C04",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": "carol",
+          "before": null,
+          "op": "replace",
+          "path": "/repositories/R1/issues/101/assignee"
+        },
+        {
+          "after": "2026-01-01T00:00:01Z",
+          "before": "2025-12-01T09:00:00Z",
+          "op": "replace",
+          "path": "/repositories/R1/issues/101/updated_at"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "issue_id": 101,
+            "repo_id": "R1"
+          },
+          "payload": {
+            "data": {
+              "assignee": null,
+              "body": "Token refresh requests return an error.",
+              "closed_at": null,
+              "created_at": "2025-12-01T09:00:00Z",
+              "issue_id": 101,
+              "priority": "high",
+              "repo_id": "R1",
+              "resolution": null,
+              "state": "open",
+              "title": "Login request fails",
+              "updated_at": "2025-12-01T09:00:00Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s1",
+          "tool": "get_issue"
+        },
+        {
+          "arguments": {
+            "assignee": "carol",
+            "issue_id": 101,
+            "repo_id": "R1"
+          },
+          "payload": {
+            "data": {
+              "assignee": "carol",
+              "body": "Token refresh requests return an error.",
+              "closed_at": null,
+              "created_at": "2025-12-01T09:00:00Z",
+              "issue_id": 101,
+              "priority": "high",
+              "repo_id": "R1",
+              "resolution": null,
+              "state": "open",
+              "title": "Login request fails",
+              "updated_at": "2026-01-01T00:00:01Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s2",
+          "tool": "assign_issue"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "C04",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 2,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 2,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 2,
+        "state_assertions_passed": true,
+        "task_id": "C05",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": 106,
+          "before": 105,
+          "op": "replace",
+          "path": "/next_ids/R1/issue_id"
+        },
+        {
+          "after": {
+            "assignee": null,
+            "body": "",
+            "closed_at": null,
+            "created_at": "2026-01-01T00:00:01Z",
+            "issue_id": 105,
+            "priority": "medium",
+            "repo_id": "R1",
+            "resolution": null,
+            "state": "open",
+            "title": "Review authentication logs",
+            "updated_at": "2026-01-01T00:00:01Z"
+          },
+          "op": "add",
+          "path": "/repositories/R1/issues/105"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "repo_id": "R1"
+          },
+          "payload": {
+            "data": {
+              "archived": false,
+              "default_branch": "main",
+              "description": "Legacy API service",
+              "issues_enabled": true,
+              "name": "alpha-api",
+              "repo_id": "R1",
+              "visibility": "public"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s1",
+          "tool": "get_repository"
+        },
+        {
+          "arguments": {
+            "repo_id": "R1",
+            "title": "Review authentication logs"
+          },
+          "payload": {
+            "data": {
+              "assignee": null,
+              "body": "",
+              "closed_at": null,
+              "created_at": "2026-01-01T00:00:01Z",
+              "issue_id": 105,
+              "priority": "medium",
+              "repo_id": "R1",
+              "resolution": null,
+              "state": "open",
+              "title": "Review authentication logs",
+              "updated_at": "2026-01-01T00:00:01Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 201,
+          "step_id": "s2",
+          "tool": "create_issue"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "C05",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 2,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 2,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 2,
+        "state_assertions_passed": true,
+        "task_id": "C06",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": 2,
+          "before": 1,
+          "op": "replace",
+          "path": "/repositories/R1/pipeline_runs/501/attempt"
+        },
+        {
+          "after": null,
+          "before": "failure",
+          "op": "replace",
+          "path": "/repositories/R1/pipeline_runs/501/conclusion"
+        },
+        {
+          "after": 1,
+          "before": null,
+          "op": "replace",
+          "path": "/repositories/R1/pipeline_runs/501/retried_from"
+        },
+        {
+          "after": "queued",
+          "before": "completed",
+          "op": "replace",
+          "path": "/repositories/R1/pipeline_runs/501/status"
+        },
+        {
+          "after": "2026-01-01T00:00:01Z",
+          "before": "2025-12-20T08:10:00Z",
+          "op": "replace",
+          "path": "/repositories/R1/pipeline_runs/501/updated_at"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "repo_id": "R1",
+            "run_id": 501
+          },
+          "payload": {
+            "data": {
+              "attempt": 1,
+              "conclusion": "failure",
+              "created_at": "2025-12-20T08:00:00Z",
+              "ref": "main",
+              "repo_id": "R1",
+              "retried_from": null,
+              "run_id": 501,
+              "status": "completed",
+              "updated_at": "2025-12-20T08:10:00Z",
+              "workflow_id": "ci"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s1",
+          "tool": "get_pipeline_status"
+        },
+        {
+          "arguments": {
+            "failed_only": true,
+            "repo_id": "R1",
+            "run_id": 501
+          },
+          "payload": {
+            "data": {
+              "attempt": 2,
+              "conclusion": null,
+              "created_at": "2025-12-20T08:00:00Z",
+              "ref": "main",
+              "repo_id": "R1",
+              "retried_from": 1,
+              "run_id": 501,
+              "status": "queued",
+              "updated_at": "2026-01-01T00:00:01Z",
+              "workflow_id": "ci"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 201,
+          "step_id": "s2",
+          "tool": "retry_pipeline"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "C06",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 3,
+      "answer": {
+        "status": "queued"
+      },
+      "assertion_results": {
+        "actual_tool_calls": 3,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 3,
+        "state_assertions_passed": true,
+        "task_id": "C07",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": 2,
+          "before": 1,
+          "op": "replace",
+          "path": "/repositories/R2/pipeline_runs/601/attempt"
+        },
+        {
+          "after": null,
+          "before": "cancelled",
+          "op": "replace",
+          "path": "/repositories/R2/pipeline_runs/601/conclusion"
+        },
+        {
+          "after": 1,
+          "before": null,
+          "op": "replace",
+          "path": "/repositories/R2/pipeline_runs/601/retried_from"
+        },
+        {
+          "after": "queued",
+          "before": "completed",
+          "op": "replace",
+          "path": "/repositories/R2/pipeline_runs/601/status"
+        },
+        {
+          "after": "2026-01-01T00:00:01Z",
+          "before": "2025-12-22T08:10:00Z",
+          "op": "replace",
+          "path": "/repositories/R2/pipeline_runs/601/updated_at"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "repo_id": "R2",
+            "run_id": 601
+          },
+          "payload": {
+            "data": {
+              "attempt": 1,
+              "conclusion": "cancelled",
+              "created_at": "2025-12-22T08:00:00Z",
+              "ref": "main",
+              "repo_id": "R2",
+              "retried_from": null,
+              "run_id": 601,
+              "status": "completed",
+              "updated_at": "2025-12-22T08:10:00Z",
+              "workflow_id": "ci"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s1",
+          "tool": "get_pipeline_status"
+        },
+        {
+          "arguments": {
+            "repo_id": "R2",
+            "run_id": 601
+          },
+          "payload": {
+            "data": {
+              "attempt": 2,
+              "conclusion": null,
+              "created_at": "2025-12-22T08:00:00Z",
+              "ref": "main",
+              "repo_id": "R2",
+              "retried_from": 1,
+              "run_id": 601,
+              "status": "queued",
+              "updated_at": "2026-01-01T00:00:01Z",
+              "workflow_id": "ci"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 201,
+          "step_id": "s2",
+          "tool": "retry_pipeline"
+        },
+        {
+          "arguments": {
+            "repo_id": "R2",
+            "run_id": 601
+          },
+          "payload": {
+            "data": {
+              "attempt": 2,
+              "conclusion": null,
+              "created_at": "2025-12-22T08:00:00Z",
+              "ref": "main",
+              "repo_id": "R2",
+              "retried_from": 1,
+              "run_id": 601,
+              "status": "queued",
+              "updated_at": "2026-01-01T00:00:01Z",
+              "workflow_id": "ci"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s3",
+          "tool": "get_pipeline_status"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "C07",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 2,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 2,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 2,
+        "state_assertions_passed": true,
+        "task_id": "C08",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": "write",
+          "before": "read",
+          "op": "replace",
+          "path": "/repositories/R1/members/dave/base_permission"
+        },
+        {
+          "after": "write",
+          "before": "read",
+          "op": "replace",
+          "path": "/repositories/R1/members/dave/role"
+        },
+        {
+          "after": "2026-01-01T00:00:01Z",
+          "before": "2025-01-04T00:00:00Z",
+          "op": "replace",
+          "path": "/repositories/R1/members/dave/updated_at"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "repo_id": "R1",
+            "username": "dave"
+          },
+          "payload": {
+            "data": {
+              "added_at": "2025-01-04T00:00:00Z",
+              "base_permission": "read",
+              "membership_state": "active",
+              "repo_id": "R1",
+              "role": "read",
+              "updated_at": "2025-01-04T00:00:00Z",
+              "username": "dave"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s1",
+          "tool": "get_member"
+        },
+        {
+          "arguments": {
+            "repo_id": "R1",
+            "role": "write",
+            "username": "dave"
+          },
+          "payload": {
+            "data": {
+              "added_at": "2025-01-04T00:00:00Z",
+              "base_permission": "write",
+              "membership_state": "active",
+              "repo_id": "R1",
+              "role": "write",
+              "updated_at": "2026-01-01T00:00:01Z",
+              "username": "dave"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s2",
+          "tool": "update_member_role"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "C08",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 2,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 2,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 2,
+        "state_assertions_passed": true,
+        "task_id": "C09",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": {
+            "added_at": "2026-01-01T00:00:01Z",
+            "base_permission": "read",
+            "membership_state": "active",
+            "repo_id": "R1",
+            "role": "triage",
+            "updated_at": "2026-01-01T00:00:02Z",
+            "username": "erin"
+          },
+          "op": "add",
+          "path": "/repositories/R1/members/erin"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "repo_id": "R1",
+            "role": "read",
+            "username": "erin"
+          },
+          "payload": {
+            "data": {
+              "added_at": "2026-01-01T00:00:01Z",
+              "base_permission": "read",
+              "membership_state": "active",
+              "repo_id": "R1",
+              "role": "read",
+              "updated_at": "2026-01-01T00:00:01Z",
+              "username": "erin"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 201,
+          "step_id": "s1",
+          "tool": "add_member"
+        },
+        {
+          "arguments": {
+            "repo_id": "R1",
+            "role": "triage",
+            "username": "erin"
+          },
+          "payload": {
+            "data": {
+              "added_at": "2026-01-01T00:00:01Z",
+              "base_permission": "read",
+              "membership_state": "active",
+              "repo_id": "R1",
+              "role": "triage",
+              "updated_at": "2026-01-01T00:00:02Z",
+              "username": "erin"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s2",
+          "tool": "update_member_role"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "C09",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 2,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 2,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 2,
+        "state_assertions_passed": true,
+        "task_id": "C10",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": 505,
+          "before": 504,
+          "op": "replace",
+          "path": "/next_ids/R1/run_id"
+        },
+        {
+          "after": "develop",
+          "before": "main",
+          "op": "replace",
+          "path": "/repositories/R1/default_branch"
+        },
+        {
+          "after": {
+            "attempt": 1,
+            "conclusion": null,
+            "created_at": "2026-01-01T00:00:02Z",
+            "ref": "develop",
+            "repo_id": "R1",
+            "retried_from": null,
+            "run_id": 504,
+            "status": "queued",
+            "updated_at": "2026-01-01T00:00:02Z",
+            "workflow_id": "ci"
+          },
+          "op": "add",
+          "path": "/repositories/R1/pipeline_runs/504"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "default_branch": "develop",
+            "repo_id": "R1"
+          },
+          "payload": {
+            "data": {
+              "archived": false,
+              "default_branch": "develop",
+              "description": "Legacy API service",
+              "issues_enabled": true,
+              "name": "alpha-api",
+              "repo_id": "R1",
+              "visibility": "public"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s1",
+          "tool": "update_repository"
+        },
+        {
+          "arguments": {
+            "ref": "develop",
+            "repo_id": "R1",
+            "workflow_id": "ci"
+          },
+          "payload": {
+            "data": {
+              "attempt": 1,
+              "conclusion": null,
+              "created_at": "2026-01-01T00:00:02Z",
+              "ref": "develop",
+              "repo_id": "R1",
+              "retried_from": null,
+              "run_id": 504,
+              "status": "queued",
+              "updated_at": "2026-01-01T00:00:02Z",
+              "workflow_id": "ci"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 201,
+          "step_id": "s2",
+          "tool": "trigger_pipeline"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "C10",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 2,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 2,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 2,
+        "state_assertions_passed": true,
+        "task_id": "C11",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": "2026-01-01T00:00:01Z",
+          "before": null,
+          "op": "replace",
+          "path": "/repositories/R1/issues/104/closed_at"
+        },
+        {
+          "after": "completed",
+          "before": null,
+          "op": "replace",
+          "path": "/repositories/R1/issues/104/resolution"
+        },
+        {
+          "after": "closed",
+          "before": "open",
+          "op": "replace",
+          "path": "/repositories/R1/issues/104/state"
+        },
+        {
+          "after": "2026-01-01T00:00:01Z",
+          "before": "2025-12-04T09:00:00Z",
+          "op": "replace",
+          "path": "/repositories/R1/issues/104/updated_at"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "issue_id": 104,
+            "repo_id": "R1"
+          },
+          "payload": {
+            "data": {
+              "assignee": "carol",
+              "body": "Return clearer authentication errors.",
+              "closed_at": null,
+              "created_at": "2025-12-04T09:00:00Z",
+              "issue_id": 104,
+              "priority": "medium",
+              "repo_id": "R1",
+              "resolution": null,
+              "state": "open",
+              "title": "Improve error messages",
+              "updated_at": "2025-12-04T09:00:00Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s1",
+          "tool": "get_issue"
+        },
+        {
+          "arguments": {
+            "issue_id": 104,
+            "repo_id": "R1",
+            "resolution": "completed"
+          },
+          "payload": {
+            "data": {
+              "assignee": "carol",
+              "body": "Return clearer authentication errors.",
+              "closed_at": "2026-01-01T00:00:01Z",
+              "created_at": "2025-12-04T09:00:00Z",
+              "issue_id": 104,
+              "priority": "medium",
+              "repo_id": "R1",
+              "resolution": "completed",
+              "state": "closed",
+              "title": "Improve error messages",
+              "updated_at": "2026-01-01T00:00:01Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s2",
+          "tool": "close_issue"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "C11",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 2,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 2,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 2,
+        "state_assertions_passed": true,
+        "task_id": "F01",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": 106,
+          "before": 105,
+          "op": "replace",
+          "path": "/next_ids/R1/issue_id"
+        },
+        {
+          "after": {
+            "assignee": null,
+            "body": "",
+            "closed_at": null,
+            "created_at": "2026-01-01T00:00:01Z",
+            "issue_id": 105,
+            "priority": "high",
+            "repo_id": "R1",
+            "resolution": null,
+            "state": "open",
+            "title": "CI failure on main",
+            "updated_at": "2026-01-01T00:00:01Z"
+          },
+          "op": "add",
+          "path": "/repositories/R1/issues/105"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "repo_id": "R1",
+            "run_id": 501
+          },
+          "payload": {
+            "data": {
+              "attempt": 1,
+              "conclusion": "failure",
+              "created_at": "2025-12-20T08:00:00Z",
+              "ref": "main",
+              "repo_id": "R1",
+              "retried_from": null,
+              "run_id": 501,
+              "status": "completed",
+              "updated_at": "2025-12-20T08:10:00Z",
+              "workflow_id": "ci"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s1",
+          "tool": "get_pipeline_status"
+        },
+        {
+          "arguments": {
+            "priority": "high",
+            "repo_id": "R1",
+            "title": "CI failure on main"
+          },
+          "payload": {
+            "data": {
+              "assignee": null,
+              "body": "",
+              "closed_at": null,
+              "created_at": "2026-01-01T00:00:01Z",
+              "issue_id": 105,
+              "priority": "high",
+              "repo_id": "R1",
+              "resolution": null,
+              "state": "open",
+              "title": "CI failure on main",
+              "updated_at": "2026-01-01T00:00:01Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 201,
+          "step_id": "s2",
+          "tool": "create_issue"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "F01",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 2,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 2,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 2,
+        "state_assertions_passed": true,
+        "task_id": "F02",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": "frank",
+          "before": null,
+          "op": "replace",
+          "path": "/repositories/R1/issues/101/assignee"
+        },
+        {
+          "after": "2026-01-01T00:00:02Z",
+          "before": "2025-12-01T09:00:00Z",
+          "op": "replace",
+          "path": "/repositories/R1/issues/101/updated_at"
+        },
+        {
+          "after": {
+            "added_at": "2026-01-01T00:00:01Z",
+            "base_permission": "write",
+            "membership_state": "active",
+            "repo_id": "R1",
+            "role": "maintain",
+            "updated_at": "2026-01-01T00:00:01Z",
+            "username": "frank"
+          },
+          "op": "add",
+          "path": "/repositories/R1/members/frank"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "repo_id": "R1",
+            "role": "maintain",
+            "username": "frank"
+          },
+          "payload": {
+            "data": {
+              "added_at": "2026-01-01T00:00:01Z",
+              "base_permission": "write",
+              "membership_state": "active",
+              "repo_id": "R1",
+              "role": "maintain",
+              "updated_at": "2026-01-01T00:00:01Z",
+              "username": "frank"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 201,
+          "step_id": "s1",
+          "tool": "add_member"
+        },
+        {
+          "arguments": {
+            "assignee": "frank",
+            "issue_id": 101,
+            "repo_id": "R1"
+          },
+          "payload": {
+            "data": {
+              "assignee": "frank",
+              "body": "Token refresh requests return an error.",
+              "closed_at": null,
+              "created_at": "2025-12-01T09:00:00Z",
+              "issue_id": 101,
+              "priority": "high",
+              "repo_id": "R1",
+              "resolution": null,
+              "state": "open",
+              "title": "Login request fails",
+              "updated_at": "2026-01-01T00:00:02Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s2",
+          "tool": "assign_issue"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "F02",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 3,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 3,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 3,
+        "state_assertions_passed": true,
+        "task_id": "F03",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": 106,
+          "before": 105,
+          "op": "replace",
+          "path": "/next_ids/R1/issue_id"
+        },
+        {
+          "after": 505,
+          "before": 504,
+          "op": "replace",
+          "path": "/next_ids/R1/run_id"
+        },
+        {
+          "after": {
+            "assignee": "bob",
+            "body": "",
+            "closed_at": null,
+            "created_at": "2026-01-01T00:00:01Z",
+            "issue_id": 105,
+            "priority": "medium",
+            "repo_id": "R1",
+            "resolution": null,
+            "state": "open",
+            "title": "Prepare release validation",
+            "updated_at": "2026-01-01T00:00:02Z"
+          },
+          "op": "add",
+          "path": "/repositories/R1/issues/105"
+        },
+        {
+          "after": {
+            "attempt": 1,
+            "conclusion": null,
+            "created_at": "2026-01-01T00:00:03Z",
+            "ref": "release",
+            "repo_id": "R1",
+            "retried_from": null,
+            "run_id": 504,
+            "status": "queued",
+            "updated_at": "2026-01-01T00:00:03Z",
+            "workflow_id": "ci"
+          },
+          "op": "add",
+          "path": "/repositories/R1/pipeline_runs/504"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "repo_id": "R1",
+            "title": "Prepare release validation"
+          },
+          "payload": {
+            "data": {
+              "assignee": null,
+              "body": "",
+              "closed_at": null,
+              "created_at": "2026-01-01T00:00:01Z",
+              "issue_id": 105,
+              "priority": "medium",
+              "repo_id": "R1",
+              "resolution": null,
+              "state": "open",
+              "title": "Prepare release validation",
+              "updated_at": "2026-01-01T00:00:01Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 201,
+          "step_id": "s1",
+          "tool": "create_issue"
+        },
+        {
+          "arguments": {
+            "assignee": "bob",
+            "issue_id": 105,
+            "repo_id": "R1"
+          },
+          "payload": {
+            "data": {
+              "assignee": "bob",
+              "body": "",
+              "closed_at": null,
+              "created_at": "2026-01-01T00:00:01Z",
+              "issue_id": 105,
+              "priority": "medium",
+              "repo_id": "R1",
+              "resolution": null,
+              "state": "open",
+              "title": "Prepare release validation",
+              "updated_at": "2026-01-01T00:00:02Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s2",
+          "tool": "assign_issue"
+        },
+        {
+          "arguments": {
+            "ref": "release",
+            "repo_id": "R1",
+            "workflow_id": "ci"
+          },
+          "payload": {
+            "data": {
+              "attempt": 1,
+              "conclusion": null,
+              "created_at": "2026-01-01T00:00:03Z",
+              "ref": "release",
+              "repo_id": "R1",
+              "retried_from": null,
+              "run_id": 504,
+              "status": "queued",
+              "updated_at": "2026-01-01T00:00:03Z",
+              "workflow_id": "ci"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 201,
+          "step_id": "s3",
+          "tool": "trigger_pipeline"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "F03",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 2,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 2,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 2,
+        "state_assertions_passed": true,
+        "task_id": "F04",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": 106,
+          "before": 105,
+          "op": "replace",
+          "path": "/next_ids/R1/issue_id"
+        },
+        {
+          "after": "Authentication and authorization API",
+          "before": "Legacy API service",
+          "op": "replace",
+          "path": "/repositories/R1/description"
+        },
+        {
+          "after": {
+            "assignee": null,
+            "body": "",
+            "closed_at": null,
+            "created_at": "2026-01-01T00:00:02Z",
+            "issue_id": 105,
+            "priority": "medium",
+            "repo_id": "R1",
+            "resolution": null,
+            "state": "open",
+            "title": "Refresh API documentation",
+            "updated_at": "2026-01-01T00:00:02Z"
+          },
+          "op": "add",
+          "path": "/repositories/R1/issues/105"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "description": "Authentication and authorization API",
+            "repo_id": "R1"
+          },
+          "payload": {
+            "data": {
+              "archived": false,
+              "default_branch": "main",
+              "description": "Authentication and authorization API",
+              "issues_enabled": true,
+              "name": "alpha-api",
+              "repo_id": "R1",
+              "visibility": "public"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s1",
+          "tool": "update_repository"
+        },
+        {
+          "arguments": {
+            "repo_id": "R1",
+            "title": "Refresh API documentation"
+          },
+          "payload": {
+            "data": {
+              "assignee": null,
+              "body": "",
+              "closed_at": null,
+              "created_at": "2026-01-01T00:00:02Z",
+              "issue_id": 105,
+              "priority": "medium",
+              "repo_id": "R1",
+              "resolution": null,
+              "state": "open",
+              "title": "Refresh API documentation",
+              "updated_at": "2026-01-01T00:00:02Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 201,
+          "step_id": "s2",
+          "tool": "create_issue"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "F04",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 2,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 2,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 2,
+        "state_assertions_passed": true,
+        "task_id": "F05",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": 603,
+          "before": 602,
+          "op": "replace",
+          "path": "/next_ids/R2/run_id"
+        },
+        {
+          "after": {
+            "attempt": 1,
+            "conclusion": null,
+            "created_at": "2026-01-01T00:00:01Z",
+            "ref": "main",
+            "repo_id": "R2",
+            "retried_from": null,
+            "run_id": 602,
+            "status": "queued",
+            "updated_at": "2026-01-01T00:00:01Z",
+            "workflow_id": "ci"
+          },
+          "op": "add",
+          "path": "/repositories/R2/pipeline_runs/602"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "repo_id": "R2"
+          },
+          "payload": {
+            "data": {
+              "archived": false,
+              "default_branch": "main",
+              "description": "Customer web application",
+              "issues_enabled": true,
+              "name": "beta-web",
+              "repo_id": "R2",
+              "visibility": "private"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s1",
+          "tool": "get_repository"
+        },
+        {
+          "arguments": {
+            "ref": "main",
+            "repo_id": "R2",
+            "workflow_id": "ci"
+          },
+          "payload": {
+            "data": {
+              "attempt": 1,
+              "conclusion": null,
+              "created_at": "2026-01-01T00:00:01Z",
+              "ref": "main",
+              "repo_id": "R2",
+              "retried_from": null,
+              "run_id": 602,
+              "status": "queued",
+              "updated_at": "2026-01-01T00:00:01Z",
+              "workflow_id": "ci"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 201,
+          "step_id": "s2",
+          "tool": "trigger_pipeline"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "F05",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 2,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 2,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 2,
+        "state_assertions_passed": true,
+        "task_id": "F06",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": "2026-01-01T00:00:01Z",
+          "before": null,
+          "op": "replace",
+          "path": "/repositories/R1/issues/102/closed_at"
+        },
+        {
+          "after": "completed",
+          "before": null,
+          "op": "replace",
+          "path": "/repositories/R1/issues/102/resolution"
+        },
+        {
+          "after": "closed",
+          "before": "open",
+          "op": "replace",
+          "path": "/repositories/R1/issues/102/state"
+        },
+        {
+          "after": "2026-01-01T00:00:01Z",
+          "before": "2025-12-02T09:00:00Z",
+          "op": "replace",
+          "path": "/repositories/R1/issues/102/updated_at"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "repo_id": "R1",
+            "run_id": 502
+          },
+          "payload": {
+            "data": {
+              "attempt": 1,
+              "conclusion": "success",
+              "created_at": "2025-12-21T08:00:00Z",
+              "ref": "develop",
+              "repo_id": "R1",
+              "retried_from": null,
+              "run_id": 502,
+              "status": "completed",
+              "updated_at": "2025-12-21T08:10:00Z",
+              "workflow_id": "ci"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s1",
+          "tool": "get_pipeline_status"
+        },
+        {
+          "arguments": {
+            "issue_id": 102,
+            "repo_id": "R1",
+            "resolution": "completed"
+          },
+          "payload": {
+            "data": {
+              "assignee": "bob",
+              "body": "Refresh the authentication API documentation.",
+              "closed_at": "2026-01-01T00:00:01Z",
+              "created_at": "2025-12-02T09:00:00Z",
+              "issue_id": 102,
+              "priority": "medium",
+              "repo_id": "R1",
+              "resolution": "completed",
+              "state": "closed",
+              "title": "Update API documentation",
+              "updated_at": "2026-01-01T00:00:01Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s2",
+          "tool": "close_issue"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "F06",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 3,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 3,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 3,
+        "state_assertions_passed": true,
+        "task_id": "F07",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": "carol",
+          "before": null,
+          "op": "replace",
+          "path": "/repositories/R1/issues/101/assignee"
+        },
+        {
+          "after": "2026-01-01T00:00:02Z",
+          "before": null,
+          "op": "replace",
+          "path": "/repositories/R1/issues/101/closed_at"
+        },
+        {
+          "after": "completed",
+          "before": null,
+          "op": "replace",
+          "path": "/repositories/R1/issues/101/resolution"
+        },
+        {
+          "after": "closed",
+          "before": "open",
+          "op": "replace",
+          "path": "/repositories/R1/issues/101/state"
+        },
+        {
+          "after": "2026-01-01T00:00:02Z",
+          "before": "2025-12-01T09:00:00Z",
+          "op": "replace",
+          "path": "/repositories/R1/issues/101/updated_at"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "repo_id": "R1",
+            "username": "carol"
+          },
+          "payload": {
+            "data": {
+              "added_at": "2025-01-03T00:00:00Z",
+              "base_permission": "read",
+              "membership_state": "active",
+              "repo_id": "R1",
+              "role": "triage",
+              "updated_at": "2025-01-03T00:00:00Z",
+              "username": "carol"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s1",
+          "tool": "get_member"
+        },
+        {
+          "arguments": {
+            "assignee": "carol",
+            "issue_id": 101,
+            "repo_id": "R1"
+          },
+          "payload": {
+            "data": {
+              "assignee": "carol",
+              "body": "Token refresh requests return an error.",
+              "closed_at": null,
+              "created_at": "2025-12-01T09:00:00Z",
+              "issue_id": 101,
+              "priority": "high",
+              "repo_id": "R1",
+              "resolution": null,
+              "state": "open",
+              "title": "Login request fails",
+              "updated_at": "2026-01-01T00:00:01Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s2",
+          "tool": "assign_issue"
+        },
+        {
+          "arguments": {
+            "issue_id": 101,
+            "repo_id": "R1",
+            "resolution": "completed"
+          },
+          "payload": {
+            "data": {
+              "assignee": "carol",
+              "body": "Token refresh requests return an error.",
+              "closed_at": "2026-01-01T00:00:02Z",
+              "created_at": "2025-12-01T09:00:00Z",
+              "issue_id": 101,
+              "priority": "high",
+              "repo_id": "R1",
+              "resolution": "completed",
+              "state": "closed",
+              "title": "Login request fails",
+              "updated_at": "2026-01-01T00:00:02Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s3",
+          "tool": "close_issue"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "F07",
+      "task_success": true
+    },
+    {
+      "actual_tool_calls": 3,
+      "answer": {},
+      "assertion_results": {
+        "actual_tool_calls": 3,
+        "answer_assertions_passed": true,
+        "failures": [],
+        "forbidden_assertions_passed": true,
+        "oracle_tool_calls": 3,
+        "state_assertions_passed": true,
+        "task_id": "F08",
+        "task_success": true,
+        "within_tool_budget": true
+      },
+      "failure_details": [],
+      "final_diff": [
+        {
+          "after": "bob",
+          "before": null,
+          "op": "replace",
+          "path": "/repositories/R1/issues/101/assignee"
+        },
+        {
+          "after": "2026-01-01T00:00:01Z",
+          "before": "2025-12-01T09:00:00Z",
+          "op": "replace",
+          "path": "/repositories/R1/issues/101/updated_at"
+        }
+      ],
+      "oracle_steps": [
+        {
+          "arguments": {
+            "repo_id": "R1"
+          },
+          "payload": {
+            "data": {
+              "archived": false,
+              "default_branch": "main",
+              "description": "Legacy API service",
+              "issues_enabled": true,
+              "name": "alpha-api",
+              "repo_id": "R1",
+              "visibility": "public"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s1",
+          "tool": "get_repository"
+        },
+        {
+          "arguments": {
+            "issue_id": 101,
+            "repo_id": "R1"
+          },
+          "payload": {
+            "data": {
+              "assignee": null,
+              "body": "Token refresh requests return an error.",
+              "closed_at": null,
+              "created_at": "2025-12-01T09:00:00Z",
+              "issue_id": 101,
+              "priority": "high",
+              "repo_id": "R1",
+              "resolution": null,
+              "state": "open",
+              "title": "Login request fails",
+              "updated_at": "2025-12-01T09:00:00Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s2",
+          "tool": "get_issue"
+        },
+        {
+          "arguments": {
+            "assignee": "bob",
+            "issue_id": 101,
+            "repo_id": "R1"
+          },
+          "payload": {
+            "data": {
+              "assignee": "bob",
+              "body": "Token refresh requests return an error.",
+              "closed_at": null,
+              "created_at": "2025-12-01T09:00:00Z",
+              "issue_id": 101,
+              "priority": "high",
+              "repo_id": "R1",
+              "resolution": null,
+              "state": "open",
+              "title": "Login request fails",
+              "updated_at": "2026-01-01T00:00:01Z"
+            },
+            "ok": true
+          },
+          "skipped": false,
+          "status_code": 200,
+          "step_id": "s3",
+          "tool": "assign_issue"
+        }
+      ],
+      "replay_consistent": true,
+      "skipped_steps": [],
+      "task_id": "F08",
+      "task_success": true
+    }
+  ]
+}
