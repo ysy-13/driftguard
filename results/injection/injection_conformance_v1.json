@@ -1,0 +1,2151 @@
+{
+  "run_version": "1.0",
+  "summary": {
+    "families": 20,
+    "first_failure_scenarios": 60,
+    "agent_error_executed": 20,
+    "agent_error_corrected": 20,
+    "transient_failure_executed": 20,
+    "persistent_drift_executed": 20,
+    "shared_signature_matched": 20,
+    "transient_recovered": 20,
+    "persistent_reproduced": 20,
+    "canonical_hash_unchanged": true,
+    "oracle_regression_passed": 32,
+    "oracle_deterministic_replay": 32,
+    "oracle_forbidden_side_effects": 0
+  },
+  "canonical_hashes_before": {
+    "benchmark/openapi/driftguard_openapi_v1.yaml": "be893ee40a748410d49befe8ca45f645b47e9a770cf2bb7e0b90db9c71472267",
+    "benchmark/fixtures/initial_state_v1.json": "7cc0f4af8eb45d6e1a4a03741c2b44484b80736cf2ba6bd1f5c8e2c7fb7db3c0",
+    "benchmark/tasks/tasks_v1.json": "851425f77f4ad94633e5eb10937b783a51e9aa9f54955b408565064f3a788936",
+    "benchmark/drifts/drift_cases_v1.json": "dda8f8c1759075bb52b14431b9ee5fcb6fbe93c1cf239a474548a6127228a00e",
+    "benchmark/drifts/task_drift_coverage_v1.json": "f83a5ce5da1bd9a179dfdd1abfbb747469b29644c71304490df0750bd527be3c",
+    "benchmark/matched_failures/matched_failures_v1.json": "58c921b754976ee16f29676030bfbb57de4e0ee2f7be14a4af8353d057296f7e",
+    "benchmark/matched_failures/attribution_protocol_v1.json": "3e0779032b4613b9d17868ae1f2d3fe0c582214cc80bdb860a5a88aae69d4106"
+  },
+  "canonical_hashes_after": {
+    "benchmark/openapi/driftguard_openapi_v1.yaml": "be893ee40a748410d49befe8ca45f645b47e9a770cf2bb7e0b90db9c71472267",
+    "benchmark/fixtures/initial_state_v1.json": "7cc0f4af8eb45d6e1a4a03741c2b44484b80736cf2ba6bd1f5c8e2c7fb7db3c0",
+    "benchmark/tasks/tasks_v1.json": "851425f77f4ad94633e5eb10937b783a51e9aa9f54955b408565064f3a788936",
+    "benchmark/drifts/drift_cases_v1.json": "dda8f8c1759075bb52b14431b9ee5fcb6fbe93c1cf239a474548a6127228a00e",
+    "benchmark/drifts/task_drift_coverage_v1.json": "f83a5ce5da1bd9a179dfdd1abfbb747469b29644c71304490df0750bd527be3c",
+    "benchmark/matched_failures/matched_failures_v1.json": "58c921b754976ee16f29676030bfbb57de4e0ee2f7be14a4af8353d057296f7e",
+    "benchmark/matched_failures/attribution_protocol_v1.json": "3e0779032b4613b9d17868ae1f2d3fe0c582214cc80bdb860a5a88aae69d4106"
+  },
+  "families": [
+    {
+      "matched_case_id": "M01",
+      "target_tool": "create_issue",
+      "agent_error_signature": {
+        "channel": "response_error",
+        "http_status": 422,
+        "error_code": "VALIDATION_ERROR",
+        "field": "priority",
+        "message_pattern": "Missing required field: priority",
+        "response_success": false
+      },
+      "transient_failure_signature": {
+        "channel": "response_error",
+        "http_status": 422,
+        "error_code": "VALIDATION_ERROR",
+        "field": "priority",
+        "message_pattern": "Missing required field: priority",
+        "response_success": false
+      },
+      "persistent_drift_signature": {
+        "channel": "response_error",
+        "http_status": 422,
+        "error_code": "VALIDATION_ERROR",
+        "field": "priority",
+        "message_pattern": "Missing required field: priority",
+        "response_success": false
+      },
+      "shared_signature_matched": true,
+      "agent_error_corrected": true,
+      "transient_recovered": true,
+      "persistent_reproduced": true,
+      "variant_details": {
+        "AE": {
+          "normalized_signature": {
+            "channel": "response_error",
+            "http_status": 422,
+            "error_code": "VALIDATION_ERROR",
+            "field": "priority",
+            "message_pattern": "Missing required field: priority",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1_plus_runtime_rule",
+            "runtime_source": "canonical_v1_plus_runtime_rule",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "TF": {
+          "normalized_signature": {
+            "channel": "response_error",
+            "http_status": 422,
+            "error_code": "VALIDATION_ERROR",
+            "field": "priority",
+            "message_pattern": "Missing required field: priority",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "canonical_v1",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "PD": {
+          "normalized_signature": {
+            "channel": "response_error",
+            "http_status": 422,
+            "error_code": "VALIDATION_ERROR",
+            "field": "priority",
+            "message_pattern": "Missing required field: priority",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": false,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "runtime_drift",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        }
+      },
+      "canonical_protected": true
+    },
+    {
+      "matched_case_id": "M02",
+      "target_tool": "trigger_pipeline",
+      "agent_error_signature": {
+        "channel": "response_error",
+        "http_status": 422,
+        "error_code": "VALIDATION_ERROR",
+        "field": "ref",
+        "message_pattern": "Unknown field: ref or Missing required field: branch",
+        "response_success": false
+      },
+      "transient_failure_signature": {
+        "channel": "response_error",
+        "http_status": 422,
+        "error_code": "VALIDATION_ERROR",
+        "field": "ref",
+        "message_pattern": "Unknown field: ref or Missing required field: branch",
+        "response_success": false
+      },
+      "persistent_drift_signature": {
+        "channel": "response_error",
+        "http_status": 422,
+        "error_code": "VALIDATION_ERROR",
+        "field": "ref",
+        "message_pattern": "Unknown field: ref or Missing required field: branch",
+        "response_success": false
+      },
+      "shared_signature_matched": true,
+      "agent_error_corrected": true,
+      "transient_recovered": true,
+      "persistent_reproduced": true,
+      "variant_details": {
+        "AE": {
+          "normalized_signature": {
+            "channel": "response_error",
+            "http_status": 422,
+            "error_code": "VALIDATION_ERROR",
+            "field": "ref",
+            "message_pattern": "Unknown field: ref or Missing required field: branch",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1_plus_runtime_rule",
+            "runtime_source": "canonical_v1_plus_runtime_rule",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "TF": {
+          "normalized_signature": {
+            "channel": "response_error",
+            "http_status": 422,
+            "error_code": "VALIDATION_ERROR",
+            "field": "ref",
+            "message_pattern": "Unknown field: ref or Missing required field: branch",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "canonical_v1",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "PD": {
+          "normalized_signature": {
+            "channel": "response_error",
+            "http_status": 422,
+            "error_code": "VALIDATION_ERROR",
+            "field": "ref",
+            "message_pattern": "Unknown field: ref or Missing required field: branch",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": false,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "runtime_drift",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        }
+      },
+      "canonical_protected": true
+    },
+    {
+      "matched_case_id": "M03",
+      "target_tool": "assign_issue",
+      "agent_error_signature": {
+        "channel": "response_error",
+        "http_status": 422,
+        "error_code": "VALIDATION_ERROR",
+        "field": "assignee_username",
+        "message_pattern": "Missing required field: assignee_username",
+        "response_success": false
+      },
+      "transient_failure_signature": {
+        "channel": "response_error",
+        "http_status": 422,
+        "error_code": "VALIDATION_ERROR",
+        "field": "assignee_username",
+        "message_pattern": "Missing required field: assignee_username",
+        "response_success": false
+      },
+      "persistent_drift_signature": {
+        "channel": "response_error",
+        "http_status": 422,
+        "error_code": "VALIDATION_ERROR",
+        "field": "assignee_username",
+        "message_pattern": "Missing required field: assignee_username",
+        "response_success": false
+      },
+      "shared_signature_matched": true,
+      "agent_error_corrected": true,
+      "transient_recovered": true,
+      "persistent_reproduced": true,
+      "variant_details": {
+        "AE": {
+          "normalized_signature": {
+            "channel": "response_error",
+            "http_status": 422,
+            "error_code": "VALIDATION_ERROR",
+            "field": "assignee_username",
+            "message_pattern": "Missing required field: assignee_username",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1_plus_runtime_rule",
+            "runtime_source": "canonical_v1_plus_runtime_rule",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "TF": {
+          "normalized_signature": {
+            "channel": "response_error",
+            "http_status": 422,
+            "error_code": "VALIDATION_ERROR",
+            "field": "assignee_username",
+            "message_pattern": "Missing required field: assignee_username",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "canonical_v1",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "PD": {
+          "normalized_signature": {
+            "channel": "response_error",
+            "http_status": 422,
+            "error_code": "VALIDATION_ERROR",
+            "field": "assignee_username",
+            "message_pattern": "Missing required field: assignee_username",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": false,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "runtime_drift",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        }
+      },
+      "canonical_protected": true
+    },
+    {
+      "matched_case_id": "M04",
+      "target_tool": "retry_pipeline",
+      "agent_error_signature": {
+        "channel": "response_error",
+        "http_status": 422,
+        "error_code": "VALIDATION_ERROR",
+        "field": "failed_only",
+        "message_pattern": "Missing required field: failed_only",
+        "response_success": false
+      },
+      "transient_failure_signature": {
+        "channel": "response_error",
+        "http_status": 422,
+        "error_code": "VALIDATION_ERROR",
+        "field": "failed_only",
+        "message_pattern": "Missing required field: failed_only",
+        "response_success": false
+      },
+      "persistent_drift_signature": {
+        "channel": "response_error",
+        "http_status": 422,
+        "error_code": "VALIDATION_ERROR",
+        "field": "failed_only",
+        "message_pattern": "Missing required field: failed_only",
+        "response_success": false
+      },
+      "shared_signature_matched": true,
+      "agent_error_corrected": true,
+      "transient_recovered": true,
+      "persistent_reproduced": true,
+      "variant_details": {
+        "AE": {
+          "normalized_signature": {
+            "channel": "response_error",
+            "http_status": 422,
+            "error_code": "VALIDATION_ERROR",
+            "field": "failed_only",
+            "message_pattern": "Missing required field: failed_only",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1_plus_runtime_rule",
+            "runtime_source": "canonical_v1_plus_runtime_rule",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "TF": {
+          "normalized_signature": {
+            "channel": "response_error",
+            "http_status": 422,
+            "error_code": "VALIDATION_ERROR",
+            "field": "failed_only",
+            "message_pattern": "Missing required field: failed_only",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "canonical_v1",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "PD": {
+          "normalized_signature": {
+            "channel": "response_error",
+            "http_status": 422,
+            "error_code": "VALIDATION_ERROR",
+            "field": "failed_only",
+            "message_pattern": "Missing required field: failed_only",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": false,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "runtime_drift",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        }
+      },
+      "canonical_protected": true
+    },
+    {
+      "matched_case_id": "M05",
+      "target_tool": "update_member_role",
+      "agent_error_signature": {
+        "channel": "response_error",
+        "http_status": 422,
+        "error_code": "VALIDATION_ERROR",
+        "field": "role",
+        "message_pattern": "Invalid enum value: write",
+        "response_success": false
+      },
+      "transient_failure_signature": {
+        "channel": "response_error",
+        "http_status": 422,
+        "error_code": "VALIDATION_ERROR",
+        "field": "role",
+        "message_pattern": "Invalid enum value: write",
+        "response_success": false
+      },
+      "persistent_drift_signature": {
+        "channel": "response_error",
+        "http_status": 422,
+        "error_code": "VALIDATION_ERROR",
+        "field": "role",
+        "message_pattern": "Invalid enum value: write",
+        "response_success": false
+      },
+      "shared_signature_matched": true,
+      "agent_error_corrected": true,
+      "transient_recovered": true,
+      "persistent_reproduced": true,
+      "variant_details": {
+        "AE": {
+          "normalized_signature": {
+            "channel": "response_error",
+            "http_status": 422,
+            "error_code": "VALIDATION_ERROR",
+            "field": "role",
+            "message_pattern": "Invalid enum value: write",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1_plus_runtime_rule",
+            "runtime_source": "canonical_v1_plus_runtime_rule",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "TF": {
+          "normalized_signature": {
+            "channel": "response_error",
+            "http_status": 422,
+            "error_code": "VALIDATION_ERROR",
+            "field": "role",
+            "message_pattern": "Invalid enum value: write",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "canonical_v1",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "PD": {
+          "normalized_signature": {
+            "channel": "response_error",
+            "http_status": 422,
+            "error_code": "VALIDATION_ERROR",
+            "field": "role",
+            "message_pattern": "Invalid enum value: write",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": false,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "runtime_drift",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        }
+      },
+      "canonical_protected": true
+    },
+    {
+      "matched_case_id": "M06",
+      "target_tool": "create_issue",
+      "agent_error_signature": {
+        "channel": "missing_output_field",
+        "http_status": 201,
+        "error_code": null,
+        "field": "issue_id",
+        "message_pattern": "Created issue identifier is unavailable at the canonical path.",
+        "response_success": true
+      },
+      "transient_failure_signature": {
+        "channel": "missing_output_field",
+        "http_status": 201,
+        "error_code": null,
+        "field": "issue_id",
+        "message_pattern": "Created issue identifier is unavailable at the canonical path.",
+        "response_success": true
+      },
+      "persistent_drift_signature": {
+        "channel": "missing_output_field",
+        "http_status": 201,
+        "error_code": null,
+        "field": "issue_id",
+        "message_pattern": "Created issue identifier is unavailable at the canonical path.",
+        "response_success": true
+      },
+      "shared_signature_matched": true,
+      "agent_error_corrected": true,
+      "transient_recovered": true,
+      "persistent_reproduced": true,
+      "variant_details": {
+        "AE": {
+          "normalized_signature": {
+            "channel": "missing_output_field",
+            "http_status": 201,
+            "error_code": null,
+            "field": "issue_id",
+            "message_pattern": "Created issue identifier is unavailable at the canonical path.",
+            "response_success": true
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1_plus_runtime_rule",
+            "runtime_source": "canonical_v1_plus_runtime_rule",
+            "distinct_objects": true
+          },
+          "interpretation_record": {
+            "interpretation_status": "failed",
+            "requested_path": "data.issue_id",
+            "available_paths": [
+              "ok",
+              "data.repo_id",
+              "data.title",
+              "data.body",
+              "data.priority",
+              "data.state",
+              "data.assignee",
+              "data.resolution",
+              "data.created_at",
+              "data.updated_at",
+              "data.closed_at",
+              "data.id"
+            ]
+          }
+        },
+        "TF": {
+          "normalized_signature": {
+            "channel": "missing_output_field",
+            "http_status": 201,
+            "error_code": null,
+            "field": "issue_id",
+            "message_pattern": "Created issue identifier is unavailable at the canonical path.",
+            "response_success": true
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "canonical_v1",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "PD": {
+          "normalized_signature": {
+            "channel": "missing_output_field",
+            "http_status": 201,
+            "error_code": null,
+            "field": "issue_id",
+            "message_pattern": "Created issue identifier is unavailable at the canonical path.",
+            "response_success": true
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": false,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "runtime_drift",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        }
+      },
+      "canonical_protected": true
+    },
+    {
+      "matched_case_id": "M07",
+      "target_tool": "get_pipeline_status",
+      "agent_error_signature": {
+        "channel": "missing_output_field",
+        "http_status": 200,
+        "error_code": null,
+        "field": "status",
+        "message_pattern": "Pipeline status or conclusion is unavailable at the canonical paths.",
+        "response_success": true
+      },
+      "transient_failure_signature": {
+        "channel": "missing_output_field",
+        "http_status": 200,
+        "error_code": null,
+        "field": "status",
+        "message_pattern": "Pipeline status or conclusion is unavailable at the canonical paths.",
+        "response_success": true
+      },
+      "persistent_drift_signature": {
+        "channel": "missing_output_field",
+        "http_status": 200,
+        "error_code": null,
+        "field": "status",
+        "message_pattern": "Pipeline status or conclusion is unavailable at the canonical paths.",
+        "response_success": true
+      },
+      "shared_signature_matched": true,
+      "agent_error_corrected": true,
+      "transient_recovered": true,
+      "persistent_reproduced": true,
+      "variant_details": {
+        "AE": {
+          "normalized_signature": {
+            "channel": "missing_output_field",
+            "http_status": 200,
+            "error_code": null,
+            "field": "status",
+            "message_pattern": "Pipeline status or conclusion is unavailable at the canonical paths.",
+            "response_success": true
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1_plus_runtime_rule",
+            "runtime_source": "canonical_v1_plus_runtime_rule",
+            "distinct_objects": true
+          },
+          "interpretation_record": {
+            "interpretation_status": "failed",
+            "requested_path": [
+              "data.status",
+              "data.conclusion"
+            ],
+            "available_paths": [
+              "ok",
+              "data.run_id",
+              "data.repo_id",
+              "data.workflow_id",
+              "data.ref",
+              "data.attempt",
+              "data.retried_from",
+              "data.created_at",
+              "data.updated_at",
+              "data.state",
+              "data.result"
+            ]
+          }
+        },
+        "TF": {
+          "normalized_signature": {
+            "channel": "missing_output_field",
+            "http_status": 200,
+            "error_code": null,
+            "field": "status",
+            "message_pattern": "Pipeline status or conclusion is unavailable at the canonical paths.",
+            "response_success": true
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "canonical_v1",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "PD": {
+          "normalized_signature": {
+            "channel": "missing_output_field",
+            "http_status": 200,
+            "error_code": null,
+            "field": "status",
+            "message_pattern": "Pipeline status or conclusion is unavailable at the canonical paths.",
+            "response_success": true
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": false,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "runtime_drift",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        }
+      },
+      "canonical_protected": true
+    },
+    {
+      "matched_case_id": "M08",
+      "target_tool": "get_member",
+      "agent_error_signature": {
+        "channel": "missing_output_field",
+        "http_status": 200,
+        "error_code": null,
+        "field": "role",
+        "message_pattern": "Member role or base permission is unavailable at the canonical paths.",
+        "response_success": true
+      },
+      "transient_failure_signature": {
+        "channel": "missing_output_field",
+        "http_status": 200,
+        "error_code": null,
+        "field": "role",
+        "message_pattern": "Member role or base permission is unavailable at the canonical paths.",
+        "response_success": true
+      },
+      "persistent_drift_signature": {
+        "channel": "missing_output_field",
+        "http_status": 200,
+        "error_code": null,
+        "field": "role",
+        "message_pattern": "Member role or base permission is unavailable at the canonical paths.",
+        "response_success": true
+      },
+      "shared_signature_matched": true,
+      "agent_error_corrected": true,
+      "transient_recovered": true,
+      "persistent_reproduced": true,
+      "variant_details": {
+        "AE": {
+          "normalized_signature": {
+            "channel": "missing_output_field",
+            "http_status": 200,
+            "error_code": null,
+            "field": "role",
+            "message_pattern": "Member role or base permission is unavailable at the canonical paths.",
+            "response_success": true
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1_plus_runtime_rule",
+            "runtime_source": "canonical_v1_plus_runtime_rule",
+            "distinct_objects": true
+          },
+          "interpretation_record": {
+            "interpretation_status": "failed",
+            "requested_path": [
+              "data.role",
+              "data.base_permission"
+            ],
+            "available_paths": [
+              "ok",
+              "data.repo_id",
+              "data.username",
+              "data.membership_state",
+              "data.added_at",
+              "data.updated_at",
+              "data.permissions.role_name",
+              "data.permissions.base"
+            ]
+          }
+        },
+        "TF": {
+          "normalized_signature": {
+            "channel": "missing_output_field",
+            "http_status": 200,
+            "error_code": null,
+            "field": "role",
+            "message_pattern": "Member role or base permission is unavailable at the canonical paths.",
+            "response_success": true
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "canonical_v1",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "PD": {
+          "normalized_signature": {
+            "channel": "missing_output_field",
+            "http_status": 200,
+            "error_code": null,
+            "field": "role",
+            "message_pattern": "Member role or base permission is unavailable at the canonical paths.",
+            "response_success": true
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": false,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "runtime_drift",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        }
+      },
+      "canonical_protected": true
+    },
+    {
+      "matched_case_id": "M09",
+      "target_tool": "get_repository",
+      "agent_error_signature": {
+        "channel": "missing_output_field",
+        "http_status": 200,
+        "error_code": null,
+        "field": "default_branch",
+        "message_pattern": "Repository default branch is unavailable at the canonical path.",
+        "response_success": true
+      },
+      "transient_failure_signature": {
+        "channel": "missing_output_field",
+        "http_status": 200,
+        "error_code": null,
+        "field": "default_branch",
+        "message_pattern": "Repository default branch is unavailable at the canonical path.",
+        "response_success": true
+      },
+      "persistent_drift_signature": {
+        "channel": "missing_output_field",
+        "http_status": 200,
+        "error_code": null,
+        "field": "default_branch",
+        "message_pattern": "Repository default branch is unavailable at the canonical path.",
+        "response_success": true
+      },
+      "shared_signature_matched": true,
+      "agent_error_corrected": true,
+      "transient_recovered": true,
+      "persistent_reproduced": true,
+      "variant_details": {
+        "AE": {
+          "normalized_signature": {
+            "channel": "missing_output_field",
+            "http_status": 200,
+            "error_code": null,
+            "field": "default_branch",
+            "message_pattern": "Repository default branch is unavailable at the canonical path.",
+            "response_success": true
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1_plus_runtime_rule",
+            "runtime_source": "canonical_v1_plus_runtime_rule",
+            "distinct_objects": true
+          },
+          "interpretation_record": {
+            "interpretation_status": "failed",
+            "requested_path": "data.default_branch",
+            "available_paths": [
+              "ok",
+              "data.repo_id",
+              "data.name",
+              "data.description",
+              "data.visibility",
+              "data.issues_enabled",
+              "data.archived",
+              "data.defaultBranch"
+            ]
+          }
+        },
+        "TF": {
+          "normalized_signature": {
+            "channel": "missing_output_field",
+            "http_status": 200,
+            "error_code": null,
+            "field": "default_branch",
+            "message_pattern": "Repository default branch is unavailable at the canonical path.",
+            "response_success": true
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "canonical_v1",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "PD": {
+          "normalized_signature": {
+            "channel": "missing_output_field",
+            "http_status": 200,
+            "error_code": null,
+            "field": "default_branch",
+            "message_pattern": "Repository default branch is unavailable at the canonical path.",
+            "response_success": true
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": false,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "runtime_drift",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        }
+      },
+      "canonical_protected": true
+    },
+    {
+      "matched_case_id": "M10",
+      "target_tool": "retry_pipeline",
+      "agent_error_signature": {
+        "channel": "missing_output_field",
+        "http_status": 201,
+        "error_code": null,
+        "field": "attempt",
+        "message_pattern": "Retry attempt is unavailable at the canonical path.",
+        "response_success": true
+      },
+      "transient_failure_signature": {
+        "channel": "missing_output_field",
+        "http_status": 201,
+        "error_code": null,
+        "field": "attempt",
+        "message_pattern": "Retry attempt is unavailable at the canonical path.",
+        "response_success": true
+      },
+      "persistent_drift_signature": {
+        "channel": "missing_output_field",
+        "http_status": 201,
+        "error_code": null,
+        "field": "attempt",
+        "message_pattern": "Retry attempt is unavailable at the canonical path.",
+        "response_success": true
+      },
+      "shared_signature_matched": true,
+      "agent_error_corrected": true,
+      "transient_recovered": true,
+      "persistent_reproduced": true,
+      "variant_details": {
+        "AE": {
+          "normalized_signature": {
+            "channel": "missing_output_field",
+            "http_status": 201,
+            "error_code": null,
+            "field": "attempt",
+            "message_pattern": "Retry attempt is unavailable at the canonical path.",
+            "response_success": true
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1_plus_runtime_rule",
+            "runtime_source": "canonical_v1_plus_runtime_rule",
+            "distinct_objects": true
+          },
+          "interpretation_record": {
+            "interpretation_status": "failed",
+            "requested_path": "data.attempt",
+            "available_paths": [
+              "ok",
+              "data.run_id",
+              "data.repo_id",
+              "data.workflow_id",
+              "data.ref",
+              "data.status",
+              "data.conclusion",
+              "data.retried_from",
+              "data.created_at",
+              "data.updated_at",
+              "data.run_attempt"
+            ]
+          }
+        },
+        "TF": {
+          "normalized_signature": {
+            "channel": "missing_output_field",
+            "http_status": 201,
+            "error_code": null,
+            "field": "attempt",
+            "message_pattern": "Retry attempt is unavailable at the canonical path.",
+            "response_success": true
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "canonical_v1",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "PD": {
+          "normalized_signature": {
+            "channel": "missing_output_field",
+            "http_status": 201,
+            "error_code": null,
+            "field": "attempt",
+            "message_pattern": "Retry attempt is unavailable at the canonical path.",
+            "response_success": true
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": false,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "runtime_drift",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        }
+      },
+      "canonical_protected": true
+    },
+    {
+      "matched_case_id": "M11",
+      "target_tool": "close_issue",
+      "agent_error_signature": {
+        "channel": "workflow_rejection",
+        "http_status": 409,
+        "error_code": "PRECONDITION_FAILED",
+        "field": null,
+        "message_pattern": "Issue must have an active assignee.",
+        "response_success": false
+      },
+      "transient_failure_signature": {
+        "channel": "workflow_rejection",
+        "http_status": 409,
+        "error_code": "PRECONDITION_FAILED",
+        "field": null,
+        "message_pattern": "Issue must have an active assignee.",
+        "response_success": false
+      },
+      "persistent_drift_signature": {
+        "channel": "workflow_rejection",
+        "http_status": 409,
+        "error_code": "PRECONDITION_FAILED",
+        "field": null,
+        "message_pattern": "Issue must have an active assignee.",
+        "response_success": false
+      },
+      "shared_signature_matched": true,
+      "agent_error_corrected": true,
+      "transient_recovered": true,
+      "persistent_reproduced": true,
+      "variant_details": {
+        "AE": {
+          "normalized_signature": {
+            "channel": "workflow_rejection",
+            "http_status": 409,
+            "error_code": "PRECONDITION_FAILED",
+            "field": null,
+            "message_pattern": "Issue must have an active assignee.",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1_plus_runtime_rule",
+            "runtime_source": "canonical_v1_plus_runtime_rule",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "TF": {
+          "normalized_signature": {
+            "channel": "workflow_rejection",
+            "http_status": 409,
+            "error_code": "PRECONDITION_FAILED",
+            "field": null,
+            "message_pattern": "Issue must have an active assignee.",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "canonical_v1",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "PD": {
+          "normalized_signature": {
+            "channel": "workflow_rejection",
+            "http_status": 409,
+            "error_code": "PRECONDITION_FAILED",
+            "field": null,
+            "message_pattern": "Issue must have an active assignee.",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": false,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "runtime_drift",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        }
+      },
+      "canonical_protected": true
+    },
+    {
+      "matched_case_id": "M12",
+      "target_tool": "retry_pipeline",
+      "agent_error_signature": {
+        "channel": "workflow_rejection",
+        "http_status": 409,
+        "error_code": "PRECONDITION_FAILED",
+        "field": null,
+        "message_pattern": "Current run state must be verified.",
+        "response_success": false
+      },
+      "transient_failure_signature": {
+        "channel": "workflow_rejection",
+        "http_status": 409,
+        "error_code": "PRECONDITION_FAILED",
+        "field": null,
+        "message_pattern": "Current run state must be verified.",
+        "response_success": false
+      },
+      "persistent_drift_signature": {
+        "channel": "workflow_rejection",
+        "http_status": 409,
+        "error_code": "PRECONDITION_FAILED",
+        "field": null,
+        "message_pattern": "Current run state must be verified.",
+        "response_success": false
+      },
+      "shared_signature_matched": true,
+      "agent_error_corrected": true,
+      "transient_recovered": true,
+      "persistent_reproduced": true,
+      "variant_details": {
+        "AE": {
+          "normalized_signature": {
+            "channel": "workflow_rejection",
+            "http_status": 409,
+            "error_code": "PRECONDITION_FAILED",
+            "field": null,
+            "message_pattern": "Current run state must be verified.",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1_plus_runtime_rule",
+            "runtime_source": "canonical_v1_plus_runtime_rule",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "TF": {
+          "normalized_signature": {
+            "channel": "workflow_rejection",
+            "http_status": 409,
+            "error_code": "PRECONDITION_FAILED",
+            "field": null,
+            "message_pattern": "Current run state must be verified.",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "canonical_v1",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "PD": {
+          "normalized_signature": {
+            "channel": "workflow_rejection",
+            "http_status": 409,
+            "error_code": "PRECONDITION_FAILED",
+            "field": null,
+            "message_pattern": "Current run state must be verified.",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": false,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "runtime_drift",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        }
+      },
+      "canonical_protected": true
+    },
+    {
+      "matched_case_id": "M13",
+      "target_tool": "assign_issue",
+      "agent_error_signature": {
+        "channel": "workflow_rejection",
+        "http_status": 409,
+        "error_code": "PRECONDITION_FAILED",
+        "field": null,
+        "message_pattern": "Assignee validation required.",
+        "response_success": false
+      },
+      "transient_failure_signature": {
+        "channel": "workflow_rejection",
+        "http_status": 409,
+        "error_code": "PRECONDITION_FAILED",
+        "field": null,
+        "message_pattern": "Assignee validation required.",
+        "response_success": false
+      },
+      "persistent_drift_signature": {
+        "channel": "workflow_rejection",
+        "http_status": 409,
+        "error_code": "PRECONDITION_FAILED",
+        "field": null,
+        "message_pattern": "Assignee validation required.",
+        "response_success": false
+      },
+      "shared_signature_matched": true,
+      "agent_error_corrected": true,
+      "transient_recovered": true,
+      "persistent_reproduced": true,
+      "variant_details": {
+        "AE": {
+          "normalized_signature": {
+            "channel": "workflow_rejection",
+            "http_status": 409,
+            "error_code": "PRECONDITION_FAILED",
+            "field": null,
+            "message_pattern": "Assignee validation required.",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1_plus_runtime_rule",
+            "runtime_source": "canonical_v1_plus_runtime_rule",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "TF": {
+          "normalized_signature": {
+            "channel": "workflow_rejection",
+            "http_status": 409,
+            "error_code": "PRECONDITION_FAILED",
+            "field": null,
+            "message_pattern": "Assignee validation required.",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "canonical_v1",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "PD": {
+          "normalized_signature": {
+            "channel": "workflow_rejection",
+            "http_status": 409,
+            "error_code": "PRECONDITION_FAILED",
+            "field": null,
+            "message_pattern": "Assignee validation required.",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": false,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "runtime_drift",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        }
+      },
+      "canonical_protected": true
+    },
+    {
+      "matched_case_id": "M14",
+      "target_tool": "update_member_role",
+      "agent_error_signature": {
+        "channel": "workflow_rejection",
+        "http_status": 409,
+        "error_code": "PRECONDITION_FAILED",
+        "field": null,
+        "message_pattern": "Role transition not allowed.",
+        "response_success": false
+      },
+      "transient_failure_signature": {
+        "channel": "workflow_rejection",
+        "http_status": 409,
+        "error_code": "PRECONDITION_FAILED",
+        "field": null,
+        "message_pattern": "Role transition not allowed.",
+        "response_success": false
+      },
+      "persistent_drift_signature": {
+        "channel": "workflow_rejection",
+        "http_status": 409,
+        "error_code": "PRECONDITION_FAILED",
+        "field": null,
+        "message_pattern": "Role transition not allowed.",
+        "response_success": false
+      },
+      "shared_signature_matched": true,
+      "agent_error_corrected": true,
+      "transient_recovered": true,
+      "persistent_reproduced": true,
+      "variant_details": {
+        "AE": {
+          "normalized_signature": {
+            "channel": "workflow_rejection",
+            "http_status": 409,
+            "error_code": "PRECONDITION_FAILED",
+            "field": null,
+            "message_pattern": "Role transition not allowed.",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1_plus_runtime_rule",
+            "runtime_source": "canonical_v1_plus_runtime_rule",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "TF": {
+          "normalized_signature": {
+            "channel": "workflow_rejection",
+            "http_status": 409,
+            "error_code": "PRECONDITION_FAILED",
+            "field": null,
+            "message_pattern": "Role transition not allowed.",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "canonical_v1",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "PD": {
+          "normalized_signature": {
+            "channel": "workflow_rejection",
+            "http_status": 409,
+            "error_code": "PRECONDITION_FAILED",
+            "field": null,
+            "message_pattern": "Role transition not allowed.",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": false,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "runtime_drift",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        }
+      },
+      "canonical_protected": true
+    },
+    {
+      "matched_case_id": "M15",
+      "target_tool": "add_member",
+      "agent_error_signature": {
+        "channel": "workflow_rejection",
+        "http_status": 409,
+        "error_code": "PRECONDITION_FAILED",
+        "field": "role",
+        "message_pattern": "Initial role must be read.",
+        "response_success": false
+      },
+      "transient_failure_signature": {
+        "channel": "workflow_rejection",
+        "http_status": 409,
+        "error_code": "PRECONDITION_FAILED",
+        "field": "role",
+        "message_pattern": "Initial role must be read.",
+        "response_success": false
+      },
+      "persistent_drift_signature": {
+        "channel": "workflow_rejection",
+        "http_status": 409,
+        "error_code": "PRECONDITION_FAILED",
+        "field": "role",
+        "message_pattern": "Initial role must be read.",
+        "response_success": false
+      },
+      "shared_signature_matched": true,
+      "agent_error_corrected": true,
+      "transient_recovered": true,
+      "persistent_reproduced": true,
+      "variant_details": {
+        "AE": {
+          "normalized_signature": {
+            "channel": "workflow_rejection",
+            "http_status": 409,
+            "error_code": "PRECONDITION_FAILED",
+            "field": "role",
+            "message_pattern": "Initial role must be read.",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1_plus_runtime_rule",
+            "runtime_source": "canonical_v1_plus_runtime_rule",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "TF": {
+          "normalized_signature": {
+            "channel": "workflow_rejection",
+            "http_status": 409,
+            "error_code": "PRECONDITION_FAILED",
+            "field": "role",
+            "message_pattern": "Initial role must be read.",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "canonical_v1",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "PD": {
+          "normalized_signature": {
+            "channel": "workflow_rejection",
+            "http_status": 409,
+            "error_code": "PRECONDITION_FAILED",
+            "field": "role",
+            "message_pattern": "Initial role must be read.",
+            "response_success": false
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": false,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "runtime_drift",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        }
+      },
+      "canonical_protected": true
+    },
+    {
+      "matched_case_id": "M16",
+      "target_tool": "close_issue",
+      "agent_error_signature": {
+        "channel": "state_mismatch",
+        "http_status": 200,
+        "error_code": null,
+        "field": null,
+        "message_pattern": "Successful response does not match the immediate issue state.",
+        "response_success": true,
+        "expected_effect": "issue.state == closed",
+        "observed_effect": "issue.state == open"
+      },
+      "transient_failure_signature": {
+        "channel": "state_mismatch",
+        "http_status": 200,
+        "error_code": null,
+        "field": null,
+        "message_pattern": "Successful response does not match the immediate issue state.",
+        "response_success": true,
+        "expected_effect": "issue.state == closed",
+        "observed_effect": "issue.state == open"
+      },
+      "persistent_drift_signature": {
+        "channel": "state_mismatch",
+        "http_status": 200,
+        "error_code": null,
+        "field": null,
+        "message_pattern": "Successful response does not match the immediate issue state.",
+        "response_success": true,
+        "expected_effect": "issue.state == closed",
+        "observed_effect": "issue.state == open"
+      },
+      "shared_signature_matched": true,
+      "agent_error_corrected": true,
+      "transient_recovered": true,
+      "persistent_reproduced": true,
+      "variant_details": {
+        "AE": {
+          "normalized_signature": {
+            "channel": "state_mismatch",
+            "http_status": 200,
+            "error_code": null,
+            "field": null,
+            "message_pattern": "Successful response does not match the immediate issue state.",
+            "response_success": true,
+            "expected_effect": "issue.state == closed",
+            "observed_effect": "issue.state == open"
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1_plus_runtime_rule",
+            "runtime_source": "canonical_v1_plus_runtime_rule",
+            "distinct_objects": true
+          },
+          "interpretation_record": {
+            "interpretation_status": "failed",
+            "requested_path": "canonical_postcondition",
+            "available_paths": [
+              "ok",
+              "data.issue_id",
+              "data.repo_id",
+              "data.title",
+              "data.body",
+              "data.priority",
+              "data.state",
+              "data.assignee",
+              "data.resolution",
+              "data.created_at",
+              "data.updated_at",
+              "data.closed_at"
+            ]
+          }
+        },
+        "TF": {
+          "normalized_signature": {
+            "channel": "state_mismatch",
+            "http_status": 200,
+            "error_code": null,
+            "field": null,
+            "message_pattern": "Successful response does not match the immediate issue state.",
+            "response_success": true,
+            "expected_effect": "issue.state == closed",
+            "observed_effect": "issue.state == open"
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "canonical_v1",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "PD": {
+          "normalized_signature": {
+            "channel": "state_mismatch",
+            "http_status": 200,
+            "error_code": null,
+            "field": null,
+            "message_pattern": "Successful response does not match the immediate issue state.",
+            "response_success": true,
+            "expected_effect": "issue.state == closed",
+            "observed_effect": "issue.state == open"
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": false,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "runtime_drift",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        }
+      },
+      "canonical_protected": true
+    },
+    {
+      "matched_case_id": "M17",
+      "target_tool": "update_member_role",
+      "agent_error_signature": {
+        "channel": "state_mismatch",
+        "http_status": 200,
+        "error_code": null,
+        "field": null,
+        "message_pattern": "Successful response does not match the immediate member role.",
+        "response_success": true,
+        "expected_effect": "member.role == requested role",
+        "observed_effect": "member.role == previous role"
+      },
+      "transient_failure_signature": {
+        "channel": "state_mismatch",
+        "http_status": 200,
+        "error_code": null,
+        "field": null,
+        "message_pattern": "Successful response does not match the immediate member role.",
+        "response_success": true,
+        "expected_effect": "member.role == requested role",
+        "observed_effect": "member.role == previous role"
+      },
+      "persistent_drift_signature": {
+        "channel": "state_mismatch",
+        "http_status": 200,
+        "error_code": null,
+        "field": null,
+        "message_pattern": "Successful response does not match the immediate member role.",
+        "response_success": true,
+        "expected_effect": "member.role == requested role",
+        "observed_effect": "member.role == previous role"
+      },
+      "shared_signature_matched": true,
+      "agent_error_corrected": true,
+      "transient_recovered": true,
+      "persistent_reproduced": true,
+      "variant_details": {
+        "AE": {
+          "normalized_signature": {
+            "channel": "state_mismatch",
+            "http_status": 200,
+            "error_code": null,
+            "field": null,
+            "message_pattern": "Successful response does not match the immediate member role.",
+            "response_success": true,
+            "expected_effect": "member.role == requested role",
+            "observed_effect": "member.role == previous role"
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1_plus_runtime_rule",
+            "runtime_source": "canonical_v1_plus_runtime_rule",
+            "distinct_objects": true
+          },
+          "interpretation_record": {
+            "interpretation_status": "failed",
+            "requested_path": "canonical_postcondition",
+            "available_paths": [
+              "ok",
+              "data.repo_id",
+              "data.username",
+              "data.role",
+              "data.base_permission",
+              "data.membership_state",
+              "data.added_at",
+              "data.updated_at"
+            ]
+          }
+        },
+        "TF": {
+          "normalized_signature": {
+            "channel": "state_mismatch",
+            "http_status": 200,
+            "error_code": null,
+            "field": null,
+            "message_pattern": "Successful response does not match the immediate member role.",
+            "response_success": true,
+            "expected_effect": "member.role == requested role",
+            "observed_effect": "member.role == previous role"
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "canonical_v1",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "PD": {
+          "normalized_signature": {
+            "channel": "state_mismatch",
+            "http_status": 200,
+            "error_code": null,
+            "field": null,
+            "message_pattern": "Successful response does not match the immediate member role.",
+            "response_success": true,
+            "expected_effect": "member.role == requested role",
+            "observed_effect": "member.role == previous role"
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": false,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "runtime_drift",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        }
+      },
+      "canonical_protected": true
+    },
+    {
+      "matched_case_id": "M18",
+      "target_tool": "add_member",
+      "agent_error_signature": {
+        "channel": "state_mismatch",
+        "http_status": 201,
+        "error_code": null,
+        "field": null,
+        "message_pattern": "Successful response is followed by membership unavailability.",
+        "response_success": true,
+        "expected_effect": "membership is active and usable",
+        "observed_effect": "membership is not yet usable"
+      },
+      "transient_failure_signature": {
+        "channel": "state_mismatch",
+        "http_status": 201,
+        "error_code": null,
+        "field": null,
+        "message_pattern": "Successful response is followed by membership unavailability.",
+        "response_success": true,
+        "expected_effect": "membership is active and usable",
+        "observed_effect": "membership is not yet usable"
+      },
+      "persistent_drift_signature": {
+        "channel": "state_mismatch",
+        "http_status": 201,
+        "error_code": null,
+        "field": null,
+        "message_pattern": "Successful response is followed by membership unavailability.",
+        "response_success": true,
+        "expected_effect": "membership is active and usable",
+        "observed_effect": "membership is not yet usable"
+      },
+      "shared_signature_matched": true,
+      "agent_error_corrected": true,
+      "transient_recovered": true,
+      "persistent_reproduced": true,
+      "variant_details": {
+        "AE": {
+          "normalized_signature": {
+            "channel": "state_mismatch",
+            "http_status": 201,
+            "error_code": null,
+            "field": null,
+            "message_pattern": "Successful response is followed by membership unavailability.",
+            "response_success": true,
+            "expected_effect": "membership is active and usable",
+            "observed_effect": "membership is not yet usable"
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1_plus_runtime_rule",
+            "runtime_source": "canonical_v1_plus_runtime_rule",
+            "distinct_objects": true
+          },
+          "interpretation_record": {
+            "interpretation_status": "failed",
+            "requested_path": "canonical_postcondition",
+            "available_paths": [
+              "ok",
+              "data.repo_id",
+              "data.username",
+              "data.role",
+              "data.base_permission",
+              "data.membership_state",
+              "data.added_at",
+              "data.updated_at"
+            ]
+          }
+        },
+        "TF": {
+          "normalized_signature": {
+            "channel": "state_mismatch",
+            "http_status": 201,
+            "error_code": null,
+            "field": null,
+            "message_pattern": "Successful response is followed by membership unavailability.",
+            "response_success": true,
+            "expected_effect": "membership is active and usable",
+            "observed_effect": "membership is not yet usable"
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "canonical_v1",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "PD": {
+          "normalized_signature": {
+            "channel": "state_mismatch",
+            "http_status": 201,
+            "error_code": null,
+            "field": null,
+            "message_pattern": "Successful response is followed by membership unavailability.",
+            "response_success": true,
+            "expected_effect": "membership is active and usable",
+            "observed_effect": "membership is not yet usable"
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": false,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "runtime_drift",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        }
+      },
+      "canonical_protected": true
+    },
+    {
+      "matched_case_id": "M19",
+      "target_tool": "retry_pipeline",
+      "agent_error_signature": {
+        "channel": "state_mismatch",
+        "http_status": 201,
+        "error_code": null,
+        "field": null,
+        "message_pattern": "Retry response does not match the original run state or resource set.",
+        "response_success": true,
+        "expected_effect": "original run attempt increments",
+        "observed_effect": "original run unchanged and a new run appears"
+      },
+      "transient_failure_signature": {
+        "channel": "state_mismatch",
+        "http_status": 201,
+        "error_code": null,
+        "field": null,
+        "message_pattern": "Retry response does not match the original run state or resource set.",
+        "response_success": true,
+        "expected_effect": "original run attempt increments",
+        "observed_effect": "original run unchanged and a new run appears"
+      },
+      "persistent_drift_signature": {
+        "channel": "state_mismatch",
+        "http_status": 201,
+        "error_code": null,
+        "field": null,
+        "message_pattern": "Retry response does not match the original run state or resource set.",
+        "response_success": true,
+        "expected_effect": "original run attempt increments",
+        "observed_effect": "original run unchanged and a new run appears"
+      },
+      "shared_signature_matched": true,
+      "agent_error_corrected": true,
+      "transient_recovered": true,
+      "persistent_reproduced": true,
+      "variant_details": {
+        "AE": {
+          "normalized_signature": {
+            "channel": "state_mismatch",
+            "http_status": 201,
+            "error_code": null,
+            "field": null,
+            "message_pattern": "Retry response does not match the original run state or resource set.",
+            "response_success": true,
+            "expected_effect": "original run attempt increments",
+            "observed_effect": "original run unchanged and a new run appears"
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1_plus_runtime_rule",
+            "runtime_source": "canonical_v1_plus_runtime_rule",
+            "distinct_objects": true
+          },
+          "interpretation_record": {
+            "interpretation_status": "failed",
+            "requested_path": "canonical_postcondition",
+            "available_paths": [
+              "ok",
+              "data.run_id",
+              "data.repo_id",
+              "data.workflow_id",
+              "data.ref",
+              "data.status",
+              "data.conclusion",
+              "data.attempt",
+              "data.retried_from",
+              "data.created_at",
+              "data.updated_at"
+            ]
+          }
+        },
+        "TF": {
+          "normalized_signature": {
+            "channel": "state_mismatch",
+            "http_status": 201,
+            "error_code": null,
+            "field": null,
+            "message_pattern": "Retry response does not match the original run state or resource set.",
+            "response_success": true,
+            "expected_effect": "original run attempt increments",
+            "observed_effect": "original run unchanged and a new run appears"
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "canonical_v1",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "PD": {
+          "normalized_signature": {
+            "channel": "state_mismatch",
+            "http_status": 201,
+            "error_code": null,
+            "field": null,
+            "message_pattern": "Retry response does not match the original run state or resource set.",
+            "response_success": true,
+            "expected_effect": "original run attempt increments",
+            "observed_effect": "original run unchanged and a new run appears"
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": false,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "runtime_drift",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        }
+      },
+      "canonical_protected": true
+    },
+    {
+      "matched_case_id": "M20",
+      "target_tool": "update_repository",
+      "agent_error_signature": {
+        "channel": "state_mismatch",
+        "http_status": 200,
+        "error_code": null,
+        "field": null,
+        "message_pattern": "Successful response does not match the immediate repository state.",
+        "response_success": true,
+        "expected_effect": "default_branch == requested branch",
+        "observed_effect": "default_branch == previous branch"
+      },
+      "transient_failure_signature": {
+        "channel": "state_mismatch",
+        "http_status": 200,
+        "error_code": null,
+        "field": null,
+        "message_pattern": "Successful response does not match the immediate repository state.",
+        "response_success": true,
+        "expected_effect": "default_branch == requested branch",
+        "observed_effect": "default_branch == previous branch"
+      },
+      "persistent_drift_signature": {
+        "channel": "state_mismatch",
+        "http_status": 200,
+        "error_code": null,
+        "field": null,
+        "message_pattern": "Successful response does not match the immediate repository state.",
+        "response_success": true,
+        "expected_effect": "default_branch == requested branch",
+        "observed_effect": "default_branch == previous branch"
+      },
+      "shared_signature_matched": true,
+      "agent_error_corrected": true,
+      "transient_recovered": true,
+      "persistent_reproduced": true,
+      "variant_details": {
+        "AE": {
+          "normalized_signature": {
+            "channel": "state_mismatch",
+            "http_status": 200,
+            "error_code": null,
+            "field": null,
+            "message_pattern": "Successful response does not match the immediate repository state.",
+            "response_success": true,
+            "expected_effect": "default_branch == requested branch",
+            "observed_effect": "default_branch == previous branch"
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1_plus_runtime_rule",
+            "runtime_source": "canonical_v1_plus_runtime_rule",
+            "distinct_objects": true
+          },
+          "interpretation_record": {
+            "interpretation_status": "failed",
+            "requested_path": "canonical_postcondition",
+            "available_paths": [
+              "ok",
+              "data.repo_id",
+              "data.name",
+              "data.description",
+              "data.visibility",
+              "data.default_branch",
+              "data.issues_enabled",
+              "data.archived"
+            ]
+          }
+        },
+        "TF": {
+          "normalized_signature": {
+            "channel": "state_mismatch",
+            "http_status": 200,
+            "error_code": null,
+            "field": null,
+            "message_pattern": "Successful response does not match the immediate repository state.",
+            "response_success": true,
+            "expected_effect": "default_branch == requested branch",
+            "observed_effect": "default_branch == previous branch"
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": true,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "canonical_v1",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        },
+        "PD": {
+          "normalized_signature": {
+            "channel": "state_mismatch",
+            "http_status": 200,
+            "error_code": null,
+            "field": null,
+            "message_pattern": "Successful response does not match the immediate repository state.",
+            "response_success": true,
+            "expected_effect": "default_branch == requested branch",
+            "observed_effect": "default_branch == previous branch"
+          },
+          "first_failure_matched": true,
+          "followup_matched": true,
+          "lifecycle_verified": true,
+          "contract_alignment": {
+            "contracts_equal": false,
+            "displayed_source": "canonical_v1",
+            "runtime_source": "runtime_drift",
+            "distinct_objects": true
+          },
+          "interpretation_record": null
+        }
+      },
+      "canonical_protected": true
+    }
+  ]
+}

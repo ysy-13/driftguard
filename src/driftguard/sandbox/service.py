@@ -6,6 +6,8 @@ from typing import Any
 
 from driftguard.contracts.input_validator import InputValidationError, InputValidator
 from driftguard.contracts.registry import ContractRegistry, ToolContract
+from driftguard.injection.registry import InjectionRegistry
+from driftguard.runtime.context import ExecutionContext
 from driftguard.sandbox.deterministic_clock import DeterministicClock
 from driftguard.sandbox.diff import state_diff
 from driftguard.sandbox.errors import SandboxError
@@ -27,6 +29,8 @@ class CallRecord:
     state_diff: list[dict[str, Any]]
     clock_before: str
     clock_after: str
+    canonical_response: dict[str, Any] | None = None
+    runtime_response: dict[str, Any] | None = None
 
 
 class SandboxService:
@@ -35,11 +39,14 @@ class SandboxService:
         store: StateStore | None = None,
         registry: ContractRegistry | None = None,
         validator: InputValidator | None = None,
+        execution_context: ExecutionContext | None = None,
     ):
         self.store = store or StateStore.from_fixture()
         self.registry = registry or ContractRegistry.from_openapi()
         self.validator = validator or InputValidator()
         self.clock = DeterministicClock(self.store.initial_clock)
+        self.execution_context = execution_context
+        self.injections = InjectionRegistry()
         self._records: list[CallRecord] = []
         if set(self.registry.operation_ids()) != set(HANDLERS):
             raise ValueError("handler set must exactly match canonical OpenAPI operations")
@@ -67,6 +74,7 @@ class SandboxService:
         pre_state: dict[str, Any],
         post_state: dict[str, Any],
         clock_before: str,
+        canonical_result: ToolResult | None = None,
     ) -> None:
         self._records.append(
             CallRecord(
@@ -80,10 +88,22 @@ class SandboxService:
                 state_diff=state_diff(pre_state, post_state),
                 clock_before=clock_before,
                 clock_after=self.clock.now(),
+                canonical_response=canonical_result.to_dict() if canonical_result is not None else None,
+                runtime_response=result.to_dict(),
             )
         )
 
-    def call_tool(self, tool: str, arguments: dict[str, Any], actor_id: str) -> ToolResult:
+    def call_tool(
+        self,
+        tool: str,
+        arguments: dict[str, Any],
+        actor_id: str,
+        execution_context: ExecutionContext | None = None,
+    ) -> ToolResult:
+        context = execution_context or self.execution_context
+        if context is not None:
+            context.session.call_count += 1
+            context.actor_id = actor_id
         pre_state = self.store.snapshot()
         clock_before = self.clock.now()
         contract = self.registry.get(tool)
@@ -91,6 +111,13 @@ class SandboxService:
             result = failure(400, "BAD_REQUEST", f"Unknown tool: {tool}", "tool")
             self._record(tool, arguments, actor_id, result, pre_state, pre_state, clock_before)
             return result
+        strategy = self.injections.resolve(context, tool) if context is not None else None
+        if strategy is not None and strategy.phase in {"input_contract", "workflow_precondition"}:
+            arguments, rejection = strategy.before_validation(arguments, pre_state, context)
+            if rejection is not None:
+                context.consume()
+                self._record(tool, arguments, actor_id, rejection, pre_state, pre_state, clock_before)
+                return rejection
         try:
             normalized = self.validator.validate(contract, arguments)
         except InputValidationError as exc:
@@ -103,6 +130,7 @@ class SandboxService:
             return result
 
         working_state = deepcopy(pre_state)
+        pending_applied = context.pending_effects.apply(tool, normalized, working_state) if context is not None else False
         timestamp = self.clock.peek_next() if contract.effect_type == "write" else None
         try:
             data = HANDLERS[tool](working_state, normalized, timestamp)
@@ -111,12 +139,23 @@ class SandboxService:
             self._record(tool, normalized, actor_id, result, pre_state, pre_state, clock_before)
             return result
 
-        if contract.effect_type == "write":
+        canonical_data = deepcopy(data)
+        if strategy is not None and strategy.phase == "state_effect":
+            data = strategy.after_handler(working_state, pre_state, normalized, data, context)
+        if contract.effect_type == "write" or pending_applied:
             self.store.commit(working_state)
-            advanced = self.clock.advance_write()
-            if advanced != timestamp:
-                raise RuntimeError("deterministic clock mismatch")
+            if contract.effect_type == "write":
+                advanced = self.clock.advance_write()
+                if advanced != timestamp:
+                    raise RuntimeError("deterministic clock mismatch")
         post_state = self.store.snapshot()
+        canonical_result = success(contract.success_status_code, self._project_output(contract, canonical_data))
         result = success(contract.success_status_code, self._project_output(contract, data))
-        self._record(tool, normalized, actor_id, result, pre_state, post_state, clock_before)
+        if strategy is not None and strategy.phase == "response_shape":
+            result = strategy.mutate_response(result)
+        if context is not None:
+            result = self.injections.adapt_related_response(context, tool, normalized, result)
+        if strategy is not None:
+            context.consume()
+        self._record(tool, normalized, actor_id, result, pre_state, post_state, clock_before, canonical_result)
         return result

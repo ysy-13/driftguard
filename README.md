@@ -158,3 +158,38 @@ Optionally start the local-only API sandbox:
 ```bash
 uvicorn driftguard.api.app:app --reload
 ```
+
+## Phase 6: Executable Failure Injection
+
+Phase 6 adds an optional execution context around the unchanged canonical
+handlers. Runtime profiles select Agent Error (one episode), Transient Failure
+(one runtime occurrence), or Persistent Drift (from its change point until a
+candidate patch is active). Contract snapshots are isolated deep copies;
+displayed and runtime overlays never modify the canonical OpenAPI file.
+
+Registered mutation strategies cover all 20 input-contract, response-shape,
+workflow-precondition, and state-effect cases. Deterministic workflow
+verification tokens and deferred state effects live only in the scenario
+session sidecar; pending effects materialize on their specified read and never
+enter ordinary business-state diffs. Raw canonical and Agent-visible runtime
+responses remain separately auditable. The observation normalizer maps
+executable results to the 20 matched family signatures without exposing
+ground-truth labels.
+
+Run the Phase 6 first-failure conformance check with:
+
+```bash
+python scripts/validate_openapi.py
+python scripts/validate_tasks.py
+python scripts/validate_drifts.py
+python scripts/validate_matched_failures.py
+python scripts/run_oracle.py
+python scripts/run_injection_conformance.py
+pytest -q
+```
+
+It executes 60 matched first failures, verifies AE/TF recovery and PD
+persistence on independent calls, checks family-level symptom equality, and
+rechecks SHA-256 hashes for all six protected canonical benchmark files. It
+does not run an LLM, agent, patch generator, shadow validator, or the complete
+360-episode experiment.
