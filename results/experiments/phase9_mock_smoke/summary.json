@@ -1,0 +1,1040 @@
+{
+  "api_key_leakage_count": 0,
+  "coverage": {
+    "drift_categories": [
+      "ICD",
+      "RSD",
+      "WPD",
+      "SED"
+    ],
+    "families": 4,
+    "fault_classes": [
+      "AE",
+      "TF",
+      "PD"
+    ],
+    "scenarios": 12
+  },
+  "created_records": 0,
+  "diagnostics": {
+    "budget_exhaustion": true,
+    "cache_hit": true,
+    "cache_miss": true,
+    "invalid_json_repair": true,
+    "provider_429": true,
+    "provider_5xx": true,
+    "provider_timeout": true
+  },
+  "experiment_id": "phase9_mock_smoke",
+  "ground_truth_leakage_count": 0,
+  "methods": [
+    "standard",
+    "retry_only",
+    "reflection",
+    "validation_guided",
+    "driftguard_symbolic",
+    "driftguard_llm",
+    "oracle_symbolic_upper_bound"
+  ],
+  "metrics": {
+    "accepted_patch_correctness": 1.0,
+    "attribution": {
+      "abstention_rate": 0.7142857142857143,
+      "accuracy": 0.2857142857142857,
+      "confusion_matrix": {
+        "AE": {
+          "AE": 16,
+          "PD": 0,
+          "TF": 0
+        },
+        "PD": {
+          "AE": 0,
+          "PD": 16,
+          "TF": 0
+        },
+        "TF": {
+          "AE": 0,
+          "PD": 0,
+          "TF": 16
+        }
+      },
+      "macro_f1": 1.0,
+      "per_class": {
+        "AE": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "PD": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "TF": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      }
+    },
+    "average_input_tokens": 415.51190476190476,
+    "average_latency_ms": 0.0,
+    "average_llm_calls": 0.9761904761904762,
+    "average_output_tokens": 51.25,
+    "average_probe_calls": 0.0,
+    "average_tool_calls": 0.5178571428571429,
+    "budget_exhaustion_rate": 0.0,
+    "drift_category_accuracy": 0.13333333333333333,
+    "exact_location_accuracy": 0.13333333333333333,
+    "false_patch_rate": 0.0,
+    "forbidden_side_effect_rate": 0.0,
+    "future_transfer_rate": 0.09523809523809523,
+    "immediate_repair_success_rate": 0.09523809523809523,
+    "minimality_pass_rate": 1.0,
+    "patch_proposal_rate": 0.09523809523809523,
+    "patch_validation_survival": 1.0,
+    "raw_patch_correctness": 1.0,
+    "records": 168,
+    "regression_pass_rate": 1.0,
+    "successful_task_average_interactions": 1.4659090909090908,
+    "target_tool_accuracy": 0.4,
+    "task_success_rate": 0.5238095238095238,
+    "unsafe_action_rate": 0.0,
+    "unsafe_patch_rate": 0.0
+  },
+  "metrics_by_method_mode": {
+    "driftguard_llm:component": {
+      "accepted_patch_correctness": 0.0,
+      "attribution": {
+        "abstention_rate": 1.0,
+        "accuracy": 0.0,
+        "confusion_matrix": {
+          "AE": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "PD": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "TF": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          }
+        },
+        "macro_f1": 0.0,
+        "per_class": {
+          "AE": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "PD": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "TF": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        }
+      },
+      "average_input_tokens": 86.0,
+      "average_latency_ms": 0.0,
+      "average_llm_calls": 1.0,
+      "average_output_tokens": 65.0,
+      "average_probe_calls": 0.0,
+      "average_tool_calls": 0.0,
+      "budget_exhaustion_rate": 0.0,
+      "drift_category_accuracy": 0.0,
+      "exact_location_accuracy": 0.0,
+      "false_patch_rate": 0.0,
+      "forbidden_side_effect_rate": 0.0,
+      "future_transfer_rate": 0.0,
+      "immediate_repair_success_rate": 0.0,
+      "minimality_pass_rate": 0.0,
+      "patch_proposal_rate": 0.0,
+      "patch_validation_survival": 0.0,
+      "raw_patch_correctness": 0.0,
+      "records": 12,
+      "regression_pass_rate": 0.0,
+      "successful_task_average_interactions": 0.0,
+      "target_tool_accuracy": 0.0,
+      "task_success_rate": 0.0,
+      "unsafe_action_rate": 0.0,
+      "unsafe_patch_rate": 0.0
+    },
+    "driftguard_llm:end_to_end": {
+      "accepted_patch_correctness": 0.0,
+      "attribution": {
+        "abstention_rate": 1.0,
+        "accuracy": 0.0,
+        "confusion_matrix": {
+          "AE": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "PD": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "TF": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          }
+        },
+        "macro_f1": 0.0,
+        "per_class": {
+          "AE": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "PD": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "TF": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        }
+      },
+      "average_input_tokens": 800.25,
+      "average_latency_ms": 0.0,
+      "average_llm_calls": 1.25,
+      "average_output_tokens": 56.5,
+      "average_probe_calls": 0.0,
+      "average_tool_calls": 1.0,
+      "budget_exhaustion_rate": 0.0,
+      "drift_category_accuracy": 0.0,
+      "exact_location_accuracy": 0.0,
+      "false_patch_rate": 0.0,
+      "forbidden_side_effect_rate": 0.0,
+      "future_transfer_rate": 0.0,
+      "immediate_repair_success_rate": 0.0,
+      "minimality_pass_rate": 0.0,
+      "patch_proposal_rate": 0.0,
+      "patch_validation_survival": 0.0,
+      "raw_patch_correctness": 0.0,
+      "records": 12,
+      "regression_pass_rate": 0.0,
+      "successful_task_average_interactions": 2.0,
+      "target_tool_accuracy": 0.0,
+      "task_success_rate": 0.75,
+      "unsafe_action_rate": 0.0,
+      "unsafe_patch_rate": 0.0
+    },
+    "driftguard_symbolic:component": {
+      "accepted_patch_correctness": 1.0,
+      "attribution": {
+        "abstention_rate": 0.0,
+        "accuracy": 1.0,
+        "confusion_matrix": {
+          "AE": {
+            "AE": 4,
+            "PD": 0,
+            "TF": 0
+          },
+          "PD": {
+            "AE": 0,
+            "PD": 4,
+            "TF": 0
+          },
+          "TF": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 4
+          }
+        },
+        "macro_f1": 1.0,
+        "per_class": {
+          "AE": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "PD": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "TF": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          }
+        }
+      },
+      "average_input_tokens": 0.0,
+      "average_latency_ms": 0.0,
+      "average_llm_calls": 0.0,
+      "average_output_tokens": 0.0,
+      "average_probe_calls": 0.0,
+      "average_tool_calls": 0.0,
+      "budget_exhaustion_rate": 0.0,
+      "drift_category_accuracy": 0.3333333333333333,
+      "exact_location_accuracy": 0.3333333333333333,
+      "false_patch_rate": 0.0,
+      "forbidden_side_effect_rate": 0.0,
+      "future_transfer_rate": 0.3333333333333333,
+      "immediate_repair_success_rate": 0.3333333333333333,
+      "minimality_pass_rate": 1.0,
+      "patch_proposal_rate": 0.3333333333333333,
+      "patch_validation_survival": 1.0,
+      "raw_patch_correctness": 1.0,
+      "records": 12,
+      "regression_pass_rate": 1.0,
+      "successful_task_average_interactions": 0.0,
+      "target_tool_accuracy": 1.0,
+      "task_success_rate": 1.0,
+      "unsafe_action_rate": 0.0,
+      "unsafe_patch_rate": 0.0
+    },
+    "driftguard_symbolic:end_to_end": {
+      "accepted_patch_correctness": 1.0,
+      "attribution": {
+        "abstention_rate": 0.0,
+        "accuracy": 1.0,
+        "confusion_matrix": {
+          "AE": {
+            "AE": 4,
+            "PD": 0,
+            "TF": 0
+          },
+          "PD": {
+            "AE": 0,
+            "PD": 4,
+            "TF": 0
+          },
+          "TF": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 4
+          }
+        },
+        "macro_f1": 1.0,
+        "per_class": {
+          "AE": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "PD": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "TF": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          }
+        }
+      },
+      "average_input_tokens": 800.25,
+      "average_latency_ms": 0.0,
+      "average_llm_calls": 1.25,
+      "average_output_tokens": 56.5,
+      "average_probe_calls": 0.0,
+      "average_tool_calls": 1.0,
+      "budget_exhaustion_rate": 0.0,
+      "drift_category_accuracy": 0.3333333333333333,
+      "exact_location_accuracy": 0.3333333333333333,
+      "false_patch_rate": 0.0,
+      "forbidden_side_effect_rate": 0.0,
+      "future_transfer_rate": 0.3333333333333333,
+      "immediate_repair_success_rate": 0.3333333333333333,
+      "minimality_pass_rate": 1.0,
+      "patch_proposal_rate": 0.3333333333333333,
+      "patch_validation_survival": 1.0,
+      "raw_patch_correctness": 1.0,
+      "records": 12,
+      "regression_pass_rate": 1.0,
+      "successful_task_average_interactions": 2.0,
+      "target_tool_accuracy": 1.0,
+      "task_success_rate": 0.75,
+      "unsafe_action_rate": 0.0,
+      "unsafe_patch_rate": 0.0
+    },
+    "oracle_symbolic_upper_bound:component": {
+      "accepted_patch_correctness": 1.0,
+      "attribution": {
+        "abstention_rate": 0.0,
+        "accuracy": 1.0,
+        "confusion_matrix": {
+          "AE": {
+            "AE": 4,
+            "PD": 0,
+            "TF": 0
+          },
+          "PD": {
+            "AE": 0,
+            "PD": 4,
+            "TF": 0
+          },
+          "TF": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 4
+          }
+        },
+        "macro_f1": 1.0,
+        "per_class": {
+          "AE": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "PD": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "TF": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          }
+        }
+      },
+      "average_input_tokens": 0.0,
+      "average_latency_ms": 0.0,
+      "average_llm_calls": 0.0,
+      "average_output_tokens": 0.0,
+      "average_probe_calls": 0.0,
+      "average_tool_calls": 0.0,
+      "budget_exhaustion_rate": 0.0,
+      "drift_category_accuracy": 0.3333333333333333,
+      "exact_location_accuracy": 0.3333333333333333,
+      "false_patch_rate": 0.0,
+      "forbidden_side_effect_rate": 0.0,
+      "future_transfer_rate": 0.3333333333333333,
+      "immediate_repair_success_rate": 0.3333333333333333,
+      "minimality_pass_rate": 1.0,
+      "patch_proposal_rate": 0.3333333333333333,
+      "patch_validation_survival": 1.0,
+      "raw_patch_correctness": 1.0,
+      "records": 12,
+      "regression_pass_rate": 1.0,
+      "successful_task_average_interactions": 0.0,
+      "target_tool_accuracy": 1.0,
+      "task_success_rate": 1.0,
+      "unsafe_action_rate": 0.0,
+      "unsafe_patch_rate": 0.0
+    },
+    "oracle_symbolic_upper_bound:end_to_end": {
+      "accepted_patch_correctness": 1.0,
+      "attribution": {
+        "abstention_rate": 0.0,
+        "accuracy": 1.0,
+        "confusion_matrix": {
+          "AE": {
+            "AE": 4,
+            "PD": 0,
+            "TF": 0
+          },
+          "PD": {
+            "AE": 0,
+            "PD": 4,
+            "TF": 0
+          },
+          "TF": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 4
+          }
+        },
+        "macro_f1": 1.0,
+        "per_class": {
+          "AE": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "PD": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "TF": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          }
+        }
+      },
+      "average_input_tokens": 800.25,
+      "average_latency_ms": 0.0,
+      "average_llm_calls": 1.25,
+      "average_output_tokens": 56.5,
+      "average_probe_calls": 0.0,
+      "average_tool_calls": 1.0,
+      "budget_exhaustion_rate": 0.0,
+      "drift_category_accuracy": 0.3333333333333333,
+      "exact_location_accuracy": 0.3333333333333333,
+      "false_patch_rate": 0.0,
+      "forbidden_side_effect_rate": 0.0,
+      "future_transfer_rate": 0.3333333333333333,
+      "immediate_repair_success_rate": 0.3333333333333333,
+      "minimality_pass_rate": 1.0,
+      "patch_proposal_rate": 0.3333333333333333,
+      "patch_validation_survival": 1.0,
+      "raw_patch_correctness": 1.0,
+      "records": 12,
+      "regression_pass_rate": 1.0,
+      "successful_task_average_interactions": 2.0,
+      "target_tool_accuracy": 1.0,
+      "task_success_rate": 0.75,
+      "unsafe_action_rate": 0.0,
+      "unsafe_patch_rate": 0.0
+    },
+    "reflection:component": {
+      "accepted_patch_correctness": 0.0,
+      "attribution": {
+        "abstention_rate": 1.0,
+        "accuracy": 0.0,
+        "confusion_matrix": {
+          "AE": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "PD": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "TF": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          }
+        },
+        "macro_f1": 0.0,
+        "per_class": {
+          "AE": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "PD": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "TF": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        }
+      },
+      "average_input_tokens": 86.0,
+      "average_latency_ms": 0.0,
+      "average_llm_calls": 1.0,
+      "average_output_tokens": 65.0,
+      "average_probe_calls": 0.0,
+      "average_tool_calls": 0.0,
+      "budget_exhaustion_rate": 0.0,
+      "drift_category_accuracy": 0.0,
+      "exact_location_accuracy": 0.0,
+      "false_patch_rate": 0.0,
+      "forbidden_side_effect_rate": 0.0,
+      "future_transfer_rate": 0.0,
+      "immediate_repair_success_rate": 0.0,
+      "minimality_pass_rate": 0.0,
+      "patch_proposal_rate": 0.0,
+      "patch_validation_survival": 0.0,
+      "raw_patch_correctness": 0.0,
+      "records": 12,
+      "regression_pass_rate": 0.0,
+      "successful_task_average_interactions": 0.0,
+      "target_tool_accuracy": 0.0,
+      "task_success_rate": 0.0,
+      "unsafe_action_rate": 0.0,
+      "unsafe_patch_rate": 0.0
+    },
+    "reflection:end_to_end": {
+      "accepted_patch_correctness": 0.0,
+      "attribution": {
+        "abstention_rate": 1.0,
+        "accuracy": 0.0,
+        "confusion_matrix": {
+          "AE": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "PD": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "TF": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          }
+        },
+        "macro_f1": 0.0,
+        "per_class": {
+          "AE": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "PD": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "TF": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        }
+      },
+      "average_input_tokens": 818.25,
+      "average_latency_ms": 0.0,
+      "average_llm_calls": 1.25,
+      "average_output_tokens": 56.5,
+      "average_probe_calls": 0.0,
+      "average_tool_calls": 1.0,
+      "budget_exhaustion_rate": 0.0,
+      "drift_category_accuracy": 0.0,
+      "exact_location_accuracy": 0.0,
+      "false_patch_rate": 0.0,
+      "forbidden_side_effect_rate": 0.0,
+      "future_transfer_rate": 0.0,
+      "immediate_repair_success_rate": 0.0,
+      "minimality_pass_rate": 0.0,
+      "patch_proposal_rate": 0.0,
+      "patch_validation_survival": 0.0,
+      "raw_patch_correctness": 0.0,
+      "records": 12,
+      "regression_pass_rate": 0.0,
+      "successful_task_average_interactions": 2.0,
+      "target_tool_accuracy": 0.0,
+      "task_success_rate": 0.75,
+      "unsafe_action_rate": 0.0,
+      "unsafe_patch_rate": 0.0
+    },
+    "retry_only:component": {
+      "accepted_patch_correctness": 0.0,
+      "attribution": {
+        "abstention_rate": 1.0,
+        "accuracy": 0.0,
+        "confusion_matrix": {
+          "AE": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "PD": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "TF": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          }
+        },
+        "macro_f1": 0.0,
+        "per_class": {
+          "AE": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "PD": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "TF": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        }
+      },
+      "average_input_tokens": 86.0,
+      "average_latency_ms": 0.0,
+      "average_llm_calls": 1.0,
+      "average_output_tokens": 65.0,
+      "average_probe_calls": 0.0,
+      "average_tool_calls": 0.0,
+      "budget_exhaustion_rate": 0.0,
+      "drift_category_accuracy": 0.0,
+      "exact_location_accuracy": 0.0,
+      "false_patch_rate": 0.0,
+      "forbidden_side_effect_rate": 0.0,
+      "future_transfer_rate": 0.0,
+      "immediate_repair_success_rate": 0.0,
+      "minimality_pass_rate": 0.0,
+      "patch_proposal_rate": 0.0,
+      "patch_validation_survival": 0.0,
+      "raw_patch_correctness": 0.0,
+      "records": 12,
+      "regression_pass_rate": 0.0,
+      "successful_task_average_interactions": 0.0,
+      "target_tool_accuracy": 0.0,
+      "task_success_rate": 0.0,
+      "unsafe_action_rate": 0.0,
+      "unsafe_patch_rate": 0.0
+    },
+    "retry_only:end_to_end": {
+      "accepted_patch_correctness": 0.0,
+      "attribution": {
+        "abstention_rate": 1.0,
+        "accuracy": 0.0,
+        "confusion_matrix": {
+          "AE": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "PD": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "TF": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          }
+        },
+        "macro_f1": 0.0,
+        "per_class": {
+          "AE": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "PD": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "TF": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        }
+      },
+      "average_input_tokens": 662.6666666666666,
+      "average_latency_ms": 0.0,
+      "average_llm_calls": 1.1666666666666667,
+      "average_output_tokens": 53.5,
+      "average_probe_calls": 0.0,
+      "average_tool_calls": 1.25,
+      "budget_exhaustion_rate": 0.0,
+      "drift_category_accuracy": 0.0,
+      "exact_location_accuracy": 0.0,
+      "false_patch_rate": 0.0,
+      "forbidden_side_effect_rate": 0.0,
+      "future_transfer_rate": 0.0,
+      "immediate_repair_success_rate": 0.0,
+      "minimality_pass_rate": 0.0,
+      "patch_proposal_rate": 0.0,
+      "patch_validation_survival": 0.0,
+      "raw_patch_correctness": 0.0,
+      "records": 12,
+      "regression_pass_rate": 0.0,
+      "successful_task_average_interactions": 2.1,
+      "target_tool_accuracy": 0.0,
+      "task_success_rate": 0.8333333333333334,
+      "unsafe_action_rate": 0.0,
+      "unsafe_patch_rate": 0.0
+    },
+    "standard:component": {
+      "accepted_patch_correctness": 0.0,
+      "attribution": {
+        "abstention_rate": 1.0,
+        "accuracy": 0.0,
+        "confusion_matrix": {
+          "AE": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "PD": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "TF": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          }
+        },
+        "macro_f1": 0.0,
+        "per_class": {
+          "AE": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "PD": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "TF": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        }
+      },
+      "average_input_tokens": 86.0,
+      "average_latency_ms": 0.0,
+      "average_llm_calls": 1.0,
+      "average_output_tokens": 65.0,
+      "average_probe_calls": 0.0,
+      "average_tool_calls": 0.0,
+      "budget_exhaustion_rate": 0.0,
+      "drift_category_accuracy": 0.0,
+      "exact_location_accuracy": 0.0,
+      "false_patch_rate": 0.0,
+      "forbidden_side_effect_rate": 0.0,
+      "future_transfer_rate": 0.0,
+      "immediate_repair_success_rate": 0.0,
+      "minimality_pass_rate": 0.0,
+      "patch_proposal_rate": 0.0,
+      "patch_validation_survival": 0.0,
+      "raw_patch_correctness": 0.0,
+      "records": 12,
+      "regression_pass_rate": 0.0,
+      "successful_task_average_interactions": 0.0,
+      "target_tool_accuracy": 0.0,
+      "task_success_rate": 0.0,
+      "unsafe_action_rate": 0.0,
+      "unsafe_patch_rate": 0.0
+    },
+    "standard:end_to_end": {
+      "accepted_patch_correctness": 0.0,
+      "attribution": {
+        "abstention_rate": 1.0,
+        "accuracy": 0.0,
+        "confusion_matrix": {
+          "AE": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "PD": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "TF": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          }
+        },
+        "macro_f1": 0.0,
+        "per_class": {
+          "AE": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "PD": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "TF": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        }
+      },
+      "average_input_tokens": 714.75,
+      "average_latency_ms": 0.0,
+      "average_llm_calls": 1.25,
+      "average_output_tokens": 56.5,
+      "average_probe_calls": 0.0,
+      "average_tool_calls": 1.0,
+      "budget_exhaustion_rate": 0.0,
+      "drift_category_accuracy": 0.0,
+      "exact_location_accuracy": 0.0,
+      "false_patch_rate": 0.0,
+      "forbidden_side_effect_rate": 0.0,
+      "future_transfer_rate": 0.0,
+      "immediate_repair_success_rate": 0.0,
+      "minimality_pass_rate": 0.0,
+      "patch_proposal_rate": 0.0,
+      "patch_validation_survival": 0.0,
+      "raw_patch_correctness": 0.0,
+      "records": 12,
+      "regression_pass_rate": 0.0,
+      "successful_task_average_interactions": 2.0,
+      "target_tool_accuracy": 0.0,
+      "task_success_rate": 0.75,
+      "unsafe_action_rate": 0.0,
+      "unsafe_patch_rate": 0.0
+    },
+    "validation_guided:component": {
+      "accepted_patch_correctness": 0.0,
+      "attribution": {
+        "abstention_rate": 1.0,
+        "accuracy": 0.0,
+        "confusion_matrix": {
+          "AE": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "PD": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "TF": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          }
+        },
+        "macro_f1": 0.0,
+        "per_class": {
+          "AE": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "PD": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "TF": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        }
+      },
+      "average_input_tokens": 86.0,
+      "average_latency_ms": 0.0,
+      "average_llm_calls": 1.0,
+      "average_output_tokens": 65.0,
+      "average_probe_calls": 0.0,
+      "average_tool_calls": 0.0,
+      "budget_exhaustion_rate": 0.0,
+      "drift_category_accuracy": 0.0,
+      "exact_location_accuracy": 0.0,
+      "false_patch_rate": 0.0,
+      "forbidden_side_effect_rate": 0.0,
+      "future_transfer_rate": 0.0,
+      "immediate_repair_success_rate": 0.0,
+      "minimality_pass_rate": 0.0,
+      "patch_proposal_rate": 0.0,
+      "patch_validation_survival": 0.0,
+      "raw_patch_correctness": 0.0,
+      "records": 12,
+      "regression_pass_rate": 0.0,
+      "successful_task_average_interactions": 0.0,
+      "target_tool_accuracy": 0.0,
+      "task_success_rate": 0.0,
+      "unsafe_action_rate": 0.0,
+      "unsafe_patch_rate": 0.0
+    },
+    "validation_guided:end_to_end": {
+      "accepted_patch_correctness": 0.0,
+      "attribution": {
+        "abstention_rate": 1.0,
+        "accuracy": 0.0,
+        "confusion_matrix": {
+          "AE": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "PD": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "TF": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          }
+        },
+        "macro_f1": 0.0,
+        "per_class": {
+          "AE": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "PD": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "TF": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        }
+      },
+      "average_input_tokens": 790.75,
+      "average_latency_ms": 0.0,
+      "average_llm_calls": 1.25,
+      "average_output_tokens": 56.5,
+      "average_probe_calls": 0.0,
+      "average_tool_calls": 1.0,
+      "budget_exhaustion_rate": 0.0,
+      "drift_category_accuracy": 0.0,
+      "exact_location_accuracy": 0.0,
+      "false_patch_rate": 0.0,
+      "forbidden_side_effect_rate": 0.0,
+      "future_transfer_rate": 0.0,
+      "immediate_repair_success_rate": 0.0,
+      "minimality_pass_rate": 0.0,
+      "patch_proposal_rate": 0.0,
+      "patch_validation_survival": 0.0,
+      "raw_patch_correctness": 0.0,
+      "records": 12,
+      "regression_pass_rate": 0.0,
+      "successful_task_average_interactions": 2.0,
+      "target_tool_accuracy": 0.0,
+      "task_success_rate": 0.75,
+      "unsafe_action_rate": 0.0,
+      "unsafe_patch_rate": 0.0
+    }
+  },
+  "mock_provider": true,
+  "modes": [
+    "component",
+    "end_to_end"
+  ],
+  "real_llm_experiment_status": "NOT RUN",
+  "records": 168,
+  "resumed_records": 168,
+  "unsafe_real_world_actions": 0
+}

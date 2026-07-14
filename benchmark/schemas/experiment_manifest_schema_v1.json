@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["experiment_id", "timestamp", "git_commit", "dirty_working_tree", "dirty_warning", "config_hash", "prompt_hashes", "benchmark_hashes", "model_configuration", "supported_model_capabilities", "methods", "scenario_selection", "repetitions", "budgets", "cache_policy", "execution_controls", "python_version", "dependency_versions", "random_seed", "real_llm_experiment_status", "mock_provider"],
+  "properties": {
+    "experiment_id": {"type": "string"}, "timestamp": {"type": "string"},
+    "git_commit": {"type": "string"}, "dirty_working_tree": {"type": "boolean"},
+    "dirty_warning": {"type": ["string", "null"]}, "config_hash": {"type": "string"},
+    "prompt_hashes": {"type": "object"}, "benchmark_hashes": {"type": "object"},
+    "model_configuration": {"type": "object"}, "supported_model_capabilities": {"type": "object"},
+    "methods": {"type": "array"}, "scenario_selection": {"type": "object"},
+    "repetitions": {"type": "integer"}, "budgets": {"type": "object"},
+    "cache_policy": {"type": "object"}, "execution_controls": {"type": "object"},
+    "python_version": {"type": "string"},
+    "dependency_versions": {"type": "object"}, "random_seed": {"type": "integer"},
+    "real_llm_experiment_status": {"enum": ["NOT RUN", "RUN"]},
+    "mock_provider": {"type": "boolean"}
+  },
+  "additionalProperties": false
+}

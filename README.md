@@ -280,3 +280,68 @@ The formal result is written to
 semantic correctness, immediate repair, future-task transfer, regression,
 safety, minimality, deterministic replay, and per-category results. Phase 8
 uses no LLM and does not claim to have completed the later LLM-agent experiment.
+
+## Phase 9: LLM Tool-Agent Experiment Harness
+
+Phase 9 adds a provider-neutral tool agent and a reproducible experiment
+harness. `MockProvider` is the default and performs no network access. An
+OpenAI-compatible endpoint can be configured through
+`DRIFTGUARD_LLM_BASE_URL`, `DRIFTGUARD_LLM_MODEL`, and
+`DRIFTGUARD_LLM_API_KEY`; the key is read only at runtime and is excluded from
+prompts, cache keys, manifests, checkpoints, and records. Real-provider runs
+also require the explicit `--allow-real-api` flag.
+
+The common agent loop receives a natural-language task and displayed OpenAPI,
+emits a schema-validated `TOOL_CALL`, `FINAL_ANSWER`, `REQUEST_PROBE`, or
+`ABSTAIN` action, validates every tool and argument locally, executes through
+the real sandbox/injection chain, and records visible observations. Only the
+deterministic `TaskEvaluator` can mark a task successful; a model's statement
+of success is not sufficient.
+
+Recovery methods share the same base prompt, model, state, task, injection, and
+budgets:
+
+- `standard`: ordinary bounded continuation without a recovery framework.
+- `retry_only`: one semantically exact tool retry.
+- `reflection`: current-failure reflection with task-local memory only.
+- `validation_guided`: displayed validation plus the current visible response,
+  without persistent repair.
+- `driftguard_llm`: LLM attribution/proposal with deterministic eligibility and
+  Phase 8 validation; rejected LLM output is never replaced by a symbolic
+  answer.
+- `driftguard_symbolic`: the existing deterministic DriftGuard system version.
+- `oracle_symbolic_upper_bound`: a separately labeled upper bound, never a real
+  LLM result.
+
+Every method uses the same `ExperimentBudget` for LLM calls, tool calls, probes,
+total interactions, tokens, format repairs, wall time, and output size. Provider
+HTTP retries remain separate from tool-level retries. Cache keys include model
+configuration, prompt/schema/message hashes, public scenario, episode, method,
+and repetition, but never credentials. Records are written atomically and
+`--resume` skips completed records. The immutable manifest records the Git
+commit and dirty state, benchmark and prompt hashes, model capabilities,
+budgets, dependencies, selection, seed, and cache policy.
+
+Component mode evaluates attribution/localization/patch interfaces from fixed
+Agent-visible evidence. End-to-end mode begins with task planning and real tool
+execution. Their metrics are stored in separate method/mode groups.
+
+Run the offline smoke test and validation with:
+
+```bash
+python scripts/run_llm_experiment.py --config configs/experiments/phase9_mock_smoke.yaml
+python scripts/run_llm_experiment.py --config configs/experiments/phase9_mock_smoke.yaml --mode component
+python scripts/run_llm_experiment.py --config configs/experiments/phase9_mock_smoke.yaml --mode end_to_end
+python scripts/run_llm_experiment.py --config configs/experiments/phase9_mock_smoke.yaml --resume
+python scripts/validate_experiment_results.py results/experiments/phase9_mock_smoke
+```
+
+Raw provider/cache material is stored only under ignored experiment cache
+directories. Public records exclude evaluator metadata, hidden contracts,
+initial state, credentials, variant codes, expected patches, and chain of
+thought. The Phase 9 committed smoke report is generated exclusively by
+`MockProvider` and is explicitly labeled:
+
+`Real LLM experiment status: NOT RUN`
+
+No paid or formal multi-model experiment is performed in Phase 9.

@@ -1,0 +1,36 @@
+experiment_id: phase9_real_smoke_example
+provider:
+  provider: openai_compatible
+  model_id: ${DRIFTGUARD_LLM_MODEL}
+  base_url: ${DRIFTGUARD_LLM_BASE_URL}
+  temperature: 0
+  top_p: 1
+  max_output_tokens: 512
+  seed: 7
+  timeout_seconds: 30
+  max_provider_retries: 2
+  structured_output_mode: json_schema
+  capabilities:
+    seed: false
+    json_schema: false
+    strict_json: true
+families: [M01]
+methods: [standard, retry_only, reflection, validation_guided, driftguard_llm]
+modes: [component]
+repetitions: 1
+seeds: [7]
+parallelism: 1
+rate_limit_per_second: 1
+checkpoint_interval: 1
+cache:
+  enabled: true
+  force_refresh: false
+budgets:
+  max_llm_calls: 4
+  max_tool_calls: 6
+  max_probe_calls: 2
+  max_total_interactions: 8
+  max_input_tokens: 12000
+  max_output_tokens: 3000
+  max_wall_time_seconds: 60
+  max_format_repairs: 2

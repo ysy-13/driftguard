@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["action_type", "concise_decision_summary"],
+  "properties": {
+    "action_type": {"enum": ["TOOL_CALL", "FINAL_ANSWER", "REQUEST_PROBE", "ABSTAIN"]},
+    "tool_id": {"type": "string"},
+    "arguments": {"type": "object"},
+    "answer": {"type": "string"},
+    "probe_type": {"type": "string"},
+    "target_tool_id": {"type": "string"},
+    "hypothesis": {"type": "string"},
+    "evidence_refs": {"type": "array", "items": {"type": "string"}},
+    "concise_decision_summary": {"type": "string", "maxLength": 500}
+  },
+  "allOf": [
+    {"if": {"properties": {"action_type": {"const": "TOOL_CALL"}}}, "then": {"required": ["tool_id", "arguments"]}},
+    {"if": {"properties": {"action_type": {"const": "FINAL_ANSWER"}}}, "then": {"required": ["answer"]}},
+    {"if": {"properties": {"action_type": {"const": "REQUEST_PROBE"}}}, "then": {"required": ["probe_type", "target_tool_id", "hypothesis", "evidence_refs"]}}
+  ],
+  "additionalProperties": false
+}

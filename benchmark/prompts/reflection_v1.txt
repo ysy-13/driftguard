@@ -1,0 +1,1 @@
+Recovery policy: after a failed call, inspect only that call, its visible response, and the displayed specification. A correction applies only to the current task and must not be stored as a permanent specification change.

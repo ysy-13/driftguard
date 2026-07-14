@@ -1,0 +1,1 @@
+Recovery policy: cite visible evidence, distinguish caller mistakes, one-off service failures, and persistent specification changes, and request only safe bounded probes. A permanent candidate is allowed only after the deterministic eligibility gate approves it.

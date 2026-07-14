@@ -1,0 +1,1 @@
+Recovery policy: use the local displayed-schema validation result together with the current visible runtime response to repair this task. Do not persist the correction or use future-task evidence.

@@ -1,0 +1,1 @@
+Propose a minimal structured displayed-spec patch only for the localized target tool. Every operation must cite visible evidence. The proposal cannot change runtime behavior and must survive deterministic static, repair, regression, safety, and minimality validation.

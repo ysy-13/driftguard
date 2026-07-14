@@ -3,3 +3,5 @@ __pycache__/
 *.py[cod]
 .venv/
 *.egg-info/
+results/experiments/**/.cache/
+results/experiments/**/raw_provider/

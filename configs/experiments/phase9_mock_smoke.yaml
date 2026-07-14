@@ -1,0 +1,41 @@
+experiment_id: phase9_mock_smoke
+provider:
+  provider: mock
+  model_id: mock-deterministic
+  temperature: 0
+  top_p: 1
+  max_output_tokens: 512
+  seed: 7
+  timeout_seconds: 2
+  max_provider_retries: 2
+  structured_output_mode: json_schema
+  capabilities:
+    seed: true
+    json_schema: true
+    strict_json: true
+families: [M01, M06, M11, M16]
+methods: [standard, retry_only, reflection, validation_guided, driftguard_symbolic, driftguard_llm, oracle_symbolic_upper_bound]
+modes: [component, end_to_end]
+repetitions: 1
+seeds: [7]
+parallelism: 1
+rate_limit_per_second: null
+checkpoint_interval: 1
+cache:
+  enabled: true
+  force_refresh: false
+budgets:
+  max_llm_calls: 4
+  max_tool_calls: 6
+  max_probe_calls: 2
+  max_total_interactions: 8
+  max_input_tokens: 12000
+  max_output_tokens: 3000
+  max_wall_time_seconds: 60
+  max_format_repairs: 2
+ablations:
+  driftguard_no_history: false
+  driftguard_no_probe: false
+  driftguard_no_patch_gate: false
+  driftguard_no_regression: false
+  driftguard_no_transfer_memory: false

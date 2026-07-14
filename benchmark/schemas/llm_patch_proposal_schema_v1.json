@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["proposal", "raw_attribution", "guard_requested"],
+  "properties": {
+    "proposal": {"$ref": "tool_spec_patch_schema_v1.json"},
+    "raw_attribution": {"$ref": "llm_attribution_schema_v1.json"},
+    "guard_requested": {"const": true}
+  },
+  "additionalProperties": false
+}
