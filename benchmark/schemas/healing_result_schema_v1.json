@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://driftguard.local/schemas/healing_result_schema_v1.json",
+  "title": "DriftGuard Phase 8 healing conformance result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_version", "summary", "per_category", "canonical_hashes_before",
+    "canonical_hashes_after", "handler_hashes_before", "handler_hashes_after",
+    "oracle_regression", "phase6_regression", "phase7_regression", "scenarios"
+  ],
+  "properties": {
+    "run_version": {"const": "1.0"},
+    "summary": {"type": "object"},
+    "per_category": {"type": "object", "required": ["ICD", "RSD", "WPD", "SED"]},
+    "canonical_hashes_before": {"type": "object"},
+    "canonical_hashes_after": {"type": "object"},
+    "handler_hashes_before": {"type": "object"},
+    "handler_hashes_after": {"type": "object"},
+    "oracle_regression": {"type": "object"},
+    "phase6_regression": {"type": "object"},
+    "phase7_regression": {"type": "object"},
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": [
+          "public_scenario_id", "predicted_class", "eligibility", "diagnosis_summary",
+          "proposed_candidates", "selected_patch", "acceptance", "validation",
+          "immediate_repair", "future_transfer", "evaluator_correctness"
+        ],
+        "properties": {
+          "public_scenario_id": {"type": "string", "pattern": "^public-[a-f0-9]{12}$"},
+          "predicted_class": {"enum": ["AE", "TF", "PD", "UNRESOLVED"]},
+          "eligibility": {"type": "object"},
+          "diagnosis_summary": {"type": "object"},
+          "proposed_candidates": {"type": "array"},
+          "selected_patch": {"type": ["object", "null"]},
+          "acceptance": {"type": "boolean"},
+          "validation": {"type": "object"},
+          "immediate_repair": {"type": ["object", "null"]},
+          "future_transfer": {"type": ["object", "null"]},
+          "evaluator_correctness": {"type": "object"}
+        }
+      }
+    }
+  }
+}

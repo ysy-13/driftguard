@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://driftguard.local/schemas/tool_spec_patch_schema_v1.json",
+  "title": "DriftGuard ToolSpecPatch v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "patch_id", "patch_version", "created_at", "target_tool_id",
+    "source_spec_fingerprint", "drift_category", "location_type", "location_path",
+    "evidence_refs", "rationale_codes", "openapi_operations", "semantic_extensions",
+    "expected_agent_behavior_change", "confidence", "lifecycle_status", "validation_results"
+  ],
+  "properties": {
+    "patch_id": {"type": "string", "pattern": "^patch-[a-f0-9]{16}$"},
+    "patch_version": {"const": "1.0"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "target_tool_id": {"type": "string", "minLength": 1},
+    "source_spec_fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "drift_category": {"enum": ["ICD", "RSD", "WPD", "SED"]},
+    "location_type": {"type": "string", "minLength": 1},
+    "location_path": {"type": "string", "pattern": "^/"},
+    "evidence_refs": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+    "rationale_codes": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "openapi_operations": {
+      "type": "array", "minItems": 1, "maxItems": 8,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["op", "path", "value", "evidence_refs", "reason_code"],
+        "properties": {
+          "op": {"enum": ["add", "remove", "replace", "move", "copy", "test"]},
+          "path": {"type": "string", "pattern": "^/"},
+          "value": {},
+          "evidence_refs": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+          "reason_code": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "semantic_extensions": {
+      "type": "object", "required": ["x-driftguard-patch-semantics"],
+      "properties": {"x-driftguard-patch-semantics": {"type": "object"}}
+    },
+    "expected_agent_behavior_change": {"type": "string", "minLength": 1},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "lifecycle_status": {"enum": ["PROPOSED", "STATIC_VALIDATED", "REPAIR_VALIDATED", "REGRESSION_VALIDATED", "SAFETY_VALIDATED", "ACCEPTED", "REJECTED", "ROLLED_BACK"]},
+    "validation_results": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["passed", "stage", "reason_codes", "details"],
+        "properties": {
+          "passed": {"type": "boolean"}, "stage": {"type": "string"},
+          "reason_codes": {"type": "array", "items": {"type": "string"}},
+          "details": {"type": "object"}
+        }
+      }
+    }
+  }
+}

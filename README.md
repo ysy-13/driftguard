@@ -1,6 +1,6 @@
 # DriftGuard
 
-This repository contains phase 1 of the **DriftGuard** benchmark. Its canonical
+This repository contains Phases 1–8 of the **DriftGuard** benchmark. Its canonical
 OpenAPI 3.1 contract is
 [`benchmark/openapi/driftguard_openapi_v1.yaml`](benchmark/openapi/driftguard_openapi_v1.yaml).
 
@@ -227,3 +227,56 @@ pytest -q
 
 This phase uses no external LLM API and does not generate patches, run Phase 8
 self-repair, or modify the canonical handlers.
+
+## Phase 8: Evidence-Grounded Tool-Spec Healing
+
+Phase 8 turns an eligible Phase 7 Persistent Drift diagnosis into a minimal,
+auditable `ToolSpecPatch`. The deterministic candidate generator receives only
+the frozen `AgentView`, `DiagnosisResult`, exact localization, eligibility
+decision, displayed OpenAPI snapshot, and cited visible evidence. It cannot
+accept an `EvaluatorView` or `RuntimeProfile`, and Episode 6 is rejected at the
+generation boundary. Agent Error and Transient Failure therefore produce no
+permanent candidate.
+
+The four patch families change agent-visible behavior without changing the
+runtime: ICD transforms requests, RSD maps response fields, WPD declares and
+executes prerequisite workflows, and SED declares read-after-write or
+new-resource confirmation policies. RFC 6902-style operations are atomically
+applied to an isolated `SpecOverlay`; semantic behavior is carried in explicit
+`x-driftguard-*` extensions. Accepted patches are keyed in `PatchRegistry` by
+tool, source fingerprint, localized path, and version—never by a benchmark
+family or drift ID.
+
+Every candidate passes the lifecycle
+`PROPOSED → STATIC_VALIDATED → REPAIR_VALIDATED → REGRESSION_VALIDATED
+→ SAFETY_VALIDATED → ACCEPTED`. Static validation checks fingerprint,
+JSON Pointer scope, OpenAPI 3.1 validity, operation IDs, and security. Immediate
+repair replays from a clean pre-failure state against the real Persistent Drift
+runtime and uses the task evaluator. Three independent regression forks,
+side-effect and tool-budget safety checks, and semantic minimality checks must
+all pass. Any failure rejects the patch and rolls back the overlay.
+
+Only after acceptance does the runner execute the held-out Episode 6 twice
+from identical initial state: once without the patch and once with the accepted
+patch. Future evidence cannot rank, validate, accept, or rewrite a candidate.
+The ground-truth evaluator is constructed last and performs semantic rather
+than textual patch comparison. The report also reruns Oracle, Phase 6, and
+Phase 7 checks and verifies protected-file and canonical-handler hashes.
+
+Run:
+
+```bash
+python scripts/run_healing_conformance.py
+python scripts/run_healing_conformance.py --family M01
+python scripts/run_healing_conformance.py --output results/healing/custom.json
+python scripts/run_attribution_conformance.py
+python scripts/run_injection_conformance.py
+python scripts/run_oracle.py
+pytest -q
+```
+
+The formal result is written to
+`results/healing/healing_conformance_v1.json` and reports proposal prevention,
+semantic correctness, immediate repair, future-task transfer, regression,
+safety, minimality, deterministic replay, and per-category results. Phase 8
+uses no LLM and does not claim to have completed the later LLM-agent experiment.

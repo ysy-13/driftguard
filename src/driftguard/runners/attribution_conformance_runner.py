@@ -105,7 +105,13 @@ class AttributionConformanceRunner:
             )
         return executor.execute(plan, main_service, lambda fork: {"inspection": plan.probe_type, "passed": True})
 
-    def _run_scenario(self, family: dict[str, Any], scenario: dict[str, Any]) -> dict[str, Any]:
+    def _run_scenario(
+        self,
+        family: dict[str, Any],
+        scenario: dict[str, Any],
+        *,
+        return_agent_artifacts: bool = False,
+    ) -> dict[str, Any]:
         mode = ExecutionMode(scenario["variant_code"])
         case = self._case_by_id[family["source_drift_id"]]
         public_id = _public_id(scenario["scenario_id"])
@@ -247,6 +253,19 @@ class AttributionConformanceRunner:
         self.diagnosis_validator.validate(diagnosis.to_dict())
         self.trace_validator.validate(agent_view.trace.to_dict())
         collector.add("diagnosis_emitted", 5, probe_metadata={"diagnosis_available": True})
+
+        # Phase 8 consumes the frozen, agent-visible artifacts at the exact
+        # information boundary preceding evaluator construction.  The default
+        # Phase 7 path remains byte-for-byte compatible at the result level.
+        if return_agent_artifacts:
+            return {
+                "public_scenario_id": public_id,
+                "agent_view": agent_view,
+                "diagnosis": diagnosis,
+                "probe_count": probe_count,
+                "unsafe_probe_count": unsafe_probe_count,
+                "calls_to_decision": context.session.call_count,
+            }
 
         # Ground truth becomes available only after DiagnosisEngine has returned.
         evaluator_view = EvaluatorView(agent_view, scenario["evaluator_metadata"])
