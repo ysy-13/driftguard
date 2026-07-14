@@ -190,6 +190,40 @@ pytest -q
 
 It executes 60 matched first failures, verifies AE/TF recovery and PD
 persistence on independent calls, checks family-level symptom equality, and
-rechecks SHA-256 hashes for all six protected canonical benchmark files. It
+rechecks SHA-256 hashes for all seven protected canonical benchmark files. It
 does not run an LLM, agent, patch generator, shadow validator, or the complete
 360-episode experiment.
+
+## Phase 7: Evidence-Based Failure Attribution
+
+Phase 7 adds immutable, append-only evidence traces and strictly separates the
+Agent-visible view from evaluator-only ground truth. Scenario-local history is
+time bounded, while recursive leakage checks reject hidden runtime profiles,
+variant labels, drift identifiers, evaluator metadata, and future evidence.
+
+The deterministic diagnosis engine uses displayed-spec validation, visible
+responses, state observations, prior successes, controlled retries, and safe
+active probes to distinguish Agent Error, Transient Failure, and Persistent
+Spec Drift. Generic localization rules identify ICD, RSD, WPD, and SED
+locations from the displayed OpenAPI and observed symptom; they do not use
+family IDs or source drift IDs. The patch eligibility gate only reports
+whether the attribution protocol is satisfied—it does not generate or apply a
+patch.
+
+All write-capable probes execute on isolated state forks. Probe budgets,
+before/after hashes, unsafe-probe rejection, deterministic replay, Oracle
+regression, Phase 6 regression, and canonical hashes are included in the
+attribution report.
+
+Run:
+
+```bash
+python scripts/run_attribution_conformance.py
+python scripts/run_attribution_conformance.py --family M01
+python scripts/run_oracle.py
+python scripts/run_injection_conformance.py
+pytest -q
+```
+
+This phase uses no external LLM API and does not generate patches, run Phase 8
+self-repair, or modify the canonical handlers.

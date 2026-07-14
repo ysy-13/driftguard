@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://driftguard.local/schemas/evidence_trace_schema_v1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["trace_id", "public_scenario_id", "events"],
+  "properties": {
+    "trace_id": {"type": "string", "minLength": 1},
+    "public_scenario_id": {"type": "string", "minLength": 1},
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["event_id", "trace_id", "public_scenario_id", "episode_number", "sequence_number", "event_type", "tool_id", "displayed_request", "local_validation_result", "visible_runtime_response", "normalized_observation", "visible_state_diff", "before_state_hash", "after_state_hash", "displayed_spec_fingerprint", "historical_evidence_refs", "probe_metadata", "timestamp"],
+        "properties": {
+          "event_id": {"type": "string"}, "trace_id": {"type": "string"},
+          "public_scenario_id": {"type": "string"},
+          "episode_number": {"type": "integer", "minimum": 1},
+          "sequence_number": {"type": "integer", "minimum": 1},
+          "event_type": {"enum": ["task_received", "tool_call_proposed", "local_validation", "tool_response", "state_observation", "history_retrieval", "retry_result", "probe_started", "probe_result", "hypothesis_updated", "diagnosis_emitted"]},
+          "tool_id": {"type": ["string", "null"]},
+          "displayed_request": {"type": "object"}, "local_validation_result": {"type": "object"},
+          "visible_runtime_response": {"type": "object"}, "normalized_observation": {"type": "object"},
+          "visible_state_diff": {"type": "array"},
+          "before_state_hash": {"type": ["string", "null"]}, "after_state_hash": {"type": ["string", "null"]},
+          "displayed_spec_fingerprint": {"type": ["string", "null"]},
+          "historical_evidence_refs": {"type": "array", "items": {"type": "string"}},
+          "probe_metadata": {"type": "object"}, "timestamp": {"type": "string"}
+        }
+      }
+    }
+  }
+}

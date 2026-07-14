@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://driftguard.local/schemas/diagnosis_result_schema_v1.json",
+  "type": "object",
+  "required": ["predicted_class", "final_state", "transitions", "localization", "patch_eligibility", "evidence_event_refs", "confidence"],
+  "properties": {
+    "predicted_class": {"enum": ["AE", "TF", "PD", "UNRESOLVED"]},
+    "final_state": {"type": "string"},
+    "transitions": {"type": "array", "minItems": 1},
+    "localization": {
+      "type": "object",
+      "required": ["tool_id", "drift_category", "location_type", "location_path", "expected_behavior", "observed_behavior", "supporting_evidence_ids", "confidence"],
+      "properties": {
+        "tool_id": {"type": ["string", "null"]},
+        "drift_category": {"enum": ["ICD", "RSD", "WPD", "SED", "UNKNOWN"]},
+        "location_type": {"enum": ["request_field", "request_requiredness", "request_type", "response_field", "response_shape", "workflow_precondition", "state_effect", "permission_requirement", "unknown"]},
+        "location_path": {"type": ["string", "null"]},
+        "expected_behavior": {"type": "string"}, "observed_behavior": {"type": "string"},
+        "supporting_evidence_ids": {"type": "array", "items": {"type": "string"}},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "patch_eligibility": {
+      "type": "object",
+      "required": ["decision", "supporting_evidence_ids", "independent_failure_count", "discriminative_probe_passed", "regression_requirements_identified", "unsafe_write_count", "reason_codes"],
+      "properties": {
+        "decision": {"enum": ["FORBIDDEN", "INSUFFICIENT_EVIDENCE", "ELIGIBLE"]},
+        "supporting_evidence_ids": {"type": "array", "items": {"type": "string"}},
+        "independent_failure_count": {"type": "integer", "minimum": 0},
+        "discriminative_probe_passed": {"type": "boolean"},
+        "regression_requirements_identified": {"type": "boolean"},
+        "unsafe_write_count": {"type": "integer", "minimum": 0},
+        "reason_codes": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "evidence_event_refs": {"type": "array", "items": {"type": "string"}},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+  }
+}
