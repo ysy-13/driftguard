@@ -36,6 +36,7 @@
     "termination_reason": {"type": "string"},
     "error_category": {"type": ["string", "null"]},
     "prompt_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "catalog_fingerprint": {"type": "string", "pattern": "^$|^[a-f0-9]{64}$"},
     "trace_references": {"type": "array", "items": {"type": "string"}},
     "mock_provider": {"type": "boolean"}
   },

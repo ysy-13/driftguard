@@ -1,0 +1,103 @@
+{
+  "cost": {
+    "api_attempts": 6,
+    "hard_limit_cny": 50,
+    "provider_reported_input_tokens": 681,
+    "provider_reported_output_tokens": 74,
+    "reserved_cny": 0.0,
+    "soft_limit_cny": 35,
+    "soft_warning": false,
+    "spent_cny": 0.00135746
+  },
+  "experiment_stage": "PILOT_PREFLIGHT",
+  "passed_models": [
+    "deepseek",
+    "dashscope"
+  ],
+  "reports": [
+    {
+      "checks": [
+        {
+          "actual_model": "deepseek-v4-flash",
+          "input_tokens": 11,
+          "model_match": true,
+          "name": "minimal_text",
+          "output_tokens": 1,
+          "passed": true,
+          "provider_attempts": 1,
+          "usage_returned": true
+        },
+        {
+          "actual_model": "deepseek-v4-flash",
+          "input_tokens": 35,
+          "model_match": true,
+          "name": "strict_json",
+          "output_tokens": 5,
+          "passed": true,
+          "provider_attempts": 1,
+          "structured_output_mode_used": "strict_json",
+          "usage_returned": true
+        },
+        {
+          "actual_model": "deepseek-v4-flash",
+          "input_tokens": 296,
+          "model_match": true,
+          "name": "tool_calling",
+          "output_tokens": 38,
+          "passed": true,
+          "provider_attempts": 1,
+          "usage_returned": true
+        }
+      ],
+      "configured_model": "deepseek-v4-flash",
+      "credential": "configured",
+      "endpoint": "https://api.deepseek.com",
+      "passed": true,
+      "provider": "deepseek",
+      "sanitized_error": null,
+      "thinking_mode": "disabled"
+    },
+    {
+      "checks": [
+        {
+          "actual_model": "qwen3.7-plus",
+          "input_tokens": 19,
+          "model_match": true,
+          "name": "minimal_text",
+          "output_tokens": 1,
+          "passed": true,
+          "provider_attempts": 1,
+          "usage_returned": true
+        },
+        {
+          "actual_model": "qwen3.7-plus",
+          "input_tokens": 30,
+          "model_match": true,
+          "name": "strict_json",
+          "output_tokens": 5,
+          "passed": true,
+          "provider_attempts": 1,
+          "structured_output_mode_used": "strict_json",
+          "usage_returned": true
+        },
+        {
+          "actual_model": "qwen3.7-plus",
+          "input_tokens": 290,
+          "model_match": true,
+          "name": "tool_calling",
+          "output_tokens": 24,
+          "passed": true,
+          "provider_attempts": 1,
+          "usage_returned": true
+        }
+      ],
+      "configured_model": "qwen3.7-plus",
+      "credential": "configured",
+      "endpoint": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "passed": true,
+      "provider": "dashscope",
+      "sanitized_error": null,
+      "thinking_mode": "disabled"
+    }
+  ]
+}

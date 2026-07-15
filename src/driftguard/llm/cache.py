@@ -31,6 +31,7 @@ class LLMCache:
             "response_schema_hash": response_schema_hash,
             "public_scenario_id": request.public_scenario_id, "episode": request.episode,
             "method": request.method, "repetition": request.repetition,
+            "seed": request.seed, "mode": request.mode, "config_hash": request.config_hash,
             "message_hash": hashlib.sha256(json.dumps([dict(item) for item in request.messages], sort_keys=True).encode()).hexdigest(),
         }
         return hashlib.sha256(json.dumps(material, sort_keys=True, separators=(",", ":")).encode()).hexdigest()

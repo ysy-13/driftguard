@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AgentAction v2",
+  "description": "Strict action-specific output contract for a tool-using agent.",
+  "type": "object",
+  "oneOf": [
+    {
+      "title": "TOOL_CALL",
+      "type": "object",
+      "required": ["action_type", "tool_id", "arguments", "concise_decision_summary"],
+      "properties": {
+        "action_type": {"const": "TOOL_CALL"},
+        "tool_id": {"type": "string", "minLength": 1},
+        "arguments": {"type": "object"},
+        "concise_decision_summary": {"type": "string", "maxLength": 500}
+      },
+      "additionalProperties": false
+    },
+    {
+      "title": "FINAL_ANSWER",
+      "type": "object",
+      "required": ["action_type", "answer", "concise_decision_summary"],
+      "properties": {
+        "action_type": {"const": "FINAL_ANSWER"},
+        "answer": {"type": "string"},
+        "concise_decision_summary": {"type": "string", "maxLength": 500}
+      },
+      "additionalProperties": false
+    },
+    {
+      "title": "REQUEST_PROBE",
+      "type": "object",
+      "required": ["action_type", "probe_type", "target_tool_id", "hypothesis", "evidence_refs", "concise_decision_summary"],
+      "properties": {
+        "action_type": {"const": "REQUEST_PROBE"},
+        "probe_type": {"type": "string", "minLength": 1},
+        "target_tool_id": {"type": "string", "minLength": 1},
+        "hypothesis": {"type": "string", "minLength": 1},
+        "evidence_refs": {"type": "array", "items": {"type": "string"}},
+        "concise_decision_summary": {"type": "string", "maxLength": 500}
+      },
+      "additionalProperties": false
+    },
+    {
+      "title": "ABSTAIN",
+      "type": "object",
+      "required": ["action_type", "concise_decision_summary"],
+      "properties": {
+        "action_type": {"const": "ABSTAIN"},
+        "concise_decision_summary": {"type": "string", "maxLength": 500}
+      },
+      "additionalProperties": false
+    }
+  ]
+}

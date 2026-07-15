@@ -1,0 +1,61 @@
+{
+  "cache_unchanged": true,
+  "details": [
+    {
+      "matched": true,
+      "method": "standard",
+      "provider": "deepseek"
+    },
+    {
+      "matched": true,
+      "method": "retry_only",
+      "provider": "deepseek"
+    },
+    {
+      "matched": true,
+      "method": "reflection",
+      "provider": "deepseek"
+    },
+    {
+      "matched": true,
+      "method": "validation_guided",
+      "provider": "deepseek"
+    },
+    {
+      "matched": true,
+      "method": "driftguard_llm",
+      "provider": "deepseek"
+    },
+    {
+      "matched": true,
+      "method": "standard",
+      "provider": "dashscope"
+    },
+    {
+      "matched": true,
+      "method": "retry_only",
+      "provider": "dashscope"
+    },
+    {
+      "matched": true,
+      "method": "reflection",
+      "provider": "dashscope"
+    },
+    {
+      "matched": true,
+      "method": "validation_guided",
+      "provider": "dashscope"
+    },
+    {
+      "matched": true,
+      "method": "driftguard_llm",
+      "provider": "dashscope"
+    }
+  ],
+  "ledger_unchanged": true,
+  "matched": 10,
+  "new_cost_cny": 0.0,
+  "provider_fallback_calls": 0,
+  "records": 10,
+  "status": "PASSED"
+}

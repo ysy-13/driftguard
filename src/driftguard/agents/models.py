@@ -108,9 +108,14 @@ class AgentRunResult:
     trace_references: tuple[str, ...]
     actions: tuple[dict[str, Any], ...]
     task_evaluation: dict[str, Any]
+    state_transitions: tuple[dict[str, Any], ...] = ()
+    catalog_fingerprint: str = ""
+    policy_events: tuple[dict[str, Any], ...] = ()
 
     def to_dict(self) -> dict[str, Any]:
         value = asdict(self)
         value["trace_references"] = list(self.trace_references)
         value["actions"] = list(self.actions)
+        value["state_transitions"] = list(self.state_transitions)
+        value["policy_events"] = list(self.policy_events)
         return value

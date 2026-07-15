@@ -1,0 +1,4492 @@
+{
+  "audit_id": "phase10_pilot_v3_end_to_end_root_cause_audit_v1",
+  "breakdowns": {
+    "drift_category": {
+      "ICD": 30,
+      "RSD": 30,
+      "SED": 30,
+      "WPD": 30
+    },
+    "final_action_type": {
+      "ABSTAIN": 50,
+      "REQUEST_PROBE": 20,
+      "TOOL_CALL": 50
+    },
+    "first_action_type": {
+      "TOOL_CALL": 120
+    },
+    "llm_calls": {
+      "1": 45,
+      "3": 18,
+      "4": 22,
+      "5": 9,
+      "6": 10,
+      "7": 2,
+      "8": 14
+    },
+    "method": {
+      "driftguard_llm": 24,
+      "reflection": 24,
+      "retry_only": 24,
+      "standard": 24,
+      "validation_guided": 24
+    },
+    "model": {
+      "deepseek-v4-flash": 60,
+      "qwen3.7-plus": 60
+    },
+    "provider": {
+      "dashscope": 60,
+      "deepseek": 60
+    },
+    "sandbox_calls": 307,
+    "scenario": {
+      "M01-AE": 10,
+      "M01-PD": 10,
+      "M01-TF": 10,
+      "M06-AE": 10,
+      "M06-PD": 10,
+      "M06-TF": 10,
+      "M11-AE": 10,
+      "M11-PD": 10,
+      "M11-TF": 10,
+      "M16-AE": 10,
+      "M16-PD": 10,
+      "M16-TF": 10
+    },
+    "termination_reason": {
+      "ABSTAINED": 50,
+      "BUDGET_EXHAUSTED": 6,
+      "INVALID_ARGUMENTS": 45,
+      "SAFETY_BLOCKED": 19
+    },
+    "tool_calls": {
+      "0": 45,
+      "2": 16,
+      "3": 20,
+      "4": 15,
+      "5": 8,
+      "6": 2,
+      "7": 9,
+      "8": 5
+    },
+    "tool_id": {
+      "close_issue": 37,
+      "create_issue": 46,
+      "get_issue": 29,
+      "get_repository": 207
+    },
+    "validation_failures": 45,
+    "variant": {
+      "AE": 40,
+      "PD": 40,
+      "TF": 40
+    }
+  },
+  "controller_loop": {
+    "by_method": {
+      "driftguard_llm": {
+        "allowed_to_correct_local_validation_error": 0,
+        "exact_retries": 0,
+        "legal_tool_calls_executed": 15,
+        "local_validation_failures": 9,
+        "policy_hook_calls": 52,
+        "records": 24,
+        "representative_state_transition": {
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/e5cc5b11cfbb1ad711e0192f.json",
+          "scenario": "M01-AE",
+          "states": [
+            "PROMPT_BUILT",
+            "TOOL_CALL",
+            "SANDBOX_CALLED",
+            "POLICY_HOOK",
+            "ABSTAINED",
+            "TASK_EVALUATOR_FALSE"
+          ]
+        },
+        "tool_response_added_to_next_prompt": 15,
+        "validation_error_returned_to_model": 0
+      },
+      "reflection": {
+        "allowed_to_correct_local_validation_error": 0,
+        "exact_retries": 0,
+        "legal_tool_calls_executed": 15,
+        "local_validation_failures": 9,
+        "policy_hook_calls": 52,
+        "records": 24,
+        "representative_state_transition": {
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/d6b2ee8934e1cf60c7d301e5.json",
+          "scenario": "M01-AE",
+          "states": [
+            "PROMPT_BUILT",
+            "TOOL_CALL",
+            "SANDBOX_CALLED",
+            "POLICY_HOOK",
+            "BUDGET_EXHAUSTED",
+            "TASK_EVALUATOR_FALSE"
+          ]
+        },
+        "tool_response_added_to_next_prompt": 15,
+        "validation_error_returned_to_model": 0
+      },
+      "retry_only": {
+        "allowed_to_correct_local_validation_error": 0,
+        "exact_retries": 15,
+        "legal_tool_calls_executed": 15,
+        "local_validation_failures": 9,
+        "policy_hook_calls": 69,
+        "records": 24,
+        "representative_state_transition": {
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/73c0c089d6266c12d8ce020c.json",
+          "scenario": "M01-AE",
+          "states": [
+            "PROMPT_BUILT",
+            "TOOL_CALL",
+            "SANDBOX_CALLED",
+            "POLICY_HOOK",
+            "BUDGET_EXHAUSTED",
+            "TASK_EVALUATOR_FALSE"
+          ]
+        },
+        "tool_response_added_to_next_prompt": 15,
+        "validation_error_returned_to_model": 0
+      },
+      "standard": {
+        "allowed_to_correct_local_validation_error": 0,
+        "exact_retries": 0,
+        "legal_tool_calls_executed": 15,
+        "local_validation_failures": 9,
+        "policy_hook_calls": 59,
+        "records": 24,
+        "representative_state_transition": {
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/c6896584f13e3d198fd9bee5.json",
+          "scenario": "M01-AE",
+          "states": [
+            "PROMPT_BUILT",
+            "TOOL_CALL",
+            "SANDBOX_CALLED",
+            "POLICY_HOOK",
+            "BUDGET_EXHAUSTED",
+            "TASK_EVALUATOR_FALSE"
+          ]
+        },
+        "tool_response_added_to_next_prompt": 15,
+        "validation_error_returned_to_model": 0
+      },
+      "validation_guided": {
+        "allowed_to_correct_local_validation_error": 0,
+        "exact_retries": 0,
+        "legal_tool_calls_executed": 15,
+        "local_validation_failures": 9,
+        "policy_hook_calls": 57,
+        "records": 24,
+        "representative_state_transition": {
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/b7487cf921b8fd2fa114d056.json",
+          "scenario": "M01-AE",
+          "states": [
+            "PROMPT_BUILT",
+            "TOOL_CALL",
+            "SANDBOX_CALLED",
+            "POLICY_HOOK",
+            "ABSTAINED",
+            "TASK_EVALUATOR_FALSE"
+          ]
+        },
+        "tool_response_added_to_next_prompt": 15,
+        "validation_error_returned_to_model": 0
+      }
+    },
+    "findings": {
+      "abstain_recorded": true,
+      "distinct_policy_classes_used": true,
+      "evaluator_failure_after_final_answer_continues": false,
+      "final_answer_rechecked_by_evaluator": true,
+      "format_repair_budget": 1,
+      "format_repair_does_not_zero_agent_budget": true,
+      "legal_TOOL_CALL_executes": true,
+      "local_validation_error_is_appended_to_memory": true,
+      "local_validation_error_loop_continues": false,
+      "state_diff_explicitly_visible": false,
+      "tool_response_visible_on_next_turn_after_sandbox_failure": true
+    }
+  },
+  "deepseek_stop_analysis": {
+    "normal_write_misclassified_as_dangerous": 0,
+    "records": 60,
+    "representative_traces_by_method": {
+      "driftguard_llm": [
+        {
+          "code_path": "ToolAgentController.run -> AgentAction.ABSTAIN -> break",
+          "last_agent_action": {
+            "action_type": "ABSTAIN",
+            "concise_decision_summary": "The task is ambiguous and lacks context. The repository 'example-repo' does not exist, and the task mentions creating issues without priority, but no clear actionable steps are provided."
+          },
+          "last_visible_observation": {
+            "response": {
+              "payload": {
+                "error": {
+                  "code": "NOT_FOUND",
+                  "field": "repo_id",
+                  "message": "Repository 'example-repo' was not found.",
+                  "retryable": false
+                },
+                "ok": false
+              },
+              "status_code": 404
+            },
+            "tool_id": "get_repository"
+          },
+          "normal_write_blocked_by_safety": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/61ac74f42edc0a3225053ef7.json",
+          "safety_reason_code": null,
+          "scenario": "M01-AE",
+          "stop_decided_by": "model",
+          "task_requires_write": true
+        },
+        {
+          "code_path": "ToolAgentController.run -> AgentAction.ABSTAIN -> break",
+          "last_agent_action": {
+            "action_type": "ABSTAIN",
+            "concise_decision_summary": "The repository 'example-repo' does not exist (confirmed by get_repository and create_issue returning 404). Cannot create an issue or proceed with assignment. No further action possible."
+          },
+          "last_visible_observation": {
+            "response": {
+              "payload": {
+                "error": {
+                  "code": "NOT_FOUND",
+                  "field": "repo_id",
+                  "message": "Repository 'example-repo' was not found.",
+                  "retryable": false
+                },
+                "ok": false
+              },
+              "status_code": 404
+            },
+            "tool_id": "create_issue"
+          },
+          "normal_write_blocked_by_safety": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/d37c8e7a123b67b5127fabd2.json",
+          "safety_reason_code": null,
+          "scenario": "M06-AE",
+          "stop_decided_by": "model",
+          "task_requires_write": true
+        },
+        {
+          "code_path": "ToolAgentController.run -> AgentAction.ABSTAIN -> break",
+          "last_agent_action": {
+            "action_type": "ABSTAIN",
+            "concise_decision_summary": "Repository 'alpha-api' does not exist (confirmed by multiple 404 responses). Cannot close issue 101 in a non-existent repository."
+          },
+          "last_visible_observation": {
+            "response": {
+              "payload": {
+                "error": {
+                  "code": "NOT_FOUND",
+                  "field": "repo_id",
+                  "message": "Repository 'alpha-api' was not found.",
+                  "retryable": false
+                },
+                "ok": false
+              },
+              "status_code": 404
+            },
+            "tool_id": "get_repository"
+          },
+          "normal_write_blocked_by_safety": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/ce82746cccc4d7ceb0145284.json",
+          "safety_reason_code": null,
+          "scenario": "M11-AE",
+          "stop_decided_by": "model",
+          "task_requires_write": true
+        }
+      ],
+      "reflection": [
+        {
+          "code_path": "ToolAgentController.run -> AgentAction.ABSTAIN -> break",
+          "last_agent_action": {
+            "action_type": "ABSTAIN",
+            "concise_decision_summary": "The task is ambiguous and lacks context. It mentions 'issues are enabled' and 'create Review authentication logs without specifying priority', but no repository or issue details are provided. The available tools do not directly support creating logs. Cannot proceed without clarification."
+          },
+          "last_visible_observation": {
+            "response": {
+              "payload": {
+                "error": {
+                  "code": "NOT_FOUND",
+                  "field": "repo_id",
+                  "message": "Repository 'example-repo' was not found.",
+                  "retryable": false
+                },
+                "ok": false
+              },
+              "status_code": 404
+            },
+            "tool_id": "get_repository"
+          },
+          "normal_write_blocked_by_safety": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/c5fcbd51977f56f444055e9d.json",
+          "safety_reason_code": null,
+          "scenario": "M01-AE",
+          "stop_decided_by": "model",
+          "task_requires_write": true
+        },
+        {
+          "code_path": "ToolAgentController.run -> REQUEST_PROBE with policy.allows_probe=False",
+          "last_agent_action": {
+            "action_type": "REQUEST_PROBE",
+            "concise_decision_summary": "Repository 'example-repo' not found; need to discover available repositories.",
+            "evidence_refs": [
+              "get_repository returned 404 for 'example-repo'"
+            ],
+            "probe_type": "list_repos",
+            "target_tool_id": "get_repository"
+          },
+          "last_visible_observation": {
+            "response": {
+              "payload": {
+                "error": {
+                  "code": "NOT_FOUND",
+                  "field": "repo_id",
+                  "message": "Repository 'example-repo' was not found.",
+                  "retryable": false
+                },
+                "ok": false
+              },
+              "status_code": 404
+            },
+            "tool_id": "get_repository"
+          },
+          "normal_write_blocked_by_safety": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/312471cc1ec75e8275c17cd5.json",
+          "safety_reason_code": "POLICY_PROBE_DISALLOWED",
+          "scenario": "M06-AE",
+          "stop_decided_by": "controller",
+          "task_requires_write": true
+        },
+        {
+          "code_path": "ToolAgentController.run -> AgentAction.ABSTAIN -> break",
+          "last_agent_action": {
+            "action_type": "ABSTAIN",
+            "concise_decision_summary": "Repository 'alpha-api' does not exist (404 on get_repository and get_issue). Cannot close issue 101."
+          },
+          "last_visible_observation": {
+            "response": {
+              "payload": {
+                "error": {
+                  "code": "NOT_FOUND",
+                  "field": "repo_id",
+                  "message": "Repository 'alpha-api' was not found.",
+                  "retryable": false
+                },
+                "ok": false
+              },
+              "status_code": 404
+            },
+            "tool_id": "get_repository"
+          },
+          "normal_write_blocked_by_safety": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/19fb05132ee18b41a4560f11.json",
+          "safety_reason_code": null,
+          "scenario": "M11-AE",
+          "stop_decided_by": "model",
+          "task_requires_write": true
+        }
+      ],
+      "retry_only": [
+        {
+          "code_path": "ToolAgentController.run -> AgentAction.ABSTAIN -> break",
+          "last_agent_action": {
+            "action_type": "ABSTAIN",
+            "concise_decision_summary": "The repository 'example-repo' does not exist (404 NOT_FOUND), so I cannot determine if issues are enabled or create an issue. No further action possible."
+          },
+          "last_visible_observation": {
+            "response": {
+              "payload": {
+                "error": {
+                  "code": "NOT_FOUND",
+                  "field": "repo_id",
+                  "message": "Repository 'example-repo' was not found.",
+                  "retryable": false
+                },
+                "ok": false
+              },
+              "status_code": 404
+            },
+            "tool_id": "get_repository"
+          },
+          "normal_write_blocked_by_safety": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/ae8cb05d92da47102f11bcee.json",
+          "safety_reason_code": null,
+          "scenario": "M01-AE",
+          "stop_decided_by": "model",
+          "task_requires_write": true
+        },
+        {
+          "code_path": "ToolAgentController.run -> AgentAction.ABSTAIN -> break",
+          "last_agent_action": {
+            "action_type": "ABSTAIN",
+            "concise_decision_summary": "Repository 'example-repo' does not exist (404 errors on all attempts). Cannot create an issue or proceed with assignment."
+          },
+          "last_visible_observation": {
+            "response": {
+              "payload": {
+                "error": {
+                  "code": "NOT_FOUND",
+                  "field": "repo_id",
+                  "message": "Repository 'example-repo' was not found.",
+                  "retryable": false
+                },
+                "ok": false
+              },
+              "status_code": 404
+            },
+            "tool_id": "create_issue"
+          },
+          "normal_write_blocked_by_safety": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/6f5c534b5a3b18c91b396a28.json",
+          "safety_reason_code": null,
+          "scenario": "M06-AE",
+          "stop_decided_by": "model",
+          "task_requires_write": true
+        },
+        {
+          "code_path": "ToolAgentController.run -> AgentAction.ABSTAIN -> break",
+          "last_agent_action": {
+            "action_type": "ABSTAIN",
+            "concise_decision_summary": "Repository 'alpha-api' does not exist (confirmed by multiple 404 responses), so the task cannot be completed."
+          },
+          "last_visible_observation": {
+            "response": {
+              "payload": {
+                "error": {
+                  "code": "NOT_FOUND",
+                  "field": "repo_id",
+                  "message": "Repository 'alpha-api' was not found.",
+                  "retryable": false
+                },
+                "ok": false
+              },
+              "status_code": 404
+            },
+            "tool_id": "get_issue"
+          },
+          "normal_write_blocked_by_safety": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/036fb72c8a4a4f09b6556578.json",
+          "safety_reason_code": null,
+          "scenario": "M11-AE",
+          "stop_decided_by": "model",
+          "task_requires_write": true
+        }
+      ],
+      "standard": [
+        {
+          "code_path": "ToolAgentController.run -> AgentAction.ABSTAIN -> break",
+          "last_agent_action": {
+            "action_type": "ABSTAIN",
+            "concise_decision_summary": "The repository 'example-repo' does not exist (404 NOT_FOUND), so no issues can be created. Task cannot proceed."
+          },
+          "last_visible_observation": {
+            "response": {
+              "payload": {
+                "error": {
+                  "code": "NOT_FOUND",
+                  "field": "repo_id",
+                  "message": "Repository 'example-repo' was not found.",
+                  "retryable": false
+                },
+                "ok": false
+              },
+              "status_code": 404
+            },
+            "tool_id": "get_repository"
+          },
+          "normal_write_blocked_by_safety": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/af86f9ecc1172974a3853d56.json",
+          "safety_reason_code": null,
+          "scenario": "M01-AE",
+          "stop_decided_by": "model",
+          "task_requires_write": true
+        },
+        {
+          "code_path": "ToolAgentController.run -> REQUEST_PROBE with policy.allows_probe=False",
+          "last_agent_action": {
+            "action_type": "REQUEST_PROBE",
+            "concise_decision_summary": "The only repository tried so far does not exist. I need to probe for a valid repository to proceed with the task.",
+            "evidence_refs": [
+              "get_repository response for 'example-repo' returned 404 NOT_FOUND"
+            ],
+            "probe_type": "tool_usage",
+            "target_tool_id": "get_repository"
+          },
+          "last_visible_observation": {
+            "response": {
+              "payload": {
+                "error": {
+                  "code": "NOT_FOUND",
+                  "field": "repo_id",
+                  "message": "Repository 'example-repo' was not found.",
+                  "retryable": false
+                },
+                "ok": false
+              },
+              "status_code": 404
+            },
+            "tool_id": "get_repository"
+          },
+          "normal_write_blocked_by_safety": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/672dfb2408bd945f534dcebd.json",
+          "safety_reason_code": "POLICY_PROBE_DISALLOWED",
+          "scenario": "M01-TF",
+          "stop_decided_by": "controller",
+          "task_requires_write": true
+        },
+        {
+          "code_path": "ToolAgentController.run -> AgentAction.ABSTAIN -> break",
+          "last_agent_action": {
+            "action_type": "ABSTAIN",
+            "concise_decision_summary": "Repository 'example-repo' does not exist (404 errors on all attempts). Cannot create an issue or proceed with assignment."
+          },
+          "last_visible_observation": {
+            "response": {
+              "payload": {
+                "error": {
+                  "code": "NOT_FOUND",
+                  "field": "repo_id",
+                  "message": "Repository 'example-repo' was not found.",
+                  "retryable": false
+                },
+                "ok": false
+              },
+              "status_code": 404
+            },
+            "tool_id": "get_repository"
+          },
+          "normal_write_blocked_by_safety": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/73cccbc4b81584c25f3c9ab0.json",
+          "safety_reason_code": null,
+          "scenario": "M06-AE",
+          "stop_decided_by": "model",
+          "task_requires_write": true
+        }
+      ],
+      "validation_guided": [
+        {
+          "code_path": "ToolAgentController.run -> AgentAction.ABSTAIN -> break",
+          "last_agent_action": {
+            "action_type": "ABSTAIN",
+            "concise_decision_summary": "The task is ambiguous and lacks necessary context (e.g., which repository, what 'Review authentication logs' means). Cannot proceed without clarification."
+          },
+          "last_visible_observation": {
+            "response": {
+              "payload": {
+                "error": {
+                  "code": "NOT_FOUND",
+                  "field": "repo_id",
+                  "message": "Repository 'example-repo' was not found.",
+                  "retryable": false
+                },
+                "ok": false
+              },
+              "status_code": 404
+            },
+            "tool_id": "get_repository"
+          },
+          "normal_write_blocked_by_safety": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/58f291ffd9c9bbc606c94616.json",
+          "safety_reason_code": null,
+          "scenario": "M01-AE",
+          "stop_decided_by": "model",
+          "task_requires_write": true
+        },
+        {
+          "code_path": "ToolAgentController.run -> REQUEST_PROBE with policy.allows_probe=False",
+          "last_agent_action": {
+            "action_type": "REQUEST_PROBE",
+            "concise_decision_summary": "All attempts to access 'example-repo' failed with 404. Need to discover available repositories.",
+            "evidence_refs": [
+              "get_repository returned 404 for example-repo"
+            ],
+            "probe_type": "list_repos",
+            "target_tool_id": "get_repository"
+          },
+          "last_visible_observation": {
+            "response": {
+              "payload": {
+                "error": {
+                  "code": "NOT_FOUND",
+                  "field": "repo_id",
+                  "message": "Repository 'example-repo' was not found.",
+                  "retryable": false
+                },
+                "ok": false
+              },
+              "status_code": 404
+            },
+            "tool_id": "create_issue"
+          },
+          "normal_write_blocked_by_safety": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/2d9f4b24325ad4c212a8fb7b.json",
+          "safety_reason_code": "POLICY_PROBE_DISALLOWED",
+          "scenario": "M06-AE",
+          "stop_decided_by": "controller",
+          "task_requires_write": true
+        },
+        {
+          "code_path": "ToolAgentController.run -> AgentAction.ABSTAIN -> break",
+          "last_agent_action": {
+            "action_type": "ABSTAIN",
+            "concise_decision_summary": "The repository 'example-repo' does not exist (404 errors on get_repository and create_issue). Cannot create an issue or proceed with assignment. No further actions possible."
+          },
+          "last_visible_observation": {
+            "response": {
+              "payload": {
+                "error": {
+                  "code": "NOT_FOUND",
+                  "field": "repo_id",
+                  "message": "Repository 'example-repo' was not found.",
+                  "retryable": false
+                },
+                "ok": false
+              },
+              "status_code": 404
+            },
+            "tool_id": "get_repository"
+          },
+          "normal_write_blocked_by_safety": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/0fde90aa7c6ff2f14d7ab17a.json",
+          "safety_reason_code": null,
+          "scenario": "M06-PD",
+          "stop_decided_by": "model",
+          "task_requires_write": true
+        }
+      ]
+    },
+    "safety_gate_finding": "SAFETY_BLOCKED is emitted only when a method with allows_probe=False returns REQUEST_PROBE; writes are not blocked by this gate.",
+    "stop_reason_counts": {
+      "budget_exhausted": 2,
+      "controller_probe_safety_block": 17,
+      "format_valid_semantically_empty": 0,
+      "internal_stop": 0,
+      "model_abstain": 41,
+      "model_final_answer": 0,
+      "model_refusal": 0,
+      "parameter_safety_rejection": 0,
+      "write_tool_globally_forbidden": 0
+    },
+    "write_tools_globally_forbidden": false
+  },
+  "full_real_model_experiment_status": "NOT RUN",
+  "integrity": {
+    "cache_tree_sha256_after": "e4f9abb638651ec2c8d7db932ba6d7062bbd940e322e791a768d5e282bf64150",
+    "cache_tree_sha256_before": "e4f9abb638651ec2c8d7db932ba6d7062bbd940e322e791a768d5e282bf64150",
+    "cache_unchanged": true,
+    "ledger_sha256_after": "17af07a04e59a164b8ab2343f8a8c9aa40b96357a8f70d1bc7b9af00663cfc79",
+    "ledger_sha256_before": "17af07a04e59a164b8ab2343f8a8c9aa40b96357a8f70d1bc7b9af00663cfc79",
+    "ledger_unchanged": true
+  },
+  "new_cost_cny": 0.0,
+  "offline_only": true,
+  "oracle_downstream_control": {
+    "details": [
+      {
+        "actions_injected": 2,
+        "natural_language_business_goal_completed": true,
+        "oracle_actions_entered_model_prompt": false,
+        "sandbox_calls": 1,
+        "scenario": "M01-AE",
+        "task_evaluator_passed": true,
+        "termination_reason": "TASK_SUCCESS"
+      },
+      {
+        "actions_injected": 2,
+        "natural_language_business_goal_completed": true,
+        "oracle_actions_entered_model_prompt": false,
+        "sandbox_calls": 1,
+        "scenario": "M01-TF",
+        "task_evaluator_passed": true,
+        "termination_reason": "TASK_SUCCESS"
+      },
+      {
+        "actions_injected": 2,
+        "natural_language_business_goal_completed": true,
+        "oracle_actions_entered_model_prompt": false,
+        "sandbox_calls": 1,
+        "scenario": "M01-PD",
+        "task_evaluator_passed": true,
+        "termination_reason": "TASK_SUCCESS"
+      },
+      {
+        "actions_injected": 1,
+        "natural_language_business_goal_completed": false,
+        "oracle_actions_entered_model_prompt": false,
+        "sandbox_calls": 1,
+        "scenario": "M06-AE",
+        "task_evaluator_passed": true,
+        "termination_reason": "TASK_SUCCESS"
+      },
+      {
+        "actions_injected": 1,
+        "natural_language_business_goal_completed": false,
+        "oracle_actions_entered_model_prompt": false,
+        "sandbox_calls": 1,
+        "scenario": "M06-TF",
+        "task_evaluator_passed": true,
+        "termination_reason": "TASK_SUCCESS"
+      },
+      {
+        "actions_injected": 1,
+        "natural_language_business_goal_completed": false,
+        "oracle_actions_entered_model_prompt": false,
+        "sandbox_calls": 1,
+        "scenario": "M06-PD",
+        "task_evaluator_passed": true,
+        "termination_reason": "TASK_SUCCESS"
+      },
+      {
+        "actions_injected": 2,
+        "natural_language_business_goal_completed": false,
+        "oracle_actions_entered_model_prompt": false,
+        "sandbox_calls": 2,
+        "scenario": "M11-AE",
+        "task_evaluator_passed": true,
+        "termination_reason": "TASK_SUCCESS"
+      },
+      {
+        "actions_injected": 2,
+        "natural_language_business_goal_completed": false,
+        "oracle_actions_entered_model_prompt": false,
+        "sandbox_calls": 2,
+        "scenario": "M11-TF",
+        "task_evaluator_passed": true,
+        "termination_reason": "TASK_SUCCESS"
+      },
+      {
+        "actions_injected": 2,
+        "natural_language_business_goal_completed": false,
+        "oracle_actions_entered_model_prompt": false,
+        "sandbox_calls": 2,
+        "scenario": "M11-PD",
+        "task_evaluator_passed": true,
+        "termination_reason": "TASK_SUCCESS"
+      },
+      {
+        "actions_injected": 1,
+        "natural_language_business_goal_completed": false,
+        "oracle_actions_entered_model_prompt": false,
+        "sandbox_calls": 1,
+        "scenario": "M16-AE",
+        "task_evaluator_passed": true,
+        "termination_reason": "TASK_SUCCESS"
+      },
+      {
+        "actions_injected": 1,
+        "natural_language_business_goal_completed": false,
+        "oracle_actions_entered_model_prompt": false,
+        "sandbox_calls": 1,
+        "scenario": "M16-TF",
+        "task_evaluator_passed": true,
+        "termination_reason": "TASK_SUCCESS"
+      },
+      {
+        "actions_injected": 1,
+        "natural_language_business_goal_completed": false,
+        "oracle_actions_entered_model_prompt": false,
+        "sandbox_calls": 1,
+        "scenario": "M16-PD",
+        "task_evaluator_passed": true,
+        "termination_reason": "TASK_SUCCESS"
+      }
+    ],
+    "finding": "Schema-valid injected actions can traverse the Controller/Sandbox/Evaluator path; integration is executable, but the smoke evaluator accepts prerequisite or superficially successful calls before multi-step goals complete.",
+    "natural_language_business_goal_completed": 3,
+    "provider_calls": 0,
+    "same_controller_downstream": true,
+    "same_sandbox_and_evaluator": true,
+    "scenarios": 12,
+    "task_evaluator_passed": 12
+  },
+  "pilot_v4_reason": "Fix and pass offline P0/P1/P2 gates before requesting any new real API calls.",
+  "pilot_v4_recommendation": "DO_NOT_CREATE_YET",
+  "qwen_parameter_analysis": {
+    "error_category_counts": {
+      "ID does not exist": 48,
+      "invalid enum": 0,
+      "missing required field": 15,
+      "nested/flat body mismatch": 0,
+      "permission actor error": 0,
+      "unknown field": 0,
+      "unresolved placeholder": 0,
+      "wrong field name": 0,
+      "wrong tool": 14,
+      "wrong type": 30
+    },
+    "local_validation_failures": 45,
+    "records": 60,
+    "representative_traces_by_method": {
+      "driftguard_llm": [
+        {
+          "displayed_schema_required_fields": [
+            "repo_id",
+            "title"
+          ],
+          "error_field": "title",
+          "error_was_returned_to_next_model_turn": false,
+          "generated_arguments": {
+            "repo_id": "default"
+          },
+          "next_turn_corrected": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/764d13e50f33498f4a882a0f.json",
+          "scenario": "M06-AE",
+          "selected_tool_id": "create_issue",
+          "synthetic_user_task": "Create an issue and consume its canonical issue_id for assignment.",
+          "termination_reason": "INVALID_ARGUMENTS",
+          "validator_error": "'title' is a required property"
+        },
+        {
+          "displayed_schema_required_fields": [
+            "repo_id",
+            "issue_id"
+          ],
+          "error_field": "issue_id",
+          "error_was_returned_to_next_model_turn": false,
+          "generated_arguments": {
+            "issue_id": "101",
+            "repo_id": "alpha-api"
+          },
+          "next_turn_corrected": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/c49b4cb2057bb4686df2d0b9.json",
+          "scenario": "M11-AE",
+          "selected_tool_id": "get_issue",
+          "synthetic_user_task": "Close unassigned alpha-api issue 101.",
+          "termination_reason": "INVALID_ARGUMENTS",
+          "validator_error": "'101' is not of type 'integer'"
+        },
+        {
+          "displayed_schema_required_fields": [
+            "repo_id",
+            "issue_id"
+          ],
+          "error_field": "issue_id",
+          "error_was_returned_to_next_model_turn": false,
+          "generated_arguments": {
+            "issue_id": "102",
+            "repo_id": "default"
+          },
+          "next_turn_corrected": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/11571917b17b9fa4a1481993.json",
+          "scenario": "M16-AE",
+          "selected_tool_id": "close_issue",
+          "synthetic_user_task": "Close issue 102 and compare response to immediate state.",
+          "termination_reason": "INVALID_ARGUMENTS",
+          "validator_error": "'102' is not of type 'integer'"
+        }
+      ],
+      "reflection": [
+        {
+          "displayed_schema_required_fields": [
+            "repo_id",
+            "title"
+          ],
+          "error_field": "title",
+          "error_was_returned_to_next_model_turn": false,
+          "generated_arguments": {
+            "repo_id": "default-repo"
+          },
+          "next_turn_corrected": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/7f5052c8d905543417f281b2.json",
+          "scenario": "M06-AE",
+          "selected_tool_id": "create_issue",
+          "synthetic_user_task": "Create an issue and consume its canonical issue_id for assignment.",
+          "termination_reason": "INVALID_ARGUMENTS",
+          "validator_error": "'title' is a required property"
+        },
+        {
+          "displayed_schema_required_fields": [
+            "repo_id",
+            "issue_id"
+          ],
+          "error_field": "issue_id",
+          "error_was_returned_to_next_model_turn": false,
+          "generated_arguments": {
+            "issue_id": "101",
+            "repo_id": "alpha-api"
+          },
+          "next_turn_corrected": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/afe641accd279c32371e17f9.json",
+          "scenario": "M11-AE",
+          "selected_tool_id": "get_issue",
+          "synthetic_user_task": "Close unassigned alpha-api issue 101.",
+          "termination_reason": "INVALID_ARGUMENTS",
+          "validator_error": "'101' is not of type 'integer'"
+        },
+        {
+          "displayed_schema_required_fields": [
+            "repo_id",
+            "issue_id"
+          ],
+          "error_field": "issue_id",
+          "error_was_returned_to_next_model_turn": false,
+          "generated_arguments": {
+            "issue_id": "102",
+            "repo_id": "default"
+          },
+          "next_turn_corrected": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/bd6a7fd114fd9180790c00a1.json",
+          "scenario": "M16-AE",
+          "selected_tool_id": "close_issue",
+          "synthetic_user_task": "Close issue 102 and compare response to immediate state.",
+          "termination_reason": "INVALID_ARGUMENTS",
+          "validator_error": "'102' is not of type 'integer'"
+        }
+      ],
+      "retry_only": [
+        {
+          "displayed_schema_required_fields": [
+            "repo_id",
+            "title"
+          ],
+          "error_field": "title",
+          "error_was_returned_to_next_model_turn": false,
+          "generated_arguments": {
+            "repo_id": "default-repo"
+          },
+          "next_turn_corrected": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/22fa316ed95509c8bb45ff99.json",
+          "scenario": "M06-AE",
+          "selected_tool_id": "create_issue",
+          "synthetic_user_task": "Create an issue and consume its canonical issue_id for assignment.",
+          "termination_reason": "INVALID_ARGUMENTS",
+          "validator_error": "'title' is a required property"
+        },
+        {
+          "displayed_schema_required_fields": [
+            "repo_id",
+            "issue_id"
+          ],
+          "error_field": "issue_id",
+          "error_was_returned_to_next_model_turn": false,
+          "generated_arguments": {
+            "issue_id": "101",
+            "repo_id": "alpha-api"
+          },
+          "next_turn_corrected": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/2c39c7e4e030067ccb52c838.json",
+          "scenario": "M11-AE",
+          "selected_tool_id": "get_issue",
+          "synthetic_user_task": "Close unassigned alpha-api issue 101.",
+          "termination_reason": "INVALID_ARGUMENTS",
+          "validator_error": "'101' is not of type 'integer'"
+        },
+        {
+          "displayed_schema_required_fields": [
+            "repo_id",
+            "issue_id"
+          ],
+          "error_field": "issue_id",
+          "error_was_returned_to_next_model_turn": false,
+          "generated_arguments": {
+            "issue_id": "102",
+            "repo_id": "default"
+          },
+          "next_turn_corrected": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/0b82171ed516d536e4605355.json",
+          "scenario": "M16-AE",
+          "selected_tool_id": "close_issue",
+          "synthetic_user_task": "Close issue 102 and compare response to immediate state.",
+          "termination_reason": "INVALID_ARGUMENTS",
+          "validator_error": "'102' is not of type 'integer'"
+        }
+      ],
+      "standard": [
+        {
+          "displayed_schema_required_fields": [
+            "repo_id",
+            "title"
+          ],
+          "error_field": "title",
+          "error_was_returned_to_next_model_turn": false,
+          "generated_arguments": {
+            "repo_id": "default"
+          },
+          "next_turn_corrected": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/7c310c51e74457bf984ef787.json",
+          "scenario": "M06-AE",
+          "selected_tool_id": "create_issue",
+          "synthetic_user_task": "Create an issue and consume its canonical issue_id for assignment.",
+          "termination_reason": "INVALID_ARGUMENTS",
+          "validator_error": "'title' is a required property"
+        },
+        {
+          "displayed_schema_required_fields": [
+            "repo_id",
+            "issue_id"
+          ],
+          "error_field": "issue_id",
+          "error_was_returned_to_next_model_turn": false,
+          "generated_arguments": {
+            "issue_id": "101",
+            "repo_id": "alpha-api"
+          },
+          "next_turn_corrected": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/0652a9e6ebe149bad2789ba2.json",
+          "scenario": "M11-AE",
+          "selected_tool_id": "get_issue",
+          "synthetic_user_task": "Close unassigned alpha-api issue 101.",
+          "termination_reason": "INVALID_ARGUMENTS",
+          "validator_error": "'101' is not of type 'integer'"
+        },
+        {
+          "displayed_schema_required_fields": [
+            "repo_id",
+            "issue_id"
+          ],
+          "error_field": "issue_id",
+          "error_was_returned_to_next_model_turn": false,
+          "generated_arguments": {
+            "issue_id": "102",
+            "repo_id": "default"
+          },
+          "next_turn_corrected": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/f279a347f785463033c1e69c.json",
+          "scenario": "M16-AE",
+          "selected_tool_id": "close_issue",
+          "synthetic_user_task": "Close issue 102 and compare response to immediate state.",
+          "termination_reason": "INVALID_ARGUMENTS",
+          "validator_error": "'102' is not of type 'integer'"
+        }
+      ],
+      "validation_guided": [
+        {
+          "displayed_schema_required_fields": [
+            "repo_id",
+            "title"
+          ],
+          "error_field": "title",
+          "error_was_returned_to_next_model_turn": false,
+          "generated_arguments": {
+            "repo_id": "default-repo"
+          },
+          "next_turn_corrected": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/8211d2dd3a26437ba92e5f2e.json",
+          "scenario": "M06-AE",
+          "selected_tool_id": "create_issue",
+          "synthetic_user_task": "Create an issue and consume its canonical issue_id for assignment.",
+          "termination_reason": "INVALID_ARGUMENTS",
+          "validator_error": "'title' is a required property"
+        },
+        {
+          "displayed_schema_required_fields": [
+            "repo_id",
+            "issue_id"
+          ],
+          "error_field": "issue_id",
+          "error_was_returned_to_next_model_turn": false,
+          "generated_arguments": {
+            "issue_id": "101",
+            "repo_id": "alpha-api"
+          },
+          "next_turn_corrected": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/bbda7d83c5eecf2ce44d92e1.json",
+          "scenario": "M11-AE",
+          "selected_tool_id": "get_issue",
+          "synthetic_user_task": "Close unassigned alpha-api issue 101.",
+          "termination_reason": "INVALID_ARGUMENTS",
+          "validator_error": "'101' is not of type 'integer'"
+        },
+        {
+          "displayed_schema_required_fields": [
+            "repo_id",
+            "issue_id"
+          ],
+          "error_field": "issue_id",
+          "error_was_returned_to_next_model_turn": false,
+          "generated_arguments": {
+            "issue_id": "102",
+            "repo_id": "default"
+          },
+          "next_turn_corrected": false,
+          "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/1543bc1938d1e9d075e59b8c.json",
+          "scenario": "M16-AE",
+          "selected_tool_id": "close_issue",
+          "synthetic_user_task": "Close issue 102 and compare response to immediate state.",
+          "termination_reason": "INVALID_ARGUMENTS",
+          "validator_error": "'102' is not of type 'integer'"
+        }
+      ]
+    },
+    "sandbox_error_codes": {
+      "NOT_FOUND": 48
+    },
+    "top_error_fields": [
+      {
+        "count": 30,
+        "field": "issue_id"
+      },
+      {
+        "count": 15,
+        "field": "title"
+      }
+    ],
+    "top_fields_by_tool": {
+      "close_issue": [
+        {
+          "count": 16,
+          "field": "issue_id"
+        }
+      ],
+      "create_issue": [
+        {
+          "count": 15,
+          "field": "title"
+        }
+      ],
+      "get_issue": [
+        {
+          "count": 14,
+          "field": "issue_id"
+        }
+      ]
+    }
+  },
+  "real_api_calls": 0,
+  "recommended_minimum_canary": {
+    "design": "five methods x one scenario x two providers",
+    "estimated_incremental_cost_cny": {
+      "basis": "pilot_v3 observed provider/method average; estimate only",
+      "lower": 0.13,
+      "upper": 0.4
+    },
+    "offline_gate_first": "12/12 task-specific Oracle business goals, complete tool catalog diff=0, invalid-argument feedback test",
+    "real_api_authorized": false,
+    "records_if_later_authorized": 10
+  },
+  "recorded_action_counterfactual": {
+    "deepseek_records_with_actionable_runtime_observation_before_stop": 60,
+    "deepseek_records_without_complete_initial_tool_schema": 60,
+    "details": [
+      {
+        "corrected_arguments": {
+          "repo_id": "default"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 0,
+        "field_edits": [],
+        "local_validation_passed": false,
+        "method": "standard",
+        "original_arguments": {
+          "repo_id": "default"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/7c310c51e74457bf984ef787.json",
+        "remaining_error": "'title' is a required property",
+        "runtime_status_code": null,
+        "sandbox_executable": false,
+        "scenario": "M06-AE",
+        "tool_id": "create_issue"
+      },
+      {
+        "corrected_arguments": {
+          "repo_id": "default-repo"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 0,
+        "field_edits": [],
+        "local_validation_passed": false,
+        "method": "retry_only",
+        "original_arguments": {
+          "repo_id": "default-repo"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/22fa316ed95509c8bb45ff99.json",
+        "remaining_error": "'title' is a required property",
+        "runtime_status_code": null,
+        "sandbox_executable": false,
+        "scenario": "M06-AE",
+        "tool_id": "create_issue"
+      },
+      {
+        "corrected_arguments": {
+          "repo_id": "default-repo"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 0,
+        "field_edits": [],
+        "local_validation_passed": false,
+        "method": "reflection",
+        "original_arguments": {
+          "repo_id": "default-repo"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/7f5052c8d905543417f281b2.json",
+        "remaining_error": "'title' is a required property",
+        "runtime_status_code": null,
+        "sandbox_executable": false,
+        "scenario": "M06-AE",
+        "tool_id": "create_issue"
+      },
+      {
+        "corrected_arguments": {
+          "repo_id": "default-repo"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 0,
+        "field_edits": [],
+        "local_validation_passed": false,
+        "method": "validation_guided",
+        "original_arguments": {
+          "repo_id": "default-repo"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/8211d2dd3a26437ba92e5f2e.json",
+        "remaining_error": "'title' is a required property",
+        "runtime_status_code": null,
+        "sandbox_executable": false,
+        "scenario": "M06-AE",
+        "tool_id": "create_issue"
+      },
+      {
+        "corrected_arguments": {
+          "repo_id": "default"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 0,
+        "field_edits": [],
+        "local_validation_passed": false,
+        "method": "driftguard_llm",
+        "original_arguments": {
+          "repo_id": "default"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/764d13e50f33498f4a882a0f.json",
+        "remaining_error": "'title' is a required property",
+        "runtime_status_code": null,
+        "sandbox_executable": false,
+        "scenario": "M06-AE",
+        "tool_id": "create_issue"
+      },
+      {
+        "corrected_arguments": {
+          "repo_id": "default"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 0,
+        "field_edits": [],
+        "local_validation_passed": false,
+        "method": "standard",
+        "original_arguments": {
+          "repo_id": "default"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/467e19db431d47581476913c.json",
+        "remaining_error": "'title' is a required property",
+        "runtime_status_code": null,
+        "sandbox_executable": false,
+        "scenario": "M06-TF",
+        "tool_id": "create_issue"
+      },
+      {
+        "corrected_arguments": {
+          "repo_id": "default-repo"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 0,
+        "field_edits": [],
+        "local_validation_passed": false,
+        "method": "retry_only",
+        "original_arguments": {
+          "repo_id": "default-repo"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/6d8ca71580f6776b434a43e1.json",
+        "remaining_error": "'title' is a required property",
+        "runtime_status_code": null,
+        "sandbox_executable": false,
+        "scenario": "M06-TF",
+        "tool_id": "create_issue"
+      },
+      {
+        "corrected_arguments": {
+          "repo_id": "default-repo"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 0,
+        "field_edits": [],
+        "local_validation_passed": false,
+        "method": "reflection",
+        "original_arguments": {
+          "repo_id": "default-repo"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/5ba0a9b39bfcc1ce0c7cd43a.json",
+        "remaining_error": "'title' is a required property",
+        "runtime_status_code": null,
+        "sandbox_executable": false,
+        "scenario": "M06-TF",
+        "tool_id": "create_issue"
+      },
+      {
+        "corrected_arguments": {
+          "repo_id": "test-repo"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 0,
+        "field_edits": [],
+        "local_validation_passed": false,
+        "method": "validation_guided",
+        "original_arguments": {
+          "repo_id": "test-repo"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/6cd056c0e541fc36e092ea83.json",
+        "remaining_error": "'title' is a required property",
+        "runtime_status_code": null,
+        "sandbox_executable": false,
+        "scenario": "M06-TF",
+        "tool_id": "create_issue"
+      },
+      {
+        "corrected_arguments": {
+          "repo_id": "default"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 0,
+        "field_edits": [],
+        "local_validation_passed": false,
+        "method": "driftguard_llm",
+        "original_arguments": {
+          "repo_id": "default"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/43c53fdfbbdebc7ae6f26d1f.json",
+        "remaining_error": "'title' is a required property",
+        "runtime_status_code": null,
+        "sandbox_executable": false,
+        "scenario": "M06-TF",
+        "tool_id": "create_issue"
+      },
+      {
+        "corrected_arguments": {
+          "repo_id": "default"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 0,
+        "field_edits": [],
+        "local_validation_passed": false,
+        "method": "standard",
+        "original_arguments": {
+          "repo_id": "default"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/05f92dfb0096abae78e97942.json",
+        "remaining_error": "'title' is a required property",
+        "runtime_status_code": null,
+        "sandbox_executable": false,
+        "scenario": "M06-PD",
+        "tool_id": "create_issue"
+      },
+      {
+        "corrected_arguments": {
+          "repo_id": "default-repo"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 0,
+        "field_edits": [],
+        "local_validation_passed": false,
+        "method": "retry_only",
+        "original_arguments": {
+          "repo_id": "default-repo"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/e36b9269e7ea4a0cabc86fe1.json",
+        "remaining_error": "'title' is a required property",
+        "runtime_status_code": null,
+        "sandbox_executable": false,
+        "scenario": "M06-PD",
+        "tool_id": "create_issue"
+      },
+      {
+        "corrected_arguments": {
+          "repo_id": "test-repo"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 0,
+        "field_edits": [],
+        "local_validation_passed": false,
+        "method": "reflection",
+        "original_arguments": {
+          "repo_id": "test-repo"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/d704b30136515283a932f8e5.json",
+        "remaining_error": "'title' is a required property",
+        "runtime_status_code": null,
+        "sandbox_executable": false,
+        "scenario": "M06-PD",
+        "tool_id": "create_issue"
+      },
+      {
+        "corrected_arguments": {
+          "repo_id": "default-repo"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 0,
+        "field_edits": [],
+        "local_validation_passed": false,
+        "method": "validation_guided",
+        "original_arguments": {
+          "repo_id": "default-repo"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/832885d09a0a449aa39c48f5.json",
+        "remaining_error": "'title' is a required property",
+        "runtime_status_code": null,
+        "sandbox_executable": false,
+        "scenario": "M06-PD",
+        "tool_id": "create_issue"
+      },
+      {
+        "corrected_arguments": {
+          "repo_id": "default"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 0,
+        "field_edits": [],
+        "local_validation_passed": false,
+        "method": "driftguard_llm",
+        "original_arguments": {
+          "repo_id": "default"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/891ee2f85622028086a3018a.json",
+        "remaining_error": "'title' is a required property",
+        "runtime_status_code": null,
+        "sandbox_executable": false,
+        "scenario": "M06-PD",
+        "tool_id": "create_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 101,
+          "repo_id": "alpha-api"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "standard",
+        "original_arguments": {
+          "issue_id": "101",
+          "repo_id": "alpha-api"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/0652a9e6ebe149bad2789ba2.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M11-AE",
+        "tool_id": "get_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 101,
+          "repo_id": "alpha-api"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "retry_only",
+        "original_arguments": {
+          "issue_id": "101",
+          "repo_id": "alpha-api"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/2c39c7e4e030067ccb52c838.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M11-AE",
+        "tool_id": "get_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 101,
+          "repo_id": "alpha-api"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "reflection",
+        "original_arguments": {
+          "issue_id": "101",
+          "repo_id": "alpha-api"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/afe641accd279c32371e17f9.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M11-AE",
+        "tool_id": "get_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 101,
+          "repo_id": "alpha-api"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "validation_guided",
+        "original_arguments": {
+          "issue_id": "101",
+          "repo_id": "alpha-api"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/bbda7d83c5eecf2ce44d92e1.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M11-AE",
+        "tool_id": "get_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 101,
+          "repo_id": "alpha-api"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "driftguard_llm",
+        "original_arguments": {
+          "issue_id": "101",
+          "repo_id": "alpha-api"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/c49b4cb2057bb4686df2d0b9.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M11-AE",
+        "tool_id": "get_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 101,
+          "repo_id": "alpha-api"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "standard",
+        "original_arguments": {
+          "issue_id": "101",
+          "repo_id": "alpha-api"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/1e5d8b1e77ba3fa448cf0895.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M11-TF",
+        "tool_id": "get_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 101,
+          "repo_id": "alpha-api"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "retry_only",
+        "original_arguments": {
+          "issue_id": "101",
+          "repo_id": "alpha-api"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/5a90cd144017b491337cb0c5.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M11-TF",
+        "tool_id": "get_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 101,
+          "repo_id": "alpha-api"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "reflection",
+        "original_arguments": {
+          "issue_id": "101",
+          "repo_id": "alpha-api"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/4bead699ace0d6067730994f.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M11-TF",
+        "tool_id": "get_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 101,
+          "repo_id": "alpha-api"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "validation_guided",
+        "original_arguments": {
+          "issue_id": "101",
+          "repo_id": "alpha-api"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/6b2ed448675ca5302c256a63.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M11-TF",
+        "tool_id": "get_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 101,
+          "repo_id": "alpha-api"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "driftguard_llm",
+        "original_arguments": {
+          "issue_id": "101",
+          "repo_id": "alpha-api"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/eceb4be76adfa365791e4601.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M11-TF",
+        "tool_id": "get_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 101,
+          "repo_id": "alpha-api"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "standard",
+        "original_arguments": {
+          "issue_id": "101",
+          "repo_id": "alpha-api"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/f17301315d9ed3c0ac18458c.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M11-PD",
+        "tool_id": "get_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 101,
+          "repo_id": "alpha-api"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "retry_only",
+        "original_arguments": {
+          "issue_id": "101",
+          "repo_id": "alpha-api"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/e2877ca85c6c7aa02ed646e7.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M11-PD",
+        "tool_id": "get_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 101,
+          "repo_id": "alpha-api"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "reflection",
+        "original_arguments": {
+          "issue_id": "101",
+          "repo_id": "alpha-api"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/70bdbe3856dda341e1b21ecf.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M11-PD",
+        "tool_id": "get_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 101,
+          "repo_id": "alpha-api"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "validation_guided",
+        "original_arguments": {
+          "issue_id": "101",
+          "repo_id": "alpha-api"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/259e59c8a872a29fee370e8f.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M11-PD",
+        "tool_id": "get_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 101,
+          "repo_id": "alpha-api"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "driftguard_llm",
+        "original_arguments": {
+          "issue_id": "101",
+          "repo_id": "alpha-api"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/0f454ee09d78d7ddd7f76bda.json",
+        "remaining_error": null,
+        "runtime_status_code": 409,
+        "sandbox_executable": true,
+        "scenario": "M11-PD",
+        "tool_id": "close_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 102,
+          "repo_id": "default"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "standard",
+        "original_arguments": {
+          "issue_id": "102",
+          "repo_id": "default"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/f279a347f785463033c1e69c.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M16-AE",
+        "tool_id": "close_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 102,
+          "repo_id": "default"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "retry_only",
+        "original_arguments": {
+          "issue_id": "102",
+          "repo_id": "default"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/0b82171ed516d536e4605355.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M16-AE",
+        "tool_id": "close_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 102,
+          "repo_id": "default"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "reflection",
+        "original_arguments": {
+          "issue_id": "102",
+          "repo_id": "default"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/bd6a7fd114fd9180790c00a1.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M16-AE",
+        "tool_id": "close_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 102,
+          "repo_id": "default"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "validation_guided",
+        "original_arguments": {
+          "issue_id": "102",
+          "repo_id": "default"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/1543bc1938d1e9d075e59b8c.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M16-AE",
+        "tool_id": "close_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 102,
+          "repo_id": "default"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "driftguard_llm",
+        "original_arguments": {
+          "issue_id": "102",
+          "repo_id": "default"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/11571917b17b9fa4a1481993.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M16-AE",
+        "tool_id": "close_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 102,
+          "repo_id": "default"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "standard",
+        "original_arguments": {
+          "issue_id": "102",
+          "repo_id": "default"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/d2bb3584d7e2083c8f81ac68.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M16-TF",
+        "tool_id": "close_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 102,
+          "repo_id": "default"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "retry_only",
+        "original_arguments": {
+          "issue_id": "102",
+          "repo_id": "default"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/15c93a9806dd970bc6a68761.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M16-TF",
+        "tool_id": "close_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 102,
+          "repo_id": "default"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "reflection",
+        "original_arguments": {
+          "issue_id": "102",
+          "repo_id": "default"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/059d32b65e3bed0f0a413026.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M16-TF",
+        "tool_id": "close_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 102,
+          "repo_id": "default"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "validation_guided",
+        "original_arguments": {
+          "issue_id": "102",
+          "repo_id": "default"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/70fee9405321eeb07a244311.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M16-TF",
+        "tool_id": "close_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 102,
+          "repo_id": "default"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "driftguard_llm",
+        "original_arguments": {
+          "issue_id": "102",
+          "repo_id": "default"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/7dc6c70ff89973d9ca9a2565.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M16-TF",
+        "tool_id": "close_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 102,
+          "repo_id": "default"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "standard",
+        "original_arguments": {
+          "issue_id": "102",
+          "repo_id": "default"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/34675d120e0e025aa35359aa.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M16-PD",
+        "tool_id": "close_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 102,
+          "repo_id": "default"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "retry_only",
+        "original_arguments": {
+          "issue_id": "102",
+          "repo_id": "default"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/2eaa94dba90d18d74e2563d9.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M16-PD",
+        "tool_id": "close_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 102,
+          "repo_id": "default"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "reflection",
+        "original_arguments": {
+          "issue_id": "102",
+          "repo_id": "default"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/03dfc7ef7f192f7520693f9f.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M16-PD",
+        "tool_id": "close_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 102,
+          "repo_id": "default"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "validation_guided",
+        "original_arguments": {
+          "issue_id": "102",
+          "repo_id": "default"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/c8faf4f676bbf9f1b9ff82a7.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M16-PD",
+        "tool_id": "close_issue"
+      },
+      {
+        "corrected_arguments": {
+          "issue_id": 102,
+          "repo_id": "default"
+        },
+        "counted_as_model_success": false,
+        "edit_count": 1,
+        "field_edits": [
+          {
+            "field": "issue_id",
+            "operation": "cast_integer"
+          }
+        ],
+        "local_validation_passed": true,
+        "method": "driftguard_llm",
+        "original_arguments": {
+          "issue_id": "102",
+          "repo_id": "default"
+        },
+        "record_ref": "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/f9ffdeeb748b09f0eaa40807.json",
+        "remaining_error": null,
+        "runtime_status_code": 404,
+        "sandbox_executable": true,
+        "scenario": "M16-PD",
+        "tool_id": "close_issue"
+      }
+    ],
+    "median_field_edits_for_locally_fixable": 1.0,
+    "minimal_structural_fix_sandbox_executable": 30,
+    "minimal_structural_fix_validated_locally": 30,
+    "qwen_invalid_records_checked": 45
+  },
+  "records_audited": 120,
+  "recovery_policies": {
+    "by_method": {
+      "driftguard_llm": {
+        "driftguard_evidence_contexts": 52,
+        "exact_retry_decisions": 0,
+        "hook_calls": 52,
+        "llm_attribution_records": 24,
+        "records": 24,
+        "records_stopped_before_hook": 9,
+        "records_with_hook": 15,
+        "reflection_contexts": 0,
+        "validation_error_contexts": 0,
+        "validation_guided_contexts": 0
+      },
+      "reflection": {
+        "driftguard_evidence_contexts": 0,
+        "exact_retry_decisions": 0,
+        "hook_calls": 52,
+        "llm_attribution_records": 0,
+        "records": 24,
+        "records_stopped_before_hook": 9,
+        "records_with_hook": 15,
+        "reflection_contexts": 52,
+        "validation_error_contexts": 0,
+        "validation_guided_contexts": 0
+      },
+      "retry_only": {
+        "driftguard_evidence_contexts": 0,
+        "exact_retry_decisions": 15,
+        "hook_calls": 69,
+        "llm_attribution_records": 0,
+        "records": 24,
+        "records_stopped_before_hook": 9,
+        "records_with_hook": 15,
+        "reflection_contexts": 0,
+        "validation_error_contexts": 0,
+        "validation_guided_contexts": 0
+      },
+      "standard": {
+        "driftguard_evidence_contexts": 0,
+        "exact_retry_decisions": 0,
+        "hook_calls": 59,
+        "llm_attribution_records": 0,
+        "records": 24,
+        "records_stopped_before_hook": 9,
+        "records_with_hook": 15,
+        "reflection_contexts": 0,
+        "validation_error_contexts": 0,
+        "validation_guided_contexts": 0
+      },
+      "validation_guided": {
+        "driftguard_evidence_contexts": 0,
+        "exact_retry_decisions": 0,
+        "hook_calls": 57,
+        "llm_attribution_records": 0,
+        "records": 24,
+        "records_stopped_before_hook": 9,
+        "records_with_hook": 15,
+        "reflection_contexts": 0,
+        "validation_error_contexts": 0,
+        "validation_guided_contexts": 57
+      }
+    },
+    "common_pre_recovery_failure": false,
+    "key_finding": "Local InputValidationError breaks the controller loop before every policy.after_failure hook."
+  },
+  "result_funnel": {
+    "all_action_type_counts": {
+      "ABSTAIN": 50,
+      "REQUEST_PROBE": 37,
+      "TOOL_CALL": 319
+    },
+    "executed_at_least_one_sandbox_tool": 75,
+    "failed_after_sandbox_execution": 75,
+    "failed_before_parameter_validation": 0,
+    "failed_during_local_parameter_validation_before_sandbox": 45,
+    "final_action_type_counts": {
+      "ABSTAIN": 50,
+      "REQUEST_PROBE": 20,
+      "TOOL_CALL": 50
+    },
+    "first_action_type_counts": {
+      "TOOL_CALL": 120
+    },
+    "never_executed_sandbox_tool": 45,
+    "records": 120,
+    "recovery_policy_never_activated": 45,
+    "safety_blocks": 19,
+    "state_changed_but_evaluator_failed": 0,
+    "task_evaluator_failure_records": 120,
+    "task_success": 0,
+    "termination_reason_counts": {
+      "ABSTAINED": 50,
+      "BUDGET_EXHAUSTED": 6,
+      "INVALID_ARGUMENTS": 45,
+      "SAFETY_BLOCKED": 19
+    }
+  },
+  "root_causes": [
+    {
+      "behavior_affecting": true,
+      "cause": "AgentContextBuilder replaces the displayed OpenAPI with a four-field tool summary. Required arguments, types, enums, defaults, response schemas and permissions are absent for all 12 tools.",
+      "evidence": [
+        "src/driftguard/agents/context_builder.py::_tool_summary",
+        "tool_catalog_audit.tools_with_missing_schema_information=12",
+        "task_instantiation.requires_undiscoverable_repo_id_scenarios=12"
+      ],
+      "layer": "Prompt/tool catalog rendering",
+      "minimal_fix": "Render the resolved Agent-visible input/response contract and actor capability for every tool; keep the existing strict AgentAction envelope.",
+      "priority": "P1",
+      "rank": 1,
+      "record_refs": [
+        "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/af86f9ecc1172974a3853d56.json",
+        "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/ae8cb05d92da47102f11bcee.json",
+        "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/c5fcbd51977f56f444055e9d.json"
+      ]
+    },
+    {
+      "behavior_affecting": true,
+      "cause": "A local InputValidationError is written to TaskMemory and then the controller immediately breaks, so the model never receives the concrete validator error and no recovery policy hook can run.",
+      "evidence": [
+        "src/driftguard/agents/controller.py local InputValidationError branch",
+        "qwen_parameter_analysis.local_validation_failures=45",
+        "controller_loop.validation_error_returned_to_model=0"
+      ],
+      "layer": "Controller feedback loop",
+      "minimal_fix": "Within the unchanged interaction budget, append the validator error and continue to one next model action; route the failure through the selected policy hook.",
+      "priority": "P2",
+      "rank": 2,
+      "record_refs": [
+        "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/7c310c51e74457bf984ef787.json",
+        "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/22fa316ed95509c8bb45ff99.json",
+        "results/experiments/phase10/pilot_v3/end_to_end/dashscope-qwen3.7-plus/records/7f5052c8d905543417f281b2.json"
+      ]
+    },
+    {
+      "behavior_affecting": true,
+      "cause": "The smoke task reduces all natural-language goals to tool_succeeded=true with no state assertions. M06/M11/M16 are multi-step or state-sensitive, and M16 names issue 102 while the SED-01 benchmark arguments target issue 101.",
+      "evidence": [
+        "src/driftguard/experiments/scenario_runner.py::_smoke_task",
+        "task_instantiation.task_evaluator_goal_alignment_scenarios=3/12",
+        "oracle_downstream_control business-goal count versus evaluator pass count"
+      ],
+      "layer": "Task instantiation/evaluator contract",
+      "minimal_fix": "Instantiate task-specific success assertions and consistent bound entity IDs before any new Pilot; validate them with the 12-task offline Oracle control.",
+      "priority": "P0",
+      "rank": 3,
+      "record_refs": [
+        "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/73cccbc4b81584c25f3c9ab0.json",
+        "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/6f5c534b5a3b18c91b396a28.json",
+        "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/312471cc1ec75e8275c17cd5.json"
+      ]
+    },
+    {
+      "behavior_affecting": true,
+      "cause": "The common prompt offers REQUEST_PROBE to every method while Controller permits probes only for DriftGuard; non-probe methods can therefore be controller-blocked for a structurally valid advertised action.",
+      "evidence": [
+        "DeepSeek SAFETY_BLOCKED records",
+        "ToolAgentController REQUEST_PROBE allows_probe branch"
+      ],
+      "layer": "Safety capability communication",
+      "minimal_fix": "Expose per-method allowed action capabilities or make unavailable action variants absent from that method's schema.",
+      "priority": "P3",
+      "rank": 4,
+      "record_refs": [
+        "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/672dfb2408bd945f534dcebd.json",
+        "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/312471cc1ec75e8275c17cd5.json",
+        "results/experiments/phase10/pilot_v3/end_to_end/deepseek-deepseek-v4-flash/records/2d9f4b24325ad4c212a8fb7b.json"
+      ]
+    }
+  ],
+  "task_evaluator_recalculation": {
+    "answer_assertions_passed": 0,
+    "candidate_record_refs": [],
+    "evaluation_before_commit_detected": false,
+    "evaluator_reason_code_counts": {
+      "ANSWER_ASSERTION_FAILED": 120,
+      "TOOL_BUDGET_EXCEEDED": 12,
+      "TOOL_EXECUTION_FAILED": 75
+    },
+    "exact_recalculation_matches": 120,
+    "false_negative_finding": "No model record completed a successful non-probe sandbox call, so the observed 0% is not an evaluator false negative.",
+    "forbidden_assertions_passed": 120,
+    "records_recalculated": 120,
+    "semantic_alignment_finding": "The smoke evaluator has no state success assertions and accepts tool_succeeded=true; it is weaker than M06/M11/M16 natural-language goals and can create false positives.",
+    "shared_or_wrong_state_store_detected": false,
+    "state_assertions_passed": 120,
+    "state_changed_but_evaluator_failed": 0,
+    "state_isolation_initial_hash_count": 1,
+    "state_reset_before_evaluation_detected": false,
+    "successful_sandbox_call_but_evaluator_failed": 0,
+    "within_tool_budget": 108
+  },
+  "task_instantiation": {
+    "actor_identity_visible_scenarios": 0,
+    "concrete_task_text_scenarios": 12,
+    "details": [
+      {
+        "actor_id_visible_to_model": false,
+        "concrete_text": true,
+        "entities_exist_in_s0": true,
+        "entities_named_in_task": {
+          "title": "Review authentication logs"
+        },
+        "mismatch_reason": null,
+        "required_target_fields": [
+          "repo_id",
+          "title"
+        ],
+        "requires_hidden_guess": "repo_id",
+        "s0_visible_to_model": false,
+        "scenario": "M01-AE",
+        "task_goal_matches_smoke_evaluator": true,
+        "task_text": "When issues are enabled, create Review authentication logs without specifying priority.",
+        "unknown_repo_id_discoverable_with_rendered_catalog": false,
+        "unresolved_template_tokens": []
+      },
+      {
+        "actor_id_visible_to_model": false,
+        "concrete_text": true,
+        "entities_exist_in_s0": true,
+        "entities_named_in_task": {
+          "title": "Review authentication logs"
+        },
+        "mismatch_reason": null,
+        "required_target_fields": [
+          "repo_id",
+          "title"
+        ],
+        "requires_hidden_guess": "repo_id",
+        "s0_visible_to_model": false,
+        "scenario": "M01-TF",
+        "task_goal_matches_smoke_evaluator": true,
+        "task_text": "When issues are enabled, create Review authentication logs without specifying priority.",
+        "unknown_repo_id_discoverable_with_rendered_catalog": false,
+        "unresolved_template_tokens": []
+      },
+      {
+        "actor_id_visible_to_model": false,
+        "concrete_text": true,
+        "entities_exist_in_s0": true,
+        "entities_named_in_task": {
+          "title": "Review authentication logs"
+        },
+        "mismatch_reason": null,
+        "required_target_fields": [
+          "repo_id",
+          "title"
+        ],
+        "requires_hidden_guess": "repo_id",
+        "s0_visible_to_model": false,
+        "scenario": "M01-PD",
+        "task_goal_matches_smoke_evaluator": true,
+        "task_text": "When issues are enabled, create Review authentication logs without specifying priority.",
+        "unknown_repo_id_discoverable_with_rendered_catalog": false,
+        "unresolved_template_tokens": []
+      },
+      {
+        "actor_id_visible_to_model": false,
+        "concrete_text": true,
+        "entities_exist_in_s0": true,
+        "entities_named_in_task": {
+          "created_issue_id": "discoverable only after a successful create response"
+        },
+        "mismatch_reason": "task requires create-then-assign, evaluator accepts any successful tool",
+        "required_target_fields": [
+          "repo_id",
+          "title"
+        ],
+        "requires_hidden_guess": "repo_id",
+        "s0_visible_to_model": false,
+        "scenario": "M06-AE",
+        "task_goal_matches_smoke_evaluator": false,
+        "task_text": "Create an issue and consume its canonical issue_id for assignment.",
+        "unknown_repo_id_discoverable_with_rendered_catalog": false,
+        "unresolved_template_tokens": []
+      },
+      {
+        "actor_id_visible_to_model": false,
+        "concrete_text": true,
+        "entities_exist_in_s0": true,
+        "entities_named_in_task": {
+          "created_issue_id": "discoverable only after a successful create response"
+        },
+        "mismatch_reason": "task requires create-then-assign, evaluator accepts any successful tool",
+        "required_target_fields": [
+          "repo_id",
+          "title"
+        ],
+        "requires_hidden_guess": "repo_id",
+        "s0_visible_to_model": false,
+        "scenario": "M06-TF",
+        "task_goal_matches_smoke_evaluator": false,
+        "task_text": "Create an issue and consume its canonical issue_id for assignment.",
+        "unknown_repo_id_discoverable_with_rendered_catalog": false,
+        "unresolved_template_tokens": []
+      },
+      {
+        "actor_id_visible_to_model": false,
+        "concrete_text": true,
+        "entities_exist_in_s0": true,
+        "entities_named_in_task": {
+          "created_issue_id": "discoverable only after a successful create response"
+        },
+        "mismatch_reason": "task requires create-then-assign, evaluator accepts any successful tool",
+        "required_target_fields": [
+          "repo_id",
+          "title"
+        ],
+        "requires_hidden_guess": "repo_id",
+        "s0_visible_to_model": false,
+        "scenario": "M06-PD",
+        "task_goal_matches_smoke_evaluator": false,
+        "task_text": "Create an issue and consume its canonical issue_id for assignment.",
+        "unknown_repo_id_discoverable_with_rendered_catalog": false,
+        "unresolved_template_tokens": []
+      },
+      {
+        "actor_id_visible_to_model": false,
+        "concrete_text": true,
+        "entities_exist_in_s0": true,
+        "entities_named_in_task": {
+          "issue_id": 101,
+          "repository_name": "alpha-api"
+        },
+        "mismatch_reason": "task requires issue 101 closed, evaluator accepts successful prerequisite assignment",
+        "required_target_fields": [
+          "repo_id",
+          "issue_id"
+        ],
+        "requires_hidden_guess": "repo_id",
+        "s0_visible_to_model": false,
+        "scenario": "M11-AE",
+        "task_goal_matches_smoke_evaluator": false,
+        "task_text": "Close unassigned alpha-api issue 101.",
+        "unknown_repo_id_discoverable_with_rendered_catalog": false,
+        "unresolved_template_tokens": []
+      },
+      {
+        "actor_id_visible_to_model": false,
+        "concrete_text": true,
+        "entities_exist_in_s0": true,
+        "entities_named_in_task": {
+          "issue_id": 101,
+          "repository_name": "alpha-api"
+        },
+        "mismatch_reason": "task requires issue 101 closed, evaluator accepts successful prerequisite assignment",
+        "required_target_fields": [
+          "repo_id",
+          "issue_id"
+        ],
+        "requires_hidden_guess": "repo_id",
+        "s0_visible_to_model": false,
+        "scenario": "M11-TF",
+        "task_goal_matches_smoke_evaluator": false,
+        "task_text": "Close unassigned alpha-api issue 101.",
+        "unknown_repo_id_discoverable_with_rendered_catalog": false,
+        "unresolved_template_tokens": []
+      },
+      {
+        "actor_id_visible_to_model": false,
+        "concrete_text": true,
+        "entities_exist_in_s0": true,
+        "entities_named_in_task": {
+          "issue_id": 101,
+          "repository_name": "alpha-api"
+        },
+        "mismatch_reason": "task requires issue 101 closed, evaluator accepts successful prerequisite assignment",
+        "required_target_fields": [
+          "repo_id",
+          "issue_id"
+        ],
+        "requires_hidden_guess": "repo_id",
+        "s0_visible_to_model": false,
+        "scenario": "M11-PD",
+        "task_goal_matches_smoke_evaluator": false,
+        "task_text": "Close unassigned alpha-api issue 101.",
+        "unknown_repo_id_discoverable_with_rendered_catalog": false,
+        "unresolved_template_tokens": []
+      },
+      {
+        "actor_id_visible_to_model": false,
+        "concrete_text": true,
+        "entities_exist_in_s0": true,
+        "entities_named_in_task": {
+          "issue_id": 102
+        },
+        "mismatch_reason": "task names issue 102 while SED-01 benchmark action targets issue 101; evaluator checks only tool_succeeded",
+        "required_target_fields": [
+          "repo_id",
+          "issue_id"
+        ],
+        "requires_hidden_guess": "repo_id",
+        "s0_visible_to_model": false,
+        "scenario": "M16-AE",
+        "task_goal_matches_smoke_evaluator": false,
+        "task_text": "Close issue 102 and compare response to immediate state.",
+        "unknown_repo_id_discoverable_with_rendered_catalog": false,
+        "unresolved_template_tokens": []
+      },
+      {
+        "actor_id_visible_to_model": false,
+        "concrete_text": true,
+        "entities_exist_in_s0": true,
+        "entities_named_in_task": {
+          "issue_id": 102
+        },
+        "mismatch_reason": "task names issue 102 while SED-01 benchmark action targets issue 101; evaluator checks only tool_succeeded",
+        "required_target_fields": [
+          "repo_id",
+          "issue_id"
+        ],
+        "requires_hidden_guess": "repo_id",
+        "s0_visible_to_model": false,
+        "scenario": "M16-TF",
+        "task_goal_matches_smoke_evaluator": false,
+        "task_text": "Close issue 102 and compare response to immediate state.",
+        "unknown_repo_id_discoverable_with_rendered_catalog": false,
+        "unresolved_template_tokens": []
+      },
+      {
+        "actor_id_visible_to_model": false,
+        "concrete_text": true,
+        "entities_exist_in_s0": true,
+        "entities_named_in_task": {
+          "issue_id": 102
+        },
+        "mismatch_reason": "task names issue 102 while SED-01 benchmark action targets issue 101; evaluator checks only tool_succeeded",
+        "required_target_fields": [
+          "repo_id",
+          "issue_id"
+        ],
+        "requires_hidden_guess": "repo_id",
+        "s0_visible_to_model": false,
+        "scenario": "M16-PD",
+        "task_goal_matches_smoke_evaluator": false,
+        "task_text": "Close issue 102 and compare response to immediate state.",
+        "unknown_repo_id_discoverable_with_rendered_catalog": false,
+        "unresolved_template_tokens": []
+      }
+    ],
+    "requires_undiscoverable_repo_id_scenarios": 12,
+    "s0_visible_scenarios": 0,
+    "scenarios_checked": 12,
+    "task_evaluator_goal_alignment_scenarios": 3,
+    "unresolved_template_scenarios": 0
+  },
+  "tool_catalog_audit": {
+    "actual_rendering_code": "AgentContextBuilder._tool_summary emits only tool_id, summary, path, method",
+    "details": [
+      {
+        "checks": {
+          "defaults": false,
+          "description": false,
+          "enums": false,
+          "operation_name": true,
+          "optional_fields": false,
+          "path_and_body_merged": false,
+          "permission": false,
+          "refs_resolved": false,
+          "request_body_hierarchy": false,
+          "required_fields": false,
+          "response_structure": false,
+          "tool_id": true,
+          "types": false
+        },
+        "model_actual_entry": {
+          "method": "get",
+          "path": "/repositories/{repo_id}",
+          "summary": "Get repository details",
+          "tool_id": "get_repository"
+        },
+        "registry_contract": {
+          "body_properties": [],
+          "method": "get",
+          "path": "/repositories/{repo_id}",
+          "path_parameters": [
+            "repo_id"
+          ],
+          "properties": {
+            "repo_id": {
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9._-]+$",
+              "type": "string"
+            }
+          },
+          "request_body_required": false,
+          "required": [
+            "repo_id"
+          ],
+          "required_permission": "repository:read",
+          "success_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "data": {
+                "additionalProperties": false,
+                "properties": {
+                  "archived": {
+                    "type": "boolean"
+                  },
+                  "default_branch": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "issues_enabled": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "repo_id": {
+                    "type": "string"
+                  },
+                  "visibility": {
+                    "enum": [
+                      "public",
+                      "private"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "repo_id",
+                  "name",
+                  "description",
+                  "visibility",
+                  "default_branch",
+                  "issues_enabled",
+                  "archived"
+                ],
+                "type": "object"
+              },
+              "ok": {
+                "const": true,
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "ok",
+              "data"
+            ],
+            "type": "object"
+          }
+        },
+        "structural_diff": [
+          "description",
+          "required_fields",
+          "optional_fields",
+          "types",
+          "enums",
+          "defaults",
+          "request_body_hierarchy",
+          "response_structure",
+          "permission",
+          "refs_resolved",
+          "path_and_body_merged"
+        ],
+        "tool_id": "get_repository"
+      },
+      {
+        "checks": {
+          "defaults": false,
+          "description": false,
+          "enums": false,
+          "operation_name": true,
+          "optional_fields": false,
+          "path_and_body_merged": false,
+          "permission": false,
+          "refs_resolved": false,
+          "request_body_hierarchy": false,
+          "required_fields": false,
+          "response_structure": false,
+          "tool_id": true,
+          "types": false
+        },
+        "model_actual_entry": {
+          "method": "patch",
+          "path": "/repositories/{repo_id}",
+          "summary": "Update repository settings",
+          "tool_id": "update_repository"
+        },
+        "registry_contract": {
+          "body_properties": [
+            "description",
+            "default_branch",
+            "issues_enabled"
+          ],
+          "method": "patch",
+          "path": "/repositories/{repo_id}",
+          "path_parameters": [
+            "repo_id"
+          ],
+          "properties": {
+            "default_branch": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "description": {
+              "maxLength": 500,
+              "type": "string"
+            },
+            "issues_enabled": {
+              "type": "boolean"
+            },
+            "repo_id": {
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9._-]+$",
+              "type": "string"
+            }
+          },
+          "request_body_required": true,
+          "required": [
+            "repo_id"
+          ],
+          "required_permission": "repository:admin",
+          "success_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "data": {
+                "additionalProperties": false,
+                "properties": {
+                  "archived": {
+                    "type": "boolean"
+                  },
+                  "default_branch": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "issues_enabled": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "repo_id": {
+                    "type": "string"
+                  },
+                  "visibility": {
+                    "enum": [
+                      "public",
+                      "private"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "repo_id",
+                  "name",
+                  "description",
+                  "visibility",
+                  "default_branch",
+                  "issues_enabled",
+                  "archived"
+                ],
+                "type": "object"
+              },
+              "ok": {
+                "const": true,
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "ok",
+              "data"
+            ],
+            "type": "object"
+          }
+        },
+        "structural_diff": [
+          "description",
+          "required_fields",
+          "optional_fields",
+          "types",
+          "enums",
+          "defaults",
+          "request_body_hierarchy",
+          "response_structure",
+          "permission",
+          "refs_resolved",
+          "path_and_body_merged"
+        ],
+        "tool_id": "update_repository"
+      },
+      {
+        "checks": {
+          "defaults": false,
+          "description": false,
+          "enums": false,
+          "operation_name": true,
+          "optional_fields": false,
+          "path_and_body_merged": false,
+          "permission": false,
+          "refs_resolved": false,
+          "request_body_hierarchy": false,
+          "required_fields": false,
+          "response_structure": false,
+          "tool_id": true,
+          "types": false
+        },
+        "model_actual_entry": {
+          "method": "post",
+          "path": "/repositories/{repo_id}/issues",
+          "summary": "Create an issue",
+          "tool_id": "create_issue"
+        },
+        "registry_contract": {
+          "body_properties": [
+            "title",
+            "body",
+            "priority"
+          ],
+          "method": "post",
+          "path": "/repositories/{repo_id}/issues",
+          "path_parameters": [
+            "repo_id"
+          ],
+          "properties": {
+            "body": {
+              "default": "",
+              "maxLength": 10000,
+              "type": "string"
+            },
+            "priority": {
+              "default": "medium",
+              "enum": [
+                "low",
+                "medium",
+                "high"
+              ],
+              "type": "string"
+            },
+            "repo_id": {
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9._-]+$",
+              "type": "string"
+            },
+            "title": {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "request_body_required": true,
+          "required": [
+            "repo_id",
+            "title"
+          ],
+          "required_permission": "issues:write",
+          "success_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "data": {
+                "additionalProperties": false,
+                "properties": {
+                  "assignee": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "body": {
+                    "type": "string"
+                  },
+                  "closed_at": {
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "created_at": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "issue_id": {
+                    "minimum": 1,
+                    "type": "integer"
+                  },
+                  "priority": {
+                    "enum": [
+                      "low",
+                      "medium",
+                      "high"
+                    ],
+                    "type": "string"
+                  },
+                  "repo_id": {
+                    "type": "string"
+                  },
+                  "resolution": {
+                    "enum": [
+                      "completed",
+                      "not_planned",
+                      null
+                    ],
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "state": {
+                    "enum": [
+                      "open",
+                      "closed"
+                    ],
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "updated_at": {
+                    "format": "date-time",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "issue_id",
+                  "repo_id",
+                  "title",
+                  "body",
+                  "priority",
+                  "state",
+                  "assignee",
+                  "resolution",
+                  "created_at",
+                  "updated_at",
+                  "closed_at"
+                ],
+                "type": "object"
+              },
+              "ok": {
+                "const": true,
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "ok",
+              "data"
+            ],
+            "type": "object"
+          }
+        },
+        "structural_diff": [
+          "description",
+          "required_fields",
+          "optional_fields",
+          "types",
+          "enums",
+          "defaults",
+          "request_body_hierarchy",
+          "response_structure",
+          "permission",
+          "refs_resolved",
+          "path_and_body_merged"
+        ],
+        "tool_id": "create_issue"
+      },
+      {
+        "checks": {
+          "defaults": false,
+          "description": false,
+          "enums": false,
+          "operation_name": true,
+          "optional_fields": false,
+          "path_and_body_merged": false,
+          "permission": false,
+          "refs_resolved": false,
+          "request_body_hierarchy": false,
+          "required_fields": false,
+          "response_structure": false,
+          "tool_id": true,
+          "types": false
+        },
+        "model_actual_entry": {
+          "method": "get",
+          "path": "/repositories/{repo_id}/issues/{issue_id}",
+          "summary": "Get an issue",
+          "tool_id": "get_issue"
+        },
+        "registry_contract": {
+          "body_properties": [],
+          "method": "get",
+          "path": "/repositories/{repo_id}/issues/{issue_id}",
+          "path_parameters": [
+            "repo_id",
+            "issue_id"
+          ],
+          "properties": {
+            "issue_id": {
+              "minimum": 1,
+              "type": "integer"
+            },
+            "repo_id": {
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9._-]+$",
+              "type": "string"
+            }
+          },
+          "request_body_required": false,
+          "required": [
+            "repo_id",
+            "issue_id"
+          ],
+          "required_permission": "issues:read",
+          "success_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "data": {
+                "additionalProperties": false,
+                "properties": {
+                  "assignee": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "body": {
+                    "type": "string"
+                  },
+                  "closed_at": {
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "created_at": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "issue_id": {
+                    "minimum": 1,
+                    "type": "integer"
+                  },
+                  "priority": {
+                    "enum": [
+                      "low",
+                      "medium",
+                      "high"
+                    ],
+                    "type": "string"
+                  },
+                  "repo_id": {
+                    "type": "string"
+                  },
+                  "resolution": {
+                    "enum": [
+                      "completed",
+                      "not_planned",
+                      null
+                    ],
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "state": {
+                    "enum": [
+                      "open",
+                      "closed"
+                    ],
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "updated_at": {
+                    "format": "date-time",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "issue_id",
+                  "repo_id",
+                  "title",
+                  "body",
+                  "priority",
+                  "state",
+                  "assignee",
+                  "resolution",
+                  "created_at",
+                  "updated_at",
+                  "closed_at"
+                ],
+                "type": "object"
+              },
+              "ok": {
+                "const": true,
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "ok",
+              "data"
+            ],
+            "type": "object"
+          }
+        },
+        "structural_diff": [
+          "description",
+          "required_fields",
+          "optional_fields",
+          "types",
+          "enums",
+          "defaults",
+          "request_body_hierarchy",
+          "response_structure",
+          "permission",
+          "refs_resolved",
+          "path_and_body_merged"
+        ],
+        "tool_id": "get_issue"
+      },
+      {
+        "checks": {
+          "defaults": false,
+          "description": false,
+          "enums": false,
+          "operation_name": true,
+          "optional_fields": false,
+          "path_and_body_merged": false,
+          "permission": false,
+          "refs_resolved": false,
+          "request_body_hierarchy": false,
+          "required_fields": false,
+          "response_structure": false,
+          "tool_id": true,
+          "types": false
+        },
+        "model_actual_entry": {
+          "method": "put",
+          "path": "/repositories/{repo_id}/issues/{issue_id}/assignee",
+          "summary": "Assign an open issue",
+          "tool_id": "assign_issue"
+        },
+        "registry_contract": {
+          "body_properties": [
+            "assignee"
+          ],
+          "method": "put",
+          "path": "/repositories/{repo_id}/issues/{issue_id}/assignee",
+          "path_parameters": [
+            "repo_id",
+            "issue_id"
+          ],
+          "properties": {
+            "assignee": {
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9-]+$",
+              "type": "string"
+            },
+            "issue_id": {
+              "minimum": 1,
+              "type": "integer"
+            },
+            "repo_id": {
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9._-]+$",
+              "type": "string"
+            }
+          },
+          "request_body_required": true,
+          "required": [
+            "repo_id",
+            "issue_id",
+            "assignee"
+          ],
+          "required_permission": "issues:write",
+          "success_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "data": {
+                "additionalProperties": false,
+                "properties": {
+                  "assignee": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "body": {
+                    "type": "string"
+                  },
+                  "closed_at": {
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "created_at": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "issue_id": {
+                    "minimum": 1,
+                    "type": "integer"
+                  },
+                  "priority": {
+                    "enum": [
+                      "low",
+                      "medium",
+                      "high"
+                    ],
+                    "type": "string"
+                  },
+                  "repo_id": {
+                    "type": "string"
+                  },
+                  "resolution": {
+                    "enum": [
+                      "completed",
+                      "not_planned",
+                      null
+                    ],
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "state": {
+                    "enum": [
+                      "open",
+                      "closed"
+                    ],
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "updated_at": {
+                    "format": "date-time",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "issue_id",
+                  "repo_id",
+                  "title",
+                  "body",
+                  "priority",
+                  "state",
+                  "assignee",
+                  "resolution",
+                  "created_at",
+                  "updated_at",
+                  "closed_at"
+                ],
+                "type": "object"
+              },
+              "ok": {
+                "const": true,
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "ok",
+              "data"
+            ],
+            "type": "object"
+          }
+        },
+        "structural_diff": [
+          "description",
+          "required_fields",
+          "optional_fields",
+          "types",
+          "enums",
+          "defaults",
+          "request_body_hierarchy",
+          "response_structure",
+          "permission",
+          "refs_resolved",
+          "path_and_body_merged"
+        ],
+        "tool_id": "assign_issue"
+      },
+      {
+        "checks": {
+          "defaults": false,
+          "description": false,
+          "enums": false,
+          "operation_name": true,
+          "optional_fields": false,
+          "path_and_body_merged": false,
+          "permission": false,
+          "refs_resolved": false,
+          "request_body_hierarchy": false,
+          "required_fields": false,
+          "response_structure": false,
+          "tool_id": true,
+          "types": false
+        },
+        "model_actual_entry": {
+          "method": "post",
+          "path": "/repositories/{repo_id}/issues/{issue_id}/close",
+          "summary": "Close an open issue",
+          "tool_id": "close_issue"
+        },
+        "registry_contract": {
+          "body_properties": [
+            "resolution"
+          ],
+          "method": "post",
+          "path": "/repositories/{repo_id}/issues/{issue_id}/close",
+          "path_parameters": [
+            "repo_id",
+            "issue_id"
+          ],
+          "properties": {
+            "issue_id": {
+              "minimum": 1,
+              "type": "integer"
+            },
+            "repo_id": {
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9._-]+$",
+              "type": "string"
+            },
+            "resolution": {
+              "default": "completed",
+              "enum": [
+                "completed",
+                "not_planned"
+              ],
+              "type": "string"
+            }
+          },
+          "request_body_required": false,
+          "required": [
+            "repo_id",
+            "issue_id"
+          ],
+          "required_permission": "issues:write",
+          "success_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "data": {
+                "additionalProperties": false,
+                "properties": {
+                  "assignee": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "body": {
+                    "type": "string"
+                  },
+                  "closed_at": {
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "created_at": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "issue_id": {
+                    "minimum": 1,
+                    "type": "integer"
+                  },
+                  "priority": {
+                    "enum": [
+                      "low",
+                      "medium",
+                      "high"
+                    ],
+                    "type": "string"
+                  },
+                  "repo_id": {
+                    "type": "string"
+                  },
+                  "resolution": {
+                    "enum": [
+                      "completed",
+                      "not_planned",
+                      null
+                    ],
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "state": {
+                    "enum": [
+                      "open",
+                      "closed"
+                    ],
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "updated_at": {
+                    "format": "date-time",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "issue_id",
+                  "repo_id",
+                  "title",
+                  "body",
+                  "priority",
+                  "state",
+                  "assignee",
+                  "resolution",
+                  "created_at",
+                  "updated_at",
+                  "closed_at"
+                ],
+                "type": "object"
+              },
+              "ok": {
+                "const": true,
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "ok",
+              "data"
+            ],
+            "type": "object"
+          }
+        },
+        "structural_diff": [
+          "description",
+          "required_fields",
+          "optional_fields",
+          "types",
+          "enums",
+          "defaults",
+          "request_body_hierarchy",
+          "response_structure",
+          "permission",
+          "refs_resolved",
+          "path_and_body_merged"
+        ],
+        "tool_id": "close_issue"
+      },
+      {
+        "checks": {
+          "defaults": false,
+          "description": false,
+          "enums": false,
+          "operation_name": true,
+          "optional_fields": false,
+          "path_and_body_merged": false,
+          "permission": false,
+          "refs_resolved": false,
+          "request_body_hierarchy": false,
+          "required_fields": false,
+          "response_structure": false,
+          "tool_id": true,
+          "types": false
+        },
+        "model_actual_entry": {
+          "method": "post",
+          "path": "/repositories/{repo_id}/workflows/{workflow_id}/runs",
+          "summary": "Trigger a workflow pipeline run",
+          "tool_id": "trigger_pipeline"
+        },
+        "registry_contract": {
+          "body_properties": [
+            "ref",
+            "inputs"
+          ],
+          "method": "post",
+          "path": "/repositories/{repo_id}/workflows/{workflow_id}/runs",
+          "path_parameters": [
+            "repo_id",
+            "workflow_id"
+          ],
+          "properties": {
+            "inputs": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "boolean"
+                  }
+                ]
+              },
+              "maxProperties": 25,
+              "type": "object"
+            },
+            "ref": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "repo_id": {
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9._-]+$",
+              "type": "string"
+            },
+            "workflow_id": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "request_body_required": true,
+          "required": [
+            "repo_id",
+            "workflow_id",
+            "ref"
+          ],
+          "required_permission": "actions:write",
+          "success_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "data": {
+                "additionalProperties": false,
+                "properties": {
+                  "attempt": {
+                    "minimum": 1,
+                    "type": "integer"
+                  },
+                  "conclusion": {
+                    "enum": [
+                      "success",
+                      "failure",
+                      "cancelled",
+                      null
+                    ],
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "created_at": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "ref": {
+                    "type": "string"
+                  },
+                  "repo_id": {
+                    "type": "string"
+                  },
+                  "retried_from": {
+                    "minimum": 1,
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "run_id": {
+                    "minimum": 1,
+                    "type": "integer"
+                  },
+                  "status": {
+                    "enum": [
+                      "queued",
+                      "in_progress",
+                      "completed"
+                    ],
+                    "type": "string"
+                  },
+                  "updated_at": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "workflow_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "run_id",
+                  "repo_id",
+                  "workflow_id",
+                  "ref",
+                  "status",
+                  "conclusion",
+                  "attempt",
+                  "retried_from",
+                  "created_at",
+                  "updated_at"
+                ],
+                "type": "object"
+              },
+              "ok": {
+                "const": true,
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "ok",
+              "data"
+            ],
+            "type": "object"
+          }
+        },
+        "structural_diff": [
+          "description",
+          "required_fields",
+          "optional_fields",
+          "types",
+          "enums",
+          "defaults",
+          "request_body_hierarchy",
+          "response_structure",
+          "permission",
+          "refs_resolved",
+          "path_and_body_merged"
+        ],
+        "tool_id": "trigger_pipeline"
+      },
+      {
+        "checks": {
+          "defaults": false,
+          "description": false,
+          "enums": false,
+          "operation_name": true,
+          "optional_fields": false,
+          "path_and_body_merged": false,
+          "permission": false,
+          "refs_resolved": false,
+          "request_body_hierarchy": false,
+          "required_fields": false,
+          "response_structure": false,
+          "tool_id": true,
+          "types": false
+        },
+        "model_actual_entry": {
+          "method": "get",
+          "path": "/repositories/{repo_id}/pipeline-runs/{run_id}",
+          "summary": "Get pipeline run status",
+          "tool_id": "get_pipeline_status"
+        },
+        "registry_contract": {
+          "body_properties": [],
+          "method": "get",
+          "path": "/repositories/{repo_id}/pipeline-runs/{run_id}",
+          "path_parameters": [
+            "repo_id",
+            "run_id"
+          ],
+          "properties": {
+            "repo_id": {
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9._-]+$",
+              "type": "string"
+            },
+            "run_id": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "request_body_required": false,
+          "required": [
+            "repo_id",
+            "run_id"
+          ],
+          "required_permission": "actions:read",
+          "success_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "data": {
+                "additionalProperties": false,
+                "properties": {
+                  "attempt": {
+                    "minimum": 1,
+                    "type": "integer"
+                  },
+                  "conclusion": {
+                    "enum": [
+                      "success",
+                      "failure",
+                      "cancelled",
+                      null
+                    ],
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "created_at": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "ref": {
+                    "type": "string"
+                  },
+                  "repo_id": {
+                    "type": "string"
+                  },
+                  "retried_from": {
+                    "minimum": 1,
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "run_id": {
+                    "minimum": 1,
+                    "type": "integer"
+                  },
+                  "status": {
+                    "enum": [
+                      "queued",
+                      "in_progress",
+                      "completed"
+                    ],
+                    "type": "string"
+                  },
+                  "updated_at": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "workflow_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "run_id",
+                  "repo_id",
+                  "workflow_id",
+                  "ref",
+                  "status",
+                  "conclusion",
+                  "attempt",
+                  "retried_from",
+                  "created_at",
+                  "updated_at"
+                ],
+                "type": "object"
+              },
+              "ok": {
+                "const": true,
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "ok",
+              "data"
+            ],
+            "type": "object"
+          }
+        },
+        "structural_diff": [
+          "description",
+          "required_fields",
+          "optional_fields",
+          "types",
+          "enums",
+          "defaults",
+          "request_body_hierarchy",
+          "response_structure",
+          "permission",
+          "refs_resolved",
+          "path_and_body_merged"
+        ],
+        "tool_id": "get_pipeline_status"
+      },
+      {
+        "checks": {
+          "defaults": false,
+          "description": false,
+          "enums": false,
+          "operation_name": true,
+          "optional_fields": false,
+          "path_and_body_merged": false,
+          "permission": false,
+          "refs_resolved": false,
+          "request_body_hierarchy": false,
+          "required_fields": false,
+          "response_structure": false,
+          "tool_id": true,
+          "types": false
+        },
+        "model_actual_entry": {
+          "method": "post",
+          "path": "/repositories/{repo_id}/pipeline-runs/{run_id}/retry",
+          "summary": "Retry a completed pipeline run",
+          "tool_id": "retry_pipeline"
+        },
+        "registry_contract": {
+          "body_properties": [
+            "failed_only"
+          ],
+          "method": "post",
+          "path": "/repositories/{repo_id}/pipeline-runs/{run_id}/retry",
+          "path_parameters": [
+            "repo_id",
+            "run_id"
+          ],
+          "properties": {
+            "failed_only": {
+              "default": true,
+              "type": "boolean"
+            },
+            "repo_id": {
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9._-]+$",
+              "type": "string"
+            },
+            "run_id": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "request_body_required": false,
+          "required": [
+            "repo_id",
+            "run_id"
+          ],
+          "required_permission": "actions:write",
+          "success_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "data": {
+                "additionalProperties": false,
+                "properties": {
+                  "attempt": {
+                    "minimum": 1,
+                    "type": "integer"
+                  },
+                  "conclusion": {
+                    "enum": [
+                      "success",
+                      "failure",
+                      "cancelled",
+                      null
+                    ],
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "created_at": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "ref": {
+                    "type": "string"
+                  },
+                  "repo_id": {
+                    "type": "string"
+                  },
+                  "retried_from": {
+                    "minimum": 1,
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "run_id": {
+                    "minimum": 1,
+                    "type": "integer"
+                  },
+                  "status": {
+                    "enum": [
+                      "queued",
+                      "in_progress",
+                      "completed"
+                    ],
+                    "type": "string"
+                  },
+                  "updated_at": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "workflow_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "run_id",
+                  "repo_id",
+                  "workflow_id",
+                  "ref",
+                  "status",
+                  "conclusion",
+                  "attempt",
+                  "retried_from",
+                  "created_at",
+                  "updated_at"
+                ],
+                "type": "object"
+              },
+              "ok": {
+                "const": true,
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "ok",
+              "data"
+            ],
+            "type": "object"
+          }
+        },
+        "structural_diff": [
+          "description",
+          "required_fields",
+          "optional_fields",
+          "types",
+          "enums",
+          "defaults",
+          "request_body_hierarchy",
+          "response_structure",
+          "permission",
+          "refs_resolved",
+          "path_and_body_merged"
+        ],
+        "tool_id": "retry_pipeline"
+      },
+      {
+        "checks": {
+          "defaults": false,
+          "description": false,
+          "enums": false,
+          "operation_name": true,
+          "optional_fields": false,
+          "path_and_body_merged": false,
+          "permission": false,
+          "refs_resolved": false,
+          "request_body_hierarchy": false,
+          "required_fields": false,
+          "response_structure": false,
+          "tool_id": true,
+          "types": false
+        },
+        "model_actual_entry": {
+          "method": "put",
+          "path": "/repositories/{repo_id}/members/{username}",
+          "summary": "Add an active repository member",
+          "tool_id": "add_member"
+        },
+        "registry_contract": {
+          "body_properties": [
+            "role"
+          ],
+          "method": "put",
+          "path": "/repositories/{repo_id}/members/{username}",
+          "path_parameters": [
+            "repo_id",
+            "username"
+          ],
+          "properties": {
+            "repo_id": {
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9._-]+$",
+              "type": "string"
+            },
+            "role": {
+              "default": "read",
+              "enum": [
+                "read",
+                "triage",
+                "write",
+                "maintain",
+                "admin"
+              ],
+              "type": "string"
+            },
+            "username": {
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9-]+$",
+              "type": "string"
+            }
+          },
+          "request_body_required": false,
+          "required": [
+            "repo_id",
+            "username"
+          ],
+          "required_permission": "repository:admin",
+          "success_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "data": {
+                "additionalProperties": false,
+                "description": "Role to base_permission mapping: read to read; triage to read; write to write; maintain to write; admin to admin.",
+                "properties": {
+                  "added_at": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "base_permission": {
+                    "enum": [
+                      "read",
+                      "write",
+                      "admin"
+                    ],
+                    "type": "string"
+                  },
+                  "membership_state": {
+                    "enum": [
+                      "active"
+                    ],
+                    "type": "string"
+                  },
+                  "repo_id": {
+                    "type": "string"
+                  },
+                  "role": {
+                    "enum": [
+                      "read",
+                      "triage",
+                      "write",
+                      "maintain",
+                      "admin"
+                    ],
+                    "type": "string"
+                  },
+                  "updated_at": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "repo_id",
+                  "username",
+                  "role",
+                  "base_permission",
+                  "membership_state",
+                  "added_at",
+                  "updated_at"
+                ],
+                "type": "object"
+              },
+              "ok": {
+                "const": true,
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "ok",
+              "data"
+            ],
+            "type": "object"
+          }
+        },
+        "structural_diff": [
+          "description",
+          "required_fields",
+          "optional_fields",
+          "types",
+          "enums",
+          "defaults",
+          "request_body_hierarchy",
+          "response_structure",
+          "permission",
+          "refs_resolved",
+          "path_and_body_merged"
+        ],
+        "tool_id": "add_member"
+      },
+      {
+        "checks": {
+          "defaults": false,
+          "description": false,
+          "enums": false,
+          "operation_name": true,
+          "optional_fields": false,
+          "path_and_body_merged": false,
+          "permission": false,
+          "refs_resolved": false,
+          "request_body_hierarchy": false,
+          "required_fields": false,
+          "response_structure": false,
+          "tool_id": true,
+          "types": false
+        },
+        "model_actual_entry": {
+          "method": "get",
+          "path": "/repositories/{repo_id}/members/{username}",
+          "summary": "Get an active repository member",
+          "tool_id": "get_member"
+        },
+        "registry_contract": {
+          "body_properties": [],
+          "method": "get",
+          "path": "/repositories/{repo_id}/members/{username}",
+          "path_parameters": [
+            "repo_id",
+            "username"
+          ],
+          "properties": {
+            "repo_id": {
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9._-]+$",
+              "type": "string"
+            },
+            "username": {
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9-]+$",
+              "type": "string"
+            }
+          },
+          "request_body_required": false,
+          "required": [
+            "repo_id",
+            "username"
+          ],
+          "required_permission": "metadata:read",
+          "success_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "data": {
+                "additionalProperties": false,
+                "description": "Role to base_permission mapping: read to read; triage to read; write to write; maintain to write; admin to admin.",
+                "properties": {
+                  "added_at": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "base_permission": {
+                    "enum": [
+                      "read",
+                      "write",
+                      "admin"
+                    ],
+                    "type": "string"
+                  },
+                  "membership_state": {
+                    "enum": [
+                      "active"
+                    ],
+                    "type": "string"
+                  },
+                  "repo_id": {
+                    "type": "string"
+                  },
+                  "role": {
+                    "enum": [
+                      "read",
+                      "triage",
+                      "write",
+                      "maintain",
+                      "admin"
+                    ],
+                    "type": "string"
+                  },
+                  "updated_at": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "repo_id",
+                  "username",
+                  "role",
+                  "base_permission",
+                  "membership_state",
+                  "added_at",
+                  "updated_at"
+                ],
+                "type": "object"
+              },
+              "ok": {
+                "const": true,
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "ok",
+              "data"
+            ],
+            "type": "object"
+          }
+        },
+        "structural_diff": [
+          "description",
+          "required_fields",
+          "optional_fields",
+          "types",
+          "enums",
+          "defaults",
+          "request_body_hierarchy",
+          "response_structure",
+          "permission",
+          "refs_resolved",
+          "path_and_body_merged"
+        ],
+        "tool_id": "get_member"
+      },
+      {
+        "checks": {
+          "defaults": false,
+          "description": false,
+          "enums": false,
+          "operation_name": true,
+          "optional_fields": false,
+          "path_and_body_merged": false,
+          "permission": false,
+          "refs_resolved": false,
+          "request_body_hierarchy": false,
+          "required_fields": false,
+          "response_structure": false,
+          "tool_id": true,
+          "types": false
+        },
+        "model_actual_entry": {
+          "method": "patch",
+          "path": "/repositories/{repo_id}/members/{username}",
+          "summary": "Update an active member's role",
+          "tool_id": "update_member_role"
+        },
+        "registry_contract": {
+          "body_properties": [
+            "role"
+          ],
+          "method": "patch",
+          "path": "/repositories/{repo_id}/members/{username}",
+          "path_parameters": [
+            "repo_id",
+            "username"
+          ],
+          "properties": {
+            "repo_id": {
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9._-]+$",
+              "type": "string"
+            },
+            "role": {
+              "enum": [
+                "read",
+                "triage",
+                "write",
+                "maintain",
+                "admin"
+              ],
+              "type": "string"
+            },
+            "username": {
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9-]+$",
+              "type": "string"
+            }
+          },
+          "request_body_required": true,
+          "required": [
+            "repo_id",
+            "username",
+            "role"
+          ],
+          "required_permission": "repository:admin",
+          "success_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "data": {
+                "additionalProperties": false,
+                "description": "Role to base_permission mapping: read to read; triage to read; write to write; maintain to write; admin to admin.",
+                "properties": {
+                  "added_at": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "base_permission": {
+                    "enum": [
+                      "read",
+                      "write",
+                      "admin"
+                    ],
+                    "type": "string"
+                  },
+                  "membership_state": {
+                    "enum": [
+                      "active"
+                    ],
+                    "type": "string"
+                  },
+                  "repo_id": {
+                    "type": "string"
+                  },
+                  "role": {
+                    "enum": [
+                      "read",
+                      "triage",
+                      "write",
+                      "maintain",
+                      "admin"
+                    ],
+                    "type": "string"
+                  },
+                  "updated_at": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "repo_id",
+                  "username",
+                  "role",
+                  "base_permission",
+                  "membership_state",
+                  "added_at",
+                  "updated_at"
+                ],
+                "type": "object"
+              },
+              "ok": {
+                "const": true,
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "ok",
+              "data"
+            ],
+            "type": "object"
+          }
+        },
+        "structural_diff": [
+          "description",
+          "required_fields",
+          "optional_fields",
+          "types",
+          "enums",
+          "defaults",
+          "request_body_hierarchy",
+          "response_structure",
+          "permission",
+          "refs_resolved",
+          "path_and_body_merged"
+        ],
+        "tool_id": "update_member_role"
+      }
+    ],
+    "model_catalog_tools": 12,
+    "model_receives_full_displayed_spec": false,
+    "parameter_names_omitted_entirely": true,
+    "parameter_names_truncated": false,
+    "registry_tools": 12,
+    "tool_id_set_diff": [],
+    "tools_with_missing_schema_information": 12,
+    "tools_with_zero_structural_diff": 0
+  }
+}

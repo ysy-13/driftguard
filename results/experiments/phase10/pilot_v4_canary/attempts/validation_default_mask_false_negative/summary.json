@@ -1,0 +1,89 @@
+{
+  "agent_action_valid": 4,
+  "api_calls": 17,
+  "api_key_leakage": 0,
+  "attempt": "v4_canary",
+  "cache_replay": {
+    "provider_fallback_calls": 0,
+    "records": 0,
+    "status": "NOT_RUN_GATE_FAILED"
+  },
+  "canonical_catalog_fingerprint": "76bde8f625aa26f786ef3ee9065c481adf1cfd793aea7c5b3fea88d40573b7da",
+  "common_execution_chain_issues": [
+    "SCHEMA_GUIDED_VALIDATION_FEEDBACK_NOT_ACTIVATED"
+  ],
+  "complete_tool_catalogs": 4,
+  "component_records": 0,
+  "cost": {
+    "api_attempts": 757,
+    "attempt_base_spent_cny": 3.49750883,
+    "attempt_incremental_spent_cny": 0.22470611800000473,
+    "hard_limit_cny": 5.49750883,
+    "incremental_hard_limit_cny": 2.0,
+    "incremental_soft_limit_cny": 1.0,
+    "provider_reported_input_tokens": 2663434,
+    "provider_reported_output_tokens": 76913,
+    "reserved_cny": 0.0,
+    "soft_limit_cny": 4.49750883,
+    "soft_warning": false,
+    "spent_cny": 3.722214948000005,
+    "total_hard_limit_cny": 50.0
+  },
+  "experiment_id": "phase10_real_pilot_v4_canary",
+  "full_real_model_experiment_status": "NOT RUN",
+  "ground_truth_leakage": 0,
+  "halt_reason": "FAILED_EXECUTION_PATH_GATE",
+  "halted": true,
+  "heldout48_touched": false,
+  "infrastructure_errors": 0,
+  "input_tokens": 177306,
+  "llm_calls": 14,
+  "method_task_success": {
+    "driftguard_llm": 0,
+    "reflection": 0,
+    "retry_only": 1,
+    "standard": 0,
+    "validation_guided": 0
+  },
+  "output_tokens": 1048,
+  "planned_records": 10,
+  "probe_calls": 0,
+  "prompt_v3_sha256": "bae688c173db4f561162d402acef5661256c6bab5a1d20a65e96868c2ec8267f",
+  "provider_reports": [
+    {
+      "agent_action_valid": 4,
+      "api_calls": 17,
+      "configured_model": "deepseek-v4-flash",
+      "incremental_cost_cny": 0.22470611800000118,
+      "infrastructure_error_rate": 0.0,
+      "infrastructure_errors": 0,
+      "input_tokens": 177306,
+      "llm_calls": 14,
+      "output_tokens": 1048,
+      "probe_calls": 0,
+      "provider": "deepseek",
+      "records": 4,
+      "sandbox_entered": 4,
+      "status": "FAILED_EXECUTION_PATH_GATE",
+      "stop_reason": "SCHEMA_GUIDED_VALIDATION_FEEDBACK_NOT_ACTIVATED",
+      "task_success": 1,
+      "tool_calls": 15
+    },
+    {
+      "provider": "dashscope",
+      "reason": "FAILED_EXECUTION_PATH_GATE",
+      "records": 0,
+      "status": "SKIPPED_AFTER_GATE"
+    }
+  ],
+  "records": 4,
+  "request_probe_capability_mismatches": 0,
+  "resolved_task_instances_correct": 4,
+  "sandbox_entered": 4,
+  "schema_v3_sha256": "27807767537dbcf83620642edc443525da61f08dfde6935f4ea11aafd1e9dcf1",
+  "scope": "10-record end-to-end canary only",
+  "state_isolation_errors": 0,
+  "task_success": 1,
+  "tool_calls": 15,
+  "unauthorized_safety_blocks": 0
+}

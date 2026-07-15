@@ -1,0 +1,781 @@
+{
+  "agent_fault_scope_matrix": [
+    {
+      "active_after_reset_same_scenario": true,
+      "active_at_protocol_episode": true,
+      "active_next_episode": false,
+      "expected_active": true,
+      "method": "standard",
+      "passed": true,
+      "provider": "deepseek",
+      "target_call_changed": true,
+      "variant": "AE"
+    },
+    {
+      "active_after_reset_same_scenario": true,
+      "active_at_protocol_episode": true,
+      "active_next_episode": false,
+      "expected_active": true,
+      "method": "retry_only",
+      "passed": true,
+      "provider": "deepseek",
+      "target_call_changed": true,
+      "variant": "AE"
+    },
+    {
+      "active_after_reset_same_scenario": true,
+      "active_at_protocol_episode": true,
+      "active_next_episode": false,
+      "expected_active": true,
+      "method": "reflection",
+      "passed": true,
+      "provider": "deepseek",
+      "target_call_changed": true,
+      "variant": "AE"
+    },
+    {
+      "active_after_reset_same_scenario": true,
+      "active_at_protocol_episode": true,
+      "active_next_episode": false,
+      "expected_active": true,
+      "method": "validation_guided",
+      "passed": true,
+      "provider": "deepseek",
+      "target_call_changed": true,
+      "variant": "AE"
+    },
+    {
+      "active_after_reset_same_scenario": true,
+      "active_at_protocol_episode": true,
+      "active_next_episode": false,
+      "expected_active": true,
+      "method": "driftguard_llm",
+      "passed": true,
+      "provider": "deepseek",
+      "target_call_changed": true,
+      "variant": "AE"
+    },
+    {
+      "active_after_reset_same_scenario": true,
+      "active_at_protocol_episode": true,
+      "active_next_episode": false,
+      "expected_active": true,
+      "method": "standard",
+      "passed": true,
+      "provider": "dashscope",
+      "target_call_changed": true,
+      "variant": "AE"
+    },
+    {
+      "active_after_reset_same_scenario": true,
+      "active_at_protocol_episode": true,
+      "active_next_episode": false,
+      "expected_active": true,
+      "method": "retry_only",
+      "passed": true,
+      "provider": "dashscope",
+      "target_call_changed": true,
+      "variant": "AE"
+    },
+    {
+      "active_after_reset_same_scenario": true,
+      "active_at_protocol_episode": true,
+      "active_next_episode": false,
+      "expected_active": true,
+      "method": "reflection",
+      "passed": true,
+      "provider": "dashscope",
+      "target_call_changed": true,
+      "variant": "AE"
+    },
+    {
+      "active_after_reset_same_scenario": true,
+      "active_at_protocol_episode": true,
+      "active_next_episode": false,
+      "expected_active": true,
+      "method": "validation_guided",
+      "passed": true,
+      "provider": "dashscope",
+      "target_call_changed": true,
+      "variant": "AE"
+    },
+    {
+      "active_after_reset_same_scenario": true,
+      "active_at_protocol_episode": true,
+      "active_next_episode": false,
+      "expected_active": true,
+      "method": "driftguard_llm",
+      "passed": true,
+      "provider": "dashscope",
+      "target_call_changed": true,
+      "variant": "AE"
+    },
+    {
+      "active_after_reset_same_scenario": false,
+      "active_at_protocol_episode": false,
+      "active_next_episode": false,
+      "expected_active": false,
+      "method": "standard",
+      "passed": true,
+      "provider": "deepseek",
+      "target_call_changed": false,
+      "variant": "TF"
+    },
+    {
+      "active_after_reset_same_scenario": false,
+      "active_at_protocol_episode": false,
+      "active_next_episode": false,
+      "expected_active": false,
+      "method": "retry_only",
+      "passed": true,
+      "provider": "deepseek",
+      "target_call_changed": false,
+      "variant": "TF"
+    },
+    {
+      "active_after_reset_same_scenario": false,
+      "active_at_protocol_episode": false,
+      "active_next_episode": false,
+      "expected_active": false,
+      "method": "reflection",
+      "passed": true,
+      "provider": "deepseek",
+      "target_call_changed": false,
+      "variant": "TF"
+    },
+    {
+      "active_after_reset_same_scenario": false,
+      "active_at_protocol_episode": false,
+      "active_next_episode": false,
+      "expected_active": false,
+      "method": "validation_guided",
+      "passed": true,
+      "provider": "deepseek",
+      "target_call_changed": false,
+      "variant": "TF"
+    },
+    {
+      "active_after_reset_same_scenario": false,
+      "active_at_protocol_episode": false,
+      "active_next_episode": false,
+      "expected_active": false,
+      "method": "driftguard_llm",
+      "passed": true,
+      "provider": "deepseek",
+      "target_call_changed": false,
+      "variant": "TF"
+    },
+    {
+      "active_after_reset_same_scenario": false,
+      "active_at_protocol_episode": false,
+      "active_next_episode": false,
+      "expected_active": false,
+      "method": "standard",
+      "passed": true,
+      "provider": "dashscope",
+      "target_call_changed": false,
+      "variant": "TF"
+    },
+    {
+      "active_after_reset_same_scenario": false,
+      "active_at_protocol_episode": false,
+      "active_next_episode": false,
+      "expected_active": false,
+      "method": "retry_only",
+      "passed": true,
+      "provider": "dashscope",
+      "target_call_changed": false,
+      "variant": "TF"
+    },
+    {
+      "active_after_reset_same_scenario": false,
+      "active_at_protocol_episode": false,
+      "active_next_episode": false,
+      "expected_active": false,
+      "method": "reflection",
+      "passed": true,
+      "provider": "dashscope",
+      "target_call_changed": false,
+      "variant": "TF"
+    },
+    {
+      "active_after_reset_same_scenario": false,
+      "active_at_protocol_episode": false,
+      "active_next_episode": false,
+      "expected_active": false,
+      "method": "validation_guided",
+      "passed": true,
+      "provider": "dashscope",
+      "target_call_changed": false,
+      "variant": "TF"
+    },
+    {
+      "active_after_reset_same_scenario": false,
+      "active_at_protocol_episode": false,
+      "active_next_episode": false,
+      "expected_active": false,
+      "method": "driftguard_llm",
+      "passed": true,
+      "provider": "dashscope",
+      "target_call_changed": false,
+      "variant": "TF"
+    },
+    {
+      "active_after_reset_same_scenario": false,
+      "active_at_protocol_episode": false,
+      "active_next_episode": false,
+      "expected_active": false,
+      "method": "standard",
+      "passed": true,
+      "provider": "deepseek",
+      "target_call_changed": false,
+      "variant": "PD"
+    },
+    {
+      "active_after_reset_same_scenario": false,
+      "active_at_protocol_episode": false,
+      "active_next_episode": false,
+      "expected_active": false,
+      "method": "retry_only",
+      "passed": true,
+      "provider": "deepseek",
+      "target_call_changed": false,
+      "variant": "PD"
+    },
+    {
+      "active_after_reset_same_scenario": false,
+      "active_at_protocol_episode": false,
+      "active_next_episode": false,
+      "expected_active": false,
+      "method": "reflection",
+      "passed": true,
+      "provider": "deepseek",
+      "target_call_changed": false,
+      "variant": "PD"
+    },
+    {
+      "active_after_reset_same_scenario": false,
+      "active_at_protocol_episode": false,
+      "active_next_episode": false,
+      "expected_active": false,
+      "method": "validation_guided",
+      "passed": true,
+      "provider": "deepseek",
+      "target_call_changed": false,
+      "variant": "PD"
+    },
+    {
+      "active_after_reset_same_scenario": false,
+      "active_at_protocol_episode": false,
+      "active_next_episode": false,
+      "expected_active": false,
+      "method": "driftguard_llm",
+      "passed": true,
+      "provider": "deepseek",
+      "target_call_changed": false,
+      "variant": "PD"
+    },
+    {
+      "active_after_reset_same_scenario": false,
+      "active_at_protocol_episode": false,
+      "active_next_episode": false,
+      "expected_active": false,
+      "method": "standard",
+      "passed": true,
+      "provider": "dashscope",
+      "target_call_changed": false,
+      "variant": "PD"
+    },
+    {
+      "active_after_reset_same_scenario": false,
+      "active_at_protocol_episode": false,
+      "active_next_episode": false,
+      "expected_active": false,
+      "method": "retry_only",
+      "passed": true,
+      "provider": "dashscope",
+      "target_call_changed": false,
+      "variant": "PD"
+    },
+    {
+      "active_after_reset_same_scenario": false,
+      "active_at_protocol_episode": false,
+      "active_next_episode": false,
+      "expected_active": false,
+      "method": "reflection",
+      "passed": true,
+      "provider": "dashscope",
+      "target_call_changed": false,
+      "variant": "PD"
+    },
+    {
+      "active_after_reset_same_scenario": false,
+      "active_at_protocol_episode": false,
+      "active_next_episode": false,
+      "expected_active": false,
+      "method": "validation_guided",
+      "passed": true,
+      "provider": "dashscope",
+      "target_call_changed": false,
+      "variant": "PD"
+    },
+    {
+      "active_after_reset_same_scenario": false,
+      "active_at_protocol_episode": false,
+      "active_next_episode": false,
+      "expected_active": false,
+      "method": "driftguard_llm",
+      "passed": true,
+      "provider": "dashscope",
+      "target_call_changed": false,
+      "variant": "PD"
+    }
+  ],
+  "agent_fault_scope_passed": true,
+  "audit_version": "phase10a-post-repair-consistency-v1",
+  "changes": [
+    {
+      "after": "execution contexts pass the validated but unnormalized proposed arguments to Runtime",
+      "argument_validity_changed": true,
+      "before": "displayed validation defaults were passed to Runtime, masking the original proposed call",
+      "behavior_affecting": true,
+      "files_functions": [
+        "src/driftguard/agents/controller.py::ToolAgentController.run"
+      ],
+      "model_input_changed": false,
+      "name": "runtime_normalization",
+      "sandbox_execution_changed": true,
+      "task_success_may_change": true,
+      "time_evidence": "after 2026-07-15T23:12:23+08:00 and before DeepSeek retry/reflection post-repair re-execution",
+      "variant_effect": {
+        "AE": "preserves Agent omission",
+        "PD": "prevents displayed defaults masking runtime drift",
+        "TF": "restores first transient failure"
+      }
+    },
+    {
+      "after": "newly required fields lose the obsolete default only in the mutated copy",
+      "argument_validity_changed": true,
+      "before": "add_required retained an obsolete default in the mutated displayed/runtime contract copy",
+      "behavior_affecting": true,
+      "files_functions": [
+        "src/driftguard/runtime/contract_snapshots.py::_mutate_contract"
+      ],
+      "model_input_changed": true,
+      "name": "required_field_default",
+      "sandbox_execution_changed": true,
+      "task_success_may_change": true,
+      "time_evidence": "source mtime 2026-07-15T23:31:56+08:00; archived false-negative at 23:28:59",
+      "variant_effect": {
+        "AE": "visible new requirement is enforceable",
+        "PD": "runtime-only requirement cannot be bypassed",
+        "TF": "canonical display unchanged"
+      }
+    },
+    {
+      "after": "fault is target-tool scoped and consumed on the first target call per record",
+      "argument_validity_changed": true,
+      "before": "fault could be considered on unrelated tools and recur on later target calls",
+      "behavior_affecting": true,
+      "files_functions": [
+        "src/driftguard/agents/controller.py::ToolAgentController.run",
+        "src/driftguard/injection/agent_error.py::AgentFaultInjector"
+      ],
+      "model_input_changed": true,
+      "name": "agent_fault_scope",
+      "sandbox_execution_changed": true,
+      "task_success_may_change": true,
+      "time_evidence": "completed before first successful provider cache response at 2026-07-15T23:04:01+08:00",
+      "variant_effect": {
+        "AE": "one target-call fault",
+        "PD": "inactive",
+        "TF": "inactive"
+      }
+    }
+  ],
+  "clean_canary_required": true,
+  "combined_task_success_permitted": false,
+  "current_final_source_snapshot": {
+    "files": {
+      "src/driftguard/agents/action_parser.py": "fa9658158817f2f048ecf33da30a87e3f2a1a17ad5240dc8b9c20ddca73e4279",
+      "src/driftguard/agents/capabilities.py": "1b1f75bdbc6dbf8a55b29a7e5d7195d444af0f24f027df77bffe0de45f1f6d06",
+      "src/driftguard/agents/context_builder.py": "13846c92b59c48e045587c49eeb9fa39163b533a9f938029a423ac43d23eb6d3",
+      "src/driftguard/agents/controller.py": "af6289d7bbf8cdfffbdd1fb4eb620ea3fa774923d506e3e8b2e042e5aab4f7d1",
+      "src/driftguard/agents/policies/base.py": "28b5c2b64711fa948e8fde5a2e2116954a0ff256145466172b220659b5dc36ba",
+      "src/driftguard/agents/policies/driftguard.py": "669acdf846039d0e7cdf16c3a8dffffc72173b0fef0b8218727f9b5d22d58e1b",
+      "src/driftguard/agents/policies/reflection.py": "c97e495ddb51af1e3943285b111040ea84a158c93e78f92bb531b95189719c02",
+      "src/driftguard/agents/policies/retry_only.py": "31779690f24d447672bbffa22ff3b47ca4485116057f340c88f7604e1826db97",
+      "src/driftguard/agents/policies/standard.py": "c8b44c4b1ce98c45ef3408acc5ff5689b2da467be46383184f0c25292c025a81",
+      "src/driftguard/agents/policies/validation_guided.py": "901e31b06432816582b2613e38f9ec04b6bb7a5df6d973c87ed8b3f74bdd65b5",
+      "src/driftguard/agents/tool_catalog.py": "990c0f7bcce06efb68d0d40b1dfe48ea9e0d303f44dfb041d5ebec89571e3a19",
+      "src/driftguard/contracts/input_validator.py": "3294f36aa5f60567a7d9f6d7a60e0e1bfa4ebfba083c641c8924473969efc47b",
+      "src/driftguard/experiments/scenario_runner.py": "6c327ef862c5aa02c32c8a5934b614b8207ae52c50adeeb5f01b49505409698b",
+      "src/driftguard/experiments/task_resolver.py": "9226056e301bf9974e50057121c2d1f67dbb3766d236241cc480c00f87811329",
+      "src/driftguard/injection/agent_error.py": "de5493a81ef9e64200e7475d02f961afd38dabef260ea77cb55291ed931c066b",
+      "src/driftguard/runtime/contract_snapshots.py": "967aab3cb692437179e83436e07618be1b8ef36533119a3d8bd2fc836243528b",
+      "src/driftguard/sandbox/evaluator.py": "ed256fa25e4f52ef0570799741b54a982123bfc764a776cf379ae9dc0b1be92e",
+      "src/driftguard/sandbox/service.py": "d85ea5ae1b5d677eaa809c34c3da4ef5ba8aff33885fc5f70f2c24e111409ed2"
+    },
+    "source_snapshot_hash": "786a9274b467464626d0cdde31262cfa4b3efdaea31c90b554e10a00ea261726"
+  },
+  "full_real_model_experiment_status": "NOT RUN",
+  "offline_only": true,
+  "phase10b_status": "NOT RUN",
+  "protected_files": {
+    "count": 7,
+    "hashes": {
+      "benchmark/drifts/drift_cases_v1.json": "dda8f8c1759075bb52b14431b9ee5fcb6fbe93c1cf239a474548a6127228a00e",
+      "benchmark/drifts/task_drift_coverage_v1.json": "f83a5ce5da1bd9a179dfdd1abfbb747469b29644c71304490df0750bd527be3c",
+      "benchmark/fixtures/initial_state_v1.json": "7cc0f4af8eb45d6e1a4a03741c2b44484b80736cf2ba6bd1f5c8e2c7fb7db3c0",
+      "benchmark/matched_failures/attribution_protocol_v1.json": "3e0779032b4613b9d17868ae1f2d3fe0c582214cc80bdb860a5a88aae69d4106",
+      "benchmark/matched_failures/matched_failures_v1.json": "58c921b754976ee16f29676030bfbb57de4e0ee2f7be14a4af8353d057296f7e",
+      "benchmark/openapi/driftguard_openapi_v1.yaml": "be893ee40a748410d49befe8ca45f645b47e9a770cf2bb7e0b90db9c71472267",
+      "benchmark/tasks/tasks_v1.json": "851425f77f4ad94633e5eb10937b783a51e9aa9f54955b408565064f3a788936"
+    },
+    "match_phase6_baseline": true
+  },
+  "real_provider_calls": 0,
+  "record_source_proof": [
+    {
+      "agent_fault_scope_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "config_hash": "d8ad44bd3bf3102ca2ece14b5981e085214141fc23c788096235f84c7dd2d1ff",
+      "controller_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "current_final_hashes_for_reference_only": {
+        "agent_fault_scope": "46caef5e0b922a23319d557d9282f7224be07b34df5534034bfe6590faf47383",
+        "controller": "af6289d7bbf8cdfffbdd1fb4eb620ea3fa774923d506e3e8b2e042e5aab4f7d1",
+        "evaluator": "ed256fa25e4f52ef0570799741b54a982123bfc764a776cf379ae9dc0b1be92e",
+        "input_validator_default": "8201a0eba9cf177bb1df1dfed78fdfd5148019a15e3bb0d1007a1a095d214f97",
+        "policy": "669acdf846039d0e7cdf16c3a8dffffc72173b0fef0b8218727f9b5d22d58e1b",
+        "runtime_normalization": "af6289d7bbf8cdfffbdd1fb4eb620ea3fa774923d506e3e8b2e042e5aab4f7d1",
+        "task_resolver": "9226056e301bf9974e50057121c2d1f67dbb3766d236241cc480c00f87811329"
+      },
+      "effective_prompt_hash": "dc88113f8ada4847b2632e047a6d3263d72d199427526e1acb9c0a426bb6485c",
+      "evaluator_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "input_validator_default_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "method": "driftguard_llm",
+      "policy_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "provider": "dashscope",
+      "public_scenario_id": "public-ef4f2cacef0c",
+      "reconstructed_semantic_snapshot": "S3_POST_REQUIRED_DEFAULT_REPAIR",
+      "reconstruction_basis": "record/cache/archive mtimes and behavior-specific archived attempts; not manifest amendment alone",
+      "record_id": "66b94edea363a088e134b771",
+      "result_generated_at": "2026-07-15T23:36:28.404468+08:00",
+      "runtime_normalization_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "schema_hash": "27807767537dbcf83620642edc443525da61f08dfde6935f4ea11aafd1e9dcf1",
+      "task_resolver_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "tool_catalog_fingerprint": "76bde8f625aa26f786ef3ee9065c481adf1cfd793aea7c5b3fea88d40573b7da"
+    },
+    {
+      "agent_fault_scope_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "config_hash": "d8ad44bd3bf3102ca2ece14b5981e085214141fc23c788096235f84c7dd2d1ff",
+      "controller_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "current_final_hashes_for_reference_only": {
+        "agent_fault_scope": "46caef5e0b922a23319d557d9282f7224be07b34df5534034bfe6590faf47383",
+        "controller": "af6289d7bbf8cdfffbdd1fb4eb620ea3fa774923d506e3e8b2e042e5aab4f7d1",
+        "evaluator": "ed256fa25e4f52ef0570799741b54a982123bfc764a776cf379ae9dc0b1be92e",
+        "input_validator_default": "8201a0eba9cf177bb1df1dfed78fdfd5148019a15e3bb0d1007a1a095d214f97",
+        "policy": "901e31b06432816582b2613e38f9ec04b6bb7a5df6d973c87ed8b3f74bdd65b5",
+        "runtime_normalization": "af6289d7bbf8cdfffbdd1fb4eb620ea3fa774923d506e3e8b2e042e5aab4f7d1",
+        "task_resolver": "9226056e301bf9974e50057121c2d1f67dbb3766d236241cc480c00f87811329"
+      },
+      "effective_prompt_hash": "e3932b5bd35b9a13f765aceeab60c41fd7756de22be322b013d0ae08697b7255",
+      "evaluator_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "input_validator_default_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "method": "validation_guided",
+      "policy_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "provider": "dashscope",
+      "public_scenario_id": "public-78014d069b15",
+      "reconstructed_semantic_snapshot": "S3_POST_REQUIRED_DEFAULT_REPAIR",
+      "reconstruction_basis": "record/cache/archive mtimes and behavior-specific archived attempts; not manifest amendment alone",
+      "record_id": "a5907deeca31edcc25ab9bd9",
+      "result_generated_at": "2026-07-15T23:35:56.518188+08:00",
+      "runtime_normalization_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "schema_hash": "27807767537dbcf83620642edc443525da61f08dfde6935f4ea11aafd1e9dcf1",
+      "task_resolver_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "tool_catalog_fingerprint": "8739a5997ddc67b610b2bb92a116ae87b44244659c34bb19a99dbf6256eb208c"
+    },
+    {
+      "agent_fault_scope_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "config_hash": "d8ad44bd3bf3102ca2ece14b5981e085214141fc23c788096235f84c7dd2d1ff",
+      "controller_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "current_final_hashes_for_reference_only": {
+        "agent_fault_scope": "46caef5e0b922a23319d557d9282f7224be07b34df5534034bfe6590faf47383",
+        "controller": "af6289d7bbf8cdfffbdd1fb4eb620ea3fa774923d506e3e8b2e042e5aab4f7d1",
+        "evaluator": "ed256fa25e4f52ef0570799741b54a982123bfc764a776cf379ae9dc0b1be92e",
+        "input_validator_default": "8201a0eba9cf177bb1df1dfed78fdfd5148019a15e3bb0d1007a1a095d214f97",
+        "policy": "31779690f24d447672bbffa22ff3b47ca4485116057f340c88f7604e1826db97",
+        "runtime_normalization": "af6289d7bbf8cdfffbdd1fb4eb620ea3fa774923d506e3e8b2e042e5aab4f7d1",
+        "task_resolver": "9226056e301bf9974e50057121c2d1f67dbb3766d236241cc480c00f87811329"
+      },
+      "effective_prompt_hash": "534b3337cbf5d9ef748d9f811f68dc927883d20007debc2bc490200a78181b68",
+      "evaluator_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "input_validator_default_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "method": "retry_only",
+      "policy_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "provider": "dashscope",
+      "public_scenario_id": "public-ba31a2577791",
+      "reconstructed_semantic_snapshot": "S3_POST_REQUIRED_DEFAULT_REPAIR",
+      "reconstruction_basis": "record/cache/archive mtimes and behavior-specific archived attempts; not manifest amendment alone",
+      "record_id": "b8663c62c7c10debda9a3ded",
+      "result_generated_at": "2026-07-15T23:35:22.075637+08:00",
+      "runtime_normalization_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "schema_hash": "27807767537dbcf83620642edc443525da61f08dfde6935f4ea11aafd1e9dcf1",
+      "task_resolver_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "tool_catalog_fingerprint": "76bde8f625aa26f786ef3ee9065c481adf1cfd793aea7c5b3fea88d40573b7da"
+    },
+    {
+      "agent_fault_scope_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "config_hash": "d8ad44bd3bf3102ca2ece14b5981e085214141fc23c788096235f84c7dd2d1ff",
+      "controller_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "current_final_hashes_for_reference_only": {
+        "agent_fault_scope": "46caef5e0b922a23319d557d9282f7224be07b34df5534034bfe6590faf47383",
+        "controller": "af6289d7bbf8cdfffbdd1fb4eb620ea3fa774923d506e3e8b2e042e5aab4f7d1",
+        "evaluator": "ed256fa25e4f52ef0570799741b54a982123bfc764a776cf379ae9dc0b1be92e",
+        "input_validator_default": "8201a0eba9cf177bb1df1dfed78fdfd5148019a15e3bb0d1007a1a095d214f97",
+        "policy": "c8b44c4b1ce98c45ef3408acc5ff5689b2da467be46383184f0c25292c025a81",
+        "runtime_normalization": "af6289d7bbf8cdfffbdd1fb4eb620ea3fa774923d506e3e8b2e042e5aab4f7d1",
+        "task_resolver": "9226056e301bf9974e50057121c2d1f67dbb3766d236241cc480c00f87811329"
+      },
+      "effective_prompt_hash": "0b0604632d68bb9e2d163c23a38551360b911023e3817a69c753883742f08af8",
+      "evaluator_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "input_validator_default_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "method": "standard",
+      "policy_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "provider": "dashscope",
+      "public_scenario_id": "public-adeb8ef1688f",
+      "reconstructed_semantic_snapshot": "S3_POST_REQUIRED_DEFAULT_REPAIR",
+      "reconstruction_basis": "record/cache/archive mtimes and behavior-specific archived attempts; not manifest amendment alone",
+      "record_id": "b967aeb619e5547ff012dd8f",
+      "result_generated_at": "2026-07-15T23:35:12.094056+08:00",
+      "runtime_normalization_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "schema_hash": "27807767537dbcf83620642edc443525da61f08dfde6935f4ea11aafd1e9dcf1",
+      "task_resolver_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "tool_catalog_fingerprint": "b7bdd6c7f2dca05039c4393cdea34d4e863a054713d090a53cc75a0f51ea0f9c"
+    },
+    {
+      "agent_fault_scope_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "config_hash": "d8ad44bd3bf3102ca2ece14b5981e085214141fc23c788096235f84c7dd2d1ff",
+      "controller_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "current_final_hashes_for_reference_only": {
+        "agent_fault_scope": "46caef5e0b922a23319d557d9282f7224be07b34df5534034bfe6590faf47383",
+        "controller": "af6289d7bbf8cdfffbdd1fb4eb620ea3fa774923d506e3e8b2e042e5aab4f7d1",
+        "evaluator": "ed256fa25e4f52ef0570799741b54a982123bfc764a776cf379ae9dc0b1be92e",
+        "input_validator_default": "8201a0eba9cf177bb1df1dfed78fdfd5148019a15e3bb0d1007a1a095d214f97",
+        "policy": "c97e495ddb51af1e3943285b111040ea84a158c93e78f92bb531b95189719c02",
+        "runtime_normalization": "af6289d7bbf8cdfffbdd1fb4eb620ea3fa774923d506e3e8b2e042e5aab4f7d1",
+        "task_resolver": "9226056e301bf9974e50057121c2d1f67dbb3766d236241cc480c00f87811329"
+      },
+      "effective_prompt_hash": "c3ad7f443f74020a0ad52516f58574bea99b717a7fa3a2c9f16ce44160148558",
+      "evaluator_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "input_validator_default_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "method": "reflection",
+      "policy_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "provider": "dashscope",
+      "public_scenario_id": "public-adeb8ef1688f",
+      "reconstructed_semantic_snapshot": "S3_POST_REQUIRED_DEFAULT_REPAIR",
+      "reconstruction_basis": "record/cache/archive mtimes and behavior-specific archived attempts; not manifest amendment alone",
+      "record_id": "e1884ceb19eaba93ba95d63f",
+      "result_generated_at": "2026-07-15T23:35:45.042867+08:00",
+      "runtime_normalization_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "schema_hash": "27807767537dbcf83620642edc443525da61f08dfde6935f4ea11aafd1e9dcf1",
+      "task_resolver_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "tool_catalog_fingerprint": "b7bdd6c7f2dca05039c4393cdea34d4e863a054713d090a53cc75a0f51ea0f9c"
+    },
+    {
+      "agent_fault_scope_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "config_hash": "d8ad44bd3bf3102ca2ece14b5981e085214141fc23c788096235f84c7dd2d1ff",
+      "controller_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "current_final_hashes_for_reference_only": {
+        "agent_fault_scope": "46caef5e0b922a23319d557d9282f7224be07b34df5534034bfe6590faf47383",
+        "controller": "af6289d7bbf8cdfffbdd1fb4eb620ea3fa774923d506e3e8b2e042e5aab4f7d1",
+        "evaluator": "ed256fa25e4f52ef0570799741b54a982123bfc764a776cf379ae9dc0b1be92e",
+        "input_validator_default": "8201a0eba9cf177bb1df1dfed78fdfd5148019a15e3bb0d1007a1a095d214f97",
+        "policy": "669acdf846039d0e7cdf16c3a8dffffc72173b0fef0b8218727f9b5d22d58e1b",
+        "runtime_normalization": "af6289d7bbf8cdfffbdd1fb4eb620ea3fa774923d506e3e8b2e042e5aab4f7d1",
+        "task_resolver": "9226056e301bf9974e50057121c2d1f67dbb3766d236241cc480c00f87811329"
+      },
+      "effective_prompt_hash": "dc88113f8ada4847b2632e047a6d3263d72d199427526e1acb9c0a426bb6485c",
+      "evaluator_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "input_validator_default_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "method": "driftguard_llm",
+      "policy_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "provider": "deepseek",
+      "public_scenario_id": "public-ef4f2cacef0c",
+      "reconstructed_semantic_snapshot": "S3_POST_REQUIRED_DEFAULT_REPAIR",
+      "reconstruction_basis": "record/cache/archive mtimes and behavior-specific archived attempts; not manifest amendment alone",
+      "record_id": "31ff8920072a3186eb4d07c1",
+      "result_generated_at": "2026-07-15T23:34:51.445482+08:00",
+      "runtime_normalization_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "schema_hash": "27807767537dbcf83620642edc443525da61f08dfde6935f4ea11aafd1e9dcf1",
+      "task_resolver_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "tool_catalog_fingerprint": "76bde8f625aa26f786ef3ee9065c481adf1cfd793aea7c5b3fea88d40573b7da"
+    },
+    {
+      "agent_fault_scope_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "config_hash": "d8ad44bd3bf3102ca2ece14b5981e085214141fc23c788096235f84c7dd2d1ff",
+      "controller_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "current_final_hashes_for_reference_only": {
+        "agent_fault_scope": "46caef5e0b922a23319d557d9282f7224be07b34df5534034bfe6590faf47383",
+        "controller": "af6289d7bbf8cdfffbdd1fb4eb620ea3fa774923d506e3e8b2e042e5aab4f7d1",
+        "evaluator": "ed256fa25e4f52ef0570799741b54a982123bfc764a776cf379ae9dc0b1be92e",
+        "input_validator_default": "8201a0eba9cf177bb1df1dfed78fdfd5148019a15e3bb0d1007a1a095d214f97",
+        "policy": "31779690f24d447672bbffa22ff3b47ca4485116057f340c88f7604e1826db97",
+        "runtime_normalization": "af6289d7bbf8cdfffbdd1fb4eb620ea3fa774923d506e3e8b2e042e5aab4f7d1",
+        "task_resolver": "9226056e301bf9974e50057121c2d1f67dbb3766d236241cc480c00f87811329"
+      },
+      "effective_prompt_hash": "534b3337cbf5d9ef748d9f811f68dc927883d20007debc2bc490200a78181b68",
+      "evaluator_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "input_validator_default_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "method": "retry_only",
+      "policy_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "provider": "deepseek",
+      "public_scenario_id": "public-ba31a2577791",
+      "reconstructed_semantic_snapshot": "S2_POST_NORMALIZATION_PRE_REQUIRED_DEFAULT_REPAIR",
+      "reconstruction_basis": "record/cache/archive mtimes and behavior-specific archived attempts; not manifest amendment alone",
+      "record_id": "819771df8a1be8c211f2d30b",
+      "result_generated_at": "2026-07-15T23:28:29.669143+08:00",
+      "runtime_normalization_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "schema_hash": "27807767537dbcf83620642edc443525da61f08dfde6935f4ea11aafd1e9dcf1",
+      "task_resolver_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "tool_catalog_fingerprint": "76bde8f625aa26f786ef3ee9065c481adf1cfd793aea7c5b3fea88d40573b7da"
+    },
+    {
+      "agent_fault_scope_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "config_hash": "d8ad44bd3bf3102ca2ece14b5981e085214141fc23c788096235f84c7dd2d1ff",
+      "controller_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "current_final_hashes_for_reference_only": {
+        "agent_fault_scope": "46caef5e0b922a23319d557d9282f7224be07b34df5534034bfe6590faf47383",
+        "controller": "af6289d7bbf8cdfffbdd1fb4eb620ea3fa774923d506e3e8b2e042e5aab4f7d1",
+        "evaluator": "ed256fa25e4f52ef0570799741b54a982123bfc764a776cf379ae9dc0b1be92e",
+        "input_validator_default": "8201a0eba9cf177bb1df1dfed78fdfd5148019a15e3bb0d1007a1a095d214f97",
+        "policy": "c97e495ddb51af1e3943285b111040ea84a158c93e78f92bb531b95189719c02",
+        "runtime_normalization": "af6289d7bbf8cdfffbdd1fb4eb620ea3fa774923d506e3e8b2e042e5aab4f7d1",
+        "task_resolver": "9226056e301bf9974e50057121c2d1f67dbb3766d236241cc480c00f87811329"
+      },
+      "effective_prompt_hash": "c3ad7f443f74020a0ad52516f58574bea99b717a7fa3a2c9f16ce44160148558",
+      "evaluator_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "input_validator_default_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "method": "reflection",
+      "policy_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "provider": "deepseek",
+      "public_scenario_id": "public-adeb8ef1688f",
+      "reconstructed_semantic_snapshot": "S2_POST_NORMALIZATION_PRE_REQUIRED_DEFAULT_REPAIR",
+      "reconstruction_basis": "record/cache/archive mtimes and behavior-specific archived attempts; not manifest amendment alone",
+      "record_id": "a99ad9cea713e48b6b93e1a2",
+      "result_generated_at": "2026-07-15T23:28:45.241772+08:00",
+      "runtime_normalization_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "schema_hash": "27807767537dbcf83620642edc443525da61f08dfde6935f4ea11aafd1e9dcf1",
+      "task_resolver_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "tool_catalog_fingerprint": "b7bdd6c7f2dca05039c4393cdea34d4e863a054713d090a53cc75a0f51ea0f9c"
+    },
+    {
+      "agent_fault_scope_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "config_hash": "d8ad44bd3bf3102ca2ece14b5981e085214141fc23c788096235f84c7dd2d1ff",
+      "controller_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "current_final_hashes_for_reference_only": {
+        "agent_fault_scope": "46caef5e0b922a23319d557d9282f7224be07b34df5534034bfe6590faf47383",
+        "controller": "af6289d7bbf8cdfffbdd1fb4eb620ea3fa774923d506e3e8b2e042e5aab4f7d1",
+        "evaluator": "ed256fa25e4f52ef0570799741b54a982123bfc764a776cf379ae9dc0b1be92e",
+        "input_validator_default": "8201a0eba9cf177bb1df1dfed78fdfd5148019a15e3bb0d1007a1a095d214f97",
+        "policy": "901e31b06432816582b2613e38f9ec04b6bb7a5df6d973c87ed8b3f74bdd65b5",
+        "runtime_normalization": "af6289d7bbf8cdfffbdd1fb4eb620ea3fa774923d506e3e8b2e042e5aab4f7d1",
+        "task_resolver": "9226056e301bf9974e50057121c2d1f67dbb3766d236241cc480c00f87811329"
+      },
+      "effective_prompt_hash": "e3932b5bd35b9a13f765aceeab60c41fd7756de22be322b013d0ae08697b7255",
+      "evaluator_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "input_validator_default_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "method": "validation_guided",
+      "policy_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "provider": "deepseek",
+      "public_scenario_id": "public-78014d069b15",
+      "reconstructed_semantic_snapshot": "S3_POST_REQUIRED_DEFAULT_REPAIR",
+      "reconstruction_basis": "record/cache/archive mtimes and behavior-specific archived attempts; not manifest amendment alone",
+      "record_id": "b859c7bd1a61abe4b793d02e",
+      "result_generated_at": "2026-07-15T23:34:31.371483+08:00",
+      "runtime_normalization_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "schema_hash": "27807767537dbcf83620642edc443525da61f08dfde6935f4ea11aafd1e9dcf1",
+      "task_resolver_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "tool_catalog_fingerprint": "8739a5997ddc67b610b2bb92a116ae87b44244659c34bb19a99dbf6256eb208c"
+    },
+    {
+      "agent_fault_scope_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "config_hash": "d8ad44bd3bf3102ca2ece14b5981e085214141fc23c788096235f84c7dd2d1ff",
+      "controller_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "current_final_hashes_for_reference_only": {
+        "agent_fault_scope": "46caef5e0b922a23319d557d9282f7224be07b34df5534034bfe6590faf47383",
+        "controller": "af6289d7bbf8cdfffbdd1fb4eb620ea3fa774923d506e3e8b2e042e5aab4f7d1",
+        "evaluator": "ed256fa25e4f52ef0570799741b54a982123bfc764a776cf379ae9dc0b1be92e",
+        "input_validator_default": "8201a0eba9cf177bb1df1dfed78fdfd5148019a15e3bb0d1007a1a095d214f97",
+        "policy": "c8b44c4b1ce98c45ef3408acc5ff5689b2da467be46383184f0c25292c025a81",
+        "runtime_normalization": "af6289d7bbf8cdfffbdd1fb4eb620ea3fa774923d506e3e8b2e042e5aab4f7d1",
+        "task_resolver": "9226056e301bf9974e50057121c2d1f67dbb3766d236241cc480c00f87811329"
+      },
+      "effective_prompt_hash": "0b0604632d68bb9e2d163c23a38551360b911023e3817a69c753883742f08af8",
+      "evaluator_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "input_validator_default_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "method": "standard",
+      "policy_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "provider": "deepseek",
+      "public_scenario_id": "public-adeb8ef1688f",
+      "reconstructed_semantic_snapshot": "S1_PRE_RUNTIME_NORMALIZATION_REPAIR",
+      "reconstruction_basis": "record/cache/archive mtimes and behavior-specific archived attempts; not manifest amendment alone",
+      "record_id": "f090807786162e951a7475e2",
+      "result_generated_at": "2026-07-15T23:12:14.439078+08:00",
+      "runtime_normalization_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "schema_hash": "27807767537dbcf83620642edc443525da61f08dfde6935f4ea11aafd1e9dcf1",
+      "task_resolver_source_hash_at_generation": "NOT_EMBEDDED_UNRECOVERABLE_PREIMAGE",
+      "tool_catalog_fingerprint": "b7bdd6c7f2dca05039c4393cdea34d4e863a054713d090a53cc75a0f51ea0f9c"
+    }
+  ],
+  "required_default_negative_tests": [
+    {
+      "case": "missing_required_without_default",
+      "passed": true
+    },
+    {
+      "agent_visible_validation_used_runtime": false,
+      "case": "default_exists_only_in_hidden_runtime",
+      "passed": true
+    },
+    {
+      "case": "default_exists_only_in_ground_truth",
+      "ground_truth_was_input_to_validator": false,
+      "passed": true
+    },
+    {
+      "case": "pd_old_displayed_spec_has_no_new_required_field",
+      "displayed_validation_accepts": true,
+      "passed": true,
+      "pd_runtime_not_bypassed": true,
+      "runtime_rejects_new_required_omission": true
+    },
+    {
+      "after": "R404",
+      "before": "R404",
+      "case": "wrong_entity_id_not_overwritten",
+      "passed": true
+    }
+  ],
+  "runtime_normalization": {
+    "allowed_scope": [
+      "empty content",
+      "tool-call envelope",
+      "JSON string parsing",
+      "field encoding"
+    ],
+    "clean_records_require_audit_fields": [
+      "raw_model_action",
+      "normalized_action",
+      "normalization_diff",
+      "normalization_reason_code"
+    ],
+    "legacy_aliases_tool_parameters_accepted": false,
+    "semantic_field_rewrites_allowed": false
+  },
+  "semantic_snapshots": [
+    "S1_PRE_RUNTIME_NORMALIZATION_REPAIR",
+    "S2_POST_NORMALIZATION_PRE_REQUIRED_DEFAULT_REPAIR",
+    "S3_POST_REQUIRED_DEFAULT_REPAIR"
+  ],
+  "v4_classification": "MIXED_VERSION_DEVELOPMENT_ARTIFACT"
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "../schemas/phase10_pricing_schema_v1.json",
+  "snapshot_id": "phase10-pricing-20260715",
+  "as_of": "2026-07-15",
+  "budget_estimate_only": true,
+  "models": [
+    {
+      "provider": "deepseek",
+      "model_id": "deepseek-v4-flash",
+      "source_url": "https://api-docs.deepseek.com/quick_start/pricing",
+      "currency": "USD",
+      "input_price_per_million": 0.14,
+      "output_price_per_million": 0.28,
+      "usd_cny_estimate": 7.3,
+      "cache_policy": "cache-miss conservative estimate",
+      "discount_used": false
+    },
+    {
+      "provider": "dashscope",
+      "model_id": "qwen3.7-plus",
+      "source_url": "https://help.aliyun.com/en/model-studio/model-pricing",
+      "currency": "CNY",
+      "input_price_per_million": 2.0,
+      "output_price_per_million": 8.0,
+      "cache_policy": "mainland request <=256K conservative estimate",
+      "discount_used": false
+    }
+  ]
+}

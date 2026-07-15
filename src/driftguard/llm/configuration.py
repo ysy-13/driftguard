@@ -10,6 +10,7 @@ class ModelCapabilities:
     seed: bool = False
     json_schema: bool = False
     strict_json: bool = True
+    tool_calling: bool = False
 
     def to_dict(self) -> dict[str, bool]:
         return asdict(self)
@@ -28,6 +29,9 @@ class ModelConfig:
     max_provider_retries: int = 2
     structured_output_mode: str = "json_schema"
     capabilities: ModelCapabilities = ModelCapabilities()
+    api_key_env: str | None = None
+    thinking_mode: str = "disabled"
+    concurrency: int = 1
 
     @classmethod
     def from_mapping(cls, value: Mapping[str, Any], environ: Mapping[str, str] | None = None) -> "ModelConfig":
@@ -44,10 +48,14 @@ class ModelConfig:
             max_provider_retries=int(value.get("max_provider_retries", 2)),
             structured_output_mode=str(value.get("structured_output_mode", "json_schema")),
             capabilities=ModelCapabilities(**capabilities),
+            api_key_env=str(value["api_key_env"]) if value.get("api_key_env") else None,
+            thinking_mode=str(value.get("thinking_mode", "disabled")),
+            concurrency=int(value.get("concurrency", 1)),
         )
 
     def public_dict(self) -> dict[str, Any]:
         value = asdict(self)
+        value.pop("api_key_env", None)
         value["capabilities"] = self.capabilities.to_dict()
         return value
 
@@ -56,3 +64,7 @@ def api_key_from_environment(environ: Mapping[str, str] | None = None) -> str | 
     env = os.environ if environ is None else environ
     return env.get("DRIFTGUARD_LLM_API_KEY")
 
+
+def model_api_key(config: ModelConfig, environ: Mapping[str, str] | None = None) -> str | None:
+    env = os.environ if environ is None else environ
+    return env.get(config.api_key_env) if config.api_key_env else api_key_from_environment(env)

@@ -1,0 +1,138 @@
+{
+  "catalog_fingerprint": "76bde8f625aa26f786ef3ee9065c481adf1cfd793aea7c5b3fea88d40573b7da",
+  "checks": {
+    "capabilities": true,
+    "catalog_fingerprint": true,
+    "credentials": true,
+    "estimated_increment_below_hard_limit": true,
+    "ledger_continues": true,
+    "mock_feedback_5_of_5": true,
+    "offline_oracle_12_of_12": true,
+    "prompt_hash": true,
+    "resolved_tasks": true,
+    "schema_hash": true,
+    "selection": true,
+    "tool_catalog": true,
+    "tool_schema_diff_0_of_12": true,
+    "total_hard_limit": true
+  },
+  "cost_estimate": {
+    "by_provider": {
+      "dashscope": {
+        "assumed_input_tokens_per_record": 35000,
+        "assumed_output_tokens_per_record": 2000,
+        "estimated_cny": 0.43000000000000005,
+        "records": 5
+      },
+      "deepseek": {
+        "assumed_input_tokens_per_record": 35000,
+        "assumed_output_tokens_per_record": 2000,
+        "estimated_cny": 0.19929000000000002,
+        "records": 5
+      }
+    },
+    "estimate_only": true,
+    "estimated_increment_cny": 0.6292900000000001,
+    "incremental_hard_limit_cny": 2.0,
+    "incremental_soft_limit_cny": 1.0,
+    "total_hard_limit_cny": 50.0
+  },
+  "credentials": {
+    "DASHSCOPE_API_KEY": "configured",
+    "DEEPSEEK_API_KEY": "configured"
+  },
+  "effective_catalog_fingerprints": {
+    "driftguard_llm": "76bde8f625aa26f786ef3ee9065c481adf1cfd793aea7c5b3fea88d40573b7da",
+    "reflection": "b7bdd6c7f2dca05039c4393cdea34d4e863a054713d090a53cc75a0f51ea0f9c",
+    "retry_only": "76bde8f625aa26f786ef3ee9065c481adf1cfd793aea7c5b3fea88d40573b7da",
+    "standard": "b7bdd6c7f2dca05039c4393cdea34d4e863a054713d090a53cc75a0f51ea0f9c",
+    "validation_guided": "09d25f0c04374ded0bd5b1d2d7330b3730f4a8beb1acc5cee84a11496625b2c6"
+  },
+  "full_real_model_experiment_status": "NOT RUN",
+  "passed": true,
+  "policy_capabilities": {
+    "driftguard_llm": {
+      "allowed_actions": [
+        "TOOL_CALL",
+        "FINAL_ANSWER",
+        "REQUEST_PROBE",
+        "ABSTAIN"
+      ],
+      "passed": true,
+      "probe_visible": true
+    },
+    "reflection": {
+      "allowed_actions": [
+        "TOOL_CALL",
+        "FINAL_ANSWER",
+        "ABSTAIN"
+      ],
+      "passed": true,
+      "probe_visible": false
+    },
+    "retry_only": {
+      "allowed_actions": [
+        "TOOL_CALL",
+        "FINAL_ANSWER",
+        "ABSTAIN"
+      ],
+      "passed": true,
+      "probe_visible": false
+    },
+    "standard": {
+      "allowed_actions": [
+        "TOOL_CALL",
+        "FINAL_ANSWER",
+        "ABSTAIN"
+      ],
+      "passed": true,
+      "probe_visible": false
+    },
+    "validation_guided": {
+      "allowed_actions": [
+        "TOOL_CALL",
+        "FINAL_ANSWER",
+        "ABSTAIN"
+      ],
+      "passed": true,
+      "probe_visible": false
+    }
+  },
+  "preflight_version": "phase10-v4-canary-v1",
+  "prompt_v3_sha256": "bae688c173db4f561162d402acef5661256c6bab5a1d20a65e96868c2ec8267f",
+  "real_provider_calls": 0,
+  "schema_v3_sha256": "27807767537dbcf83620642edc443525da61f08dfde6935f4ea11aafd1e9dcf1",
+  "selection": [
+    {
+      "method": "standard",
+      "public_scenario_id": "public-M06",
+      "public_task_id": "task-e9a84635d174"
+    },
+    {
+      "method": "retry_only",
+      "public_scenario_id": "public-M01",
+      "public_task_id": "task-c5e686de056a"
+    },
+    {
+      "method": "reflection",
+      "public_scenario_id": "public-M06",
+      "public_task_id": "task-e9a84635d174"
+    },
+    {
+      "method": "validation_guided",
+      "public_scenario_id": "public-M01",
+      "public_task_id": "task-c5e686de056a"
+    },
+    {
+      "method": "driftguard_llm",
+      "public_scenario_id": "public-M06",
+      "public_task_id": "task-e9a84635d174"
+    }
+  ],
+  "starting_ledger": {
+    "api_attempts": 740,
+    "input_tokens": 2446125,
+    "output_tokens": 75633,
+    "spent_cny": 3.4975088300000037
+  }
+}

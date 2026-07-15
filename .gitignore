@@ -2,6 +2,7 @@ __pycache__/
 .pytest_cache/
 *.py[cod]
 .venv/
+.env
 *.egg-info/
 results/experiments/**/.cache/
 results/experiments/**/raw_provider/

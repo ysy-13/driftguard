@@ -1,0 +1,19 @@
+{
+  "agent_action_valid": 0,
+  "api_calls": 4,
+  "configured_model": "deepseek-v4-flash",
+  "incremental_cost_cny": 0.0,
+  "infrastructure_error_rate": 1.0,
+  "infrastructure_errors": 1,
+  "input_tokens": 0,
+  "llm_calls": 0,
+  "output_tokens": 0,
+  "probe_calls": 0,
+  "provider": "deepseek",
+  "records": 1,
+  "sandbox_entered": 0,
+  "status": "FAILED_INFRASTRUCTURE_GATE",
+  "stop_reason": "PROVIDER_ERROR",
+  "task_success": 0,
+  "tool_calls": 0
+}

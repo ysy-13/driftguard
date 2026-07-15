@@ -1,0 +1,64 @@
+experiment:
+  name: phase10_real_pilot_v4b_clean_canary
+  pilot_attempt: v4b_clean_canary
+  run_scope: end_to_end_canary_only
+  prior_component_attempt: pilot_v2
+  component_records_authorized: false
+  action_prompt_version: base_tool_agent_v3
+  action_schema_version: agent_action_schema_v3
+  mode: [end_to_end]
+  real_llm: true
+  repetitions: 1
+  seeds: [20260715]
+  families: [M01, M06, M11, M16]
+  development_only: true
+  heldout48_allowed: false
+  phase10b_allowed: false
+  selection:
+    - {method: standard, scenario_id: M06-AE, family: M06, variant: AE, reason: "Exact v4 mapping; basic Tool Agent chain with returned-ID consumption and assignment."}
+    - {method: retry_only, scenario_id: M01-TF, family: M01, variant: TF, reason: "Exact v4 mapping; observable exact retry after one transient runtime rejection."}
+    - {method: reflection, scenario_id: M06-AE, family: M06, variant: AE, reason: "Exact v4 mapping; reflection hook after the first incomplete task state."}
+    - {method: validation_guided, scenario_id: M01-AE, family: M01, variant: AE, reason: "Exact v4 mapping; local schema feedback for a newly visible required field."}
+    - {method: driftguard_llm, scenario_id: M06-PD, family: M06, variant: PD, reason: "Exact v4 mapping; evidence, attribution, eligibility and healing entry under PD."}
+  expected_prompt_v3_sha256: bae688c173db4f561162d402acef5661256c6bab5a1d20a65e96868c2ec8267f
+  expected_schema_v3_sha256: 27807767537dbcf83620642edc443525da61f08dfde6935f4ea11aafd1e9dcf1
+  expected_catalog_fingerprint: 76bde8f625aa26f786ef3ee9065c481adf1cfd793aea7c5b3fea88d40573b7da
+models:
+  - {provider: deepseek, base_url: "https://api.deepseek.com", model_id: deepseek-v4-flash, api_key_env: DEEPSEEK_API_KEY, temperature: 0.1, top_p: 1.0, max_output_tokens: 4096, timeout_seconds: 120, max_provider_retries: 3, structured_output_mode: strict_json, thinking_mode: disabled, concurrency: 1, capabilities: {seed: false, json_schema: false, strict_json: true, tool_calling: true}}
+  - {provider: dashscope, base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1", model_id: qwen3.7-plus, api_key_env: DASHSCOPE_API_KEY, temperature: 0.1, top_p: 1.0, max_output_tokens: 4096, timeout_seconds: 120, max_provider_retries: 3, structured_output_mode: strict_json, thinking_mode: disabled, concurrency: 1, capabilities: {seed: false, json_schema: false, strict_json: true, tool_calling: true}}
+methods:
+  end_to_end: [standard, retry_only, reflection, validation_guided, driftguard_llm]
+  component: []
+  deterministic: []
+budget:
+  pilot_hard_limit_cny: 6.396109052
+  pilot_soft_limit_cny: 5.396109052
+  full_hard_limit_cny: 50
+  full_soft_limit_cny: 35
+  max_llm_calls_per_record: 8
+  max_tool_calls_per_record: 12
+  max_probe_calls_per_record: 4
+  max_total_interactions_per_record: 16
+  max_input_tokens_per_record: 60000
+  max_output_tokens_per_record: 12000
+  max_format_repairs: 1
+  reserve_worst_case_before_call: true
+execution:
+  allow_real_api_required: true
+  confirm_full_run_required: true
+  cache_enabled: true
+  resume_enabled: true
+  checkpoint_interval: 1
+  fail_fast_on_leakage: true
+  fail_fast_on_budget: true
+  task_state_isolation: true
+  patch_registry_isolation: true
+  history_isolation: true
+  max_wall_time_seconds: 300
+  parallelism: 1
+  rate_limit_per_second: 1
+  attempt_base_spent_cny: 4.396109052
+  attempt_soft_increment_cny: 1
+  attempt_hard_increment_cny: 2
+  total_hard_limit_cny: 50
+  cache_namespace: v4b_clean_canary

@@ -1,0 +1,20 @@
+You are performing a component-level attribution task. Use only the supplied Agent-visible evidence. Do not infer hidden runtime state, evaluator metadata, benchmark identifiers, or ground truth. Return exactly one JSON object that validates against the complete output schema below.
+
+<OUTPUT_SCHEMA>
+{{OUTPUT_SCHEMA}}
+</OUTPUT_SCHEMA>
+
+The following is a structural example only. It contains no scenario answer. Do not copy its values; derive every field from the supplied visible evidence:
+{
+  "predicted_class": "INSUFFICIENT_EVIDENCE",
+  "target_tool_id": null,
+  "drift_category": "UNKNOWN",
+  "location_type": "unknown",
+  "location_path": null,
+  "evidence_refs": [],
+  "requested_probe": null,
+  "confidence": 0.0,
+  "concise_reason": "Replace this structural placeholder with a brief evidence-grounded reason."
+}
+
+Do not provide chain-of-thought. The concise_reason and evidence_refs are sufficient for audit.

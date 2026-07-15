@@ -1,0 +1,21 @@
+{
+  "actual_bill_may_differ": true,
+  "all60_estimated_cny": 0.0,
+  "by_provider": {
+    "dashscope": {
+      "average_cost_per_record_cny": 0.0,
+      "pilot_records": 0
+    },
+    "deepseek": {
+      "average_cost_per_record_cny": 0.0,
+      "pilot_records": 36
+    }
+  },
+  "estimate_only": true,
+  "full_hard_limit_cny": 1000,
+  "full_soft_limit_cny": 800,
+  "heldout48_estimated_cny": 0.0,
+  "main_all60_records": 1800,
+  "main_heldout48_records": 1440,
+  "recommended_config": "phase10_main_all60.yaml"
+}

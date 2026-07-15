@@ -1,0 +1,2601 @@
+{
+  "behavior_affecting_prompt_format_change": true,
+  "cost_ledger": {
+    "api_attempts": 789,
+    "baseline_or_later": true,
+    "expected_api_attempts": 736,
+    "expected_spent_cny": 3.49750883,
+    "sha256_after": "93bf2d8a7682d6c7f730566bd9ea1e6b21d0b316b262c72876ea787f156048ab",
+    "sha256_before": "93bf2d8a7682d6c7f730566bd9ea1e6b21d0b316b262c72876ea787f156048ab",
+    "spent_cny": 4.3961090520000035,
+    "unchanged": true
+  },
+  "full_real_model_experiment_status": "NOT RUN",
+  "m16_root_cause": {
+    "adapter_error_location": "src/driftguard/experiments/scenario_runner.py::_legacy_smoke_task (historical only)",
+    "canonical_issue_id": 102,
+    "canonical_source_task": "A07",
+    "cross_layer_source": "src/driftguard/runners/injection_conformance_runner.py::CASE_ARGUMENTS['SED-01'].issue_id",
+    "cross_layer_value": 101,
+    "protected_benchmark_conflict": false,
+    "repair": "active end-to-end path resolves SED-01-D1 -> A07 and never uses conformance CASE_ARGUMENTS"
+  },
+  "mock_feedback": {
+    "details": [
+      {
+        "driftguard_evidence_events": 0,
+        "driftguard_evidence_visible": false,
+        "exact_retry_after_local_validation": false,
+        "field_error_visible": true,
+        "method": "standard",
+        "next_model_transition": true,
+        "probe_capability_visible": false,
+        "reflection_hook_visible": false,
+        "rounds": 2,
+        "sandbox_calls": 1,
+        "schema_fragment_visible": false,
+        "task_success": true,
+        "validation_feedback_transition": true
+      },
+      {
+        "driftguard_evidence_events": 0,
+        "driftguard_evidence_visible": false,
+        "exact_retry_after_local_validation": false,
+        "field_error_visible": true,
+        "method": "retry_only",
+        "next_model_transition": true,
+        "probe_capability_visible": false,
+        "reflection_hook_visible": false,
+        "rounds": 2,
+        "sandbox_calls": 1,
+        "schema_fragment_visible": false,
+        "task_success": true,
+        "validation_feedback_transition": true
+      },
+      {
+        "driftguard_evidence_events": 0,
+        "driftguard_evidence_visible": false,
+        "exact_retry_after_local_validation": false,
+        "field_error_visible": true,
+        "method": "reflection",
+        "next_model_transition": true,
+        "probe_capability_visible": false,
+        "reflection_hook_visible": true,
+        "rounds": 2,
+        "sandbox_calls": 1,
+        "schema_fragment_visible": false,
+        "task_success": true,
+        "validation_feedback_transition": true
+      },
+      {
+        "driftguard_evidence_events": 0,
+        "driftguard_evidence_visible": false,
+        "exact_retry_after_local_validation": false,
+        "field_error_visible": true,
+        "method": "validation_guided",
+        "next_model_transition": true,
+        "probe_capability_visible": false,
+        "reflection_hook_visible": false,
+        "rounds": 2,
+        "sandbox_calls": 1,
+        "schema_fragment_visible": true,
+        "task_success": true,
+        "validation_feedback_transition": true
+      },
+      {
+        "driftguard_evidence_events": 1,
+        "driftguard_evidence_visible": true,
+        "exact_retry_after_local_validation": false,
+        "field_error_visible": true,
+        "method": "driftguard_llm",
+        "next_model_transition": true,
+        "probe_capability_visible": true,
+        "reflection_hook_visible": false,
+        "rounds": 2,
+        "sandbox_calls": 1,
+        "schema_fragment_visible": false,
+        "task_success": true,
+        "validation_feedback_transition": true
+      }
+    ],
+    "methods": 5,
+    "network_calls": 0,
+    "only_driftguard_sees_probe": true,
+    "successful_two_round_repairs": 5
+  },
+  "new_cost_cny": 0.0,
+  "offline_oracle": {
+    "binding_consistency": 12,
+    "details": [
+      {
+        "binding_consistent": true,
+        "forbidden_side_effects_passed": true,
+        "natural_language_business_goal": true,
+        "oracle_actions_in_initial_prompt": false,
+        "scenario": "M01-AE",
+        "source_task_ref": "C05",
+        "task_evaluator_success": true,
+        "termination": "TASK_SUCCESS",
+        "tool_budget_passed": true,
+        "tool_calls": 2
+      },
+      {
+        "binding_consistent": true,
+        "forbidden_side_effects_passed": true,
+        "natural_language_business_goal": true,
+        "oracle_actions_in_initial_prompt": false,
+        "scenario": "M01-TF",
+        "source_task_ref": "C05",
+        "task_evaluator_success": true,
+        "termination": "TASK_SUCCESS",
+        "tool_budget_passed": true,
+        "tool_calls": 2
+      },
+      {
+        "binding_consistent": true,
+        "forbidden_side_effects_passed": true,
+        "natural_language_business_goal": true,
+        "oracle_actions_in_initial_prompt": false,
+        "scenario": "M01-PD",
+        "source_task_ref": "C05",
+        "task_evaluator_success": true,
+        "termination": "TASK_SUCCESS",
+        "tool_budget_passed": true,
+        "tool_calls": 2
+      },
+      {
+        "binding_consistent": true,
+        "forbidden_side_effects_passed": true,
+        "natural_language_business_goal": true,
+        "oracle_actions_in_initial_prompt": false,
+        "scenario": "M06-AE",
+        "source_task_ref": "C01",
+        "task_evaluator_success": true,
+        "termination": "TASK_SUCCESS",
+        "tool_budget_passed": true,
+        "tool_calls": 2
+      },
+      {
+        "binding_consistent": true,
+        "forbidden_side_effects_passed": true,
+        "natural_language_business_goal": true,
+        "oracle_actions_in_initial_prompt": false,
+        "scenario": "M06-TF",
+        "source_task_ref": "C01",
+        "task_evaluator_success": true,
+        "termination": "TASK_SUCCESS",
+        "tool_budget_passed": true,
+        "tool_calls": 2
+      },
+      {
+        "binding_consistent": true,
+        "forbidden_side_effects_passed": true,
+        "natural_language_business_goal": true,
+        "oracle_actions_in_initial_prompt": false,
+        "scenario": "M06-PD",
+        "source_task_ref": "C01",
+        "task_evaluator_success": true,
+        "termination": "TASK_SUCCESS",
+        "tool_budget_passed": true,
+        "tool_calls": 2
+      },
+      {
+        "binding_consistent": true,
+        "forbidden_side_effects_passed": true,
+        "natural_language_business_goal": true,
+        "oracle_actions_in_initial_prompt": false,
+        "scenario": "M11-AE",
+        "source_task_ref": "A07",
+        "task_evaluator_success": true,
+        "termination": "TASK_SUCCESS",
+        "tool_budget_passed": true,
+        "tool_calls": 2
+      },
+      {
+        "binding_consistent": true,
+        "forbidden_side_effects_passed": true,
+        "natural_language_business_goal": true,
+        "oracle_actions_in_initial_prompt": false,
+        "scenario": "M11-TF",
+        "source_task_ref": "A07",
+        "task_evaluator_success": true,
+        "termination": "TASK_SUCCESS",
+        "tool_budget_passed": true,
+        "tool_calls": 2
+      },
+      {
+        "binding_consistent": true,
+        "forbidden_side_effects_passed": true,
+        "natural_language_business_goal": true,
+        "oracle_actions_in_initial_prompt": false,
+        "scenario": "M11-PD",
+        "source_task_ref": "A07",
+        "task_evaluator_success": true,
+        "termination": "TASK_SUCCESS",
+        "tool_budget_passed": true,
+        "tool_calls": 2
+      },
+      {
+        "binding_consistent": true,
+        "forbidden_side_effects_passed": true,
+        "natural_language_business_goal": true,
+        "oracle_actions_in_initial_prompt": false,
+        "scenario": "M16-AE",
+        "source_task_ref": "A07",
+        "task_evaluator_success": true,
+        "termination": "TASK_SUCCESS",
+        "tool_budget_passed": true,
+        "tool_calls": 2
+      },
+      {
+        "binding_consistent": true,
+        "forbidden_side_effects_passed": true,
+        "natural_language_business_goal": true,
+        "oracle_actions_in_initial_prompt": false,
+        "scenario": "M16-TF",
+        "source_task_ref": "A07",
+        "task_evaluator_success": true,
+        "termination": "TASK_SUCCESS",
+        "tool_budget_passed": true,
+        "tool_calls": 2
+      },
+      {
+        "binding_consistent": true,
+        "forbidden_side_effects_passed": true,
+        "natural_language_business_goal": true,
+        "oracle_actions_in_initial_prompt": false,
+        "scenario": "M16-PD",
+        "source_task_ref": "A07",
+        "task_evaluator_success": true,
+        "termination": "TASK_SUCCESS",
+        "tool_budget_passed": true,
+        "tool_calls": 2
+      }
+    ],
+    "evaluator_success": 12,
+    "forbidden_side_effect_failures": 0,
+    "natural_language_business_goal": 12,
+    "oracle_prompt_leaks": 0,
+    "provider_calls": 0,
+    "scenarios": 12,
+    "tool_budget_pass": 12
+  },
+  "pilot_v4_created_or_run": true,
+  "prompt": {
+    "effective_prompt_hashes": {
+      "driftguard_llm": "dc88113f8ada4847b2632e047a6d3263d72d199427526e1acb9c0a426bb6485c",
+      "reflection": "61db531d7c4f3c2e319102ca583be6280ca165f01d91f4fa34006d9159d0390d",
+      "retry_only": "534b3337cbf5d9ef748d9f811f68dc927883d20007debc2bc490200a78181b68",
+      "standard": "54282be21f0d19e52957493ca8e926fbcaf31aadcd9aa61f73f789b3c82bd072",
+      "validation_guided": "3c8175dcbad3b1b009c442e21ec66bfe2a7038778e70d5d95087fcaf3fb81eef"
+    },
+    "path": "benchmark/prompts/base_tool_agent_v3.txt",
+    "schema_path": "benchmark/schemas/agent_action_schema_v3.json",
+    "schema_sha256": "27807767537dbcf83620642edc443525da61f08dfde6935f4ea11aafd1e9dcf1",
+    "sha256": "bae688c173db4f561162d402acef5661256c6bab5a1d20a65e96868c2ec8267f"
+  },
+  "protection": {
+    "canonical_hashes_after": {
+      "benchmark/drifts/drift_cases_v1.json": "dda8f8c1759075bb52b14431b9ee5fcb6fbe93c1cf239a474548a6127228a00e",
+      "benchmark/drifts/task_drift_coverage_v1.json": "f83a5ce5da1bd9a179dfdd1abfbb747469b29644c71304490df0750bd527be3c",
+      "benchmark/fixtures/initial_state_v1.json": "7cc0f4af8eb45d6e1a4a03741c2b44484b80736cf2ba6bd1f5c8e2c7fb7db3c0",
+      "benchmark/matched_failures/attribution_protocol_v1.json": "3e0779032b4613b9d17868ae1f2d3fe0c582214cc80bdb860a5a88aae69d4106",
+      "benchmark/matched_failures/matched_failures_v1.json": "58c921b754976ee16f29676030bfbb57de4e0ee2f7be14a4af8353d057296f7e",
+      "benchmark/openapi/driftguard_openapi_v1.yaml": "be893ee40a748410d49befe8ca45f645b47e9a770cf2bb7e0b90db9c71472267",
+      "benchmark/tasks/tasks_v1.json": "851425f77f4ad94633e5eb10937b783a51e9aa9f54955b408565064f3a788936"
+    },
+    "canonical_hashes_before": {
+      "benchmark/drifts/drift_cases_v1.json": "dda8f8c1759075bb52b14431b9ee5fcb6fbe93c1cf239a474548a6127228a00e",
+      "benchmark/drifts/task_drift_coverage_v1.json": "f83a5ce5da1bd9a179dfdd1abfbb747469b29644c71304490df0750bd527be3c",
+      "benchmark/fixtures/initial_state_v1.json": "7cc0f4af8eb45d6e1a4a03741c2b44484b80736cf2ba6bd1f5c8e2c7fb7db3c0",
+      "benchmark/matched_failures/attribution_protocol_v1.json": "3e0779032b4613b9d17868ae1f2d3fe0c582214cc80bdb860a5a88aae69d4106",
+      "benchmark/matched_failures/matched_failures_v1.json": "58c921b754976ee16f29676030bfbb57de4e0ee2f7be14a4af8353d057296f7e",
+      "benchmark/openapi/driftguard_openapi_v1.yaml": "be893ee40a748410d49befe8ca45f645b47e9a770cf2bb7e0b90db9c71472267",
+      "benchmark/tasks/tasks_v1.json": "851425f77f4ad94633e5eb10937b783a51e9aa9f54955b408565064f3a788936"
+    },
+    "canonical_unchanged": true,
+    "protected_paths": [
+      "benchmark/openapi/driftguard_openapi_v1.yaml",
+      "benchmark/fixtures/initial_state_v1.json",
+      "benchmark/tasks/tasks_v1.json",
+      "benchmark/drifts/drift_cases_v1.json",
+      "benchmark/drifts/task_drift_coverage_v1.json",
+      "benchmark/matched_failures/matched_failures_v1.json",
+      "benchmark/matched_failures/attribution_protocol_v1.json"
+    ]
+  },
+  "provenance": [
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "title": "Review authentication logs"
+      },
+      "drift_target_tool": "create_issue",
+      "evaluator_target_entity": {
+        "issue_ids": [
+          105
+        ],
+        "state_paths": [
+          "/repositories/R1/issues/105",
+          "/repositories/R1/issues/105/title",
+          "/repositories/R1/issues/105/priority",
+          "/repositories/R1/issues/105/state",
+          "/next_ids/R1/issue_id"
+        ]
+      },
+      "family": "M01",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "title": "Review authentication logs"
+      },
+      "scenario_public_id": "public-M01",
+      "source_task_ref": "C05",
+      "task_instance_ref": "ICD-01-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "title": "Review authentication logs"
+      },
+      "drift_target_tool": "create_issue",
+      "evaluator_target_entity": {
+        "issue_ids": [
+          105
+        ],
+        "state_paths": [
+          "/repositories/R1/issues/105",
+          "/repositories/R1/issues/105/title",
+          "/repositories/R1/issues/105/priority",
+          "/repositories/R1/issues/105/state",
+          "/next_ids/R1/issue_id"
+        ]
+      },
+      "family": "M01",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "title": "Review authentication logs"
+      },
+      "scenario_public_id": "public-M01",
+      "source_task_ref": "C05",
+      "task_instance_ref": "ICD-01-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "title": "Review authentication logs"
+      },
+      "drift_target_tool": "create_issue",
+      "evaluator_target_entity": {
+        "issue_ids": [
+          105
+        ],
+        "state_paths": [
+          "/repositories/R1/issues/105",
+          "/repositories/R1/issues/105/title",
+          "/repositories/R1/issues/105/priority",
+          "/repositories/R1/issues/105/state",
+          "/next_ids/R1/issue_id"
+        ]
+      },
+      "family": "M01",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "title": "Review authentication logs"
+      },
+      "scenario_public_id": "public-M01",
+      "source_task_ref": "C05",
+      "task_instance_ref": "ICD-01-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "ref": "main",
+        "repo_id": "R1",
+        "workflow_id": "ci"
+      },
+      "drift_target_tool": "trigger_pipeline",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/pipeline_runs/504",
+          "/repositories/R1/pipeline_runs/504/workflow_id",
+          "/repositories/R1/pipeline_runs/504/ref",
+          "/repositories/R1/pipeline_runs/504/status",
+          "/repositories/R1/pipeline_runs/504/conclusion",
+          "/repositories/R1/pipeline_runs/504/attempt",
+          "/next_ids/R1/run_id"
+        ]
+      },
+      "family": "M02",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "ref": "release",
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "workflow_id": "ci"
+      },
+      "scenario_public_id": "public-M02",
+      "source_task_ref": "A08",
+      "task_instance_ref": "ICD-02-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "ref": "main",
+        "repo_id": "R1",
+        "workflow_id": "ci"
+      },
+      "drift_target_tool": "trigger_pipeline",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/pipeline_runs/504",
+          "/repositories/R1/pipeline_runs/504/workflow_id",
+          "/repositories/R1/pipeline_runs/504/ref",
+          "/repositories/R1/pipeline_runs/504/status",
+          "/repositories/R1/pipeline_runs/504/conclusion",
+          "/repositories/R1/pipeline_runs/504/attempt",
+          "/next_ids/R1/run_id"
+        ]
+      },
+      "family": "M02",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "ref": "release",
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "workflow_id": "ci"
+      },
+      "scenario_public_id": "public-M02",
+      "source_task_ref": "A08",
+      "task_instance_ref": "ICD-02-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "ref": "main",
+        "repo_id": "R1",
+        "workflow_id": "ci"
+      },
+      "drift_target_tool": "trigger_pipeline",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/pipeline_runs/504",
+          "/repositories/R1/pipeline_runs/504/workflow_id",
+          "/repositories/R1/pipeline_runs/504/ref",
+          "/repositories/R1/pipeline_runs/504/status",
+          "/repositories/R1/pipeline_runs/504/conclusion",
+          "/repositories/R1/pipeline_runs/504/attempt",
+          "/next_ids/R1/run_id"
+        ]
+      },
+      "family": "M02",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "ref": "release",
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "workflow_id": "ci"
+      },
+      "scenario_public_id": "public-M02",
+      "source_task_ref": "A08",
+      "task_instance_ref": "ICD-02-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "assignee": "bob",
+        "issue_id": 101,
+        "repo_id": "R1"
+      },
+      "drift_target_tool": "assign_issue",
+      "evaluator_target_entity": {
+        "issue_ids": [
+          101
+        ],
+        "state_paths": [
+          "/repositories/R1/issues/101/assignee",
+          "/repositories/R1/issues/101/state"
+        ]
+      },
+      "family": "M03",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {
+          "101": true
+        },
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [
+          101
+        ],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "assignee": "bob",
+        "issue_id": 101,
+        "repo_id": "R1",
+        "repository_name": "alpha-api"
+      },
+      "scenario_public_id": "public-M03",
+      "source_task_ref": "A06",
+      "task_instance_ref": "ICD-03-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "assignee": "bob",
+        "issue_id": 101,
+        "repo_id": "R1"
+      },
+      "drift_target_tool": "assign_issue",
+      "evaluator_target_entity": {
+        "issue_ids": [
+          101
+        ],
+        "state_paths": [
+          "/repositories/R1/issues/101/assignee",
+          "/repositories/R1/issues/101/state"
+        ]
+      },
+      "family": "M03",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {
+          "101": true
+        },
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [
+          101
+        ],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "assignee": "bob",
+        "issue_id": 101,
+        "repo_id": "R1",
+        "repository_name": "alpha-api"
+      },
+      "scenario_public_id": "public-M03",
+      "source_task_ref": "A06",
+      "task_instance_ref": "ICD-03-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "assignee": "bob",
+        "issue_id": 101,
+        "repo_id": "R1"
+      },
+      "drift_target_tool": "assign_issue",
+      "evaluator_target_entity": {
+        "issue_ids": [
+          101
+        ],
+        "state_paths": [
+          "/repositories/R1/issues/101/assignee",
+          "/repositories/R1/issues/101/state"
+        ]
+      },
+      "family": "M03",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {
+          "101": true
+        },
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [
+          101
+        ],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "assignee": "bob",
+        "issue_id": 101,
+        "repo_id": "R1",
+        "repository_name": "alpha-api"
+      },
+      "scenario_public_id": "public-M03",
+      "source_task_ref": "A06",
+      "task_instance_ref": "ICD-03-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "run_id": 501
+      },
+      "drift_target_tool": "retry_pipeline",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/pipeline_runs/501/attempt",
+          "/repositories/R1/pipeline_runs/501/status",
+          "/repositories/R1/pipeline_runs/501/conclusion",
+          "/repositories/R1/pipeline_runs/501/retried_from",
+          "/repositories/R1/pipeline_runs/504"
+        ]
+      },
+      "family": "M04",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "run_id": 501
+      },
+      "scenario_public_id": "public-M04",
+      "source_task_ref": "A10",
+      "task_instance_ref": "ICD-04-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "run_id": 501
+      },
+      "drift_target_tool": "retry_pipeline",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/pipeline_runs/501/attempt",
+          "/repositories/R1/pipeline_runs/501/status",
+          "/repositories/R1/pipeline_runs/501/conclusion",
+          "/repositories/R1/pipeline_runs/501/retried_from",
+          "/repositories/R1/pipeline_runs/504"
+        ]
+      },
+      "family": "M04",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "run_id": 501
+      },
+      "scenario_public_id": "public-M04",
+      "source_task_ref": "A10",
+      "task_instance_ref": "ICD-04-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "run_id": 501
+      },
+      "drift_target_tool": "retry_pipeline",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/pipeline_runs/501/attempt",
+          "/repositories/R1/pipeline_runs/501/status",
+          "/repositories/R1/pipeline_runs/501/conclusion",
+          "/repositories/R1/pipeline_runs/501/retried_from",
+          "/repositories/R1/pipeline_runs/504"
+        ]
+      },
+      "family": "M04",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "run_id": 501
+      },
+      "scenario_public_id": "public-M04",
+      "source_task_ref": "A10",
+      "task_instance_ref": "ICD-04-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "role": "write",
+        "username": "carol"
+      },
+      "drift_target_tool": "update_member_role",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/members/dave/role",
+          "/repositories/R1/members/dave/base_permission"
+        ]
+      },
+      "family": "M05",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "role": "write",
+        "username": "dave"
+      },
+      "scenario_public_id": "public-M05",
+      "source_task_ref": "A13",
+      "task_instance_ref": "ICD-05-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "role": "write",
+        "username": "carol"
+      },
+      "drift_target_tool": "update_member_role",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/members/dave/role",
+          "/repositories/R1/members/dave/base_permission"
+        ]
+      },
+      "family": "M05",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "role": "write",
+        "username": "dave"
+      },
+      "scenario_public_id": "public-M05",
+      "source_task_ref": "A13",
+      "task_instance_ref": "ICD-05-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "role": "write",
+        "username": "carol"
+      },
+      "drift_target_tool": "update_member_role",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/members/dave/role",
+          "/repositories/R1/members/dave/base_permission"
+        ]
+      },
+      "family": "M05",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "role": "write",
+        "username": "dave"
+      },
+      "scenario_public_id": "public-M05",
+      "source_task_ref": "A13",
+      "task_instance_ref": "ICD-05-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "title": "Response mapping"
+      },
+      "drift_target_tool": "create_issue",
+      "evaluator_target_entity": {
+        "issue_ids": [
+          105
+        ],
+        "state_paths": [
+          "/repositories/R1/issues/105",
+          "/repositories/R1/issues/105/priority",
+          "/repositories/R1/issues/105/state",
+          "/repositories/R1/issues/105/assignee",
+          "/next_ids/R1/issue_id"
+        ]
+      },
+      "family": "M06",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "assignee": "bob",
+        "created_issue_id": 105,
+        "priority": "high",
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "title": "Add refresh-token tests"
+      },
+      "scenario_public_id": "public-M06",
+      "source_task_ref": "C01",
+      "task_instance_ref": "RSD-01-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "title": "Response mapping"
+      },
+      "drift_target_tool": "create_issue",
+      "evaluator_target_entity": {
+        "issue_ids": [
+          105
+        ],
+        "state_paths": [
+          "/repositories/R1/issues/105",
+          "/repositories/R1/issues/105/priority",
+          "/repositories/R1/issues/105/state",
+          "/repositories/R1/issues/105/assignee",
+          "/next_ids/R1/issue_id"
+        ]
+      },
+      "family": "M06",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "assignee": "bob",
+        "created_issue_id": 105,
+        "priority": "high",
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "title": "Add refresh-token tests"
+      },
+      "scenario_public_id": "public-M06",
+      "source_task_ref": "C01",
+      "task_instance_ref": "RSD-01-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "title": "Response mapping"
+      },
+      "drift_target_tool": "create_issue",
+      "evaluator_target_entity": {
+        "issue_ids": [
+          105
+        ],
+        "state_paths": [
+          "/repositories/R1/issues/105",
+          "/repositories/R1/issues/105/priority",
+          "/repositories/R1/issues/105/state",
+          "/repositories/R1/issues/105/assignee",
+          "/next_ids/R1/issue_id"
+        ]
+      },
+      "family": "M06",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "assignee": "bob",
+        "created_issue_id": 105,
+        "priority": "high",
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "title": "Add refresh-token tests"
+      },
+      "scenario_public_id": "public-M06",
+      "source_task_ref": "C01",
+      "task_instance_ref": "RSD-01-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "run_id": 501
+      },
+      "drift_target_tool": "get_pipeline_status",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/pipeline_runs/501/attempt",
+          "/repositories/R1/pipeline_runs/501/status",
+          "/repositories/R1/pipeline_runs/501/conclusion",
+          "/repositories/R1/pipeline_runs/501/retried_from"
+        ]
+      },
+      "family": "M07",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "failed_only": true,
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "run_id": 501
+      },
+      "scenario_public_id": "public-M07",
+      "source_task_ref": "C06",
+      "task_instance_ref": "RSD-02-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "run_id": 501
+      },
+      "drift_target_tool": "get_pipeline_status",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/pipeline_runs/501/attempt",
+          "/repositories/R1/pipeline_runs/501/status",
+          "/repositories/R1/pipeline_runs/501/conclusion",
+          "/repositories/R1/pipeline_runs/501/retried_from"
+        ]
+      },
+      "family": "M07",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "failed_only": true,
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "run_id": 501
+      },
+      "scenario_public_id": "public-M07",
+      "source_task_ref": "C06",
+      "task_instance_ref": "RSD-02-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "run_id": 501
+      },
+      "drift_target_tool": "get_pipeline_status",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/pipeline_runs/501/attempt",
+          "/repositories/R1/pipeline_runs/501/status",
+          "/repositories/R1/pipeline_runs/501/conclusion",
+          "/repositories/R1/pipeline_runs/501/retried_from"
+        ]
+      },
+      "family": "M07",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "failed_only": true,
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "run_id": 501
+      },
+      "scenario_public_id": "public-M07",
+      "source_task_ref": "C06",
+      "task_instance_ref": "RSD-02-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "username": "bob"
+      },
+      "drift_target_tool": "get_member",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": []
+      },
+      "family": "M08",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "username": "bob"
+      },
+      "scenario_public_id": "public-M08",
+      "source_task_ref": "A12",
+      "task_instance_ref": "RSD-03-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "username": "bob"
+      },
+      "drift_target_tool": "get_member",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": []
+      },
+      "family": "M08",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "username": "bob"
+      },
+      "scenario_public_id": "public-M08",
+      "source_task_ref": "A12",
+      "task_instance_ref": "RSD-03-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "username": "bob"
+      },
+      "drift_target_tool": "get_member",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": []
+      },
+      "family": "M08",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "username": "bob"
+      },
+      "scenario_public_id": "public-M08",
+      "source_task_ref": "A12",
+      "task_instance_ref": "RSD-03-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1"
+      },
+      "drift_target_tool": "get_repository",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": []
+      },
+      "family": "M09",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api"
+      },
+      "scenario_public_id": "public-M09",
+      "source_task_ref": "A01",
+      "task_instance_ref": "RSD-04-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1"
+      },
+      "drift_target_tool": "get_repository",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": []
+      },
+      "family": "M09",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api"
+      },
+      "scenario_public_id": "public-M09",
+      "source_task_ref": "A01",
+      "task_instance_ref": "RSD-04-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1"
+      },
+      "drift_target_tool": "get_repository",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": []
+      },
+      "family": "M09",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api"
+      },
+      "scenario_public_id": "public-M09",
+      "source_task_ref": "A01",
+      "task_instance_ref": "RSD-04-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "run_id": 501
+      },
+      "drift_target_tool": "retry_pipeline",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/pipeline_runs/501/attempt",
+          "/repositories/R1/pipeline_runs/501/status",
+          "/repositories/R1/pipeline_runs/501/conclusion",
+          "/repositories/R1/pipeline_runs/501/retried_from",
+          "/repositories/R1/pipeline_runs/504"
+        ]
+      },
+      "family": "M10",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "failed_only": true,
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "run_id": 501
+      },
+      "scenario_public_id": "public-M10",
+      "source_task_ref": "A10",
+      "task_instance_ref": "RSD-05-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "run_id": 501
+      },
+      "drift_target_tool": "retry_pipeline",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/pipeline_runs/501/attempt",
+          "/repositories/R1/pipeline_runs/501/status",
+          "/repositories/R1/pipeline_runs/501/conclusion",
+          "/repositories/R1/pipeline_runs/501/retried_from",
+          "/repositories/R1/pipeline_runs/504"
+        ]
+      },
+      "family": "M10",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "failed_only": true,
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "run_id": 501
+      },
+      "scenario_public_id": "public-M10",
+      "source_task_ref": "A10",
+      "task_instance_ref": "RSD-05-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "run_id": 501
+      },
+      "drift_target_tool": "retry_pipeline",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/pipeline_runs/501/attempt",
+          "/repositories/R1/pipeline_runs/501/status",
+          "/repositories/R1/pipeline_runs/501/conclusion",
+          "/repositories/R1/pipeline_runs/501/retried_from",
+          "/repositories/R1/pipeline_runs/504"
+        ]
+      },
+      "family": "M10",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "failed_only": true,
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "run_id": 501
+      },
+      "scenario_public_id": "public-M10",
+      "source_task_ref": "A10",
+      "task_instance_ref": "RSD-05-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "issue_id": 101,
+        "repo_id": "R1"
+      },
+      "drift_target_tool": "close_issue",
+      "evaluator_target_entity": {
+        "issue_ids": [
+          101
+        ],
+        "state_paths": [
+          "/repositories/R1/issues/101/state",
+          "/repositories/R1/issues/101/resolution",
+          "/repositories/R1/issues/101/closed_at",
+          "/repositories/R1/issues/101/assignee"
+        ]
+      },
+      "family": "M11",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {
+          "101": true
+        },
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [
+          101
+        ],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "issue_id": 101,
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "resolution": "completed"
+      },
+      "scenario_public_id": "public-M11",
+      "source_task_ref": "A07",
+      "task_instance_ref": "WPD-01-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "issue_id": 101,
+        "repo_id": "R1"
+      },
+      "drift_target_tool": "close_issue",
+      "evaluator_target_entity": {
+        "issue_ids": [
+          101
+        ],
+        "state_paths": [
+          "/repositories/R1/issues/101/state",
+          "/repositories/R1/issues/101/resolution",
+          "/repositories/R1/issues/101/closed_at",
+          "/repositories/R1/issues/101/assignee"
+        ]
+      },
+      "family": "M11",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {
+          "101": true
+        },
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [
+          101
+        ],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "issue_id": 101,
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "resolution": "completed"
+      },
+      "scenario_public_id": "public-M11",
+      "source_task_ref": "A07",
+      "task_instance_ref": "WPD-01-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "issue_id": 101,
+        "repo_id": "R1"
+      },
+      "drift_target_tool": "close_issue",
+      "evaluator_target_entity": {
+        "issue_ids": [
+          101
+        ],
+        "state_paths": [
+          "/repositories/R1/issues/101/state",
+          "/repositories/R1/issues/101/resolution",
+          "/repositories/R1/issues/101/closed_at",
+          "/repositories/R1/issues/101/assignee"
+        ]
+      },
+      "family": "M11",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {
+          "101": true
+        },
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [
+          101
+        ],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "issue_id": 101,
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "resolution": "completed"
+      },
+      "scenario_public_id": "public-M11",
+      "source_task_ref": "A07",
+      "task_instance_ref": "WPD-01-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "run_id": 501
+      },
+      "drift_target_tool": "retry_pipeline",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/pipeline_runs/501/attempt",
+          "/repositories/R1/pipeline_runs/501/status",
+          "/repositories/R1/pipeline_runs/501/conclusion",
+          "/repositories/R1/pipeline_runs/501/retried_from",
+          "/repositories/R1/pipeline_runs/504"
+        ]
+      },
+      "family": "M12",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "failed_only": true,
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "run_id": 501
+      },
+      "scenario_public_id": "public-M12",
+      "source_task_ref": "A10",
+      "task_instance_ref": "WPD-02-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "run_id": 501
+      },
+      "drift_target_tool": "retry_pipeline",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/pipeline_runs/501/attempt",
+          "/repositories/R1/pipeline_runs/501/status",
+          "/repositories/R1/pipeline_runs/501/conclusion",
+          "/repositories/R1/pipeline_runs/501/retried_from",
+          "/repositories/R1/pipeline_runs/504"
+        ]
+      },
+      "family": "M12",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "failed_only": true,
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "run_id": 501
+      },
+      "scenario_public_id": "public-M12",
+      "source_task_ref": "A10",
+      "task_instance_ref": "WPD-02-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "run_id": 501
+      },
+      "drift_target_tool": "retry_pipeline",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/pipeline_runs/501/attempt",
+          "/repositories/R1/pipeline_runs/501/status",
+          "/repositories/R1/pipeline_runs/501/conclusion",
+          "/repositories/R1/pipeline_runs/501/retried_from",
+          "/repositories/R1/pipeline_runs/504"
+        ]
+      },
+      "family": "M12",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "failed_only": true,
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "run_id": 501
+      },
+      "scenario_public_id": "public-M12",
+      "source_task_ref": "A10",
+      "task_instance_ref": "WPD-02-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "assignee": "bob",
+        "issue_id": 101,
+        "repo_id": "R1"
+      },
+      "drift_target_tool": "assign_issue",
+      "evaluator_target_entity": {
+        "issue_ids": [
+          101
+        ],
+        "state_paths": [
+          "/repositories/R1/issues/101/assignee",
+          "/repositories/R1/issues/101/state"
+        ]
+      },
+      "family": "M13",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {
+          "101": true
+        },
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [
+          101
+        ],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "assignee": "bob",
+        "issue_id": 101,
+        "repo_id": "R1",
+        "repository_name": "alpha-api"
+      },
+      "scenario_public_id": "public-M13",
+      "source_task_ref": "A06",
+      "task_instance_ref": "WPD-03-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "assignee": "bob",
+        "issue_id": 101,
+        "repo_id": "R1"
+      },
+      "drift_target_tool": "assign_issue",
+      "evaluator_target_entity": {
+        "issue_ids": [
+          101
+        ],
+        "state_paths": [
+          "/repositories/R1/issues/101/assignee",
+          "/repositories/R1/issues/101/state"
+        ]
+      },
+      "family": "M13",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {
+          "101": true
+        },
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [
+          101
+        ],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "assignee": "bob",
+        "issue_id": 101,
+        "repo_id": "R1",
+        "repository_name": "alpha-api"
+      },
+      "scenario_public_id": "public-M13",
+      "source_task_ref": "A06",
+      "task_instance_ref": "WPD-03-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "assignee": "bob",
+        "issue_id": 101,
+        "repo_id": "R1"
+      },
+      "drift_target_tool": "assign_issue",
+      "evaluator_target_entity": {
+        "issue_ids": [
+          101
+        ],
+        "state_paths": [
+          "/repositories/R1/issues/101/assignee",
+          "/repositories/R1/issues/101/state"
+        ]
+      },
+      "family": "M13",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {
+          "101": true
+        },
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [
+          101
+        ],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "assignee": "bob",
+        "issue_id": 101,
+        "repo_id": "R1",
+        "repository_name": "alpha-api"
+      },
+      "scenario_public_id": "public-M13",
+      "source_task_ref": "A06",
+      "task_instance_ref": "WPD-03-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "role": "write",
+        "username": "dave"
+      },
+      "drift_target_tool": "update_member_role",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/members/dave/role",
+          "/repositories/R1/members/dave/base_permission"
+        ]
+      },
+      "family": "M14",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "role": "write",
+        "username": "dave"
+      },
+      "scenario_public_id": "public-M14",
+      "source_task_ref": "A13",
+      "task_instance_ref": "WPD-04-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "role": "write",
+        "username": "dave"
+      },
+      "drift_target_tool": "update_member_role",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/members/dave/role",
+          "/repositories/R1/members/dave/base_permission"
+        ]
+      },
+      "family": "M14",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "role": "write",
+        "username": "dave"
+      },
+      "scenario_public_id": "public-M14",
+      "source_task_ref": "A13",
+      "task_instance_ref": "WPD-04-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "role": "write",
+        "username": "dave"
+      },
+      "drift_target_tool": "update_member_role",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/members/dave/role",
+          "/repositories/R1/members/dave/base_permission"
+        ]
+      },
+      "family": "M14",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "role": "write",
+        "username": "dave"
+      },
+      "scenario_public_id": "public-M14",
+      "source_task_ref": "A13",
+      "task_instance_ref": "WPD-04-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "role": "triage",
+        "username": "erin"
+      },
+      "drift_target_tool": "add_member",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/members/erin",
+          "/repositories/R1/members/erin/role",
+          "/repositories/R1/members/erin/base_permission",
+          "/repositories/R1/members/erin/membership_state"
+        ]
+      },
+      "family": "M15",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "role": "triage",
+        "username": "erin"
+      },
+      "scenario_public_id": "public-M15",
+      "source_task_ref": "A11",
+      "task_instance_ref": "WPD-05-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "role": "triage",
+        "username": "erin"
+      },
+      "drift_target_tool": "add_member",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/members/erin",
+          "/repositories/R1/members/erin/role",
+          "/repositories/R1/members/erin/base_permission",
+          "/repositories/R1/members/erin/membership_state"
+        ]
+      },
+      "family": "M15",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "role": "triage",
+        "username": "erin"
+      },
+      "scenario_public_id": "public-M15",
+      "source_task_ref": "A11",
+      "task_instance_ref": "WPD-05-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "role": "triage",
+        "username": "erin"
+      },
+      "drift_target_tool": "add_member",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/members/erin",
+          "/repositories/R1/members/erin/role",
+          "/repositories/R1/members/erin/base_permission",
+          "/repositories/R1/members/erin/membership_state"
+        ]
+      },
+      "family": "M15",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "role": "triage",
+        "username": "erin"
+      },
+      "scenario_public_id": "public-M15",
+      "source_task_ref": "A11",
+      "task_instance_ref": "WPD-05-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "issue_id": 101,
+        "repo_id": "R1"
+      },
+      "drift_target_tool": "close_issue",
+      "evaluator_target_entity": {
+        "issue_ids": [
+          102
+        ],
+        "state_paths": [
+          "/repositories/R1/issues/102/state",
+          "/repositories/R1/issues/102/resolution",
+          "/repositories/R1/issues/102/closed_at",
+          "/repositories/R1/issues/102/assignee"
+        ]
+      },
+      "family": "M16",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {
+          "102": true
+        },
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [
+          102
+        ],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "issue_id": 102,
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "resolution": "completed"
+      },
+      "scenario_public_id": "public-M16",
+      "source_task_ref": "A07",
+      "task_instance_ref": "SED-01-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "issue_id": 101,
+        "repo_id": "R1"
+      },
+      "drift_target_tool": "close_issue",
+      "evaluator_target_entity": {
+        "issue_ids": [
+          102
+        ],
+        "state_paths": [
+          "/repositories/R1/issues/102/state",
+          "/repositories/R1/issues/102/resolution",
+          "/repositories/R1/issues/102/closed_at",
+          "/repositories/R1/issues/102/assignee"
+        ]
+      },
+      "family": "M16",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {
+          "102": true
+        },
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [
+          102
+        ],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "issue_id": 102,
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "resolution": "completed"
+      },
+      "scenario_public_id": "public-M16",
+      "source_task_ref": "A07",
+      "task_instance_ref": "SED-01-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "issue_id": 101,
+        "repo_id": "R1"
+      },
+      "drift_target_tool": "close_issue",
+      "evaluator_target_entity": {
+        "issue_ids": [
+          102
+        ],
+        "state_paths": [
+          "/repositories/R1/issues/102/state",
+          "/repositories/R1/issues/102/resolution",
+          "/repositories/R1/issues/102/closed_at",
+          "/repositories/R1/issues/102/assignee"
+        ]
+      },
+      "family": "M16",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {
+          "102": true
+        },
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [
+          102
+        ],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "issue_id": 102,
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "resolution": "completed"
+      },
+      "scenario_public_id": "public-M16",
+      "source_task_ref": "A07",
+      "task_instance_ref": "SED-01-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "role": "write",
+        "username": "carol"
+      },
+      "drift_target_tool": "update_member_role",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/members/dave/role",
+          "/repositories/R1/members/dave/base_permission"
+        ]
+      },
+      "family": "M17",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "role": "write",
+        "username": "dave"
+      },
+      "scenario_public_id": "public-M17",
+      "source_task_ref": "A13",
+      "task_instance_ref": "SED-02-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "role": "write",
+        "username": "carol"
+      },
+      "drift_target_tool": "update_member_role",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/members/dave/role",
+          "/repositories/R1/members/dave/base_permission"
+        ]
+      },
+      "family": "M17",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "role": "write",
+        "username": "dave"
+      },
+      "scenario_public_id": "public-M17",
+      "source_task_ref": "A13",
+      "task_instance_ref": "SED-02-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "role": "write",
+        "username": "carol"
+      },
+      "drift_target_tool": "update_member_role",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/members/dave/role",
+          "/repositories/R1/members/dave/base_permission"
+        ]
+      },
+      "family": "M17",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "role": "write",
+        "username": "dave"
+      },
+      "scenario_public_id": "public-M17",
+      "source_task_ref": "A13",
+      "task_instance_ref": "SED-02-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "role": "triage",
+        "username": "erin"
+      },
+      "drift_target_tool": "add_member",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/members/erin",
+          "/repositories/R1/members/erin/role",
+          "/repositories/R1/members/erin/base_permission",
+          "/repositories/R1/members/erin/membership_state"
+        ]
+      },
+      "family": "M18",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "role": "triage",
+        "username": "erin"
+      },
+      "scenario_public_id": "public-M18",
+      "source_task_ref": "A11",
+      "task_instance_ref": "SED-03-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "role": "triage",
+        "username": "erin"
+      },
+      "drift_target_tool": "add_member",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/members/erin",
+          "/repositories/R1/members/erin/role",
+          "/repositories/R1/members/erin/base_permission",
+          "/repositories/R1/members/erin/membership_state"
+        ]
+      },
+      "family": "M18",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "role": "triage",
+        "username": "erin"
+      },
+      "scenario_public_id": "public-M18",
+      "source_task_ref": "A11",
+      "task_instance_ref": "SED-03-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "role": "triage",
+        "username": "erin"
+      },
+      "drift_target_tool": "add_member",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/members/erin",
+          "/repositories/R1/members/erin/role",
+          "/repositories/R1/members/erin/base_permission",
+          "/repositories/R1/members/erin/membership_state"
+        ]
+      },
+      "family": "M18",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "role": "triage",
+        "username": "erin"
+      },
+      "scenario_public_id": "public-M18",
+      "source_task_ref": "A11",
+      "task_instance_ref": "SED-03-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "run_id": 501
+      },
+      "drift_target_tool": "retry_pipeline",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/pipeline_runs/501/attempt",
+          "/repositories/R1/pipeline_runs/501/status",
+          "/repositories/R1/pipeline_runs/501/conclusion",
+          "/repositories/R1/pipeline_runs/501/retried_from",
+          "/repositories/R1/pipeline_runs/504"
+        ]
+      },
+      "family": "M19",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "failed_only": true,
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "run_id": 501
+      },
+      "scenario_public_id": "public-M19",
+      "source_task_ref": "A10",
+      "task_instance_ref": "SED-04-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "run_id": 501
+      },
+      "drift_target_tool": "retry_pipeline",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/pipeline_runs/501/attempt",
+          "/repositories/R1/pipeline_runs/501/status",
+          "/repositories/R1/pipeline_runs/501/conclusion",
+          "/repositories/R1/pipeline_runs/501/retried_from",
+          "/repositories/R1/pipeline_runs/504"
+        ]
+      },
+      "family": "M19",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "failed_only": true,
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "run_id": 501
+      },
+      "scenario_public_id": "public-M19",
+      "source_task_ref": "A10",
+      "task_instance_ref": "SED-04-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "repo_id": "R1",
+        "run_id": 501
+      },
+      "drift_target_tool": "retry_pipeline",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/pipeline_runs/501/attempt",
+          "/repositories/R1/pipeline_runs/501/status",
+          "/repositories/R1/pipeline_runs/501/conclusion",
+          "/repositories/R1/pipeline_runs/501/retried_from",
+          "/repositories/R1/pipeline_runs/504"
+        ]
+      },
+      "family": "M19",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "failed_only": true,
+        "repo_id": "R1",
+        "repository_name": "alpha-api",
+        "run_id": 501
+      },
+      "scenario_public_id": "public-M19",
+      "source_task_ref": "A10",
+      "task_instance_ref": "SED-04-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "default_branch": "develop",
+        "repo_id": "R1"
+      },
+      "drift_target_tool": "update_repository",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/default_branch"
+        ]
+      },
+      "family": "M20",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "default_branch": "develop",
+        "repo_id": "R1",
+        "repository_name": "alpha-api"
+      },
+      "scenario_public_id": "public-M20",
+      "source_task_ref": "A03",
+      "task_instance_ref": "SED-05-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "default_branch": "develop",
+        "repo_id": "R1"
+      },
+      "drift_target_tool": "update_repository",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/default_branch"
+        ]
+      },
+      "family": "M20",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "default_branch": "develop",
+        "repo_id": "R1",
+        "repository_name": "alpha-api"
+      },
+      "scenario_public_id": "public-M20",
+      "source_task_ref": "A03",
+      "task_instance_ref": "SED-05-D1",
+      "unresolved_binding": false
+    },
+    {
+      "benchmark_arguments_entity": {
+        "default_branch": "develop",
+        "repo_id": "R1"
+      },
+      "drift_target_tool": "update_repository",
+      "evaluator_target_entity": {
+        "issue_ids": [],
+        "state_paths": [
+          "/repositories/R1/default_branch"
+        ]
+      },
+      "family": "M20",
+      "hidden_entity_requirement": false,
+      "initial_state_entity": {
+        "issue_ids_exist": {},
+        "repository_exists": true
+      },
+      "natural_language_entity": {
+        "issue_ids": [],
+        "repository_name": "alpha-api"
+      },
+      "natural_language_evaluator_mismatch": false,
+      "resolved_binding": {
+        "default_branch": "develop",
+        "repo_id": "R1",
+        "repository_name": "alpha-api"
+      },
+      "scenario_public_id": "public-M20",
+      "source_task_ref": "A03",
+      "task_instance_ref": "SED-05-D1",
+      "unresolved_binding": false
+    }
+  ],
+  "real_provider_calls": 0,
+  "report_version": "phase10a-end-to-end-offline-repair-v1",
+  "task_consistency": {
+    "families": 20,
+    "hidden_entity_requirements": 0,
+    "natural_language_evaluator_target_mismatches": 0,
+    "passed": true,
+    "scenarios": 60,
+    "unresolved_bindings": 0,
+    "variant_goal_mismatches": 0
+  },
+  "tool_catalog": {
+    "catalog_fingerprint": "76bde8f625aa26f786ef3ee9065c481adf1cfd793aea7c5b3fea88d40573b7da",
+    "diff_details": [],
+    "input_schema_diffs": 0,
+    "leakage_terms": [],
+    "passed": true,
+    "stable_serialization": true,
+    "tools": 12,
+    "unresolved_refs": false
+  }
+}

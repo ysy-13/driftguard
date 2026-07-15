@@ -1,0 +1,6 @@
+{
+  "classification": "MIXED_VERSION_DEVELOPMENT_ARTIFACT",
+  "combined_task_success_permitted": false,
+  "original_records_preserved": true,
+  "source_audit": "results/experiments/phase10/post_repair_consistency_audit/audit.json"
+}

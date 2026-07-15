@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["experiment_id", "experiment_stage", "publication_status", "config_hash", "git_commit", "dirty_working_tree", "models", "prompt_hashes", "pricing_snapshot_hash", "pricing_snapshot_id", "benchmark_hashes", "families", "seeds", "methods", "budget", "full_real_model_experiment_status"],
+  "properties": {
+    "experiment_id": {"const": "phase10_real_pilot"},
+    "experiment_stage": {"const": "PILOT"},
+    "publication_status": {"const": "DEVELOPMENT_ONLY"},
+    "config_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "git_commit": {"type": "string"},
+    "dirty_working_tree": {"type": "boolean"},
+    "models": {"type": "array", "minItems": 2},
+    "prompt_hashes": {"type": "object"},
+    "pricing_snapshot_hash": {"type": "string"},
+    "pricing_snapshot_id": {"type": "string"},
+    "benchmark_hashes": {"type": "object"},
+    "families": {"type": "array", "minItems": 4, "maxItems": 4},
+    "seeds": {"type": "array", "minItems": 1, "maxItems": 1},
+    "methods": {"type": "object"},
+    "budget": {"type": "object"},
+    "full_real_model_experiment_status": {"const": "NOT RUN"}
+  },
+  "additionalProperties": false
+}

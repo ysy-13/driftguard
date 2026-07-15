@@ -1,0 +1,19 @@
+{
+  "agent_action_valid": 5,
+  "api_calls": 21,
+  "configured_model": "deepseek-v4-flash",
+  "incremental_cost_cny": 0.2755250680000003,
+  "infrastructure_error_rate": 0.0,
+  "infrastructure_errors": 0,
+  "input_tokens": 225832,
+  "llm_calls": 18,
+  "output_tokens": 1544,
+  "probe_calls": 0,
+  "provider": "deepseek",
+  "records": 5,
+  "sandbox_entered": 5,
+  "status": "PASSED",
+  "stop_reason": null,
+  "task_success": 2,
+  "tool_calls": 17
+}

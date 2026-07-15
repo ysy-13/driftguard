@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["provider", "configured_model", "actual_model", "seed", "experiment_stage", "publication_status", "api_calls", "estimated_cost_cny", "failure_analysis", "public_family_id"],
+  "properties": {
+    "provider": {"type": "string"},
+    "configured_model": {"type": "string"},
+    "actual_model": {"type": "string"},
+    "seed": {"type": "integer"},
+    "experiment_stage": {"const": "PILOT"},
+    "publication_status": {"const": "DEVELOPMENT_ONLY"},
+    "api_calls": {"type": "integer", "minimum": 0},
+    "estimated_cost_cny": {"type": "number", "minimum": 0},
+    "failure_analysis": {"type": "array", "items": {"type": "string"}},
+    "public_family_id": {"type": "string", "pattern": "^family-[a-f0-9]{12}$"},
+    "sanitized_error": {"type": "string"}
+  }
+}

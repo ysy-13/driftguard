@@ -1,0 +1,19 @@
+{
+  "agent_action_valid": 4,
+  "api_calls": 17,
+  "configured_model": "deepseek-v4-flash",
+  "incremental_cost_cny": 0.22470611800000118,
+  "infrastructure_error_rate": 0.0,
+  "infrastructure_errors": 0,
+  "input_tokens": 177306,
+  "llm_calls": 14,
+  "output_tokens": 1048,
+  "probe_calls": 0,
+  "provider": "deepseek",
+  "records": 4,
+  "sandbox_entered": 4,
+  "status": "FAILED_EXECUTION_PATH_GATE",
+  "stop_reason": "SCHEMA_GUIDED_VALIDATION_FEEDBACK_NOT_ACTIVATED",
+  "task_success": 1,
+  "tool_calls": 15
+}

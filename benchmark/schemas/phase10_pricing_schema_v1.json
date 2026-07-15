@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["snapshot_id", "as_of", "budget_estimate_only", "models"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "snapshot_id": {"type": "string"},
+    "as_of": {"type": "string", "format": "date"},
+    "budget_estimate_only": {"const": true},
+    "models": {
+      "type": "array", "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["provider", "model_id", "source_url", "currency", "input_price_per_million", "output_price_per_million", "cache_policy", "discount_used"],
+        "properties": {
+          "provider": {"type": "string"}, "model_id": {"type": "string"},
+          "source_url": {"type": "string"}, "currency": {"enum": ["USD", "CNY"]},
+          "input_price_per_million": {"type": "number", "minimum": 0},
+          "output_price_per_million": {"type": "number", "minimum": 0},
+          "usd_cny_estimate": {"type": "number", "minimum": 0},
+          "cache_policy": {"type": "string"}, "discount_used": {"const": false}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

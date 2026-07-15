@@ -1,0 +1,42 @@
+{
+  "checks": [
+    {
+      "actual_model": "deepseek-v4-flash",
+      "input_tokens": 11,
+      "model_match": true,
+      "name": "minimal_text",
+      "output_tokens": 1,
+      "passed": true,
+      "provider_attempts": 1,
+      "usage_returned": true
+    },
+    {
+      "actual_model": "deepseek-v4-flash",
+      "input_tokens": 35,
+      "model_match": true,
+      "name": "strict_json",
+      "output_tokens": 5,
+      "passed": true,
+      "provider_attempts": 1,
+      "structured_output_mode_used": "strict_json",
+      "usage_returned": true
+    },
+    {
+      "actual_model": "deepseek-v4-flash",
+      "input_tokens": 296,
+      "model_match": true,
+      "name": "tool_calling",
+      "output_tokens": 38,
+      "passed": true,
+      "provider_attempts": 1,
+      "usage_returned": true
+    }
+  ],
+  "configured_model": "deepseek-v4-flash",
+  "credential": "configured",
+  "endpoint": "https://api.deepseek.com",
+  "passed": true,
+  "provider": "deepseek",
+  "sanitized_error": null,
+  "thinking_mode": "disabled"
+}

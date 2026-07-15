@@ -15,6 +15,7 @@ from .models import ProviderRequest, ProviderResponse
 from .redaction import assert_secret_absent
 from .leakage import assert_provider_request_visible
 from .rate_limit import RequestRateLimiter
+from .provider_capabilities import ProviderCapabilityAdapter
 
 
 class LLMProvider(ABC):
@@ -62,6 +63,7 @@ class OpenAICompatibleProvider(LLMProvider):
         api_key: str,
         client: httpx.Client | None = None,
         rate_limiter: RequestRateLimiter | None = None,
+        cost_controller: Any | None = None,
     ):
         if not config.base_url:
             raise ValueError("base_url is required for an OpenAI-compatible provider")
@@ -70,6 +72,8 @@ class OpenAICompatibleProvider(LLMProvider):
         self.config, self._api_key = config, api_key
         self._client = client or httpx.Client(timeout=config.timeout_seconds)
         self._rate_limiter = rate_limiter or RequestRateLimiter(None)
+        self._adapter = ProviderCapabilityAdapter.for_model(config)
+        self._cost_controller = cost_controller
 
     def complete(self, request: ProviderRequest) -> ProviderResponse:
         assert_provider_request_visible(request)
@@ -78,17 +82,25 @@ class OpenAICompatibleProvider(LLMProvider):
             "temperature": self.config.temperature, "top_p": self.config.top_p,
             "max_tokens": self.config.max_output_tokens,
         }
+        body.update(self._adapter.request_parameters(self.config))
         if self.config.capabilities.seed and self.config.seed is not None:
             body["seed"] = self.config.seed
-        if self.config.structured_output_mode == "json_schema" and self.config.capabilities.json_schema:
-            body["response_format"] = {"type": "json_schema", "json_schema": {"name": "driftguard_output", "schema": dict(request.response_schema)}}
+        body.update(self._adapter.structured_output_parameters(self.config, dict(request.response_schema)))
+        if request.tools:
+            body["tools"] = [dict(item) for item in request.tools]
+            if request.tool_choice is not None:
+                body["tool_choice"] = request.tool_choice
+            body.pop("response_format", None)
         started = time.monotonic()
         attempts = 0
         last_error: Exception | None = None
         while attempts <= self.config.max_provider_retries:
             attempts += 1
+            reservation = None
             try:
                 self._rate_limiter.acquire()
+                if self._cost_controller is not None:
+                    reservation = self._cost_controller.reserve(self.config, request)
                 response = self._client.post(
                     self.config.base_url.rstrip("/") + "/chat/completions",
                     headers={"Authorization": f"Bearer {self._api_key}"}, json=body,
@@ -100,14 +112,24 @@ class OpenAICompatibleProvider(LLMProvider):
                 response.raise_for_status()
                 payload = response.json()
                 choice = payload["choices"][0]
-                raw = choice["message"]["content"]
+                message = choice["message"]
+                tool_calls = tuple(message.get("tool_calls") or ())
+                raw = message.get("content")
+                if raw is None and tool_calls:
+                    raw = json.dumps({"tool_calls": tool_calls}, sort_keys=True)
+                if not isinstance(raw, str):
+                    raise ProviderError("provider response content is not text")
                 usage = payload.get("usage", {})
                 result = ProviderResponse(
-                    str(payload.get("id", "provider-response")), self.config.model_id, None, raw,
+                    str(payload.get("id", "provider-response")), str(payload.get("model", self.config.model_id)), None, raw,
                     int(usage.get("prompt_tokens", 0)), int(usage.get("completion_tokens", 0)),
                     int(usage.get("total_tokens", 0)), (time.monotonic() - started) * 1000,
                     attempts, str(choice.get("finish_reason", "stop")),
+                    tool_calls=tool_calls,
                 )
+                if self._cost_controller is not None:
+                    self._cost_controller.settle(reservation, result)
+                    reservation = None
                 assert_secret_absent(result.public_dict(), self._api_key)
                 return result
             except httpx.TimeoutException as exc:
@@ -116,6 +138,9 @@ class OpenAICompatibleProvider(LLMProvider):
                 last_error = exc
             except (httpx.HTTPError, ProviderError) as exc:
                 last_error = ProviderError(str(exc)) if not isinstance(exc, ProviderError) else exc
+            finally:
+                if reservation is not None and self._cost_controller is not None:
+                    self._cost_controller.release(reservation)
             if attempts <= self.config.max_provider_retries:
                 time.sleep(min(0.01 * (2 ** (attempts - 1)), 0.05))
         if isinstance(last_error, ProviderTimeout):

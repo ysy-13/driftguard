@@ -1,0 +1,11 @@
+{
+  "frozen_before_first_pilot_call": true,
+  "prompt_hashes": {
+    "base_tool_agent_v1.txt": "8773e647effcb28e7e070750baca8d03466e295dadc753b8887c3b2df564214f",
+    "component_attribution_v2.txt": "41255c4096399f8ded854f64d84a4f5de02174d1fb8a9825828e5c91c3ab2d5e",
+    "driftguard_attribution_v1.txt": "74c667936dd272697f51e558c6c0fcd4f01f4889e00227c29d86876109fef2ac",
+    "driftguard_patch_v1.txt": "0d477ccfa5ccd7b7614b3879ae7cc013ac4372e164e0caf2b8bf8d80b365e58d",
+    "reflection_v1.txt": "62eda661307590705cb862cb96463f9c153ad2cfd2626b49c88b06274c06233a",
+    "validation_guided_v1.txt": "088cba311a6f24f16f770141e540b800f062fd6079fe778cda4d7ffcb83faf7b"
+  }
+}

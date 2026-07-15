@@ -1,0 +1,19 @@
+{
+  "agent_action_valid": 5,
+  "api_calls": 21,
+  "configured_model": "qwen3.7-plus",
+  "incremental_cost_cny": 0.5310099999999993,
+  "infrastructure_error_rate": 0.0,
+  "infrastructure_errors": 0,
+  "input_tokens": 218097,
+  "llm_calls": 18,
+  "output_tokens": 2010,
+  "probe_calls": 0,
+  "provider": "dashscope",
+  "records": 5,
+  "sandbox_entered": 5,
+  "status": "PASSED",
+  "stop_reason": null,
+  "task_success": 2,
+  "tool_calls": 17
+}

@@ -1,0 +1,11 @@
+{
+  "configured_model": "deepseek-v4-flash",
+  "created": 0,
+  "infrastructure_error_rate": 0.0,
+  "infrastructure_errors": 0,
+  "mode": "component_canary",
+  "provider": "deepseek",
+  "records": 3,
+  "resumed": 3,
+  "status": "COMPLETED"
+}

@@ -1,0 +1,11 @@
+{
+  "configured_model": "deepseek-v4-flash",
+  "created": 60,
+  "infrastructure_error_rate": 1.0,
+  "infrastructure_errors": 60,
+  "mode": "end_to_end",
+  "provider": "deepseek",
+  "records": 60,
+  "resumed": 0,
+  "status": "COMPLETED"
+}

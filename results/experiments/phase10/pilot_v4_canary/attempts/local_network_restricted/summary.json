@@ -1,0 +1,91 @@
+{
+  "agent_action_valid": 0,
+  "api_calls": 4,
+  "api_key_leakage": 0,
+  "attempt": "v4_canary",
+  "cache_replay": {
+    "provider_fallback_calls": 0,
+    "records": 0,
+    "status": "NOT_RUN_GATE_FAILED"
+  },
+  "canonical_catalog_fingerprint": "76bde8f625aa26f786ef3ee9065c481adf1cfd793aea7c5b3fea88d40573b7da",
+  "common_execution_chain_issues": [
+    "NO_PARSED_AGENT_ACTION",
+    "SANDBOX_NOT_ENTERED",
+    "TASK_BINDING_ERROR"
+  ],
+  "complete_tool_catalogs": 1,
+  "component_records": 0,
+  "cost": {
+    "api_attempts": 740,
+    "attempt_base_spent_cny": 3.49750883,
+    "attempt_incremental_spent_cny": 3.552713678800501e-15,
+    "hard_limit_cny": 5.49750883,
+    "incremental_hard_limit_cny": 2.0,
+    "incremental_soft_limit_cny": 1.0,
+    "provider_reported_input_tokens": 2446125,
+    "provider_reported_output_tokens": 75633,
+    "reserved_cny": 0.0,
+    "soft_limit_cny": 4.49750883,
+    "soft_warning": false,
+    "spent_cny": 3.4975088300000037,
+    "total_hard_limit_cny": 50.0
+  },
+  "experiment_id": "phase10_real_pilot_v4_canary",
+  "full_real_model_experiment_status": "NOT RUN",
+  "ground_truth_leakage": 0,
+  "halt_reason": "FAILED_INFRASTRUCTURE_GATE",
+  "halted": true,
+  "heldout48_touched": false,
+  "infrastructure_errors": 1,
+  "input_tokens": 0,
+  "llm_calls": 0,
+  "method_task_success": {
+    "driftguard_llm": 0,
+    "reflection": 0,
+    "retry_only": 0,
+    "standard": 0,
+    "validation_guided": 0
+  },
+  "output_tokens": 0,
+  "planned_records": 10,
+  "probe_calls": 0,
+  "prompt_v3_sha256": "bae688c173db4f561162d402acef5661256c6bab5a1d20a65e96868c2ec8267f",
+  "provider_reports": [
+    {
+      "agent_action_valid": 0,
+      "api_calls": 4,
+      "configured_model": "deepseek-v4-flash",
+      "incremental_cost_cny": 0.0,
+      "infrastructure_error_rate": 1.0,
+      "infrastructure_errors": 1,
+      "input_tokens": 0,
+      "llm_calls": 0,
+      "output_tokens": 0,
+      "probe_calls": 0,
+      "provider": "deepseek",
+      "records": 1,
+      "sandbox_entered": 0,
+      "status": "FAILED_INFRASTRUCTURE_GATE",
+      "stop_reason": "PROVIDER_ERROR",
+      "task_success": 0,
+      "tool_calls": 0
+    },
+    {
+      "provider": "dashscope",
+      "reason": "FAILED_INFRASTRUCTURE_GATE",
+      "records": 0,
+      "status": "SKIPPED_AFTER_GATE"
+    }
+  ],
+  "records": 1,
+  "request_probe_capability_mismatches": 0,
+  "resolved_task_instances_correct": 0,
+  "sandbox_entered": 0,
+  "schema_v3_sha256": "27807767537dbcf83620642edc443525da61f08dfde6935f4ea11aafd1e9dcf1",
+  "scope": "10-record end-to-end canary only",
+  "state_isolation_errors": 0,
+  "task_success": 0,
+  "tool_calls": 0,
+  "unauthorized_safety_blocks": 0
+}

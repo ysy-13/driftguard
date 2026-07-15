@@ -1,0 +1,188 @@
+{
+  "attempt": "v4_canary",
+  "benchmark_hashes": {
+    "benchmark/drifts/drift_cases_v1.json": "dda8f8c1759075bb52b14431b9ee5fcb6fbe93c1cf239a474548a6127228a00e",
+    "benchmark/drifts/task_drift_coverage_v1.json": "f83a5ce5da1bd9a179dfdd1abfbb747469b29644c71304490df0750bd527be3c",
+    "benchmark/fixtures/initial_state_v1.json": "7cc0f4af8eb45d6e1a4a03741c2b44484b80736cf2ba6bd1f5c8e2c7fb7db3c0",
+    "benchmark/matched_failures/attribution_protocol_v1.json": "3e0779032b4613b9d17868ae1f2d3fe0c582214cc80bdb860a5a88aae69d4106",
+    "benchmark/matched_failures/matched_failures_v1.json": "58c921b754976ee16f29676030bfbb57de4e0ee2f7be14a4af8353d057296f7e",
+    "benchmark/openapi/driftguard_openapi_v1.yaml": "be893ee40a748410d49befe8ca45f645b47e9a770cf2bb7e0b90db9c71472267",
+    "benchmark/tasks/tasks_v1.json": "851425f77f4ad94633e5eb10937b783a51e9aa9f54955b408565064f3a788936"
+  },
+  "cache_key_material": [
+    "prompt_v3/effective message hash",
+    "schema_v3 hash",
+    "Tool Catalog fingerprint",
+    "PolicyCapabilities",
+    "provider",
+    "model",
+    "method",
+    "public scenario",
+    "config hash/attempt version"
+  ],
+  "cache_namespace": ".cache/v4_canary/{provider}/end_to_end",
+  "catalog_fingerprint": "76bde8f625aa26f786ef3ee9065c481adf1cfd793aea7c5b3fea88d40573b7da",
+  "component_records": 0,
+  "config_hash": "d8ad44bd3bf3102ca2ece14b5981e085214141fc23c788096235f84c7dd2d1ff",
+  "config_path": "configs/experiments/phase10_real_pilot_v4_canary.yaml",
+  "cost": {
+    "estimate": {
+      "by_provider": {
+        "dashscope": {
+          "assumed_input_tokens_per_record": 35000,
+          "assumed_output_tokens_per_record": 2000,
+          "estimated_cny": 0.43000000000000005,
+          "records": 5
+        },
+        "deepseek": {
+          "assumed_input_tokens_per_record": 35000,
+          "assumed_output_tokens_per_record": 2000,
+          "estimated_cny": 0.19929000000000002,
+          "records": 5
+        }
+      },
+      "estimate_only": true,
+      "estimated_increment_cny": 0.6292900000000001,
+      "incremental_hard_limit_cny": 2.0,
+      "incremental_soft_limit_cny": 1.0,
+      "total_hard_limit_cny": 50.0
+    },
+    "incremental_hard_limit_cny": 2.0,
+    "incremental_soft_limit_cny": 1.0,
+    "starting_spent_cny": 3.49750883,
+    "total_hard_limit_cny": 50.0
+  },
+  "dirty_working_tree": true,
+  "effective_catalog_fingerprints": {
+    "driftguard_llm": "76bde8f625aa26f786ef3ee9065c481adf1cfd793aea7c5b3fea88d40573b7da",
+    "reflection": "b7bdd6c7f2dca05039c4393cdea34d4e863a054713d090a53cc75a0f51ea0f9c",
+    "retry_only": "76bde8f625aa26f786ef3ee9065c481adf1cfd793aea7c5b3fea88d40573b7da",
+    "standard": "b7bdd6c7f2dca05039c4393cdea34d4e863a054713d090a53cc75a0f51ea0f9c",
+    "validation_guided": "09d25f0c04374ded0bd5b1d2d7330b3730f4a8beb1acc5cee84a11496625b2c6"
+  },
+  "experiment_id": "phase10_real_pilot_v4_canary",
+  "full_real_model_experiment_status": "NOT RUN",
+  "git_commit": "a26c8daae9749eb0e40f7bde9dfab2a0f83335ce",
+  "heldout48": "NOT AUTHORIZED",
+  "models": [
+    {
+      "base_url": "https://api.deepseek.com",
+      "capabilities": {
+        "json_schema": false,
+        "seed": false,
+        "strict_json": true,
+        "tool_calling": true
+      },
+      "concurrency": 1,
+      "max_output_tokens": 4096,
+      "max_provider_retries": 3,
+      "model_id": "deepseek-v4-flash",
+      "provider": "deepseek",
+      "seed": 7,
+      "structured_output_mode": "strict_json",
+      "temperature": 0.1,
+      "thinking_mode": "disabled",
+      "timeout_seconds": 120.0,
+      "top_p": 1.0
+    },
+    {
+      "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "capabilities": {
+        "json_schema": false,
+        "seed": false,
+        "strict_json": true,
+        "tool_calling": true
+      },
+      "concurrency": 1,
+      "max_output_tokens": 4096,
+      "max_provider_retries": 3,
+      "model_id": "qwen3.7-plus",
+      "provider": "dashscope",
+      "seed": 7,
+      "structured_output_mode": "strict_json",
+      "temperature": 0.1,
+      "thinking_mode": "disabled",
+      "timeout_seconds": 120.0,
+      "top_p": 1.0
+    }
+  ],
+  "phase10b": "NOT AUTHORIZED",
+  "policy_capabilities": {
+    "driftguard_llm": {
+      "allowed_actions": [
+        "TOOL_CALL",
+        "FINAL_ANSWER",
+        "REQUEST_PROBE",
+        "ABSTAIN"
+      ],
+      "passed": true,
+      "probe_visible": true
+    },
+    "reflection": {
+      "allowed_actions": [
+        "TOOL_CALL",
+        "FINAL_ANSWER",
+        "ABSTAIN"
+      ],
+      "passed": true,
+      "probe_visible": false
+    },
+    "retry_only": {
+      "allowed_actions": [
+        "TOOL_CALL",
+        "FINAL_ANSWER",
+        "ABSTAIN"
+      ],
+      "passed": true,
+      "probe_visible": false
+    },
+    "standard": {
+      "allowed_actions": [
+        "TOOL_CALL",
+        "FINAL_ANSWER",
+        "ABSTAIN"
+      ],
+      "passed": true,
+      "probe_visible": false
+    },
+    "validation_guided": {
+      "allowed_actions": [
+        "TOOL_CALL",
+        "FINAL_ANSWER",
+        "ABSTAIN"
+      ],
+      "passed": true,
+      "probe_visible": false
+    }
+  },
+  "prompt_v3_sha256": "bae688c173db4f561162d402acef5661256c6bab5a1d20a65e96868c2ec8267f",
+  "schema_v3_sha256": "27807767537dbcf83620642edc443525da61f08dfde6935f4ea11aafd1e9dcf1",
+  "scope": "two providers x five end-to-end methods; no Component records",
+  "selection": [
+    {
+      "method": "standard",
+      "public_scenario_id": "public-M06",
+      "public_task_id": "task-e9a84635d174"
+    },
+    {
+      "method": "retry_only",
+      "public_scenario_id": "public-M01",
+      "public_task_id": "task-c5e686de056a"
+    },
+    {
+      "method": "reflection",
+      "public_scenario_id": "public-M06",
+      "public_task_id": "task-e9a84635d174"
+    },
+    {
+      "method": "validation_guided",
+      "public_scenario_id": "public-M01",
+      "public_task_id": "task-c5e686de056a"
+    },
+    {
+      "method": "driftguard_llm",
+      "public_scenario_id": "public-M06",
+      "public_task_id": "task-e9a84635d174"
+    }
+  ]
+}

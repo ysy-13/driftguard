@@ -345,3 +345,70 @@ thought. The Phase 9 committed smoke report is generated exclusively by
 `Real LLM experiment status: NOT RUN`
 
 No paid or formal multi-model experiment is performed in Phase 9.
+
+## Phase 10A: Cost-Controlled Real-Model Pilot
+
+Phase 10A fixes the real providers to `deepseek-v4-flash` at
+`https://api.deepseek.com` and `qwen3.7-plus` at the DashScope OpenAI-compatible
+endpoint. Credentials are loaded from the ignored project-root `.env` through
+the independent `DEEPSEEK_API_KEY` and `DASHSCOPE_API_KEY` variables. The CLI
+credential preflight prints only `configured` or `missing`; keys are excluded
+from prompts, cache keys, errors, manifests, records, and raw artifacts.
+
+Provider adapters explicitly disable thinking with the vendor-specific
+parameter, use strict JSON fallback when JSON Schema mode is unavailable, and
+preflight text, JSON, tool calling, usage reporting, and the actual returned
+model ID. A versioned conservative pricing snapshot reserves worst-case cost
+before each HTTP attempt. The Pilot soft/hard limits are CNY 35/CNY 50. Main
+and ablation configurations have CNY 800/CNY 1000 controls but cannot be run by
+the Pilot entrypoint and require separate authorization.
+
+Run the credential and API capability preflight, then the authorized Pilot:
+
+```bash
+python scripts/run_llm_experiment.py \
+  --config configs/experiments/phase10_real_pilot.yaml \
+  --preflight --allow-real-api
+
+python scripts/run_llm_experiment.py \
+  --config configs/experiments/phase10_real_pilot.yaml \
+  --allow-real-api
+
+python scripts/run_llm_experiment.py \
+  --config configs/experiments/phase10_real_pilot.yaml \
+  --allow-real-api --resume
+
+python scripts/validate_experiment_results.py results/experiments/phase10/pilot
+python scripts/analyze_phase10.py --input results/experiments/phase10/pilot --stage pilot
+```
+
+Prompt-format repairs are append-only experiment attempts. The original
+component failure remains under `pilot`, the schema-complete component prompt
+attempt remains under `pilot_v2`, and the end-to-end-only AgentAction prompt
+attempt uses `phase10_real_pilot_v3.yaml`, `pilot_v3`, and its own cache
+namespace. The v3 attempt never reruns the successful standalone component
+records. Its gated sequence is DeepSeek five-method canary, DeepSeek 60-record
+end-to-end stage, Qwen five-method canary, then Qwen 60-record end-to-end
+stage:
+
+```bash
+python scripts/run_llm_experiment.py \
+  --config configs/experiments/phase10_real_pilot_v3.yaml \
+  --allow-real-api --end-to-end-canary deepseek
+
+python scripts/run_llm_experiment.py \
+  --config configs/experiments/phase10_real_pilot_v3.yaml \
+  --allow-real-api --resume
+```
+
+All attempts share the same cumulative Pilot cost ledger and CNY 50 hard
+limit. A canary requires five schema-valid records and at least one parsed and
+executed `TOOL_CALL`; an infrastructure error rate above 20% halts subsequent
+provider stages.
+
+Pilot records are always labeled `PILOT` and `DEVELOPMENT_ONLY`; component,
+end-to-end, symbolic upper-bound, cache, preflight, cost, and analysis outputs
+remain separate. The main all-60, held-out-48, and ablation YAML files are
+configuration artifacts only and are not executed in Phase 10A.
+
+`Full real-model experiment status: NOT RUN`

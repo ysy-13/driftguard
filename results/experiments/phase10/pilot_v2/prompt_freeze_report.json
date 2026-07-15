@@ -1,0 +1,39 @@
+{
+  "behavior_affecting_change": true,
+  "change_reason": "The strict-JSON component prompt now includes the complete LLMAttribution schema and a neutral structural example.",
+  "current_prompt_hashes": {
+    "base_tool_agent_v1.txt": "8773e647effcb28e7e070750baca8d03466e295dadc753b8887c3b2df564214f",
+    "component_attribution_v2.txt": "41255c4096399f8ded854f64d84a4f5de02174d1fb8a9825828e5c91c3ab2d5e",
+    "driftguard_attribution_v1.txt": "74c667936dd272697f51e558c6c0fcd4f01f4889e00227c29d86876109fef2ac",
+    "driftguard_patch_v1.txt": "0d477ccfa5ccd7b7614b3879ae7cc013ac4372e164e0caf2b8bf8d80b365e58d",
+    "reflection_v1.txt": "62eda661307590705cb862cb96463f9c153ad2cfd2626b49c88b06274c06233a",
+    "validation_guided_v1.txt": "088cba311a6f24f16f770141e540b800f062fd6079fe778cda4d7ffcb83faf7b"
+  },
+  "development_families": [
+    "M01",
+    "M06",
+    "M11",
+    "M16"
+  ],
+  "modified_after_pilot_start": true,
+  "original_prompt_hashes": {
+    "base_tool_agent_v1.txt": "8773e647effcb28e7e070750baca8d03466e295dadc753b8887c3b2df564214f",
+    "component_attribution_v2.txt": "41255c4096399f8ded854f64d84a4f5de02174d1fb8a9825828e5c91c3ab2d5e",
+    "driftguard_attribution_v1.txt": "74c667936dd272697f51e558c6c0fcd4f01f4889e00227c29d86876109fef2ac",
+    "driftguard_patch_v1.txt": "0d477ccfa5ccd7b7614b3879ae7cc013ac4372e164e0caf2b8bf8d80b365e58d",
+    "reflection_v1.txt": "62eda661307590705cb862cb96463f9c153ad2cfd2626b49c88b06274c06233a",
+    "validation_guided_v1.txt": "088cba311a6f24f16f770141e540b800f062fd6079fe778cda4d7ffcb83faf7b"
+  },
+  "pilot_families_are_development_set": true,
+  "recommended_main_config": "phase10_main_heldout48.yaml",
+  "v1_component_prompt_hashes": {
+    "driftguard_llm": "64665f925fe2516a7c564d559cce50350286a220085b93174dda1d698f0a1d48",
+    "reflection": "d6ca6c3518471df783518ef4cf5735b043ebe36697781516bbf035123b9c074d",
+    "validation_guided": "1afbd083f9c16fd308c693abea636b2804cbc5ac3f32155d563171d2560fdaa3"
+  },
+  "v2_component_prompt_hashes": {
+    "driftguard_llm": "86f8ddc576c71eff20b89b2827b11cb3b65f9a02e6ff79485f42d45ef5be9f2b",
+    "reflection": "21be23e1f5e22b4542788d3d36f15cbd07381c76b7d602942609915f29ff8b9a",
+    "validation_guided": "e6b34cd15c66a04828e318424bb2fcc954fa45c16eace093bd298f290c109486"
+  }
+}

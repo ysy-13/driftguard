@@ -1,0 +1,14 @@
+{
+  "configured_model": "deepseek-v4-flash",
+  "created": 0,
+  "infrastructure_error_rate": 0.0,
+  "infrastructure_errors": 0,
+  "mode": "end_to_end_canary",
+  "parsed_tool_call_records": 5,
+  "provider": "deepseek",
+  "records": 5,
+  "resumed": 5,
+  "status": "COMPLETED",
+  "structured_valid_records": 5,
+  "tool_call_interface_verified": true
+}

@@ -1,0 +1,539 @@
+{
+  "api_key_leakage_count": 0,
+  "canary_records": 10,
+  "component_records_rerun": 0,
+  "cost": {
+    "api_attempts": 736,
+    "hard_limit_cny": 50,
+    "provider_reported_input_tokens": 2446125,
+    "provider_reported_output_tokens": 75633,
+    "reserved_cny": 0.0,
+    "soft_limit_cny": 35,
+    "soft_warning": false,
+    "spent_cny": 3.4975088300000037
+  },
+  "experiment_id": "phase10_real_pilot",
+  "experiment_stage": "PILOT",
+  "full_real_model_experiment_status": "NOT RUN",
+  "ground_truth_leakage_count": 0,
+  "halted_on_infrastructure_error_rate": false,
+  "metrics": {
+    "accepted_patch_correctness": 0.0,
+    "attribution": {
+      "abstention_rate": 0.8,
+      "accuracy": 0.11666666666666667,
+      "confusion_matrix": {
+        "AE": {
+          "AE": 6,
+          "PD": 2,
+          "TF": 0
+        },
+        "PD": {
+          "AE": 1,
+          "PD": 7,
+          "TF": 0
+        },
+        "TF": {
+          "AE": 1,
+          "PD": 6,
+          "TF": 1
+        }
+      },
+      "macro_f1": 0.5269726247987118,
+      "per_class": {
+        "AE": {
+          "f1": 0.75,
+          "precision": 0.75,
+          "recall": 0.75
+        },
+        "PD": {
+          "f1": 0.608695652173913,
+          "precision": 0.4666666666666667,
+          "recall": 0.875
+        },
+        "TF": {
+          "f1": 0.2222222222222222,
+          "precision": 1.0,
+          "recall": 0.125
+        }
+      }
+    },
+    "average_input_tokens": 8707.558333333332,
+    "average_latency_ms": 10425.734081658327,
+    "average_llm_calls": 3.691666666666667,
+    "average_output_tokens": 338.34166666666664,
+    "average_probe_calls": 0.15,
+    "average_tool_calls": 2.558333333333333,
+    "budget_exhaustion_rate": 0.05,
+    "drift_category_accuracy": 0.625,
+    "exact_location_accuracy": 0.0,
+    "false_patch_rate": 0.0,
+    "forbidden_side_effect_rate": 0.0,
+    "future_transfer_rate": 0.0,
+    "immediate_repair_success_rate": 0.0,
+    "minimality_pass_rate": 0.0,
+    "patch_proposal_rate": 0.0,
+    "patch_validation_survival": 0.0,
+    "raw_patch_correctness": 0.0,
+    "records": 120,
+    "regression_pass_rate": 0.0,
+    "successful_task_average_interactions": 0.0,
+    "target_tool_accuracy": 0.375,
+    "task_success_rate": 0.0,
+    "unsafe_action_rate": 0.0,
+    "unsafe_patch_rate": 0.0
+  },
+  "metrics_by_method_mode": {
+    "driftguard_llm:end_to_end": {
+      "accepted_patch_correctness": 0.0,
+      "attribution": {
+        "abstention_rate": 0.0,
+        "accuracy": 0.5833333333333334,
+        "confusion_matrix": {
+          "AE": {
+            "AE": 6,
+            "PD": 2,
+            "TF": 0
+          },
+          "PD": {
+            "AE": 1,
+            "PD": 7,
+            "TF": 0
+          },
+          "TF": {
+            "AE": 1,
+            "PD": 6,
+            "TF": 1
+          }
+        },
+        "macro_f1": 0.5269726247987118,
+        "per_class": {
+          "AE": {
+            "f1": 0.75,
+            "precision": 0.75,
+            "recall": 0.75
+          },
+          "PD": {
+            "f1": 0.608695652173913,
+            "precision": 0.4666666666666667,
+            "recall": 0.875
+          },
+          "TF": {
+            "f1": 0.2222222222222222,
+            "precision": 1.0,
+            "recall": 0.125
+          }
+        }
+      },
+      "average_input_tokens": 16315.25,
+      "average_latency_ms": 11668.34023266666,
+      "average_llm_calls": 4.875,
+      "average_output_tokens": 549.9166666666666,
+      "average_probe_calls": 0.75,
+      "average_tool_calls": 2.9166666666666665,
+      "budget_exhaustion_rate": 0.08333333333333333,
+      "drift_category_accuracy": 0.625,
+      "exact_location_accuracy": 0.0,
+      "false_patch_rate": 0.0,
+      "forbidden_side_effect_rate": 0.0,
+      "future_transfer_rate": 0.0,
+      "immediate_repair_success_rate": 0.0,
+      "minimality_pass_rate": 0.0,
+      "patch_proposal_rate": 0.0,
+      "patch_validation_survival": 0.0,
+      "raw_patch_correctness": 0.0,
+      "records": 24,
+      "regression_pass_rate": 0.0,
+      "successful_task_average_interactions": 0.0,
+      "target_tool_accuracy": 0.375,
+      "task_success_rate": 0.0,
+      "unsafe_action_rate": 0.0,
+      "unsafe_patch_rate": 0.0
+    },
+    "reflection:end_to_end": {
+      "accepted_patch_correctness": 0.0,
+      "attribution": {
+        "abstention_rate": 1.0,
+        "accuracy": 0.0,
+        "confusion_matrix": {
+          "AE": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "PD": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "TF": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          }
+        },
+        "macro_f1": 0.0,
+        "per_class": {
+          "AE": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "PD": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "TF": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        }
+      },
+      "average_input_tokens": 7164.833333333333,
+      "average_latency_ms": 9584.402392208334,
+      "average_llm_calls": 3.25,
+      "average_output_tokens": 272.0416666666667,
+      "average_probe_calls": 0.0,
+      "average_tool_calls": 2.1666666666666665,
+      "budget_exhaustion_rate": 0.041666666666666664,
+      "drift_category_accuracy": 0.0,
+      "exact_location_accuracy": 0.0,
+      "false_patch_rate": 0.0,
+      "forbidden_side_effect_rate": 0.0,
+      "future_transfer_rate": 0.0,
+      "immediate_repair_success_rate": 0.0,
+      "minimality_pass_rate": 0.0,
+      "patch_proposal_rate": 0.0,
+      "patch_validation_survival": 0.0,
+      "raw_patch_correctness": 0.0,
+      "records": 24,
+      "regression_pass_rate": 0.0,
+      "successful_task_average_interactions": 0.0,
+      "target_tool_accuracy": 0.0,
+      "task_success_rate": 0.0,
+      "unsafe_action_rate": 0.0,
+      "unsafe_patch_rate": 0.0
+    },
+    "retry_only:end_to_end": {
+      "accepted_patch_correctness": 0.0,
+      "attribution": {
+        "abstention_rate": 1.0,
+        "accuracy": 0.0,
+        "confusion_matrix": {
+          "AE": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "PD": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "TF": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          }
+        },
+        "macro_f1": 0.0,
+        "per_class": {
+          "AE": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "PD": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "TF": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        }
+      },
+      "average_input_tokens": 6391.375,
+      "average_latency_ms": 10543.347757041678,
+      "average_llm_calls": 3.375,
+      "average_output_tokens": 295.7916666666667,
+      "average_probe_calls": 0.0,
+      "average_tool_calls": 2.875,
+      "budget_exhaustion_rate": 0.041666666666666664,
+      "drift_category_accuracy": 0.0,
+      "exact_location_accuracy": 0.0,
+      "false_patch_rate": 0.0,
+      "forbidden_side_effect_rate": 0.0,
+      "future_transfer_rate": 0.0,
+      "immediate_repair_success_rate": 0.0,
+      "minimality_pass_rate": 0.0,
+      "patch_proposal_rate": 0.0,
+      "patch_validation_survival": 0.0,
+      "raw_patch_correctness": 0.0,
+      "records": 24,
+      "regression_pass_rate": 0.0,
+      "successful_task_average_interactions": 0.0,
+      "target_tool_accuracy": 0.0,
+      "task_success_rate": 0.0,
+      "unsafe_action_rate": 0.0,
+      "unsafe_patch_rate": 0.0
+    },
+    "standard:end_to_end": {
+      "accepted_patch_correctness": 0.0,
+      "attribution": {
+        "abstention_rate": 1.0,
+        "accuracy": 0.0,
+        "confusion_matrix": {
+          "AE": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "PD": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "TF": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          }
+        },
+        "macro_f1": 0.0,
+        "per_class": {
+          "AE": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "PD": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "TF": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        }
+      },
+      "average_input_tokens": 6681.75,
+      "average_latency_ms": 10751.751125291683,
+      "average_llm_calls": 3.5416666666666665,
+      "average_output_tokens": 299.875,
+      "average_probe_calls": 0.0,
+      "average_tool_calls": 2.4583333333333335,
+      "budget_exhaustion_rate": 0.041666666666666664,
+      "drift_category_accuracy": 0.0,
+      "exact_location_accuracy": 0.0,
+      "false_patch_rate": 0.0,
+      "forbidden_side_effect_rate": 0.0,
+      "future_transfer_rate": 0.0,
+      "immediate_repair_success_rate": 0.0,
+      "minimality_pass_rate": 0.0,
+      "patch_proposal_rate": 0.0,
+      "patch_validation_survival": 0.0,
+      "raw_patch_correctness": 0.0,
+      "records": 24,
+      "regression_pass_rate": 0.0,
+      "successful_task_average_interactions": 0.0,
+      "target_tool_accuracy": 0.0,
+      "task_success_rate": 0.0,
+      "unsafe_action_rate": 0.0,
+      "unsafe_patch_rate": 0.0
+    },
+    "validation_guided:end_to_end": {
+      "accepted_patch_correctness": 0.0,
+      "attribution": {
+        "abstention_rate": 1.0,
+        "accuracy": 0.0,
+        "confusion_matrix": {
+          "AE": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "PD": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          },
+          "TF": {
+            "AE": 0,
+            "PD": 0,
+            "TF": 0
+          }
+        },
+        "macro_f1": 0.0,
+        "per_class": {
+          "AE": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "PD": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          },
+          "TF": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0
+          }
+        }
+      },
+      "average_input_tokens": 6984.583333333333,
+      "average_latency_ms": 9580.828901083327,
+      "average_llm_calls": 3.4166666666666665,
+      "average_output_tokens": 274.0833333333333,
+      "average_probe_calls": 0.0,
+      "average_tool_calls": 2.375,
+      "budget_exhaustion_rate": 0.041666666666666664,
+      "drift_category_accuracy": 0.0,
+      "exact_location_accuracy": 0.0,
+      "false_patch_rate": 0.0,
+      "forbidden_side_effect_rate": 0.0,
+      "future_transfer_rate": 0.0,
+      "immediate_repair_success_rate": 0.0,
+      "minimality_pass_rate": 0.0,
+      "patch_proposal_rate": 0.0,
+      "patch_validation_survival": 0.0,
+      "raw_patch_correctness": 0.0,
+      "records": 24,
+      "regression_pass_rate": 0.0,
+      "successful_task_average_interactions": 0.0,
+      "target_tool_accuracy": 0.0,
+      "task_success_rate": 0.0,
+      "unsafe_action_rate": 0.0,
+      "unsafe_patch_rate": 0.0
+    }
+  },
+  "planned_real_model_records": 120,
+  "prior_component_attempt": "pilot_v2",
+  "prompt_freeze": {
+    "behavior_affecting_change": true,
+    "change_reason": "The strict end-to-end action prompt now includes the complete action-specific AgentAction schema and neutral field guidance.",
+    "component_prompt_v2_modified": false,
+    "component_records_rerun": 0,
+    "current_prompt_hashes": {
+      "base_tool_agent_v1.txt": "8773e647effcb28e7e070750baca8d03466e295dadc753b8887c3b2df564214f",
+      "base_tool_agent_v2.txt": "0b2b6ba31477027dae681e6c8a7c928a30ef6cc51c4b6eb102b4b206547d1c74",
+      "component_attribution_v2.txt": "41255c4096399f8ded854f64d84a4f5de02174d1fb8a9825828e5c91c3ab2d5e",
+      "driftguard_attribution_v1.txt": "74c667936dd272697f51e558c6c0fcd4f01f4889e00227c29d86876109fef2ac",
+      "driftguard_patch_v1.txt": "0d477ccfa5ccd7b7614b3879ae7cc013ac4372e164e0caf2b8bf8d80b365e58d",
+      "reflection_v1.txt": "62eda661307590705cb862cb96463f9c153ad2cfd2626b49c88b06274c06233a",
+      "validation_guided_v1.txt": "088cba311a6f24f16f770141e540b800f062fd6079fe778cda4d7ffcb83faf7b"
+    },
+    "development_families": [
+      "M01",
+      "M06",
+      "M11",
+      "M16"
+    ],
+    "modified_after_pilot_start": true,
+    "original_prompt_hashes": {
+      "base_tool_agent_v1.txt": "8773e647effcb28e7e070750baca8d03466e295dadc753b8887c3b2df564214f",
+      "base_tool_agent_v2.txt": "0b2b6ba31477027dae681e6c8a7c928a30ef6cc51c4b6eb102b4b206547d1c74",
+      "component_attribution_v2.txt": "41255c4096399f8ded854f64d84a4f5de02174d1fb8a9825828e5c91c3ab2d5e",
+      "driftguard_attribution_v1.txt": "74c667936dd272697f51e558c6c0fcd4f01f4889e00227c29d86876109fef2ac",
+      "driftguard_patch_v1.txt": "0d477ccfa5ccd7b7614b3879ae7cc013ac4372e164e0caf2b8bf8d80b365e58d",
+      "reflection_v1.txt": "62eda661307590705cb862cb96463f9c153ad2cfd2626b49c88b06274c06233a",
+      "validation_guided_v1.txt": "088cba311a6f24f16f770141e540b800f062fd6079fe778cda4d7ffcb83faf7b"
+    },
+    "pilot_families_are_development_set": true,
+    "recommended_main_config": "phase10_main_heldout48.yaml",
+    "v1_agent_action_prompt_hashes": {
+      "driftguard_llm": "64665f925fe2516a7c564d559cce50350286a220085b93174dda1d698f0a1d48",
+      "reflection": "d6ca6c3518471df783518ef4cf5735b043ebe36697781516bbf035123b9c074d",
+      "retry_only": "8773e647effcb28e7e070750baca8d03466e295dadc753b8887c3b2df564214f",
+      "standard": "8773e647effcb28e7e070750baca8d03466e295dadc753b8887c3b2df564214f",
+      "validation_guided": "1afbd083f9c16fd308c693abea636b2804cbc5ac3f32155d563171d2560fdaa3"
+    },
+    "v1_component_prompt_hashes": {
+      "driftguard_llm": "64665f925fe2516a7c564d559cce50350286a220085b93174dda1d698f0a1d48",
+      "reflection": "d6ca6c3518471df783518ef4cf5735b043ebe36697781516bbf035123b9c074d",
+      "validation_guided": "1afbd083f9c16fd308c693abea636b2804cbc5ac3f32155d563171d2560fdaa3"
+    },
+    "v2_agent_action_prompt_hashes": {
+      "driftguard_llm": "6fe99799d5a4d53614520a7802d45f4af32b40993530cc008e5f3d4bc79e5c40",
+      "reflection": "37405f53c5c492ad23f026da855a763172c24334ddaf38f9a62973c2ab8fcf03",
+      "retry_only": "fce4015667769fe1fd96c83da8b1f54f3699e9a6db1b92a9e5de953df2d7be23",
+      "standard": "fce4015667769fe1fd96c83da8b1f54f3699e9a6db1b92a9e5de953df2d7be23",
+      "validation_guided": "5b5408ca395015a5012d2f708b31a1762295b400f21f61636cc7b7cf5e51b94e"
+    },
+    "v2_component_prompt_hashes": {
+      "driftguard_llm": "86f8ddc576c71eff20b89b2827b11cb3b65f9a02e6ff79485f42d45ef5be9f2b",
+      "reflection": "21be23e1f5e22b4542788d3d36f15cbd07381c76b7d602942609915f29ff8b9a",
+      "validation_guided": "e6b34cd15c66a04828e318424bb2fcc954fa45c16eace093bd298f290c109486"
+    }
+  },
+  "publication_status": "DEVELOPMENT_ONLY",
+  "real_model_records": 120,
+  "run_scope": "end_to_end_only",
+  "stage_reports": [
+    {
+      "mode": "component",
+      "records": 0,
+      "status": "NOT_RERUN_RETAINED_FROM_PILOT_V2"
+    },
+    {
+      "configured_model": "deepseek-v4-flash",
+      "created": 0,
+      "infrastructure_error_rate": 0.0,
+      "infrastructure_errors": 0,
+      "mode": "end_to_end_canary",
+      "parsed_tool_call_records": 5,
+      "provider": "deepseek",
+      "records": 5,
+      "resumed": 5,
+      "status": "COMPLETED",
+      "structured_valid_records": 5,
+      "tool_call_interface_verified": true
+    },
+    {
+      "configured_model": "deepseek-v4-flash",
+      "created": 0,
+      "infrastructure_error_rate": 0.0,
+      "infrastructure_errors": 0,
+      "mode": "end_to_end",
+      "provider": "deepseek",
+      "records": 60,
+      "resumed": 60,
+      "status": "COMPLETED"
+    },
+    {
+      "configured_model": "qwen3.7-plus",
+      "created": 0,
+      "infrastructure_error_rate": 0.0,
+      "infrastructure_errors": 0,
+      "mode": "end_to_end_canary",
+      "parsed_tool_call_records": 5,
+      "provider": "dashscope",
+      "records": 5,
+      "resumed": 5,
+      "status": "COMPLETED",
+      "structured_valid_records": 5,
+      "tool_call_interface_verified": true
+    },
+    {
+      "configured_model": "qwen3.7-plus",
+      "created": 0,
+      "infrastructure_error_rate": 0.0,
+      "infrastructure_errors": 0,
+      "mode": "end_to_end",
+      "provider": "dashscope",
+      "records": 60,
+      "resumed": 60,
+      "status": "COMPLETED"
+    }
+  ],
+  "symbolic_upper_bound_records": 0,
+  "unsafe_real_world_actions": 0
+}

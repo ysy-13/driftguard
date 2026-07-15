@@ -1,0 +1,11 @@
+{
+  "configured_model": "qwen3.7-plus",
+  "created": 3,
+  "infrastructure_error_rate": 0.0,
+  "infrastructure_errors": 0,
+  "mode": "component_canary",
+  "provider": "dashscope",
+  "records": 3,
+  "resumed": 0,
+  "status": "COMPLETED"
+}

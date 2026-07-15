@@ -40,6 +40,15 @@ def test_snapshot_manager_hash_and_real_mutation_do_not_touch_canonical(injectio
     assert manager.canonical_sha256 == "be893ee40a748410d49befe8ca45f645b47e9a770cf2bb7e0b90db9c71472267"
 
 
+def test_newly_required_field_drops_the_old_default_in_mutated_snapshot(injection_catalog):
+    context = injection_context(injection_catalog, "ICD-01", "AE")
+    schema = context.displayed_contract["components"]["schemas"]["CreateIssueRequest"]
+    assert "priority" in schema["required"]
+    assert "default" not in schema["properties"]["priority"]
+    canonical = load_openapi()["components"]["schemas"]["CreateIssueRequest"]
+    assert canonical["properties"]["priority"]["default"] == "medium"
+
+
 def test_scenario_reset_clears_sidecar_without_sharing_objects(injection_catalog):
     first = injection_context(injection_catalog, "SED-01", "PD")
     second = injection_context(injection_catalog, "SED-01", "PD")

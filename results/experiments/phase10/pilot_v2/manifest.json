@@ -1,0 +1,110 @@
+{
+  "benchmark_hashes": {
+    "benchmark/drifts/drift_cases_v1.json": "dda8f8c1759075bb52b14431b9ee5fcb6fbe93c1cf239a474548a6127228a00e",
+    "benchmark/drifts/task_drift_coverage_v1.json": "f83a5ce5da1bd9a179dfdd1abfbb747469b29644c71304490df0750bd527be3c",
+    "benchmark/fixtures/initial_state_v1.json": "7cc0f4af8eb45d6e1a4a03741c2b44484b80736cf2ba6bd1f5c8e2c7fb7db3c0",
+    "benchmark/matched_failures/attribution_protocol_v1.json": "3e0779032b4613b9d17868ae1f2d3fe0c582214cc80bdb860a5a88aae69d4106",
+    "benchmark/matched_failures/matched_failures_v1.json": "58c921b754976ee16f29676030bfbb57de4e0ee2f7be14a4af8353d057296f7e",
+    "benchmark/openapi/driftguard_openapi_v1.yaml": "be893ee40a748410d49befe8ca45f645b47e9a770cf2bb7e0b90db9c71472267",
+    "benchmark/tasks/tasks_v1.json": "851425f77f4ad94633e5eb10937b783a51e9aa9f54955b408565064f3a788936"
+  },
+  "budget": {
+    "full_hard_limit_cny": 1000,
+    "full_soft_limit_cny": 800,
+    "max_format_repairs": 1,
+    "max_input_tokens_per_record": 60000,
+    "max_llm_calls_per_record": 8,
+    "max_output_tokens_per_record": 12000,
+    "max_probe_calls_per_record": 4,
+    "max_tool_calls_per_record": 12,
+    "max_total_interactions_per_record": 16,
+    "pilot_hard_limit_cny": 50,
+    "pilot_soft_limit_cny": 35,
+    "reserve_worst_case_before_call": true
+  },
+  "config_hash": "34bcff253b546149fcd51c8bf741384d102d9896ff1d835b92b990b50801040e",
+  "dirty_working_tree": true,
+  "experiment_id": "phase10_real_pilot",
+  "experiment_stage": "PILOT",
+  "families": [
+    "M01",
+    "M06",
+    "M11",
+    "M16"
+  ],
+  "full_real_model_experiment_status": "NOT RUN",
+  "git_commit": "a26c8daae9749eb0e40f7bde9dfab2a0f83335ce",
+  "methods": {
+    "component": [
+      "reflection",
+      "validation_guided",
+      "driftguard_llm"
+    ],
+    "deterministic": [
+      "oracle_symbolic_upper_bound"
+    ],
+    "end_to_end": [
+      "standard",
+      "retry_only",
+      "reflection",
+      "validation_guided",
+      "driftguard_llm"
+    ]
+  },
+  "models": [
+    {
+      "base_url": "https://api.deepseek.com",
+      "capabilities": {
+        "json_schema": false,
+        "seed": false,
+        "strict_json": true,
+        "tool_calling": true
+      },
+      "concurrency": 2,
+      "max_output_tokens": 4096,
+      "max_provider_retries": 3,
+      "model_id": "deepseek-v4-flash",
+      "provider": "deepseek",
+      "seed": 7,
+      "structured_output_mode": "strict_json",
+      "temperature": 0.1,
+      "thinking_mode": "disabled",
+      "timeout_seconds": 120.0,
+      "top_p": 1.0
+    },
+    {
+      "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "capabilities": {
+        "json_schema": false,
+        "seed": false,
+        "strict_json": true,
+        "tool_calling": true
+      },
+      "concurrency": 2,
+      "max_output_tokens": 4096,
+      "max_provider_retries": 3,
+      "model_id": "qwen3.7-plus",
+      "provider": "dashscope",
+      "seed": 7,
+      "structured_output_mode": "strict_json",
+      "temperature": 0.1,
+      "thinking_mode": "disabled",
+      "timeout_seconds": 120.0,
+      "top_p": 1.0
+    }
+  ],
+  "pricing_snapshot_hash": "ad2d73fbec9c24f4120dfc8476b9d7f9db2f18612c21011ee8c4aa0817f48c05",
+  "pricing_snapshot_id": "phase10-pricing-20260715",
+  "prompt_hashes": {
+    "base_tool_agent_v1.txt": "8773e647effcb28e7e070750baca8d03466e295dadc753b8887c3b2df564214f",
+    "component_attribution_v2.txt": "41255c4096399f8ded854f64d84a4f5de02174d1fb8a9825828e5c91c3ab2d5e",
+    "driftguard_attribution_v1.txt": "74c667936dd272697f51e558c6c0fcd4f01f4889e00227c29d86876109fef2ac",
+    "driftguard_patch_v1.txt": "0d477ccfa5ccd7b7614b3879ae7cc013ac4372e164e0caf2b8bf8d80b365e58d",
+    "reflection_v1.txt": "62eda661307590705cb862cb96463f9c153ad2cfd2626b49c88b06274c06233a",
+    "validation_guided_v1.txt": "088cba311a6f24f16f770141e540b800f062fd6079fe778cda4d7ffcb83faf7b"
+  },
+  "publication_status": "DEVELOPMENT_ONLY",
+  "seeds": [
+    20260715
+  ]
+}

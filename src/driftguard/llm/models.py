@@ -13,6 +13,11 @@ class ProviderRequest:
     episode: int
     method: str
     repetition: int
+    seed: int | None = None
+    mode: str = ""
+    config_hash: str = ""
+    tools: tuple[Mapping[str, Any], ...] = ()
+    tool_choice: str | Mapping[str, Any] | None = None
 
 
 @dataclass(frozen=True)
@@ -29,6 +34,7 @@ class ProviderResponse:
     finish_reason: str
     cached: bool = False
     error: str | None = None
+    tool_calls: tuple[Mapping[str, Any], ...] = ()
 
     def public_dict(self) -> dict[str, Any]:
         return {
@@ -38,6 +44,7 @@ class ProviderResponse:
             "output_tokens": self.output_tokens, "total_tokens": self.total_tokens,
             "latency_ms": self.latency_ms, "provider_attempts": self.provider_attempts,
             "finish_reason": self.finish_reason, "cached": self.cached, "error": self.error,
+            "tool_calls": [dict(item) for item in self.tool_calls],
         }
 
 
@@ -48,10 +55,13 @@ class UsageCounter:
     output_tokens: int = 0
     latency_ms: float = 0.0
     format_repairs: int = 0
+    actual_models: list[str] = field(default_factory=list)
+    provider_attempts: int = 0
 
     def add(self, response: ProviderResponse) -> None:
         self.llm_calls += 1
         self.input_tokens += response.input_tokens
         self.output_tokens += response.output_tokens
         self.latency_ms += response.latency_ms
-
+        self.actual_models.append(response.model)
+        self.provider_attempts += response.provider_attempts

@@ -42,6 +42,8 @@ def _mutate_contract(canonical: dict[str, Any], case: dict[str, Any]) -> dict[st
     if operation == "add_required":
         if isinstance(after, list):
             parent[key] = deepcopy(after)
+            for field in set(after) - set(before):
+                parent.get("properties", {}).get(field, {}).pop("default", None)
         else:
             parent[key].pop("default", None)
             schema_pointer = mutation["target"].rsplit("/properties/", 1)[0]

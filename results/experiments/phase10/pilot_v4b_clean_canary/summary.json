@@ -1,0 +1,158 @@
+{
+  "agent_action_valid": 10,
+  "api_calls": 42,
+  "api_key_leakage": 0,
+  "attempt": "v4b_clean_canary",
+  "cache_replay": {
+    "cache_unchanged": true,
+    "details": [
+      {
+        "matched": true,
+        "method": "standard",
+        "provider": "deepseek"
+      },
+      {
+        "matched": true,
+        "method": "retry_only",
+        "provider": "deepseek"
+      },
+      {
+        "matched": true,
+        "method": "reflection",
+        "provider": "deepseek"
+      },
+      {
+        "matched": true,
+        "method": "validation_guided",
+        "provider": "deepseek"
+      },
+      {
+        "matched": true,
+        "method": "driftguard_llm",
+        "provider": "deepseek"
+      },
+      {
+        "matched": true,
+        "method": "standard",
+        "provider": "dashscope"
+      },
+      {
+        "matched": true,
+        "method": "retry_only",
+        "provider": "dashscope"
+      },
+      {
+        "matched": true,
+        "method": "reflection",
+        "provider": "dashscope"
+      },
+      {
+        "matched": true,
+        "method": "validation_guided",
+        "provider": "dashscope"
+      },
+      {
+        "matched": true,
+        "method": "driftguard_llm",
+        "provider": "dashscope"
+      }
+    ],
+    "ledger_unchanged": true,
+    "matched": 10,
+    "new_cost_cny": 0.0,
+    "provider_fallback_calls": 0,
+    "records": 10,
+    "status": "PASSED"
+  },
+  "canonical_catalog_fingerprint": "76bde8f625aa26f786ef3ee9065c481adf1cfd793aea7c5b3fea88d40573b7da",
+  "common_execution_chain_issues": [],
+  "complete_tool_catalogs": 10,
+  "component_records": 0,
+  "cost": {
+    "api_attempts": 831,
+    "attempt_base_spent_cny": 4.396109052,
+    "attempt_incremental_spent_cny": 0.8065350680000032,
+    "hard_limit_cny": 6.396109052,
+    "incremental_hard_limit_cny": 2.0,
+    "incremental_soft_limit_cny": 1.0,
+    "provider_reported_input_tokens": 3580832,
+    "provider_reported_output_tokens": 84182,
+    "reserved_cny": 0.0,
+    "soft_limit_cny": 5.396109052,
+    "soft_warning": false,
+    "spent_cny": 5.202644120000003,
+    "total_hard_limit_cny": 50.0
+  },
+  "experiment_id": "phase10_real_pilot_v4b_clean_canary",
+  "full_real_model_experiment_status": "NOT RUN",
+  "ground_truth_leakage": 0,
+  "halt_reason": null,
+  "halted": false,
+  "heldout48_touched": false,
+  "infrastructure_errors": 0,
+  "input_tokens": 443929,
+  "llm_calls": 36,
+  "method_task_success": {
+    "driftguard_llm": 0,
+    "reflection": 0,
+    "retry_only": 2,
+    "standard": 0,
+    "validation_guided": 2
+  },
+  "output_tokens": 3554,
+  "planned_records": 10,
+  "probe_calls": 0,
+  "prompt_v3_sha256": "bae688c173db4f561162d402acef5661256c6bab5a1d20a65e96868c2ec8267f",
+  "provider_reports": [
+    {
+      "agent_action_valid": 5,
+      "api_calls": 21,
+      "configured_model": "deepseek-v4-flash",
+      "incremental_cost_cny": 0.2755250680000003,
+      "infrastructure_error_rate": 0.0,
+      "infrastructure_errors": 0,
+      "input_tokens": 225832,
+      "llm_calls": 18,
+      "output_tokens": 1544,
+      "probe_calls": 0,
+      "provider": "deepseek",
+      "records": 5,
+      "sandbox_entered": 5,
+      "status": "PASSED",
+      "stop_reason": null,
+      "task_success": 2,
+      "tool_calls": 17
+    },
+    {
+      "agent_action_valid": 5,
+      "api_calls": 21,
+      "configured_model": "qwen3.7-plus",
+      "incremental_cost_cny": 0.5310099999999993,
+      "infrastructure_error_rate": 0.0,
+      "infrastructure_errors": 0,
+      "input_tokens": 218097,
+      "llm_calls": 18,
+      "output_tokens": 2010,
+      "probe_calls": 0,
+      "provider": "dashscope",
+      "records": 5,
+      "sandbox_entered": 5,
+      "status": "PASSED",
+      "stop_reason": null,
+      "task_success": 2,
+      "tool_calls": 17
+    }
+  ],
+  "records": 10,
+  "request_probe_capability_mismatches": 0,
+  "resolved_task_instances_correct": 10,
+  "sandbox_entered": 10,
+  "schema_v3_sha256": "27807767537dbcf83620642edc443525da61f08dfde6935f4ea11aafd1e9dcf1",
+  "scope": "10-record end-to-end canary only",
+  "source_snapshot_consistent_records": 10,
+  "source_snapshot_hash": "786a9274b467464626d0cdde31262cfa4b3efdaea31c90b554e10a00ea261726",
+  "state_isolation_errors": 0,
+  "task_success": 4,
+  "tool_calls": 34,
+  "unauthorized_safety_blocks": 0
+}
