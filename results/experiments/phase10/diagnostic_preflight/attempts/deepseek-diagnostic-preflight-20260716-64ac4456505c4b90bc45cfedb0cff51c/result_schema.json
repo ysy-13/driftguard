@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "actual_network_attempts": {
+      "const": 1
+    },
+    "api_key_configured": {
+      "const": true
+    },
+    "api_key_leakage_scan": {
+      "properties": {
+        "passed": {
+          "const": true
+        },
+        "value_present": {
+          "const": false
+        }
+      },
+      "required": [
+        "passed",
+        "value_present"
+      ],
+      "type": "object"
+    },
+    "attempt_id": {
+      "const": "deepseek-diagnostic-preflight-20260716-64ac4456505c4b90bc45cfedb0cff51c"
+    },
+    "configured_model": {
+      "const": "deepseek-v4-flash"
+    },
+    "cost_cny": {
+      "maximum": 0.1,
+      "minimum": 0,
+      "type": "number"
+    },
+    "cost_hard_limit_cny": {
+      "const": 0.1
+    },
+    "deepseek_diagnostic_preflight_status": {
+      "enum": [
+        "SUCCESS",
+        "FAILED"
+      ]
+    },
+    "endpoint": {
+      "const": "https://api.deepseek.com/chat/completions"
+    },
+    "focused_canary_real_api_status": {
+      "const": "PARTIAL"
+    },
+    "format_repairs": {
+      "const": 0
+    },
+    "full_real_model_experiment_status": {
+      "const": "NOT RUN"
+    },
+    "ground_truth_leakage_scan": {
+      "properties": {
+        "forbidden_terms_present": {
+          "maxItems": 0,
+          "type": "array"
+        },
+        "passed": {
+          "const": true
+        }
+      },
+      "required": [
+        "passed",
+        "forbidden_terms_present"
+      ],
+      "type": "object"
+    },
+    "http_status": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "provider": {
+      "const": "deepseek"
+    },
+    "provider_error": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "request_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "retryable": {
+      "type": "boolean"
+    },
+    "returned_exact_ok_true": {
+      "type": "boolean"
+    },
+    "schema_version": {
+      "const": "deepseek-diagnostic-preflight-result-v1"
+    },
+    "source_commit": {
+      "const": "4698de5adfd2ec8ae803ccdb85118c74893b9c9b"
+    },
+    "usage": {
+      "properties": {
+        "input_tokens": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "output_tokens": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "total_tokens": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "input_tokens",
+        "output_tokens",
+        "total_tokens"
+      ],
+      "type": "object"
+    },
+    "valid_json": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "attempt_id",
+    "source_commit",
+    "deepseek_diagnostic_preflight_status",
+    "focused_canary_real_api_status",
+    "full_real_model_experiment_status",
+    "provider",
+    "endpoint",
+    "configured_model",
+    "api_key_configured",
+    "request",
+    "http_status",
+    "provider_error",
+    "request_id",
+    "retryable",
+    "actual_network_attempts",
+    "valid_json",
+    "parsed_content",
+    "returned_exact_ok_true",
+    "usage",
+    "cost_cny",
+    "cost_hard_limit_cny",
+    "ledger_before",
+    "ledger_after",
+    "cache_entry",
+    "format_repairs",
+    "api_key_leakage_scan",
+    "ground_truth_leakage_scan",
+    "recommend_next_single_m01_pd"
+  ],
+  "title": "DeepSeek diagnostic preflight result v1",
+  "type": "object"
+}

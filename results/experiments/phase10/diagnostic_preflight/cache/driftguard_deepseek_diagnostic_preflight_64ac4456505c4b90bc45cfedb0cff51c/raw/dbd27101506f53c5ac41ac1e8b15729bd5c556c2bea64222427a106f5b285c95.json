@@ -1,0 +1,1 @@
+{"error": null, "finish_reason": "stop", "input_tokens": 38, "latency_ms": 2554.6393749999997, "model": "deepseek-v4-flash", "output_tokens": 5, "provider_attempts": 1, "raw_text": "{\"ok\":true}", "response_id": "6aea1e1e-2be4-457d-a41d-9e8c3930cfad", "tool_calls": [], "total_tokens": 43}

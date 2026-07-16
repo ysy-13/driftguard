@@ -1,0 +1,8 @@
+{
+  "attempt_id": "deepseek-diagnostic-preflight-20260716-64ac4456505c4b90bc45cfedb0cff51c",
+  "cache_kind": "REAL_PROVIDER_DIAGNOSTIC",
+  "model": "deepseek-v4-flash",
+  "namespace": "driftguard_deepseek_diagnostic_preflight_64ac4456505c4b90bc45cfedb0cff51c",
+  "provider": "deepseek",
+  "source_commit": "4698de5adfd2ec8ae803ccdb85118c74893b9c9b"
+}

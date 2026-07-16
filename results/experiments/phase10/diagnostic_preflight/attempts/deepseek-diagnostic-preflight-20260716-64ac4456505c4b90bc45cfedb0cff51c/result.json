@@ -1,0 +1,78 @@
+{
+  "actual_model": "deepseek-v4-flash",
+  "actual_network_attempts": 1,
+  "api_key_configured": true,
+  "api_key_leakage_scan": {
+    "passed": true,
+    "value_present": false
+  },
+  "attempt_id": "deepseek-diagnostic-preflight-20260716-64ac4456505c4b90bc45cfedb0cff51c",
+  "cache_entry": {
+    "key": "dbd27101506f53c5ac41ac1e8b15729bd5c556c2bea64222427a106f5b285c95",
+    "namespace": "driftguard_deepseek_diagnostic_preflight_64ac4456505c4b90bc45cfedb0cff51c",
+    "parsed_path": "/Users/yangsiyuan/\u4ee3\u7801/driftguard/results/experiments/phase10/diagnostic_preflight/cache/driftguard_deepseek_diagnostic_preflight_64ac4456505c4b90bc45cfedb0cff51c/parsed/dbd27101506f53c5ac41ac1e8b15729bd5c556c2bea64222427a106f5b285c95.json",
+    "raw_path": "/Users/yangsiyuan/\u4ee3\u7801/driftguard/results/experiments/phase10/diagnostic_preflight/cache/driftguard_deepseek_diagnostic_preflight_64ac4456505c4b90bc45cfedb0cff51c/raw/dbd27101506f53c5ac41ac1e8b15729bd5c556c2bea64222427a106f5b285c95.json",
+    "written": true
+  },
+  "configured_model": "deepseek-v4-flash",
+  "cost_cny": 4.905599999993626e-05,
+  "cost_hard_limit_cny": 0.1,
+  "deepseek_diagnostic_preflight_status": "SUCCESS",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "focused_canary_real_api_status": "PARTIAL",
+  "format_repairs": 0,
+  "full_real_model_experiment_status": "NOT RUN",
+  "ground_truth_leakage_scan": {
+    "forbidden_terms_present": [],
+    "passed": true
+  },
+  "http_status": 200,
+  "ledger_after": {
+    "api_attempts": 864,
+    "provider_reported_input_tokens": 3580870,
+    "provider_reported_output_tokens": 84187,
+    "reserved_cny": 0.0,
+    "spent_cny": 5.202693176000003
+  },
+  "ledger_before": {
+    "api_attempts": 863,
+    "provider_reported_input_tokens": 3580832,
+    "provider_reported_output_tokens": 84182,
+    "reserved_cny": 0.0,
+    "spent_cny": 5.202644120000003
+  },
+  "parsed_content": {
+    "ok": true
+  },
+  "provider": "deepseek",
+  "provider_error": null,
+  "recommend_next_single_m01_pd": true,
+  "request": {
+    "max_retries": 0,
+    "max_tokens": 128,
+    "response_format": {
+      "type": "json_object"
+    },
+    "system": "Return only a valid JSON object.",
+    "thinking": {
+      "type": "disabled"
+    },
+    "timeout_seconds": 120.0,
+    "tool_choice": null,
+    "tools": [],
+    "user": "Return exactly {\"ok\":true}."
+  },
+  "request_id": null,
+  "response_id": "6aea1e1e-2be4-457d-a41d-9e8c3930cfad",
+  "retryable": false,
+  "returned_exact_ok_true": true,
+  "schema_version": "deepseek-diagnostic-preflight-result-v1",
+  "source_commit": "4698de5adfd2ec8ae803ccdb85118c74893b9c9b",
+  "usage": {
+    "input_tokens": 38,
+    "output_tokens": 5,
+    "total_tokens": 43
+  },
+  "valid_json": true,
+  "worktree_clean_before": true
+}
