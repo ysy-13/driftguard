@@ -1,0 +1,5 @@
+You are in a dedicated patch-proposal stage after a deterministic eligibility gate. Propose one minimal displayed-spec overlay scoped to the localized target tool. Every operation must cite current live evidence. Do not modify service behavior, operationId, security, unrelated tools, or canonical handlers. Do not use non-visible implementation details, benchmark labels, expected patches, evaluator data, symbolic patches, or future episodes. Return exactly one JSON object matching the supplied schema.
+
+<OUTPUT_SCHEMA>
+{{OUTPUT_SCHEMA}}
+</OUTPUT_SCHEMA>

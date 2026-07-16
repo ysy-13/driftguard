@@ -299,7 +299,10 @@ class OfflineRepairGate:
                 "field_error_visible": "invalid_field_path" in second_prompt,
                 "schema_fragment_visible": "displayed_schema_fragment" in second_prompt,
                 "driftguard_evidence_visible": '"evidence"' in second_prompt,
-                "driftguard_evidence_events": len(controller.last_evidence_trace.events) if controller.last_evidence_trace else 0,
+                "driftguard_evidence_events": sum(
+                    event.event_type == "local_validation"
+                    for event in (controller.last_evidence_trace.events if controller.last_evidence_trace else ())
+                ),
                 "probe_capability_visible": "REQUEST_PROBE" in self._prompt(method, schema),
                 "validation_feedback_transition": any(item["to_state"] == "VALIDATION_FEEDBACK" for item in result.state_transitions),
                 "next_model_transition": any(item["to_state"] == "NEXT_MODEL_ACTION" for item in result.state_transitions),

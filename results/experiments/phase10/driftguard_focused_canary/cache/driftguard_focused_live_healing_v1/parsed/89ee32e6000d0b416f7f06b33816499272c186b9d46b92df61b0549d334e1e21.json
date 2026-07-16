@@ -1,0 +1,1 @@
+{"concise_reason": "distinguish a persistent visible contract mismatch", "decision": "SELECT_PROBE", "evidence_refs": ["live-e8a98e00c76ec8075df0-EV005", "live-e8a98e00c76ec8075df0-EV011"], "probe_type": "local_schema_check", "target_tool_id": "create_issue"}

@@ -22,3 +22,6 @@ class PatchRegistry:
     def __len__(self) -> int:
         return len(self._patches)
 
+    def clear(self) -> None:
+        """Drop overlays for an exact live-session reset; canonical specs are untouched."""
+        self._patches.clear()

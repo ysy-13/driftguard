@@ -1,0 +1,1331 @@
+{
+  "api_attempts_delta": 0,
+  "cache": {
+    "entries_after": 48,
+    "entries_before": 48,
+    "hits": 6,
+    "identity_hash": "a421e50626c5d29e8be176cd98cf9a6d2c509b77a4e44defbb8346ffe616cdb2",
+    "misses": 0,
+    "namespace": "driftguard_focused_live_healing_v1",
+    "provider_fallback_calls": 0
+  },
+  "checkpoint": {
+    "record_level": true,
+    "resumed": false
+  },
+  "cost_cny_delta": 0.0,
+  "deterministic_gates": {
+    "minimality": {
+      "details": {
+        "operation_count": 1,
+        "subset_tests": 1
+      },
+      "passed": true,
+      "reason_codes": [
+        "NO_REDUNDANT_OPERATION",
+        "EMPTY_SUBSET_CANNOT_REPAIR"
+      ],
+      "stage": "minimality"
+    },
+    "regression": {
+      "details": {
+        "independent_state_forks": 3,
+        "passed": 3,
+        "required": 3
+      },
+      "passed": true,
+      "reason_codes": [
+        "TARGET_TOOL",
+        "NEIGHBORING_WORKFLOW",
+        "GLOBAL_INVARIANT"
+      ],
+      "stage": "regression"
+    },
+    "safety": {
+      "details": {
+        "unsafe_patch": false,
+        "write_calls": 1
+      },
+      "passed": true,
+      "reason_codes": [
+        "NO_UNSAFE_WRITE",
+        "NO_PERMISSION_EXPANSION",
+        "WITHIN_TOOL_BUDGET"
+      ],
+      "stage": "safety"
+    },
+    "static": {
+      "details": {
+        "atomic_apply": true,
+        "operation_count": 1
+      },
+      "passed": true,
+      "reason_codes": [
+        "OPENAPI_31_VALID",
+        "PATCH_SCOPE_VALID"
+      ],
+      "stage": "static"
+    }
+  },
+  "evidence_provenance": {
+    "event_count": 21,
+    "phase7_static_reconstruction": false,
+    "source": "ToolAgentController live events",
+    "trace_id": "live-3a57d76dd95dc5f9a7e6"
+  },
+  "execution_mode": "CACHE_REPLAY",
+  "experiment_kind": "FOCUSED_LIVE_HEALING_CANARY",
+  "family": "M01",
+  "final_attribution": {
+    "concise_reason": "two independent live failures conflict with the displayed contract",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "evidence_refs": [
+      "live-3a57d76dd95dc5f9a7e6-EV005",
+      "live-3a57d76dd95dc5f9a7e6-EV011",
+      "live-3a57d76dd95dc5f9a7e6-EV016"
+    ],
+    "location_path": "/components/schemas/CreateIssueRequest/required",
+    "location_type": "request_schema",
+    "predicted_class": "PERSISTENT_DRIFT",
+    "requested_probe": null,
+    "target_tool_id": "create_issue"
+  },
+  "frozen_fingerprints": {
+    "action_prompt_v3_sha256": "bae688c173db4f561162d402acef5661256c6bab5a1d20a65e96868c2ec8267f",
+    "action_schema_v3_sha256": "27807767537dbcf83620642edc443525da61f08dfde6935f4ea11aafd1e9dcf1",
+    "attribution_prompt_v2_sha256": "41255c4096399f8ded854f64d84a4f5de02174d1fb8a9825828e5c91c3ab2d5e",
+    "attribution_schema_v1_sha256": "54c8fdda24a5d37521520337c19095f4782494a8c2335a89f927f8ccecc490d6",
+    "cache_key_material": [
+      "action_prompt_hash",
+      "action_schema_hash",
+      "attribution_prompt_hash",
+      "attribution_schema_hash",
+      "probe_prompt_hash",
+      "probe_schema_hash",
+      "patch_prompt_hash",
+      "patch_schema_hash",
+      "tool_catalog_fingerprint",
+      "policy_capabilities",
+      "provider",
+      "model",
+      "method",
+      "public_scenario_id",
+      "repetition",
+      "attempt_version",
+      "episode_stage",
+      "evidence_fingerprint",
+      "source_snapshot",
+      "config_hash"
+    ],
+    "patch_prompt_v2_sha256": "4c325cc684341e91f405c13c05a3a8d0a751aa4fe83a8ee3e956bb75262953df",
+    "patch_schema_v2_sha256": "b641abd733730dd6f858af4be9cf85231ed9c7b29ce5637c1d1361bd64801b85",
+    "policy_capabilities": [
+      "TOOL_CALL",
+      "FINAL_ANSWER",
+      "REQUEST_PROBE",
+      "ABSTAIN"
+    ],
+    "probe_prompt_v1_sha256": "0b93fcbf4fdf56f52d3fcfe1550dd111e11e5e164d8f294219dcc0346d77f4eb",
+    "probe_schema_v1_sha256": "d3c118f3c80d400d8e539b619ea5e1cedb7bb4cde4eecb3c04891cd0077fbdce",
+    "tool_catalog_fingerprint": "76bde8f625aa26f786ef3ee9065c481adf1cfd793aea7c5b3fea88d40573b7da"
+  },
+  "future_transfer": {
+    "candidate_rewritten_after_transfer": false,
+    "first_result_counted": true,
+    "held_out_episode": 6,
+    "no_patch_calls": 1,
+    "no_patch_success": false,
+    "patched_calls": 1,
+    "patched_success": true,
+    "same_initial_state": true
+  },
+  "immediate_repair": {
+    "details": {
+      "call_count": 1,
+      "failure": null,
+      "forbidden_side_effects": 0,
+      "passed": true,
+      "state_change_count": 2,
+      "task_evaluator_passed": true
+    },
+    "passed": true,
+    "reason_codes": [
+      "TASK_EVALUATOR_PASSED",
+      "FORBIDDEN_SIDE_EFFECTS_ZERO"
+    ],
+    "stage": "immediate_repair"
+  },
+  "infrastructure_or_method_failure": "NONE",
+  "input_tokens": 0,
+  "latency_ms": 0.0,
+  "leakage": {
+    "api_key_values_read": false,
+    "forbidden_fields": [],
+    "passed": true
+  },
+  "live_evidence_trace": {
+    "events": [
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M01:dashscope:driftguard_llm:r0:EV001",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 3,
+        "event_id": "live-3a57d76dd95dc5f9a7e6-EV001",
+        "event_type": "task_received",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "instruction": "When issues are enabled, create Review authentication logs without specifying priority. Resolved identifiers: repository 'alpha-api' has repo_id R1."
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.task_received",
+          "execution_context_id": "public-M01:independent-episode-3",
+          "scope_key": "public-M01:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M01",
+        "sequence_number": 1,
+        "timestamp": "2026-01-01T00:00:01Z",
+        "tool_id": null,
+        "trace_id": "live-3a57d76dd95dc5f9a7e6",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M01:dashscope:driftguard_llm:r0:EV002",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 3,
+        "event_id": "live-3a57d76dd95dc5f9a7e6-EV002",
+        "event_type": "displayed_spec_snapshot",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1"
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.displayed_spec_snapshot",
+          "execution_context_id": "public-M01:independent-episode-3",
+          "scope_key": "public-M01:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M01",
+        "sequence_number": 2,
+        "timestamp": "2026-01-01T00:00:02Z",
+        "tool_id": null,
+        "trace_id": "live-3a57d76dd95dc5f9a7e6",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M01:dashscope:driftguard_llm:r0:EV003",
+        "displayed_request": {
+          "arguments": {
+            "repo_id": "R1",
+            "title": "Review authentication logs"
+          }
+        },
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 3,
+        "event_id": "live-3a57d76dd95dc5f9a7e6-EV003",
+        "event_type": "tool_call_proposed",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "action_type": "TOOL_CALL"
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.tool_call_proposed",
+          "execution_context_id": "public-M01:independent-episode-3",
+          "scope_key": "public-M01:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M01",
+        "sequence_number": 3,
+        "timestamp": "2026-01-01T00:00:03Z",
+        "tool_id": "create_issue",
+        "trace_id": "live-3a57d76dd95dc5f9a7e6",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M01:independent-episode-3:tool-001",
+        "displayed_request": {
+          "arguments": {
+            "repo_id": "R1",
+            "title": "Review authentication logs"
+          }
+        },
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 3,
+        "event_id": "live-3a57d76dd95dc5f9a7e6-EV004",
+        "event_type": "tool_call_executed",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "runtime_call_completed": true
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.tool_call_executed",
+          "execution_context_id": "public-M01:independent-episode-3",
+          "scope_key": "public-M01:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M01",
+        "sequence_number": 4,
+        "timestamp": "2026-01-01T00:00:04Z",
+        "tool_id": "create_issue",
+        "trace_id": "live-3a57d76dd95dc5f9a7e6",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": "b9766e9699f4040abba10d254817cfc95341fbc09927603bf377a9cb5423d9ca",
+        "before_state_hash": "b9766e9699f4040abba10d254817cfc95341fbc09927603bf377a9cb5423d9ca",
+        "correlation_id": "public-M01:independent-episode-3:tool-001",
+        "displayed_request": {
+          "arguments": {
+            "repo_id": "R1",
+            "title": "Review authentication logs"
+          }
+        },
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 3,
+        "event_id": "live-3a57d76dd95dc5f9a7e6-EV005",
+        "event_type": "tool_response",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "channel": "response_error",
+          "error_code": "VALIDATION_ERROR",
+          "field": "priority",
+          "message_pattern": "Missing required field: priority",
+          "status_code": 422,
+          "task_complete": false
+        },
+        "probe_metadata": {
+          "independent_failure": true,
+          "regression_requirements_identified": true
+        },
+        "provenance": {
+          "controller_event": "ToolAgentController.run.tool_response",
+          "execution_context_id": "public-M01:independent-episode-3",
+          "scope_key": "public-M01:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M01",
+        "sequence_number": 5,
+        "timestamp": "2026-01-01T00:00:05Z",
+        "tool_id": "create_issue",
+        "trace_id": "live-3a57d76dd95dc5f9a7e6",
+        "visible_runtime_response": {
+          "payload": {
+            "error": {
+              "code": "VALIDATION_ERROR",
+              "field": "priority",
+              "message": "Missing required field: priority",
+              "retryable": false
+            },
+            "ok": false
+          },
+          "status_code": 422
+        },
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M01:dashscope:driftguard_llm:r0:EV006",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 3,
+        "event_id": "live-3a57d76dd95dc5f9a7e6-EV006",
+        "event_type": "policy_recovery",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "context_types": [
+            "evidence_collection",
+            "probe_allowed"
+          ],
+          "exact_retry": false,
+          "failure_kind": "runtime_or_task_incomplete",
+          "method": "driftguard_llm",
+          "request_llm": true,
+          "stop": false
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.policy_recovery",
+          "execution_context_id": "public-M01:independent-episode-3",
+          "scope_key": "public-M01:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M01",
+        "sequence_number": 6,
+        "timestamp": "2026-01-01T00:00:06Z",
+        "tool_id": "create_issue",
+        "trace_id": "live-3a57d76dd95dc5f9a7e6",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M01:dashscope:driftguard_llm:r0:EV007",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 4,
+        "event_id": "live-3a57d76dd95dc5f9a7e6-EV007",
+        "event_type": "task_received",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "instruction": "When issues are enabled, create Review authentication logs without specifying priority. Resolved identifiers: repository 'alpha-api' has repo_id R1."
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.task_received",
+          "execution_context_id": "public-M01:independent-episode-4",
+          "scope_key": "public-M01:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M01",
+        "sequence_number": 7,
+        "timestamp": "2026-01-01T00:00:07Z",
+        "tool_id": null,
+        "trace_id": "live-3a57d76dd95dc5f9a7e6",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M01:dashscope:driftguard_llm:r0:EV008",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 4,
+        "event_id": "live-3a57d76dd95dc5f9a7e6-EV008",
+        "event_type": "displayed_spec_snapshot",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1"
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.displayed_spec_snapshot",
+          "execution_context_id": "public-M01:independent-episode-4",
+          "scope_key": "public-M01:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M01",
+        "sequence_number": 8,
+        "timestamp": "2026-01-01T00:00:08Z",
+        "tool_id": null,
+        "trace_id": "live-3a57d76dd95dc5f9a7e6",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M01:dashscope:driftguard_llm:r0:EV009",
+        "displayed_request": {
+          "arguments": {
+            "repo_id": "R1",
+            "title": "Review authentication logs"
+          }
+        },
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 4,
+        "event_id": "live-3a57d76dd95dc5f9a7e6-EV009",
+        "event_type": "tool_call_proposed",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "action_type": "TOOL_CALL"
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.tool_call_proposed",
+          "execution_context_id": "public-M01:independent-episode-4",
+          "scope_key": "public-M01:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M01",
+        "sequence_number": 9,
+        "timestamp": "2026-01-01T00:00:09Z",
+        "tool_id": "create_issue",
+        "trace_id": "live-3a57d76dd95dc5f9a7e6",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M01:independent-episode-4:tool-001",
+        "displayed_request": {
+          "arguments": {
+            "repo_id": "R1",
+            "title": "Review authentication logs"
+          }
+        },
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 4,
+        "event_id": "live-3a57d76dd95dc5f9a7e6-EV010",
+        "event_type": "tool_call_executed",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "runtime_call_completed": true
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.tool_call_executed",
+          "execution_context_id": "public-M01:independent-episode-4",
+          "scope_key": "public-M01:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M01",
+        "sequence_number": 10,
+        "timestamp": "2026-01-01T00:00:10Z",
+        "tool_id": "create_issue",
+        "trace_id": "live-3a57d76dd95dc5f9a7e6",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": "b9766e9699f4040abba10d254817cfc95341fbc09927603bf377a9cb5423d9ca",
+        "before_state_hash": "b9766e9699f4040abba10d254817cfc95341fbc09927603bf377a9cb5423d9ca",
+        "correlation_id": "public-M01:independent-episode-4:tool-001",
+        "displayed_request": {
+          "arguments": {
+            "repo_id": "R1",
+            "title": "Review authentication logs"
+          }
+        },
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 4,
+        "event_id": "live-3a57d76dd95dc5f9a7e6-EV011",
+        "event_type": "tool_response",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "channel": "response_error",
+          "error_code": "VALIDATION_ERROR",
+          "field": "priority",
+          "message_pattern": "Missing required field: priority",
+          "status_code": 422,
+          "task_complete": false
+        },
+        "probe_metadata": {
+          "independent_failure": true,
+          "regression_requirements_identified": true
+        },
+        "provenance": {
+          "controller_event": "ToolAgentController.run.tool_response",
+          "execution_context_id": "public-M01:independent-episode-4",
+          "scope_key": "public-M01:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M01",
+        "sequence_number": 11,
+        "timestamp": "2026-01-01T00:00:11Z",
+        "tool_id": "create_issue",
+        "trace_id": "live-3a57d76dd95dc5f9a7e6",
+        "visible_runtime_response": {
+          "payload": {
+            "error": {
+              "code": "VALIDATION_ERROR",
+              "field": "priority",
+              "message": "Missing required field: priority",
+              "retryable": false
+            },
+            "ok": false
+          },
+          "status_code": 422
+        },
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M01:dashscope:driftguard_llm:r0:EV012",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 4,
+        "event_id": "live-3a57d76dd95dc5f9a7e6-EV012",
+        "event_type": "policy_recovery",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "context_types": [
+            "evidence_collection",
+            "probe_allowed"
+          ],
+          "exact_retry": false,
+          "failure_kind": "runtime_or_task_incomplete",
+          "method": "driftguard_llm",
+          "request_llm": true,
+          "stop": false
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.policy_recovery",
+          "execution_context_id": "public-M01:independent-episode-4",
+          "scope_key": "public-M01:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M01",
+        "sequence_number": 12,
+        "timestamp": "2026-01-01T00:00:12Z",
+        "tool_id": "create_issue",
+        "trace_id": "live-3a57d76dd95dc5f9a7e6",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M01:dashscope:driftguard_llm:r0:EV013",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-3a57d76dd95dc5f9a7e6-EV013",
+        "event_type": "history_retrieval",
+        "historical_evidence_refs": [
+          "live-3a57d76dd95dc5f9a7e6-EV005",
+          "live-3a57d76dd95dc5f9a7e6-EV011"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "historical_record_count": 2
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.history_retrieval",
+          "scope_key": "public-M01:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M01",
+        "sequence_number": 13,
+        "timestamp": "2026-01-01T00:00:13Z",
+        "tool_id": null,
+        "trace_id": "live-3a57d76dd95dc5f9a7e6",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M01:dashscope:driftguard_llm:r0:EV014",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-3a57d76dd95dc5f9a7e6-EV014",
+        "event_type": "attribution_emitted",
+        "historical_evidence_refs": [
+          "live-3a57d76dd95dc5f9a7e6-EV005",
+          "live-3a57d76dd95dc5f9a7e6-EV011"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "attribution": {
+            "concise_reason": "two independent live failures conflict with the displayed contract",
+            "confidence": 0.95,
+            "drift_category": "ICD",
+            "evidence_refs": [
+              "live-3a57d76dd95dc5f9a7e6-EV005",
+              "live-3a57d76dd95dc5f9a7e6-EV011"
+            ],
+            "location_path": "/components/schemas/CreateIssueRequest/required",
+            "location_type": "request_schema",
+            "predicted_class": "PD",
+            "requested_probe": {
+              "needed": true
+            },
+            "target_tool_id": "create_issue"
+          },
+          "stage": "PRELIMINARY"
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.preliminary_attribution",
+          "scope_key": "public-M01:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M01",
+        "sequence_number": 14,
+        "timestamp": "2026-01-01T00:00:14Z",
+        "tool_id": null,
+        "trace_id": "live-3a57d76dd95dc5f9a7e6",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M01:dashscope:driftguard_llm:r0:EV015",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-3a57d76dd95dc5f9a7e6-EV015",
+        "event_type": "probe_requested",
+        "historical_evidence_refs": [
+          "live-3a57d76dd95dc5f9a7e6-EV005",
+          "live-3a57d76dd95dc5f9a7e6-EV011"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {},
+        "probe_metadata": {
+          "llm_call_id": "mock-cb2ec8e971eca726",
+          "selection": {
+            "concise_reason": "distinguish a persistent visible contract mismatch",
+            "decision": "SELECT_PROBE",
+            "evidence_refs": [
+              "live-3a57d76dd95dc5f9a7e6-EV005",
+              "live-3a57d76dd95dc5f9a7e6-EV011"
+            ],
+            "probe_type": "local_schema_check",
+            "target_tool_id": "create_issue"
+          }
+        },
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.probe_selection",
+          "scope_key": "public-M01:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M01",
+        "sequence_number": 15,
+        "timestamp": "2026-01-01T00:00:15Z",
+        "tool_id": "create_issue",
+        "trace_id": "live-3a57d76dd95dc5f9a7e6",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M01:dashscope:driftguard_llm:r0:EV016",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-3a57d76dd95dc5f9a7e6-EV016",
+        "event_type": "probe_executed",
+        "historical_evidence_refs": [
+          "live-3a57d76dd95dc5f9a7e6-EV005",
+          "live-3a57d76dd95dc5f9a7e6-EV011"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "executed": true,
+          "probe_type": "local_schema_check"
+        },
+        "probe_metadata": {
+          "discriminative": true,
+          "isolated_fork": true,
+          "passed": true,
+          "regression_requirements_identified": true,
+          "unsafe_write": false
+        },
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.probe_execution",
+          "execution_context_id": "public-M01:dashscope:driftguard_llm:r0:probe-fork",
+          "scope_key": "public-M01:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M01",
+        "sequence_number": 16,
+        "timestamp": "2026-01-01T00:00:16Z",
+        "tool_id": "create_issue",
+        "trace_id": "live-3a57d76dd95dc5f9a7e6",
+        "visible_runtime_response": {
+          "payload": {
+            "error": {
+              "code": "VALIDATION_ERROR",
+              "field": "priority",
+              "message": "Missing required field: priority",
+              "retryable": false
+            },
+            "ok": false
+          },
+          "status_code": 422
+        },
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M01:dashscope:driftguard_llm:r0:EV017",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-3a57d76dd95dc5f9a7e6-EV017",
+        "event_type": "attribution_emitted",
+        "historical_evidence_refs": [
+          "live-3a57d76dd95dc5f9a7e6-EV005",
+          "live-3a57d76dd95dc5f9a7e6-EV011",
+          "live-3a57d76dd95dc5f9a7e6-EV016"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "attribution": {
+            "concise_reason": "two independent live failures conflict with the displayed contract",
+            "confidence": 0.95,
+            "drift_category": "ICD",
+            "evidence_refs": [
+              "live-3a57d76dd95dc5f9a7e6-EV005",
+              "live-3a57d76dd95dc5f9a7e6-EV011",
+              "live-3a57d76dd95dc5f9a7e6-EV016"
+            ],
+            "location_path": "/components/schemas/CreateIssueRequest/required",
+            "location_type": "request_schema",
+            "predicted_class": "PD",
+            "requested_probe": null,
+            "target_tool_id": "create_issue"
+          },
+          "stage": "FINAL"
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.final_attribution",
+          "scope_key": "public-M01:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M01",
+        "sequence_number": 17,
+        "timestamp": "2026-01-01T00:00:17Z",
+        "tool_id": null,
+        "trace_id": "live-3a57d76dd95dc5f9a7e6",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M01:dashscope:driftguard_llm:r0:EV018",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-3a57d76dd95dc5f9a7e6-EV018",
+        "event_type": "patch_proposed",
+        "historical_evidence_refs": [
+          "live-3a57d76dd95dc5f9a7e6-EV005",
+          "live-3a57d76dd95dc5f9a7e6-EV011",
+          "live-3a57d76dd95dc5f9a7e6-EV016"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "operation_count": 1,
+          "proposal_call_id": "mock-18b40beb971194f5"
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.llm_patch_proposal",
+          "scope_key": "public-M01:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M01",
+        "sequence_number": 18,
+        "timestamp": "2026-01-01T00:00:18Z",
+        "tool_id": "create_issue",
+        "trace_id": "live-3a57d76dd95dc5f9a7e6",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M01:dashscope:driftguard_llm:r0:EV019",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-3a57d76dd95dc5f9a7e6-EV019",
+        "event_type": "patch_validation",
+        "historical_evidence_refs": [
+          "live-3a57d76dd95dc5f9a7e6-EV005",
+          "live-3a57d76dd95dc5f9a7e6-EV011",
+          "live-3a57d76dd95dc5f9a7e6-EV016"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "static_validation": {
+            "details": {
+              "atomic_apply": true,
+              "operation_count": 1
+            },
+            "passed": true,
+            "reason_codes": [
+              "OPENAPI_31_VALID",
+              "PATCH_SCOPE_VALID"
+            ],
+            "stage": "static"
+          }
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.static_validation",
+          "scope_key": "public-M01:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M01",
+        "sequence_number": 19,
+        "timestamp": "2026-01-01T00:00:19Z",
+        "tool_id": "create_issue",
+        "trace_id": "live-3a57d76dd95dc5f9a7e6",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M01:dashscope:driftguard_llm:r0:EV020",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-3a57d76dd95dc5f9a7e6-EV020",
+        "event_type": "immediate_repair",
+        "historical_evidence_refs": [
+          "live-3a57d76dd95dc5f9a7e6-EV005",
+          "live-3a57d76dd95dc5f9a7e6-EV011",
+          "live-3a57d76dd95dc5f9a7e6-EV016"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "accepted": true,
+          "result": {
+            "details": {
+              "call_count": 1,
+              "failure": null,
+              "forbidden_side_effects": 0,
+              "passed": true,
+              "state_change_count": 2,
+              "task_evaluator_passed": true
+            },
+            "passed": true,
+            "reason_codes": [
+              "TASK_EVALUATOR_PASSED",
+              "FORBIDDEN_SIDE_EFFECTS_ZERO"
+            ],
+            "stage": "immediate_repair"
+          }
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.immediate_repair",
+          "scope_key": "public-M01:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M01",
+        "sequence_number": 20,
+        "timestamp": "2026-01-01T00:00:20Z",
+        "tool_id": "create_issue",
+        "trace_id": "live-3a57d76dd95dc5f9a7e6",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M01:dashscope:driftguard_llm:r0:EV021",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 6,
+        "event_id": "live-3a57d76dd95dc5f9a7e6-EV021",
+        "event_type": "future_transfer",
+        "historical_evidence_refs": [
+          "live-3a57d76dd95dc5f9a7e6-EV005",
+          "live-3a57d76dd95dc5f9a7e6-EV011",
+          "live-3a57d76dd95dc5f9a7e6-EV016"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "candidate_rewritten_after_transfer": false,
+          "first_result_counted": true,
+          "held_out_episode": 6,
+          "no_patch_calls": 1,
+          "no_patch_success": false,
+          "patched_calls": 1,
+          "patched_success": true,
+          "same_initial_state": true
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.future_transfer",
+          "scope_key": "public-M01:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M01",
+        "sequence_number": 21,
+        "timestamp": "2026-01-01T00:00:21Z",
+        "tool_id": "create_issue",
+        "trace_id": "live-3a57d76dd95dc5f9a7e6",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      }
+    ],
+    "public_scenario_id": "public-M01",
+    "trace_id": "live-3a57d76dd95dc5f9a7e6"
+  },
+  "llm_calls": 6,
+  "llm_stage_calls": [
+    {
+      "cached": true,
+      "input_tokens": 8815,
+      "latency_ms": 0.0,
+      "output_tokens": 108,
+      "parsed_output": {
+        "concise_reason": "two independent live failures conflict with the displayed contract",
+        "confidence": 0.95,
+        "drift_category": "ICD",
+        "evidence_refs": [
+          "live-3a57d76dd95dc5f9a7e6-EV005",
+          "live-3a57d76dd95dc5f9a7e6-EV011"
+        ],
+        "location_path": "/components/schemas/CreateIssueRequest/required",
+        "location_type": "request_schema",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "requested_probe": {
+          "needed": true
+        },
+        "target_tool_id": "create_issue"
+      },
+      "provider_attempts": 0,
+      "raw_response_sha256": "e5c6a1882a90dcb8219489eb142ae141c543373a9e6767c1390f0da28118ef73",
+      "response_id": "mock-4543dd724b1ce163",
+      "simulated_provider_attempts": 1,
+      "stage": "live_preliminary_attribution"
+    },
+    {
+      "cached": true,
+      "input_tokens": 4369,
+      "latency_ms": 0.0,
+      "output_tokens": 64,
+      "parsed_output": {
+        "concise_reason": "distinguish a persistent visible contract mismatch",
+        "decision": "SELECT_PROBE",
+        "evidence_refs": [
+          "live-3a57d76dd95dc5f9a7e6-EV005",
+          "live-3a57d76dd95dc5f9a7e6-EV011"
+        ],
+        "probe_type": "local_schema_check",
+        "target_tool_id": "create_issue"
+      },
+      "provider_attempts": 0,
+      "raw_response_sha256": "1fc144dadbf504f7c8696a75dc9e8b5a797db690146c04b7900e678f836be195",
+      "response_id": "mock-cb2ec8e971eca726",
+      "simulated_provider_attempts": 1,
+      "stage": "live_probe_selection"
+    },
+    {
+      "cached": true,
+      "input_tokens": 9799,
+      "latency_ms": 0.0,
+      "output_tokens": 114,
+      "parsed_output": {
+        "concise_reason": "two independent live failures conflict with the displayed contract",
+        "confidence": 0.95,
+        "drift_category": "ICD",
+        "evidence_refs": [
+          "live-3a57d76dd95dc5f9a7e6-EV005",
+          "live-3a57d76dd95dc5f9a7e6-EV011",
+          "live-3a57d76dd95dc5f9a7e6-EV016"
+        ],
+        "location_path": "/components/schemas/CreateIssueRequest/required",
+        "location_type": "request_schema",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "requested_probe": null,
+        "target_tool_id": "create_issue"
+      },
+      "provider_attempts": 0,
+      "raw_response_sha256": "bb86aee5f74d5bf6a7bf4113bc6e7017d44c7112382ef85b5e59e9fe0b39b71b",
+      "response_id": "mock-74757b5443fc764f",
+      "simulated_provider_attempts": 1,
+      "stage": "live_final_attribution"
+    },
+    {
+      "cached": true,
+      "input_tokens": 10536,
+      "latency_ms": 0.0,
+      "output_tokens": 251,
+      "parsed_output": {
+        "concise_reason": "minimal target-scoped live-evidence patch",
+        "confidence": 0.95,
+        "drift_category": "ICD",
+        "evidence_refs": [
+          "live-3a57d76dd95dc5f9a7e6-EV005",
+          "live-3a57d76dd95dc5f9a7e6-EV011",
+          "live-3a57d76dd95dc5f9a7e6-EV016"
+        ],
+        "expected_agent_behavior_change": "adapt the displayed tool contract using only the cited live evidence",
+        "location_path": "/components/schemas/CreateIssueRequest/required",
+        "openapi_operations": [
+          {
+            "evidence_refs": [
+              "live-3a57d76dd95dc5f9a7e6-EV005",
+              "live-3a57d76dd95dc5f9a7e6-EV011",
+              "live-3a57d76dd95dc5f9a7e6-EV016"
+            ],
+            "op": "add",
+            "path": "/components/schemas/CreateIssueRequest/required/-",
+            "reason_code": "LIVE_EVIDENCE_MINIMAL_CHANGE",
+            "value": "priority"
+          }
+        ],
+        "semantic_extensions": {
+          "x-driftguard-patch-semantics": {
+            "after": [
+              "title",
+              "priority"
+            ],
+            "before": [
+              "title"
+            ],
+            "operation": "add_required",
+            "request_transform": {
+              "field": "priority",
+              "kind": "supply_required",
+              "value": "medium"
+            },
+            "target": "/adapter/create_issue/required"
+          }
+        },
+        "target_tool_id": "create_issue"
+      },
+      "provider_attempts": 0,
+      "raw_response_sha256": "9951ed93b3f55904dda16bb4c770735893683d8300730b9419989c6f816415f3",
+      "response_id": "mock-18b40beb971194f5",
+      "simulated_provider_attempts": 1,
+      "stage": "live_patch_proposal"
+    }
+  ],
+  "main_state_pollution": false,
+  "method": "driftguard_llm",
+  "mock_simulated_input_tokens": 0,
+  "mock_simulated_output_tokens": 0,
+  "model": "qwen3.7-plus",
+  "oracle_fallback_used": false,
+  "output_tokens": 0,
+  "patch_eligibility": {
+    "decision": "ELIGIBLE",
+    "discriminative_probe_passed": true,
+    "independent_failure_count": 2,
+    "reason_codes": [
+      "LIVE_PROTOCOL_SATISFIED"
+    ],
+    "regression_requirements_identified": true,
+    "supporting_evidence_ids": [
+      "live-3a57d76dd95dc5f9a7e6-EV005",
+      "live-3a57d76dd95dc5f9a7e6-EV011",
+      "live-3a57d76dd95dc5f9a7e6-EV016"
+    ],
+    "unsafe_write_count": 0
+  },
+  "patch_proposal": {
+    "concise_reason": "minimal target-scoped live-evidence patch",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "evidence_refs": [
+      "live-3a57d76dd95dc5f9a7e6-EV005",
+      "live-3a57d76dd95dc5f9a7e6-EV011",
+      "live-3a57d76dd95dc5f9a7e6-EV016"
+    ],
+    "expected_agent_behavior_change": "adapt the displayed tool contract using only the cited live evidence",
+    "location_path": "/components/schemas/CreateIssueRequest/required",
+    "openapi_operations": [
+      {
+        "evidence_refs": [
+          "live-3a57d76dd95dc5f9a7e6-EV005",
+          "live-3a57d76dd95dc5f9a7e6-EV011",
+          "live-3a57d76dd95dc5f9a7e6-EV016"
+        ],
+        "op": "add",
+        "path": "/components/schemas/CreateIssueRequest/required/-",
+        "reason_code": "LIVE_EVIDENCE_MINIMAL_CHANGE",
+        "value": "priority"
+      }
+    ],
+    "semantic_extensions": {
+      "x-driftguard-patch-semantics": {
+        "after": [
+          "title",
+          "priority"
+        ],
+        "before": [
+          "title"
+        ],
+        "operation": "add_required",
+        "request_transform": {
+          "field": "priority",
+          "kind": "supply_required",
+          "value": "medium"
+        },
+        "target": "/adapter/create_issue/required"
+      }
+    },
+    "target_tool_id": "create_issue"
+  },
+  "patch_proposal_calls": 1,
+  "patch_registry_state": {
+    "accepted_count": 1,
+    "scope_key": "public-M01:dashscope:driftguard_llm:r0"
+  },
+  "patch_revision": {
+    "used": false
+  },
+  "preliminary_attribution": {
+    "concise_reason": "two independent live failures conflict with the displayed contract",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "evidence_refs": [
+      "live-3a57d76dd95dc5f9a7e6-EV005",
+      "live-3a57d76dd95dc5f9a7e6-EV011"
+    ],
+    "location_path": "/components/schemas/CreateIssueRequest/required",
+    "location_type": "request_schema",
+    "predicted_class": "PERSISTENT_DRIFT",
+    "requested_probe": {
+      "needed": true
+    },
+    "target_tool_id": "create_issue"
+  },
+  "probe_calls": 1,
+  "probe_result": {
+    "executed": true,
+    "fork_call_count": 1,
+    "main_state_hash_after": "b9766e9699f4040abba10d254817cfc95341fbc09927603bf377a9cb5423d9ca",
+    "main_state_hash_before": "b9766e9699f4040abba10d254817cfc95341fbc09927603bf377a9cb5423d9ca",
+    "probe_type": "local_schema_check",
+    "result": {
+      "payload": {
+        "error": {
+          "code": "VALIDATION_ERROR",
+          "field": "priority",
+          "message": "Missing required field: priority",
+          "retryable": false
+        },
+        "ok": false
+      },
+      "status_code": 422
+    },
+    "state_unchanged": true
+  },
+  "probe_selection": {
+    "concise_reason": "distinguish a persistent visible contract mismatch",
+    "decision": "SELECT_PROBE",
+    "evidence_refs": [
+      "live-3a57d76dd95dc5f9a7e6-EV005",
+      "live-3a57d76dd95dc5f9a7e6-EV011"
+    ],
+    "probe_type": "local_schema_check",
+    "target_tool_id": "create_issue"
+  },
+  "provider": "dashscope",
+  "provider_boundary_calls": 0,
+  "public_scenario_id": "public-M01",
+  "record_id": "6f94f6a6241895909af1f45a",
+  "record_status": "COMPLETE",
+  "scenario_id": "M01-PD",
+  "schema_version": "focused-live-healing-record-v1",
+  "source_snapshot": "0ea22bf4fac1351392a9f7df3604bae296202757b01602f93da9c96814618038",
+  "stage_trace": [
+    {
+      "ordinal": 1,
+      "stage": "TASK_EXECUTION",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 2,
+      "stage": "FAILURE_OBSERVED",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 3,
+      "stage": "PRELIMINARY_ATTRIBUTION",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 4,
+      "stage": "RETRY_OR_EVIDENCE_COLLECTION",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 5,
+      "stage": "REPRODUCTION_CHECK",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 6,
+      "stage": "PROBE_SELECTION",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 7,
+      "stage": "PROBE_EXECUTION",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 8,
+      "stage": "FINAL_ATTRIBUTION",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 9,
+      "stage": "PATCH_ELIGIBILITY",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 10,
+      "stage": "PATCH_PROPOSAL",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 11,
+      "stage": "PATCH_VALIDATION",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 12,
+      "stage": "IMMEDIATE_REPAIR",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 13,
+      "stage": "REGRESSION_SAFETY_MINIMALITY",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 14,
+      "stage": "PATCH_ACCEPTED",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 15,
+      "stage": "FUTURE_TRANSFER",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 16,
+      "stage": "FINAL_EVALUATION",
+      "status": "COMPLETE"
+    }
+  ],
+  "stopped_stage": "FINAL_EVALUATION",
+  "symbolic_fallback_used": false,
+  "termination_reason": "LIVE_HEALING_COMPLETE",
+  "tool_calls": 6
+}

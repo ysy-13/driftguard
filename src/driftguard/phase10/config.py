@@ -33,6 +33,7 @@ class Phase10Budget:
     max_output_tokens_per_record: int
     max_format_repairs: int
     reserve_worst_case_before_call: bool
+    max_patch_proposal_calls_per_record: int = 2
 
 
 @dataclass(frozen=True)
@@ -56,6 +57,11 @@ class Phase10Config:
         raw = yaml.safe_load(Path(path).read_text(encoding="utf-8"))
         if not isinstance(raw, dict) or "experiment" not in raw or "models" not in raw:
             raise ValueError("not a Phase 10 experiment config")
+        if raw["experiment"].get("kind") == "FOCUSED_LIVE_HEALING_CANARY":
+            raise ValueError(
+                "Focused Live-Healing configs must use FocusedLiveHealingConfig; "
+                "the generic Phase10Config MAIN path is forbidden"
+            )
         encoded = json.dumps(raw, sort_keys=True, separators=(",", ":"))
         experiment = raw["experiment"]
         models = tuple(ModelConfig.from_mapping(item) for item in raw["models"])
@@ -99,6 +105,7 @@ class Phase10Config:
             max_output_tokens=self.budget.max_output_tokens_per_record,
             max_wall_time_seconds=float(self.execution.get("max_wall_time_seconds", 300)),
             max_format_repairs=self.budget.max_format_repairs,
+            max_patch_proposal_calls=self.budget.max_patch_proposal_calls_per_record,
         )
         seeded = ModelConfig(**{**model.__dict__, "seed": seed})
         return ExperimentConfig(

@@ -1,0 +1,19 @@
+{
+  "accepted": 8,
+  "api_attempts_delta": 0,
+  "cost_cny_delta": 0.0,
+  "execution_mode": "CACHE_REPLAY",
+  "experiment_kind": "FOCUSED_LIVE_HEALING_CANARY",
+  "input_tokens_delta": 0,
+  "ledger_after_sha256": "0bd2cc8c3435a55c05f3c59d7a23e304de0c7093d64d813d23b6e5e07c1bbcb9",
+  "ledger_before_sha256": "0bd2cc8c3435a55c05f3c59d7a23e304de0c7093d64d813d23b6e5e07c1bbcb9",
+  "oracle_fallback_count": 0,
+  "output_tokens_delta": 0,
+  "provider_fallback_calls": 0,
+  "real_api_status": "NOT RUN",
+  "records_completed": 8,
+  "records_planned": 8,
+  "records_resumed": 0,
+  "run_status": "COMPLETE",
+  "symbolic_fallback_count": 0
+}

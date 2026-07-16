@@ -3,16 +3,18 @@ from __future__ import annotations
 import hashlib
 import json
 from copy import deepcopy
+from dataclasses import replace
 from pathlib import Path
 from typing import Any
 
 from driftguard.contracts.input_validator import InputValidationError, InputValidator
 from driftguard.contracts.registry import ContractRegistry
 from driftguard.evidence.leakage_guard import assert_agent_visible
-from driftguard.evidence import EvidenceCollector, EvidenceStore
+from driftguard.evidence.collector import stable_hash
 from driftguard.evidence.models import EvaluatorView
 from driftguard.experiments.budgets import BudgetExhausted, BudgetTracker
 from driftguard.injection import AgentErrorHook
+from driftguard.live.evidence_bridge import LiveEvidenceBridge, LiveScope
 from driftguard.llm import (
     ErrorCategory, InvalidStructuredOutput, LLMCache, LLMProvider, ModelConfig,
     ProviderError, ProviderRequest, ProviderTimeout, RateLimited, UsageCounter,
@@ -44,6 +46,8 @@ class ToolAgentController:
         config_hash: str = "",
         run_mode: str = "end_to_end",
         replay_normalized_runtime_arguments: bool = False,
+        live_evidence_bridge: LiveEvidenceBridge | None = None,
+        execution_context_id: str | None = None,
     ):
         self.provider, self.model_config, self.policy, self.service = provider, model_config, policy, service
         self.tracker, self.action_schema = tracker, action_schema
@@ -51,12 +55,19 @@ class ToolAgentController:
         self.cache, self.force_refresh = cache, force_refresh
         self.config_hash, self.run_mode = config_hash, run_mode
         self.replay_normalized_runtime_arguments = replay_normalized_runtime_arguments
+        self.live_evidence_bridge = live_evidence_bridge
+        # An explicitly supplied bridge opts this Controller run into the
+        # online attribution hand-off.  The automatically-created trace used
+        # by legacy Phase 10 records remains observational only.
+        self.live_healing_enabled = live_evidence_bridge is not None
+        self.execution_context_id = execution_context_id
         self.parser = ActionParser(action_schema)
         self.feedback_loop_enabled = "TOOL_CATALOG_RENDERER_V1" in base_prompt
         self.context_builder = AgentContextBuilder(full_catalog=self.feedback_loop_enabled)
         self.validator, self.evaluator = InputValidator(), TaskEvaluator()
         self.memory, self.usage = TaskMemory(persistent=False), UsageCounter()
         self.last_evidence_trace = None
+        self.last_live_evidence_bridge: LiveEvidenceBridge | None = None
         self.capabilities = PolicyCapabilities.for_method(self.policy.method)
         if self.capabilities.allows_probe != bool(self.policy.allows_probe):
             raise ValueError("PolicyCapabilities and policy safety gate disagree")
@@ -75,8 +86,26 @@ class ToolAgentController:
             raise TypeError("displayed_spec must be an Agent-visible document")
         assert_agent_visible({"task": task.get("instruction", ""), "displayed_spec": displayed_spec})
         initial_state = self.service.store.snapshot()
-        evidence_store = EvidenceStore(f"trace-{public_scenario_id}", public_scenario_id)
-        evidence_collector = EvidenceCollector(evidence_store, displayed_spec)
+        live = self.live_evidence_bridge
+        if live is None and self.policy.method == "driftguard_llm":
+            live = LiveEvidenceBridge(
+                LiveScope(public_scenario_id, self.model_config.provider, self.policy.method, repetition),
+                displayed_spec,
+            )
+        self.last_live_evidence_bridge = live
+        context_id = self.execution_context_id or f"{public_scenario_id}:episode-{episode}:controller"
+        if live is not None:
+            live.emit(
+                "task_received", episode, source_event="ToolAgentController.run.task_received",
+                execution_context_id=context_id,
+                normalized_observation={"instruction": task.get("instruction", "")},
+            )
+            live.emit(
+                "displayed_spec_snapshot", episode,
+                source_event="ToolAgentController.run.displayed_spec_snapshot",
+                execution_context_id=context_id,
+                normalized_observation={"displayed_spec_fingerprint": stable_hash(displayed_spec)},
+            )
         displayed_registry = ContractRegistry(displayed_spec) if self.feedback_loop_enabled else self.service.registry
         actions: list[dict[str, Any]] = []
         trace_refs: list[str] = []
@@ -100,6 +129,12 @@ class ToolAgentController:
                     })
                     trace_refs.append(f"tool-{self.tracker.tool_calls:03d}")
                     last_evaluation = evaluation
+                    if live is not None:
+                        self._emit_live_tool_result(
+                            live, episode, context_id, pending_exact_retry["tool_id"],
+                            pending_exact_retry["arguments"], result, evaluation,
+                            "retry_result", {"transient_retry_recovered": bool(result.ok)},
+                        )
                     pending_exact_retry = None
                     machine.move("TASK_EVALUATION", "TOOL_RESULT_EVALUATED")
                     if evaluation["task_success"]:
@@ -108,6 +143,14 @@ class ToolAgentController:
                         break
                     decision = self.policy.after_failure(actions[-1], result.to_dict())
                     policy_events.append(_policy_event(self.policy.method, "runtime_failure", decision))
+                    if live is not None:
+                        live.emit(
+                            "policy_recovery", episode,
+                            source_event="ToolAgentController.run.retry_policy_recovery",
+                            execution_context_id=context_id,
+                            tool_id=actions[-1].get("tool_id"),
+                            normalized_observation=_policy_event(self.policy.method, "runtime_failure", decision),
+                        )
                     machine.move("POLICY_RECOVERY", "RUNTIME_FAILURE_POLICY_HOOK")
                     if decision.context:
                         self.memory.append(decision.context)
@@ -134,6 +177,14 @@ class ToolAgentController:
                     "semantic_change": False,
                 }
                 machine.move("ACTION_VALIDATION", f"ACTION_{action.action_type.value}_PARSED")
+                if live is not None and action.action_type == ActionType.TOOL_CALL:
+                    live.emit(
+                        "tool_call_proposed", episode,
+                        source_event="ToolAgentController.run.tool_call_proposed",
+                        execution_context_id=context_id, tool_id=action.tool_id,
+                        displayed_request={"arguments": deepcopy(action.arguments)},
+                        normalized_observation={"action_type": "TOOL_CALL"},
+                    )
                 if action.action_type == ActionType.ABSTAIN:
                     termination = "ABSTAINED"
                     machine.move("ABSTAINED", "AGENT_ABSTAINED")
@@ -171,9 +222,28 @@ class ToolAgentController:
                         machine.move("SAFETY_BLOCKED", "PROBE_TARGET_NOT_PUBLICLY_BOUND")
                         break
                     machine.move("TOOL_EXECUTION", "AUTHORIZED_READ_ONLY_PROBE")
+                    if live is not None:
+                        live.emit(
+                            "probe_requested", episode,
+                            source_event="ToolAgentController.run.agent_action_probe_requested",
+                            execution_context_id=context_id, tool_id=action.target_tool_id,
+                            probe_metadata={
+                                "probe_type": action.probe_type,
+                                "hypothesis": action.hypothesis,
+                                "evidence_refs": list(action.evidence_refs),
+                            },
+                        )
                     probe = self.service.call_tool("get_repository", {"repo_id": repo_id}, task.get("actor_id", "agent_admin"))
                     self.memory.append({"probe_type": action.probe_type, "success": probe.ok, "target_tool_id": action.target_tool_id})
                     trace_refs.append(f"probe-{self.tracker.probe_calls:03d}")
+                    if live is not None:
+                        live.emit(
+                            "probe_executed", episode,
+                            source_event="ToolAgentController.run.agent_action_probe_executed",
+                            execution_context_id=context_id, tool_id=action.target_tool_id,
+                            visible_runtime_response=probe.to_dict(),
+                            probe_metadata={"probe_type": action.probe_type, "passed": probe.ok},
+                        )
                     machine.move("POLICY_RECOVERY", "PROBE_OBSERVATION_RECORDED")
                     machine.move("NEXT_MODEL_ACTION", "PROBE_COMPLETED")
                     continue
@@ -217,12 +287,15 @@ class ToolAgentController:
                     machine.move("POLICY_RECOVERY", f"{self.policy.method.upper()}_VALIDATION_HOOK")
                     if decision.context:
                         self.memory.append(decision.context)
-                    if self.policy.method.startswith("driftguard_"):
-                        event = evidence_collector.add(
-                            "local_validation", episode, action.tool_id,
+                    if self.policy.method.startswith("driftguard_") and live is not None:
+                        event = live.emit(
+                            "local_validation", episode,
+                            source_event="ToolAgentController.run.local_validation_result",
+                            execution_context_id=context_id, tool_id=action.tool_id,
                             displayed_request={"arguments": proposed_arguments},
                             local_validation_result=feedback["validation_error"],
-                            normalized_observation={"kind": "validation_failure"},
+                            normalized_observation={"kind": "validation_failure", "channel": "local_validation"},
+                            probe_metadata={"agent_correction_required": True},
                         )
                         self.memory.append({
                             "evidence": {
@@ -261,6 +334,11 @@ class ToolAgentController:
                     else proposed_arguments
                 )
                 result, evaluation = self._call_tool(task, initial_state, action.tool_id, runtime_arguments)
+                if live is not None:
+                    self._emit_live_tool_result(
+                        live, episode, context_id, action.tool_id, runtime_arguments,
+                        result, evaluation, "tool_response",
+                    )
                 actions[-1]["executed_arguments"] = runtime_arguments
                 trace_refs.append(f"tool-{self.tracker.tool_calls:03d}")
                 last_evaluation = evaluation
@@ -284,9 +362,21 @@ class ToolAgentController:
                     {**visible, "local_validation": {"valid": True}}, result.to_dict()
                 )
                 policy_events.append(_policy_event(self.policy.method, "runtime_or_task_incomplete", decision))
+                if live is not None:
+                    live.emit(
+                        "policy_recovery", episode,
+                        source_event="ToolAgentController.run.policy_recovery",
+                        execution_context_id=context_id, tool_id=action.tool_id,
+                        normalized_observation=_policy_event(
+                            self.policy.method, "runtime_or_task_incomplete", decision,
+                        ),
+                    )
                 if decision.context:
                     self.memory.append(decision.context)
                 machine.move("POLICY_RECOVERY", "TASK_INCOMPLETE_OR_RUNTIME_FAILURE")
+                if self.live_healing_enabled and self.policy.method == "driftguard_llm":
+                    termination = "LIVE_ATTRIBUTION_REQUIRED"
+                    break
                 if decision.exact_retry:
                     pending_exact_retry = {"tool_id": action.tool_id, "arguments": runtime_arguments}
                 if decision.stop:
@@ -309,7 +399,7 @@ class ToolAgentController:
             termination, error = "INVALID_STRUCTURED_OUTPUT", ErrorCategory.INVALID_STRUCTURED_OUTPUT.value
             machine.move("INVALID_STRUCTURED_OUTPUT", "FORMAT_REPAIR_EXHAUSTED")
         finally:
-            self.last_evidence_trace = evidence_store.trace
+            self.last_evidence_trace = live.trace if live is not None else None
             self.memory.end_task()
             self.policy.end_task()
         return AgentRunResult(
@@ -361,7 +451,16 @@ class ToolAgentController:
             self.tracker.consume_llm(response.input_tokens, response.output_tokens)
             self.usage.add(response)
             try:
-                return self.parser.parse(response.raw_text)
+                action = self.parser.parse(response.raw_text)
+                if self.cache is not None and key is not None:
+                    self.cache.put(
+                        key,
+                        replace(
+                            response,
+                            parsed_output=deepcopy(self.parser.last_raw_action or action.to_dict()),
+                        ),
+                    )
+                return action
             except (InvalidStructuredOutput, ValueError) as exc:
                 if repair_index >= self.tracker.budget.max_format_repairs:
                     raise InvalidStructuredOutput("format repair budget exhausted")
@@ -379,6 +478,50 @@ class ToolAgentController:
         failures = [] if result.ok else [f"tool failed: {result.payload.get('error', {})}"]
         evaluation = self._evaluate(task, initial_state, {"tool_succeeded": result.ok}, failures)
         return result, evaluation
+
+    def _emit_live_tool_result(
+        self, live, episode, context_id, tool_id, arguments, result, evaluation,
+        event_type="tool_response", extra_metadata=None,
+    ):
+        record = self.service.call_log()[-1]
+        correlation = f"{context_id}:tool-{record['call_index']:03d}"
+        live.emit(
+            "tool_call_executed", episode,
+            source_event="ToolAgentController.run.tool_call_executed",
+            correlation_id=correlation, execution_context_id=context_id,
+            tool_id=tool_id, displayed_request={"arguments": deepcopy(arguments)},
+            normalized_observation={"runtime_call_completed": True},
+        )
+        metadata = {
+            "independent_failure": not bool(evaluation.get("task_success")),
+            "regression_requirements_identified": True,
+            **(extra_metadata or {}),
+        }
+        observation = {
+            "channel": "success" if result.ok else "response_error",
+            "status_code": result.status_code,
+            "task_complete": bool(evaluation.get("task_success")),
+        }
+        if not result.ok:
+            error = result.payload.get("error", {})
+            observation.update({
+                "error_code": error.get("code"), "field": error.get("field"),
+                "message_pattern": error.get("message"),
+            })
+        elif not evaluation.get("task_success"):
+            observation["channel"] = "task_incomplete"
+        return live.emit(
+            event_type, episode,
+            source_event=f"ToolAgentController.run.{event_type}",
+            correlation_id=correlation, execution_context_id=context_id,
+            tool_id=tool_id, displayed_request={"arguments": deepcopy(arguments)},
+            visible_runtime_response=result.to_dict(),
+            normalized_observation=observation,
+            visible_state_diff=record["state_diff"],
+            before_state_hash=stable_hash(record["pre_state"]),
+            after_state_hash=stable_hash(record["post_state"]),
+            probe_metadata=metadata,
+        )
 
     def _evaluate(self, task, initial_state, answer, failures):
         return self.evaluator.evaluate(

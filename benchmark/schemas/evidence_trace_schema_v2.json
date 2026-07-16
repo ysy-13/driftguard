@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["trace_id", "public_scenario_id", "events"],
+  "properties": {
+    "trace_id": {"type": "string"},
+    "public_scenario_id": {"type": "string", "pattern": "^public-"},
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["event_id", "trace_id", "public_scenario_id", "episode_number", "sequence_number", "event_type", "correlation_id", "provenance"],
+        "properties": {
+          "event_id": {"type": "string"}, "trace_id": {"type": "string"},
+          "public_scenario_id": {"type": "string"}, "episode_number": {"type": "integer", "minimum": 1},
+          "sequence_number": {"type": "integer", "minimum": 1}, "event_type": {"type": "string"},
+          "tool_id": {"type": ["string", "null"]}, "displayed_request": {"type": "object"},
+          "local_validation_result": {"type": "object"}, "visible_runtime_response": {"type": "object"},
+          "normalized_observation": {"type": "object"}, "visible_state_diff": {"type": "array"},
+          "before_state_hash": {"type": ["string", "null"]}, "after_state_hash": {"type": ["string", "null"]},
+          "displayed_spec_fingerprint": {"type": ["string", "null"]}, "historical_evidence_refs": {"type": "array"},
+          "probe_metadata": {"type": "object"}, "correlation_id": {"type": "string", "minLength": 1},
+          "provenance": {
+            "type": "object", "additionalProperties": false,
+            "required": ["source", "controller_event", "scope_key"],
+            "properties": {
+              "source": {"const": "controller_event"}, "controller_event": {"type": "string"},
+              "scope_key": {"type": "string"}, "execution_context_id": {"type": "string"}
+            }
+          },
+          "timestamp": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

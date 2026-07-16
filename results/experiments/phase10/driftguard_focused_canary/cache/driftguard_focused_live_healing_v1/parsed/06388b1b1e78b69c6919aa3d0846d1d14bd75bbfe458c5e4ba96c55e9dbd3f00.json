@@ -1,0 +1,1 @@
+{"concise_reason": "distinguish a persistent visible contract mismatch", "decision": "SELECT_PROBE", "evidence_refs": ["live-80e9a310ff6b2174c9f6-EV005", "live-80e9a310ff6b2174c9f6-EV011"], "probe_type": "precondition_inspection", "target_tool_id": "close_issue"}

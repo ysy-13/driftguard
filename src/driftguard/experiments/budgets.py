@@ -20,6 +20,7 @@ class ExperimentBudget:
     max_output_tokens: int = 3000
     max_wall_time_seconds: float = 120.0
     max_format_repairs: int = 2
+    max_patch_proposal_calls: int = 2
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -34,13 +35,14 @@ class BudgetTracker:
     input_tokens: int = 0
     output_tokens: int = 0
     format_repairs: int = 0
+    patch_proposal_calls: int = 0
     _started: float = field(default_factory=time.monotonic)
 
     @property
     def total_interactions(self) -> int:
         return self.llm_calls + self.tool_calls
 
-    def _check_values(self, llm_calls: int, tool_calls: int, probe_calls: int, input_tokens: int, output_tokens: int, format_repairs: int) -> None:
+    def _check_values(self, llm_calls: int, tool_calls: int, probe_calls: int, input_tokens: int, output_tokens: int, format_repairs: int, patch_proposal_calls: int | None = None) -> None:
         if llm_calls > self.budget.max_llm_calls:
             raise BudgetExhausted("LLM call budget exhausted")
         if tool_calls > self.budget.max_tool_calls:
@@ -53,6 +55,8 @@ class BudgetTracker:
             raise BudgetExhausted("token budget exhausted")
         if format_repairs > self.budget.max_format_repairs:
             raise BudgetExhausted("format repair budget exhausted")
+        if (self.patch_proposal_calls if patch_proposal_calls is None else patch_proposal_calls) > self.budget.max_patch_proposal_calls:
+            raise BudgetExhausted("patch proposal budget exhausted")
         if time.monotonic() - self._started > self.budget.max_wall_time_seconds:
             raise BudgetExhausted("wall-time budget exhausted")
 
@@ -86,3 +90,14 @@ class BudgetTracker:
             self.llm_calls + 1, self.tool_calls, self.probe_calls,
             self.input_tokens, self.output_tokens, self.format_repairs,
         )
+
+    def consume_patch_proposal(self, input_tokens: int = 0, output_tokens: int = 0) -> None:
+        self._check_values(
+            self.llm_calls + 1, self.tool_calls, self.probe_calls,
+            self.input_tokens + input_tokens, self.output_tokens + output_tokens,
+            self.format_repairs, self.patch_proposal_calls + 1,
+        )
+        self.llm_calls += 1
+        self.patch_proposal_calls += 1
+        self.input_tokens += input_tokens
+        self.output_tokens += output_tokens

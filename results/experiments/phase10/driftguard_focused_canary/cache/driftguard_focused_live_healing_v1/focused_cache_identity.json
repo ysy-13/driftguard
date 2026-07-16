@@ -1,0 +1,9 @@
+{
+  "config_hash": "af29b021141008c3b15dbadc1649ec5cacd0fd2d9b1605c7baedbbc8fd710749",
+  "experiment_kind": "FOCUSED_LIVE_HEALING_CANARY",
+  "frozen_fingerprints_hash": "2f9a3ad9ea981acdb9ad5a96cbf6f18275661a72529fb187e697b3507c155aea",
+  "policy_capabilities_hash": "ea2d1b49ab9ab7ca0b8a776bf49b211e5f6f141d138778221f7a4b7a7149ef01",
+  "schema_version": "focused-cache-identity-v1",
+  "source_snapshot": "0ea22bf4fac1351392a9f7df3604bae296202757b01602f93da9c96814618038",
+  "tool_catalog_hash": "76bde8f625aa26f786ef3ee9065c481adf1cfd793aea7c5b3fea88d40573b7da"
+}

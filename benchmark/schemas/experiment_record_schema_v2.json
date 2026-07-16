@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["live_evidence_trace_ref", "preliminary_attribution", "probe_selection", "probe_result", "final_attribution", "independent_failure_count", "patch_eligibility", "raw_llm_patch", "patch_revision", "static_validation", "regression_validation", "safety_validation", "minimality_validation", "immediate_repair", "future_transfer", "patch_registry_state", "symbolic_fallback_used"],
+  "properties": {
+    "live_evidence_trace_ref": {"type": "string"},
+    "preliminary_attribution": {"type": ["object", "null"]},
+    "probe_selection": {"type": ["object", "null"]},
+    "probe_result": {"type": ["object", "null"]},
+    "final_attribution": {"type": ["object", "null"]},
+    "independent_failure_count": {"type": "integer", "minimum": 0},
+    "patch_eligibility": {"type": "object"},
+    "raw_llm_patch": {"type": ["object", "null"]},
+    "patch_revision": {"type": ["object", "null"]},
+    "static_validation": {"type": ["object", "null"]},
+    "regression_validation": {"type": ["object", "null"]},
+    "safety_validation": {"type": ["object", "null"]},
+    "minimality_validation": {"type": ["object", "null"]},
+    "immediate_repair": {"type": ["object", "null"]},
+    "future_transfer": {"type": ["object", "null"]},
+    "patch_registry_state": {"type": "object"},
+    "symbolic_fallback_used": {"const": false}
+  }
+}

@@ -111,7 +111,18 @@ class RepairExecutor:
                 if not issue.ok:
                     return {"repair_ok": False}
                 if not issue.payload["data"].get("assignee"):
-                    assign = service.call_tool("assign_issue", {**arguments, "assignee": "bob"}, "agent_admin")
+                    # Build the prerequisite call from its own contract.  Forwarding
+                    # close_issue-only fields (for example ``resolution``) makes the
+                    # otherwise-correct workflow repair fail local validation.
+                    assign = service.call_tool(
+                        "assign_issue",
+                        {
+                            "repo_id": arguments["repo_id"],
+                            "issue_id": arguments["issue_id"],
+                            "assignee": "bob",
+                        },
+                        "agent_admin",
+                    )
                     if not assign.ok:
                         return {"repair_ok": False}
             elif kind == "verification_binding":

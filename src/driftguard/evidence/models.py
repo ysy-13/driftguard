@@ -12,6 +12,9 @@ EVENT_TYPES = {
     "task_received", "tool_call_proposed", "local_validation", "tool_response",
     "state_observation", "history_retrieval", "retry_result", "probe_started",
     "probe_result", "hypothesis_updated", "diagnosis_emitted",
+    "displayed_spec_snapshot", "tool_call_executed", "policy_recovery",
+    "probe_requested", "probe_executed", "attribution_emitted", "patch_proposed",
+    "patch_validation", "immediate_repair", "future_transfer", "final_evaluation",
 }
 
 
@@ -50,6 +53,8 @@ class EvidenceEvent:
     displayed_spec_fingerprint: str | None = None
     historical_evidence_refs: tuple[str, ...] = ()
     probe_metadata: Mapping[str, Any] = field(default_factory=dict)
+    correlation_id: str = ""
+    provenance: Mapping[str, Any] = field(default_factory=dict)
     timestamp: str = ""
 
     def __post_init__(self) -> None:
@@ -60,7 +65,7 @@ class EvidenceEvent:
         assert_public_id(self.public_scenario_id)
         for name in (
             "displayed_request", "local_validation_result", "visible_runtime_response",
-            "normalized_observation", "probe_metadata",
+            "normalized_observation", "probe_metadata", "provenance",
         ):
             frozen = freeze(getattr(self, name))
             assert_agent_visible(thaw(frozen))
@@ -69,7 +74,7 @@ class EvidenceEvent:
         object.__setattr__(self, "historical_evidence_refs", tuple(self.historical_evidence_refs))
 
     def to_dict(self) -> dict[str, Any]:
-        return {
+        value = {
             "event_id": self.event_id, "trace_id": self.trace_id,
             "public_scenario_id": self.public_scenario_id,
             "episode_number": self.episode_number, "sequence_number": self.sequence_number,
@@ -84,6 +89,13 @@ class EvidenceEvent:
             "historical_evidence_refs": list(self.historical_evidence_refs),
             "probe_metadata": thaw(self.probe_metadata), "timestamp": self.timestamp,
         }
+        # Preserve byte-for-byte compatibility with the v1 Phase 7 schema for
+        # legacy events while allowing live events to carry explicit lineage.
+        if self.correlation_id:
+            value["correlation_id"] = self.correlation_id
+        if self.provenance:
+            value["provenance"] = thaw(self.provenance)
+        return value
 
 
 @dataclass(frozen=True)

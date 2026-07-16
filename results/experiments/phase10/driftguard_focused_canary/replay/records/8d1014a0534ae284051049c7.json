@@ -1,0 +1,1347 @@
+{
+  "api_attempts_delta": 0,
+  "cache": {
+    "entries_after": 48,
+    "entries_before": 48,
+    "hits": 6,
+    "identity_hash": "a421e50626c5d29e8be176cd98cf9a6d2c509b77a4e44defbb8346ffe616cdb2",
+    "misses": 0,
+    "namespace": "driftguard_focused_live_healing_v1",
+    "provider_fallback_calls": 0
+  },
+  "checkpoint": {
+    "record_level": true,
+    "resumed": false
+  },
+  "cost_cny_delta": 0.0,
+  "deterministic_gates": {
+    "minimality": {
+      "details": {
+        "operation_count": 1,
+        "subset_tests": 1
+      },
+      "passed": true,
+      "reason_codes": [
+        "NO_REDUNDANT_OPERATION",
+        "EMPTY_SUBSET_CANNOT_REPAIR"
+      ],
+      "stage": "minimality"
+    },
+    "regression": {
+      "details": {
+        "independent_state_forks": 3,
+        "passed": 3,
+        "required": 3
+      },
+      "passed": true,
+      "reason_codes": [
+        "TARGET_TOOL",
+        "NEIGHBORING_WORKFLOW",
+        "GLOBAL_INVARIANT"
+      ],
+      "stage": "regression"
+    },
+    "safety": {
+      "details": {
+        "unsafe_patch": false,
+        "write_calls": 2
+      },
+      "passed": true,
+      "reason_codes": [
+        "NO_UNSAFE_WRITE",
+        "NO_PERMISSION_EXPANSION",
+        "WITHIN_TOOL_BUDGET"
+      ],
+      "stage": "safety"
+    },
+    "static": {
+      "details": {
+        "atomic_apply": true,
+        "operation_count": 1
+      },
+      "passed": true,
+      "reason_codes": [
+        "OPENAPI_31_VALID",
+        "PATCH_SCOPE_VALID"
+      ],
+      "stage": "static"
+    }
+  },
+  "evidence_provenance": {
+    "event_count": 21,
+    "phase7_static_reconstruction": false,
+    "source": "ToolAgentController live events",
+    "trace_id": "live-dd7ed5e614775cfe30e5"
+  },
+  "execution_mode": "CACHE_REPLAY",
+  "experiment_kind": "FOCUSED_LIVE_HEALING_CANARY",
+  "family": "M11",
+  "final_attribution": {
+    "concise_reason": "two independent live failures conflict with the displayed contract",
+    "confidence": 0.95,
+    "drift_category": "WPD",
+    "evidence_refs": [
+      "live-dd7ed5e614775cfe30e5-EV005",
+      "live-dd7ed5e614775cfe30e5-EV011",
+      "live-dd7ed5e614775cfe30e5-EV016"
+    ],
+    "location_path": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-preconditions",
+    "location_type": "workflow_precondition",
+    "predicted_class": "PERSISTENT_DRIFT",
+    "requested_probe": null,
+    "target_tool_id": "close_issue"
+  },
+  "frozen_fingerprints": {
+    "action_prompt_v3_sha256": "bae688c173db4f561162d402acef5661256c6bab5a1d20a65e96868c2ec8267f",
+    "action_schema_v3_sha256": "27807767537dbcf83620642edc443525da61f08dfde6935f4ea11aafd1e9dcf1",
+    "attribution_prompt_v2_sha256": "41255c4096399f8ded854f64d84a4f5de02174d1fb8a9825828e5c91c3ab2d5e",
+    "attribution_schema_v1_sha256": "54c8fdda24a5d37521520337c19095f4782494a8c2335a89f927f8ccecc490d6",
+    "cache_key_material": [
+      "action_prompt_hash",
+      "action_schema_hash",
+      "attribution_prompt_hash",
+      "attribution_schema_hash",
+      "probe_prompt_hash",
+      "probe_schema_hash",
+      "patch_prompt_hash",
+      "patch_schema_hash",
+      "tool_catalog_fingerprint",
+      "policy_capabilities",
+      "provider",
+      "model",
+      "method",
+      "public_scenario_id",
+      "repetition",
+      "attempt_version",
+      "episode_stage",
+      "evidence_fingerprint",
+      "source_snapshot",
+      "config_hash"
+    ],
+    "patch_prompt_v2_sha256": "4c325cc684341e91f405c13c05a3a8d0a751aa4fe83a8ee3e956bb75262953df",
+    "patch_schema_v2_sha256": "b641abd733730dd6f858af4be9cf85231ed9c7b29ce5637c1d1361bd64801b85",
+    "policy_capabilities": [
+      "TOOL_CALL",
+      "FINAL_ANSWER",
+      "REQUEST_PROBE",
+      "ABSTAIN"
+    ],
+    "probe_prompt_v1_sha256": "0b93fcbf4fdf56f52d3fcfe1550dd111e11e5e164d8f294219dcc0346d77f4eb",
+    "probe_schema_v1_sha256": "d3c118f3c80d400d8e539b619ea5e1cedb7bb4cde4eecb3c04891cd0077fbdce",
+    "tool_catalog_fingerprint": "76bde8f625aa26f786ef3ee9065c481adf1cfd793aea7c5b3fea88d40573b7da"
+  },
+  "future_transfer": {
+    "candidate_rewritten_after_transfer": false,
+    "first_result_counted": true,
+    "held_out_episode": 6,
+    "no_patch_calls": 1,
+    "no_patch_success": false,
+    "patched_calls": 3,
+    "patched_success": true,
+    "same_initial_state": true
+  },
+  "immediate_repair": {
+    "details": {
+      "call_count": 3,
+      "failure": null,
+      "forbidden_side_effects": 0,
+      "passed": true,
+      "state_change_count": 5,
+      "task_evaluator_passed": true
+    },
+    "passed": true,
+    "reason_codes": [
+      "TASK_EVALUATOR_PASSED",
+      "FORBIDDEN_SIDE_EFFECTS_ZERO"
+    ],
+    "stage": "immediate_repair"
+  },
+  "infrastructure_or_method_failure": "NONE",
+  "input_tokens": 0,
+  "latency_ms": 0.0,
+  "leakage": {
+    "api_key_values_read": false,
+    "forbidden_fields": [],
+    "passed": true
+  },
+  "live_evidence_trace": {
+    "events": [
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M11:dashscope:driftguard_llm:r0:EV001",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 3,
+        "event_id": "live-dd7ed5e614775cfe30e5-EV001",
+        "event_type": "task_received",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "instruction": "Close unassigned alpha-api issue 101. Resolved identifiers: repository 'alpha-api' has repo_id R1."
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.task_received",
+          "execution_context_id": "public-M11:independent-episode-3",
+          "scope_key": "public-M11:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M11",
+        "sequence_number": 1,
+        "timestamp": "2026-01-01T00:00:01Z",
+        "tool_id": null,
+        "trace_id": "live-dd7ed5e614775cfe30e5",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M11:dashscope:driftguard_llm:r0:EV002",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 3,
+        "event_id": "live-dd7ed5e614775cfe30e5-EV002",
+        "event_type": "displayed_spec_snapshot",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1"
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.displayed_spec_snapshot",
+          "execution_context_id": "public-M11:independent-episode-3",
+          "scope_key": "public-M11:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M11",
+        "sequence_number": 2,
+        "timestamp": "2026-01-01T00:00:02Z",
+        "tool_id": null,
+        "trace_id": "live-dd7ed5e614775cfe30e5",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M11:dashscope:driftguard_llm:r0:EV003",
+        "displayed_request": {
+          "arguments": {
+            "issue_id": 101,
+            "repo_id": "R1",
+            "resolution": "completed"
+          }
+        },
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 3,
+        "event_id": "live-dd7ed5e614775cfe30e5-EV003",
+        "event_type": "tool_call_proposed",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "action_type": "TOOL_CALL"
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.tool_call_proposed",
+          "execution_context_id": "public-M11:independent-episode-3",
+          "scope_key": "public-M11:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M11",
+        "sequence_number": 3,
+        "timestamp": "2026-01-01T00:00:03Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-dd7ed5e614775cfe30e5",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M11:independent-episode-3:tool-001",
+        "displayed_request": {
+          "arguments": {
+            "issue_id": 101,
+            "repo_id": "R1",
+            "resolution": "completed"
+          }
+        },
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 3,
+        "event_id": "live-dd7ed5e614775cfe30e5-EV004",
+        "event_type": "tool_call_executed",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "runtime_call_completed": true
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.tool_call_executed",
+          "execution_context_id": "public-M11:independent-episode-3",
+          "scope_key": "public-M11:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M11",
+        "sequence_number": 4,
+        "timestamp": "2026-01-01T00:00:04Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-dd7ed5e614775cfe30e5",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": "b9766e9699f4040abba10d254817cfc95341fbc09927603bf377a9cb5423d9ca",
+        "before_state_hash": "b9766e9699f4040abba10d254817cfc95341fbc09927603bf377a9cb5423d9ca",
+        "correlation_id": "public-M11:independent-episode-3:tool-001",
+        "displayed_request": {
+          "arguments": {
+            "issue_id": 101,
+            "repo_id": "R1",
+            "resolution": "completed"
+          }
+        },
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 3,
+        "event_id": "live-dd7ed5e614775cfe30e5-EV005",
+        "event_type": "tool_response",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "channel": "response_error",
+          "error_code": "PRECONDITION_FAILED",
+          "field": null,
+          "message_pattern": "Issue must have an active assignee.",
+          "status_code": 409,
+          "task_complete": false
+        },
+        "probe_metadata": {
+          "independent_failure": true,
+          "regression_requirements_identified": true
+        },
+        "provenance": {
+          "controller_event": "ToolAgentController.run.tool_response",
+          "execution_context_id": "public-M11:independent-episode-3",
+          "scope_key": "public-M11:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M11",
+        "sequence_number": 5,
+        "timestamp": "2026-01-01T00:00:05Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-dd7ed5e614775cfe30e5",
+        "visible_runtime_response": {
+          "payload": {
+            "error": {
+              "code": "PRECONDITION_FAILED",
+              "field": null,
+              "message": "Issue must have an active assignee.",
+              "retryable": false
+            },
+            "ok": false
+          },
+          "status_code": 409
+        },
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M11:dashscope:driftguard_llm:r0:EV006",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 3,
+        "event_id": "live-dd7ed5e614775cfe30e5-EV006",
+        "event_type": "policy_recovery",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "context_types": [
+            "evidence_collection",
+            "probe_allowed"
+          ],
+          "exact_retry": false,
+          "failure_kind": "runtime_or_task_incomplete",
+          "method": "driftguard_llm",
+          "request_llm": true,
+          "stop": false
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.policy_recovery",
+          "execution_context_id": "public-M11:independent-episode-3",
+          "scope_key": "public-M11:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M11",
+        "sequence_number": 6,
+        "timestamp": "2026-01-01T00:00:06Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-dd7ed5e614775cfe30e5",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M11:dashscope:driftguard_llm:r0:EV007",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 4,
+        "event_id": "live-dd7ed5e614775cfe30e5-EV007",
+        "event_type": "task_received",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "instruction": "Close unassigned alpha-api issue 101. Resolved identifiers: repository 'alpha-api' has repo_id R1."
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.task_received",
+          "execution_context_id": "public-M11:independent-episode-4",
+          "scope_key": "public-M11:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M11",
+        "sequence_number": 7,
+        "timestamp": "2026-01-01T00:00:07Z",
+        "tool_id": null,
+        "trace_id": "live-dd7ed5e614775cfe30e5",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M11:dashscope:driftguard_llm:r0:EV008",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 4,
+        "event_id": "live-dd7ed5e614775cfe30e5-EV008",
+        "event_type": "displayed_spec_snapshot",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1"
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.displayed_spec_snapshot",
+          "execution_context_id": "public-M11:independent-episode-4",
+          "scope_key": "public-M11:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M11",
+        "sequence_number": 8,
+        "timestamp": "2026-01-01T00:00:08Z",
+        "tool_id": null,
+        "trace_id": "live-dd7ed5e614775cfe30e5",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M11:dashscope:driftguard_llm:r0:EV009",
+        "displayed_request": {
+          "arguments": {
+            "issue_id": 101,
+            "repo_id": "R1",
+            "resolution": "completed"
+          }
+        },
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 4,
+        "event_id": "live-dd7ed5e614775cfe30e5-EV009",
+        "event_type": "tool_call_proposed",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "action_type": "TOOL_CALL"
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.tool_call_proposed",
+          "execution_context_id": "public-M11:independent-episode-4",
+          "scope_key": "public-M11:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M11",
+        "sequence_number": 9,
+        "timestamp": "2026-01-01T00:00:09Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-dd7ed5e614775cfe30e5",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M11:independent-episode-4:tool-001",
+        "displayed_request": {
+          "arguments": {
+            "issue_id": 101,
+            "repo_id": "R1",
+            "resolution": "completed"
+          }
+        },
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 4,
+        "event_id": "live-dd7ed5e614775cfe30e5-EV010",
+        "event_type": "tool_call_executed",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "runtime_call_completed": true
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.tool_call_executed",
+          "execution_context_id": "public-M11:independent-episode-4",
+          "scope_key": "public-M11:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M11",
+        "sequence_number": 10,
+        "timestamp": "2026-01-01T00:00:10Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-dd7ed5e614775cfe30e5",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": "b9766e9699f4040abba10d254817cfc95341fbc09927603bf377a9cb5423d9ca",
+        "before_state_hash": "b9766e9699f4040abba10d254817cfc95341fbc09927603bf377a9cb5423d9ca",
+        "correlation_id": "public-M11:independent-episode-4:tool-001",
+        "displayed_request": {
+          "arguments": {
+            "issue_id": 101,
+            "repo_id": "R1",
+            "resolution": "completed"
+          }
+        },
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 4,
+        "event_id": "live-dd7ed5e614775cfe30e5-EV011",
+        "event_type": "tool_response",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "channel": "response_error",
+          "error_code": "PRECONDITION_FAILED",
+          "field": null,
+          "message_pattern": "Issue must have an active assignee.",
+          "status_code": 409,
+          "task_complete": false
+        },
+        "probe_metadata": {
+          "independent_failure": true,
+          "regression_requirements_identified": true
+        },
+        "provenance": {
+          "controller_event": "ToolAgentController.run.tool_response",
+          "execution_context_id": "public-M11:independent-episode-4",
+          "scope_key": "public-M11:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M11",
+        "sequence_number": 11,
+        "timestamp": "2026-01-01T00:00:11Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-dd7ed5e614775cfe30e5",
+        "visible_runtime_response": {
+          "payload": {
+            "error": {
+              "code": "PRECONDITION_FAILED",
+              "field": null,
+              "message": "Issue must have an active assignee.",
+              "retryable": false
+            },
+            "ok": false
+          },
+          "status_code": 409
+        },
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M11:dashscope:driftguard_llm:r0:EV012",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 4,
+        "event_id": "live-dd7ed5e614775cfe30e5-EV012",
+        "event_type": "policy_recovery",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "context_types": [
+            "evidence_collection",
+            "probe_allowed"
+          ],
+          "exact_retry": false,
+          "failure_kind": "runtime_or_task_incomplete",
+          "method": "driftguard_llm",
+          "request_llm": true,
+          "stop": false
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.policy_recovery",
+          "execution_context_id": "public-M11:independent-episode-4",
+          "scope_key": "public-M11:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M11",
+        "sequence_number": 12,
+        "timestamp": "2026-01-01T00:00:12Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-dd7ed5e614775cfe30e5",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M11:dashscope:driftguard_llm:r0:EV013",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-dd7ed5e614775cfe30e5-EV013",
+        "event_type": "history_retrieval",
+        "historical_evidence_refs": [
+          "live-dd7ed5e614775cfe30e5-EV005",
+          "live-dd7ed5e614775cfe30e5-EV011"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "historical_record_count": 2
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.history_retrieval",
+          "scope_key": "public-M11:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M11",
+        "sequence_number": 13,
+        "timestamp": "2026-01-01T00:00:13Z",
+        "tool_id": null,
+        "trace_id": "live-dd7ed5e614775cfe30e5",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M11:dashscope:driftguard_llm:r0:EV014",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-dd7ed5e614775cfe30e5-EV014",
+        "event_type": "attribution_emitted",
+        "historical_evidence_refs": [
+          "live-dd7ed5e614775cfe30e5-EV005",
+          "live-dd7ed5e614775cfe30e5-EV011"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "attribution": {
+            "concise_reason": "two independent live failures conflict with the displayed contract",
+            "confidence": 0.95,
+            "drift_category": "WPD",
+            "evidence_refs": [
+              "live-dd7ed5e614775cfe30e5-EV005",
+              "live-dd7ed5e614775cfe30e5-EV011"
+            ],
+            "location_path": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-preconditions",
+            "location_type": "workflow_precondition",
+            "predicted_class": "PD",
+            "requested_probe": {
+              "needed": true
+            },
+            "target_tool_id": "close_issue"
+          },
+          "stage": "PRELIMINARY"
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.preliminary_attribution",
+          "scope_key": "public-M11:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M11",
+        "sequence_number": 14,
+        "timestamp": "2026-01-01T00:00:14Z",
+        "tool_id": null,
+        "trace_id": "live-dd7ed5e614775cfe30e5",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M11:dashscope:driftguard_llm:r0:EV015",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-dd7ed5e614775cfe30e5-EV015",
+        "event_type": "probe_requested",
+        "historical_evidence_refs": [
+          "live-dd7ed5e614775cfe30e5-EV005",
+          "live-dd7ed5e614775cfe30e5-EV011"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {},
+        "probe_metadata": {
+          "llm_call_id": "mock-062baa58cc373af5",
+          "selection": {
+            "concise_reason": "distinguish a persistent visible contract mismatch",
+            "decision": "SELECT_PROBE",
+            "evidence_refs": [
+              "live-dd7ed5e614775cfe30e5-EV005",
+              "live-dd7ed5e614775cfe30e5-EV011"
+            ],
+            "probe_type": "precondition_inspection",
+            "target_tool_id": "close_issue"
+          }
+        },
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.probe_selection",
+          "scope_key": "public-M11:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M11",
+        "sequence_number": 15,
+        "timestamp": "2026-01-01T00:00:15Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-dd7ed5e614775cfe30e5",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M11:dashscope:driftguard_llm:r0:EV016",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-dd7ed5e614775cfe30e5-EV016",
+        "event_type": "probe_executed",
+        "historical_evidence_refs": [
+          "live-dd7ed5e614775cfe30e5-EV005",
+          "live-dd7ed5e614775cfe30e5-EV011"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "executed": true,
+          "probe_type": "precondition_inspection"
+        },
+        "probe_metadata": {
+          "discriminative": true,
+          "isolated_fork": true,
+          "passed": true,
+          "regression_requirements_identified": true,
+          "unsafe_write": false
+        },
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.probe_execution",
+          "execution_context_id": "public-M11:dashscope:driftguard_llm:r0:probe-fork",
+          "scope_key": "public-M11:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M11",
+        "sequence_number": 16,
+        "timestamp": "2026-01-01T00:00:16Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-dd7ed5e614775cfe30e5",
+        "visible_runtime_response": {
+          "payload": {
+            "error": {
+              "code": "PRECONDITION_FAILED",
+              "field": null,
+              "message": "Issue must have an active assignee.",
+              "retryable": false
+            },
+            "ok": false
+          },
+          "status_code": 409
+        },
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M11:dashscope:driftguard_llm:r0:EV017",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-dd7ed5e614775cfe30e5-EV017",
+        "event_type": "attribution_emitted",
+        "historical_evidence_refs": [
+          "live-dd7ed5e614775cfe30e5-EV005",
+          "live-dd7ed5e614775cfe30e5-EV011",
+          "live-dd7ed5e614775cfe30e5-EV016"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "attribution": {
+            "concise_reason": "two independent live failures conflict with the displayed contract",
+            "confidence": 0.95,
+            "drift_category": "WPD",
+            "evidence_refs": [
+              "live-dd7ed5e614775cfe30e5-EV005",
+              "live-dd7ed5e614775cfe30e5-EV011",
+              "live-dd7ed5e614775cfe30e5-EV016"
+            ],
+            "location_path": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-preconditions",
+            "location_type": "workflow_precondition",
+            "predicted_class": "PD",
+            "requested_probe": null,
+            "target_tool_id": "close_issue"
+          },
+          "stage": "FINAL"
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.final_attribution",
+          "scope_key": "public-M11:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M11",
+        "sequence_number": 17,
+        "timestamp": "2026-01-01T00:00:17Z",
+        "tool_id": null,
+        "trace_id": "live-dd7ed5e614775cfe30e5",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M11:dashscope:driftguard_llm:r0:EV018",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-dd7ed5e614775cfe30e5-EV018",
+        "event_type": "patch_proposed",
+        "historical_evidence_refs": [
+          "live-dd7ed5e614775cfe30e5-EV005",
+          "live-dd7ed5e614775cfe30e5-EV011",
+          "live-dd7ed5e614775cfe30e5-EV016"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "operation_count": 1,
+          "proposal_call_id": "mock-47ab7f6980930eb2"
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.llm_patch_proposal",
+          "scope_key": "public-M11:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M11",
+        "sequence_number": 18,
+        "timestamp": "2026-01-01T00:00:18Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-dd7ed5e614775cfe30e5",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M11:dashscope:driftguard_llm:r0:EV019",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-dd7ed5e614775cfe30e5-EV019",
+        "event_type": "patch_validation",
+        "historical_evidence_refs": [
+          "live-dd7ed5e614775cfe30e5-EV005",
+          "live-dd7ed5e614775cfe30e5-EV011",
+          "live-dd7ed5e614775cfe30e5-EV016"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "static_validation": {
+            "details": {
+              "atomic_apply": true,
+              "operation_count": 1
+            },
+            "passed": true,
+            "reason_codes": [
+              "OPENAPI_31_VALID",
+              "PATCH_SCOPE_VALID"
+            ],
+            "stage": "static"
+          }
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.static_validation",
+          "scope_key": "public-M11:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M11",
+        "sequence_number": 19,
+        "timestamp": "2026-01-01T00:00:19Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-dd7ed5e614775cfe30e5",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M11:dashscope:driftguard_llm:r0:EV020",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-dd7ed5e614775cfe30e5-EV020",
+        "event_type": "immediate_repair",
+        "historical_evidence_refs": [
+          "live-dd7ed5e614775cfe30e5-EV005",
+          "live-dd7ed5e614775cfe30e5-EV011",
+          "live-dd7ed5e614775cfe30e5-EV016"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "accepted": true,
+          "result": {
+            "details": {
+              "call_count": 3,
+              "failure": null,
+              "forbidden_side_effects": 0,
+              "passed": true,
+              "state_change_count": 5,
+              "task_evaluator_passed": true
+            },
+            "passed": true,
+            "reason_codes": [
+              "TASK_EVALUATOR_PASSED",
+              "FORBIDDEN_SIDE_EFFECTS_ZERO"
+            ],
+            "stage": "immediate_repair"
+          }
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.immediate_repair",
+          "scope_key": "public-M11:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M11",
+        "sequence_number": 20,
+        "timestamp": "2026-01-01T00:00:20Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-dd7ed5e614775cfe30e5",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M11:dashscope:driftguard_llm:r0:EV021",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 6,
+        "event_id": "live-dd7ed5e614775cfe30e5-EV021",
+        "event_type": "future_transfer",
+        "historical_evidence_refs": [
+          "live-dd7ed5e614775cfe30e5-EV005",
+          "live-dd7ed5e614775cfe30e5-EV011",
+          "live-dd7ed5e614775cfe30e5-EV016"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "candidate_rewritten_after_transfer": false,
+          "first_result_counted": true,
+          "held_out_episode": 6,
+          "no_patch_calls": 1,
+          "no_patch_success": false,
+          "patched_calls": 3,
+          "patched_success": true,
+          "same_initial_state": true
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.future_transfer",
+          "scope_key": "public-M11:dashscope:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M11",
+        "sequence_number": 21,
+        "timestamp": "2026-01-01T00:00:21Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-dd7ed5e614775cfe30e5",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      }
+    ],
+    "public_scenario_id": "public-M11",
+    "trace_id": "live-dd7ed5e614775cfe30e5"
+  },
+  "llm_calls": 6,
+  "llm_stage_calls": [
+    {
+      "cached": true,
+      "input_tokens": 8796,
+      "latency_ms": 0.0,
+      "output_tokens": 118,
+      "parsed_output": {
+        "concise_reason": "two independent live failures conflict with the displayed contract",
+        "confidence": 0.95,
+        "drift_category": "WPD",
+        "evidence_refs": [
+          "live-dd7ed5e614775cfe30e5-EV005",
+          "live-dd7ed5e614775cfe30e5-EV011"
+        ],
+        "location_path": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-preconditions",
+        "location_type": "workflow_precondition",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "requested_probe": {
+          "needed": true
+        },
+        "target_tool_id": "close_issue"
+      },
+      "provider_attempts": 0,
+      "raw_response_sha256": "d9c8410cabc46e5b72897b8139c169a817d3c3f9c1908dbe53a06bc48e2300c1",
+      "response_id": "mock-d22d9d75464e8bb9",
+      "simulated_provider_attempts": 1,
+      "stage": "live_preliminary_attribution"
+    },
+    {
+      "cached": true,
+      "input_tokens": 4359,
+      "latency_ms": 0.0,
+      "output_tokens": 65,
+      "parsed_output": {
+        "concise_reason": "distinguish a persistent visible contract mismatch",
+        "decision": "SELECT_PROBE",
+        "evidence_refs": [
+          "live-dd7ed5e614775cfe30e5-EV005",
+          "live-dd7ed5e614775cfe30e5-EV011"
+        ],
+        "probe_type": "precondition_inspection",
+        "target_tool_id": "close_issue"
+      },
+      "provider_attempts": 0,
+      "raw_response_sha256": "abd30d4bfa4b58d96fea8c447aee8185fe88cd4452667b5c74b0e75a9ac5eb59",
+      "response_id": "mock-062baa58cc373af5",
+      "simulated_provider_attempts": 1,
+      "stage": "live_probe_selection"
+    },
+    {
+      "cached": true,
+      "input_tokens": 9791,
+      "latency_ms": 0.0,
+      "output_tokens": 124,
+      "parsed_output": {
+        "concise_reason": "two independent live failures conflict with the displayed contract",
+        "confidence": 0.95,
+        "drift_category": "WPD",
+        "evidence_refs": [
+          "live-dd7ed5e614775cfe30e5-EV005",
+          "live-dd7ed5e614775cfe30e5-EV011",
+          "live-dd7ed5e614775cfe30e5-EV016"
+        ],
+        "location_path": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-preconditions",
+        "location_type": "workflow_precondition",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "requested_probe": null,
+        "target_tool_id": "close_issue"
+      },
+      "provider_attempts": 0,
+      "raw_response_sha256": "17489e5d48183b021fc6723c0ec4e4f683dfbf1a91abc8a34917a3d2996c4c77",
+      "response_id": "mock-77aa75cc0ec2fab2",
+      "simulated_provider_attempts": 1,
+      "stage": "live_final_attribution"
+    },
+    {
+      "cached": true,
+      "input_tokens": 10548,
+      "latency_ms": 0.0,
+      "output_tokens": 299,
+      "parsed_output": {
+        "concise_reason": "minimal target-scoped live-evidence patch",
+        "confidence": 0.95,
+        "drift_category": "WPD",
+        "evidence_refs": [
+          "live-dd7ed5e614775cfe30e5-EV005",
+          "live-dd7ed5e614775cfe30e5-EV011",
+          "live-dd7ed5e614775cfe30e5-EV016"
+        ],
+        "expected_agent_behavior_change": "adapt the displayed tool contract using only the cited live evidence",
+        "location_path": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-preconditions",
+        "openapi_operations": [
+          {
+            "evidence_refs": [
+              "live-dd7ed5e614775cfe30e5-EV005",
+              "live-dd7ed5e614775cfe30e5-EV011",
+              "live-dd7ed5e614775cfe30e5-EV016"
+            ],
+            "op": "add",
+            "path": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-driftguard-preconditions-v2",
+            "reason_code": "LIVE_EVIDENCE_MINIMAL_CHANGE",
+            "value": {
+              "kind": "active_assignee",
+              "read": "get_issue",
+              "write": "assign_issue"
+            }
+          }
+        ],
+        "semantic_extensions": {
+          "x-driftguard-patch-semantics": {
+            "after": [
+              "get_issue",
+              "assign_issue_if_null",
+              "close_issue"
+            ],
+            "before": [
+              "issue exists and is open"
+            ],
+            "operation": "add_prerequisite",
+            "target": "/adapter/close_issue/workflow",
+            "workflow": {
+              "kind": "active_assignee",
+              "read": "get_issue",
+              "write": "assign_issue"
+            }
+          }
+        },
+        "target_tool_id": "close_issue"
+      },
+      "provider_attempts": 0,
+      "raw_response_sha256": "1592f009acdfad37d575cbef0a4613ba803c26a12b3dd004c6cf836639e9f38d",
+      "response_id": "mock-47ab7f6980930eb2",
+      "simulated_provider_attempts": 1,
+      "stage": "live_patch_proposal"
+    }
+  ],
+  "main_state_pollution": false,
+  "method": "driftguard_llm",
+  "mock_simulated_input_tokens": 0,
+  "mock_simulated_output_tokens": 0,
+  "model": "qwen3.7-plus",
+  "oracle_fallback_used": false,
+  "output_tokens": 0,
+  "patch_eligibility": {
+    "decision": "ELIGIBLE",
+    "discriminative_probe_passed": true,
+    "independent_failure_count": 2,
+    "reason_codes": [
+      "LIVE_PROTOCOL_SATISFIED"
+    ],
+    "regression_requirements_identified": true,
+    "supporting_evidence_ids": [
+      "live-dd7ed5e614775cfe30e5-EV005",
+      "live-dd7ed5e614775cfe30e5-EV011",
+      "live-dd7ed5e614775cfe30e5-EV016"
+    ],
+    "unsafe_write_count": 0
+  },
+  "patch_proposal": {
+    "concise_reason": "minimal target-scoped live-evidence patch",
+    "confidence": 0.95,
+    "drift_category": "WPD",
+    "evidence_refs": [
+      "live-dd7ed5e614775cfe30e5-EV005",
+      "live-dd7ed5e614775cfe30e5-EV011",
+      "live-dd7ed5e614775cfe30e5-EV016"
+    ],
+    "expected_agent_behavior_change": "adapt the displayed tool contract using only the cited live evidence",
+    "location_path": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-preconditions",
+    "openapi_operations": [
+      {
+        "evidence_refs": [
+          "live-dd7ed5e614775cfe30e5-EV005",
+          "live-dd7ed5e614775cfe30e5-EV011",
+          "live-dd7ed5e614775cfe30e5-EV016"
+        ],
+        "op": "add",
+        "path": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-driftguard-preconditions-v2",
+        "reason_code": "LIVE_EVIDENCE_MINIMAL_CHANGE",
+        "value": {
+          "kind": "active_assignee",
+          "read": "get_issue",
+          "write": "assign_issue"
+        }
+      }
+    ],
+    "semantic_extensions": {
+      "x-driftguard-patch-semantics": {
+        "after": [
+          "get_issue",
+          "assign_issue_if_null",
+          "close_issue"
+        ],
+        "before": [
+          "issue exists and is open"
+        ],
+        "operation": "add_prerequisite",
+        "target": "/adapter/close_issue/workflow",
+        "workflow": {
+          "kind": "active_assignee",
+          "read": "get_issue",
+          "write": "assign_issue"
+        }
+      }
+    },
+    "target_tool_id": "close_issue"
+  },
+  "patch_proposal_calls": 1,
+  "patch_registry_state": {
+    "accepted_count": 1,
+    "scope_key": "public-M11:dashscope:driftguard_llm:r0"
+  },
+  "patch_revision": {
+    "used": false
+  },
+  "preliminary_attribution": {
+    "concise_reason": "two independent live failures conflict with the displayed contract",
+    "confidence": 0.95,
+    "drift_category": "WPD",
+    "evidence_refs": [
+      "live-dd7ed5e614775cfe30e5-EV005",
+      "live-dd7ed5e614775cfe30e5-EV011"
+    ],
+    "location_path": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-preconditions",
+    "location_type": "workflow_precondition",
+    "predicted_class": "PERSISTENT_DRIFT",
+    "requested_probe": {
+      "needed": true
+    },
+    "target_tool_id": "close_issue"
+  },
+  "probe_calls": 1,
+  "probe_result": {
+    "executed": true,
+    "fork_call_count": 1,
+    "main_state_hash_after": "b9766e9699f4040abba10d254817cfc95341fbc09927603bf377a9cb5423d9ca",
+    "main_state_hash_before": "b9766e9699f4040abba10d254817cfc95341fbc09927603bf377a9cb5423d9ca",
+    "probe_type": "precondition_inspection",
+    "result": {
+      "payload": {
+        "error": {
+          "code": "PRECONDITION_FAILED",
+          "field": null,
+          "message": "Issue must have an active assignee.",
+          "retryable": false
+        },
+        "ok": false
+      },
+      "status_code": 409
+    },
+    "state_unchanged": true
+  },
+  "probe_selection": {
+    "concise_reason": "distinguish a persistent visible contract mismatch",
+    "decision": "SELECT_PROBE",
+    "evidence_refs": [
+      "live-dd7ed5e614775cfe30e5-EV005",
+      "live-dd7ed5e614775cfe30e5-EV011"
+    ],
+    "probe_type": "precondition_inspection",
+    "target_tool_id": "close_issue"
+  },
+  "provider": "dashscope",
+  "provider_boundary_calls": 0,
+  "public_scenario_id": "public-M11",
+  "record_id": "8d1014a0534ae284051049c7",
+  "record_status": "COMPLETE",
+  "scenario_id": "M11-PD",
+  "schema_version": "focused-live-healing-record-v1",
+  "source_snapshot": "0ea22bf4fac1351392a9f7df3604bae296202757b01602f93da9c96814618038",
+  "stage_trace": [
+    {
+      "ordinal": 1,
+      "stage": "TASK_EXECUTION",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 2,
+      "stage": "FAILURE_OBSERVED",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 3,
+      "stage": "PRELIMINARY_ATTRIBUTION",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 4,
+      "stage": "RETRY_OR_EVIDENCE_COLLECTION",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 5,
+      "stage": "REPRODUCTION_CHECK",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 6,
+      "stage": "PROBE_SELECTION",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 7,
+      "stage": "PROBE_EXECUTION",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 8,
+      "stage": "FINAL_ATTRIBUTION",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 9,
+      "stage": "PATCH_ELIGIBILITY",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 10,
+      "stage": "PATCH_PROPOSAL",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 11,
+      "stage": "PATCH_VALIDATION",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 12,
+      "stage": "IMMEDIATE_REPAIR",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 13,
+      "stage": "REGRESSION_SAFETY_MINIMALITY",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 14,
+      "stage": "PATCH_ACCEPTED",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 15,
+      "stage": "FUTURE_TRANSFER",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 16,
+      "stage": "FINAL_EVALUATION",
+      "status": "COMPLETE"
+    }
+  ],
+  "stopped_stage": "FINAL_EVALUATION",
+  "symbolic_fallback_used": false,
+  "termination_reason": "LIVE_HEALING_COMPLETE",
+  "tool_calls": 10
+}
