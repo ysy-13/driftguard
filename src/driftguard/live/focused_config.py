@@ -120,7 +120,7 @@ def validate_focused_canary_config(path: Path | str = FOCUSED_CONFIG) -> dict[st
     catalog_valid = fingerprints["tool_catalog_fingerprint"] == ToolCatalogRenderer().fingerprint(load_openapi())
     checks = {
         "experiment_kind": experiment.get("kind") == EXPERIMENT_KIND,
-        "not_authorized": experiment["run_authorized"] is False,
+        "authorization_flag_is_boolean": isinstance(experiment.get("run_authorized"), bool),
         "providers": providers == {("deepseek", "deepseek-v4-flash"), ("dashscope", "qwen3.7-plus")},
         "provider_order": [item["provider"] for item in raw["models"]] == ["deepseek", "dashscope"],
         "method": raw["methods"]["end_to_end"] == ["driftguard_llm"] and not raw["methods"]["component"],

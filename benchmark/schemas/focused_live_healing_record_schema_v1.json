@@ -6,7 +6,7 @@
   "properties": {
     "schema_version": {"const": "focused-live-healing-record-v1"},
     "experiment_kind": {"const": "FOCUSED_LIVE_HEALING_CANARY"},
-    "execution_mode": {"enum": ["MOCK_INFRASTRUCTURE_VALIDATION", "CACHE_REPLAY", "REAL_FOCUSED_CANARY"]},
+    "execution_mode": {"enum": ["MOCK_INFRASTRUCTURE_VALIDATION", "CACHE_REPLAY", "REAL_FOCUSED_CANARY", "REAL_PATH_FAKE_PROVIDER_VALIDATION", "REAL_CACHE_REPLAY"]},
     "record_id": {"type": "string"},
     "record_status": {"enum": ["COMPLETE", "INCOMPLETE"]},
     "provider": {"enum": ["deepseek", "dashscope"]},

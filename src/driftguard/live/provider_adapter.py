@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from copy import deepcopy
 import json
-from typing import Any, Iterable
+from typing import Any, Callable, Iterable
 
 from driftguard.llm import (
     LLMProvider, MockProvider, ModelConfig, OpenAICompatibleProvider,
@@ -23,6 +23,18 @@ class CacheOnlyProvider(LLMProvider):
         raise ReplayCacheMiss(
             f"focused replay cache miss at {request.mode} for {request.public_scenario_id}"
         )
+
+
+class CountingProvider(LLMProvider):
+    """Counts logical Provider boundary calls without changing Provider behavior."""
+
+    def __init__(self, delegate: LLMProvider) -> None:
+        self.delegate = delegate
+        self.calls = 0
+
+    def complete(self, request: ProviderRequest) -> ProviderResponse:
+        self.calls += 1
+        return self.delegate.complete(request)
 
 
 class EvidenceRefMockProvider(MockProvider):
@@ -72,6 +84,7 @@ class FocusedProviderAdapter:
         self, mode: str, model: ModelConfig, *, allow_real_api: bool = False,
         confirm_focused_canary: bool = False, run_authorized: bool = False,
         cost_controller: Any | None = None,
+        provider_factory: Callable[[ModelConfig, Iterable[Any] | None, bool, Any | None], LLMProvider] | None = None,
     ) -> None:
         if mode not in {"mock", "replay", "real"}:
             raise ValueError(f"unsupported Focused provider mode: {mode}")
@@ -80,6 +93,7 @@ class FocusedProviderAdapter:
         self.confirm_focused_canary = confirm_focused_canary
         self.run_authorized = run_authorized
         self.cost_controller = cost_controller
+        self.provider_factory = provider_factory
         self.created: list[LLMProvider] = []
 
     def create(
@@ -96,13 +110,19 @@ class FocusedProviderAdapter:
                     "Focused real execution requires config authorization, --allow-real-api, "
                     "and --confirm-focused-canary"
                 )
-            key = model_api_key(self.model)
-            if not key:
-                raise PermissionError(f"missing configured credential for {self.model.provider}")
-            provider = OpenAICompatibleProvider(
-                self.model, key, rate_limiter=RequestRateLimiter(1.0),
-                cost_controller=self.cost_controller,
-            )
+            if self.provider_factory is not None:
+                delegate = self.provider_factory(
+                    self.model, outputs, resolve_evidence_refs, self.cost_controller,
+                )
+            else:
+                key = model_api_key(self.model)
+                if not key:
+                    raise PermissionError(f"missing configured credential for {self.model.provider}")
+                delegate = OpenAICompatibleProvider(
+                    self.model, key, rate_limiter=RequestRateLimiter(1.0),
+                    cost_controller=self.cost_controller,
+                )
+            provider = CountingProvider(delegate)
         self.created.append(provider)
         return provider
 
@@ -113,3 +133,7 @@ class FocusedProviderAdapter:
     @property
     def mock_calls(self) -> int:
         return sum(getattr(provider, "calls", 0) for provider in self.created if isinstance(provider, MockProvider))
+
+    @property
+    def provider_calls(self) -> int:
+        return sum(int(getattr(provider, "calls", 0)) for provider in self.created)

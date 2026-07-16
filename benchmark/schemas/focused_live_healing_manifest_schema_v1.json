@@ -6,8 +6,8 @@
   "properties": {
     "schema_version": {"const": "focused-live-healing-manifest-v1"},
     "experiment_kind": {"const": "FOCUSED_LIVE_HEALING_CANARY"},
-    "execution_mode": {"enum": ["MOCK_INFRASTRUCTURE_VALIDATION", "CACHE_REPLAY", "REAL_FOCUSED_CANARY"]},
-    "real_api_status": {"const": "NOT RUN"},
+    "execution_mode": {"enum": ["MOCK_INFRASTRUCTURE_VALIDATION", "CACHE_REPLAY", "REAL_FOCUSED_CANARY", "REAL_PATH_FAKE_PROVIDER_VALIDATION", "REAL_CACHE_REPLAY"]},
+    "real_api_status": {"enum": ["NOT RUN", "RUNNING", "COMPLETED", "PARTIAL"]},
     "config_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "source_snapshot": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "frozen_fingerprints": {"type": "object"},
@@ -16,6 +16,12 @@
     "heldout48_overlap": {"const": 0},
     "cache_namespace": {"type": "string"},
     "result_namespace": {"type": "string"},
-    "ledger_baseline": {"type": "object"}
+    "ledger_baseline": {"type": "object"},
+    "attempt_id": {"type": ["string", "null"]},
+    "provider_kind": {"enum": ["MOCK_PROVIDER", "REAL_PROVIDER", "FAKE_PROVIDER_TEST", "CACHE_ONLY"]},
+    "git": {"type": "object"},
+    "provider_order": {"type": "array"},
+    "checkpoint_identity": {"type": "object"},
+    "cost_limits": {"type": "object"}
   }
 }

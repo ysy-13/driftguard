@@ -86,6 +86,7 @@ class LiveHealingMockRunner:
         ))
         latest_service = None
         agent_provider_calls = 0
+        controller_runs = []
         for episode in (3, 4):
             context = self._context(case, family, episode)
             service = SandboxService(execution_context=context)
@@ -108,8 +109,14 @@ class LiveHealingMockRunner:
                 live_evidence_bridge=bridge,
                 execution_context_id=f"{public_id}:independent-episode-{episode}",
             )
-            controller.run(task, displayed, public_id, episode, repetition)
-            agent_provider_calls += provider.calls
+            controller_result = controller.run(task, displayed, public_id, episode, repetition)
+            controller_runs.append({
+                "episode": episode,
+                "task_success": controller_result.task_success,
+                "termination_reason": controller_result.termination_reason,
+                "error_category": controller_result.error_category,
+            })
+            agent_provider_calls += int(getattr(provider, "calls", 0))
             latest_service = service
         outputs = stage_outputs or self._stage_outputs(case, displayed)
         stage_provider = (
@@ -142,8 +149,9 @@ class LiveHealingMockRunner:
             "llm_calls": tracker.llm_calls, "tool_calls": tracker.tool_calls,
             "probe_calls": tracker.probe_calls, "patch_proposal_calls": tracker.patch_proposal_calls,
             "input_tokens": tracker.input_tokens, "output_tokens": tracker.output_tokens,
-            "provider_calls": stage_provider.calls + agent_provider_calls,
+            "provider_calls": int(getattr(stage_provider, "calls", 0)) + agent_provider_calls,
             "llm_stage_calls": deepcopy(stages.call_records),
+            "controller_runs": controller_runs,
         })
         return row
 
