@@ -36,6 +36,26 @@
     "output_tokens": {"type": "integer", "minimum": 0},
     "latency_ms": {"type": "number", "minimum": 0},
     "api_attempts_delta": {"type": "integer", "minimum": 0},
+    "actual_network_attempts": {"type": "integer", "minimum": 0},
+    "provider_errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["category", "status_code", "provider_error_code", "sanitized_message", "request_id", "retryable", "attempt_number", "actual_network_attempts", "failure_layer"],
+        "properties": {
+          "category": {"enum": ["PROVIDER_ERROR", "PROVIDER_TIMEOUT", "RATE_LIMITED"]},
+          "status_code": {"type": ["integer", "null"]},
+          "provider_error_code": {"type": ["string", "null"]},
+          "sanitized_message": {"type": "string", "maxLength": 512},
+          "request_id": {"type": ["string", "null"], "maxLength": 128},
+          "retryable": {"type": "boolean"},
+          "attempt_number": {"type": "integer", "minimum": 0},
+          "actual_network_attempts": {"type": "integer", "minimum": 0},
+          "failure_layer": {"enum": ["DNS", "CONNECTION", "TLS", "TIMEOUT", "HTTP", "RESPONSE_PARSE", "UNKNOWN"]}
+        }
+      }
+    },
     "cost_cny_delta": {"type": "number", "minimum": 0},
     "cache": {"type": "object"},
     "checkpoint": {"type": "object"},

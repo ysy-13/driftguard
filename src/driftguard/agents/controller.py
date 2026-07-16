@@ -117,6 +117,7 @@ class ToolAgentController:
         machine.move("TASK_RECEIVED", "TASK_ACCEPTED")
         last_evaluation = self._evaluate(task, initial_state, {}, [])
         termination, error, answer = "TASK_FAILED", None, None
+        provider_error = None
         pending_exact_retry: dict[str, Any] | None = None
         try:
             while True:
@@ -386,14 +387,17 @@ class ToolAgentController:
             termination, error = "BUDGET_EXHAUSTED", ErrorCategory.BUDGET_EXHAUSTED.value
             if machine.state not in {"SUCCESS", "ABSTAINED", "SAFETY_BLOCKED"}:
                 machine.move("BUDGET_EXHAUSTED", "INTERACTION_BUDGET_EXHAUSTED")
-        except ProviderTimeout:
+        except ProviderTimeout as exc:
             termination, error = "PROVIDER_TIMEOUT", ErrorCategory.PROVIDER_TIMEOUT.value
+            provider_error = exc.public_dict()
             machine.move("PROVIDER_FAILURE", "PROVIDER_TIMEOUT")
-        except RateLimited:
+        except RateLimited as exc:
             termination, error = "RATE_LIMITED", ErrorCategory.RATE_LIMITED.value
+            provider_error = exc.public_dict()
             machine.move("PROVIDER_FAILURE", "PROVIDER_RATE_LIMITED")
-        except ProviderError:
+        except ProviderError as exc:
             termination, error = "PROVIDER_ERROR", ErrorCategory.PROVIDER_ERROR.value
+            provider_error = exc.public_dict()
             machine.move("PROVIDER_FAILURE", "PROVIDER_ERROR")
         except InvalidStructuredOutput:
             termination, error = "INVALID_STRUCTURED_OUTPUT", ErrorCategory.INVALID_STRUCTURED_OUTPUT.value
@@ -408,6 +412,7 @@ class ToolAgentController:
             self.tracker.input_tokens, self.tracker.output_tokens, self.usage.latency_ms,
             tuple(trace_refs), tuple(actions), last_evaluation, machine.visible(),
             self.context_builder.last_catalog_fingerprint, tuple(policy_events),
+            provider_error,
         )
 
     def _validation_feedback(self, tool_id, arguments, contract, exc: InputValidationError) -> dict[str, Any]:

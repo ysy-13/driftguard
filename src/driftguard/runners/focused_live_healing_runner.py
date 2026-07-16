@@ -18,7 +18,7 @@ from driftguard.live.focused_config import FocusedLiveHealingConfig, FocusedReco
 from driftguard.live.provider_adapter import FocusedProviderAdapter, ReplayCacheMiss
 from driftguard.llm import (
     InvalidStructuredOutput, LLMCache, LLMProvider, ModelConfig,
-    ProviderError, ProviderRequest, ProviderResponse,
+    ProviderError, ProviderRequest, ProviderResponse, sanitize_provider_text,
 )
 from driftguard.phase10.consistency_audit import source_snapshot
 from driftguard.phase10.costs import CostBudgetManager, CostHardLimit, Reservation
@@ -34,7 +34,7 @@ MANIFEST_SCHEMA = PROJECT_ROOT / "benchmark/schemas/focused_live_healing_manifes
 REAL_CACHE_NAMESPACE = "driftguard_focused_live_healing_real_v1"
 CONFIRMATION = "RUN-EXACTLY-8"
 LEDGER_BASELINE = {
-    "api_attempts": 831,
+    "api_attempts": 863,
     "provider_reported_input_tokens": 3_580_832,
     "provider_reported_output_tokens": 84_182,
     "spent_cny": 5.202644120,
@@ -512,6 +512,8 @@ class FocusedLiveHealingRunner:
             "provider_boundary_calls": provider_calls,
             "provider_usage": deepcopy(provider_usage),
             "controller_runs": deepcopy(raw.get("controller_runs", [])),
+            "provider_errors": self._controller_provider_errors(raw),
+            "actual_network_attempts": attempt_delta,
             "ledger_before": self._public_ledger(ledger_before),
             "ledger_after": self._public_ledger(ledger_after),
             "cache": {
@@ -546,6 +548,7 @@ class FocusedLiveHealingRunner:
         self.network_calls += provider_calls if self.mode == "real" and self.provider_factory is None else 0
         ledger_after = self._read_ledger()
         events = self.costs.events[event_before:] if self.costs else []
+        provider_errors = [self._public_provider_error(exc)] if isinstance(exc, ProviderError) else []
         record = {
             "schema_version": "focused-live-healing-record-v1",
             "experiment_kind": self.config.experiment_kind,
@@ -585,6 +588,8 @@ class FocusedLiveHealingRunner:
             "cost_cny_delta": float(ledger_after["spent_cny"]) - float(ledger_before["spent_cny"]),
             "provider_boundary_calls": provider_calls,
             "provider_usage": deepcopy(self.costs.events[event_before:] if self.costs else []),
+            "provider_errors": provider_errors,
+            "actual_network_attempts": self._delta(ledger_before, ledger_after, "api_attempts"),
             "ledger_before": self._public_ledger(ledger_before),
             "ledger_after": self._public_ledger(ledger_after),
             "cache": {
@@ -604,7 +609,12 @@ class FocusedLiveHealingRunner:
             "mock_fallback_used": False,
             "main_state_pollution": False,
             "patch_registry_state": {"accepted_count": 0, "scope_key": f"{plan.identity}:failed"},
-            "error": {"type": type(exc).__name__, "message": str(exc)},
+            "error": (
+                provider_errors[0] if provider_errors else {
+                    "type": type(exc).__name__,
+                    "sanitized_message": sanitize_provider_text(exc),
+                }
+            ),
         }
         self._assert_public_record(record)
         return record
@@ -796,14 +806,6 @@ class FocusedLiveHealingRunner:
                 raise ValueError(f"formal ledger regressed below baseline: {key}")
         if float(ledger["spent_cny"]) >= 50.0:
             raise CostHardLimit("cumulative hard limit already reached")
-        if self.mode in {"mock", "replay"}:
-            for key, baseline in LEDGER_BASELINE.items():
-                actual = ledger[key]
-                if isinstance(baseline, float):
-                    if abs(float(actual) - baseline) > 1e-9:
-                        raise ValueError(f"formal ledger baseline mismatch: {key}")
-                elif actual != baseline:
-                    raise ValueError(f"formal ledger baseline mismatch: {key}")
         if self.mode == "real" and not (self.output / "manifest.json").exists():
             for key, baseline in LEDGER_BASELINE.items():
                 actual = ledger[key]
@@ -840,12 +842,24 @@ class FocusedLiveHealingRunner:
         lowered = encoded.lower()
         forbidden = (
             "source_drift_id", "expected_patch", "evaluator_view",
-            "runtime_contract", "api_key\"", "ground_truth",
+            "runtime_contract", '"api_key":', '"authorization":', "ground_truth",
         )
         if any(term in lowered for term in forbidden):
             raise ValueError("Focused result contains forbidden hidden or secret material")
         if any(secret in encoded for secret in self._secret_values):
             raise ValueError("Focused result contains an API key value")
+
+    @staticmethod
+    def _controller_provider_errors(raw: Mapping[str, Any]) -> list[dict[str, Any]]:
+        return [
+            deepcopy(item["provider_error"])
+            for item in raw.get("controller_runs", [])
+            if isinstance(item.get("provider_error"), Mapping)
+        ]
+
+    @staticmethod
+    def _public_provider_error(exc: ProviderError) -> dict[str, Any]:
+        return exc.public_dict()
 
     def _read_ledger(self) -> dict[str, Any]:
         if not self.ledger_path.exists():

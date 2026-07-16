@@ -1,0 +1,57 @@
+{
+  "accepted": 0,
+  "api_attempts_delta": 32,
+  "attempt_id": "focused-real-20260716-d0d2b7e-01",
+  "cost_cny_delta": 0.0,
+  "deepseek_gate": {
+    "checks": {
+      "four_records": true,
+      "frozen_source_unchanged": true,
+      "hard_cost_gate_not_reached": true,
+      "infrastructure_errors_below_two": false,
+      "no_fallback": true,
+      "no_leakage": true,
+      "no_main_state_pollution": true,
+      "schemas_valid": true,
+      "soft_cost_gate_not_reached": true
+    },
+    "incremental_cost_cny": 0.0,
+    "infrastructure_errors": 4,
+    "passed": false,
+    "provider": "deepseek",
+    "qwen_authorized": false,
+    "records": 4
+  },
+  "execution_mode": "REAL_FOCUSED_CANARY",
+  "experiment_kind": "FOCUSED_LIVE_HEALING_CANARY",
+  "infrastructure_errors": 4,
+  "input_tokens_delta": 0,
+  "ledger_after": {
+    "api_attempts": 863,
+    "provider_reported_input_tokens": 3580832,
+    "provider_reported_output_tokens": 84182,
+    "reserved_cny": 0.0,
+    "spent_cny": 5.202644120000003
+  },
+  "ledger_before": {
+    "api_attempts": 831,
+    "provider_reported_input_tokens": 3580832,
+    "provider_reported_output_tokens": 84182,
+    "reserved_cny": 0.0,
+    "spent_cny": 5.202644120000003
+  },
+  "ledger_before_sha256": "0bd2cc8c3435a55c05f3c59d7a23e304de0c7093d64d813d23b6e5e07c1bbcb9",
+  "mock_fallback_count": 0,
+  "network_calls": 8,
+  "oracle_fallback_count": 0,
+  "output_tokens_delta": 0,
+  "provider_fallback_calls": 0,
+  "provider_kind": "REAL_PROVIDER",
+  "real_api_status": "PARTIAL",
+  "real_provider_instances": 12,
+  "records_completed": 4,
+  "records_planned": 8,
+  "records_resumed": 0,
+  "run_status": "BLOCKED_AFTER_DEEPSEEK",
+  "symbolic_fallback_count": 0
+}

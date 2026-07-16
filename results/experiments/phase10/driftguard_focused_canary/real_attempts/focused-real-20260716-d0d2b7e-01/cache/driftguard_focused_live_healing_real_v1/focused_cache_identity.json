@@ -1,0 +1,12 @@
+{
+  "attempt_id": "focused-real-20260716-d0d2b7e-01",
+  "cache_kind": "REAL_PROVIDER",
+  "config_hash": "0911adf447c66cf58778f9923764dfcc6b72a02048fdd3e825f4afe7c06668ac",
+  "experiment_kind": "FOCUSED_LIVE_HEALING_CANARY",
+  "frozen_fingerprints_hash": "2f9a3ad9ea981acdb9ad5a96cbf6f18275661a72529fb187e697b3507c155aea",
+  "namespace": "driftguard_focused_live_healing_real_v1",
+  "policy_capabilities_hash": "ea2d1b49ab9ab7ca0b8a776bf49b211e5f6f141d138778221f7a4b7a7149ef01",
+  "schema_version": "focused-cache-identity-v1",
+  "source_snapshot": "f0af9903cfee1afe6487ea5bbad1822d341391b66f9c2e1b96b4936fbf01b144",
+  "tool_catalog_hash": "76bde8f625aa26f786ef3ee9065c481adf1cfd793aea7c5b3fea88d40573b7da"
+}

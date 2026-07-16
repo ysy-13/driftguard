@@ -16,6 +16,16 @@ from driftguard.runners.focused_live_healing_runner import (
     REAL_CACHE_NAMESPACE, FocusedLiveHealingRunner,
 )
 
+FORMAL_LEDGER_HASH_AT_IMPORT = hashlib.sha256(LEDGER.read_bytes()).hexdigest()
+
+
+@pytest.fixture(scope="module", autouse=True)
+def formal_ledger_is_read_only():
+    before = hashlib.sha256(LEDGER.read_bytes()).hexdigest()
+    assert before == FORMAL_LEDGER_HASH_AT_IMPORT
+    yield
+    assert hashlib.sha256(LEDGER.read_bytes()).hexdigest() == FORMAL_LEDGER_HASH_AT_IMPORT
+
 
 def _authorized_config(tmp_path: Path) -> Path:
     raw = yaml.safe_load(FOCUSED_CONFIG.read_text(encoding="utf-8"))
@@ -51,7 +61,12 @@ class _CostedFakeProvider(EvidenceRefMockProvider):
         reservation = self.costs.reserve(self.config, request)
         try:
             if self.fail:
-                raise ProviderError("offline injected Provider failure")
+                raise ProviderError(
+                    "offline injected Provider failure", status_code=400,
+                    provider_error_code="FAKE_BAD_REQUEST",
+                    request_id="fake-request-id", retryable=False,
+                    attempt_number=1, failure_layer="HTTP",
+                )
             response = super().complete(request)
             response = replace(
                 response,
@@ -67,15 +82,16 @@ class _CostedFakeProvider(EvidenceRefMockProvider):
 
 
 class _FakeFactory:
-    def __init__(self, fail_providers=()):
+    def __init__(self, fail_providers=(), fail_calls=()):
         self.fail_providers = set(fail_providers)
+        self.fail_calls = set(fail_calls)
         self.instances = []
 
     def __call__(self, config, outputs, resolve_evidence_refs, costs):
         if config.provider in self.fail_providers:
             raise ProviderError("offline injected Provider initialization failure")
         provider = _CostedFakeProvider(
-            outputs, config, costs,
+            outputs, config, costs, fail=config.provider in self.fail_calls,
         )
         self.instances.append(provider)
         return provider
@@ -178,6 +194,7 @@ def test_fake_real_path_manifest_results_gate_and_fallback_markers(real_path_art
     assert gate["passed"] and gate["qwen_authorized"]
     assert all(len(row["stage_trace"]) == 16 for row in real["records"])
     assert all(row["ledger_after"]["api_attempts"] >= row["ledger_before"]["api_attempts"] for row in real["records"])
+    assert all(row["actual_network_attempts"] == 6 for row in real["records"])
     assert all(row["symbolic_fallback_used"] is False for row in real["records"])
     assert all(row["oracle_fallback_used"] is False for row in real["records"])
     assert all(row["mock_fallback_used"] is False for row in real["records"])
@@ -230,6 +247,21 @@ def test_two_deepseek_infrastructure_errors_block_qwen(tmp_path):
     assert result["summary"]["records_completed"] == 4
     assert result["summary"]["infrastructure_errors"] == 4
     assert all(row["provider"] == "deepseek" for row in result["records"])
+
+
+def test_structured_provider_error_reaches_focused_record_schema(tmp_path):
+    config, ledger = _authorized_config(tmp_path), _ledger(tmp_path)
+    factory = _FakeFactory(fail_calls={"deepseek"})
+    result = _real_runner(tmp_path, config, ledger, factory).run()
+    assert result["summary"]["run_status"] == "BLOCKED_AFTER_DEEPSEEK"
+    for record in result["records"]:
+        assert len(record["provider_errors"]) == 2
+        assert record["actual_network_attempts"] == 2
+        assert all(error["category"] == "PROVIDER_ERROR" for error in record["provider_errors"])
+        assert all(error["status_code"] == 400 for error in record["provider_errors"])
+        assert all(error["provider_error_code"] == "FAKE_BAD_REQUEST" for error in record["provider_errors"])
+        assert all(error["request_id"] == "fake-request-id" for error in record["provider_errors"])
+        assert all(error["retryable"] is False for error in record["provider_errors"])
 
 
 def test_replay_real_cache_miss_fails_closed_without_provider_or_ledger_change(tmp_path):
@@ -308,4 +340,4 @@ def test_api_key_value_and_hidden_fallback_material_absent(real_path_artifacts):
 
 
 def test_formal_ledger_unchanged_by_all_fake_real_path_tests():
-    assert hashlib.sha256(LEDGER.read_bytes()).hexdigest() == "0bd2cc8c3435a55c05f3c59d7a23e304de0c7093d64d813d23b6e5e07c1bbcb9"
+    assert hashlib.sha256(LEDGER.read_bytes()).hexdigest() == FORMAL_LEDGER_HASH_AT_IMPORT

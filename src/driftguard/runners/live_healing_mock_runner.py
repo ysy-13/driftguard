@@ -115,6 +115,7 @@ class LiveHealingMockRunner:
                 "task_success": controller_result.task_success,
                 "termination_reason": controller_result.termination_reason,
                 "error_category": controller_result.error_category,
+                "provider_error": deepcopy(controller_result.provider_error),
             })
             agent_provider_calls += int(getattr(provider, "calls", 0))
             latest_service = service

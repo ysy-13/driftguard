@@ -111,6 +111,7 @@ class AgentRunResult:
     state_transitions: tuple[dict[str, Any], ...] = ()
     catalog_fingerprint: str = ""
     policy_events: tuple[dict[str, Any], ...] = ()
+    provider_error: dict[str, Any] | None = None
 
     def to_dict(self) -> dict[str, Any]:
         value = asdict(self)

@@ -4,13 +4,18 @@ from abc import ABC, abstractmethod
 from copy import deepcopy
 import hashlib
 import json
+import socket
+import ssl
 import time
 from typing import Any, Iterable, Mapping
 
 import httpx
 
 from .configuration import ModelConfig
-from .errors import ProviderError, ProviderTimeout, RateLimited
+from .errors import (
+    FailureLayer, ProviderError, ProviderTimeout, RateLimited,
+    sanitize_provider_text,
+)
 from .models import ProviderRequest, ProviderResponse
 from .redaction import assert_secret_absent
 from .leakage import assert_provider_request_visible
@@ -57,6 +62,9 @@ class MockProvider(LLMProvider):
 
 
 class OpenAICompatibleProvider(LLMProvider):
+    RETRYABLE_HTTP_STATUSES = frozenset({408, 429, 500, 502, 503, 504})
+    REQUEST_ID_HEADERS = ("x-request-id", "request-id", "x-ds-request-id", "trace-id")
+
     def __init__(
         self,
         config: ModelConfig,
@@ -93,7 +101,7 @@ class OpenAICompatibleProvider(LLMProvider):
             body.pop("response_format", None)
         started = time.monotonic()
         attempts = 0
-        last_error: Exception | None = None
+        last_error: ProviderError | None = None
         while attempts <= self.config.max_provider_retries:
             attempts += 1
             reservation = None
@@ -105,20 +113,38 @@ class OpenAICompatibleProvider(LLMProvider):
                     self.config.base_url.rstrip("/") + "/chat/completions",
                     headers={"Authorization": f"Bearer {self._api_key}"}, json=body,
                 )
-                if response.status_code == 429:
-                    raise RateLimited("provider returned 429")
-                if response.status_code >= 500:
-                    raise ProviderError(f"provider returned {response.status_code}")
+                if response.status_code >= 400:
+                    error, error_payload = self._http_error(response, attempts)
+                    if reservation is not None and self._settle_error_usage(
+                        reservation, response, error_payload, error,
+                    ):
+                        reservation = None
+                    raise error
                 response.raise_for_status()
-                payload = response.json()
-                choice = payload["choices"][0]
-                message = choice["message"]
+                try:
+                    payload = response.json()
+                    choice = payload["choices"][0]
+                    message = choice["message"]
+                except (ValueError, KeyError, IndexError, TypeError) as exc:
+                    raise ProviderError(
+                        "provider success response could not be parsed",
+                        provider_error_code="INVALID_RESPONSE_SCHEMA",
+                        request_id=self._request_id(response), retryable=False,
+                        attempt_number=attempts,
+                        failure_layer=FailureLayer.RESPONSE_PARSE,
+                    ) from exc
                 tool_calls = tuple(message.get("tool_calls") or ())
                 raw = message.get("content")
                 if raw is None and tool_calls:
                     raw = json.dumps({"tool_calls": tool_calls}, sort_keys=True)
                 if not isinstance(raw, str):
-                    raise ProviderError("provider response content is not text")
+                    raise ProviderError(
+                        "provider response content is not text",
+                        provider_error_code="NON_TEXT_RESPONSE",
+                        request_id=self._request_id(response), retryable=False,
+                        attempt_number=attempts,
+                        failure_layer=FailureLayer.RESPONSE_PARSE,
+                    )
                 usage = payload.get("usage", {})
                 result = ProviderResponse(
                     str(payload.get("id", "provider-response")), str(payload.get("model", self.config.model_id)), None, raw,
@@ -133,18 +159,121 @@ class OpenAICompatibleProvider(LLMProvider):
                 assert_secret_absent(result.public_dict(), self._api_key)
                 return result
             except httpx.TimeoutException as exc:
-                last_error = ProviderTimeout("provider request timed out")
-            except RateLimited as exc:
+                last_error = ProviderTimeout(
+                    "provider request timed out", attempt_number=attempts,
+                )
+            except httpx.ConnectError as exc:
+                last_error = ProviderError(
+                    self._transport_summary(exc), retryable=True,
+                    attempt_number=attempts, failure_layer=self._connection_layer(exc),
+                )
+            except httpx.NetworkError as exc:
+                last_error = ProviderError(
+                    self._transport_summary(exc), retryable=True,
+                    attempt_number=attempts, failure_layer=FailureLayer.CONNECTION,
+                )
+            except ProviderError as exc:
                 last_error = exc
-            except (httpx.HTTPError, ProviderError) as exc:
-                last_error = ProviderError(str(exc)) if not isinstance(exc, ProviderError) else exc
+            except httpx.HTTPError as exc:
+                last_error = ProviderError(
+                    "provider HTTP client error", retryable=False,
+                    attempt_number=attempts, failure_layer=FailureLayer.UNKNOWN,
+                )
             finally:
                 if reservation is not None and self._cost_controller is not None:
                     self._cost_controller.release(reservation)
+            if last_error is not None:
+                assert_secret_absent(last_error.public_dict(), self._api_key)
+            if last_error is not None and not last_error.retryable:
+                raise last_error
             if attempts <= self.config.max_provider_retries:
                 time.sleep(min(0.01 * (2 ** (attempts - 1)), 0.05))
-        if isinstance(last_error, ProviderTimeout):
-            raise last_error
-        if isinstance(last_error, RateLimited):
-            raise last_error
         raise last_error or ProviderError("provider failed")
+
+    def _http_error(
+        self, response: httpx.Response, attempt_number: int,
+    ) -> tuple[ProviderError, Mapping[str, Any] | None]:
+        payload: Mapping[str, Any] | None = None
+        code: Any = None
+        message: Any = None
+        try:
+            candidate = response.json()
+            if isinstance(candidate, Mapping):
+                payload = candidate
+                nested = candidate.get("error")
+                source = nested if isinstance(nested, Mapping) else candidate
+                code, message = source.get("code"), source.get("message")
+        except (ValueError, TypeError):
+            try:
+                message = response.text
+            except Exception:
+                message = "non-JSON provider error response"
+        status = int(response.status_code)
+        retryable = status in self.RETRYABLE_HTTP_STATUSES
+        summary = sanitize_provider_text(
+            message or f"provider returned HTTP {status}",
+            secrets=(self._api_key,), limit=512,
+        )
+        kwargs = {
+            "status_code": status,
+            "provider_error_code": sanitize_provider_text(
+                code, secrets=(self._api_key,), limit=128,
+            ) if code is not None else None,
+            "request_id": self._request_id(response),
+            "retryable": retryable,
+            "attempt_number": attempt_number,
+            "failure_layer": FailureLayer.HTTP,
+        }
+        error: ProviderError = (
+            RateLimited(summary, **kwargs) if status == 429
+            else ProviderError(summary, **kwargs)
+        )
+        return error, payload
+
+    def _request_id(self, response: httpx.Response) -> str | None:
+        for name in self.REQUEST_ID_HEADERS:
+            value = response.headers.get(name)
+            if value:
+                return sanitize_provider_text(value, secrets=(self._api_key,), limit=128)
+        return None
+
+    def _settle_error_usage(
+        self, reservation: Any, response: httpx.Response,
+        payload: Mapping[str, Any] | None, error: ProviderError,
+    ) -> bool:
+        usage = payload.get("usage") if isinstance(payload, Mapping) else None
+        if self._cost_controller is None or not isinstance(usage, Mapping):
+            return False
+        input_tokens = int(usage.get("prompt_tokens", 0) or 0)
+        output_tokens = int(usage.get("completion_tokens", 0) or 0)
+        total_tokens = int(usage.get("total_tokens", input_tokens + output_tokens) or 0)
+        result = ProviderResponse(
+            error.request_id or "provider-error", self.config.model_id, None, "",
+            input_tokens, output_tokens, total_tokens, 0.0, 1, "error",
+            error=error.sanitized_message,
+        )
+        self._cost_controller.settle(reservation, result)
+        return True
+
+    def _transport_summary(self, exc: Exception) -> str:
+        return sanitize_provider_text(
+            exc, secrets=(self._api_key,), limit=256,
+        ) or "provider connection failed"
+
+    @staticmethod
+    def _connection_layer(exc: Exception) -> FailureLayer:
+        chain: list[BaseException] = []
+        current: BaseException | None = exc
+        while current is not None and current not in chain:
+            chain.append(current)
+            current = current.__cause__ or current.__context__
+        if any(isinstance(item, socket.gaierror) for item in chain):
+            return FailureLayer.DNS
+        if any(isinstance(item, ssl.SSLError) for item in chain):
+            return FailureLayer.TLS
+        text = " ".join(str(item).lower() for item in chain)
+        if any(marker in text for marker in ("name resolution", "getaddrinfo", "nodename", "dns")):
+            return FailureLayer.DNS
+        if any(marker in text for marker in ("ssl", "tls", "certificate")):
+            return FailureLayer.TLS
+        return FailureLayer.CONNECTION
