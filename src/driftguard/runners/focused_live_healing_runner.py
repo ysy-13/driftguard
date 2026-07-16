@@ -1,12 +1,16 @@
 from __future__ import annotations
 
+from contextlib import contextmanager
 from copy import deepcopy
 from dataclasses import replace
+import fcntl
 import hashlib
 import json
+import math
 from pathlib import Path
 import re
 import subprocess
+import tempfile
 from typing import Any, Callable, Iterable, Mapping
 
 from jsonschema import Draft202012Validator
@@ -33,12 +37,11 @@ RECORD_SCHEMA = PROJECT_ROOT / "benchmark/schemas/focused_live_healing_record_sc
 MANIFEST_SCHEMA = PROJECT_ROOT / "benchmark/schemas/focused_live_healing_manifest_schema_v1.json"
 REAL_CACHE_NAMESPACE = "driftguard_focused_live_healing_real_v1"
 CONFIRMATION = "RUN-EXACTLY-8"
-LEDGER_BASELINE = {
-    "api_attempts": 863,
-    "provider_reported_input_tokens": 3_580_832,
-    "provider_reported_output_tokens": 84_182,
-    "spent_cny": 5.202644120,
-}
+LEDGER_COUNTER_FIELDS = (
+    "api_attempts", "provider_reported_input_tokens",
+    "provider_reported_output_tokens", "spent_cny",
+)
+CUMULATIVE_HARD_LIMIT_CNY = 50.0
 ProviderFactory = Callable[
     [ModelConfig, Any, bool, Any], LLMProvider
 ]
@@ -53,6 +56,94 @@ def _atomic_json(path: Path, value: Any) -> None:
     temporary = path.with_name(f".{path.name}.tmp")
     temporary.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     temporary.replace(path)
+
+
+@contextmanager
+def _ledger_lock(path: Path):
+    """Serialize Ledger snapshots and writes across Focused processes."""
+    identity = hashlib.sha256(str(path.resolve()).encode()).hexdigest()
+    lock_path = Path(tempfile.gettempdir()) / f"driftguard-focused-ledger-{identity}.lock"
+    with lock_path.open("a+", encoding="utf-8") as handle:
+        fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
+        try:
+            yield
+        finally:
+            fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+
+
+def _validated_ledger(path: Path, *, allow_reserved: bool = False) -> tuple[dict[str, Any], str]:
+    if not path.exists():
+        raise FileNotFoundError("formal Phase 10 ledger is required")
+    raw = path.read_bytes()
+    digest = hashlib.sha256(raw).hexdigest()
+    try:
+        value = json.loads(raw)
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise ValueError("formal Ledger structure is invalid JSON") from exc
+    if not isinstance(value, dict):
+        raise ValueError("formal Ledger root must be an object")
+    missing = (set(LEDGER_COUNTER_FIELDS) | {"reserved_cny"}) - set(value)
+    if missing:
+        raise ValueError("formal Ledger is missing required fields: " + ", ".join(sorted(missing)))
+    for key in LEDGER_COUNTER_FIELDS[:3]:
+        item = value[key]
+        if isinstance(item, bool) or not isinstance(item, int) or item < 0:
+            raise ValueError(f"formal Ledger field must be a non-negative integer: {key}")
+    for key in ("spent_cny", "reserved_cny"):
+        item = value[key]
+        if isinstance(item, bool) or not isinstance(item, (int, float)):
+            raise ValueError(f"formal Ledger field must be numeric: {key}")
+        if not math.isfinite(float(item)) or float(item) < 0:
+            raise ValueError(f"formal Ledger field must be finite and non-negative: {key}")
+    if float(value["spent_cny"]) >= CUMULATIVE_HARD_LIMIT_CNY:
+        raise CostHardLimit("cumulative hard limit already reached")
+    if not allow_reserved and float(value["reserved_cny"]) != 0.0:
+        raise ValueError("formal Ledger has an outstanding reservation")
+    if {"attempt_base_spent_cny", "attempt_incremental_spent_cny"} <= set(value):
+        expected = float(value["attempt_base_spent_cny"]) + float(value["attempt_incremental_spent_cny"])
+        if not math.isclose(float(value["spent_cny"]), expected, rel_tol=0.0, abs_tol=1e-9):
+            raise ValueError("formal Ledger attempt cost integrity check failed")
+    return value, digest
+
+
+def _public_ledger_snapshot(value: Mapping[str, Any]) -> dict[str, Any]:
+    missing = set(LEDGER_COUNTER_FIELDS) - set(value)
+    if missing:
+        raise ValueError("Ledger snapshot is missing required fields: " + ", ".join(sorted(missing)))
+    for key in LEDGER_COUNTER_FIELDS[:3]:
+        if isinstance(value[key], bool) or not isinstance(value[key], int):
+            raise ValueError(f"Ledger snapshot field must be an integer: {key}")
+    for key in ("spent_cny", "reserved_cny"):
+        item = value.get(key, 0.0)
+        if isinstance(item, bool) or not isinstance(item, (int, float)):
+            raise ValueError(f"Ledger snapshot field must be numeric: {key}")
+    result = {
+        "api_attempts": int(value["api_attempts"]),
+        "provider_reported_input_tokens": int(value["provider_reported_input_tokens"]),
+        "provider_reported_output_tokens": int(value["provider_reported_output_tokens"]),
+        "spent_cny": float(value["spent_cny"]),
+        "reserved_cny": float(value.get("reserved_cny", 0.0)),
+    }
+    for key in LEDGER_COUNTER_FIELDS[:3]:
+        if result[key] < 0:
+            raise ValueError(f"Ledger snapshot field is negative: {key}")
+    if not math.isfinite(result["spent_cny"]) or result["spent_cny"] < 0:
+        raise ValueError("Ledger snapshot spent_cny is invalid")
+    return result
+
+
+def _ledger_dominates(current: Mapping[str, Any], floor: Mapping[str, Any]) -> bool:
+    return all(
+        float(current[key]) + (1e-9 if key == "spent_cny" else 0.0) >= float(floor[key])
+        for key in LEDGER_COUNTER_FIELDS
+    )
+
+
+def _same_ledger_counters(left: Mapping[str, Any], right: Mapping[str, Any]) -> bool:
+    return all(
+        math.isclose(float(left[key]), float(right[key]), rel_tol=0.0, abs_tol=1e-9)
+        for key in LEDGER_COUNTER_FIELDS
+    )
 
 
 def _git_state() -> dict[str, Any]:
@@ -158,23 +249,37 @@ class AtomicFocusedLedger:
 
     def __init__(
         self, path: Path, config: FocusedLiveHealingConfig, attempt_id: str,
-        attempt_baseline: Mapping[str, Any] | None = None,
+        attempt_baseline: Mapping[str, Any], attempt_settled_cost_cny: float = 0.0,
     ) -> None:
         self.path = path
         self.attempt_id = attempt_id
         self.config_hash = config.config_hash
-        self.original = json.loads(path.read_text(encoding="utf-8"))
+        with _ledger_lock(path):
+            self.original, self._current_hash = _validated_ledger(path)
         self.initial = {
             "spent_cny": float(self.original["spent_cny"]),
             "api_attempts": int(self.original["api_attempts"]),
             "provider_reported_input_tokens": int(self.original["provider_reported_input_tokens"]),
             "provider_reported_output_tokens": int(self.original["provider_reported_output_tokens"]),
         }
-        self.attempt_initial = dict(attempt_baseline or self.initial)
+        self.attempt_initial = _public_ledger_snapshot(attempt_baseline)
+        if not _ledger_dominates(self.initial, self.attempt_initial):
+            raise ValueError("formal Ledger rolled back below this attempt baseline")
+        self.attempt_settled_cost_cny = float(attempt_settled_cost_cny)
+        if not math.isfinite(self.attempt_settled_cost_cny) or self.attempt_settled_cost_cny < 0:
+            raise ValueError("attempt settled cost is invalid")
         execution, budget = config.raw["execution"], config.raw["budget"]
-        soft = float(self.attempt_initial["spent_cny"]) + float(execution["attempt_soft_increment_cny"])
+        soft_increment = float(execution["attempt_soft_increment_cny"])
+        hard_increment = float(execution["attempt_hard_increment_cny"])
+        soft = self.initial["spent_cny"] + max(0.0, soft_increment - self.attempt_settled_cost_cny)
         hard = min(
-            float(self.attempt_initial["spent_cny"]) + float(execution["attempt_hard_increment_cny"]),
+            self.initial["spent_cny"] + max(0.0, hard_increment - self.attempt_settled_cost_cny),
+            float(execution["total_hard_limit_cny"]),
+            float(budget["full_hard_limit_cny"]),
+        )
+        self.soft_increment_cny = soft_increment
+        self.hard_increment_cny = hard_increment
+        self.total_hard_limit_cny = min(
             float(execution["total_hard_limit_cny"]),
             float(budget["full_hard_limit_cny"]),
         )
@@ -209,19 +314,27 @@ class AtomicFocusedLedger:
 
     def _persist(self) -> None:
         snapshot = self.snapshot()
-        value = {
-            **self.original,
-            **snapshot,
-            "attempt": self.attempt_id,
-            "config_hash": self.config_hash,
-            "attempt_base_spent_cny": self.attempt_initial["spent_cny"],
-            "attempt_incremental_spent_cny": snapshot["spent_cny"] - float(self.attempt_initial["spent_cny"]),
-            "incremental_soft_limit_cny": snapshot["soft_limit_cny"] - float(self.attempt_initial["spent_cny"]),
-            "incremental_hard_limit_cny": snapshot["hard_limit_cny"] - float(self.attempt_initial["spent_cny"]),
-            "total_hard_limit_cny": 50.0,
-        }
-        _atomic_json(self.path, value)
-        self.original = value
+        with _ledger_lock(self.path):
+            current, current_hash = _validated_ledger(self.path, allow_reserved=True)
+            if current_hash != self._current_hash:
+                raise ValueError("formal Ledger changed concurrently during this attempt")
+            incremental = self.attempt_settled_cost_cny + (
+                float(snapshot["spent_cny"]) - self.initial["spent_cny"]
+            )
+            value = {
+                **current,
+                **snapshot,
+                "attempt": self.attempt_id,
+                "config_hash": self.config_hash,
+                "attempt_base_spent_cny": self.attempt_initial["spent_cny"],
+                "attempt_incremental_spent_cny": incremental,
+                "incremental_soft_limit_cny": self.soft_increment_cny,
+                "incremental_hard_limit_cny": self.hard_increment_cny,
+                "total_hard_limit_cny": self.total_hard_limit_cny,
+            }
+            _atomic_json(self.path, value)
+            self.original = value
+            self._current_hash = _sha256_bytes(self.path)
 
 
 class FocusedLiveHealingRunner:
@@ -301,7 +414,12 @@ class FocusedLiveHealingRunner:
         self.cache_identity_hash = hashlib.sha256(json.dumps(
             self.freeze_identity, sort_keys=True, separators=(",", ":"),
         ).encode()).hexdigest()
-        self._validate_ledger_preflight()
+        (
+            self.run_ledger_before,
+            self.run_ledger_before_hash,
+            self.invocation_ledger_before,
+        ) = self._capture_ledger_baseline()
+        self.attempt_usage_before = self._existing_attempt_usage()
         self.cache_store = FocusedCache(
             self.cache_root, namespace, self.freeze_identity,
             read_only=mode == "replay-real",
@@ -314,12 +432,11 @@ class FocusedLiveHealingRunner:
         self.costs = (
             AtomicFocusedLedger(
                 self.ledger_path, self.config, str(attempt_id),
-                attempt_baseline=self._existing_attempt_baseline(),
+                attempt_baseline=self.run_ledger_before,
+                attempt_settled_cost_cny=self.attempt_usage_before["cost_cny"],
             )
             if mode == "real" else None
         )
-        self.run_ledger_before = self._read_ledger()
-        self.run_ledger_before_hash = _sha256_bytes(self.ledger_path)
 
     @staticmethod
     def validate_config(config_path: Path | str) -> dict[str, Any]:
@@ -625,8 +742,7 @@ class FocusedLiveHealingRunner:
             _focused_source_snapshot() if self.mode in {"real", "replay-real"}
             else source_snapshot()["source_snapshot_hash"]
         )
-        baseline = self._existing_attempt_baseline() or self.run_ledger_before
-        incremental_cost = float(self._read_ledger()["spent_cny"]) - float(baseline["spent_cny"])
+        incremental_cost = sum(float(item.get("cost_cny_delta", 0.0)) for item in deepseek)
         checks = {
             "four_records": len(deepseek) == 4,
             "infrastructure_errors_below_two": sum(
@@ -661,7 +777,7 @@ class FocusedLiveHealingRunner:
             "qwen_authorized": all(checks.values()),
         }
 
-    def _manifest(self, ledger: dict[str, Any] | None = None) -> dict[str, Any]:
+    def _manifest(self) -> dict[str, Any]:
         path = self.output / "manifest.json"
         if path.exists():
             existing = json.loads(path.read_text(encoding="utf-8"))
@@ -686,7 +802,8 @@ class FocusedLiveHealingRunner:
             "cache_namespace": self.cache_store.namespace,
             "result_namespace": self.config.raw["execution"]["result_namespace"],
             "ledger_baseline": {
-                key: (ledger or self.run_ledger_before)[key] for key in LEDGER_BASELINE
+                **self._public_ledger(self.run_ledger_before),
+                "sha256": self.run_ledger_before_hash,
             },
             "attempt_id": self.attempt_id,
             "provider_kind": self.provider_kind if self.mode == "real" else "CACHE_ONLY" if "replay" in self.mode else "MOCK_PROVIDER",
@@ -702,6 +819,20 @@ class FocusedLiveHealingRunner:
 
     def _summary(self, records: list[dict[str, Any]], status: str) -> dict[str, Any]:
         ledger_after = self._read_ledger()
+        if self.mode == "real":
+            attempt_api_attempts = sum(int(item.get("api_attempts_delta", 0)) for item in records)
+            attempt_input_tokens = sum(int(item.get("input_tokens", 0)) for item in records)
+            attempt_output_tokens = sum(int(item.get("output_tokens", 0)) for item in records)
+            attempt_cost_cny = sum(float(item.get("cost_cny_delta", 0.0)) for item in records)
+        else:
+            attempt_api_attempts = self._delta(self.run_ledger_before, ledger_after, "api_attempts")
+            attempt_input_tokens = self._delta(
+                self.run_ledger_before, ledger_after, "provider_reported_input_tokens"
+            )
+            attempt_output_tokens = self._delta(
+                self.run_ledger_before, ledger_after, "provider_reported_output_tokens"
+            )
+            attempt_cost_cny = float(ledger_after["spent_cny"]) - float(self.run_ledger_before["spent_cny"])
         return {
             "experiment_kind": self.config.experiment_kind,
             "execution_mode": self._execution_mode(),
@@ -718,14 +849,23 @@ class FocusedLiveHealingRunner:
             "provider_fallback_calls": sum(item["cache"]["provider_fallback_calls"] for item in records),
             "real_provider_instances": self.real_provider_instances if self.mode == "real" else 0,
             "network_calls": self.network_calls,
-            "api_attempts_delta": self._delta(self.run_ledger_before, ledger_after, "api_attempts"),
-            "input_tokens_delta": self._delta(
-                self.run_ledger_before, ledger_after, "provider_reported_input_tokens"
+            "api_attempts_delta": attempt_api_attempts,
+            "input_tokens_delta": attempt_input_tokens,
+            "output_tokens_delta": attempt_output_tokens,
+            "cost_cny_delta": attempt_cost_cny,
+            "invocation_api_attempts_delta": self._delta(
+                self.invocation_ledger_before, ledger_after, "api_attempts"
             ),
-            "output_tokens_delta": self._delta(
-                self.run_ledger_before, ledger_after, "provider_reported_output_tokens"
+            "invocation_input_tokens_delta": self._delta(
+                self.invocation_ledger_before, ledger_after, "provider_reported_input_tokens"
             ),
-            "cost_cny_delta": float(ledger_after["spent_cny"]) - float(self.run_ledger_before["spent_cny"]),
+            "invocation_output_tokens_delta": self._delta(
+                self.invocation_ledger_before, ledger_after, "provider_reported_output_tokens"
+            ),
+            "invocation_cost_cny_delta": (
+                float(ledger_after["spent_cny"])
+                - float(self.invocation_ledger_before["spent_cny"])
+            ),
             "symbolic_fallback_count": sum(item["symbolic_fallback_used"] for item in records),
             "oracle_fallback_count": sum(item["oracle_fallback_used"] for item in records),
             "mock_fallback_count": sum(item["mock_fallback_used"] for item in records),
@@ -758,6 +898,7 @@ class FocusedLiveHealingRunner:
             "execution_mode": self.mode,
             "attempt_id": self.attempt_id,
             "provider_kind": self.provider_kind,
+            "ledger_baseline_sha256": self.run_ledger_before_hash,
         }
 
     def _verify_resumed_record(self, plan: FocusedRecordPlan, record: dict[str, Any]) -> None:
@@ -795,25 +936,85 @@ class FocusedLiveHealingRunner:
         if cache_directory.exists() and any(cache_directory.iterdir()) and not identity.exists():
             raise ValueError("real Cache directory is non-empty and lacks an attempt identity")
 
-    def _validate_ledger_preflight(self) -> None:
-        ledger = self._read_ledger()
-        for key, baseline in LEDGER_BASELINE.items():
-            actual = ledger.get(key)
-            if isinstance(baseline, float):
-                if float(actual) + 1e-9 < baseline:
-                    raise ValueError(f"formal ledger regressed below baseline: {key}")
-            elif int(actual) < baseline:
-                raise ValueError(f"formal ledger regressed below baseline: {key}")
-        if float(ledger["spent_cny"]) >= 50.0:
-            raise CostHardLimit("cumulative hard limit already reached")
-        if self.mode == "real" and not (self.output / "manifest.json").exists():
-            for key, baseline in LEDGER_BASELINE.items():
-                actual = ledger[key]
-                if isinstance(baseline, float):
-                    if abs(float(actual) - baseline) > 1e-9:
-                        raise ValueError(f"new real attempt must start at the frozen ledger baseline: {key}")
-                elif actual != baseline:
-                    raise ValueError(f"new real attempt must start at the frozen ledger baseline: {key}")
+    def _capture_ledger_baseline(
+        self,
+    ) -> tuple[dict[str, Any], str, dict[str, Any]]:
+        """Capture a monotonic, hash-bound attempt baseline under the Ledger lock."""
+        with _ledger_lock(self.ledger_path):
+            current, current_hash = _validated_ledger(self.ledger_path)
+            current_public = _public_ledger_snapshot(current)
+            for label, floor, floor_hash in self._known_historical_ledgers():
+                if floor_hash is not None and not re.fullmatch(r"[0-9a-f]{64}", str(floor_hash)):
+                    raise ValueError(f"historical Ledger hash is invalid: {label}")
+                if not _ledger_dominates(current_public, floor):
+                    raise ValueError(f"formal Ledger rollback detected below {label}")
+                if (
+                    floor_hash
+                    and _same_ledger_counters(current_public, floor)
+                    and current_hash != floor_hash
+                ):
+                    raise ValueError(f"formal Ledger hash integrity check failed against {label}")
+
+            existing = self._existing_attempt_baseline() if self.mode == "real" else None
+            if existing is None:
+                baseline, baseline_hash = current_public, current_hash
+            else:
+                baseline = _public_ledger_snapshot(existing)
+                baseline_hash = str(existing.get("sha256", ""))
+                if not re.fullmatch(r"[0-9a-f]{64}", baseline_hash):
+                    raise ValueError("attempt manifest Ledger baseline hash is invalid")
+                if not _ledger_dominates(current_public, baseline):
+                    raise ValueError("formal Ledger rolled back below this attempt manifest baseline")
+                if _same_ledger_counters(current_public, baseline) and current_hash != baseline_hash:
+                    raise ValueError("formal Ledger hash differs from this attempt manifest baseline")
+
+            settled_floor = self._existing_attempt_settled_floor()
+            if settled_floor is not None and not _ledger_dominates(current_public, settled_floor):
+                raise ValueError("formal Ledger rolled back below settled checkpoint usage")
+            return dict(baseline), baseline_hash, current_public
+
+    def _known_historical_ledgers(
+        self,
+    ) -> list[tuple[str, dict[str, Any], str | None]]:
+        try:
+            relative = self.ledger_path.resolve().relative_to(PROJECT_ROOT.resolve())
+        except ValueError:
+            return []
+        if self.ledger_path.resolve() != LEDGER.resolve():
+            return []
+        candidates: list[tuple[str, dict[str, Any], str | None]] = []
+        tracked = subprocess.run(
+            ["git", "show", f"HEAD:{relative.as_posix()}"], cwd=PROJECT_ROOT,
+            check=False, capture_output=True,
+        )
+        if tracked.returncode == 0:
+            try:
+                value = json.loads(tracked.stdout)
+                candidates.append((
+                    "the Git-tracked Ledger",
+                    _public_ledger_snapshot(value),
+                    hashlib.sha256(tracked.stdout).hexdigest(),
+                ))
+            except (ValueError, TypeError, json.JSONDecodeError) as exc:
+                raise ValueError("Git-tracked Ledger integrity data is invalid") from exc
+
+        result_paths = list(self.config.output_directory.glob("real_attempts/*/results/summary.json"))
+        diagnostic_root = PROJECT_ROOT / "results/experiments/phase10/diagnostic_preflight/attempts"
+        result_paths.extend(diagnostic_root.glob("*/result.json"))
+        for path in sorted(result_paths):
+            try:
+                value = json.loads(path.read_text(encoding="utf-8"))
+                ledger_after = value.get("ledger_after")
+                if not isinstance(ledger_after, Mapping):
+                    continue
+                candidates.append((
+                    path.relative_to(PROJECT_ROOT).as_posix(),
+                    _public_ledger_snapshot(ledger_after),
+                    value.get("ledger_after_sha256"),
+                ))
+            except (OSError, ValueError, TypeError, json.JSONDecodeError) as exc:
+                raise ValueError(f"historical Ledger integrity data is invalid: {path}") from exc
+        return candidates
 
     def _freeze_identity(self, namespace: str) -> dict[str, Any]:
         value = {
@@ -871,6 +1072,32 @@ class FocusedLiveHealingRunner:
         if not path.exists():
             return None
         return json.loads(path.read_text(encoding="utf-8")).get("ledger_baseline")
+
+    def _existing_attempt_records(self) -> list[dict[str, Any]]:
+        paths = sorted((self.output / "checkpoint/records").glob("*.json"))
+        return [json.loads(path.read_text(encoding="utf-8")) for path in paths]
+
+    def _existing_attempt_usage(self) -> dict[str, float | int]:
+        records = self._existing_attempt_records()
+        return {
+            "api_attempts": sum(int(item.get("api_attempts_delta", 0)) for item in records),
+            "input_tokens": sum(int(item.get("input_tokens", 0)) for item in records),
+            "output_tokens": sum(int(item.get("output_tokens", 0)) for item in records),
+            "cost_cny": sum(float(item.get("cost_cny_delta", 0.0)) for item in records),
+        }
+
+    def _existing_attempt_settled_floor(self) -> dict[str, Any] | None:
+        floors = [
+            _public_ledger_snapshot(item["ledger_after"])
+            for item in self._existing_attempt_records()
+            if isinstance(item.get("ledger_after"), Mapping)
+        ]
+        if not floors:
+            return None
+        return {
+            key: max(float(item[key]) for item in floors)
+            for key in LEDGER_COUNTER_FIELDS
+        }
 
     def _ledger_snapshot(self) -> tuple[str, dict[str, Any]]:
         return _sha256_bytes(self.ledger_path), self._read_ledger()

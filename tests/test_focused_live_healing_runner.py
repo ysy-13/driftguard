@@ -11,14 +11,21 @@ from driftguard.live.focused_config import FOCUSED_CONFIG, FocusedLiveHealingCon
 from driftguard.live.provider_adapter import FocusedProviderAdapter, ReplayCacheMiss
 from driftguard.phase10.config import Phase10Config
 from driftguard.runners.focused_live_healing_runner import (
-    LEDGER, LEDGER_BASELINE, FocusedLiveHealingRunner,
+    LEDGER, FocusedLiveHealingRunner,
 )
+
+TEST_LEDGER_BASELINE = {
+    "api_attempts": 863,
+    "provider_reported_input_tokens": 3_580_832,
+    "provider_reported_output_tokens": 84_182,
+    "spent_cny": 5.202644120,
+}
 
 
 def _temporary_ledger(root: Path) -> Path:
     path = root / "ledger.json"
     path.write_text(json.dumps({
-        **LEDGER_BASELINE, "reserved_cny": 0.0, "soft_warning": False,
+        **TEST_LEDGER_BASELINE, "reserved_cny": 0.0, "soft_warning": False,
     }), encoding="utf-8")
     return path
 
@@ -151,8 +158,7 @@ def test_resume_after_deepseek_batch_does_not_repeat_completed_records(focused_a
         ledger_path=ledger,
     )
     partial._bind_checkpoint(False)
-    _, ledger_snapshot = partial._ledger_snapshot()
-    partial.writer.write_manifest(partial._manifest(ledger_snapshot))
+    partial.writer.write_manifest(partial._manifest())
     for record in mock["records"][:4]:
         partial.writer.write_record(record)
         partial.checkpoints.write(record["record_id"], record)
