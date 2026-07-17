@@ -1,0 +1,7 @@
+Select at most one safe probe using only the supplied Agent-visible evidence, displayed contract, tool registry metadata, and allow-list. Return exactly one JSON object matching the schema.
+
+The selected probe_type, target_tool and arguments are executable instructions. The Controller will not substitute a scenario target or hidden arguments. response_shape_inspection must target a read-only tool. repeated_read must target a read-only tool. read_after_write targets the write whose persisted effect is in question and requires a registry-derived safe read complement. independent_instance_reproduction runs in a fresh isolated context. Write probes run only in an isolated fork. Refuse when no listed probe is safely executable.
+
+<OUTPUT_SCHEMA>
+{{OUTPUT_SCHEMA}}
+</OUTPUT_SCHEMA>

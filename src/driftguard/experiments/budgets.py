@@ -11,6 +11,12 @@ class BudgetExhausted(RuntimeError):
 
 
 @dataclass(frozen=True)
+class BudgetReservation:
+    reservation_id: int
+    patch_proposal: bool
+
+
+@dataclass(frozen=True)
 class ExperimentBudget:
     max_llm_calls: int = 6
     max_tool_calls: int = 8
@@ -37,6 +43,8 @@ class BudgetTracker:
     format_repairs: int = 0
     patch_proposal_calls: int = 0
     _started: float = field(default_factory=time.monotonic)
+    _next_reservation_id: int = 1
+    _reservations: dict[int, BudgetReservation] = field(default_factory=dict)
 
     @property
     def total_interactions(self) -> int:
@@ -90,6 +98,42 @@ class BudgetTracker:
             self.llm_calls + 1, self.tool_calls, self.probe_calls,
             self.input_tokens, self.output_tokens, self.format_repairs,
         )
+
+    def reserve_llm_call(self, *, patch_proposal: bool = False) -> BudgetReservation:
+        """Atomically consumes the interaction slot before a Provider boundary call."""
+        next_patch = self.patch_proposal_calls + int(patch_proposal)
+        self._check_values(
+            self.llm_calls + 1, self.tool_calls, self.probe_calls,
+            self.input_tokens, self.output_tokens, self.format_repairs, next_patch,
+        )
+        reservation = BudgetReservation(self._next_reservation_id, patch_proposal)
+        self._next_reservation_id += 1
+        self._reservations[reservation.reservation_id] = reservation
+        self.llm_calls += 1
+        if patch_proposal:
+            self.patch_proposal_calls += 1
+        return reservation
+
+    def settle_llm_call(
+        self, reservation: BudgetReservation, input_tokens: int = 0, output_tokens: int = 0,
+    ) -> None:
+        if self._reservations.pop(reservation.reservation_id, None) is None:
+            raise ValueError("unknown or already settled budget reservation")
+        # The response is preserved even when reported tokens cross a method
+        # budget.  The next call fails closed during reservation.
+        self.input_tokens += input_tokens
+        self.output_tokens += output_tokens
+
+    def release_llm_call(self, reservation: BudgetReservation) -> None:
+        if self._reservations.pop(reservation.reservation_id, None) is None:
+            return
+        self.llm_calls -= 1
+        if reservation.patch_proposal:
+            self.patch_proposal_calls -= 1
+
+    def assert_settled_within_budget(self) -> None:
+        if self.input_tokens > self.budget.max_input_tokens or self.output_tokens > self.budget.max_output_tokens:
+            raise BudgetExhausted("token budget exhausted")
 
     def consume_patch_proposal(self, input_tokens: int = 0, output_tokens: int = 0) -> None:
         self._check_values(

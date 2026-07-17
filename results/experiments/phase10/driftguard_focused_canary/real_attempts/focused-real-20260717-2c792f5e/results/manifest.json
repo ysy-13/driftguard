@@ -1,0 +1,173 @@
+{
+  "attempt_id": "focused-real-20260717-2c792f5e",
+  "authorized_record_plan": [
+    {
+      "family": "M01",
+      "method": "driftguard_llm",
+      "model_id": "deepseek-v4-flash",
+      "ordinal": 1,
+      "provider": "deepseek",
+      "record_id": "cc800f6e5c51f278529f5fdb",
+      "repetition": 0,
+      "scenario_id": "M01-PD",
+      "seed": 20260715
+    },
+    {
+      "family": "M06",
+      "method": "driftguard_llm",
+      "model_id": "deepseek-v4-flash",
+      "ordinal": 2,
+      "provider": "deepseek",
+      "record_id": "31e18e57cf2d2821a93bae0c",
+      "repetition": 0,
+      "scenario_id": "M06-PD",
+      "seed": 20260715
+    },
+    {
+      "family": "M11",
+      "method": "driftguard_llm",
+      "model_id": "deepseek-v4-flash",
+      "ordinal": 3,
+      "provider": "deepseek",
+      "record_id": "96dbd735151d112385bd4bcf",
+      "repetition": 0,
+      "scenario_id": "M11-PD",
+      "seed": 20260715
+    },
+    {
+      "family": "M16",
+      "method": "driftguard_llm",
+      "model_id": "deepseek-v4-flash",
+      "ordinal": 4,
+      "provider": "deepseek",
+      "record_id": "b32a63d15f8420aadb448fe1",
+      "repetition": 0,
+      "scenario_id": "M16-PD",
+      "seed": 20260715
+    },
+    {
+      "family": "M01",
+      "method": "driftguard_llm",
+      "model_id": "qwen3.7-plus",
+      "ordinal": 5,
+      "provider": "dashscope",
+      "record_id": "6f94f6a6241895909af1f45a",
+      "repetition": 0,
+      "scenario_id": "M01-PD",
+      "seed": 20260715
+    },
+    {
+      "family": "M06",
+      "method": "driftguard_llm",
+      "model_id": "qwen3.7-plus",
+      "ordinal": 6,
+      "provider": "dashscope",
+      "record_id": "42bcb1394cb5a74c11225150",
+      "repetition": 0,
+      "scenario_id": "M06-PD",
+      "seed": 20260715
+    },
+    {
+      "family": "M11",
+      "method": "driftguard_llm",
+      "model_id": "qwen3.7-plus",
+      "ordinal": 7,
+      "provider": "dashscope",
+      "record_id": "8d1014a0534ae284051049c7",
+      "repetition": 0,
+      "scenario_id": "M11-PD",
+      "seed": 20260715
+    },
+    {
+      "family": "M16",
+      "method": "driftguard_llm",
+      "model_id": "qwen3.7-plus",
+      "ordinal": 8,
+      "provider": "dashscope",
+      "record_id": "48ec2da6516cddd7aa21c053",
+      "repetition": 0,
+      "scenario_id": "M16-PD",
+      "seed": 20260715
+    }
+  ],
+  "cache_namespace": "driftguard_focused_live_healing_real_v1",
+  "checkpoint_identity": {
+    "attempt_id": "focused-real-20260717-2c792f5e",
+    "config_hash": "0911adf447c66cf58778f9923764dfcc6b72a02048fdd3e825f4afe7c06668ac",
+    "execution_mode": "real",
+    "frozen_identity_hash": "7626bda829570836c1a6dd24cfb14cf73a7672d510153f29d0c185e35593262f",
+    "ledger_baseline_sha256": "bdbcbe7f3bf257eaa043dcfb7bafa237abca2dada434c5019308657d2877582c",
+    "provider_kind": "REAL_PROVIDER",
+    "source_snapshot": "96273f5fd8f68ab58de6967800810674827e2175dc7afa13b15051919f89409d"
+  },
+  "config_hash": "0911adf447c66cf58778f9923764dfcc6b72a02048fdd3e825f4afe7c06668ac",
+  "cost_limits": {
+    "cumulative_hard_cny": 50.0,
+    "incremental_hard_cny": 5.0,
+    "incremental_soft_cny": 3.0
+  },
+  "execution_mode": "REAL_FOCUSED_CANARY",
+  "experiment_kind": "FOCUSED_LIVE_HEALING_CANARY",
+  "frozen_fingerprints": {
+    "action_prompt_v3_sha256": "bae688c173db4f561162d402acef5661256c6bab5a1d20a65e96868c2ec8267f",
+    "action_schema_v3_sha256": "27807767537dbcf83620642edc443525da61f08dfde6935f4ea11aafd1e9dcf1",
+    "attribution_prompt_v2_sha256": "41255c4096399f8ded854f64d84a4f5de02174d1fb8a9825828e5c91c3ab2d5e",
+    "attribution_schema_v1_sha256": "54c8fdda24a5d37521520337c19095f4782494a8c2335a89f927f8ccecc490d6",
+    "cache_key_material": [
+      "action_prompt_hash",
+      "action_schema_hash",
+      "attribution_prompt_hash",
+      "attribution_schema_hash",
+      "probe_prompt_hash",
+      "probe_schema_hash",
+      "patch_prompt_hash",
+      "patch_schema_hash",
+      "tool_catalog_fingerprint",
+      "policy_capabilities",
+      "provider",
+      "model",
+      "method",
+      "public_scenario_id",
+      "repetition",
+      "attempt_version",
+      "episode_stage",
+      "evidence_fingerprint",
+      "source_snapshot",
+      "config_hash"
+    ],
+    "patch_prompt_v2_sha256": "4c325cc684341e91f405c13c05a3a8d0a751aa4fe83a8ee3e956bb75262953df",
+    "patch_schema_v2_sha256": "b641abd733730dd6f858af4be9cf85231ed9c7b29ce5637c1d1361bd64801b85",
+    "policy_capabilities": [
+      "TOOL_CALL",
+      "FINAL_ANSWER",
+      "REQUEST_PROBE",
+      "ABSTAIN"
+    ],
+    "probe_prompt_v1_sha256": "0b93fcbf4fdf56f52d3fcfe1550dd111e11e5e164d8f294219dcc0346d77f4eb",
+    "probe_schema_v1_sha256": "d3c118f3c80d400d8e539b619ea5e1cedb7bb4cde4eecb3c04891cd0077fbdce",
+    "tool_catalog_fingerprint": "76bde8f625aa26f786ef3ee9065c481adf1cfd793aea7c5b3fea88d40573b7da"
+  },
+  "git": {
+    "commit": "02e6ca52cf7970a63b56dbe5327a167f97f7b1c2",
+    "dirty": false
+  },
+  "heldout48_overlap": 0,
+  "ledger_baseline": {
+    "api_attempts": 864,
+    "provider_reported_input_tokens": 3580870,
+    "provider_reported_output_tokens": 84187,
+    "reserved_cny": 0.0,
+    "sha256": "bdbcbe7f3bf257eaa043dcfb7bafa237abca2dada434c5019308657d2877582c",
+    "spent_cny": 5.202693176000003
+  },
+  "provider_kind": "REAL_PROVIDER",
+  "provider_order": [
+    "deepseek",
+    "dashscope"
+  ],
+  "real_api_status": "RUNNING",
+  "records_planned": 8,
+  "result_namespace": "driftguard_focused_canary",
+  "schema_version": "focused-live-healing-manifest-v1",
+  "source_snapshot": "96273f5fd8f68ab58de6967800810674827e2175dc7afa13b15051919f89409d"
+}

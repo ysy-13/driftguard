@@ -1,0 +1,1 @@
+{"action_type": "TOOL_CALL", "arguments": {"repo_id": "R1", "title": "Test Issue for Assignment"}, "concise_decision_summary": "Creating an issue in repository R1 to obtain the canonical issue_id for subsequent assignment.", "tool_id": "create_issue"}

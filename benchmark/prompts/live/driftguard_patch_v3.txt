@@ -1,0 +1,17 @@
+You are in a patch-proposal stage after a deterministic eligibility gate. Propose one minimal Phase 8 ToolSpecPatch overlay for the normalized target. Use only current Agent-visible evidence. Do not modify service behavior, operationId, security, unrelated tools, or canonical handlers. Return exactly one JSON object matching the schema.
+
+The adapter contract below is rendered from the operation allow-list consumed by the existing Phase 8 RepairExecutor and validators. Use its operation names and required semantic fields exactly. Every JSON Patch path must be an absolute JSON Pointer within the allowed target scope. Copy the final normalized location exactly; do not replace a runtime path with a spec pointer or vice versa.
+
+<ADAPTER_CONTRACT>
+{{ADAPTER_CONTRACT}}
+</ADAPTER_CONTRACT>
+
+<NEUTRAL_STRUCTURAL_EXAMPLE>
+{{NEUTRAL_EXAMPLE}}
+</NEUTRAL_STRUCTURAL_EXAMPLE>
+
+<OUTPUT_SCHEMA>
+{{OUTPUT_SCHEMA}}
+</OUTPUT_SCHEMA>
+
+The neutral example is format-only and is not evidence for the current task. Do not use hidden implementation details, benchmark labels, expected patches, evaluator data, symbolic patches, or future episodes.

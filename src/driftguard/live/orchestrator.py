@@ -13,7 +13,10 @@ from driftguard.sandbox import SandboxService
 from .eligibility import LivePatchEligibilityGate
 from .evidence_bridge import LiveEvidenceBridge
 from .history import LiveHistoryStore
-from .stages import LLMPatchAdapter, LivePatchValidator, LiveProbeExecutor, LiveStructuredStages
+from .stages import (
+    ControllerProbeError, LLMPatchAdapter, LivePatchValidator, LiveProbeExecutor,
+    LiveStructuredStages,
+)
 from .state_machine import LiveHealingState, LiveHealingStateMachine
 
 
@@ -32,6 +35,7 @@ class LiveHealingOrchestrator:
         self.probes = LiveProbeExecutor()
         self.adapter = LLMPatchAdapter()
         self.machine = LiveHealingStateMachine()
+        self.partial_result: dict[str, Any] = {}
 
     @staticmethod
     def should_trigger(bridge: LiveEvidenceBridge) -> bool:
@@ -52,10 +56,12 @@ class LiveHealingOrchestrator:
         repair_arguments: dict[str, Any],
         initial_state: dict[str, Any],
         *,
-        probe_operation: Callable[[SandboxService], Any],
         future_arguments: dict[str, Any] | None = None,
+        actor_id: str = "agent_admin",
+        drift_exposed: bool = True,
     ) -> dict[str, Any]:
         result = self._empty_result(bridge)
+        self.partial_result = result
         self.machine.move(LiveHealingState.TASK_EXECUTION, "LIVE_CONTROLLER_TRACE_ATTACHED", remaining_budget=self._remaining())
         failures = [
             event for event in bridge.trace.events
@@ -111,7 +117,7 @@ class LiveHealingOrchestrator:
         result["probe_selection"] = deepcopy(selection)
         bridge.emit(
             "probe_requested", 5, source_event="LiveHealingOrchestrator.probe_selection",
-            tool_id=selection.get("target_tool_id"),
+            tool_id=selection.get("target_tool"),
             historical_evidence_refs=tuple(selection.get("evidence_refs", ())),
             probe_metadata={"selection": selection, "llm_call_id": probe_call},
         )
@@ -128,17 +134,47 @@ class LiveHealingOrchestrator:
 
         self.machine.move(LiveHealingState.PROBE_EXECUTION, "SAFE_PROBE_SELECTED", llm_call_id=probe_call, remaining_budget=self._remaining())
         self.tracker.consume_tool(probe=True)
-        probe_result = self.probes.execute(selection, main_service, context_factory, probe_operation)
+        try:
+            probe_result = self.probes.execute(
+                selection, main_service, context_factory, deepcopy(bridge.displayed_spec),
+                actor_id=actor_id,
+            )
+        except ControllerProbeError as exc:
+            result["controller_error"] = {
+                "type": type(exc).__name__, "sanitized_message": str(exc)[:500],
+            }
+            result["termination_reason"] = "CONTROLLER_PROBE_ERROR"
+            self.machine.move(LiveHealingState.PATCH_REJECTED, "PROBE_DISPATCH_FAILED_CLOSED", remaining_budget=self._remaining())
+            self.machine.move(LiveHealingState.FINAL_EVALUATION, "NO_PATCH", remaining_budget=self._remaining())
+            result["state_transitions"] = self.machine.visible()
+            return result
         result["probe_result"] = deepcopy(probe_result)
+        for _ in range(max(0, int(probe_result.get("fork_call_count", 0)) - 1)):
+            self.tracker.consume_tool()
+        if probe_result["requested_target"] != probe_result["executed_target"]:
+            raise ControllerProbeError("requested and executed probe targets differ")
         probe_event = bridge.emit(
             "probe_executed", 5, source_event="LiveHealingOrchestrator.probe_execution",
-            execution_context_id=f"{bridge.scope.key}:probe-fork", tool_id=selection.get("target_tool_id"),
+            execution_context_id=f"{bridge.scope.key}:probe-fork", tool_id=probe_result["executed_target"],
+            displayed_request={"arguments": deepcopy(selection.get("arguments") or {})},
             visible_runtime_response=deepcopy(probe_result.get("result", {})),
-            normalized_observation={"probe_type": selection["probe_type"], "executed": True},
+            normalized_observation={
+                "probe_type": selection["probe_type"], "executed": True,
+                "requested_target": probe_result["requested_target"],
+                "executed_target": probe_result["executed_target"],
+                "expected_observation_type": selection.get("expected_observation_type"),
+                "tool_responses": deepcopy(probe_result.get("tool_responses", [])),
+            },
+            visible_state_diff=deepcopy(probe_result.get("visible_state_diff", [])),
+            before_state_hash=probe_result.get("fork_state_hash_before"),
+            after_state_hash=probe_result.get("fork_state_hash_after"),
             historical_evidence_refs=tuple(selection["evidence_refs"]),
             probe_metadata={
                 "discriminative": True, "passed": True, "unsafe_write": False,
                 "regression_requirements_identified": True, "isolated_fork": True,
+                "requested_probe": deepcopy(selection),
+                "executed_probe": deepcopy(probe_result["executed_probe"]),
+                "main_state_pollution": False,
             },
         )
 
@@ -161,6 +197,7 @@ class LiveHealingOrchestrator:
         )
         eligibility = self.eligibility.decide(
             bridge.agent_view(), final_attribution, budget_remaining=self._has_budget(),
+            drift_exposed=drift_exposed,
         )
         result["patch_eligibility"] = eligibility.to_dict()
         result["independent_failure_count"] = eligibility.independent_failure_count
@@ -191,7 +228,15 @@ class LiveHealingOrchestrator:
             patch = self.adapter.from_output(raw_patch, bridge.agent_view(), final_attribution)
             static_result, _ = self.validator.static_only(patch, bridge.agent_view())
         except (TypeError, ValueError) as exc:
-            adapter_error = {"passed": False, "stage": "adapter", "reason_codes": [f"{type(exc).__name__}:{exc}"], "details": {}}
+            adapter_error = {
+                "passed": False, "stage": "adapter",
+                "reason_codes": [f"{type(exc).__name__}:{exc}"],
+                "details": {
+                    "normalized_attributed_location": deepcopy(final_attribution.get("location")),
+                    "normalized_patch_location": deepcopy(raw_patch.get("location")),
+                    "target_tool": final_attribution.get("target_tool_id"),
+                },
+            }
         if adapter_error is not None or not static_result.passed:
             error = adapter_error or static_result.to_dict()
             revised, revision_call = self.stages.patch_proposal(

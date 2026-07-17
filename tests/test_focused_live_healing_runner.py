@@ -111,7 +111,7 @@ def test_mock_executes_exactly_eight_complete_orchestrator_records(focused_artif
 
 def test_cache_has_48_unique_stage_keys_and_no_cross_scope_collisions(focused_artifacts):
     _, cache, _, mock, _ = focused_artifacts
-    raw_files = tuple((cache / "driftguard_focused_live_healing_v1/raw").glob("*.json"))
+    raw_files = tuple((cache / "driftguard_focused_live_healing_v3/raw").glob("*.json"))
     assert len(raw_files) == 8 * 6
     assert len({path.stem for path in raw_files}) == len(raw_files)
     assert {row["cache"]["entries_after"] - row["cache"]["entries_before"] for row in mock["records"]} == {6}
@@ -199,7 +199,7 @@ def test_no_symbolic_or_oracle_fallback_and_no_hidden_cache_material(focused_art
     assert mock["summary"]["symbolic_fallback_count"] == mock["summary"]["oracle_fallback_count"] == 0
     encoded = "".join(
         path.read_text(encoding="utf-8")
-        for path in (cache / "driftguard_focused_live_healing_v1").rglob("*.json")
+        for path in (cache / "driftguard_focused_live_healing_v3").rglob("*.json")
     ).lower()
     for forbidden in ("source_drift_id", "expected_patch", "evaluator_view", "runtime_contract", "authorization"):
         assert forbidden not in encoded

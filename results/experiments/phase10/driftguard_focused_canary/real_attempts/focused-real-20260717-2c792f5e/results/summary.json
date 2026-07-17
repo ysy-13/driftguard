@@ -1,0 +1,43 @@
+{
+  "accepted": 0,
+  "api_attempts_delta": 48,
+  "attempt_id": "focused-real-20260717-2c792f5e",
+  "cost_cny_delta": 0.8104640200000013,
+  "execution_mode": "REAL_FOCUSED_CANARY",
+  "experiment_kind": "FOCUSED_LIVE_HEALING_CANARY",
+  "infrastructure_errors": 2,
+  "input_tokens_delta": 511299,
+  "invocation_api_attempts_delta": 48,
+  "invocation_cost_cny_delta": 0.8104640200000013,
+  "invocation_input_tokens_delta": 511299,
+  "invocation_output_tokens_delta": 11116,
+  "ledger_after": {
+    "api_attempts": 912,
+    "provider_reported_input_tokens": 4092169,
+    "provider_reported_output_tokens": 95303,
+    "reserved_cny": 0.0,
+    "spent_cny": 6.013157196000004
+  },
+  "ledger_after_sha256": "557dbf3feb6406e866bcc3151f5e94ac74eea5fc5bd703dad91b204b53b9b2ac",
+  "ledger_before": {
+    "api_attempts": 864,
+    "provider_reported_input_tokens": 3580870,
+    "provider_reported_output_tokens": 84187,
+    "reserved_cny": 0.0,
+    "spent_cny": 5.202693176000003
+  },
+  "ledger_before_sha256": "bdbcbe7f3bf257eaa043dcfb7bafa237abca2dada434c5019308657d2877582c",
+  "mock_fallback_count": 0,
+  "network_calls": 45,
+  "oracle_fallback_count": 0,
+  "output_tokens_delta": 11116,
+  "provider_fallback_calls": 0,
+  "provider_kind": "REAL_PROVIDER",
+  "real_api_status": "COMPLETED",
+  "real_provider_instances": 20,
+  "records_completed": 8,
+  "records_planned": 8,
+  "records_resumed": 0,
+  "run_status": "COMPLETE",
+  "symbolic_fallback_count": 0
+}

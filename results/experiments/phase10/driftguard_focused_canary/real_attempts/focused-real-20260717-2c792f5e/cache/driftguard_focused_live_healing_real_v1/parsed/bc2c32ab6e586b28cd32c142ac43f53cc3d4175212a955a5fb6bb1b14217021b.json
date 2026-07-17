@@ -1,0 +1,1 @@
+{"action_type": "TOOL_CALL", "arguments": {"issue_id": 102, "repo_id": "R1"}, "concise_decision_summary": "Close issue 102 in repository alpha-api (repo_id R1) as per task.", "tool_id": "close_issue"}

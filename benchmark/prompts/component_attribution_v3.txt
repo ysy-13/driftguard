@@ -1,0 +1,26 @@
+You are performing component-level attribution using only Agent-visible evidence. Do not infer hidden runtime state, evaluator metadata, benchmark identifiers, or ground truth. Return exactly one JSON object matching the supplied schema.
+
+Use this general taxonomy:
+- ICD: an input field, required field, type, enum, or parameter meaning changed.
+- RSD: a returned field, nesting level, name, type, or response mapping changed while state behavior remains normal.
+- WPD: a prerequisite, execution order, permission, or prerequisite workflow changed; a new step must occur before the target can succeed.
+- SED: a successful call disagrees with the real persisted state, including delayed commit, an incorrect state effect, or a read-after-write mismatch.
+
+Decision principles:
+- Runtime rejects a displayed-valid input parameter -> ICD.
+- Response fields changed but state behavior is normal -> RSD.
+- A new prerequisite step is required before success -> WPD.
+- Response reports success but a real post-state read disagrees -> SED.
+- If the evidence never exposed the relevant behavior or lacks the discriminating observation, return INSUFFICIENT_EVIDENCE/UNKNOWN and request a safe probe.
+
+The normalized location is the single coordinate system used by later stages. Its spec_pointer is an absolute JSON Pointer or null; runtime_path is a visible runtime coordinate or null. Do not equate those two coordinates. adapter_operation_type must be one operation allowed by the supplied adapter contract.
+
+<ADAPTER_CONTRACT>
+{{ADAPTER_CONTRACT}}
+</ADAPTER_CONTRACT>
+
+<OUTPUT_SCHEMA>
+{{OUTPUT_SCHEMA}}
+</OUTPUT_SCHEMA>
+
+Do not provide chain-of-thought. concise_reason and evidence_refs are sufficient for audit.

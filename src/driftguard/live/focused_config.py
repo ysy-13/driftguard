@@ -106,12 +106,12 @@ def validate_focused_canary_config(path: Path | str = FOCUSED_CONFIG) -> dict[st
     expected_hashes = {
         "action_prompt_v3_sha256": "benchmark/prompts/base_tool_agent_v3.txt",
         "action_schema_v3_sha256": "benchmark/schemas/agent_action_schema_v3.json",
-        "attribution_prompt_v2_sha256": "benchmark/prompts/component_attribution_v2.txt",
-        "attribution_schema_v1_sha256": "benchmark/schemas/llm_attribution_schema_v1.json",
-        "probe_prompt_v1_sha256": "benchmark/prompts/live/driftguard_probe_selection_v1.txt",
-        "probe_schema_v1_sha256": "benchmark/schemas/probe_selection_schema_v1.json",
-        "patch_prompt_v2_sha256": "benchmark/prompts/live/driftguard_patch_v2.txt",
-        "patch_schema_v2_sha256": "benchmark/schemas/llm_patch_proposal_schema_v2.json",
+        "attribution_prompt_v3_sha256": "benchmark/prompts/component_attribution_v3.txt",
+        "attribution_schema_v3_sha256": "benchmark/schemas/llm_attribution_schema_v3.json",
+        "probe_prompt_v3_sha256": "benchmark/prompts/live/driftguard_probe_selection_v3.txt",
+        "probe_schema_v3_sha256": "benchmark/schemas/probe_selection_schema_v3.json",
+        "patch_prompt_v3_sha256": "benchmark/prompts/live/driftguard_patch_v3.txt",
+        "patch_schema_v3_sha256": "benchmark/schemas/llm_patch_proposal_schema_v3.json",
     }
     hashes_valid = all(
         fingerprints[name] == hashlib.sha256((PROJECT_ROOT / relative).read_bytes()).hexdigest()
@@ -133,8 +133,8 @@ def validate_focused_canary_config(path: Path | str = FOCUSED_CONFIG) -> dict[st
         "heldout48_overlap": not experiment["heldout48_allowed"] and not any(
             item["family"] not in {"M01", "M06", "M11", "M16"} for item in selection
         ),
-        "isolated_namespaces": execution["cache_namespace"] == "driftguard_focused_live_healing_v1"
-            and execution["result_namespace"] == "driftguard_focused_canary",
+        "isolated_namespaces": execution["cache_namespace"] == "driftguard_focused_live_healing_v3"
+            and execution["result_namespace"] == "driftguard_focused_canary_v3",
         "ledger_continuity": execution["attempt_base_spent_cny"] == 5.202644120,
         "cost_gates": execution["attempt_soft_increment_cny"] == 3
             and execution["attempt_hard_increment_cny"] == 5

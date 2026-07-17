@@ -92,10 +92,12 @@ def test_ae_tf_negative_mock_attribution_never_opens_patch_channel(label, recove
     )
     attribution = {
         "predicted_class": label, "target_tool_id": "create_issue", "drift_category": "ICD",
-        "location_type": "request_schema", "location_path": "/paths/x", "evidence_refs": [event.event_id],
+        "location": {"tool_id": "create_issue", "layer": "input", "spec_pointer": "/paths/x",
+                     "runtime_path": "request", "adapter_operation_type": "add_required"},
+        "evidence_refs": [event.event_id],
         "requested_probe": None, "confidence": 0.9, "concise_reason": "mock recovery evidence",
     }
-    tracker = BudgetTracker(ExperimentBudget(max_llm_calls=2))
+    tracker = BudgetTracker(ExperimentBudget(max_llm_calls=2, max_input_tokens=100_000))
     parsed, _ = LiveStructuredStages(MockProvider([attribution]), tracker).attribution(bridge.agent_view(), "FINAL")
     decision = LivePatchEligibilityGate().decide(bridge.agent_view(), parsed)
     assert decision.decision == "FORBIDDEN" and tracker.patch_proposal_calls == 0
@@ -103,9 +105,12 @@ def test_ae_tf_negative_mock_attribution_never_opens_patch_channel(label, recove
 
 def _custom_outputs(runner: LiveHealingMockRunner, family_id: str):
     family = runner.families[family_id]
+    scenario = next(item for item in family["scenarios"] if item["variant_code"] == "PD")
     case = runner.cases[family["source_drift_id"]]
     displayed = runner._context(case, family, 3).displayed_contract
-    return runner._stage_outputs(case, displayed)
+    resolved = runner.resolver.resolve(family, scenario)
+    action = next(step for step in resolved.oracle_plan if step["tool"] == case["target_tool"])
+    return runner._stage_outputs(case, displayed, action["arguments"])
 
 
 def test_invalid_patch_gets_exactly_one_revision_then_succeeds_or_rejects():

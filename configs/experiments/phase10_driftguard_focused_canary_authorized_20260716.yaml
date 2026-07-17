@@ -1,15 +1,15 @@
 experiment:
   name: phase10_driftguard_focused_canary
   kind: FOCUSED_LIVE_HEALING_CANARY
-  pilot_attempt: focused_live_healing_v1
+  pilot_attempt: focused_live_healing_v3
   run_scope: driftguard_llm_development_pd_only
   run_authorized: true
   action_prompt_version: base_tool_agent_v3
   action_schema_version: agent_action_schema_v3
-  attribution_schema_version: llm_attribution_schema_v1
-  probe_schema_version: probe_selection_schema_v1
-  patch_schema_version: llm_patch_proposal_schema_v2
-  record_schema_version: experiment_record_schema_v2
+  attribution_schema_version: llm_attribution_schema_v3
+  probe_schema_version: probe_selection_schema_v3
+  patch_schema_version: llm_patch_proposal_schema_v3
+  record_schema_version: focused_live_healing_record_schema_v3
   mode: [end_to_end]
   real_llm: true
   repetitions: 1
@@ -52,8 +52,8 @@ execution:
   allow_real_api_required: true
   confirm_focused_run_required: true
   cache_enabled: true
-  cache_namespace: driftguard_focused_live_healing_v1
-  result_namespace: driftguard_focused_canary
+  cache_namespace: driftguard_focused_live_healing_v3
+  result_namespace: driftguard_focused_canary_v3
   resume_enabled: true
   fail_fast_on_leakage: true
   task_state_isolation: true
@@ -69,12 +69,12 @@ execution:
 fingerprints:
   action_prompt_v3_sha256: bae688c173db4f561162d402acef5661256c6bab5a1d20a65e96868c2ec8267f
   action_schema_v3_sha256: 27807767537dbcf83620642edc443525da61f08dfde6935f4ea11aafd1e9dcf1
-  attribution_prompt_v2_sha256: 41255c4096399f8ded854f64d84a4f5de02174d1fb8a9825828e5c91c3ab2d5e
-  attribution_schema_v1_sha256: 54c8fdda24a5d37521520337c19095f4782494a8c2335a89f927f8ccecc490d6
-  probe_prompt_v1_sha256: 0b93fcbf4fdf56f52d3fcfe1550dd111e11e5e164d8f294219dcc0346d77f4eb
-  probe_schema_v1_sha256: d3c118f3c80d400d8e539b619ea5e1cedb7bb4cde4eecb3c04891cd0077fbdce
-  patch_prompt_v2_sha256: 4c325cc684341e91f405c13c05a3a8d0a751aa4fe83a8ee3e956bb75262953df
-  patch_schema_v2_sha256: b641abd733730dd6f858af4be9cf85231ed9c7b29ce5637c1d1361bd64801b85
+  attribution_prompt_v3_sha256: 9b202af7d5672a4a1f985fdb262a907b2325105ccf54037152f8aa77abd6835d
+  attribution_schema_v3_sha256: 30050f67ecc85e593415eb345b2287d335f3fa9ff6b4bd098162a9bb32e84e7f
+  probe_prompt_v3_sha256: 6316660dc4114780f79e860bedc8ee7215399fd166b1d91021a3ff19f9483ff3
+  probe_schema_v3_sha256: 9d4e1bf3f545d2b173885bdf81c7a2ff6c22db50d9b5f167bfe5c3262eb48cce
+  patch_prompt_v3_sha256: d3fdbb432df8c57abd94d4ab9b972de3cf1a6041fd6273b7989d4352ebe0b71a
+  patch_schema_v3_sha256: 0653983941105e776becb96e36d8f6f4601b101339e4b5b9544d12db151d72c7
   tool_catalog_fingerprint: 76bde8f625aa26f786ef3ee9065c481adf1cfd793aea7c5b3fea88d40573b7da
   policy_capabilities: [TOOL_CALL, FINAL_ANSWER, REQUEST_PROBE, ABSTAIN]
   cache_key_material:

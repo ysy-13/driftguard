@@ -46,12 +46,13 @@ class ValidationResult:
     details: dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        return {
+        payload = {
             "passed": self.passed,
             "stage": self.stage,
             "reason_codes": list(self.reason_codes),
             "details": dict(self.details),
         }
+        return payload
 
 
 @dataclass(frozen=True)
@@ -72,6 +73,7 @@ class ToolSpecPatch:
     confidence: float
     lifecycle_status: PatchLifecycle = PatchLifecycle.PROPOSED
     validation_results: tuple[ValidationResult, ...] = ()
+    normalized_location: dict[str, Any] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
         if not self.evidence_refs or not self.openapi_operations:
@@ -87,7 +89,7 @@ class ToolSpecPatch:
         return replace(self, lifecycle_status=status, validation_results=results)
 
     def to_dict(self) -> dict[str, Any]:
-        return {
+        payload = {
             "patch_id": self.patch_id,
             "patch_version": self.patch_version,
             "created_at": self.created_at,
@@ -105,6 +107,9 @@ class ToolSpecPatch:
             "lifecycle_status": self.lifecycle_status.value,
             "validation_results": [result.to_dict() for result in self.validation_results],
         }
+        if self.normalized_location:
+            payload["normalized_location"] = dict(self.normalized_location)
+        return payload
 
 
 @dataclass(frozen=True)
@@ -112,4 +117,3 @@ class GenerationResult:
     disposition: str
     candidates: tuple[ToolSpecPatch, ...] = ()
     reason_codes: tuple[str, ...] = ()
-

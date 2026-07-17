@@ -243,21 +243,24 @@ def test_resume_rejects_ledger_rollback_and_hash_anomaly(tmp_path):
         )
 
 
-def test_production_ledger_at_current_preflight_state_is_a_valid_dynamic_start(tmp_path):
+def test_production_ledger_current_snapshot_is_a_valid_dynamic_start(tmp_path):
     before = hashlib.sha256(LEDGER.read_bytes()).hexdigest()
     current = json.loads(LEDGER.read_text(encoding="utf-8"))
-    assert current["api_attempts"] == 864
+    assert current["api_attempts"] >= 0
+    assert current["provider_reported_input_tokens"] >= 0
+    assert current["provider_reported_output_tokens"] >= 0
+    assert current["spent_cny"] <= 50
     runner = _real_runner(
         tmp_path, _authorized_config(tmp_path), LEDGER, _FakeFactory(),
         output=tmp_path / "production-baseline-results",
         cache=tmp_path / "production-baseline-cache",
     )
     assert runner.run_ledger_before == {
-        "api_attempts": 864,
-        "provider_reported_input_tokens": 3_580_870,
-        "provider_reported_output_tokens": 84_187,
-        "spent_cny": 5.202693176000003,
-        "reserved_cny": 0.0,
+        "api_attempts": int(current["api_attempts"]),
+        "provider_reported_input_tokens": int(current["provider_reported_input_tokens"]),
+        "provider_reported_output_tokens": int(current["provider_reported_output_tokens"]),
+        "spent_cny": float(current["spent_cny"]),
+        "reserved_cny": float(current.get("reserved_cny", 0.0)),
     }
     assert hashlib.sha256(LEDGER.read_bytes()).hexdigest() == before
 

@@ -12,7 +12,9 @@ from driftguard.contracts.loader import DEFAULT_FIXTURE_PATH, PROJECT_ROOT
 from driftguard.experiments.budgets import BudgetTracker, ExperimentBudget
 from driftguard.experiments.task_resolver import TaskInstanceResolver
 from driftguard.healing.category_generators import operation_path_for_tool
-from driftguard.live import LiveEvidenceBridge, LiveHistoryStore, LiveScope
+from driftguard.live import (
+    LiveEvidenceBridge, LiveHistoryStore, LiveScope, evaluate_drift_exposure,
+)
 from driftguard.live.orchestrator import LiveHealingOrchestrator
 from driftguard.live.provider_adapter import EvidenceRefMockProvider, FocusedProviderAdapter
 from driftguard.live.stages import LiveStructuredStages
@@ -119,7 +121,7 @@ class LiveHealingMockRunner:
             })
             agent_provider_calls += int(getattr(provider, "calls", 0))
             latest_service = service
-        outputs = stage_outputs or self._stage_outputs(case, displayed)
+        outputs = stage_outputs or self._stage_outputs(case, displayed, arguments)
         stage_provider = (
             provider_adapter.create(outputs, resolve_evidence_refs=True) if provider_adapter
             else EvidenceRefMockProvider(outputs, model="mock-live-diagnosis-and-patch")
@@ -135,14 +137,32 @@ class LiveHealingMockRunner:
         def context_factory():
             return self._context(case, family, 5)
 
-        def probe_operation(service):
-            return service.call_tool(case["target_tool"], deepcopy(arguments), resolved.actor_id)
-
-        row = orchestrator.run(
-            bridge, latest_service, context_factory, arguments, self.initial_state,
-            probe_operation=probe_operation, future_arguments=arguments,
-        )
+        exposure = evaluate_drift_exposure(bridge.trace, case["target_tool"])
+        try:
+            row = orchestrator.run(
+                bridge, latest_service, context_factory, arguments, self.initial_state,
+                future_arguments=arguments, actor_id=resolved.actor_id,
+                drift_exposed=exposure["drift_exposed"],
+            )
+        except Exception as exc:
+            partial = deepcopy(orchestrator.partial_result)
+            partial["state_transitions"] = orchestrator.machine.visible()
+            partial["termination_reason"] = type(exc).__name__
+            partial.update({
+                **exposure,
+                "family": family_id, "public_scenario_id": public_id,
+                "live_evidence_trace": bridge.trace.to_dict(),
+                "llm_calls": tracker.llm_calls, "tool_calls": tracker.tool_calls,
+                "probe_calls": tracker.probe_calls,
+                "patch_proposal_calls": tracker.patch_proposal_calls,
+                "input_tokens": tracker.input_tokens, "output_tokens": tracker.output_tokens,
+                "llm_stage_calls": deepcopy(stages.call_records),
+                "controller_runs": deepcopy(controller_runs),
+            })
+            setattr(exc, "partial_result", partial)
+            raise
         row.update({
+            **exposure,
             "family": family_id, "public_scenario_id": public_id,
             "drift_category": self._category(case["drift_type"]),
             "live_evidence_events": len(bridge.trace.events),
@@ -171,30 +191,35 @@ class LiveHealingMockRunner:
             "{{POLICY_CAPABILITIES}}", capabilities.prompt_fragment()
         )
 
-    def _stage_outputs(self, case, displayed):
+    def _stage_outputs(self, case, displayed, arguments):
         category = self._category(case["drift_type"])
         location = case["runtime_mutation"]["target"]
         target = case["target_tool"]
         refs = ["@FAILURE_1", "@FAILURE_2"]
-        preliminary = self._attribution(target, category, location, refs, requested={"needed": True})
-        probe_type = {"ICD": "local_schema_check", "RSD": "response_shape_inspection", "WPD": "precondition_inspection", "SED": "read_after_write"}[category]
-        selection = {
-            "decision": "SELECT_PROBE", "probe_type": probe_type, "target_tool_id": target,
-            "evidence_refs": refs, "concise_reason": "distinguish a persistent visible contract mismatch",
-        }
-        final = self._attribution(target, category, location, [*refs, "@PROBE"], requested=None)
         patch = self._patch_output(category, target, location, displayed, [*refs, "@PROBE"])
+        normalized_location = patch["location"]
+        preliminary = self._attribution(target, category, normalized_location, refs, requested={"needed": True})
+        probe_type = {
+            "ICD": "local_schema_check", "RSD": "independent_instance_reproduction",
+            "WPD": "precondition_inspection", "SED": "read_after_write",
+        }[category]
+        selection = {
+            "decision": "SELECT_PROBE", "probe_type": probe_type, "target_tool": target,
+            "arguments": deepcopy(arguments),
+            "expected_observation_type": {
+                "ICD": "displayed input contract", "RSD": "independent response shape",
+                "WPD": "visible prerequisite state", "SED": "read-after-write persisted state",
+            }[category],
+            "evidence_refs": refs, "rationale": "distinguish a persistent visible contract mismatch",
+        }
+        final = self._attribution(target, category, normalized_location, [*refs, "@PROBE"], requested=None)
         return [preliminary, selection, final, patch]
 
     @staticmethod
     def _attribution(target, category, location, refs, requested):
         return {
             "predicted_class": "PERSISTENT_DRIFT", "target_tool_id": target,
-            "drift_category": category, "location_type": {
-                "ICD": "request_schema", "RSD": "response_schema",
-                "WPD": "workflow_precondition", "SED": "state_effect",
-            }[category],
-            "location_path": location, "evidence_refs": refs,
+            "drift_category": category, "location": deepcopy(location), "evidence_refs": refs,
             "requested_probe": requested, "confidence": 0.95,
             "concise_reason": "two independent live failures conflict with the displayed contract",
         }
@@ -215,8 +240,15 @@ class LiveHealingMockRunner:
             path = operation_path_for_tool(displayed, target) + "/x-driftguard-observation-policy"
             value = {"kind": "read_after_write", "confirmation_tool": "get_issue", "condition": "state=closed"}
             semantics = {"operation": "add_postcondition_verification", "target": "/adapter/close_issue/postcondition", "before": ["close_issue"], "after": ["close_issue", "get_issue", "verify state=closed"], "observation_policy": value}
+        normalized_location = {
+            "tool_id": target,
+            "layer": {"ICD": "input", "RSD": "response", "WPD": "workflow", "SED": "state_effect"}[category],
+            "spec_pointer": path[:-2] if path.endswith("/-") else path,
+            "runtime_path": None,
+            "adapter_operation_type": semantics["operation"],
+        }
         return {
-            "target_tool_id": target, "drift_category": category, "location_path": location,
+            "target_tool_id": target, "drift_category": category, "location": normalized_location,
             "openapi_operations": [{"op": "add", "path": path, "value": value, "evidence_refs": refs, "reason_code": "LIVE_EVIDENCE_MINIMAL_CHANGE"}],
             "semantic_extensions": {"x-driftguard-patch-semantics": semantics},
             "evidence_refs": refs,

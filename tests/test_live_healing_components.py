@@ -43,8 +43,11 @@ def _live_view(*, failures: int = 2, recovery: str | None = None, probe: bool = 
 def _attribution(label: str = "PERSISTENT_DRIFT", refs=None):
     return {
         "predicted_class": label, "target_tool_id": "create_issue", "drift_category": "ICD",
-        "location_type": "request_schema",
-        "location_path": "/paths/~1repositories~1{repo_id}~1issues/post/requestBody",
+        "location": {
+            "tool_id": "create_issue", "layer": "input",
+            "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues/post/requestBody",
+            "runtime_path": "request", "adapter_operation_type": "add_required",
+        },
         "evidence_refs": list(refs or []), "requested_probe": None, "confidence": 0.9,
         "concise_reason": "live evidence only",
     }
@@ -111,7 +114,7 @@ def test_two_contexts_with_different_symptoms_do_not_count_as_reproduction():
 def test_invalid_attribution_evidence_reference_is_rejected():
     bridge, _ = _live_view()
     provider = MockProvider([_attribution(refs=["does-not-exist"])])
-    stages = LiveStructuredStages(provider, BudgetTracker(ExperimentBudget(max_llm_calls=4)))
+    stages = LiveStructuredStages(provider, BudgetTracker(ExperimentBudget(max_llm_calls=4, max_input_tokens=100_000)))
     with pytest.raises(InvalidStructuredOutput, match="nonexistent"):
         stages.attribution(bridge.agent_view(), "FINAL")
 
@@ -123,13 +126,13 @@ def test_live_structured_stage_cache_replays_without_a_provider_call(tmp_path):
     model = ModelConfig(provider="mock", model_id="mock-live")
     first_provider = MockProvider([output], model="mock-live")
     first = LiveStructuredStages(
-        first_provider, BudgetTracker(ExperimentBudget(max_llm_calls=2)),
+        first_provider, BudgetTracker(ExperimentBudget(max_llm_calls=2, max_input_tokens=100_000)),
         cache=cache, model_config=model, config_hash="prompt-v3-schema-v3-catalog-policy",
     )
     first.attribution(bridge.agent_view(), "FINAL")
     second_provider = MockProvider([], model="mock-live")
     second = LiveStructuredStages(
-        second_provider, BudgetTracker(ExperimentBudget(max_llm_calls=2)),
+        second_provider, BudgetTracker(ExperimentBudget(max_llm_calls=2, max_input_tokens=100_000)),
         cache=cache, model_config=model, config_hash="prompt-v3-schema-v3-catalog-policy",
     )
     second.attribution(bridge.agent_view(), "FINAL")
@@ -139,18 +142,21 @@ def test_live_structured_stage_cache_replays_without_a_provider_call(tmp_path):
 def test_dedicated_probe_selection_rejects_probe_outside_runtime_allowlist():
     bridge, view = _live_view()
     ref = view.trace.events[0].event_id
-    output = {"decision": "SELECT_PROBE", "probe_type": "exact_retry", "target_tool_id": "create_issue",
-              "evidence_refs": [ref], "concise_reason": "bounded discrimination"}
-    stages = LiveStructuredStages(MockProvider([output]), BudgetTracker(ExperimentBudget(max_llm_calls=4)))
+    output = {"decision": "SELECT_PROBE", "probe_type": "exact_retry", "target_tool": "create_issue",
+              "arguments": {"repo_id": "R1", "title": "x"},
+              "expected_observation_type": "response", "rationale": "bounded discrimination",
+              "evidence_refs": [ref]}
+    stages = LiveStructuredStages(MockProvider([output]), BudgetTracker(ExperimentBudget(max_llm_calls=4, max_input_tokens=100_000)))
     with pytest.raises(UnsafeProbeError):
         stages.probe_selection(bridge.agent_view(), ("local_schema_check",))
 
 
 def test_dedicated_probe_refusal_remains_a_model_refusal():
     bridge, view = _live_view()
-    output = {"decision": "REFUSE_PROBE", "probe_type": None, "target_tool_id": None,
-              "evidence_refs": [view.trace.events[0].event_id], "concise_reason": "insufficient basis"}
-    stages = LiveStructuredStages(MockProvider([output]), BudgetTracker(ExperimentBudget(max_llm_calls=4)))
+    output = {"decision": "REFUSE_PROBE", "probe_type": None, "target_tool": None,
+              "arguments": {}, "expected_observation_type": None,
+              "evidence_refs": [view.trace.events[0].event_id], "rationale": "insufficient basis"}
+    stages = LiveStructuredStages(MockProvider([output]), BudgetTracker(ExperimentBudget(max_llm_calls=4, max_input_tokens=100_000)))
     parsed, _ = stages.probe_selection(bridge.agent_view(), ("local_schema_check",))
     assert parsed["decision"] == "REFUSE_PROBE"
 
@@ -159,10 +165,11 @@ def test_probe_selection_allows_exactly_one_budgeted_schema_format_repair():
     bridge, view = _live_view()
     ref = view.trace.events[0].event_id
     valid = {"decision": "SELECT_PROBE", "probe_type": "local_schema_check",
-             "target_tool_id": "create_issue", "evidence_refs": [ref],
-             "concise_reason": "bounded discrimination"}
+             "target_tool": "create_issue", "arguments": {"repo_id": "R1", "title": "x"},
+             "expected_observation_type": "schema", "evidence_refs": [ref],
+             "rationale": "bounded discrimination"}
     provider = MockProvider(["not-json", valid])
-    tracker = BudgetTracker(ExperimentBudget(max_llm_calls=3, max_format_repairs=1))
+    tracker = BudgetTracker(ExperimentBudget(max_llm_calls=3, max_format_repairs=1, max_input_tokens=100_000))
     parsed, _ = LiveStructuredStages(provider, tracker).probe_selection(
         bridge.agent_view(), ("local_schema_check",),
     )
@@ -173,7 +180,7 @@ def test_probe_selection_allows_exactly_one_budgeted_schema_format_repair():
 def test_probe_selection_rejects_second_invalid_format_without_extra_call():
     bridge, _ = _live_view()
     provider = MockProvider(["not-json", "still-not-json", {"unused": True}])
-    tracker = BudgetTracker(ExperimentBudget(max_llm_calls=3, max_format_repairs=1))
+    tracker = BudgetTracker(ExperimentBudget(max_llm_calls=3, max_format_repairs=1, max_input_tokens=100_000))
     with pytest.raises(InvalidStructuredOutput):
         LiveStructuredStages(provider, tracker).probe_selection(
             bridge.agent_view(), ("local_schema_check",),
@@ -184,10 +191,14 @@ def test_probe_selection_rejects_second_invalid_format_without_extra_call():
 def test_probe_executes_in_fork_and_does_not_pollute_main_state():
     service = SandboxService()
     before = service.store.snapshot()
-    selection = {"decision": "SELECT_PROBE", "probe_type": "repeated_read"}
+    selection = {
+        "decision": "SELECT_PROBE", "probe_type": "repeated_read",
+        "target_tool": "get_repository", "arguments": {"repo_id": "R1"},
+        "expected_observation_type": "stable response", "rationale": "repeat safe read",
+        "evidence_refs": [],
+    }
     result = LiveProbeExecutor().execute(
-        selection, service, lambda: None,
-        lambda fork: fork.call_tool("get_repository", {"repo_id": "R1"}, "agent_admin"),
+        selection, service, lambda: None, load_openapi(),
     )
     assert result["executed"] and result["state_unchanged"]
     assert service.store.snapshot() == before

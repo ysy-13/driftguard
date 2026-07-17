@@ -1,0 +1,19 @@
+{
+  "checks": {
+    "four_records": true,
+    "frozen_source_unchanged": true,
+    "hard_cost_gate_not_reached": true,
+    "infrastructure_errors_below_two": true,
+    "no_fallback": true,
+    "no_leakage": true,
+    "no_main_state_pollution": true,
+    "schemas_valid": true,
+    "soft_cost_gate_not_reached": true
+  },
+  "incremental_cost_cny": 0.0,
+  "infrastructure_errors": 0,
+  "passed": true,
+  "provider": "deepseek",
+  "qwen_authorized": true,
+  "records": 4
+}

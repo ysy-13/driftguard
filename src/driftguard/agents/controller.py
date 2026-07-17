@@ -445,15 +445,17 @@ class ToolAgentController:
                 self.model_config.seed, self.run_mode, self.config_hash,
             )
             key = LLMCache.key(self.model_config, request, schema_hash) if self.cache else None
+            reservation = self.tracker.reserve_llm_call()
             response = None if self.force_refresh or self.cache is None else self.cache.get(key)
-            if response is None:
-                self.tracker.ensure_llm_call_allowed()
-                response = self.provider.complete(request)
-                if self.cache is not None and key is not None:
-                    self.cache.put(key, response)
-            else:
-                self.tracker.ensure_llm_call_allowed()
-            self.tracker.consume_llm(response.input_tokens, response.output_tokens)
+            try:
+                if response is None:
+                    response = self.provider.complete(request)
+                    if self.cache is not None and key is not None:
+                        self.cache.put(key, response)
+            except Exception:
+                self.tracker.release_llm_call(reservation)
+                raise
+            self.tracker.settle_llm_call(reservation, response.input_tokens, response.output_tokens)
             self.usage.add(response)
             try:
                 action = self.parser.parse(response.raw_text)
@@ -465,6 +467,7 @@ class ToolAgentController:
                             parsed_output=deepcopy(self.parser.last_raw_action or action.to_dict()),
                         ),
                     )
+                self.tracker.assert_settled_within_budget()
                 return action
             except (InvalidStructuredOutput, ValueError) as exc:
                 if repair_index >= self.tracker.budget.max_format_repairs:

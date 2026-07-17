@@ -12,6 +12,16 @@ from .overlay import SpecOverlay
 class StaticPatchValidator:
     def validate(self, patch: ToolSpecPatch, displayed_spec: dict[str, Any]) -> tuple[ValidationResult, dict[str, Any] | None]:
         failures: list[str] = []
+        location = patch.normalized_location
+        if location:
+            if location.get("tool_id") != patch.target_tool_id:
+                failures.append("NORMALIZED_LOCATION_TOOL_MISMATCH")
+            pointer = location.get("spec_pointer")
+            if pointer and any(not operation.path.startswith(pointer) for operation in patch.openapi_operations):
+                failures.append("NORMALIZED_LOCATION_SCOPE_MISMATCH")
+            semantics = patch.semantic_extensions.get("x-driftguard-patch-semantics", {})
+            if location.get("adapter_operation_type") != semantics.get("operation"):
+                failures.append("NORMALIZED_ADAPTER_OPERATION_MISMATCH")
         if len(patch.openapi_operations) > 8:
             failures.append("PATCH_SCOPE_EXCEEDED")
         if any(operation.path in {"", "/"} for operation in patch.openapi_operations):

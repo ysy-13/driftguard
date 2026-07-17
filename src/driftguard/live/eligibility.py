@@ -14,7 +14,10 @@ CLASS_MAP = {
 class LivePatchEligibilityGate:
     """Hard evidence gate; it never changes the LLM attribution."""
 
-    def decide(self, view: AgentView, attribution: dict, *, budget_remaining: bool = True) -> PatchEligibilityDecision:
+    def decide(
+        self, view: AgentView, attribution: dict, *, budget_remaining: bool = True,
+        drift_exposed: bool = True,
+    ) -> PatchEligibilityDecision:
         predicted = CLASS_MAP.get(attribution.get("predicted_class"), attribution.get("predicted_class"))
         target = attribution.get("target_tool_id")
         events = view.trace.events
@@ -66,11 +69,13 @@ class LivePatchEligibilityGate:
             )
 
         reasons: list[str] = []
-        location = attribution.get("location_path")
+        location = attribution.get("location") or {}
         if not target or target not in ContractRegistry(thaw(view.displayed_spec)).operation_ids():
             reasons.append("VALID_TARGET_TOOL_REQUIRED")
-        if not location:
+        if not location or not (location.get("spec_pointer") or location.get("runtime_path")):
             reasons.append("EXACT_LOCATION_REQUIRED")
+        if not drift_exposed:
+            reasons.append("TARGET_DRIFT_NOT_EXPOSED")
         if len(independent_contexts) < 2:
             reasons.append("TWO_INDEPENDENT_FAILURES_REQUIRED")
         if not successful_probes:

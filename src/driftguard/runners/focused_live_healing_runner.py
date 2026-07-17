@@ -33,9 +33,9 @@ from .live_healing_mock_runner import LiveHealingMockRunner
 
 
 LEDGER = PROJECT_ROOT / "results/experiments/phase10/cost/ledger.json"
-RECORD_SCHEMA = PROJECT_ROOT / "benchmark/schemas/focused_live_healing_record_schema_v1.json"
+RECORD_SCHEMA = PROJECT_ROOT / "benchmark/schemas/focused_live_healing_record_schema_v3.json"
 MANIFEST_SCHEMA = PROJECT_ROOT / "benchmark/schemas/focused_live_healing_manifest_schema_v1.json"
-REAL_CACHE_NAMESPACE = "driftguard_focused_live_healing_real_v1"
+REAL_CACHE_NAMESPACE = "driftguard_focused_live_healing_real_v3"
 CONFIRMATION = "RUN-EXACTLY-8"
 LEDGER_COUNTER_FIELDS = (
     "api_attempts", "provider_reported_input_tokens",
@@ -528,7 +528,12 @@ class FocusedLiveHealingRunner:
                 plan, "METHOD_FAILURE", "INVALID_STRUCTURED_OUTPUT", exc,
                 cache_before, adapter.provider_calls, ledger_before, event_before,
             )
-        except (ProviderError, CostHardLimit, BudgetExhausted) as exc:
+        except BudgetExhausted as exc:
+            return self._failure_record(
+                plan, "METHOD_FAILURE", type(exc).__name__, exc,
+                cache_before, adapter.provider_calls, ledger_before, event_before,
+            )
+        except (ProviderError, CostHardLimit) as exc:
             return self._failure_record(
                 plan, "INFRASTRUCTURE_ERROR", type(exc).__name__, exc,
                 cache_before, adapter.provider_calls, ledger_before, event_before,
@@ -571,7 +576,7 @@ class FocusedLiveHealingRunner:
         attempt_delta = self._delta(ledger_before, ledger_after, "api_attempts")
         cost_delta = float(ledger_after["spent_cny"]) - float(ledger_before["spent_cny"])
         record = {
-            "schema_version": "focused-live-healing-record-v1",
+            "schema_version": "focused-live-healing-record-v3",
             "experiment_kind": self.config.experiment_kind,
             "execution_mode": self._execution_mode(),
             "record_id": plan.identity,
@@ -652,6 +657,11 @@ class FocusedLiveHealingRunner:
                 raw["probe_result"] and not raw["probe_result"].get("state_unchanged")
             ),
             "patch_registry_state": raw["patch_registry_state"],
+            "drift_exposed": bool(raw.get("drift_exposed", False)),
+            "observed_target_tool": raw.get("observed_target_tool"),
+            "observed_failure_signature": deepcopy(raw.get("observed_failure_signature")),
+            "attribution_evaluable": bool(raw.get("attribution_evaluable", False)),
+            "pre_drift_agent_failure": bool(raw.get("pre_drift_agent_failure", False)),
         }
         self._assert_public_record(record)
         return record
@@ -665,9 +675,16 @@ class FocusedLiveHealingRunner:
         self.network_calls += provider_calls if self.mode == "real" and self.provider_factory is None else 0
         ledger_after = self._read_ledger()
         events = self.costs.events[event_before:] if self.costs else []
-        provider_errors = [self._public_provider_error(exc)] if isinstance(exc, ProviderError) else []
+        partial = deepcopy(getattr(exc, "partial_result", {}) or {})
+        provider_errors = self._controller_provider_errors(partial)
+        if isinstance(exc, ProviderError):
+            provider_errors.append(self._public_provider_error(exc))
+        partial_trace = partial.get("live_evidence_trace") or {
+            "trace_id": f"unavailable-{plan.identity}", "events": [],
+        }
+        stage_calls = deepcopy(partial.get("llm_stage_calls", []))
         record = {
-            "schema_version": "focused-live-healing-record-v1",
+            "schema_version": "focused-live-healing-record-v3",
             "experiment_kind": self.config.experiment_kind,
             "execution_mode": self._execution_mode(),
             "record_id": plan.identity,
@@ -682,29 +699,46 @@ class FocusedLiveHealingRunner:
             "public_scenario_id": f"public-{plan.family}",
             "source_snapshot": self.source_hash,
             "frozen_fingerprints": deepcopy(self.config.raw["fingerprints"]),
-            "stage_trace": self._empty_stage_trace(),
-            "live_evidence_trace": {"trace_id": f"unavailable-{plan.identity}", "events": []},
-            "evidence_provenance": {"source": "none", "event_count": 0, "phase7_static_reconstruction": False},
-            "llm_stage_calls": [],
-            "llm_calls": 0,
-            "tool_calls": 0,
-            "probe_calls": 0,
-            "patch_proposal_calls": 0,
-            "patch_revision": None,
-            "deterministic_gates": {},
-            "immediate_repair": None,
-            "future_transfer": None,
+            "stage_trace": self._stage_trace(partial) if partial else self._empty_stage_trace(),
+            "live_evidence_trace": partial_trace,
+            "evidence_provenance": {
+                "source": "ToolAgentController live events" if partial else "none",
+                "trace_id": partial_trace.get("trace_id"),
+                "event_count": len(partial_trace.get("events", [])),
+                "phase7_static_reconstruction": False,
+            },
+            "llm_stage_calls": stage_calls,
+            "llm_calls": int(partial.get("llm_calls", 0)),
+            "tool_calls": int(partial.get("tool_calls", 0)),
+            "probe_calls": int(partial.get("probe_calls", 0)),
+            "patch_proposal_calls": int(partial.get("patch_proposal_calls", 0)),
+            "patch_revision": partial.get("patch_revision"),
+            "preliminary_attribution": partial.get("preliminary_attribution"),
+            "probe_selection": partial.get("probe_selection"),
+            "probe_result": partial.get("probe_result"),
+            "final_attribution": partial.get("final_attribution"),
+            "patch_eligibility": partial.get("patch_eligibility", {"decision": "NOT_EVALUATED"}),
+            "patch_proposal": partial.get("raw_llm_patch"),
+            "deterministic_gates": {
+                "static": partial.get("static_validation"),
+                "regression": partial.get("regression_validation"),
+                "safety": partial.get("safety_validation"),
+                "minimality": partial.get("minimality_validation"),
+            },
+            "immediate_repair": partial.get("immediate_repair"),
+            "future_transfer": partial.get("future_transfer"),
             "task_success": False,
             "termination_reason": stopped_stage,
             "stopped_stage": stopped_stage,
             "infrastructure_or_method_failure": classification,
             "input_tokens": self._delta(ledger_before, ledger_after, "provider_reported_input_tokens"),
             "output_tokens": self._delta(ledger_before, ledger_after, "provider_reported_output_tokens"),
-            "latency_ms": 0.0,
+            "latency_ms": sum(item.get("latency_ms", 0.0) for item in stage_calls),
             "api_attempts_delta": self._delta(ledger_before, ledger_after, "api_attempts"),
             "cost_cny_delta": float(ledger_after["spent_cny"]) - float(ledger_before["spent_cny"]),
             "provider_boundary_calls": provider_calls,
             "provider_usage": deepcopy(self.costs.events[event_before:] if self.costs else []),
+            "controller_runs": deepcopy(partial.get("controller_runs", [])),
             "provider_errors": provider_errors,
             "actual_network_attempts": self._delta(ledger_before, ledger_after, "api_attempts"),
             "ledger_before": self._public_ledger(ledger_before),
@@ -724,8 +758,15 @@ class FocusedLiveHealingRunner:
             "symbolic_fallback_used": False,
             "oracle_fallback_used": False,
             "mock_fallback_used": False,
-            "main_state_pollution": False,
+            "main_state_pollution": bool(
+                partial.get("probe_result") and not partial["probe_result"].get("state_unchanged")
+            ),
             "patch_registry_state": {"accepted_count": 0, "scope_key": f"{plan.identity}:failed"},
+            "drift_exposed": bool(partial.get("drift_exposed", False)),
+            "observed_target_tool": partial.get("observed_target_tool"),
+            "observed_failure_signature": partial.get("observed_failure_signature"),
+            "attribution_evaluable": bool(partial.get("attribution_evaluable", False)),
+            "pre_drift_agent_failure": bool(partial.get("pre_drift_agent_failure", False)),
             "error": (
                 provider_errors[0] if provider_errors else {
                     "type": type(exc).__name__,

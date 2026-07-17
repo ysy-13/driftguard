@@ -1,0 +1,1386 @@
+{
+  "actual_network_attempts": 6,
+  "api_attempts_delta": 6,
+  "attempt_id": "focused-real-20260717-2c792f5e",
+  "cache": {
+    "cache_kind": "REAL_PROVIDER",
+    "entries_after": 24,
+    "entries_before": 18,
+    "hits": 0,
+    "identity_hash": "7626bda829570836c1a6dd24cfb14cf73a7672d510153f29d0c185e35593262f",
+    "misses": 6,
+    "namespace": "driftguard_focused_live_healing_real_v1",
+    "provider_fallback_calls": 0
+  },
+  "checkpoint": {
+    "record_level": true,
+    "resumed": false
+  },
+  "controller_runs": [
+    {
+      "episode": 3,
+      "error_category": null,
+      "provider_error": null,
+      "task_success": false,
+      "termination_reason": "LIVE_ATTRIBUTION_REQUIRED"
+    },
+    {
+      "episode": 4,
+      "error_category": null,
+      "provider_error": null,
+      "task_success": false,
+      "termination_reason": "LIVE_ATTRIBUTION_REQUIRED"
+    }
+  ],
+  "cost_cny_delta": 0.0715400000000006,
+  "deterministic_gates": {
+    "minimality": null,
+    "regression": null,
+    "safety": null,
+    "static": {
+      "details": {
+        "atomic_apply": true,
+        "operation_count": 1
+      },
+      "passed": true,
+      "reason_codes": [
+        "OPENAPI_31_VALID",
+        "PATCH_SCOPE_VALID"
+      ],
+      "stage": "static"
+    }
+  },
+  "evidence_provenance": {
+    "event_count": 20,
+    "phase7_static_reconstruction": false,
+    "source": "ToolAgentController live events",
+    "trace_id": "live-1984f7860d8db799ff22"
+  },
+  "execution_mode": "REAL_FOCUSED_CANARY",
+  "experiment_kind": "FOCUSED_LIVE_HEALING_CANARY",
+  "family": "M16",
+  "final_attribution": {
+    "concise_reason": "Two independent episodes (3 and 4) and a repeated_read probe all return HTTP 200 with state 'closed' and resolution 'completed', yet the task is marked incomplete. The response schema matches the spec, but the tool fails to satisfy the task requirement, indicating persistent response semantic drift.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "evidence_refs": [
+      "live-1984f7860d8db799ff22-EV005",
+      "live-1984f7860d8db799ff22-EV011",
+      "live-1984f7860d8db799ff22-EV016"
+    ],
+    "location_path": "/repositories/{repo_id}/issues/{issue_id}/close",
+    "location_type": "response",
+    "predicted_class": "PERSISTENT_DRIFT",
+    "requested_probe": null,
+    "target_tool_id": "close_issue"
+  },
+  "frozen_fingerprints": {
+    "action_prompt_v3_sha256": "bae688c173db4f561162d402acef5661256c6bab5a1d20a65e96868c2ec8267f",
+    "action_schema_v3_sha256": "27807767537dbcf83620642edc443525da61f08dfde6935f4ea11aafd1e9dcf1",
+    "attribution_prompt_v2_sha256": "41255c4096399f8ded854f64d84a4f5de02174d1fb8a9825828e5c91c3ab2d5e",
+    "attribution_schema_v1_sha256": "54c8fdda24a5d37521520337c19095f4782494a8c2335a89f927f8ccecc490d6",
+    "cache_key_material": [
+      "action_prompt_hash",
+      "action_schema_hash",
+      "attribution_prompt_hash",
+      "attribution_schema_hash",
+      "probe_prompt_hash",
+      "probe_schema_hash",
+      "patch_prompt_hash",
+      "patch_schema_hash",
+      "tool_catalog_fingerprint",
+      "policy_capabilities",
+      "provider",
+      "model",
+      "method",
+      "public_scenario_id",
+      "repetition",
+      "attempt_version",
+      "episode_stage",
+      "evidence_fingerprint",
+      "source_snapshot",
+      "config_hash"
+    ],
+    "patch_prompt_v2_sha256": "4c325cc684341e91f405c13c05a3a8d0a751aa4fe83a8ee3e956bb75262953df",
+    "patch_schema_v2_sha256": "b641abd733730dd6f858af4be9cf85231ed9c7b29ce5637c1d1361bd64801b85",
+    "policy_capabilities": [
+      "TOOL_CALL",
+      "FINAL_ANSWER",
+      "REQUEST_PROBE",
+      "ABSTAIN"
+    ],
+    "probe_prompt_v1_sha256": "0b93fcbf4fdf56f52d3fcfe1550dd111e11e5e164d8f294219dcc0346d77f4eb",
+    "probe_schema_v1_sha256": "d3c118f3c80d400d8e539b619ea5e1cedb7bb4cde4eecb3c04891cd0077fbdce",
+    "tool_catalog_fingerprint": "76bde8f625aa26f786ef3ee9065c481adf1cfd793aea7c5b3fea88d40573b7da"
+  },
+  "future_transfer": null,
+  "immediate_repair": {
+    "details": {
+      "call_count": 1,
+      "failure": "KeyError: 'response_mapping'",
+      "forbidden_side_effects": 0,
+      "passed": false,
+      "state_change_count": 0,
+      "task_evaluator_passed": false
+    },
+    "passed": false,
+    "reason_codes": [
+      "KeyError: 'response_mapping'"
+    ],
+    "stage": "immediate_repair"
+  },
+  "infrastructure_or_method_failure": "METHOD_FAILURE",
+  "input_tokens": 67492,
+  "latency_ms": 17188.833792000012,
+  "leakage": {
+    "api_key_value_present": false,
+    "forbidden_fields": [],
+    "passed": true
+  },
+  "ledger_after": {
+    "api_attempts": 888,
+    "provider_reported_input_tokens": 3854570,
+    "provider_reported_output_tokens": 89792,
+    "reserved_cny": 0.0,
+    "spent_cny": 5.493871196000004
+  },
+  "ledger_before": {
+    "api_attempts": 882,
+    "provider_reported_input_tokens": 3787078,
+    "provider_reported_output_tokens": 88538,
+    "reserved_cny": 0.0,
+    "spent_cny": 5.422331196000004
+  },
+  "live_evidence_trace": {
+    "events": [
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M16:deepseek:driftguard_llm:r0:EV001",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 3,
+        "event_id": "live-1984f7860d8db799ff22-EV001",
+        "event_type": "task_received",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "instruction": "Close issue 102 and compare response to immediate state. Resolved identifiers: repository 'alpha-api' has repo_id R1."
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.task_received",
+          "execution_context_id": "public-M16:independent-episode-3",
+          "scope_key": "public-M16:deepseek:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M16",
+        "sequence_number": 1,
+        "timestamp": "2026-01-01T00:00:01Z",
+        "tool_id": null,
+        "trace_id": "live-1984f7860d8db799ff22",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M16:deepseek:driftguard_llm:r0:EV002",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 3,
+        "event_id": "live-1984f7860d8db799ff22-EV002",
+        "event_type": "displayed_spec_snapshot",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1"
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.displayed_spec_snapshot",
+          "execution_context_id": "public-M16:independent-episode-3",
+          "scope_key": "public-M16:deepseek:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M16",
+        "sequence_number": 2,
+        "timestamp": "2026-01-01T00:00:02Z",
+        "tool_id": null,
+        "trace_id": "live-1984f7860d8db799ff22",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M16:deepseek:driftguard_llm:r0:EV003",
+        "displayed_request": {
+          "arguments": {
+            "issue_id": 102,
+            "repo_id": "R1"
+          }
+        },
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 3,
+        "event_id": "live-1984f7860d8db799ff22-EV003",
+        "event_type": "tool_call_proposed",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "action_type": "TOOL_CALL"
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.tool_call_proposed",
+          "execution_context_id": "public-M16:independent-episode-3",
+          "scope_key": "public-M16:deepseek:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M16",
+        "sequence_number": 3,
+        "timestamp": "2026-01-01T00:00:03Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-1984f7860d8db799ff22",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M16:independent-episode-3:tool-001",
+        "displayed_request": {
+          "arguments": {
+            "issue_id": 102,
+            "repo_id": "R1"
+          }
+        },
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 3,
+        "event_id": "live-1984f7860d8db799ff22-EV004",
+        "event_type": "tool_call_executed",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "runtime_call_completed": true
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.tool_call_executed",
+          "execution_context_id": "public-M16:independent-episode-3",
+          "scope_key": "public-M16:deepseek:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M16",
+        "sequence_number": 4,
+        "timestamp": "2026-01-01T00:00:04Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-1984f7860d8db799ff22",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": "b9766e9699f4040abba10d254817cfc95341fbc09927603bf377a9cb5423d9ca",
+        "before_state_hash": "b9766e9699f4040abba10d254817cfc95341fbc09927603bf377a9cb5423d9ca",
+        "correlation_id": "public-M16:independent-episode-3:tool-001",
+        "displayed_request": {
+          "arguments": {
+            "issue_id": 102,
+            "repo_id": "R1"
+          }
+        },
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 3,
+        "event_id": "live-1984f7860d8db799ff22-EV005",
+        "event_type": "tool_response",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "channel": "task_incomplete",
+          "status_code": 200,
+          "task_complete": false
+        },
+        "probe_metadata": {
+          "independent_failure": true,
+          "regression_requirements_identified": true
+        },
+        "provenance": {
+          "controller_event": "ToolAgentController.run.tool_response",
+          "execution_context_id": "public-M16:independent-episode-3",
+          "scope_key": "public-M16:deepseek:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M16",
+        "sequence_number": 5,
+        "timestamp": "2026-01-01T00:00:05Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-1984f7860d8db799ff22",
+        "visible_runtime_response": {
+          "payload": {
+            "data": {
+              "assignee": "bob",
+              "body": "Refresh the authentication API documentation.",
+              "closed_at": "2026-01-01T00:00:01Z",
+              "created_at": "2025-12-02T09:00:00Z",
+              "issue_id": 102,
+              "priority": "medium",
+              "repo_id": "R1",
+              "resolution": "completed",
+              "state": "closed",
+              "title": "Update API documentation",
+              "updated_at": "2026-01-01T00:00:01Z"
+            },
+            "ok": true
+          },
+          "status_code": 200
+        },
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M16:deepseek:driftguard_llm:r0:EV006",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 3,
+        "event_id": "live-1984f7860d8db799ff22-EV006",
+        "event_type": "policy_recovery",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "context_types": [
+            "evidence_collection",
+            "probe_allowed"
+          ],
+          "exact_retry": false,
+          "failure_kind": "runtime_or_task_incomplete",
+          "method": "driftguard_llm",
+          "request_llm": true,
+          "stop": false
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.policy_recovery",
+          "execution_context_id": "public-M16:independent-episode-3",
+          "scope_key": "public-M16:deepseek:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M16",
+        "sequence_number": 6,
+        "timestamp": "2026-01-01T00:00:06Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-1984f7860d8db799ff22",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M16:deepseek:driftguard_llm:r0:EV007",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 4,
+        "event_id": "live-1984f7860d8db799ff22-EV007",
+        "event_type": "task_received",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "instruction": "Close issue 102 and compare response to immediate state. Resolved identifiers: repository 'alpha-api' has repo_id R1."
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.task_received",
+          "execution_context_id": "public-M16:independent-episode-4",
+          "scope_key": "public-M16:deepseek:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M16",
+        "sequence_number": 7,
+        "timestamp": "2026-01-01T00:00:07Z",
+        "tool_id": null,
+        "trace_id": "live-1984f7860d8db799ff22",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M16:deepseek:driftguard_llm:r0:EV008",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 4,
+        "event_id": "live-1984f7860d8db799ff22-EV008",
+        "event_type": "displayed_spec_snapshot",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1"
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.displayed_spec_snapshot",
+          "execution_context_id": "public-M16:independent-episode-4",
+          "scope_key": "public-M16:deepseek:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M16",
+        "sequence_number": 8,
+        "timestamp": "2026-01-01T00:00:08Z",
+        "tool_id": null,
+        "trace_id": "live-1984f7860d8db799ff22",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M16:deepseek:driftguard_llm:r0:EV009",
+        "displayed_request": {
+          "arguments": {
+            "issue_id": 102,
+            "repo_id": "R1"
+          }
+        },
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 4,
+        "event_id": "live-1984f7860d8db799ff22-EV009",
+        "event_type": "tool_call_proposed",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "action_type": "TOOL_CALL"
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.tool_call_proposed",
+          "execution_context_id": "public-M16:independent-episode-4",
+          "scope_key": "public-M16:deepseek:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M16",
+        "sequence_number": 9,
+        "timestamp": "2026-01-01T00:00:09Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-1984f7860d8db799ff22",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M16:independent-episode-4:tool-001",
+        "displayed_request": {
+          "arguments": {
+            "issue_id": 102,
+            "repo_id": "R1"
+          }
+        },
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 4,
+        "event_id": "live-1984f7860d8db799ff22-EV010",
+        "event_type": "tool_call_executed",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "runtime_call_completed": true
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.tool_call_executed",
+          "execution_context_id": "public-M16:independent-episode-4",
+          "scope_key": "public-M16:deepseek:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M16",
+        "sequence_number": 10,
+        "timestamp": "2026-01-01T00:00:10Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-1984f7860d8db799ff22",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": "b9766e9699f4040abba10d254817cfc95341fbc09927603bf377a9cb5423d9ca",
+        "before_state_hash": "b9766e9699f4040abba10d254817cfc95341fbc09927603bf377a9cb5423d9ca",
+        "correlation_id": "public-M16:independent-episode-4:tool-001",
+        "displayed_request": {
+          "arguments": {
+            "issue_id": 102,
+            "repo_id": "R1"
+          }
+        },
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 4,
+        "event_id": "live-1984f7860d8db799ff22-EV011",
+        "event_type": "tool_response",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "channel": "task_incomplete",
+          "status_code": 200,
+          "task_complete": false
+        },
+        "probe_metadata": {
+          "independent_failure": true,
+          "regression_requirements_identified": true
+        },
+        "provenance": {
+          "controller_event": "ToolAgentController.run.tool_response",
+          "execution_context_id": "public-M16:independent-episode-4",
+          "scope_key": "public-M16:deepseek:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M16",
+        "sequence_number": 11,
+        "timestamp": "2026-01-01T00:00:11Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-1984f7860d8db799ff22",
+        "visible_runtime_response": {
+          "payload": {
+            "data": {
+              "assignee": "bob",
+              "body": "Refresh the authentication API documentation.",
+              "closed_at": "2026-01-01T00:00:01Z",
+              "created_at": "2025-12-02T09:00:00Z",
+              "issue_id": 102,
+              "priority": "medium",
+              "repo_id": "R1",
+              "resolution": "completed",
+              "state": "closed",
+              "title": "Update API documentation",
+              "updated_at": "2026-01-01T00:00:01Z"
+            },
+            "ok": true
+          },
+          "status_code": 200
+        },
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M16:deepseek:driftguard_llm:r0:EV012",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 4,
+        "event_id": "live-1984f7860d8db799ff22-EV012",
+        "event_type": "policy_recovery",
+        "historical_evidence_refs": [],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "context_types": [
+            "evidence_collection",
+            "probe_allowed"
+          ],
+          "exact_retry": false,
+          "failure_kind": "runtime_or_task_incomplete",
+          "method": "driftguard_llm",
+          "request_llm": true,
+          "stop": false
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "ToolAgentController.run.policy_recovery",
+          "execution_context_id": "public-M16:independent-episode-4",
+          "scope_key": "public-M16:deepseek:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M16",
+        "sequence_number": 12,
+        "timestamp": "2026-01-01T00:00:12Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-1984f7860d8db799ff22",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M16:deepseek:driftguard_llm:r0:EV013",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-1984f7860d8db799ff22-EV013",
+        "event_type": "history_retrieval",
+        "historical_evidence_refs": [
+          "live-1984f7860d8db799ff22-EV005",
+          "live-1984f7860d8db799ff22-EV011"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "historical_record_count": 2
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.history_retrieval",
+          "scope_key": "public-M16:deepseek:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M16",
+        "sequence_number": 13,
+        "timestamp": "2026-01-01T00:00:13Z",
+        "tool_id": null,
+        "trace_id": "live-1984f7860d8db799ff22",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M16:deepseek:driftguard_llm:r0:EV014",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-1984f7860d8db799ff22-EV014",
+        "event_type": "attribution_emitted",
+        "historical_evidence_refs": [
+          "live-1984f7860d8db799ff22-EV005",
+          "live-1984f7860d8db799ff22-EV011"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "attribution": {
+            "concise_reason": "Two independent episodes (3 and 4) calling close_issue on issue 102 returned HTTP 200 with state 'closed' and resolution 'completed', yet the task was marked incomplete. The response payload matches the expected success schema, but the runtime behavior indicates the tool does not satisfy the task requirement, suggesting a response semantic drift.",
+            "confidence": 0.95,
+            "drift_category": "RSD",
+            "evidence_refs": [
+              "live-1984f7860d8db799ff22-EV005",
+              "live-1984f7860d8db799ff22-EV011"
+            ],
+            "location_path": "/repositories/{repo_id}/issues/{issue_id}/close",
+            "location_type": "response",
+            "predicted_class": "PD",
+            "requested_probe": null,
+            "target_tool_id": "close_issue"
+          },
+          "stage": "PRELIMINARY"
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.preliminary_attribution",
+          "scope_key": "public-M16:deepseek:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M16",
+        "sequence_number": 14,
+        "timestamp": "2026-01-01T00:00:14Z",
+        "tool_id": null,
+        "trace_id": "live-1984f7860d8db799ff22",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M16:deepseek:driftguard_llm:r0:EV015",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-1984f7860d8db799ff22-EV015",
+        "event_type": "probe_requested",
+        "historical_evidence_refs": [
+          "live-1984f7860d8db799ff22-EV005",
+          "live-1984f7860d8db799ff22-EV011"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {},
+        "probe_metadata": {
+          "llm_call_id": "b2f34a2f-70c5-4f01-8bb7-990f39a80932",
+          "selection": {
+            "concise_reason": "Two independent episodes (3 and 4) show close_issue returning success with state 'closed' but task incomplete, indicating response semantic drift. A repeated_read probe on close_issue can confirm if the response is consistent across calls.",
+            "decision": "SELECT_PROBE",
+            "evidence_refs": [
+              "live-1984f7860d8db799ff22-EV005",
+              "live-1984f7860d8db799ff22-EV011"
+            ],
+            "probe_type": "repeated_read",
+            "target_tool_id": "close_issue"
+          }
+        },
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.probe_selection",
+          "scope_key": "public-M16:deepseek:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M16",
+        "sequence_number": 15,
+        "timestamp": "2026-01-01T00:00:15Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-1984f7860d8db799ff22",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M16:deepseek:driftguard_llm:r0:EV016",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-1984f7860d8db799ff22-EV016",
+        "event_type": "probe_executed",
+        "historical_evidence_refs": [
+          "live-1984f7860d8db799ff22-EV005",
+          "live-1984f7860d8db799ff22-EV011"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "executed": true,
+          "probe_type": "repeated_read"
+        },
+        "probe_metadata": {
+          "discriminative": true,
+          "isolated_fork": true,
+          "passed": true,
+          "regression_requirements_identified": true,
+          "unsafe_write": false
+        },
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.probe_execution",
+          "execution_context_id": "public-M16:deepseek:driftguard_llm:r0:probe-fork",
+          "scope_key": "public-M16:deepseek:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M16",
+        "sequence_number": 16,
+        "timestamp": "2026-01-01T00:00:16Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-1984f7860d8db799ff22",
+        "visible_runtime_response": {
+          "payload": {
+            "data": {
+              "assignee": "bob",
+              "body": "Refresh the authentication API documentation.",
+              "closed_at": "2026-01-01T00:00:01Z",
+              "created_at": "2025-12-02T09:00:00Z",
+              "issue_id": 102,
+              "priority": "medium",
+              "repo_id": "R1",
+              "resolution": "completed",
+              "state": "closed",
+              "title": "Update API documentation",
+              "updated_at": "2026-01-01T00:00:01Z"
+            },
+            "ok": true
+          },
+          "status_code": 200
+        },
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M16:deepseek:driftguard_llm:r0:EV017",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-1984f7860d8db799ff22-EV017",
+        "event_type": "attribution_emitted",
+        "historical_evidence_refs": [
+          "live-1984f7860d8db799ff22-EV005",
+          "live-1984f7860d8db799ff22-EV011",
+          "live-1984f7860d8db799ff22-EV016"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "attribution": {
+            "concise_reason": "Two independent episodes (3 and 4) and a repeated_read probe all return HTTP 200 with state 'closed' and resolution 'completed', yet the task is marked incomplete. The response schema matches the spec, but the tool fails to satisfy the task requirement, indicating persistent response semantic drift.",
+            "confidence": 0.95,
+            "drift_category": "RSD",
+            "evidence_refs": [
+              "live-1984f7860d8db799ff22-EV005",
+              "live-1984f7860d8db799ff22-EV011",
+              "live-1984f7860d8db799ff22-EV016"
+            ],
+            "location_path": "/repositories/{repo_id}/issues/{issue_id}/close",
+            "location_type": "response",
+            "predicted_class": "PD",
+            "requested_probe": null,
+            "target_tool_id": "close_issue"
+          },
+          "stage": "FINAL"
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.final_attribution",
+          "scope_key": "public-M16:deepseek:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M16",
+        "sequence_number": 17,
+        "timestamp": "2026-01-01T00:00:17Z",
+        "tool_id": null,
+        "trace_id": "live-1984f7860d8db799ff22",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M16:deepseek:driftguard_llm:r0:EV018",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-1984f7860d8db799ff22-EV018",
+        "event_type": "patch_proposed",
+        "historical_evidence_refs": [
+          "live-1984f7860d8db799ff22-EV005",
+          "live-1984f7860d8db799ff22-EV011",
+          "live-1984f7860d8db799ff22-EV016"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "operation_count": 1,
+          "proposal_call_id": "01623a8a-a2c7-4fda-be23-cb9b5f7b6167"
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.llm_patch_proposal",
+          "scope_key": "public-M16:deepseek:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M16",
+        "sequence_number": 18,
+        "timestamp": "2026-01-01T00:00:18Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-1984f7860d8db799ff22",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M16:deepseek:driftguard_llm:r0:EV019",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-1984f7860d8db799ff22-EV019",
+        "event_type": "patch_validation",
+        "historical_evidence_refs": [
+          "live-1984f7860d8db799ff22-EV005",
+          "live-1984f7860d8db799ff22-EV011",
+          "live-1984f7860d8db799ff22-EV016"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "static_validation": {
+            "details": {
+              "atomic_apply": true,
+              "operation_count": 1
+            },
+            "passed": true,
+            "reason_codes": [
+              "OPENAPI_31_VALID",
+              "PATCH_SCOPE_VALID"
+            ],
+            "stage": "static"
+          }
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.static_validation",
+          "scope_key": "public-M16:deepseek:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M16",
+        "sequence_number": 19,
+        "timestamp": "2026-01-01T00:00:19Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-1984f7860d8db799ff22",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      },
+      {
+        "after_state_hash": null,
+        "before_state_hash": null,
+        "correlation_id": "public-M16:deepseek:driftguard_llm:r0:EV020",
+        "displayed_request": {},
+        "displayed_spec_fingerprint": "a227c6e4bad4cac904efc0c59e02c1cd8617394ec460c76c53ad79217aaab2f1",
+        "episode_number": 5,
+        "event_id": "live-1984f7860d8db799ff22-EV020",
+        "event_type": "immediate_repair",
+        "historical_evidence_refs": [
+          "live-1984f7860d8db799ff22-EV005",
+          "live-1984f7860d8db799ff22-EV011",
+          "live-1984f7860d8db799ff22-EV016"
+        ],
+        "local_validation_result": {},
+        "normalized_observation": {
+          "accepted": false,
+          "result": {
+            "details": {
+              "call_count": 1,
+              "failure": "KeyError: 'response_mapping'",
+              "forbidden_side_effects": 0,
+              "passed": false,
+              "state_change_count": 0,
+              "task_evaluator_passed": false
+            },
+            "passed": false,
+            "reason_codes": [
+              "KeyError: 'response_mapping'"
+            ],
+            "stage": "immediate_repair"
+          }
+        },
+        "probe_metadata": {},
+        "provenance": {
+          "controller_event": "LiveHealingOrchestrator.immediate_repair",
+          "scope_key": "public-M16:deepseek:driftguard_llm:r0",
+          "source": "controller_event"
+        },
+        "public_scenario_id": "public-M16",
+        "sequence_number": 20,
+        "timestamp": "2026-01-01T00:00:20Z",
+        "tool_id": "close_issue",
+        "trace_id": "live-1984f7860d8db799ff22",
+        "visible_runtime_response": {},
+        "visible_state_diff": []
+      }
+    ],
+    "public_scenario_id": "public-M16",
+    "trace_id": "live-1984f7860d8db799ff22"
+  },
+  "llm_calls": 6,
+  "llm_stage_calls": [
+    {
+      "cached": false,
+      "input_tokens": 10898,
+      "latency_ms": 5705.159541000001,
+      "output_tokens": 206,
+      "parsed_output": {
+        "concise_reason": "Two independent episodes (3 and 4) calling close_issue on issue 102 returned HTTP 200 with state 'closed' and resolution 'completed', yet the task was marked incomplete. The response payload matches the expected success schema, but the runtime behavior indicates the tool does not satisfy the task requirement, suggesting a response semantic drift.",
+        "confidence": 0.95,
+        "drift_category": "RSD",
+        "evidence_refs": [
+          "live-1984f7860d8db799ff22-EV005",
+          "live-1984f7860d8db799ff22-EV011"
+        ],
+        "location_path": "/repositories/{repo_id}/issues/{issue_id}/close",
+        "location_type": "response",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "requested_probe": null,
+        "target_tool_id": "close_issue"
+      },
+      "provider_attempts": 1,
+      "raw_response_sha256": "fce04a3c6da9578e063ffbd600e471f2ad7ad38a53cdd37bc23cb5a207a3e8b5",
+      "response_id": "9bdf1537-b099-498c-9301-df5961a1400c",
+      "stage": "live_preliminary_attribution"
+    },
+    {
+      "cached": false,
+      "input_tokens": 5904,
+      "latency_ms": 2463.1189170000025,
+      "output_tokens": 131,
+      "parsed_output": {
+        "concise_reason": "Two independent episodes (3 and 4) show close_issue returning success with state 'closed' but task incomplete, indicating response semantic drift. A repeated_read probe on close_issue can confirm if the response is consistent across calls.",
+        "decision": "SELECT_PROBE",
+        "evidence_refs": [
+          "live-1984f7860d8db799ff22-EV005",
+          "live-1984f7860d8db799ff22-EV011"
+        ],
+        "probe_type": "repeated_read",
+        "target_tool_id": "close_issue"
+      },
+      "provider_attempts": 1,
+      "raw_response_sha256": "77b44f3d1ec89683e1c228c674c633377c001bbac5366f85d72c6b88e9ed30bd",
+      "response_id": "b2f34a2f-70c5-4f01-8bb7-990f39a80932",
+      "stage": "live_probe_selection"
+    },
+    {
+      "cached": false,
+      "input_tokens": 12450,
+      "latency_ms": 3250.8880419999996,
+      "output_tokens": 211,
+      "parsed_output": {
+        "concise_reason": "Two independent episodes (3 and 4) and a repeated_read probe all return HTTP 200 with state 'closed' and resolution 'completed', yet the task is marked incomplete. The response schema matches the spec, but the tool fails to satisfy the task requirement, indicating persistent response semantic drift.",
+        "confidence": 0.95,
+        "drift_category": "RSD",
+        "evidence_refs": [
+          "live-1984f7860d8db799ff22-EV005",
+          "live-1984f7860d8db799ff22-EV011",
+          "live-1984f7860d8db799ff22-EV016"
+        ],
+        "location_path": "/repositories/{repo_id}/issues/{issue_id}/close",
+        "location_type": "response",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "requested_probe": null,
+        "target_tool_id": "close_issue"
+      },
+      "provider_attempts": 1,
+      "raw_response_sha256": "abbc4919b1dc88eac144d7e876a1b7e6d3edda6bf65a26730b2c3a9a850823d8",
+      "response_id": "602bbb22-610a-48aa-97cd-c5a24028671a",
+      "stage": "live_final_attribution"
+    },
+    {
+      "cached": false,
+      "input_tokens": 13472,
+      "latency_ms": 5769.667292000008,
+      "output_tokens": 562,
+      "parsed_output": {
+        "concise_reason": "Two independent episodes and a repeated_read probe all return HTTP 200 with state 'closed' and resolution 'completed', yet the task is marked incomplete. The response schema matches the spec, but the tool fails to satisfy the task requirement, indicating persistent response semantic drift.",
+        "confidence": 0.95,
+        "drift_category": "RSD",
+        "evidence_refs": [
+          "live-1984f7860d8db799ff22-EV005",
+          "live-1984f7860d8db799ff22-EV011",
+          "live-1984f7860d8db799ff22-EV016"
+        ],
+        "expected_agent_behavior_change": "The agent will now validate the close_issue response against the updated schema, which may cause it to re-evaluate the response and potentially mark the task as complete if the response matches.",
+        "location_path": "/repositories/{repo_id}/issues/{issue_id}/close",
+        "openapi_operations": [
+          {
+            "evidence_refs": [
+              "live-1984f7860d8db799ff22-EV005",
+              "live-1984f7860d8db799ff22-EV011",
+              "live-1984f7860d8db799ff22-EV016"
+            ],
+            "op": "replace",
+            "path": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/responses/200/content/application~1json/schema",
+            "reason_code": "RSD_RESPONSE_SCHEMA_MISMATCH",
+            "value": {
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "$ref": "#/components/schemas/Issue"
+                },
+                "ok": {
+                  "const": true,
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "ok",
+                "data"
+              ],
+              "type": "object"
+            }
+          }
+        ],
+        "semantic_extensions": {
+          "x-driftguard-patch-semantics": {
+            "patch_type": "response_schema_correction",
+            "rationale": "The response schema for close_issue is currently defined as IssueSuccess, which matches the observed payload. However, the task remains incomplete despite a valid response, indicating that the response schema does not capture the actual semantic requirement. This patch replaces the response schema with an identical copy to force a schema-level change that may trigger a re-evaluation of the response handling logic."
+          }
+        },
+        "target_tool_id": "close_issue"
+      },
+      "provider_attempts": 1,
+      "raw_response_sha256": "3f848a847f827a346b71e5965740ad99970b5f308fa254f6e30f1149ea32cdb6",
+      "response_id": "01623a8a-a2c7-4fda-be23-cb9b5f7b6167",
+      "stage": "live_patch_proposal"
+    }
+  ],
+  "main_state_pollution": false,
+  "method": "driftguard_llm",
+  "mock_fallback_used": false,
+  "model": "deepseek-v4-flash",
+  "oracle_fallback_used": false,
+  "output_tokens": 1254,
+  "patch_eligibility": {
+    "decision": "ELIGIBLE",
+    "discriminative_probe_passed": true,
+    "independent_failure_count": 2,
+    "reason_codes": [
+      "LIVE_PROTOCOL_SATISFIED"
+    ],
+    "regression_requirements_identified": true,
+    "supporting_evidence_ids": [
+      "live-1984f7860d8db799ff22-EV005",
+      "live-1984f7860d8db799ff22-EV011",
+      "live-1984f7860d8db799ff22-EV016"
+    ],
+    "unsafe_write_count": 0
+  },
+  "patch_proposal": {
+    "concise_reason": "Two independent episodes and a repeated_read probe all return HTTP 200 with state 'closed' and resolution 'completed', yet the task is marked incomplete. The response schema matches the spec, but the tool fails to satisfy the task requirement, indicating persistent response semantic drift.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "evidence_refs": [
+      "live-1984f7860d8db799ff22-EV005",
+      "live-1984f7860d8db799ff22-EV011",
+      "live-1984f7860d8db799ff22-EV016"
+    ],
+    "expected_agent_behavior_change": "The agent will now validate the close_issue response against the updated schema, which may cause it to re-evaluate the response and potentially mark the task as complete if the response matches.",
+    "location_path": "/repositories/{repo_id}/issues/{issue_id}/close",
+    "openapi_operations": [
+      {
+        "evidence_refs": [
+          "live-1984f7860d8db799ff22-EV005",
+          "live-1984f7860d8db799ff22-EV011",
+          "live-1984f7860d8db799ff22-EV016"
+        ],
+        "op": "replace",
+        "path": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/responses/200/content/application~1json/schema",
+        "reason_code": "RSD_RESPONSE_SCHEMA_MISMATCH",
+        "value": {
+          "additionalProperties": false,
+          "properties": {
+            "data": {
+              "$ref": "#/components/schemas/Issue"
+            },
+            "ok": {
+              "const": true,
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "ok",
+            "data"
+          ],
+          "type": "object"
+        }
+      }
+    ],
+    "semantic_extensions": {
+      "x-driftguard-patch-semantics": {
+        "patch_type": "response_schema_correction",
+        "rationale": "The response schema for close_issue is currently defined as IssueSuccess, which matches the observed payload. However, the task remains incomplete despite a valid response, indicating that the response schema does not capture the actual semantic requirement. This patch replaces the response schema with an identical copy to force a schema-level change that may trigger a re-evaluation of the response handling logic."
+      }
+    },
+    "target_tool_id": "close_issue"
+  },
+  "patch_proposal_calls": 1,
+  "patch_registry_state": {
+    "accepted_count": 0,
+    "scope_key": "public-M16:deepseek:driftguard_llm:r0"
+  },
+  "patch_revision": {
+    "used": false
+  },
+  "preliminary_attribution": {
+    "concise_reason": "Two independent episodes (3 and 4) calling close_issue on issue 102 returned HTTP 200 with state 'closed' and resolution 'completed', yet the task was marked incomplete. The response payload matches the expected success schema, but the runtime behavior indicates the tool does not satisfy the task requirement, suggesting a response semantic drift.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "evidence_refs": [
+      "live-1984f7860d8db799ff22-EV005",
+      "live-1984f7860d8db799ff22-EV011"
+    ],
+    "location_path": "/repositories/{repo_id}/issues/{issue_id}/close",
+    "location_type": "response",
+    "predicted_class": "PERSISTENT_DRIFT",
+    "requested_probe": null,
+    "target_tool_id": "close_issue"
+  },
+  "probe_calls": 1,
+  "probe_result": {
+    "executed": true,
+    "fork_call_count": 1,
+    "main_state_hash_after": "b9766e9699f4040abba10d254817cfc95341fbc09927603bf377a9cb5423d9ca",
+    "main_state_hash_before": "b9766e9699f4040abba10d254817cfc95341fbc09927603bf377a9cb5423d9ca",
+    "probe_type": "repeated_read",
+    "result": {
+      "payload": {
+        "data": {
+          "assignee": "bob",
+          "body": "Refresh the authentication API documentation.",
+          "closed_at": "2026-01-01T00:00:01Z",
+          "created_at": "2025-12-02T09:00:00Z",
+          "issue_id": 102,
+          "priority": "medium",
+          "repo_id": "R1",
+          "resolution": "completed",
+          "state": "closed",
+          "title": "Update API documentation",
+          "updated_at": "2026-01-01T00:00:01Z"
+        },
+        "ok": true
+      },
+      "status_code": 200
+    },
+    "state_unchanged": true
+  },
+  "probe_selection": {
+    "concise_reason": "Two independent episodes (3 and 4) show close_issue returning success with state 'closed' but task incomplete, indicating response semantic drift. A repeated_read probe on close_issue can confirm if the response is consistent across calls.",
+    "decision": "SELECT_PROBE",
+    "evidence_refs": [
+      "live-1984f7860d8db799ff22-EV005",
+      "live-1984f7860d8db799ff22-EV011"
+    ],
+    "probe_type": "repeated_read",
+    "target_tool_id": "close_issue"
+  },
+  "provider": "deepseek",
+  "provider_boundary_calls": 6,
+  "provider_errors": [],
+  "provider_kind": "REAL_PROVIDER",
+  "provider_usage": [
+    {
+      "actual_model": "deepseek-v4-flash",
+      "configured_model": "deepseek-v4-flash",
+      "estimated_cost_cny": 0.012797484,
+      "input_tokens": 12384,
+      "method": "driftguard_llm",
+      "mode": "focused_live_action",
+      "output_tokens": 69,
+      "provider": "deepseek",
+      "provider_attempts": 1,
+      "public_scenario_id": "public-M16",
+      "repetition": 0,
+      "seed": 20260715
+    },
+    {
+      "actual_model": "deepseek-v4-flash",
+      "configured_model": "deepseek-v4-flash",
+      "estimated_cost_cny": 0.012809748,
+      "input_tokens": 12384,
+      "method": "driftguard_llm",
+      "mode": "focused_live_action",
+      "output_tokens": 75,
+      "provider": "deepseek",
+      "provider_attempts": 1,
+      "public_scenario_id": "public-M16",
+      "repetition": 0,
+      "seed": 20260715
+    },
+    {
+      "actual_model": "deepseek-v4-flash",
+      "configured_model": "deepseek-v4-flash",
+      "estimated_cost_cny": 0.011558820000000001,
+      "input_tokens": 10898,
+      "method": "driftguard_llm",
+      "mode": "live_preliminary_attribution",
+      "output_tokens": 206,
+      "provider": "deepseek",
+      "provider_attempts": 1,
+      "public_scenario_id": "public-M16",
+      "repetition": 0,
+      "seed": 20260715
+    },
+    {
+      "actual_model": "deepseek-v4-flash",
+      "configured_model": "deepseek-v4-flash",
+      "estimated_cost_cny": 0.0063016520000000005,
+      "input_tokens": 5904,
+      "method": "driftguard_llm",
+      "mode": "live_probe_selection",
+      "output_tokens": 131,
+      "provider": "deepseek",
+      "provider_attempts": 1,
+      "public_scenario_id": "public-M16",
+      "repetition": 0,
+      "seed": 20260715
+    },
+    {
+      "actual_model": "deepseek-v4-flash",
+      "configured_model": "deepseek-v4-flash",
+      "estimated_cost_cny": 0.013155183999999999,
+      "input_tokens": 12450,
+      "method": "driftguard_llm",
+      "mode": "live_final_attribution",
+      "output_tokens": 211,
+      "provider": "deepseek",
+      "provider_attempts": 1,
+      "public_scenario_id": "public-M16",
+      "repetition": 0,
+      "seed": 20260715
+    },
+    {
+      "actual_model": "deepseek-v4-flash",
+      "configured_model": "deepseek-v4-flash",
+      "estimated_cost_cny": 0.014917112,
+      "input_tokens": 13472,
+      "method": "driftguard_llm",
+      "mode": "live_patch_proposal",
+      "output_tokens": 562,
+      "provider": "deepseek",
+      "provider_attempts": 1,
+      "public_scenario_id": "public-M16",
+      "repetition": 0,
+      "seed": 20260715
+    }
+  ],
+  "public_scenario_id": "public-M16",
+  "record_id": "b32a63d15f8420aadb448fe1",
+  "record_status": "COMPLETE",
+  "scenario_id": "M16-PD",
+  "schema_version": "focused-live-healing-record-v1",
+  "source_snapshot": "96273f5fd8f68ab58de6967800810674827e2175dc7afa13b15051919f89409d",
+  "stage_trace": [
+    {
+      "ordinal": 1,
+      "stage": "TASK_EXECUTION",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 2,
+      "stage": "FAILURE_OBSERVED",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 3,
+      "stage": "PRELIMINARY_ATTRIBUTION",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 4,
+      "stage": "RETRY_OR_EVIDENCE_COLLECTION",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 5,
+      "stage": "REPRODUCTION_CHECK",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 6,
+      "stage": "PROBE_SELECTION",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 7,
+      "stage": "PROBE_EXECUTION",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 8,
+      "stage": "FINAL_ATTRIBUTION",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 9,
+      "stage": "PATCH_ELIGIBILITY",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 10,
+      "stage": "PATCH_PROPOSAL",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 11,
+      "stage": "PATCH_VALIDATION",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 12,
+      "stage": "IMMEDIATE_REPAIR",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 13,
+      "stage": "REGRESSION_SAFETY_MINIMALITY",
+      "status": "COMPLETE"
+    },
+    {
+      "ordinal": 14,
+      "stage": "PATCH_ACCEPTED",
+      "status": "NOT_REACHED"
+    },
+    {
+      "ordinal": 15,
+      "stage": "FUTURE_TRANSFER",
+      "status": "NOT_REACHED"
+    },
+    {
+      "ordinal": 16,
+      "stage": "FINAL_EVALUATION",
+      "status": "COMPLETE"
+    }
+  ],
+  "stopped_stage": "FINAL_EVALUATION",
+  "symbolic_fallback_used": false,
+  "task_success": false,
+  "termination_reason": "PATCH_REJECTED_DETERMINISTIC_VALIDATION",
+  "tool_calls": 3
+}

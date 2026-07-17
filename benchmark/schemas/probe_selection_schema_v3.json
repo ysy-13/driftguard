@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["decision", "probe_type", "target_tool", "arguments", "expected_observation_type", "rationale", "evidence_refs"],
+  "properties": {
+    "decision": {"enum": ["SELECT_PROBE", "REFUSE_PROBE"]},
+    "probe_type": {"type": ["string", "null"], "enum": ["exact_retry", "local_schema_check", "response_shape_inspection", "read_after_write", "repeated_read", "independent_instance_reproduction", "precondition_inspection", "historical_behavior_comparison", null]},
+    "target_tool": {"type": ["string", "null"]},
+    "arguments": {"type": "object"},
+    "expected_observation_type": {"type": ["string", "null"]},
+    "rationale": {"type": "string", "maxLength": 500},
+    "evidence_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+  }
+}

@@ -48,8 +48,18 @@ def test_prompt_freeze_inputs_are_hashable_and_stable():
     prompt_dir = PROJECT_ROOT / "benchmark/prompts"
     first = {path.name: __import__("hashlib").sha256(path.read_bytes()).hexdigest() for path in prompt_dir.glob("*.txt")}
     second = {path.name: __import__("hashlib").sha256(path.read_bytes()).hexdigest() for path in prompt_dir.glob("*.txt")}
-    assert first == second and len(first) == 8
-    assert "base_tool_agent_v3.txt" in first
+    assert first == second
+    assert set(first) == {
+        "base_tool_agent_v1.txt",
+        "base_tool_agent_v2.txt",
+        "base_tool_agent_v3.txt",
+        "component_attribution_v2.txt",
+        "component_attribution_v3.txt",
+        "driftguard_attribution_v1.txt",
+        "driftguard_patch_v1.txt",
+        "reflection_v1.txt",
+        "validation_guided_v1.txt",
+    }
 
 
 def test_repetition_seed_pairing_and_cache_isolation_are_explicit():

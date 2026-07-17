@@ -1,0 +1,9 @@
+{
+  "attempt_id": "focused-real-20260717-2c792f5e",
+  "config_hash": "0911adf447c66cf58778f9923764dfcc6b72a02048fdd3e825f4afe7c06668ac",
+  "execution_mode": "real",
+  "frozen_identity_hash": "7626bda829570836c1a6dd24cfb14cf73a7672d510153f29d0c185e35593262f",
+  "ledger_baseline_sha256": "bdbcbe7f3bf257eaa043dcfb7bafa237abca2dada434c5019308657d2877582c",
+  "provider_kind": "REAL_PROVIDER",
+  "source_snapshot": "96273f5fd8f68ab58de6967800810674827e2175dc7afa13b15051919f89409d"
+}
