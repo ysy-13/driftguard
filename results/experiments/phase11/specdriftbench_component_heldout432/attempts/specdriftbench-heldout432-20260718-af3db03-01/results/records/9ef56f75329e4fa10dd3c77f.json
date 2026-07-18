@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 760,
+  "cost_cny_delta": 0.007988973999999871,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "d4abd23fc49673b047b65b0eddfb3245ce232051a88a56c4dc2e0b6046fd48a6",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M04",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7395,
+  "latency_ms": 3453.5255000009784,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed specification marks failed_only as required in RetryPipelineRequest, but the runtime returned a 422 VALIDATION_ERROR for a missing failed_only field, confirming the runtime enforces it as required. The user intent relied on a default that does not exist in the runtime, indicating persistent input drift.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "requestBody.failed_only",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/requestBody/content/application~1json/schema",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "output_tokens": 211,
+  "paired_group_id": "pair-b27e0e05004d8390",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed specification marks failed_only as required in RetryPipelineRequest, but the runtime returned a 422 VALIDATION_ERROR for a missing failed_only field, confirming the runtime enforces it as required. The user intent relied on a default that does not exist in the runtime, indicating persistent input drift.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "requestBody.failed_only",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/requestBody/content/application~1json/schema",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-5962ef35ced3",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/83c0b6fbd8cdfd836880bc8b72028cef47b5bfd84dc83c610e5820db4f8cc45c.json",
+  "raw_response_sha256": "462e02a5fb003b0d606a46d26915175b956e860676ee905d44e9453f9d2c29b5",
+  "reasoning_tokens": 0,
+  "record_id": "9ef56f75329e4fa10dd3c77f",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "AE"
+}

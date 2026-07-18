@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 727,
+  "cost_cny_delta": 0.008041096000000358,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "c4238643531cb9900286d5bfc7bfe2d572ba3fc7c661818802178ba67f4834ab",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M07",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7460,
+  "latency_ms": 3157.564666998951,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The runtime response returns 'state' and 'result' fields instead of the specified 'status' and 'conclusion' fields, and the response structure does not match the PipelineRun schema. This is a persistent response drift (RSD) because the field names differ from the specification.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.state, data.result",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}/get/responses/200/content/application~1json/schema",
+      "tool_id": "get_pipeline_status"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_pipeline_status"
+  },
+  "output_tokens": 204,
+  "paired_group_id": "pair-302604b4e8dfd0af",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The runtime response returns 'state' and 'result' fields instead of the specified 'status' and 'conclusion' fields, and the response structure does not match the PipelineRun schema. This is a persistent response drift (RSD) because the field names differ from the specification.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.state, data.result",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}/get/responses/200/content/application~1json/schema",
+      "tool_id": "get_pipeline_status"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_pipeline_status"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-e0cf0c40ecbc",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/88a4a39886be7e9bbec5f09ec61d47ae7d7f3bb763ce286fc448c84087318330.json",
+  "raw_response_sha256": "6ed8f8140759f4ce9abbec6f45a5b299efec3cca69ece57caa6776d8f86525bc",
+  "reasoning_tokens": 0,
+  "record_id": "8ee3014527ee2a02a3ac7aea",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "TF"
+}

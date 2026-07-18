@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 717,
+  "cost_cny_delta": 0.009092734000000213,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "7ae80f38c32dd47afb9d9bf70d24ce2e7c22ca4e325fdfbe02263adb60c854e1",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M07",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 8475,
+  "latency_ms": 3041.86883300099,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The runtime response uses 'state' and 'result' fields instead of the spec's 'status' and 'conclusion'. The retry response (EV006) shows 'status' and 'conclusion' matching spec, but the initial response (EV005) does not, indicating a persistent mismatch in field naming for the same tool.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}/get/responses/200/content/application~1json/schema",
+      "tool_id": "get_pipeline_status"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_pipeline_status"
+  },
+  "output_tokens": 211,
+  "paired_group_id": "pair-302604b4e8dfd0af",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The runtime response uses 'state' and 'result' fields instead of the spec's 'status' and 'conclusion'. The retry response (EV006) shows 'status' and 'conclusion' matching spec, but the initial response (EV005) does not, indicating a persistent mismatch in field naming for the same tool.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}/get/responses/200/content/application~1json/schema",
+      "tool_id": "get_pipeline_status"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_pipeline_status"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-e0cf0c40ecbc",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/a039b6711f3d6694f6a41b872ee348ca883d54a6ae0efa2699dbec841aca87de.json",
+  "raw_response_sha256": "2e9ee1679d4c7214f38ef4845a38e87b7d9f5e68ca4aab05a32b9a7b37b4bbc5",
+  "reasoning_tokens": 0,
+  "record_id": "18c1ed67fbdc7ccea108d29b",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "TF"
+}

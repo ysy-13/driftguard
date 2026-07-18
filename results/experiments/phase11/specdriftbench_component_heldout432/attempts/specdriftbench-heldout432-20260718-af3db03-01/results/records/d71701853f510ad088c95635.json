@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 561,
+  "cost_cny_delta": 0.007954225999999842,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "59459ef620f7ff47519735dae0b240c50d081c96c9804148302df75524318104",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M08",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7453,
+  "latency_ms": 3055.937334000191,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The spec defines a flat 'role' field at data.role, but the runtime returns a nested 'permissions' object with 'role_name' inside. This is a persistent response structure mismatch (RSD).",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.data.permissions.role_name",
+      "spec_pointer": "/components/schemas/Member/properties/role",
+      "tool_id": "get_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_member"
+  },
+  "output_tokens": 165,
+  "paired_group_id": "pair-62ad16ba1c2997ac",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The spec defines a flat 'role' field at data.role, but the runtime returns a nested 'permissions' object with 'role_name' inside. This is a persistent response structure mismatch (RSD).",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.data.permissions.role_name",
+      "spec_pointer": "/components/schemas/Member/properties/role",
+      "tool_id": "get_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_member"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-93373d4ff3d7",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/d16260ad6f078571021ca9459a8aec2349bf42d923d016cfefaf9b65676e08b9.json",
+  "raw_response_sha256": "d56ec1433421170b14cc30a1ff3c301ea8e23f3158d73e703b90d15460e719f8",
+  "reasoning_tokens": 0,
+  "record_id": "d71701853f510ad088c95635",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "PD"
+}

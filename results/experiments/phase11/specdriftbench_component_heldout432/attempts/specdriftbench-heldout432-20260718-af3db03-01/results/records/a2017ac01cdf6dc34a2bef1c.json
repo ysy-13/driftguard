@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 615,
+  "cost_cny_delta": 0.019100158000000533,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "b28bdec50b88c7551bc9d4866dc32e9a5dfcb39b34a49f476befd66d611e5aaa",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M05",
+  "finish_reason": "stop",
+  "format_repairs": 1,
+  "input_tokens": 17555,
+  "latency_ms": 9415.433832999042,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Spec lists 'write' as valid enum, but runtime initially rejected it with VALIDATION_ERROR. Retry succeeded, indicating transient or state-dependent behavior, but the mismatch between spec and runtime at the time of call is persistent.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "role",
+      "spec_pointer": "/components/schemas/UpdateMemberRoleRequest/properties/role/enum",
+      "tool_id": "update_member_role"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "update_member_role"
+  },
+  "output_tokens": 567,
+  "paired_group_id": "pair-59a1495e8c87319a",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Spec lists 'write' as valid enum, but runtime initially rejected it with VALIDATION_ERROR. Retry succeeded, indicating transient or state-dependent behavior, but the mismatch between spec and runtime at the time of call is persistent.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "role",
+      "spec_pointer": "/components/schemas/UpdateMemberRoleRequest/properties/role/enum",
+      "tool_id": "update_member_role"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "update_member_role"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 2,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-2e15853617f9",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/138e30257bfb752170b357ac534db8a9f152c8c4a632cc1cc2c6ad8ac9539f74.json",
+  "raw_response_sha256": "39bc24f1c9dec12864317930aed29647a806d41a0f8aca3504d5d41099d1b8a4",
+  "reasoning_tokens": 0,
+  "record_id": "a2017ac01cdf6dc34a2bef1c",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "TF"
+}

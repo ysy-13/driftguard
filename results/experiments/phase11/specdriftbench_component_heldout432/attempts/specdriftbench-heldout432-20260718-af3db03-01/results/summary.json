@@ -1,0 +1,45 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "attempts_delta": 65,
+  "cache_misses": 0,
+  "cost_cny_delta": 0.5408526199999999,
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_count": 0,
+  "format_repair_count": 2,
+  "input_tokens_delta": 504424,
+  "ledger_after": {
+    "api_attempts": 1084,
+    "provider_reported_input_tokens": 5344878,
+    "provider_reported_output_tokens": 122093,
+    "reserved_cny": 0.0,
+    "spent_cny": 8.035446274000003
+  },
+  "ledger_after_sha256": "5460cb961d7cf28f6fc5bd40047e91a448e27c92510b51435377c6e136a15f90",
+  "ledger_before": {
+    "api_attempts": 1019,
+    "provider_reported_input_tokens": 4840454,
+    "provider_reported_output_tokens": 109700,
+    "reserved_cny": 0.0,
+    "spent_cny": 7.4945936540000035
+  },
+  "ledger_before_sha256": "10fc1354a33fe96141058d292dc3f9730963f64b86cbb8a6b5f29b684f5719a3",
+  "mode": "real",
+  "network_calls": 65,
+  "output_tokens_delta": 12393,
+  "provider_gates": [
+    {
+      "completed": 63,
+      "expected": 144,
+      "infrastructure_errors": 2,
+      "provider": "deepseek"
+    }
+  ],
+  "provider_instances": 1,
+  "real_provider_instances": 1,
+  "records_completed": 63,
+  "records_planned": 432,
+  "reserved_cny_after": 0.0,
+  "schema_version": "specdriftbench-component-heldout-summary-v1",
+  "status": "STOPPED"
+}

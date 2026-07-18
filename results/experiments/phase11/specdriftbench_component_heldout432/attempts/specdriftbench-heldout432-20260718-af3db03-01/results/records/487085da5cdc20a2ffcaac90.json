@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 597,
+  "cost_cny_delta": 0.008030876000000298,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "c308b819575ee26286d22795e8a389f48cdd80085598fc7d6bdd0f6a1750618e",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M08",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7518,
+  "latency_ms": 2980.290417001015,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Spec requires fields 'role' and 'base_permission' at top level of Member, but runtime returns them nested under 'permissions' as 'role_name' and 'base'. This is a persistent structural mismatch in response fields.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.permissions.role_name, data.permissions.base",
+      "spec_pointer": "/components/schemas/Member/required",
+      "tool_id": "get_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_member"
+  },
+  "output_tokens": 170,
+  "paired_group_id": "pair-ab04b8c7844f1566",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Spec requires fields 'role' and 'base_permission' at top level of Member, but runtime returns them nested under 'permissions' as 'role_name' and 'base'. This is a persistent structural mismatch in response fields.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.permissions.role_name, data.permissions.base",
+      "spec_pointer": "/components/schemas/Member/required",
+      "tool_id": "get_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_member"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-4428482ce42e",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/87e411b271da14732c789b3bf00db0f21db0b8071f51743592f37198eaff22ff.json",
+  "raw_response_sha256": "cb80b16ada354034accd7148638258dd2e7717ed65ed99614fcc39868c4b53ce",
+  "reasoning_tokens": 0,
+  "record_id": "487085da5cdc20a2ffcaac90",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "AE"
+}

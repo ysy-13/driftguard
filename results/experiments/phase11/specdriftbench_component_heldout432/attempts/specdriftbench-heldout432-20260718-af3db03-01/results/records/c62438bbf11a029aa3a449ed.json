@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 599,
+  "cost_cny_delta": 0.008641009999999838,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "25f9b6e0f43df79849d28c5a3b22c6581fb24e2bd71c8dd40e6ed165a0a62f50",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M08",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 8141,
+  "latency_ms": 3419.9687499985885,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The initial response returned role inside a nested 'permissions' object instead of at the top level as specified. An exact retry immediately returned the correct structure, indicating a transient runtime inconsistency rather than persistent drift.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.role",
+      "spec_pointer": "/components/schemas/Member/properties/role",
+      "tool_id": "get_member"
+    },
+    "predicted_class": "TRANSIENT_FAILURE",
+    "target_tool": "get_member"
+  },
+  "output_tokens": 157,
+  "paired_group_id": "pair-f7cfc45eec8e971e",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The initial response returned role inside a nested 'permissions' object instead of at the top level as specified. An exact retry immediately returned the correct structure, indicating a transient runtime inconsistency rather than persistent drift.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.role",
+      "spec_pointer": "/components/schemas/Member/properties/role",
+      "tool_id": "get_member"
+    },
+    "predicted_class": "TRANSIENT_FAILURE",
+    "target_tool": "get_member"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-4b5a95c8d459",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/82dfce3f6e1b08322ab17fb39ac72ba35f68293a5a0600e389cfb00f9833125c.json",
+  "raw_response_sha256": "0cf2dce2876fdb987a291d1c630f8c99f8bf17abdd02574a03abeeb2312cd1f6",
+  "reasoning_tokens": 0,
+  "record_id": "c62438bbf11a029aa3a449ed",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "TF"
+}

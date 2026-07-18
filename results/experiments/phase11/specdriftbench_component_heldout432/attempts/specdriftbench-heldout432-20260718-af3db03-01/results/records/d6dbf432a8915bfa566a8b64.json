@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 647,
+  "cost_cny_delta": 0.008031897999999593,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "8a9a5bb1c86ac649a7a77eb47353bbcd8c1a8bdb084a0e0c8e3ee61d0dac28d0",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M03",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7479,
+  "latency_ms": 3848.766834000344,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The agent sent 'assignee' as the field name, but the spec requires 'assignee_username'. The runtime returned a 422 validation error for missing 'assignee_username', confirming the spec is correct and the agent made a naming mistake.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "assignee",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1assignee/put/requestBody/content/application~1json/schema",
+      "tool_id": "assign_issue"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "assign_issue"
+  },
+  "output_tokens": 190,
+  "paired_group_id": "pair-1188ff6eb945bc80",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The agent sent 'assignee' as the field name, but the spec requires 'assignee_username'. The runtime returned a 422 validation error for missing 'assignee_username', confirming the spec is correct and the agent made a naming mistake.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "assignee",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1assignee/put/requestBody/content/application~1json/schema",
+      "tool_id": "assign_issue"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "assign_issue"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-9b9e9bee7de2",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/4fefd0a5bd3c12a8df2f1abdc3437ee0ca240e65688739797f297287412fff36.json",
+  "raw_response_sha256": "34d69e3a40d9cf03dceb345901ed9ab0d46ed402ff5bbdadfb16c826ee6a0798",
+  "reasoning_tokens": 0,
+  "record_id": "d6dbf432a8915bfa566a8b64",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "AE"
+}

@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 664,
+  "cost_cny_delta": 0.008667582000000174,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "b3bd13f8e7da2d1cc5933e18814739ad1178f162cd3f5b5e606e31cb713250ae",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M04",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 8103,
+  "latency_ms": 3982.099165999898,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed spec marks failed_only as optional with default true, but the runtime rejected the request with 'Missing required field: failed_only', indicating the runtime requires the field. This is a persistent input contract drift.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "failed_only",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/requestBody/content/application~1json/schema",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "output_tokens": 189,
+  "paired_group_id": "pair-33699ea25b68aa5f",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed spec marks failed_only as optional with default true, but the runtime rejected the request with 'Missing required field: failed_only', indicating the runtime requires the field. This is a persistent input contract drift.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "failed_only",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/requestBody/content/application~1json/schema",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-5bbd50d7b350",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/77c91f0b6817b18b15f953181bf298d6e76dcb2c4bf8f2fd2f32c453b9fbbecb.json",
+  "raw_response_sha256": "c0cf5f20fd6e77b8f6ee8b5613e0694bcfa167f586a0d819867af9178b3dab52",
+  "reasoning_tokens": 0,
+  "record_id": "f6e1ae0dec087e0b672e6f37",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "TF"
+}

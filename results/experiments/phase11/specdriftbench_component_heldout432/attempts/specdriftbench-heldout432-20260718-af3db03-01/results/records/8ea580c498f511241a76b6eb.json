@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 613,
+  "cost_cny_delta": 0.008472380000000612,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "febb5a657826bc2aabe5ab2b2bfbafdbf53d3e066e415e44a8914aa60a1c3eef",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M09",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7944,
+  "latency_ms": 12696.795874999225,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The spec requires 'default_branch' but runtime returns 'defaultBranch' (camelCase). This mismatch persists across retry, indicating a stable naming drift.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.data.defaultBranch",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}/get/responses/200/content/application~1json/schema/properties/data/properties/default_branch",
+      "tool_id": "get_repository"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_repository"
+  },
+  "output_tokens": 173,
+  "paired_group_id": "pair-1018c42da59e0acc",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The spec requires 'default_branch' but runtime returns 'defaultBranch' (camelCase). This mismatch persists across retry, indicating a stable naming drift.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.data.defaultBranch",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}/get/responses/200/content/application~1json/schema/properties/data/properties/default_branch",
+      "tool_id": "get_repository"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_repository"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-9c6340cc26ca",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/d3b5eae3e9ea78904371f710da4ab38a40d2e30ee55d0af278a2b469d2c224bd.json",
+  "raw_response_sha256": "ccb6416beb2fee4173ef61f1669e5af5e7c66f590b5dc75869e57c3b6dca665c",
+  "reasoning_tokens": 0,
+  "record_id": "8ea580c498f511241a76b6eb",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "PD"
+}

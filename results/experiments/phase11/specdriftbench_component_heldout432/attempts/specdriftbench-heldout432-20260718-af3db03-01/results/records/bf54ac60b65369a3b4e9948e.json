@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 652,
+  "cost_cny_delta": 0.008555162000000394,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "41d0c3a7a6ec4fddfcc9391a4df76ab228a972a1d3859690ea3b0d5e5266e37c",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M03",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7983,
+  "latency_ms": 3101.517958999466,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The spec requires an 'assignee' field in the request body, but the runtime returns a VALIDATION_ERROR for a missing 'assignee_username' field. This mismatch persists across retry, indicating a stable input field name drift.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "assignee_username",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1assignee/put/requestBody/content/application~1json/schema",
+      "tool_id": "assign_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "assign_issue"
+  },
+  "output_tokens": 194,
+  "paired_group_id": "pair-f3063d04ffe7f491",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The spec requires an 'assignee' field in the request body, but the runtime returns a VALIDATION_ERROR for a missing 'assignee_username' field. This mismatch persists across retry, indicating a stable input field name drift.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "assignee_username",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1assignee/put/requestBody/content/application~1json/schema",
+      "tool_id": "assign_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "assign_issue"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-8349a855a78f",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/a52d335746390845c1248bb8f00ac14e46d2dea051b4e40397801df2bf5f3221.json",
+  "raw_response_sha256": "81fa2beaa82dab291fb2cec013318d07401a26ac258bc5aeb433d82bde424291",
+  "reasoning_tokens": 0,
+  "record_id": "bf54ac60b65369a3b4e9948e",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "PD"
+}

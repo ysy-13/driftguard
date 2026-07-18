@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 735,
+  "cost_cny_delta": 0.007972621999999596,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "4c4d9c118439b3313cdf034a18e5a4f9fb1521387996fe48955564a4c737aeb4",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M04",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7393,
+  "latency_ms": 3286.8004579995613,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed specification marks 'failed_only' as optional with a default of true, but the runtime rejected the request with a VALIDATION_ERROR stating 'Missing required field: failed_only'. This indicates a persistent drift where the runtime treats the field as required, contradicting the spec.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "payload.error.field",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/requestBody/content/application~1json/schema",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "output_tokens": 204,
+  "paired_group_id": "pair-e7a9087b656f3420",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed specification marks 'failed_only' as optional with a default of true, but the runtime rejected the request with a VALIDATION_ERROR stating 'Missing required field: failed_only'. This indicates a persistent drift where the runtime treats the field as required, contradicting the spec.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "payload.error.field",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/requestBody/content/application~1json/schema",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-ab66fe9b5923",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/62688c50a533425c599ff083f8c118dfec009b56d2941bb9c60d7344bd7a4e60.json",
+  "raw_response_sha256": "2ca361e269f5496315d967765c96fc0e4d9e2cd3b561d823c40eb973a49963ec",
+  "reasoning_tokens": 0,
+  "record_id": "4ff5276c57158410c38a3ee8",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "PD"
+}

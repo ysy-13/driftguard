@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 810,
+  "cost_cny_delta": 0.009104997999999753,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "e3788819f209074afcd8291787e793ff0a110985dcfd892d62fef9bb4fb125dc",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M08",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 8481,
+  "latency_ms": 3355.8422080004675,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The initial response (EV005) returns role inside a nested 'permissions' object (permissions.role_name) instead of the top-level 'role' field specified in the schema. The retry (EV006) returns the correct structure, but the first response shows a persistent mismatch in response shape that is not transient because the retry succeeded only after an exact retry, indicating the runtime has two possible response shapes. This is a response structure drift (RSD).",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.role",
+      "spec_pointer": "/components/schemas/Member/properties/role",
+      "tool_id": "get_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_member"
+  },
+  "output_tokens": 214,
+  "paired_group_id": "pair-f7cfc45eec8e971e",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The initial response (EV005) returns role inside a nested 'permissions' object (permissions.role_name) instead of the top-level 'role' field specified in the schema. The retry (EV006) returns the correct structure, but the first response shows a persistent mismatch in response shape that is not transient because the retry succeeded only after an exact retry, indicating the runtime has two possible response shapes. This is a response structure drift (RSD).",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.role",
+      "spec_pointer": "/components/schemas/Member/properties/role",
+      "tool_id": "get_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_member"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-4b5a95c8d459",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/6cfa4f650ead49b9b4c0e33658541d2f2345f7ed466c5acf6c433bc9f9278d41.json",
+  "raw_response_sha256": "783b340f9be0b13a6588836d653540ba115e8906226ccd4c01f325179005668c",
+  "reasoning_tokens": 0,
+  "record_id": "ea7ad7e47ed7a72e815b0385",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "TF"
+}

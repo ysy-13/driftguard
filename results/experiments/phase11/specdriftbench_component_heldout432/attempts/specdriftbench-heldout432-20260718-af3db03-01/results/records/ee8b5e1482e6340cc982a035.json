@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 703,
+  "cost_cny_delta": 0.008335431999999976,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "06822de5ef00308b61c1ad3b8ac5b0d591c10ab326bf3315eba72399aebc70d7",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M07",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7760,
+  "latency_ms": 3453.758416999335,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Specification defines PipelineRun with required fields 'status' and 'conclusion', but runtime response returns 'state' and 'result' instead. This is a persistent response field mismatch (RSD) because the runtime contract deviates from the displayed spec.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.state, data.result",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}/get/responses/200/content/application~1json/schema",
+      "tool_id": "get_pipeline_status"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_pipeline_status"
+  },
+  "output_tokens": 198,
+  "paired_group_id": "pair-061e56d65a0ef130",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Specification defines PipelineRun with required fields 'status' and 'conclusion', but runtime response returns 'state' and 'result' instead. This is a persistent response field mismatch (RSD) because the runtime contract deviates from the displayed spec.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.state, data.result",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}/get/responses/200/content/application~1json/schema",
+      "tool_id": "get_pipeline_status"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_pipeline_status"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-38dc6189c374",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/a44fca3748e84eb291cc8ce0e817bd18d94d654f3ae0e9dbf8078f97b821fcee.json",
+  "raw_response_sha256": "2005be2c52f7e3d1f7a71c9395e93293fb40b0fb93154cd419a23a47d0daed1f",
+  "reasoning_tokens": 0,
+  "record_id": "ee8b5e1482e6340cc982a035",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "AE"
+}

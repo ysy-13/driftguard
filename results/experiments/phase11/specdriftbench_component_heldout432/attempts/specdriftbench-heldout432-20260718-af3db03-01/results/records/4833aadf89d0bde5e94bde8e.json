@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 742,
+  "cost_cny_delta": 0.00900177599999985,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "a8aa28c88c30e69a49b86b75717ee2113560dc037dbd879797341884843d9b4d",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M02",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 8392,
+  "latency_ms": 2969.9737500013725,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The spec requires a 'ref' field in the request body, but the runtime rejected it with 'Unknown field: ref or Missing required field: branch', indicating the runtime expects a 'branch' field instead. The exact retry succeeded with the same request, confirming the drift is persistent and not transient.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "ref",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1workflows~1{workflow_id}~1runs/post/requestBody/content/application~1json/schema/properties/ref",
+      "tool_id": "trigger_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "trigger_pipeline"
+  },
+  "output_tokens": 208,
+  "paired_group_id": "pair-221c2edeb2ca7931",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The spec requires a 'ref' field in the request body, but the runtime rejected it with 'Unknown field: ref or Missing required field: branch', indicating the runtime expects a 'branch' field instead. The exact retry succeeded with the same request, confirming the drift is persistent and not transient.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "ref",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1workflows~1{workflow_id}~1runs/post/requestBody/content/application~1json/schema/properties/ref",
+      "tool_id": "trigger_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "trigger_pipeline"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-4425647282ad",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/5d1cc2ce1590f9c3a2e369bbebde2a70881aafb27cd8458e4114ae3b7d4adcf2.json",
+  "raw_response_sha256": "457d78e8083a6b9f981230116a652ede9575cd4d99fbdd2b0090c8088ee20ddb",
+  "reasoning_tokens": 0,
+  "record_id": "4833aadf89d0bde5e94bde8e",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "TF"
+}

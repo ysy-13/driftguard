@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 656,
+  "cost_cny_delta": 0.007900059999999876,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": true
+  },
+  "evidence_sha256": "2a0059ca7f373731ba4378d9125f74efd944048c669c1975016ac5ae96c292fa",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M05",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7382,
+  "latency_ms": 3033.6486659998627,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed specification lists 'write' as a valid enum value for the role field in UpdateMemberRoleRequest, but the runtime response returns a VALIDATION_ERROR stating 'Invalid enum value: write'. This indicates a persistent mismatch between the spec and runtime behavior.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "role",
+      "spec_pointer": "/components/schemas/UpdateMemberRoleRequest/properties/role/enum",
+      "tool_id": "update_member_role"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "update_member_role"
+  },
+  "output_tokens": 174,
+  "paired_group_id": "pair-2be7a2cc5b67f510",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed specification lists 'write' as a valid enum value for the role field in UpdateMemberRoleRequest, but the runtime response returns a VALIDATION_ERROR stating 'Invalid enum value: write'. This indicates a persistent mismatch between the spec and runtime behavior.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "role",
+      "spec_pointer": "/components/schemas/UpdateMemberRoleRequest/properties/role/enum",
+      "tool_id": "update_member_role"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "update_member_role"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-040e91221946",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/f40f88d8f8ef2f96db8a7e3f91c195c6666c4daf89d5934d3b9ecbbb5e8ec32f.json",
+  "raw_response_sha256": "016a1acb6022a997b3ccf8e391679b6c27512d3c5686c8eb2e4a4cb06b2cc879",
+  "reasoning_tokens": 0,
+  "record_id": "f39f830c07d4cf4fa312f5b2",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "PD"
+}

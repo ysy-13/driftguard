@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 634,
+  "cost_cny_delta": 0.00861443800000039,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "085b9023edd700d548c439c8927b10d015f6321d18cdc438bfe67c7a19663344",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M07",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 8057,
+  "latency_ms": 2994.6921249993466,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The runtime response uses 'state' and 'result' fields instead of the spec's 'status' and 'conclusion'. This mismatch is stable across retry, indicating persistent response schema drift.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.state, data.result",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}/get/responses/200/content/application~1json/schema",
+      "tool_id": "get_pipeline_status"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_pipeline_status"
+  },
+  "output_tokens": 186,
+  "paired_group_id": "pair-62acb2fc08554b5c",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The runtime response uses 'state' and 'result' fields instead of the spec's 'status' and 'conclusion'. This mismatch is stable across retry, indicating persistent response schema drift.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.state, data.result",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}/get/responses/200/content/application~1json/schema",
+      "tool_id": "get_pipeline_status"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_pipeline_status"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-0a0344458ac0",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/f88aace38b794803b3bd3ac09864f30bafcbcfc1c55215bfbd60778778fab19a.json",
+  "raw_response_sha256": "a1df5281c4c8cd5535be19a0c378659fe1e89ef8bbf8004693c5cdf6f522a332",
+  "reasoning_tokens": 0,
+  "record_id": "f3900cf76867d2817c78449a",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "PD"
+}

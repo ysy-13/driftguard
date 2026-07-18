@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 659,
+  "cost_cny_delta": 0.007977731999999627,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "528144f51472c9f03c82b1970dcf9818b9b49d3ca61ee4f80c2ba47e9395661a",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M04",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7424,
+  "latency_ms": 2953.440833000059,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed specification marks failed_only as optional with default true, but the runtime returned 422 VALIDATION_ERROR claiming failed_only is required. This is a persistent input field requirement mismatch (ICD).",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "requestBody.failed_only",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/requestBody/content/application~1json/schema",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "output_tokens": 191,
+  "paired_group_id": "pair-33699ea25b68aa5f",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed specification marks failed_only as optional with default true, but the runtime returned 422 VALIDATION_ERROR claiming failed_only is required. This is a persistent input field requirement mismatch (ICD).",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "requestBody.failed_only",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/requestBody/content/application~1json/schema",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-5bbd50d7b350",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/cdcf076be4fb4cb38ea33a5b7bf6a595fe009faf0565ef984faf9bef344b03eb.json",
+  "raw_response_sha256": "5df8db029f095400909e44842bcb05dd3c39ea41abbda16d0f4a8bce35358395",
+  "reasoning_tokens": 0,
+  "record_id": "e1abac042c2bd561e568987e",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "TF"
+}

@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 736,
+  "cost_cny_delta": 0.00872174800000014,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "1ab25723cd9248d04b3bd34cc9859a84415f6d7d38966ced2a645ac3b8949141",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M03",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 8118,
+  "latency_ms": 3858.51670899865,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The spec requires a field named 'assignee' in the request body, but the runtime returns a VALIDATION_ERROR for a missing field 'assignee_username'. The exact retry with the same request succeeded, indicating the runtime behavior is inconsistent with the spec. This is a persistent input field name mismatch.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "assignee_username",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1assignee/put/requestBody/content/application~1json/schema",
+      "tool_id": "assign_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "assign_issue"
+  },
+  "output_tokens": 208,
+  "paired_group_id": "pair-72de4d4db55ab522",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The spec requires a field named 'assignee' in the request body, but the runtime returns a VALIDATION_ERROR for a missing field 'assignee_username'. The exact retry with the same request succeeded, indicating the runtime behavior is inconsistent with the spec. This is a persistent input field name mismatch.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "assignee_username",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1assignee/put/requestBody/content/application~1json/schema",
+      "tool_id": "assign_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "assign_issue"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-7c872aa0c484",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/60c90e88a8d6ef8cd6e82918679bf4a80f12539830c368892338a319e7216fcb.json",
+  "raw_response_sha256": "c74e773017bf7f74f6ec700b9a898b32dc3ec2a54bfb2a4f125bc29bde8f176c",
+  "reasoning_tokens": 0,
+  "record_id": "048ed6c5aa9377b6314459ec",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "TF"
+}

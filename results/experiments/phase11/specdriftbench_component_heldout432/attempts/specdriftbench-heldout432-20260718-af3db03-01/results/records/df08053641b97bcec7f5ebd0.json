@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 742,
+  "cost_cny_delta": 0.010205692000000433,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "d50bfafc67a7cec03aaabc685acccad402b62b7b1651960cd8357941b0483e1d",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M02",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 9568,
+  "latency_ms": 2915.605375001178,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed spec requires a 'ref' field in the request body, but the runtime consistently rejects 'ref' and expects 'branch' instead (VALIDATION_ERROR: 'Unknown field: ref or Missing required field: branch'). This is a persistent input field mismatch, confirmed by exact retry and independent probe.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "ref",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1workflows~1{workflow_id}~1runs/post/requestBody/content/application~1json/schema/properties/ref",
+      "tool_id": "trigger_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "trigger_pipeline"
+  },
+  "output_tokens": 209,
+  "paired_group_id": "pair-dc36edd7db846726",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed spec requires a 'ref' field in the request body, but the runtime consistently rejects 'ref' and expects 'branch' instead (VALIDATION_ERROR: 'Unknown field: ref or Missing required field: branch'). This is a persistent input field mismatch, confirmed by exact retry and independent probe.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "ref",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1workflows~1{workflow_id}~1runs/post/requestBody/content/application~1json/schema/properties/ref",
+      "tool_id": "trigger_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "trigger_pipeline"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-adafe0a41cca",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/aad39781aea3c93b8cf29a9861f515f9ca4d5b419403c023fe7cb6f1b7b645ec.json",
+  "raw_response_sha256": "121718faf1a5dca8006e130d4ef869466cec8062e7977ea83bb951e0754623ee",
+  "reasoning_tokens": 0,
+  "record_id": "df08053641b97bcec7f5ebd0",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "PD"
+}

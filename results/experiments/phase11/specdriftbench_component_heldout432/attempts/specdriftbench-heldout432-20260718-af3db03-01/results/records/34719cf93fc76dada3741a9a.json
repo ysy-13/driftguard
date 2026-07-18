@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 687,
+  "cost_cny_delta": 0.008551073999999659,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "6a7f1d532e60670fbb43db9371d9a16789f73b4ad1b5cf08cbe6c32e6787d2ab",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M03",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7967,
+  "latency_ms": 3483.18775000007,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The agent sent 'assignee' as the field name, but the spec requires 'assignee_username'. The runtime returned a VALIDATION_ERROR for missing 'assignee_username', confirming the spec is correct. This is an agent error in constructing the request, not a spec drift.",
+    "confidence": 0.95,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "assignee_username",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1assignee/put/requestBody/content/application~1json/schema",
+      "tool_id": "assign_issue"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "assign_issue"
+  },
+  "output_tokens": 200,
+  "paired_group_id": "pair-1188ff6eb945bc80",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The agent sent 'assignee' as the field name, but the spec requires 'assignee_username'. The runtime returned a VALIDATION_ERROR for missing 'assignee_username', confirming the spec is correct. This is an agent error in constructing the request, not a spec drift.",
+    "confidence": 0.95,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "assignee_username",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1assignee/put/requestBody/content/application~1json/schema",
+      "tool_id": "assign_issue"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "assign_issue"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-9b9e9bee7de2",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/8a6e6b43a39a00b3da2a6fbbcfdb3db59db8ecc9986c56ffecc49acc8861e0af.json",
+  "raw_response_sha256": "846dc7d439e4174b13f5c2dfb871caeaf5c07c61eecdec66b814b592daa28afa",
+  "reasoning_tokens": 0,
+  "record_id": "34719cf93fc76dada3741a9a",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "AE"
+}

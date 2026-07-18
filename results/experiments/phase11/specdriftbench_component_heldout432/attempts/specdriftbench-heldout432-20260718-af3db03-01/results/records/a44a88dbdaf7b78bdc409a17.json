@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 681,
+  "cost_cny_delta": 0.008025766000000267,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "6336fd8d610520bd0cf35b147b52ce9029f42a74bbdc793932dcdc0bd0a2e85c",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M07",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7463,
+  "latency_ms": 3057.451458000287,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The spec defines PipelineRun with fields 'status' and 'conclusion', but the runtime response returns 'state' and 'result' instead. This is a persistent response field mismatch (RSD) because the runtime uses different field names than the spec.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.data",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}/get/responses/200/content/application~1json/schema",
+      "tool_id": "get_pipeline_status"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_pipeline_status"
+  },
+  "output_tokens": 195,
+  "paired_group_id": "pair-62acb2fc08554b5c",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The spec defines PipelineRun with fields 'status' and 'conclusion', but the runtime response returns 'state' and 'result' instead. This is a persistent response field mismatch (RSD) because the runtime uses different field names than the spec.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.data",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}/get/responses/200/content/application~1json/schema",
+      "tool_id": "get_pipeline_status"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_pipeline_status"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-0a0344458ac0",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/c964488a43bec9f3e022008b20bcaccd5fd25a1706466cb1f9813e3aef0b8d4b.json",
+  "raw_response_sha256": "1550202cd7a78221a19cc476d3a2f7ce8aefe9fd8d99a4787012358e0eae040e",
+  "reasoning_tokens": 0,
+  "record_id": "a44a88dbdaf7b78bdc409a17",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "PD"
+}

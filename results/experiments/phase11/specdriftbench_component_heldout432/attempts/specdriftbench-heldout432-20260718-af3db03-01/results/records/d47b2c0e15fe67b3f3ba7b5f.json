@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 759,
+  "cost_cny_delta": 0.009102954000000274,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "e5a9829a01e2e39738a38b54ceb66840e7153690e9b4639a9b40de9d51a466b2",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M03",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 8473,
+  "latency_ms": 3287.5910000002477,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed spec requires an 'assignee' field in the request body, but the runtime returned a 422 error stating 'Missing required field: assignee_username'. The exact retry succeeded, indicating the runtime actually expects a field named 'assignee_username', not 'assignee'. This is a persistent input field name mismatch (ICD).",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "assignee_username",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1assignee/put/requestBody/content/application~1json/schema",
+      "tool_id": "assign_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "assign_issue"
+  },
+  "output_tokens": 217,
+  "paired_group_id": "pair-72de4d4db55ab522",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed spec requires an 'assignee' field in the request body, but the runtime returned a 422 error stating 'Missing required field: assignee_username'. The exact retry succeeded, indicating the runtime actually expects a field named 'assignee_username', not 'assignee'. This is a persistent input field name mismatch (ICD).",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "assignee_username",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1assignee/put/requestBody/content/application~1json/schema",
+      "tool_id": "assign_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "assign_issue"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-7c872aa0c484",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/4e648410b7b43303be176e26818fbe26392c8d33d2a67a58f575dc356ecec74a.json",
+  "raw_response_sha256": "dedb664cacd9ddecfa0f605de34c68d50b8e628530d2c984f7e084eb1e7d1dd7",
+  "reasoning_tokens": 0,
+  "record_id": "d47b2c0e15fe67b3f3ba7b5f",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "TF"
+}

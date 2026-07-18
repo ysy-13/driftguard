@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 582,
+  "cost_cny_delta": 0.007944005999999781,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "7e943dc660b6ef1f9a6bb19730b2f8167aa4894f46aa7e6408237c9ef70673b2",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M09",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7425,
+  "latency_ms": 3303.091499999937,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Specification requires field 'default_branch' (snake_case) in response, but runtime returns 'defaultBranch' (camelCase). This is a persistent response field naming mismatch (RSD).",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.defaultBranch",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}/get/responses/200/content/application~1json/schema/$ref",
+      "tool_id": "get_repository"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_repository"
+  },
+  "output_tokens": 174,
+  "paired_group_id": "pair-cd7a38fb99334cd7",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Specification requires field 'default_branch' (snake_case) in response, but runtime returns 'defaultBranch' (camelCase). This is a persistent response field naming mismatch (RSD).",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.defaultBranch",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}/get/responses/200/content/application~1json/schema/$ref",
+      "tool_id": "T01"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_repository"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-4bf040e046e4",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/10816d6c7b82a0a341830c31a7750e755769e5487d620ff41bd5bf991d266d34.json",
+  "raw_response_sha256": "feb48ecdd8d62ed701f65bac62948119059f76c5303802110192267ba8e56abe",
+  "reasoning_tokens": 0,
+  "record_id": "b88c2bea1b3067f0bd59a5e9",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "AE"
+}

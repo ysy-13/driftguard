@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 725,
+  "cost_cny_delta": 0.009047766000000124,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "c4af62464530507dd1415ad382ef6580a782113c90cf0612649237b9da33ed6d",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M04",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 8451,
+  "latency_ms": 3936.1482499989506,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed spec marks failed_only as optional with default true, but the runtime rejected the request with 'Missing required field: failed_only', indicating the field is required at runtime. The exact retry succeeded only after the agent omitted the field, confirming the drift is persistent.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "failed_only",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/requestBody/content/application~1json/schema",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "output_tokens": 201,
+  "paired_group_id": "pair-33699ea25b68aa5f",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed spec marks failed_only as optional with default true, but the runtime rejected the request with 'Missing required field: failed_only', indicating the field is required at runtime. The exact retry succeeded only after the agent omitted the field, confirming the drift is persistent.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "failed_only",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/requestBody/content/application~1json/schema",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-5bbd50d7b350",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/6cbdfcd08da935d03183ed3b2375d479c79ef2cb4f863260cacb98fbcb67b67e.json",
+  "raw_response_sha256": "11321eb19969d80c814f940ffefe7c3dd9d0fade38d34b356f55ce3cd2c5b3a0",
+  "reasoning_tokens": 0,
+  "record_id": "f2c92c7e2d0268f91a519aa8",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "TF"
+}

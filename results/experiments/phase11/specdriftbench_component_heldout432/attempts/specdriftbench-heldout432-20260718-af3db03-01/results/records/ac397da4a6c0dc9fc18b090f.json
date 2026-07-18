@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 759,
+  "cost_cny_delta": 0.008675757999999867,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "994473e6b06e8e99a82dc367d574cad6134246d82d1458adbd7537cdac429b98",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M05",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 8073,
+  "latency_ms": 3274.0328340005362,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The initial call to update_member_role with role='write' returned a 422 VALIDATION_ERROR claiming 'Invalid enum value: write', but an exact retry with the same request succeeded (200). This indicates a transient backend validation glitch, not a persistent spec drift. The spec clearly allows 'write' in the role enum.",
+    "confidence": 0.95,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.error.code",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/patch/responses/200/content/application~1json/schema",
+      "tool_id": "update_member_role"
+    },
+    "predicted_class": "TRANSIENT_FAILURE",
+    "target_tool": "update_member_role"
+  },
+  "output_tokens": 208,
+  "paired_group_id": "pair-59a1495e8c87319a",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The initial call to update_member_role with role='write' returned a 422 VALIDATION_ERROR claiming 'Invalid enum value: write', but an exact retry with the same request succeeded (200). This indicates a transient backend validation glitch, not a persistent spec drift. The spec clearly allows 'write' in the role enum.",
+    "confidence": 0.95,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.error.code",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/patch/responses/200/content/application~1json/schema",
+      "tool_id": "update_member_role"
+    },
+    "predicted_class": "TRANSIENT_FAILURE",
+    "target_tool": "update_member_role"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-2e15853617f9",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/6651df8e4cef62ee48e97bc622cf398d3bdaeaf5677667880ab73030ca26ffb5.json",
+  "raw_response_sha256": "344708265fa81d5a76d5e2a6fead74de654c9dd93b4dee4a077788ec65772a77",
+  "reasoning_tokens": 0,
+  "record_id": "ac397da4a6c0dc9fc18b090f",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "TF"
+}

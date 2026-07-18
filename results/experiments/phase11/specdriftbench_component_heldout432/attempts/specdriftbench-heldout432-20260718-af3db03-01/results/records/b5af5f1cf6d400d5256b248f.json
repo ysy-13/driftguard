@@ -1,0 +1,75 @@
+{
+  "attempt_id": "specdriftbench-heldout432-20260718-af3db03-01",
+  "cache_hit": false,
+  "content_length": 711,
+  "cost_cny_delta": 0.007981820000000361,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "552a8684cb3f1b9411848351000fa0aa4b4c4dba416c7251587a266ef41b37b5",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M02",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7410,
+  "latency_ms": 2838.035458000377,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed specification requires a 'ref' field in the request body, but the runtime response indicates the field is unknown or a 'branch' field is required instead. This is a persistent input field mismatch (ICD) because the error is deterministic and not transient.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "ref",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1workflows~1{workflow_id}~1runs/post/requestBody/content/application~1json/schema/properties/ref",
+      "tool_id": "trigger_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "trigger_pipeline"
+  },
+  "output_tokens": 200,
+  "paired_group_id": "pair-dc36edd7db846726",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed specification requires a 'ref' field in the request body, but the runtime response indicates the field is unknown or a 'branch' field is required instead. This is a persistent input field mismatch (ICD) because the error is deterministic and not transient.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "ref",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1workflows~1{workflow_id}~1runs/post/requestBody/content/application~1json/schema/properties/ref",
+      "tool_id": "trigger_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "trigger_pipeline"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-adafe0a41cca",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v1/raw/1106100c8f5c3e9ac86b13b675a3a612d92eaccd91b3b6b97a7c0ea06bba31ea.json",
+  "raw_response_sha256": "85bbca5c77106eb057545a197c4686e99622c037738f821dc7d5358c110e8469",
+  "reasoning_tokens": 0,
+  "record_id": "b5af5f1cf6d400d5256b248f",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "PD"
+}
