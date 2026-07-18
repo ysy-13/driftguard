@@ -5,4 +5,14 @@ __pycache__/
 *.egg-info/
 results/experiments/**/.cache/
 results/experiments/**/raw_provider/
+results/experiments/**/cache/
+results/experiments/**/checkpoint/
+
+# Generated live-attempt working state. Curated manifests, summaries, records,
+# gates, and analyses are added explicitly when an attempt is frozen.
+results/experiments/phase10/driftguard_focused_canary/real_attempts/phase10a-v3-20260717-eb2efa85682d/
+results/experiments/phase10/specdriftbench_component_canary/offline_preparation_v1/
+results/experiments/phase10/specdriftbench_component_canary/attempts/*preflight*/
+results/experiments/phase10/specdriftbench_component_canary/attempts/specdriftbench-k26nt1-20260717-canary36-6-a91c7e4b/
+results/experiments/phase10/specdriftbench_component_canary/attempts/*/replay/
 .env

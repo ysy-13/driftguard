@@ -58,6 +58,7 @@ def test_prompt_freeze_inputs_are_hashable_and_stable():
         "driftguard_attribution_v1.txt",
         "driftguard_patch_v1.txt",
         "reflection_v1.txt",
+        "specdriftbench_component_v1.txt",
         "validation_guided_v1.txt",
     }
 

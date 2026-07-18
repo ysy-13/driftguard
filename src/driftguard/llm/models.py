@@ -35,6 +35,7 @@ class ProviderResponse:
     cached: bool = False
     error: str | None = None
     tool_calls: tuple[Mapping[str, Any], ...] = ()
+    reasoning_tokens: int = 0
 
     def public_dict(self) -> dict[str, Any]:
         return {
@@ -45,6 +46,7 @@ class ProviderResponse:
             "latency_ms": self.latency_ms, "provider_attempts": self.provider_attempts,
             "finish_reason": self.finish_reason, "cached": self.cached, "error": self.error,
             "tool_calls": [dict(item) for item in self.tool_calls],
+            "reasoning_tokens": self.reasoning_tokens,
         }
 
 

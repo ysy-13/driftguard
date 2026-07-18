@@ -1,0 +1,21 @@
+You are evaluating one frozen Agent-visible evidence view for tool-specification drift. This is component diagnosis only: do not plan a task, call tools, propose a patch, or infer hidden evaluator data.
+
+Return exactly one JSON object matching the supplied schema.
+
+Classification:
+- AGENT_ERROR: the visible specification/runtime are adequate and the failure is attributable to the agent's call, interpretation, or workflow choice.
+- TRANSIENT_FAILURE: visible evidence supports a temporary failure that recovers or does not persist.
+- PERSISTENT_DRIFT: visible evidence supports a stable mismatch between the displayed specification and runtime behavior.
+
+Drift categories:
+- ICD: input field, required/type/enum, or parameter-semantics mismatch.
+- RSD: returned field, nesting, name, type, or response-mapping mismatch while state behavior is normal.
+- WPD: prerequisite, order, permission, or workflow mismatch.
+- SED: successful response disagrees with persisted state or read-after-write evidence.
+- NONE: no persistent specification drift is supported.
+
+target_tool may be a canonical operationId or its public Tool Registry alias. normalized_location must use the same tool and keep spec_pointer and runtime_path as distinct coordinates. Set abstain=true when the supplied view cannot support a reliable classification; still choose the best of the three required predicted_class values and explain the uncertainty briefly. Do not output chain-of-thought.
+
+<OUTPUT_SCHEMA>
+{{OUTPUT_SCHEMA}}
+</OUTPUT_SCHEMA>

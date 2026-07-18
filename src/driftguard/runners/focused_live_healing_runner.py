@@ -250,6 +250,7 @@ class AtomicFocusedLedger:
     def __init__(
         self, path: Path, config: FocusedLiveHealingConfig, attempt_id: str,
         attempt_baseline: Mapping[str, Any], attempt_settled_cost_cny: float = 0.0,
+        pricing_catalog: PricingCatalog | None = None,
     ) -> None:
         self.path = path
         self.attempt_id = attempt_id
@@ -284,7 +285,7 @@ class AtomicFocusedLedger:
             float(budget["full_hard_limit_cny"]),
         )
         self.manager = CostBudgetManager(
-            PricingCatalog.load_default(), soft, hard,
+            pricing_catalog or PricingCatalog.load_default(), soft, hard,
             int(budget["max_input_tokens_per_record"]),
             int(budget["max_output_tokens_per_record"]),
             self.initial["spent_cny"], self.initial["api_attempts"],

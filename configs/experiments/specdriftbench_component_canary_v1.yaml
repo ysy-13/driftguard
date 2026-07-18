@@ -1,0 +1,34 @@
+experiment:
+  name: specdriftbench_component_canary_v1
+  kind: SPECDRIFTBENCH_COMPONENT_CANARY
+  run_authorized: false
+  development_families: [M01, M06, M11, M16]
+  variants: [AE, TF, PD]
+  evidence_views: [FIRST_FAILURE, RETRY_HISTORY, FULL_EVIDENCE]
+  planned_records: 36
+  heldout48_allowed: false
+  phase10b_allowed: false
+  end_to_end_allowed: false
+  method: component_attribution
+models:
+  - {provider: deepseek, base_url: "https://api.deepseek.com", model_id: deepseek-v4-flash, api_key_env: DEEPSEEK_API_KEY, temperature: 0.1, top_p: 1.0, max_output_tokens: 1024, timeout_seconds: 120, max_provider_retries: 3, structured_output_mode: strict_json, thinking_mode: disabled, concurrency: 1, capabilities: {seed: false, json_schema: false, strict_json: true, tool_calling: false}}
+  - {provider: dashscope, base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1", model_id: qwen3.7-plus, api_key_env: DASHSCOPE_API_KEY, temperature: 0.1, top_p: 1.0, max_output_tokens: 1024, timeout_seconds: 120, max_provider_retries: 3, structured_output_mode: strict_json, thinking_mode: disabled, concurrency: 1, capabilities: {seed: false, json_schema: false, strict_json: true, tool_calling: false}}
+  - {provider: moonshot, base_url: "https://api.moonshot.ai/v1", model_id: kimi-k2.6, api_key_env: MOONSHOT_API_KEY, temperature: 0.1, top_p: 1.0, max_output_tokens: 1024, timeout_seconds: 120, max_provider_retries: 3, structured_output_mode: strict_json, thinking_mode: disabled, concurrency: 1, capabilities: {seed: false, json_schema: false, strict_json: true, tool_calling: false}}
+budget:
+  max_input_tokens_per_record: 60000
+  max_output_tokens_per_record: 2048
+  max_format_repairs: 1
+  attempt_soft_increment_cny: 3
+  attempt_hard_increment_cny: 5
+  total_hard_limit_cny: 50
+execution:
+  cache_namespace: specdriftbench_component_real_v1
+  result_namespace: specdriftbench_component_canary_v1
+  continue_after_provider_gate: true
+  provider_infrastructure_error_limit: 2
+  fail_fast_true_leakage: true
+  fail_fast_safety: true
+  fail_fast_ledger: true
+  parallelism: 1
+  rate_limit_per_second: 1
+  seed: 20260717

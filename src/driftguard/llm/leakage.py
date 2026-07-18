@@ -11,6 +11,10 @@ FORBIDDEN_MESSAGE_TERMS = (
     "ground_truth_label", "expected_patch_ref", "source_drift_id", "variant_code",
     "runtimeprofile", "runtime_profile", "hidden runtime contract", "runtime_contract",
 )
+LEGAL_PREDICTION_TERMS = (
+    "AGENT_ERROR", "TRANSIENT_FAILURE", "PERSISTENT_DRIFT",
+    "ICD", "RSD", "WPD", "SED", "NONE",
+)
 
 
 def assert_provider_request_visible(request: ProviderRequest) -> None:
@@ -26,6 +30,10 @@ def assert_provider_request_visible(request: ProviderRequest) -> None:
         copy["content"] = re.sub(
             r"<OUTPUT_SCHEMA>.*?</OUTPUT_SCHEMA>", "<OUTPUT_SCHEMA_REDACTED>",
             copy.get("content", ""), flags=re.DOTALL,
+        )
+        copy["content"] = re.sub(
+            r"\b(?:" + "|".join(LEGAL_PREDICTION_TERMS) + r")\b",
+            "LEGAL_PREDICTION_LABEL", copy["content"], flags=re.IGNORECASE,
         )
         assert_agent_visible(copy)
         visible_messages.append(copy)

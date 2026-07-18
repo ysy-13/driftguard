@@ -9,6 +9,7 @@ from typing import Any
 
 from .configuration import ModelConfig
 from .models import ProviderRequest, ProviderResponse
+from .provider_capabilities import ProviderCapabilityAdapter
 from .redaction import assert_secret_absent
 from .leakage import assert_provider_request_visible
 
@@ -28,6 +29,7 @@ class LLMCache:
         material = {
             "provider": config.provider, "model_id": config.model_id,
             "model_configuration": config.public_dict(), "prompt_hash": request.prompt_hash,
+            "provider_capability_profile": ProviderCapabilityAdapter.for_model(config).public_profile(),
             "response_schema_hash": response_schema_hash,
             "public_scenario_id": request.public_scenario_id, "episode": request.episode,
             "method": request.method, "repetition": request.repetition,

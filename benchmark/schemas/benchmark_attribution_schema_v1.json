@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["predicted_class", "drift_category", "target_tool", "normalized_location", "confidence", "abstain", "concise_reason"],
+  "properties": {
+    "predicted_class": {"enum": ["AGENT_ERROR", "TRANSIENT_FAILURE", "PERSISTENT_DRIFT"]},
+    "drift_category": {"enum": ["ICD", "RSD", "WPD", "SED", "NONE"]},
+    "target_tool": {"type": ["string", "null"], "maxLength": 128},
+    "normalized_location": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["tool_id", "layer", "spec_pointer", "runtime_path"],
+      "properties": {
+        "tool_id": {"type": "string", "minLength": 1, "maxLength": 128},
+        "layer": {"enum": ["input", "response", "workflow", "state_effect"]},
+        "spec_pointer": {"type": ["string", "null"], "pattern": "^/"},
+        "runtime_path": {"type": ["string", "null"], "maxLength": 512}
+      }
+    },
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "abstain": {"type": "boolean"},
+    "concise_reason": {"type": "string", "minLength": 1, "maxLength": 500}
+  }
+}

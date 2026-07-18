@@ -87,9 +87,9 @@ class OpenAICompatibleProvider(LLMProvider):
         assert_provider_request_visible(request)
         body: dict[str, Any] = {
             "model": self.config.model_id, "messages": [dict(message) for message in request.messages],
-            "temperature": self.config.temperature, "top_p": self.config.top_p,
             "max_tokens": self.config.max_output_tokens,
         }
+        body.update(self._adapter.sampling_parameters(self.config))
         body.update(self._adapter.request_parameters(self.config))
         if self.config.capabilities.seed and self.config.seed is not None:
             body["seed"] = self.config.seed
@@ -146,12 +146,14 @@ class OpenAICompatibleProvider(LLMProvider):
                         failure_layer=FailureLayer.RESPONSE_PARSE,
                     )
                 usage = payload.get("usage", {})
+                details = usage.get("completion_tokens_details") or usage.get("output_tokens_details") or {}
                 result = ProviderResponse(
                     str(payload.get("id", "provider-response")), str(payload.get("model", self.config.model_id)), None, raw,
                     int(usage.get("prompt_tokens", 0)), int(usage.get("completion_tokens", 0)),
                     int(usage.get("total_tokens", 0)), (time.monotonic() - started) * 1000,
                     attempts, str(choice.get("finish_reason", "stop")),
                     tool_calls=tool_calls,
+                    reasoning_tokens=int(details.get("reasoning_tokens", 0) or 0),
                 )
                 if self._cost_controller is not None:
                     self._cost_controller.settle(reservation, result)

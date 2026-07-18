@@ -1,0 +1,22 @@
+{
+  "schema_version": "specdriftbench-evidence-views-v1",
+  "source_boundary": "one frozen Phase 7 Agent-visible EvidenceTrace",
+  "views": {
+    "FIRST_FAILURE": {
+      "include": ["displayed_specification", "user_intent", "first_request", "first_response", "normalized_observation", "contemporaneous_state_evidence"],
+      "exclude": ["retry_result", "history", "probe", "future_evidence"]
+    },
+    "RETRY_HISTORY": {
+      "include": ["FIRST_FAILURE", "exact_retry_result_if_present", "prior_agent_visible_history", "historical_success_failure_summary_if_present"],
+      "exclude": ["evaluator_metadata", "hidden_runtime_contract", "future_episode", "expected_patch"]
+    },
+    "FULL_EVIDENCE": {
+      "include": ["RETRY_HISTORY", "frozen_safe_isolated_probe_results", "read_after_write_state_evidence", "response_shape_observation", "permitted_historical_comparison"],
+      "exclude": ["evaluator_metadata", "hidden_runtime_contract", "future_episode", "expected_patch"]
+    }
+  },
+  "balanced_mapping": "evidence_index=(family_index+variant_index) mod 3",
+  "family_indices": {"M01": 0, "M06": 1, "M11": 2, "M16": 3},
+  "variant_indices": {"AE": 0, "TF": 1, "PD": 2},
+  "evidence_indices": {"0": "FIRST_FAILURE", "1": "RETRY_HISTORY", "2": "FULL_EVIDENCE"}
+}

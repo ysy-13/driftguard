@@ -5,11 +5,11 @@ from pathlib import Path
 from typing import Mapping
 
 
-ALLOWED_KEY_NAMES = ("DEEPSEEK_API_KEY", "DASHSCOPE_API_KEY")
+ALLOWED_KEY_NAMES = ("DEEPSEEK_API_KEY", "DASHSCOPE_API_KEY", "MOONSHOT_API_KEY")
 
 
 def load_project_dotenv(project_root: Path) -> None:
-    """Load only the two Phase 10 credentials without exposing their values."""
+    """Load only the approved Phase 10 credentials without exposing their values."""
     path = project_root / ".env"
     if not path.exists():
         return

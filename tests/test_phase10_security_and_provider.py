@@ -19,16 +19,18 @@ REQUEST = ProviderRequest(
 def test_project_env_loader_only_sets_allowlisted_keys(tmp_path, monkeypatch):
     monkeypatch.delenv("DEEPSEEK_API_KEY", raising=False)
     monkeypatch.delenv("DASHSCOPE_API_KEY", raising=False)
-    (tmp_path / ".env").write_text("DEEPSEEK_API_KEY=secret-a\nDASHSCOPE_API_KEY=secret-b\nOTHER=ignored\n")
+    monkeypatch.delenv("MOONSHOT_API_KEY", raising=False)
+    (tmp_path / ".env").write_text("DEEPSEEK_API_KEY=secret-a\nDASHSCOPE_API_KEY=secret-b\nMOONSHOT_API_KEY=secret-c\nOTHER=ignored\n")
     load_project_dotenv(tmp_path)
     assert os.getenv("DEEPSEEK_API_KEY") == "secret-a"
     assert os.getenv("DASHSCOPE_API_KEY") == "secret-b"
+    assert os.getenv("MOONSHOT_API_KEY") == "secret-c"
     assert os.getenv("OTHER") is None
 
 
 def test_credential_preflight_exposes_only_configured_or_missing():
     values = {"DEEPSEEK_API_KEY": "do-not-print", "DASHSCOPE_API_KEY": ""}
-    assert credential_status(values) == {"DEEPSEEK_API_KEY": "configured", "DASHSCOPE_API_KEY": "missing"}
+    assert credential_status(values) == {"DEEPSEEK_API_KEY": "configured", "DASHSCOPE_API_KEY": "missing", "MOONSHOT_API_KEY": "missing"}
     output = "\n".join(safe_status_lines(values))
     assert "do-not-print" not in output and "configured" in output and "missing" in output
 
@@ -81,4 +83,4 @@ def test_env_and_raw_provider_directories_are_ignored():
     ignore = (PROJECT_ROOT / ".gitignore").read_text().splitlines()
     assert ".env" in ignore
     assert "results/experiments/**/raw_provider/" in ignore
-    assert (PROJECT_ROOT / ".env.example").read_text() == "DEEPSEEK_API_KEY=\nDASHSCOPE_API_KEY=\n"
+    assert (PROJECT_ROOT / ".env.example").read_text() == "DEEPSEEK_API_KEY=\nDASHSCOPE_API_KEY=\nMOONSHOT_API_KEY=\n"

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "attempt_id", "git_commit", "source_snapshot", "config_hash", "prompt_sha256", "output_schema_sha256", "evidence_view_definition_sha256", "tool_registry_sha256", "tool_registry", "provider_capability_profiles", "plan", "heldout48_overlap", "ledger_before", "ledger_before_sha256", "provider_order", "cache_namespaces", "result_namespace"],
+  "properties": {
+    "schema_version": {"const": "specdriftbench-component-manifest-v2"},
+    "attempt_id": {"type": "string"},
+    "git_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "source_snapshot": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "config_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "prompt_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "output_schema_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "evidence_view_definition_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "tool_registry_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "tool_registry": {"type": "object"},
+    "provider_capability_profiles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["deepseek", "dashscope", "moonshot"],
+      "properties": {
+        "deepseek": {"$ref": "#/$defs/profile"},
+        "dashscope": {"$ref": "#/$defs/profile"},
+        "moonshot": {"$ref": "#/$defs/profile"}
+      }
+    },
+    "plan": {"type": "array", "minItems": 36, "maxItems": 36},
+    "heldout48_overlap": {"const": 0},
+    "ledger_before": {"type": "object"},
+    "ledger_before_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "provider_order": {"const": ["deepseek", "dashscope", "moonshot"]},
+    "cache_namespaces": {"type": "object"},
+    "result_namespace": {"const": "specdriftbench_component_canary_v1"}
+  },
+  "$defs": {
+    "profile": {
+      "type": "object",
+      "required": ["schema_version", "profile_id", "provider", "model_id"],
+      "properties": {
+        "schema_version": {"const": "provider-capability-profile-v1"},
+        "profile_id": {"type": "string"},
+        "provider": {"type": "string"},
+        "model_id": {"type": "string"}
+      }
+    }
+  }
+}
