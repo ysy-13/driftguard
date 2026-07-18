@@ -1,0 +1,45 @@
+experiment_mode: SPECDRIFTBENCH_COMPONENT_HELDOUT_432
+run_authorized: false
+expected_records: 432
+repetitions: 1
+heldout_only: true
+development_families: [M01, M06, M11, M16]
+heldout_families: [M02, M03, M04, M05, M07, M08, M09, M10, M12, M13, M14, M15, M17, M18, M19, M20]
+variants: [AE, TF, PD]
+evidence_views: [FIRST_FAILURE, RETRY_HISTORY, FULL_EVIDENCE]
+models:
+  - {provider: deepseek, base_url: "https://api.deepseek.com", model_id: deepseek-v4-flash, api_key_env: DEEPSEEK_API_KEY, temperature: 0.1, top_p: 1.0, max_output_tokens: 1024, timeout_seconds: 120, max_provider_retries: 3, structured_output_mode: strict_json, thinking_mode: disabled, concurrency: 1, capabilities: {seed: false, json_schema: false, strict_json: true, tool_calling: false}}
+  - {provider: dashscope, base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1", model_id: qwen3.7-plus, api_key_env: DASHSCOPE_API_KEY, temperature: 0.1, top_p: 1.0, max_output_tokens: 1024, timeout_seconds: 120, max_provider_retries: 3, structured_output_mode: strict_json, thinking_mode: disabled, concurrency: 1, capabilities: {seed: false, json_schema: false, strict_json: true, tool_calling: false}}
+  - {provider: moonshot, base_url: "https://api.moonshot.cn/v1", model_id: kimi-k2.6, api_key_env: MOONSHOT_API_KEY, temperature: 0.6, top_p: 0.95, max_output_tokens: 1024, timeout_seconds: 120, max_provider_retries: 3, structured_output_mode: strict_json, thinking_mode: disabled, concurrency: 1, capabilities: {seed: false, json_schema: false, strict_json: true, tool_calling: false}}
+controls:
+  sandbox_enabled: false
+  tool_calling_enabled: false
+  patch_enabled: false
+  repair_enabled: false
+  future_transfer_enabled: false
+budget:
+  attempt_soft_limit_cny: 15.0
+  attempt_hard_limit_cny: 20.0
+  global_hard_limit_cny: 50.0
+  max_input_tokens_per_record: 60000
+  max_output_tokens_per_record: 2048
+  max_format_repairs: 1
+execution:
+  cache_namespace: specdriftbench_component_heldout432_real_v1
+  fake_cache_namespace: specdriftbench_component_heldout432_fake_validation_v1
+  result_namespace: specdriftbench_component_heldout432_v1
+  provider_order: [deepseek, dashscope, moonshot]
+  parallelism: 1
+  rate_limit_per_second: 1
+  checkpoint_interval: 1
+  resume_enabled: true
+  replay_enabled: true
+  infrastructure_error_limit: 2
+  seed: 20260718
+analysis_plan: benchmark/analysis/specdriftbench_heldout432_analysis_plan_v1.json
+frozen_fingerprints:
+  prompt_sha256: d499cdb339972ad5a9424339519f4c64a9cb9096afcddd46b6309ccd7cc2a47e
+  attribution_schema_sha256: fb1a66c6d331fc1af98ef6985518f19e08ef9733f2ad07624dbfd962ce44b6f9
+  evidence_view_sha256: 94376b30b8554539602922f6da656dedcfc7a376650daec64735658af39585ac
+  pricing_sha256: 5ba33e1c6769dd208ab43241504dce0c161d4bbd2d92b3db580d26ea41868351
+  tool_registry_sha256: 5be5dacb739ed05cb81b5a005de0faf414312d9bb9ef0664eafe8a1000ed7205

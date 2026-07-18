@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "experiment_mode", "execution_status", "attempt_id", "mode", "status", "records_planned", "records_completed", "provider_instances", "real_provider_instances", "network_calls", "cache_misses", "fallback_count", "format_repair_count", "ledger_before", "ledger_after", "ledger_before_sha256", "ledger_after_sha256", "attempts_delta", "input_tokens_delta", "output_tokens_delta", "cost_cny_delta", "reserved_cny_after", "provider_gates"],
+  "properties": {
+    "schema_version": {"const": "specdriftbench-component-heldout-summary-v1"},
+    "experiment_mode": {"const": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432"},
+    "execution_status": {"enum": ["FAKE_PROVIDER_TEST", "REAL_PROVIDER"]},
+    "attempt_id": {"type": "string"},
+    "mode": {"enum": ["fake", "real", "replay"]},
+    "status": {"enum": ["INCOMPLETE", "COMPLETE", "STOPPED"]},
+    "records_planned": {"const": 432},
+    "records_completed": {"type": "integer", "minimum": 0, "maximum": 432},
+    "provider_instances": {"type": "integer", "minimum": 0},
+    "real_provider_instances": {"type": "integer", "minimum": 0},
+    "network_calls": {"type": "integer", "minimum": 0},
+    "cache_misses": {"type": "integer", "minimum": 0},
+    "fallback_count": {"const": 0},
+    "format_repair_count": {"type": "integer", "minimum": 0},
+    "ledger_before": {"type": "object"},
+    "ledger_after": {"type": "object"},
+    "ledger_before_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "ledger_after_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "attempts_delta": {"type": "integer"},
+    "input_tokens_delta": {"type": "integer"},
+    "output_tokens_delta": {"type": "integer"},
+    "cost_cny_delta": {"type": "number"},
+    "reserved_cny_after": {"type": "number"},
+    "provider_gates": {
+      "type": "array", "maxItems": 3,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["provider", "completed", "infrastructure_errors", "expected"],
+        "properties": {
+          "provider": {"enum": ["deepseek", "dashscope", "moonshot"]},
+          "completed": {"type": "integer", "minimum": 0, "maximum": 144},
+          "infrastructure_errors": {"type": "integer", "minimum": 0},
+          "expected": {"const": 144}
+        }
+      }
+    }
+  }
+}

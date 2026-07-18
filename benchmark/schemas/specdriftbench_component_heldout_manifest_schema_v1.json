@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "experiment_mode", "execution_status", "validation_status", "attempt_id", "git_commit", "git_tree", "git_dirty", "source_snapshot", "config_hash", "analysis_plan_sha256", "frozen_fingerprints", "tool_registry", "provider_capability_profiles", "plan", "counts", "development_families", "heldout_families", "heldout_overlap", "repetitions", "provider_order", "cache_namespaces", "result_namespace", "ledger_before", "ledger_before_sha256"],
+  "properties": {
+    "schema_version": {"const": "specdriftbench-component-heldout-manifest-v1"},
+    "experiment_mode": {"const": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432"},
+    "execution_status": {"enum": ["FAKE_PROVIDER_TEST", "REAL_PROVIDER"]},
+    "validation_status": {"enum": ["OFFLINE_PROTOCOL_VALIDATION", "REAL_EXPERIMENT"]},
+    "attempt_id": {"type": "string", "minLength": 1},
+    "git_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "git_tree": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "git_dirty": {"type": "boolean"},
+    "source_snapshot": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "config_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "analysis_plan_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "frozen_fingerprints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["prompt_sha256", "attribution_schema_sha256", "evidence_view_sha256", "pricing_sha256", "tool_registry_sha256"],
+      "properties": {
+        "prompt_sha256": {"const": "d499cdb339972ad5a9424339519f4c64a9cb9096afcddd46b6309ccd7cc2a47e"},
+        "attribution_schema_sha256": {"const": "fb1a66c6d331fc1af98ef6985518f19e08ef9733f2ad07624dbfd962ce44b6f9"},
+        "evidence_view_sha256": {"const": "94376b30b8554539602922f6da656dedcfc7a376650daec64735658af39585ac"},
+        "pricing_sha256": {"const": "5ba33e1c6769dd208ab43241504dce0c161d4bbd2d92b3db580d26ea41868351"},
+        "tool_registry_sha256": {"const": "5be5dacb739ed05cb81b5a005de0faf414312d9bb9ef0664eafe8a1000ed7205"}
+      }
+    },
+    "tool_registry": {"type": "object"},
+    "provider_capability_profiles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["deepseek", "dashscope", "moonshot"],
+      "properties": {
+        "deepseek": {"type": "object"},
+        "dashscope": {"type": "object"},
+        "moonshot": {"type": "object"}
+      }
+    },
+    "plan": {
+      "type": "array", "minItems": 432, "maxItems": 432,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["ordinal", "record_id", "paired_group_id", "provider", "model", "family", "variant", "evidence_view", "repetition"],
+        "properties": {
+          "ordinal": {"type": "integer", "minimum": 1, "maximum": 432},
+          "record_id": {"type": "string", "pattern": "^[0-9a-f]{24}$"},
+          "paired_group_id": {"type": "string", "pattern": "^pair-[0-9a-f]{16}$"},
+          "provider": {"enum": ["deepseek", "dashscope", "moonshot"]},
+          "model": {"enum": ["deepseek-v4-flash", "qwen3.7-plus", "kimi-k2.6"]},
+          "family": {"enum": ["M02", "M03", "M04", "M05", "M07", "M08", "M09", "M10", "M12", "M13", "M14", "M15", "M17", "M18", "M19", "M20"]},
+          "variant": {"enum": ["AE", "TF", "PD"]},
+          "evidence_view": {"enum": ["FIRST_FAILURE", "RETRY_HISTORY", "FULL_EVIDENCE"]},
+          "repetition": {"const": 1}
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["records", "providers", "per_provider", "heldout_families", "per_family", "variants", "per_variant", "evidence_views", "per_evidence_view", "paired_groups", "records_per_paired_group"],
+      "properties": {
+        "records": {"const": 432},
+        "providers": {"const": 3},
+        "per_provider": {"const": 144},
+        "heldout_families": {"const": 16},
+        "per_family": {"const": 27},
+        "variants": {"const": 3},
+        "per_variant": {"const": 144},
+        "evidence_views": {"const": 3},
+        "per_evidence_view": {"const": 144},
+        "paired_groups": {"const": 144},
+        "records_per_paired_group": {"const": 3}
+      }
+    },
+    "development_families": {"const": ["M01", "M06", "M11", "M16"]},
+    "heldout_families": {"const": ["M02", "M03", "M04", "M05", "M07", "M08", "M09", "M10", "M12", "M13", "M14", "M15", "M17", "M18", "M19", "M20"]},
+    "heldout_overlap": {"const": 0},
+    "repetitions": {"const": 1},
+    "provider_order": {"const": ["deepseek", "dashscope", "moonshot"]},
+    "cache_namespaces": {
+      "type": "object", "additionalProperties": false,
+      "required": ["deepseek", "dashscope", "moonshot"],
+      "properties": {
+        "deepseek": {"type": "string"},
+        "dashscope": {"type": "string"},
+        "moonshot": {"type": "string"}
+      }
+    },
+    "result_namespace": {"const": "specdriftbench_component_heldout432_v1"},
+    "ledger_before": {"type": "object"},
+    "ledger_before_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

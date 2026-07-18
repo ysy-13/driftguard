@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "record_id", "attempt_id", "experiment_mode", "execution_status", "provider", "model", "provider_profile_id", "max_tokens", "family", "variant", "evidence_view", "repetition", "paired_group_id", "public_scenario_id", "evidence_sha256", "raw_response_ref", "raw_response_sha256", "parsed_result", "normalized_prediction", "schema_valid", "format_repairs", "error_class", "error", "evaluation", "input_tokens", "output_tokens", "reasoning_tokens", "latency_ms", "provider_attempts", "finish_reason", "content_length", "cost_cny_delta", "cache_hit", "fallback_used", "main_state_pollution", "leakage", "termination_reason"],
+  "properties": {
+    "schema_version": {"const": "specdriftbench-component-heldout-record-v1"},
+    "record_id": {"type": "string", "pattern": "^[0-9a-f]{24}$"},
+    "attempt_id": {"type": "string", "minLength": 1},
+    "experiment_mode": {"const": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432"},
+    "execution_status": {"enum": ["FAKE_PROVIDER_TEST", "REAL_PROVIDER"]},
+    "provider": {"enum": ["deepseek", "dashscope", "moonshot"]},
+    "model": {"enum": ["deepseek-v4-flash", "qwen3.7-plus", "kimi-k2.6"]},
+    "provider_profile_id": {"type": "string"},
+    "max_tokens": {"const": 1024},
+    "family": {"enum": ["M02", "M03", "M04", "M05", "M07", "M08", "M09", "M10", "M12", "M13", "M14", "M15", "M17", "M18", "M19", "M20"]},
+    "variant": {"enum": ["AE", "TF", "PD"]},
+    "evidence_view": {"enum": ["FIRST_FAILURE", "RETRY_HISTORY", "FULL_EVIDENCE"]},
+    "repetition": {"const": 1},
+    "paired_group_id": {"type": "string", "pattern": "^pair-[0-9a-f]{16}$"},
+    "public_scenario_id": {"type": "string", "pattern": "^public-[0-9a-f]+$"},
+    "evidence_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "raw_response_ref": {"type": ["string", "null"]},
+    "raw_response_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+    "parsed_result": {"type": ["object", "null"]},
+    "normalized_prediction": {"type": ["object", "null"]},
+    "schema_valid": {"type": "boolean"},
+    "format_repairs": {"type": "integer", "minimum": 0, "maximum": 1},
+    "error_class": {"enum": ["NONE", "MODEL_ERROR", "INVALID_STRUCTURED_OUTPUT", "OUTPUT_TRUNCATED", "EVALUATOR_ERROR", "CONTROLLER_ERROR", "METHOD_BUDGET_FAILURE", "NETWORK_ERROR", "PROVIDER_ERROR", "SAFETY_REJECTION", "TRUE_EVIDENCE_LEAKAGE"]},
+    "error": {"type": ["object", "null"]},
+    "evaluation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["class_correct", "category_correct", "target_correct", "location_correct"],
+      "properties": {
+        "class_correct": {"type": ["boolean", "null"]},
+        "category_correct": {"type": ["boolean", "null"]},
+        "target_correct": {"type": ["boolean", "null"]},
+        "location_correct": {"type": ["boolean", "null"]}
+      }
+    },
+    "input_tokens": {"type": "integer", "minimum": 0},
+    "output_tokens": {"type": "integer", "minimum": 0},
+    "reasoning_tokens": {"type": "integer", "minimum": 0},
+    "latency_ms": {"type": "number", "minimum": 0},
+    "provider_attempts": {"type": "integer", "minimum": 0},
+    "finish_reason": {"type": ["string", "null"]},
+    "content_length": {"type": "integer", "minimum": 0},
+    "cost_cny_delta": {"type": "number", "minimum": 0},
+    "cache_hit": {"type": "boolean"},
+    "fallback_used": {"const": false},
+    "main_state_pollution": {"const": false},
+    "leakage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["passed", "api_key_value_present", "hidden_fields"],
+      "properties": {
+        "passed": {"type": "boolean"},
+        "api_key_value_present": {"const": false},
+        "hidden_fields": {"type": "array", "maxItems": 0}
+      }
+    },
+    "termination_reason": {"type": "string"}
+  }
+}

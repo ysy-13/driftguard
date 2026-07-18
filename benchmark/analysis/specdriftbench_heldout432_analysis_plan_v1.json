@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "specdriftbench-heldout432-analysis-plan-v1",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "status": "FROZEN_BEFORE_REAL_RESULTS",
+  "primary_metrics": [
+    "macro_precision_ae_tf_pd",
+    "macro_recall_ae_tf_pd",
+    "macro_f1_ae_tf_pd",
+    "macro_f1_by_evidence_view",
+    "macro_f1_by_provider",
+    "paired_accuracy_delta_full_evidence_minus_first_failure"
+  ],
+  "secondary_metrics": [
+    "overall_accuracy",
+    "confusion_matrix",
+    "coverage",
+    "evaluable_rate",
+    "abstention_rate",
+    "invalid_structured_output_rate",
+    "format_repair_rate",
+    "pd_category_accuracy",
+    "pd_target_accuracy",
+    "pd_location_accuracy",
+    "latency",
+    "input_tokens",
+    "output_tokens",
+    "cost_by_provider",
+    "total_cost",
+    "infrastructure_error_rate",
+    "api_key_leakage",
+    "ground_truth_leakage",
+    "replay_consistency"
+  ],
+  "denominator_policy": {
+    "all_record_metrics": "correct / all records; missing, refused, or invalid predictions are not correct",
+    "evaluable_subset_metrics": "correct / records with an evaluable prediction for the metric",
+    "coverage": "evaluable records / all records in the stated slice",
+    "pd_target_accuracy": "correct PD target predictions / all evaluable PD records",
+    "pd_target_coverage": "evaluable PD target predictions / all PD records",
+    "zero_division": 0.0
+  },
+  "paired_design": {
+    "paired_key": ["provider", "family", "variant"],
+    "records_per_pair": 3,
+    "required_views": ["FIRST_FAILURE", "RETRY_HISTORY", "FULL_EVIDENCE"],
+    "comparisons": [
+      "RETRY_HISTORY - FIRST_FAILURE",
+      "FULL_EVIDENCE - FIRST_FAILURE",
+      "FULL_EVIDENCE - RETRY_HISTORY"
+    ]
+  },
+  "bootstrap": {
+    "unit": "family",
+    "repetitions": 10000,
+    "seed": 20260718,
+    "confidence_level": 0.95,
+    "method": "family_clustered_bootstrap"
+  },
+  "post_result_changes_prohibited": [
+    "add_favorable_metric",
+    "remove_unfavorable_metric",
+    "change_denominator",
+    "change_bootstrap_seed",
+    "selectively_exclude_provider",
+    "change_primary_endpoint"
+  ]
+}

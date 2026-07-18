@@ -412,3 +412,47 @@ remain separate. The main all-60, held-out-48, and ablation YAML files are
 configuration artifacts only and are not executed in Phase 10A.
 
 `Full real-model experiment status: NOT RUN`
+
+## Phase 11: Frozen SpecDriftBench Held-out Component Protocol
+
+The Development Canary remains a separate 36-record experiment over families
+`M01`, `M06`, `M11`, and `M16`. The frozen held-out Component experiment uses
+the other 16 families (`M02`–`M05`, `M07`–`M10`, `M12`–`M15`, and
+`M17`–`M20`) and is exactly:
+
+```text
+16 held-out families × 3 variants × 3 Evidence Views × 3 Providers × 1 repetition
+= 432 records
+```
+
+DeepSeek, Qwen, and Kimi each receive 144 records. Each of the 144 groups keyed
+by Provider, family, and variant contains the same public scenario under
+`FIRST_FAILURE`, `RETRY_HISTORY`, and `FULL_EVIDENCE`. Evidence is monotone
+within a group and ground truth remains evaluator-only. This is one execution,
+not 144 records repeated three times.
+
+The versioned configuration defaults to `run_authorized: false`. A future real
+run is fail-closed unless an authorized copy of that configuration, the
+`--allow-real-api` flag, and the exact `RUN-EXACTLY-432` confirmation are all
+present. It also requires a clean Git worktree. The per-attempt soft and hard
+limits are CNY 15 and CNY 20, with a CNY 50 global hard limit and atomic Ledger
+reservation/settlement.
+
+Validate the frozen plan or execute the disposable offline FakeProvider path:
+
+```bash
+python scripts/run_specdriftbench_component_heldout.py --validate-config
+python scripts/run_specdriftbench_component_heldout.py \
+  --fake-validate --output /path/outside/formal/results
+```
+
+Formal attempts use isolated cache, checkpoint, result, and Manifest
+namespaces. Resume verifies their identity and never reruns completed records;
+replay requires every original cache entry, makes no Provider calls, and
+fails closed on a cache miss or semantic mismatch. The analysis endpoints,
+denominators, paired comparisons, and family-clustered bootstrap (10,000
+resamples, seed 20260718, 95% confidence) are frozen in
+`benchmark/analysis/specdriftbench_heldout432_analysis_plan_v1.json` before any
+real result exists.
+
+`Held-out 432 real API status: NOT RUN`
