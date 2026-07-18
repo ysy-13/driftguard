@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 637,
+  "cost_cny_delta": 0.008407993999999697,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "13260e41969f485c6b6c94d8095a94c6e1fe2a50225348cd8e62ffdf8971d056",
+  "evidence_view": "FULL_EVIDENCE",
+  "fallback_used": false,
+  "family": "M11",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7871,
+  "latency_ms": 2881.8765000000894,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The agent attempted to close an unassigned issue, but the specification requires an active assignee. The runtime correctly returned 409 PRECONDITION_FAILED. The probe confirmed the agent corrected its behavior, indicating no persistent drift.",
+    "confidence": 0.95,
+    "drift_category": "WPD",
+    "normalized_location": {
+      "layer": "workflow",
+      "runtime_path": "payload.error.code",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-preconditions",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "close_issue"
+  },
+  "output_tokens": 178,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The agent attempted to close an unassigned issue, but the specification requires an active assignee. The runtime correctly returned 409 PRECONDITION_FAILED. The probe confirmed the agent corrected its behavior, indicating no persistent drift.",
+    "confidence": 0.95,
+    "drift_category": "WPD",
+    "normalized_location": {
+      "layer": "workflow",
+      "runtime_path": "payload.error.code",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-preconditions",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "close_issue"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-97b54f531f43",
+  "raw_response_ref": "deepseek/a7637d38aae658035aa189ffb0812e8f1c7a2563e72139c71b06c4300f9756e6.json",
+  "raw_response_sha256": "4aede9398b6a006dc5c2162f57ed37a43140ed313d494a129762dd7c380d5b9f",
+  "reasoning_tokens": 0,
+  "record_id": "bb9efa3c576306573ff9753a",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "AE"
+}

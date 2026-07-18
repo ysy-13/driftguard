@@ -1,0 +1,1330 @@
+{
+  "analysis_id": "canary_analysis_v1",
+  "artifact_integrity": {
+    "authorized_temp_config_only_changes_run_authorized": true,
+    "cache_identity_files": 3,
+    "cache_parsed_files": 42,
+    "cache_raw_files": 42,
+    "checkpoints": 36,
+    "config_hash": "b24478842a0ffd26389317379b57c58ce63092f416454328f009206875341c37",
+    "evidence_view_definition_sha256": "94376b30b8554539602922f6da656dedcfc7a376650daec64735658af39585ac",
+    "evidence_view_fingerprint_matches": true,
+    "manifest_schema_version": "specdriftbench-component-manifest-v2",
+    "output_schema_sha256": "fb1a66c6d331fc1af98ef6985518f19e08ef9733f2ad07624dbfd962ce44b6f9",
+    "prompt_fingerprint_matches": true,
+    "prompt_sha256": "d499cdb339972ad5a9424339519f4c64a9cb9096afcddd46b6309ccd7cc2a47e",
+    "provider_gates": 3,
+    "records": 36,
+    "schema_fingerprint_matches": true,
+    "source_fingerprint_matches": true,
+    "source_snapshot": "9ada4db50831e39d8944dfeb3885f48c59f82b8e7b66b585bd2f1392070caf33"
+  },
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "canary_status": "VALID_DEVELOPMENT_CANARY",
+  "classification_by_evidence_view": {
+    "FIRST_FAILURE": {
+      "all_record_accuracy": {
+        "definition": "correct three-class predictions / all records; unevaluable records are not correct",
+        "denominator": 12,
+        "numerator": 6,
+        "value": 0.5
+      },
+      "confusion_matrix": {
+        "AGENT_ERROR": {
+          "AGENT_ERROR": 3,
+          "PERSISTENT_DRIFT": 3,
+          "TRANSIENT_FAILURE": 0
+        },
+        "PERSISTENT_DRIFT": {
+          "AGENT_ERROR": 0,
+          "PERSISTENT_DRIFT": 3,
+          "TRANSIENT_FAILURE": 0
+        },
+        "TRANSIENT_FAILURE": {
+          "AGENT_ERROR": 0,
+          "PERSISTENT_DRIFT": 3,
+          "TRANSIENT_FAILURE": 0
+        }
+      },
+      "coverage_evaluable_rate": {
+        "definition": "records with a valid three-class prediction / all records",
+        "denominator": 12,
+        "numerator": 12,
+        "value": 1.0
+      },
+      "evaluable_records": 12,
+      "evaluable_subset_accuracy": {
+        "definition": "correct three-class predictions / evaluable records",
+        "denominator": 12,
+        "numerator": 6,
+        "value": 0.5
+      },
+      "interpretation": "DEVELOPMENT_CANARY_DESCRIPTIVE_ONLY",
+      "macro_f1": {
+        "definition": "unweighted mean F1 over AE, TF, and PD classes",
+        "denominator_classes": 3,
+        "numerator_sum_of_class_scores": 1.1666666666666665,
+        "value": 0.38888888888888884
+      },
+      "macro_precision": {
+        "definition": "unweighted mean precision over AE, TF, and PD classes",
+        "denominator_classes": 3,
+        "numerator_sum_of_class_scores": 1.3333333333333333,
+        "value": 0.4444444444444444
+      },
+      "macro_recall": {
+        "definition": "unweighted mean recall over AE, TF, and PD classes",
+        "denominator_classes": 3,
+        "numerator_sum_of_class_scores": 1.5,
+        "value": 0.5
+      },
+      "per_class": {
+        "AGENT_ERROR": {
+          "f1": {
+            "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+            "value": 0.6666666666666666
+          },
+          "fn": 3,
+          "fp": 0,
+          "precision": {
+            "definition": "TP / (TP + FP)",
+            "denominator": 3,
+            "numerator": 3,
+            "value": 1.0,
+            "zero_division_policy": 0.0
+          },
+          "recall": {
+            "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+            "denominator": 6,
+            "numerator": 3,
+            "value": 0.5,
+            "zero_division_policy": 0.0
+          },
+          "tp": 3
+        },
+        "PERSISTENT_DRIFT": {
+          "f1": {
+            "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+            "value": 0.5
+          },
+          "fn": 0,
+          "fp": 6,
+          "precision": {
+            "definition": "TP / (TP + FP)",
+            "denominator": 9,
+            "numerator": 3,
+            "value": 0.3333333333333333,
+            "zero_division_policy": 0.0
+          },
+          "recall": {
+            "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+            "denominator": 3,
+            "numerator": 3,
+            "value": 1.0,
+            "zero_division_policy": 0.0
+          },
+          "tp": 3
+        },
+        "TRANSIENT_FAILURE": {
+          "f1": {
+            "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+            "value": 0.0
+          },
+          "fn": 3,
+          "fp": 0,
+          "precision": {
+            "definition": "TP / (TP + FP)",
+            "denominator": 0,
+            "numerator": 0,
+            "value": 0.0,
+            "zero_division_policy": 0.0
+          },
+          "recall": {
+            "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+            "denominator": 3,
+            "numerator": 0,
+            "value": 0.0,
+            "zero_division_policy": 0.0
+          },
+          "tp": 0
+        }
+      },
+      "records_total": 12,
+      "significance_testing": "PROHIBITED_NOT_PERFORMED",
+      "unevaluable_by_expected_class": {
+        "AGENT_ERROR": 0,
+        "PERSISTENT_DRIFT": 0,
+        "TRANSIENT_FAILURE": 0
+      }
+    },
+    "FULL_EVIDENCE": {
+      "all_record_accuracy": {
+        "definition": "correct three-class predictions / all records; unevaluable records are not correct",
+        "denominator": 12,
+        "numerator": 9,
+        "value": 0.75
+      },
+      "confusion_matrix": {
+        "AGENT_ERROR": {
+          "AGENT_ERROR": 3,
+          "PERSISTENT_DRIFT": 0,
+          "TRANSIENT_FAILURE": 0
+        },
+        "PERSISTENT_DRIFT": {
+          "AGENT_ERROR": 0,
+          "PERSISTENT_DRIFT": 6,
+          "TRANSIENT_FAILURE": 0
+        },
+        "TRANSIENT_FAILURE": {
+          "AGENT_ERROR": 0,
+          "PERSISTENT_DRIFT": 3,
+          "TRANSIENT_FAILURE": 0
+        }
+      },
+      "coverage_evaluable_rate": {
+        "definition": "records with a valid three-class prediction / all records",
+        "denominator": 12,
+        "numerator": 12,
+        "value": 1.0
+      },
+      "evaluable_records": 12,
+      "evaluable_subset_accuracy": {
+        "definition": "correct three-class predictions / evaluable records",
+        "denominator": 12,
+        "numerator": 9,
+        "value": 0.75
+      },
+      "interpretation": "DEVELOPMENT_CANARY_DESCRIPTIVE_ONLY",
+      "macro_f1": {
+        "definition": "unweighted mean F1 over AE, TF, and PD classes",
+        "denominator_classes": 3,
+        "numerator_sum_of_class_scores": 1.8,
+        "value": 0.6
+      },
+      "macro_precision": {
+        "definition": "unweighted mean precision over AE, TF, and PD classes",
+        "denominator_classes": 3,
+        "numerator_sum_of_class_scores": 1.6666666666666665,
+        "value": 0.5555555555555555
+      },
+      "macro_recall": {
+        "definition": "unweighted mean recall over AE, TF, and PD classes",
+        "denominator_classes": 3,
+        "numerator_sum_of_class_scores": 2.0,
+        "value": 0.6666666666666666
+      },
+      "per_class": {
+        "AGENT_ERROR": {
+          "f1": {
+            "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+            "value": 1.0
+          },
+          "fn": 0,
+          "fp": 0,
+          "precision": {
+            "definition": "TP / (TP + FP)",
+            "denominator": 3,
+            "numerator": 3,
+            "value": 1.0,
+            "zero_division_policy": 0.0
+          },
+          "recall": {
+            "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+            "denominator": 3,
+            "numerator": 3,
+            "value": 1.0,
+            "zero_division_policy": 0.0
+          },
+          "tp": 3
+        },
+        "PERSISTENT_DRIFT": {
+          "f1": {
+            "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+            "value": 0.8
+          },
+          "fn": 0,
+          "fp": 3,
+          "precision": {
+            "definition": "TP / (TP + FP)",
+            "denominator": 9,
+            "numerator": 6,
+            "value": 0.6666666666666666,
+            "zero_division_policy": 0.0
+          },
+          "recall": {
+            "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+            "denominator": 6,
+            "numerator": 6,
+            "value": 1.0,
+            "zero_division_policy": 0.0
+          },
+          "tp": 6
+        },
+        "TRANSIENT_FAILURE": {
+          "f1": {
+            "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+            "value": 0.0
+          },
+          "fn": 3,
+          "fp": 0,
+          "precision": {
+            "definition": "TP / (TP + FP)",
+            "denominator": 0,
+            "numerator": 0,
+            "value": 0.0,
+            "zero_division_policy": 0.0
+          },
+          "recall": {
+            "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+            "denominator": 3,
+            "numerator": 0,
+            "value": 0.0,
+            "zero_division_policy": 0.0
+          },
+          "tp": 0
+        }
+      },
+      "records_total": 12,
+      "significance_testing": "PROHIBITED_NOT_PERFORMED",
+      "unevaluable_by_expected_class": {
+        "AGENT_ERROR": 0,
+        "PERSISTENT_DRIFT": 0,
+        "TRANSIENT_FAILURE": 0
+      }
+    },
+    "RETRY_HISTORY": {
+      "all_record_accuracy": {
+        "definition": "correct three-class predictions / all records; unevaluable records are not correct",
+        "denominator": 12,
+        "numerator": 4,
+        "value": 0.3333333333333333
+      },
+      "confusion_matrix": {
+        "AGENT_ERROR": {
+          "AGENT_ERROR": 1,
+          "PERSISTENT_DRIFT": 2,
+          "TRANSIENT_FAILURE": 0
+        },
+        "PERSISTENT_DRIFT": {
+          "AGENT_ERROR": 0,
+          "PERSISTENT_DRIFT": 3,
+          "TRANSIENT_FAILURE": 0
+        },
+        "TRANSIENT_FAILURE": {
+          "AGENT_ERROR": 0,
+          "PERSISTENT_DRIFT": 6,
+          "TRANSIENT_FAILURE": 0
+        }
+      },
+      "coverage_evaluable_rate": {
+        "definition": "records with a valid three-class prediction / all records",
+        "denominator": 12,
+        "numerator": 12,
+        "value": 1.0
+      },
+      "evaluable_records": 12,
+      "evaluable_subset_accuracy": {
+        "definition": "correct three-class predictions / evaluable records",
+        "denominator": 12,
+        "numerator": 4,
+        "value": 0.3333333333333333
+      },
+      "interpretation": "DEVELOPMENT_CANARY_DESCRIPTIVE_ONLY",
+      "macro_f1": {
+        "definition": "unweighted mean F1 over AE, TF, and PD classes",
+        "denominator_classes": 3,
+        "numerator_sum_of_class_scores": 0.9285714285714286,
+        "value": 0.30952380952380953
+      },
+      "macro_precision": {
+        "definition": "unweighted mean precision over AE, TF, and PD classes",
+        "denominator_classes": 3,
+        "numerator_sum_of_class_scores": 1.2727272727272727,
+        "value": 0.42424242424242425
+      },
+      "macro_recall": {
+        "definition": "unweighted mean recall over AE, TF, and PD classes",
+        "denominator_classes": 3,
+        "numerator_sum_of_class_scores": 1.3333333333333333,
+        "value": 0.4444444444444444
+      },
+      "per_class": {
+        "AGENT_ERROR": {
+          "f1": {
+            "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+            "value": 0.5
+          },
+          "fn": 2,
+          "fp": 0,
+          "precision": {
+            "definition": "TP / (TP + FP)",
+            "denominator": 1,
+            "numerator": 1,
+            "value": 1.0,
+            "zero_division_policy": 0.0
+          },
+          "recall": {
+            "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+            "denominator": 3,
+            "numerator": 1,
+            "value": 0.3333333333333333,
+            "zero_division_policy": 0.0
+          },
+          "tp": 1
+        },
+        "PERSISTENT_DRIFT": {
+          "f1": {
+            "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+            "value": 0.42857142857142855
+          },
+          "fn": 0,
+          "fp": 8,
+          "precision": {
+            "definition": "TP / (TP + FP)",
+            "denominator": 11,
+            "numerator": 3,
+            "value": 0.2727272727272727,
+            "zero_division_policy": 0.0
+          },
+          "recall": {
+            "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+            "denominator": 3,
+            "numerator": 3,
+            "value": 1.0,
+            "zero_division_policy": 0.0
+          },
+          "tp": 3
+        },
+        "TRANSIENT_FAILURE": {
+          "f1": {
+            "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+            "value": 0.0
+          },
+          "fn": 6,
+          "fp": 0,
+          "precision": {
+            "definition": "TP / (TP + FP)",
+            "denominator": 0,
+            "numerator": 0,
+            "value": 0.0,
+            "zero_division_policy": 0.0
+          },
+          "recall": {
+            "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+            "denominator": 6,
+            "numerator": 0,
+            "value": 0.0,
+            "zero_division_policy": 0.0
+          },
+          "tp": 0
+        }
+      },
+      "records_total": 12,
+      "significance_testing": "PROHIBITED_NOT_PERFORMED",
+      "unevaluable_by_expected_class": {
+        "AGENT_ERROR": 0,
+        "PERSISTENT_DRIFT": 0,
+        "TRANSIENT_FAILURE": 0
+      }
+    }
+  },
+  "classification_by_provider": {
+    "dashscope": {
+      "all_record_accuracy": {
+        "definition": "correct three-class predictions / all records; unevaluable records are not correct",
+        "denominator": 12,
+        "numerator": 7,
+        "value": 0.5833333333333334
+      },
+      "confusion_matrix": {
+        "AGENT_ERROR": {
+          "AGENT_ERROR": 3,
+          "PERSISTENT_DRIFT": 1,
+          "TRANSIENT_FAILURE": 0
+        },
+        "PERSISTENT_DRIFT": {
+          "AGENT_ERROR": 0,
+          "PERSISTENT_DRIFT": 4,
+          "TRANSIENT_FAILURE": 0
+        },
+        "TRANSIENT_FAILURE": {
+          "AGENT_ERROR": 0,
+          "PERSISTENT_DRIFT": 4,
+          "TRANSIENT_FAILURE": 0
+        }
+      },
+      "coverage_evaluable_rate": {
+        "definition": "records with a valid three-class prediction / all records",
+        "denominator": 12,
+        "numerator": 12,
+        "value": 1.0
+      },
+      "evaluable_records": 12,
+      "evaluable_subset_accuracy": {
+        "definition": "correct three-class predictions / evaluable records",
+        "denominator": 12,
+        "numerator": 7,
+        "value": 0.5833333333333334
+      },
+      "format_repairs": 4,
+      "macro_f1": {
+        "definition": "unweighted mean F1 over AE, TF, and PD classes",
+        "denominator_classes": 3,
+        "numerator_sum_of_class_scores": 1.4725274725274724,
+        "value": 0.4908424908424908
+      },
+      "macro_precision": {
+        "definition": "unweighted mean precision over AE, TF, and PD classes",
+        "denominator_classes": 3,
+        "numerator_sum_of_class_scores": 1.4444444444444444,
+        "value": 0.48148148148148145
+      },
+      "macro_recall": {
+        "definition": "unweighted mean recall over AE, TF, and PD classes",
+        "denominator_classes": 3,
+        "numerator_sum_of_class_scores": 1.75,
+        "value": 0.5833333333333334
+      },
+      "per_class": {
+        "AGENT_ERROR": {
+          "f1": {
+            "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+            "value": 0.8571428571428571
+          },
+          "fn": 1,
+          "fp": 0,
+          "precision": {
+            "definition": "TP / (TP + FP)",
+            "denominator": 3,
+            "numerator": 3,
+            "value": 1.0,
+            "zero_division_policy": 0.0
+          },
+          "recall": {
+            "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+            "denominator": 4,
+            "numerator": 3,
+            "value": 0.75,
+            "zero_division_policy": 0.0
+          },
+          "tp": 3
+        },
+        "PERSISTENT_DRIFT": {
+          "f1": {
+            "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+            "value": 0.6153846153846153
+          },
+          "fn": 0,
+          "fp": 5,
+          "precision": {
+            "definition": "TP / (TP + FP)",
+            "denominator": 9,
+            "numerator": 4,
+            "value": 0.4444444444444444,
+            "zero_division_policy": 0.0
+          },
+          "recall": {
+            "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+            "denominator": 4,
+            "numerator": 4,
+            "value": 1.0,
+            "zero_division_policy": 0.0
+          },
+          "tp": 4
+        },
+        "TRANSIENT_FAILURE": {
+          "f1": {
+            "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+            "value": 0.0
+          },
+          "fn": 4,
+          "fp": 0,
+          "precision": {
+            "definition": "TP / (TP + FP)",
+            "denominator": 0,
+            "numerator": 0,
+            "value": 0.0,
+            "zero_division_policy": 0.0
+          },
+          "recall": {
+            "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+            "denominator": 4,
+            "numerator": 0,
+            "value": 0.0,
+            "zero_division_policy": 0.0
+          },
+          "tp": 0
+        }
+      },
+      "records_total": 12,
+      "resource_usage": {
+        "cost_cny": 0.2920399999999992,
+        "input_tokens": 131692,
+        "latency_ms_mean_per_record": 7310.78627433332,
+        "latency_ms_total": 87729.43529199983,
+        "output_tokens": 3582,
+        "provider_attempts": 16,
+        "records": 12
+      },
+      "unevaluable_by_expected_class": {
+        "AGENT_ERROR": 0,
+        "PERSISTENT_DRIFT": 0,
+        "TRANSIENT_FAILURE": 0
+      }
+    },
+    "deepseek": {
+      "all_record_accuracy": {
+        "definition": "correct three-class predictions / all records; unevaluable records are not correct",
+        "denominator": 12,
+        "numerator": 6,
+        "value": 0.5
+      },
+      "confusion_matrix": {
+        "AGENT_ERROR": {
+          "AGENT_ERROR": 2,
+          "PERSISTENT_DRIFT": 2,
+          "TRANSIENT_FAILURE": 0
+        },
+        "PERSISTENT_DRIFT": {
+          "AGENT_ERROR": 0,
+          "PERSISTENT_DRIFT": 4,
+          "TRANSIENT_FAILURE": 0
+        },
+        "TRANSIENT_FAILURE": {
+          "AGENT_ERROR": 0,
+          "PERSISTENT_DRIFT": 4,
+          "TRANSIENT_FAILURE": 0
+        }
+      },
+      "coverage_evaluable_rate": {
+        "definition": "records with a valid three-class prediction / all records",
+        "denominator": 12,
+        "numerator": 12,
+        "value": 1.0
+      },
+      "evaluable_records": 12,
+      "evaluable_subset_accuracy": {
+        "definition": "correct three-class predictions / evaluable records",
+        "denominator": 12,
+        "numerator": 6,
+        "value": 0.5
+      },
+      "format_repairs": 0,
+      "macro_f1": {
+        "definition": "unweighted mean F1 over AE, TF, and PD classes",
+        "denominator_classes": 3,
+        "numerator_sum_of_class_scores": 1.2380952380952381,
+        "value": 0.41269841269841273
+      },
+      "macro_precision": {
+        "definition": "unweighted mean precision over AE, TF, and PD classes",
+        "denominator_classes": 3,
+        "numerator_sum_of_class_scores": 1.4,
+        "value": 0.4666666666666666
+      },
+      "macro_recall": {
+        "definition": "unweighted mean recall over AE, TF, and PD classes",
+        "denominator_classes": 3,
+        "numerator_sum_of_class_scores": 1.5,
+        "value": 0.5
+      },
+      "per_class": {
+        "AGENT_ERROR": {
+          "f1": {
+            "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+            "value": 0.6666666666666666
+          },
+          "fn": 2,
+          "fp": 0,
+          "precision": {
+            "definition": "TP / (TP + FP)",
+            "denominator": 2,
+            "numerator": 2,
+            "value": 1.0,
+            "zero_division_policy": 0.0
+          },
+          "recall": {
+            "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+            "denominator": 4,
+            "numerator": 2,
+            "value": 0.5,
+            "zero_division_policy": 0.0
+          },
+          "tp": 2
+        },
+        "PERSISTENT_DRIFT": {
+          "f1": {
+            "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+            "value": 0.5714285714285715
+          },
+          "fn": 0,
+          "fp": 6,
+          "precision": {
+            "definition": "TP / (TP + FP)",
+            "denominator": 10,
+            "numerator": 4,
+            "value": 0.4,
+            "zero_division_policy": 0.0
+          },
+          "recall": {
+            "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+            "denominator": 4,
+            "numerator": 4,
+            "value": 1.0,
+            "zero_division_policy": 0.0
+          },
+          "tp": 4
+        },
+        "TRANSIENT_FAILURE": {
+          "f1": {
+            "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+            "value": 0.0
+          },
+          "fn": 4,
+          "fp": 0,
+          "precision": {
+            "definition": "TP / (TP + FP)",
+            "denominator": 0,
+            "numerator": 0,
+            "value": 0.0,
+            "zero_division_policy": 0.0
+          },
+          "recall": {
+            "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+            "denominator": 4,
+            "numerator": 0,
+            "value": 0.0,
+            "zero_division_policy": 0.0
+          },
+          "tp": 0
+        }
+      },
+      "records_total": 12,
+      "resource_usage": {
+        "cost_cny": 0.10431451800000069,
+        "input_tokens": 97671,
+        "latency_ms_mean_per_record": 2727.9346840833796,
+        "latency_ms_total": 32735.216209000555,
+        "output_tokens": 2199,
+        "provider_attempts": 12,
+        "records": 12
+      },
+      "unevaluable_by_expected_class": {
+        "AGENT_ERROR": 0,
+        "PERSISTENT_DRIFT": 0,
+        "TRANSIENT_FAILURE": 0
+      }
+    },
+    "moonshot": {
+      "all_record_accuracy": {
+        "definition": "correct three-class predictions / all records; unevaluable records are not correct",
+        "denominator": 12,
+        "numerator": 6,
+        "value": 0.5
+      },
+      "confusion_matrix": {
+        "AGENT_ERROR": {
+          "AGENT_ERROR": 2,
+          "PERSISTENT_DRIFT": 2,
+          "TRANSIENT_FAILURE": 0
+        },
+        "PERSISTENT_DRIFT": {
+          "AGENT_ERROR": 0,
+          "PERSISTENT_DRIFT": 4,
+          "TRANSIENT_FAILURE": 0
+        },
+        "TRANSIENT_FAILURE": {
+          "AGENT_ERROR": 0,
+          "PERSISTENT_DRIFT": 4,
+          "TRANSIENT_FAILURE": 0
+        }
+      },
+      "coverage_evaluable_rate": {
+        "definition": "records with a valid three-class prediction / all records",
+        "denominator": 12,
+        "numerator": 12,
+        "value": 1.0
+      },
+      "evaluable_records": 12,
+      "evaluable_subset_accuracy": {
+        "definition": "correct three-class predictions / evaluable records",
+        "denominator": 12,
+        "numerator": 6,
+        "value": 0.5
+      },
+      "format_repairs": 2,
+      "macro_f1": {
+        "definition": "unweighted mean F1 over AE, TF, and PD classes",
+        "denominator_classes": 3,
+        "numerator_sum_of_class_scores": 1.2380952380952381,
+        "value": 0.41269841269841273
+      },
+      "macro_precision": {
+        "definition": "unweighted mean precision over AE, TF, and PD classes",
+        "denominator_classes": 3,
+        "numerator_sum_of_class_scores": 1.4,
+        "value": 0.4666666666666666
+      },
+      "macro_recall": {
+        "definition": "unweighted mean recall over AE, TF, and PD classes",
+        "denominator_classes": 3,
+        "numerator_sum_of_class_scores": 1.5,
+        "value": 0.5
+      },
+      "per_class": {
+        "AGENT_ERROR": {
+          "f1": {
+            "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+            "value": 0.6666666666666666
+          },
+          "fn": 2,
+          "fp": 0,
+          "precision": {
+            "definition": "TP / (TP + FP)",
+            "denominator": 2,
+            "numerator": 2,
+            "value": 1.0,
+            "zero_division_policy": 0.0
+          },
+          "recall": {
+            "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+            "denominator": 4,
+            "numerator": 2,
+            "value": 0.5,
+            "zero_division_policy": 0.0
+          },
+          "tp": 2
+        },
+        "PERSISTENT_DRIFT": {
+          "f1": {
+            "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+            "value": 0.5714285714285715
+          },
+          "fn": 0,
+          "fp": 6,
+          "precision": {
+            "definition": "TP / (TP + FP)",
+            "denominator": 10,
+            "numerator": 4,
+            "value": 0.4,
+            "zero_division_policy": 0.0
+          },
+          "recall": {
+            "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+            "denominator": 4,
+            "numerator": 4,
+            "value": 1.0,
+            "zero_division_policy": 0.0
+          },
+          "tp": 4
+        },
+        "TRANSIENT_FAILURE": {
+          "f1": {
+            "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+            "value": 0.0
+          },
+          "fn": 4,
+          "fp": 0,
+          "precision": {
+            "definition": "TP / (TP + FP)",
+            "denominator": 0,
+            "numerator": 0,
+            "value": 0.0,
+            "zero_division_policy": 0.0
+          },
+          "recall": {
+            "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+            "denominator": 4,
+            "numerator": 0,
+            "value": 0.0,
+            "zero_division_policy": 0.0
+          },
+          "tp": 0
+        }
+      },
+      "records_total": 12,
+      "resource_usage": {
+        "cost_cny": 0.5063769099999993,
+        "input_tokens": 106232,
+        "latency_ms_mean_per_record": 7158.218819333267,
+        "latency_ms_total": 85898.6258319992,
+        "output_tokens": 2251,
+        "provider_attempts": 14,
+        "records": 12
+      },
+      "unevaluable_by_expected_class": {
+        "AGENT_ERROR": 0,
+        "PERSISTENT_DRIFT": 0,
+        "TRANSIENT_FAILURE": 0
+      }
+    }
+  },
+  "denominator_policy": {
+    "all_record_accuracy": "correct / all records; missing or unevaluable predictions are not correct",
+    "coverage_evaluable_rate": "evaluable records / all records in the stated slice",
+    "evaluable_subset_accuracy": "correct / records with the relevant evaluable prediction",
+    "pd_location_accuracy": "correct PD location / evaluable PD location records",
+    "pd_target_accuracy": "correct PD target / evaluable PD target records",
+    "zero_division": "precision, recall, or F1 is 0 when its prediction denominator is 0"
+  },
+  "environment": {
+    "openssl": "OpenSSL 3.6.2 7 Apr 2026",
+    "python": "3.12.13",
+    "python_executable": "/Users/yangsiyuan/.virtualenvs/driftguard-py312-fixed/bin/python"
+  },
+  "legacy_attempt_statuses": {
+    "specdriftbench-k26nt1-20260717-canary36-6-a91c7e4b": "TRANSPORT_INVALID_OLD_LIBRESSL_ENVIRONMENT"
+  },
+  "output_quality": {
+    "abstention_rate": {
+      "definition": "records with abstain=true / all records",
+      "denominator": 36,
+      "numerator": 0,
+      "value": 0.0
+    },
+    "format_repair_count": 6,
+    "format_repair_rate": {
+      "definition": "records requiring at least one format repair / all records",
+      "denominator": 36,
+      "numerator": 6,
+      "value": 0.16666666666666666
+    },
+    "format_repairs_by_provider": {
+      "dashscope": 4,
+      "deepseek": 0,
+      "moonshot": 2
+    },
+    "invalid_structured_output_rate": {
+      "definition": "records without a final valid structured output / all records",
+      "denominator": 36,
+      "numerator": 0,
+      "value": 0.0
+    },
+    "schema_valid_rate": {
+      "definition": "final Schema-valid records / all records",
+      "denominator": 36,
+      "numerator": 36,
+      "value": 1.0
+    }
+  },
+  "overall_classification": {
+    "all_record_accuracy": {
+      "definition": "correct three-class predictions / all records; unevaluable records are not correct",
+      "denominator": 36,
+      "numerator": 19,
+      "value": 0.5277777777777778
+    },
+    "confusion_matrix": {
+      "AGENT_ERROR": {
+        "AGENT_ERROR": 7,
+        "PERSISTENT_DRIFT": 5,
+        "TRANSIENT_FAILURE": 0
+      },
+      "PERSISTENT_DRIFT": {
+        "AGENT_ERROR": 0,
+        "PERSISTENT_DRIFT": 12,
+        "TRANSIENT_FAILURE": 0
+      },
+      "TRANSIENT_FAILURE": {
+        "AGENT_ERROR": 0,
+        "PERSISTENT_DRIFT": 12,
+        "TRANSIENT_FAILURE": 0
+      }
+    },
+    "coverage_evaluable_rate": {
+      "definition": "records with a valid three-class prediction / all records",
+      "denominator": 36,
+      "numerator": 36,
+      "value": 1.0
+    },
+    "evaluable_records": 36,
+    "evaluable_subset_accuracy": {
+      "definition": "correct three-class predictions / evaluable records",
+      "denominator": 36,
+      "numerator": 19,
+      "value": 0.5277777777777778
+    },
+    "macro_f1": {
+      "definition": "unweighted mean F1 over AE, TF, and PD classes",
+      "denominator_classes": 3,
+      "numerator_sum_of_class_scores": 1.3222079589216944,
+      "value": 0.4407359863072315
+    },
+    "macro_precision": {
+      "definition": "unweighted mean precision over AE, TF, and PD classes",
+      "denominator_classes": 3,
+      "numerator_sum_of_class_scores": 1.4137931034482758,
+      "value": 0.47126436781609193
+    },
+    "macro_recall": {
+      "definition": "unweighted mean recall over AE, TF, and PD classes",
+      "denominator_classes": 3,
+      "numerator_sum_of_class_scores": 1.5833333333333335,
+      "value": 0.5277777777777778
+    },
+    "per_class": {
+      "AGENT_ERROR": {
+        "f1": {
+          "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+          "value": 0.7368421052631579
+        },
+        "fn": 5,
+        "fp": 0,
+        "precision": {
+          "definition": "TP / (TP + FP)",
+          "denominator": 7,
+          "numerator": 7,
+          "value": 1.0,
+          "zero_division_policy": 0.0
+        },
+        "recall": {
+          "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+          "denominator": 12,
+          "numerator": 7,
+          "value": 0.5833333333333334,
+          "zero_division_policy": 0.0
+        },
+        "tp": 7
+      },
+      "PERSISTENT_DRIFT": {
+        "f1": {
+          "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+          "value": 0.5853658536585366
+        },
+        "fn": 0,
+        "fp": 17,
+        "precision": {
+          "definition": "TP / (TP + FP)",
+          "denominator": 29,
+          "numerator": 12,
+          "value": 0.41379310344827586,
+          "zero_division_policy": 0.0
+        },
+        "recall": {
+          "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+          "denominator": 12,
+          "numerator": 12,
+          "value": 1.0,
+          "zero_division_policy": 0.0
+        },
+        "tp": 12
+      },
+      "TRANSIENT_FAILURE": {
+        "f1": {
+          "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+          "value": 0.0
+        },
+        "fn": 12,
+        "fp": 0,
+        "precision": {
+          "definition": "TP / (TP + FP)",
+          "denominator": 0,
+          "numerator": 0,
+          "value": 0.0,
+          "zero_division_policy": 0.0
+        },
+        "recall": {
+          "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+          "denominator": 12,
+          "numerator": 0,
+          "value": 0.0,
+          "zero_division_policy": 0.0
+        },
+        "tp": 0
+      }
+    },
+    "records_total": 36,
+    "unevaluable_by_expected_class": {
+      "AGENT_ERROR": 0,
+      "PERSISTENT_DRIFT": 0,
+      "TRANSIENT_FAILURE": 0
+    }
+  },
+  "pd_attribution_metrics": {
+    "category": {
+      "all_record_accuracy": {
+        "definition": "correct PD category / all PD records; missing evaluations are not correct",
+        "denominator": 12,
+        "numerator": 12,
+        "value": 1.0
+      },
+      "coverage_evaluable_rate": {
+        "definition": "evaluable PD category records / all PD records",
+        "denominator": 12,
+        "numerator": 12,
+        "value": 1.0
+      },
+      "evaluable_subset_accuracy": {
+        "definition": "correct PD category / evaluable PD records",
+        "denominator": 12,
+        "numerator": 12,
+        "value": 1.0
+      }
+    },
+    "location": {
+      "all_record_accuracy": {
+        "definition": "correct PD location / all PD records; missing evaluations are not correct",
+        "denominator": 12,
+        "numerator": 7,
+        "value": 0.5833333333333334
+      },
+      "coverage_evaluable_rate": {
+        "definition": "evaluable PD location records / all PD records",
+        "denominator": 12,
+        "numerator": 12,
+        "value": 1.0
+      },
+      "evaluable_subset_accuracy": {
+        "definition": "correct PD location / evaluable PD records",
+        "denominator": 12,
+        "numerator": 7,
+        "value": 0.5833333333333334
+      }
+    },
+    "target": {
+      "all_record_accuracy": {
+        "definition": "correct PD target / all PD records; missing evaluations are not correct",
+        "denominator": 12,
+        "numerator": 12,
+        "value": 1.0
+      },
+      "coverage_evaluable_rate": {
+        "definition": "evaluable PD target records / all PD records",
+        "denominator": 12,
+        "numerator": 12,
+        "value": 1.0
+      },
+      "evaluable_subset_accuracy": {
+        "definition": "correct PD target / evaluable PD records",
+        "denominator": 12,
+        "numerator": 12,
+        "value": 1.0
+      }
+    }
+  },
+  "replay_consistency": {
+    "api_key_values_loaded_by_replay_entrypoint": false,
+    "cache_miss_count": 0,
+    "fallback_count": 0,
+    "format_repair_count_original": 6,
+    "format_repair_count_replay": 6,
+    "ledger_attempts_delta": 0,
+    "ledger_cost_cny_delta": 0.0,
+    "ledger_input_tokens_delta": 0,
+    "ledger_output_tokens_delta": 0,
+    "ledger_sha256_after": "10fc1354a33fe96141058d292dc3f9730963f64b86cbb8a6b5f29b684f5719a3",
+    "ledger_sha256_before": "10fc1354a33fe96141058d292dc3f9730963f64b86cbb8a6b5f29b684f5719a3",
+    "network_calls": 0,
+    "original_records": 36,
+    "provider_instances": 0,
+    "replay_records": 36,
+    "semantic_fields_compared": [
+      "record_id",
+      "attempt_id",
+      "provider",
+      "model",
+      "provider_profile_id",
+      "max_tokens",
+      "family",
+      "variant",
+      "evidence_view",
+      "public_scenario_id",
+      "evidence_sha256",
+      "raw_response_ref",
+      "raw_response_sha256",
+      "parsed_result",
+      "normalized_prediction",
+      "schema_valid",
+      "format_repairs",
+      "error_class",
+      "error",
+      "evaluation",
+      "input_tokens",
+      "output_tokens",
+      "reasoning_tokens",
+      "latency_ms",
+      "provider_attempts",
+      "finish_reason",
+      "content_length",
+      "fallback_used",
+      "main_state_pollution",
+      "leakage",
+      "termination_reason"
+    ],
+    "semantic_fields_compared_count": 31,
+    "semantic_mismatch_count": 0,
+    "semantic_mismatches": [],
+    "status": "COMPLETE"
+  },
+  "resource_usage": {
+    "by_provider": {
+      "dashscope": {
+        "cost_cny": 0.2920399999999992,
+        "input_tokens": 131692,
+        "latency_ms_mean_per_record": 7310.78627433332,
+        "latency_ms_total": 87729.43529199983,
+        "output_tokens": 3582,
+        "provider_attempts": 16,
+        "records": 12
+      },
+      "deepseek": {
+        "cost_cny": 0.10431451800000069,
+        "input_tokens": 97671,
+        "latency_ms_mean_per_record": 2727.9346840833796,
+        "latency_ms_total": 32735.216209000555,
+        "output_tokens": 2199,
+        "provider_attempts": 12,
+        "records": 12
+      },
+      "moonshot": {
+        "cost_cny": 0.5063769099999993,
+        "input_tokens": 106232,
+        "latency_ms_mean_per_record": 7158.218819333267,
+        "latency_ms_total": 85898.6258319992,
+        "output_tokens": 2251,
+        "provider_attempts": 14,
+        "records": 12
+      }
+    },
+    "overall": {
+      "cost_cny": 0.9027314279999992,
+      "cost_cny_ledger_delta": 0.9027314279999992,
+      "input_tokens": 335595,
+      "latency_ms_mean_per_record": 5732.313259249989,
+      "latency_ms_total": 206363.2773329996,
+      "output_tokens": 8032,
+      "provider_attempts": 42,
+      "provider_cost_sum_matches_ledger_delta": true,
+      "records": 36
+    }
+  },
+  "safety": {
+    "api_key_leakage_rate": {
+      "definition": "records reporting an API Key value / all records",
+      "denominator": 36,
+      "numerator": 0,
+      "value": 0.0
+    },
+    "ground_truth_leakage_rate": {
+      "definition": "records with hidden ground-truth fields or TRUE_EVIDENCE_LEAKAGE / all records",
+      "denominator": 36,
+      "numerator": 0,
+      "value": 0.0
+    },
+    "infrastructure_error_rate": {
+      "definition": "records with an infrastructure error class / all records",
+      "denominator": 36,
+      "numerator": 0,
+      "value": 0.0
+    }
+  },
+  "schema_version": "specdriftbench-canary-analysis-v1",
+  "scope": {
+    "analysis_mode": "OFFLINE_EXISTING_RECORDS_AND_EVALUATOR_GROUND_TRUTH_ONLY",
+    "heldout48_overlap": 0,
+    "heldout_records_run": 0,
+    "model_output_rescoring": "NOT_PERFORMED",
+    "prompt_changes": "NOT_PERFORMED",
+    "raw_provider_responses_read_for_analysis": false,
+    "real_api_calls": 0,
+    "records": 36,
+    "significance_testing": "NOT_PERFORMED"
+  },
+  "test_and_freeze_checks": {
+    "gate_conditions": {
+      "analysis_consistency_checks_passed": true,
+      "cache_miss_count_zero": true,
+      "infrastructure_errors_zero": true,
+      "leakage_zero": true,
+      "ledger_byte_identical": true,
+      "prompt_schema_evidence_benchmark_unchanged": true,
+      "provider_calls_zero": true,
+      "pytest_full_passed": true,
+      "replay_36_of_36": true,
+      "schema_valid_rate_100_percent": true
+    },
+    "gate_status": "READY_TO_FREEZE_FOR_HELDOUT",
+    "git_diff_check": "PASSED",
+    "ledger_sha256": "10fc1354a33fe96141058d292dc3f9730963f64b86cbb8a6b5f29b684f5719a3",
+    "pytest": {
+      "duration_seconds": 109.09,
+      "failed": 0,
+      "passed": 720,
+      "warnings": 1
+    }
+  },
+  "variant_class_metrics": {
+    "AE": {
+      "class_label": "AGENT_ERROR",
+      "f1": {
+        "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+        "value": 0.7368421052631579
+      },
+      "fn": 5,
+      "fp": 0,
+      "precision": {
+        "definition": "TP / (TP + FP)",
+        "denominator": 7,
+        "numerator": 7,
+        "value": 1.0,
+        "zero_division_policy": 0.0
+      },
+      "recall": {
+        "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+        "denominator": 12,
+        "numerator": 7,
+        "value": 0.5833333333333334,
+        "zero_division_policy": 0.0
+      },
+      "tp": 7
+    },
+    "PD": {
+      "class_label": "PERSISTENT_DRIFT",
+      "f1": {
+        "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+        "value": 0.5853658536585366
+      },
+      "fn": 0,
+      "fp": 17,
+      "precision": {
+        "definition": "TP / (TP + FP)",
+        "denominator": 29,
+        "numerator": 12,
+        "value": 0.41379310344827586,
+        "zero_division_policy": 0.0
+      },
+      "recall": {
+        "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+        "denominator": 12,
+        "numerator": 12,
+        "value": 1.0,
+        "zero_division_policy": 0.0
+      },
+      "tp": 12
+    },
+    "TF": {
+      "class_label": "TRANSIENT_FAILURE",
+      "f1": {
+        "definition": "2 * precision * recall / (precision + recall); 0 when both are 0",
+        "value": 0.0
+      },
+      "fn": 12,
+      "fp": 0,
+      "precision": {
+        "definition": "TP / (TP + FP)",
+        "denominator": 0,
+        "numerator": 0,
+        "value": 0.0,
+        "zero_division_policy": 0.0
+      },
+      "recall": {
+        "definition": "TP / (TP + FN), including unevaluable expected records in FN",
+        "denominator": 12,
+        "numerator": 0,
+        "value": 0.0,
+        "zero_division_policy": 0.0
+      },
+      "tp": 0
+    }
+  }
+}

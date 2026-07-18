@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 752,
+  "cost_cny_delta": 0.03306097000000019,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "ae3243c87fd57eae1ce940c37e25b470f89cf0e1f6556ca87308324fbb9bcf5a",
+  "evidence_view": "FIRST_FAILURE",
+  "fallback_used": false,
+  "family": "M11",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 6844,
+  "latency_ms": 6252.149207999992,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed specification for close_issue lists only one precondition: 'The issue exists and is open.' However, the runtime rejected the call with PRECONDITION_FAILED and the message 'Issue must have an active assignee,' indicating an additional undocumented precondition requiring an assignee. This is a stable workflow/prerequisite mismatch between spec and runtime.",
+    "confidence": 0.92,
+    "drift_category": "WPD",
+    "normalized_location": {
+      "layer": "workflow",
+      "runtime_path": "PRECONDITION_FAILED: Issue must have an active assignee.",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-preconditions",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "output_tokens": 169,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed specification for close_issue lists only one precondition: 'The issue exists and is open.' However, the runtime rejected the call with PRECONDITION_FAILED and the message 'Issue must have an active assignee,' indicating an additional undocumented precondition requiring an assignee. This is a stable workflow/prerequisite mismatch between spec and runtime.",
+    "confidence": 0.92,
+    "drift_category": "WPD",
+    "normalized_location": {
+      "layer": "workflow",
+      "runtime_path": "PRECONDITION_FAILED: Issue must have an active assignee.",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-preconditions",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 1,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "public_scenario_id": "public-31a3fa24eb31",
+  "raw_response_ref": "moonshot/55ccdb0291d3f3097687b0811cccda90fe5b14e06f15841c94e072610a5d7ef4.json",
+  "raw_response_sha256": "16377ff7686701ee62c4c32db0dbbdf185839d38bb79707449d2f05255e39f43",
+  "reasoning_tokens": 1,
+  "record_id": "93ab92ed23a480c756b878b7",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "TF"
+}

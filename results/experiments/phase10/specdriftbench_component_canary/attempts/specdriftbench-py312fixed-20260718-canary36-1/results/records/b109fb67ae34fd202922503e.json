@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 691,
+  "cost_cny_delta": 0.03501226000000024,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "5e028cb0762be9ced3d39155cf82fb334f96bedf3b2b1f4eb472a5176b066b79",
+  "evidence_view": "RETRY_HISTORY",
+  "fallback_used": false,
+  "family": "M11",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7327,
+  "latency_ms": 6613.318582999909,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed specification for close_issue lists precondition 'The issue exists and is open.' with no assignee requirement. Runtime rejects with PRECONDITION_FAILED 'Issue must have an active assignee.' Exact retry reproduces same failure, confirming stable mismatch. This is a workflow/prerequisite drift: runtime enforces an unlisted precondition.",
+    "confidence": 0.92,
+    "drift_category": "WPD",
+    "normalized_location": {
+      "layer": "workflow",
+      "runtime_path": "error.message",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-preconditions/0",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "output_tokens": 160,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed specification for close_issue lists precondition 'The issue exists and is open.' with no assignee requirement. Runtime rejects with PRECONDITION_FAILED 'Issue must have an active assignee.' Exact retry reproduces same failure, confirming stable mismatch. This is a workflow/prerequisite drift: runtime enforces an unlisted precondition.",
+    "confidence": 0.92,
+    "drift_category": "WPD",
+    "normalized_location": {
+      "layer": "workflow",
+      "runtime_path": "error.message",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-preconditions/0",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 1,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "public_scenario_id": "public-0a949bbdd232",
+  "raw_response_ref": "moonshot/087af249ad855cd8b441971a46d4e21b1aed8bd895b5d5b7e12b01cdb5bfdaca.json",
+  "raw_response_sha256": "34e2eac120d9117ff5fda0345047d875957fd9c9c61d6a6cd390ea6a1ebcf738",
+  "reasoning_tokens": 1,
+  "record_id": "b109fb67ae34fd202922503e",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "PD"
+}

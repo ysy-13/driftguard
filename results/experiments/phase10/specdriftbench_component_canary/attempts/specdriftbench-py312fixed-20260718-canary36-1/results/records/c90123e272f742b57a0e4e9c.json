@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 819,
+  "cost_cny_delta": 0.043308709999999806,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": true
+  },
+  "evidence_sha256": "9acfc8d48ee199affba997d6f728735c98733d82b74bb2bd27e5c2e78e4e9067",
+  "evidence_view": "FULL_EVIDENCE",
+  "fallback_used": false,
+  "family": "M16",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 9142,
+  "latency_ms": 7195.586583000022,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The close_issue tool returns HTTP 200 with a response body showing state=closed, resolution=completed, and closed_at set, matching the spec's declared state effects. However, the immediate read-after-write state probe and independent instance reproduction both observe issue.state == open, while the response continues to claim closed. This is a stable mismatch between successful response content and persisted state (SED), reproduced across exact retry and independent probes.",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "issue.state",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-state-effects",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "output_tokens": 179,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The close_issue tool returns HTTP 200 with a response body showing state=closed, resolution=completed, and closed_at set, matching the spec's declared state effects. However, the immediate read-after-write state probe and independent instance reproduction both observe issue.state == open, while the response continues to claim closed. This is a stable mismatch between successful response content and persisted state (SED), reproduced across exact retry and independent probes.",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "issue.state",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-state-effects",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 1,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "public_scenario_id": "public-4c541458af93",
+  "raw_response_ref": "moonshot/2574aaa1572bf0cf6a041d38c4ea9c5d83f6e644e76121034d3b82b6cc1197f0.json",
+  "raw_response_sha256": "201eeb01c6eb39ce1150b4405170aaa7935c957d037dbb483475f58d8ecfa0e9",
+  "reasoning_tokens": 1,
+  "record_id": "c90123e272f742b57a0e4e9c",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "PD"
+}

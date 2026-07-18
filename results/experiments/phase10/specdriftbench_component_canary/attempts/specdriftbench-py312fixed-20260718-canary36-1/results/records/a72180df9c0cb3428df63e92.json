@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 799,
+  "cost_cny_delta": 0.017591999999999608,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "00a5ca1f2a54939e0bb95b03fddfaa618ee14a9c734b279d7531c25d3904e865",
+  "evidence_view": "RETRY_HISTORY",
+  "fallback_used": false,
+  "family": "M06",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7980,
+  "latency_ms": 4786.314999999831,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The agent attempted to access 'data.issue_id' in the response of create_issue (T03). The displayed specification defines the Issue schema with an 'id' field, not 'issue_id'. The runtime response correctly returned the identifier at 'data.id'. The failure is due to the agent using an incorrect field name that does not exist in the specification or the actual response, constituting an agent interpretation error rather than a specification drift.",
+    "confidence": 0.95,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.issue_id",
+      "spec_pointer": "/components/schemas/Issue/properties/id",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "create_issue"
+  },
+  "output_tokens": 204,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The agent attempted to access 'data.issue_id' in the response of create_issue (T03). The displayed specification defines the Issue schema with an 'id' field, not 'issue_id'. The runtime response correctly returned the identifier at 'data.id'. The failure is due to the agent using an incorrect field name that does not exist in the specification or the actual response, constituting an agent interpretation error rather than a specification drift.",
+    "confidence": 0.95,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.issue_id",
+      "spec_pointer": "/components/schemas/Issue/properties/id",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "create_issue"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 1,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "public_scenario_id": "public-adeb8ef1688f",
+  "raw_response_ref": "dashscope/f8355020cfbcd9a710722430e49846ad53fd53ace64d84770c84aecd447f63a9.json",
+  "raw_response_sha256": "5efb289767038ecd7f523fa51ea6953c89bdd107a292a452a564f38dadeae06f",
+  "reasoning_tokens": 0,
+  "record_id": "a72180df9c0cb3428df63e92",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "AE"
+}

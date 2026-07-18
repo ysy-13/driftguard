@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 438,
+  "cost_cny_delta": 0.07108374999999967,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "00a5ca1f2a54939e0bb95b03fddfaa618ee14a9c734b279d7531c25d3904e865",
+  "evidence_view": "RETRY_HISTORY",
+  "fallback_used": false,
+  "family": "M06",
+  "finish_reason": "stop",
+  "format_repairs": 1,
+  "input_tokens": 15050,
+  "latency_ms": 8840.753667000172,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Spec defines Issue.id at data.id, but runtime exposes data.id while agent/state expect data.issue_id. Stable response field name mismatch.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.issue_id",
+      "spec_pointer": "/components/schemas/Issue/properties/id",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "output_tokens": 283,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Spec defines Issue.id at data.id, but runtime exposes data.id while agent/state expect data.issue_id. Stable response field name mismatch.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.issue_id",
+      "spec_pointer": "/components/schemas/Issue/properties/id",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 2,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "public_scenario_id": "public-adeb8ef1688f",
+  "raw_response_ref": "moonshot/5aaf9df8dcc44e074363dd393abef3c6431ac9e7a0faae2b3eaf7cf905b82658.json",
+  "raw_response_sha256": "e4265ccb2ca3e0ed1591a43931f85ee2f7c979958a8cac226ca6615b2ba3e1a7",
+  "reasoning_tokens": 2,
+  "record_id": "20b7c6ee721339d9b2cad2b1",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "AE"
+}

@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 672,
+  "cost_cny_delta": 0.03374132999999979,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": true
+  },
+  "evidence_sha256": "538fdf73a772333cd654b15dc2f00dc46caeb1b5a56eaed7d60741c907f681d3",
+  "evidence_view": "FIRST_FAILURE",
+  "fallback_used": false,
+  "family": "M06",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7091,
+  "latency_ms": 5979.005874999984,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The runtime response returns the issue identifier in field 'id' (payload.data.id), while the displayed specification defines the canonical field as 'issue_id' (Issue schema requires 'issue_id'). The state diff confirms the persisted object uses 'issue_id', so the runtime response mapping diverges from the spec. This is a stable response-structure mismatch (RSD).",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.data.id",
+      "spec_pointer": "/components/schemas/Issue/properties/issue_id",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "output_tokens": 147,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The runtime response returns the issue identifier in field 'id' (payload.data.id), while the displayed specification defines the canonical field as 'issue_id' (Issue schema requires 'issue_id'). The state diff confirms the persisted object uses 'issue_id', so the runtime response mapping diverges from the spec. This is a stable response-structure mismatch (RSD).",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.data.id",
+      "spec_pointer": "/components/schemas/Issue/properties/issue_id",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 1,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "public_scenario_id": "public-ef4f2cacef0c",
+  "raw_response_ref": "moonshot/037cf5fe53b2f0ef0a057acdc277fcd9899d586a19cb6ee3969037afc400b71b.json",
+  "raw_response_sha256": "0749778644936df9d96990ace5a56d01ccc8070a73290a18cbeba15d1413e15b",
+  "reasoning_tokens": 1,
+  "record_id": "0fadfcc08f119973d1d6ce3f",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "PD"
+}

@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 669,
+  "cost_cny_delta": 0.008589910000000422,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "a489831419afab0d537d4c2925ae6ad1ef121257b6f557a09ec6f1ee921bdcbd",
+  "evidence_view": "RETRY_HISTORY",
+  "fallback_used": false,
+  "family": "M01",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 8047,
+  "latency_ms": 2848.03412500014,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed spec marks priority as optional with a default of 'medium', but the runtime rejected the request with 'Missing required field: priority'. The exact retry with priority included succeeded, confirming a persistent drift where priority is required at runtime.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "priority",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues/post/requestBody/content/application~1json/schema",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "output_tokens": 179,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed spec marks priority as optional with a default of 'medium', but the runtime rejected the request with 'Missing required field: priority'. The exact retry with priority included succeeded, confirming a persistent drift where priority is required at runtime.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "priority",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues/post/requestBody/content/application~1json/schema",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-ba31a2577791",
+  "raw_response_ref": "deepseek/d5b1223aa62da4d576753508fd58922bd6697c093e942a78db7ede311d563510.json",
+  "raw_response_sha256": "c42df00210ce5a2038c65d725b096d1f3e2c9b01e64db40086cb75e5a5444bce",
+  "reasoning_tokens": 0,
+  "record_id": "9e0872e50b3816eaf77e9187",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "TF"
+}

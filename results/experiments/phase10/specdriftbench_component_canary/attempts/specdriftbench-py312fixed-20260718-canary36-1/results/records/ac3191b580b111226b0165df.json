@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 821,
+  "cost_cny_delta": 0.03564881999999958,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "a489831419afab0d537d4c2925ae6ad1ef121257b6f557a09ec6f1ee921bdcbd",
+  "evidence_view": "RETRY_HISTORY",
+  "fallback_used": false,
+  "family": "M01",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7439,
+  "latency_ms": 7625.833999999941,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed spec defines 'priority' with a default of 'medium' and not in the 'required' array, making it optional. The runtime rejects the same valid request with VALIDATION_ERROR claiming 'Missing required field: priority'. The exact retry then succeeds, indicating non-deterministic enforcement, but the initial rejection against the displayed contract is a stable input-field semantics mismatch: the runtime treats priority as required despite the spec showing it as optional with a default.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "request.body.priority",
+      "spec_pointer": "/components/schemas/CreateIssueRequest/properties/priority",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "output_tokens": 168,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed spec defines 'priority' with a default of 'medium' and not in the 'required' array, making it optional. The runtime rejects the same valid request with VALIDATION_ERROR claiming 'Missing required field: priority'. The exact retry then succeeds, indicating non-deterministic enforcement, but the initial rejection against the displayed contract is a stable input-field semantics mismatch: the runtime treats priority as required despite the spec showing it as optional with a default.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "request.body.priority",
+      "spec_pointer": "/components/schemas/CreateIssueRequest/properties/priority",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 1,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "public_scenario_id": "public-ba31a2577791",
+  "raw_response_ref": "moonshot/d593817649ca105a8d74858726dbb7d6dec9888347012c9f13a66180d8ccba7d.json",
+  "raw_response_sha256": "808340b70f5a08c65b87bb15240318bf110ba2eea1523c3ee975dddced1aa054",
+  "reasoning_tokens": 1,
+  "record_id": "ac3191b580b111226b0165df",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "TF"
+}

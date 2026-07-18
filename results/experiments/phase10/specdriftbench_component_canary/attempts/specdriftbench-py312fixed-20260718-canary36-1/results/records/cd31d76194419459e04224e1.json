@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 664,
+  "cost_cny_delta": 0.018320000000000114,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "8c85bd7a2a2b5a5c43def79c8fc37b3e1935920c37764a29676362230d3fb6a0",
+  "evidence_view": "FULL_EVIDENCE",
+  "fallback_used": false,
+  "family": "M06",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 8428,
+  "latency_ms": 4279.3956659998,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The runtime response for create_issue returns the identifier as 'id' (value 105) instead of the spec-defined 'issue_id'. The normalized observation explicitly flags 'missing_output_field' for 'issue_id', and the visible payload confirms the field name mismatch. This is a stable response schema drift.",
+    "confidence": 1.0,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.data.id",
+      "spec_pointer": "/components/schemas/Issue/properties/issue_id",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "output_tokens": 183,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The runtime response for create_issue returns the identifier as 'id' (value 105) instead of the spec-defined 'issue_id'. The normalized observation explicitly flags 'missing_output_field' for 'issue_id', and the visible payload confirms the field name mismatch. This is a stable response schema drift.",
+    "confidence": 1.0,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.data.id",
+      "spec_pointer": "/components/schemas/Issue/properties/issue_id",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 1,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "public_scenario_id": "public-f2ea596f965a",
+  "raw_response_ref": "dashscope/1eeb79cb942a3a711201389df094cf260884a8d9bc47756be7ea3496ff8fd4d4.json",
+  "raw_response_sha256": "400ade95d6be30991ca6b81f035e566e257ada8bc719bb956cb92a7529815574",
+  "reasoning_tokens": 0,
+  "record_id": "cd31d76194419459e04224e1",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "TF"
+}

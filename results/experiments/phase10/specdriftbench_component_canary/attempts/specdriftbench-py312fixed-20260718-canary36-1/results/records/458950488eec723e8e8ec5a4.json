@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 899,
+  "cost_cny_delta": 0.02148199999999978,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "718d6b057f371c20258fe3d5e07feb4fbb0cf290495c82d5504917794cb064b2",
+  "evidence_view": "FULL_EVIDENCE",
+  "fallback_used": false,
+  "family": "M01",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 9801,
+  "latency_ms": 6375.711083000169,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed specification defines 'priority' as an optional field with a default value of 'medium' (not in required list). However, the runtime consistently returns a 422 VALIDATION_ERROR stating 'Missing required field: priority' when the field is omitted. This indicates a stable mismatch where the runtime enforces 'priority' as required, contradicting the spec's definition of it as optional/defaulted. This is an Input Contract Definition (ICD) drift.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/issues",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues/post/requestBody/content/application~1json/schema/properties/priority",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "output_tokens": 235,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed specification defines 'priority' as an optional field with a default value of 'medium' (not in required list). However, the runtime consistently returns a 422 VALIDATION_ERROR stating 'Missing required field: priority' when the field is omitted. This indicates a stable mismatch where the runtime enforces 'priority' as required, contradicting the spec's definition of it as optional/defaulted. This is an Input Contract Definition (ICD) drift.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/issues",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues/post/requestBody/content/application~1json/schema/properties/priority",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 1,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "public_scenario_id": "public-3cf1c03db24c",
+  "raw_response_ref": "dashscope/cc7c2d12bda736a25add9ac32394272d2f52829d25b8a15a88d78712a7912c68.json",
+  "raw_response_sha256": "4f51ceb8344da7a594554bb4471610ee4fcd8b0a4cb152bf0dfe5b5c48d45925",
+  "reasoning_tokens": 0,
+  "record_id": "458950488eec723e8e8ec5a4",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "PD"
+}

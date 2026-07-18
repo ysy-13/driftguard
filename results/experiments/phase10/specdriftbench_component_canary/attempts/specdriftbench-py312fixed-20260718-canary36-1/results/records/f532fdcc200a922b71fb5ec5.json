@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 870,
+  "cost_cny_delta": 0.017864000000000324,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "5e028cb0762be9ced3d39155cf82fb334f96bedf3b2b1f4eb472a5176b066b79",
+  "evidence_view": "RETRY_HISTORY",
+  "fallback_used": false,
+  "family": "M11",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 8000,
+  "latency_ms": 5676.96316699994,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The agent called close_issue on an unassigned issue. The runtime returned a 409 PRECONDITION_FAILED with message 'Issue must have an active assignee.' The displayed specification for close_issue lists preconditions: 'The issue exists and is open.' It does not list 'issue has an active assignee' as a precondition. This indicates a mismatch between the documented preconditions and the actual runtime enforcement (workflow/precondition mismatch).",
+    "confidence": 0.95,
+    "drift_category": "WPD",
+    "normalized_location": {
+      "layer": "workflow",
+      "runtime_path": "/repositories/{repo_id}/issues/{issue_id}/close",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/x-preconditions",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "output_tokens": 233,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The agent called close_issue on an unassigned issue. The runtime returned a 409 PRECONDITION_FAILED with message 'Issue must have an active assignee.' The displayed specification for close_issue lists preconditions: 'The issue exists and is open.' It does not list 'issue has an active assignee' as a precondition. This indicates a mismatch between the documented preconditions and the actual runtime enforcement (workflow/precondition mismatch).",
+    "confidence": 0.95,
+    "drift_category": "WPD",
+    "normalized_location": {
+      "layer": "workflow",
+      "runtime_path": "/repositories/{repo_id}/issues/{issue_id}/close",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/x-preconditions",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 1,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "public_scenario_id": "public-0a949bbdd232",
+  "raw_response_ref": "dashscope/fbb0c288507259692b61dbfc1f5a718943ac5a4cb0e544027be55545ae21773c.json",
+  "raw_response_sha256": "6bfb9096df1fed46a47c3c01861a0054fcc4fc2f1e18d23043197d55254b33c1",
+  "reasoning_tokens": 0,
+  "record_id": "f532fdcc200a922b71fb5ec5",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "PD"
+}

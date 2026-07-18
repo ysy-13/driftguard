@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 779,
+  "cost_cny_delta": 0.034405999999999715,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": true
+  },
+  "evidence_sha256": "538fdf73a772333cd654b15dc2f00dc46caeb1b5a56eaed7d60741c907f681d3",
+  "evidence_view": "FIRST_FAILURE",
+  "fallback_used": false,
+  "family": "M06",
+  "finish_reason": "stop",
+  "format_repairs": 1,
+  "input_tokens": 15527,
+  "latency_ms": 9852.859582999827,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The runtime response for create_issue returns the issue identifier in a field named 'id' (value 105), whereas the displayed specification (Issue schema) requires the field to be named 'issue_id'. The normalized observation explicitly flags 'missing_output_field' for 'issue_id', confirming a mismatch between the spec's expected field name and the runtime's actual field name. This is a Response Schema Drift (RSD).",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.data.id",
+      "spec_pointer": "/components/schemas/Issue/properties/issue_id",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "output_tokens": 419,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The runtime response for create_issue returns the issue identifier in a field named 'id' (value 105), whereas the displayed specification (Issue schema) requires the field to be named 'issue_id'. The normalized observation explicitly flags 'missing_output_field' for 'issue_id', confirming a mismatch between the spec's expected field name and the runtime's actual field name. This is a Response Schema Drift (RSD).",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.data.id",
+      "spec_pointer": "/components/schemas/Issue/properties/issue_id",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "public_scenario_id": "public-ef4f2cacef0c",
+  "raw_response_ref": "dashscope/6c930afad63d96ccb373ea2d4ab50cff15ffe3a9a0882d7b2e19678d62c14a7f.json",
+  "raw_response_sha256": "d84ee4f690bad1374d8888c45fa41213bf3f7923a072127fe2a43c5b2096a8e9",
+  "reasoning_tokens": 0,
+  "record_id": "dba6deccd61319ecd5782021",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "PD"
+}

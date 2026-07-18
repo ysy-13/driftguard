@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 870,
+  "cost_cny_delta": 0.018512000000000306,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "009b032a1d3d05198618f60f3ee56aa8161af342cd2497d6f08b70febad11f34",
+  "evidence_view": "RETRY_HISTORY",
+  "fallback_used": false,
+  "family": "M16",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 8352,
+  "latency_ms": 5472.144792000108,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The tool call to close_issue returned a 200 OK with a response payload indicating state='closed', but the normalized_observation explicitly reports a state_mismatch where the observed persistent state remains 'open' (expected_effect: issue.state == closed, observed_effect: issue.state == open). This indicates that while the API response claims success, the underlying state was not updated, constituting a mismatch between the successful response and the persisted state.",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "issue.state",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-state-effects",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "output_tokens": 226,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The tool call to close_issue returned a 200 OK with a response payload indicating state='closed', but the normalized_observation explicitly reports a state_mismatch where the observed persistent state remains 'open' (expected_effect: issue.state == closed, observed_effect: issue.state == open). This indicates that while the API response claims success, the underlying state was not updated, constituting a mismatch between the successful response and the persisted state.",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "issue.state",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-state-effects",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 1,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "public_scenario_id": "public-46cdfa236b16",
+  "raw_response_ref": "dashscope/d6c2eed1dcbb7baca930a194c957517d58b718d9d9fdca7c5be8b256dea254ad.json",
+  "raw_response_sha256": "e7b27ecf322a1d77fd31c48baddff954f6977d9792b18452b52802d6d33af54b",
+  "reasoning_tokens": 0,
+  "record_id": "76b2e4e21d42770a0930b18c",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "TF"
+}

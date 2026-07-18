@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 704,
+  "cost_cny_delta": 0.036106000000000193,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "efa915394dedba6b33fe7f29a7dcd5dbc48e9a362b31390afcacd13892eac3de",
+  "evidence_view": "FIRST_FAILURE",
+  "fallback_used": false,
+  "family": "M16",
+  "finish_reason": "stop",
+  "format_repairs": 1,
+  "input_tokens": 15877,
+  "latency_ms": 12639.465874999587,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The close_issue tool returns a 200 response with state='closed', but normalized_observation reports a state_mismatch where the persistent state remains 'open'. This contradicts the response payload and indicates a failure in read-after-write consistency, matching State Effect Drift (SED).",
+    "confidence": 0.9,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "normalized_observation.channel",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-state-effects",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "output_tokens": 544,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The close_issue tool returns a 200 response with state='closed', but normalized_observation reports a state_mismatch where the persistent state remains 'open'. This contradicts the response payload and indicates a failure in read-after-write consistency, matching State Effect Drift (SED).",
+    "confidence": 0.9,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "normalized_observation.channel",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-state-effects",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "public_scenario_id": "public-73e94b46d5cc",
+  "raw_response_ref": "dashscope/40d6788f049a450634eb606b562bc4a919ed5d2dcd8f370827c7a10cc3c7251c.json",
+  "raw_response_sha256": "03e24144102d354ff7450625e2efc1f17e6ffc0dfc0c4219355e1cb355f55bc2",
+  "reasoning_tokens": 0,
+  "record_id": "309493a2b84ae34a2181ab6b",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "AE"
+}

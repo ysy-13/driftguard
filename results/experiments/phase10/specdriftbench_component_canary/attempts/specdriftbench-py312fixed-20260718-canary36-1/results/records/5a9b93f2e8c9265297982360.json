@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 876,
+  "cost_cny_delta": 0.017922000000000438,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "13260e41969f485c6b6c94d8095a94c6e1fe2a50225348cd8e62ffdf8971d056",
+  "evidence_view": "FULL_EVIDENCE",
+  "fallback_used": false,
+  "family": "M11",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 8021,
+  "latency_ms": 5324.695083000279,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The agent attempted to close an issue without an assignee. The runtime returned a 409 PRECONDITION_FAILED with the message 'Issue must have an active assignee.' This behavior strictly matches the displayed specification for `close_issue` (T06), which lists 'The issue has an active assignee' as a required precondition. The failure is due to the agent's workflow choice (ignoring the precondition) rather than any mismatch between the spec and runtime.",
+    "confidence": 1.0,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "workflow",
+      "runtime_path": "/repositories/{repo_id}/issues/{issue_id}/close",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-preconditions",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "close_issue"
+  },
+  "output_tokens": 235,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The agent attempted to close an issue without an assignee. The runtime returned a 409 PRECONDITION_FAILED with the message 'Issue must have an active assignee.' This behavior strictly matches the displayed specification for `close_issue` (T06), which lists 'The issue has an active assignee' as a required precondition. The failure is due to the agent's workflow choice (ignoring the precondition) rather than any mismatch between the spec and runtime.",
+    "confidence": 1.0,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "workflow",
+      "runtime_path": "/repositories/{repo_id}/issues/{issue_id}/close",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-preconditions",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "close_issue"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 1,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "public_scenario_id": "public-97b54f531f43",
+  "raw_response_ref": "dashscope/8c1bbd8e8577ee7645fb790406f9c97dff61ff1a906a4f4c13790d623156bf9b.json",
+  "raw_response_sha256": "2ba86f112d18ced605813f730d90f3377099930506323c7214479747b8f74a8e",
+  "reasoning_tokens": 0,
+  "record_id": "5a9b93f2e8c9265297982360",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "AE"
+}

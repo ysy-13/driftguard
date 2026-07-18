@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 713,
+  "cost_cny_delta": 0.008520414000000365,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "00a5ca1f2a54939e0bb95b03fddfaa618ee14a9c734b279d7531c25d3904e865",
+  "evidence_view": "RETRY_HISTORY",
+  "fallback_used": false,
+  "family": "M06",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7933,
+  "latency_ms": 3575.069542000165,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The spec's IssueSuccess schema uses 'id' for the issue identifier, but the agent expected 'issue_id' at data.issue_id. The runtime response correctly returns 'id' (value 105), matching the spec. The agent's misinterpretation is a persistent spec-runtime mismatch in field naming, not a transient failure or agent error.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.id",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues/post/responses/201/content/application~1json/schema",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "output_tokens": 202,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The spec's IssueSuccess schema uses 'id' for the issue identifier, but the agent expected 'issue_id' at data.issue_id. The runtime response correctly returns 'id' (value 105), matching the spec. The agent's misinterpretation is a persistent spec-runtime mismatch in field naming, not a transient failure or agent error.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.id",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues/post/responses/201/content/application~1json/schema",
+      "tool_id": "T03"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-adeb8ef1688f",
+  "raw_response_ref": "deepseek/573e7c27febe5d6fb82143eb5849079250c8622152bf820e2a55f9cdb8a58c65.json",
+  "raw_response_sha256": "d8a3fe45783d8a811f7bd408d50a3f3a534b9186b1f583e820ed74a0ac1f9589",
+  "reasoning_tokens": 0,
+  "record_id": "45fba703fa72f175ee42d121",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "AE"
+}

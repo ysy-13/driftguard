@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 723,
+  "cost_cny_delta": 0.008499974000000243,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": true
+  },
+  "evidence_sha256": "5e028cb0762be9ced3d39155cf82fb334f96bedf3b2b1f4eb472a5176b066b79",
+  "evidence_view": "RETRY_HISTORY",
+  "fallback_used": false,
+  "family": "M11",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7921,
+  "latency_ms": 2712.7814160003254,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed specification lists no precondition requiring an assignee for close_issue, but the runtime consistently returns 409 PRECONDITION_FAILED with 'Issue must have an active assignee.' This mismatch is persistent (exact retry also fails) and workflow-related, indicating a stable drift in preconditions.",
+    "confidence": 0.95,
+    "drift_category": "WPD",
+    "normalized_location": {
+      "layer": "workflow",
+      "runtime_path": "response.payload.error.message",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-preconditions",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "output_tokens": 198,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed specification lists no precondition requiring an assignee for close_issue, but the runtime consistently returns 409 PRECONDITION_FAILED with 'Issue must have an active assignee.' This mismatch is persistent (exact retry also fails) and workflow-related, indicating a stable drift in preconditions.",
+    "confidence": 0.95,
+    "drift_category": "WPD",
+    "normalized_location": {
+      "layer": "workflow",
+      "runtime_path": "response.payload.error.message",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-preconditions",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-0a949bbdd232",
+  "raw_response_ref": "deepseek/05f5c38c4bcec7a7bfa0b9691d7707abe51c1bf7b72f09861fc5909b560710d2.json",
+  "raw_response_sha256": "262f61d0f3b867213de487d2f34513fbd73ce1a37cbe05c1bc62fbe89072ec3f",
+  "reasoning_tokens": 0,
+  "record_id": "d6411e4ccb78332dba0fe1c9",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "PD"
+}

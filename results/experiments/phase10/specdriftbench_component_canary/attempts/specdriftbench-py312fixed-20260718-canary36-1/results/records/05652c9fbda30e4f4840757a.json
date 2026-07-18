@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 658,
+  "cost_cny_delta": 0.032482810000000306,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "93450bf110a38827d50f4f13c7ea911ed2baf0557b378ed75ca55970db1e3329",
+  "evidence_view": "FIRST_FAILURE",
+  "fallback_used": false,
+  "family": "M01",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 6837,
+  "latency_ms": 7211.736540999937,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The agent called create_issue with only {repo_id, title}, omitting 'priority' which the displayed spec explicitly lists as required in CreateIssueRequest.required. Local validation correctly flagged non-conformance, and the runtime returned 422 VALIDATION_ERROR for missing 'priority'. This is an agent input omission error, not specification drift.",
+    "confidence": 0.95,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "request.body.priority",
+      "spec_pointer": "/components/schemas/CreateIssueRequest/required",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "create_issue"
+  },
+  "output_tokens": 139,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The agent called create_issue with only {repo_id, title}, omitting 'priority' which the displayed spec explicitly lists as required in CreateIssueRequest.required. Local validation correctly flagged non-conformance, and the runtime returned 422 VALIDATION_ERROR for missing 'priority'. This is an agent input omission error, not specification drift.",
+    "confidence": 0.95,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "request.body.priority",
+      "spec_pointer": "/components/schemas/CreateIssueRequest/required",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "create_issue"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 1,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "public_scenario_id": "public-78014d069b15",
+  "raw_response_ref": "moonshot/8e5e7307bc8b670dc15fbfff76065090a79c9d0f24c39872afd41864855d4ef2.json",
+  "raw_response_sha256": "5ee483f398cf1e3156278000284e060eab2f4e9b841b61af8f493370e5aa1857",
+  "reasoning_tokens": 1,
+  "record_id": "05652c9fbda30e4f4840757a",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "AE"
+}

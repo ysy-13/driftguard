@@ -1,0 +1,65 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "attempts_delta": 42,
+  "cost_cny_delta": 0.9027314279999992,
+  "fallback_count": 0,
+  "input_tokens_delta": 335595,
+  "ledger_after": {
+    "api_attempts": 1019,
+    "provider_reported_input_tokens": 4840454,
+    "provider_reported_output_tokens": 109700,
+    "reserved_cny": 0.0,
+    "spent_cny": 7.4945936540000035
+  },
+  "ledger_after_sha256": "10fc1354a33fe96141058d292dc3f9730963f64b86cbb8a6b5f29b684f5719a3",
+  "ledger_before": {
+    "api_attempts": 977,
+    "provider_reported_input_tokens": 4504859,
+    "provider_reported_output_tokens": 101668,
+    "reserved_cny": 0.0,
+    "spent_cny": 6.591862226000004
+  },
+  "ledger_before_sha256": "315fe6c934623166a1876626f3bc0dfae067c573ff6055bd40a7765a2406bd63",
+  "main_state_pollution_count": 0,
+  "metrics": {
+    "abstention_rate": 0.0,
+    "category_accuracy": 0.5,
+    "class_accuracy": 0.5277777777777778,
+    "confusion_matrix": {
+      "AGENT_ERROR": {
+        "AGENT_ERROR": 7,
+        "PERSISTENT_DRIFT": 5
+      },
+      "PERSISTENT_DRIFT": {
+        "PERSISTENT_DRIFT": 12
+      },
+      "TRANSIENT_FAILURE": {
+        "PERSISTENT_DRIFT": 12
+      }
+    },
+    "format_repair_count": 6,
+    "infrastructure_error_rate": 0.0,
+    "input_tokens": 335595,
+    "invalid_output_count": 0,
+    "latency_ms": 206363.2773329996,
+    "location_accuracy_pd": 0.5833333333333334,
+    "macro_f1_by_evidence_view": {
+      "FIRST_FAILURE": 0.38888888888888884,
+      "FULL_EVIDENCE": 0.6,
+      "RETRY_HISTORY": 0.30952380952380953
+    },
+    "output_tokens": 8032,
+    "provider_attempts": 42,
+    "schema_valid_rate": 1.0,
+    "target_accuracy_pd": 1.0
+  },
+  "mode": "real",
+  "network_calls": 42,
+  "output_tokens_delta": 8032,
+  "provider_instances": 3,
+  "records_completed": 36,
+  "records_planned": 36,
+  "schema_version": "specdriftbench-component-summary-v1",
+  "status": "COMPLETE",
+  "true_leakage_count": 0
+}

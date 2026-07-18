@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 558,
+  "cost_cny_delta": 0.07423588999999975,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "8c85bd7a2a2b5a5c43def79c8fc37b3e1935920c37764a29676362230d3fb6a0",
+  "evidence_view": "FULL_EVIDENCE",
+  "fallback_used": false,
+  "family": "M06",
+  "finish_reason": "stop",
+  "format_repairs": 1,
+  "input_tokens": 15678,
+  "latency_ms": 11661.850416999641,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Runtime returns issue identifier as data.id instead of spec's data.issue_id. Initial call (EV005) returns data.id; exact retry (EV006) returns data.issue_id. Normalized observation flags missing_output_field for issue_id. Stable response field name mismatch.",
+    "confidence": 0.97,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.id",
+      "spec_pointer": "/components/schemas/Issue/properties/issue_id",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "output_tokens": 305,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Runtime returns issue identifier as data.id instead of spec's data.issue_id. Initial call (EV005) returns data.id; exact retry (EV006) returns data.issue_id. Normalized observation flags missing_output_field for issue_id. Stable response field name mismatch.",
+    "confidence": 0.97,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.id",
+      "spec_pointer": "/components/schemas/Issue/properties/issue_id",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 2,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "public_scenario_id": "public-f2ea596f965a",
+  "raw_response_ref": "moonshot/f5b738f2b69bae97c73b9f4c6e535b68ed6f33d622d4263f704dd2937459072e.json",
+  "raw_response_sha256": "eadb30d036e756191d129f73d67341d404eecd13469a32689737c8b9fa017a1d",
+  "reasoning_tokens": 2,
+  "record_id": "192bc8aaacc6c39b8ea77892",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "TF"
+}

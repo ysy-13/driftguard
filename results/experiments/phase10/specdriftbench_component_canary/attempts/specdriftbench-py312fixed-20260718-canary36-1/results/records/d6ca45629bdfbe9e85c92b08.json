@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 875,
+  "cost_cny_delta": 0.02225599999999961,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": true
+  },
+  "evidence_sha256": "9acfc8d48ee199affba997d6f728735c98733d82b74bb2bd27e5c2e78e4e9067",
+  "evidence_view": "FULL_EVIDENCE",
+  "fallback_used": false,
+  "family": "M16",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 10212,
+  "latency_ms": 5393.999749999693,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The close_issue tool returns a 200 OK response with a payload indicating the issue is closed (state: 'closed'), but the normalized observation and probe metadata explicitly report a state mismatch where the persisted state remains 'open' ('observed_effect': 'issue.state == open'). This indicates a discrepancy between the successful API response and the actual backend state, which is a State Effect Drift (SED). The failure is persistent across retries and independent probes.",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "issue.state",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-state-effects",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "output_tokens": 229,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The close_issue tool returns a 200 OK response with a payload indicating the issue is closed (state: 'closed'), but the normalized observation and probe metadata explicitly report a state mismatch where the persisted state remains 'open' ('observed_effect': 'issue.state == open'). This indicates a discrepancy between the successful API response and the actual backend state, which is a State Effect Drift (SED). The failure is persistent across retries and independent probes.",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "issue.state",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-state-effects",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 1,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "public_scenario_id": "public-4c541458af93",
+  "raw_response_ref": "dashscope/582a745e6093a3f5519c6a45f85e5f0c47c45bcba27cfde0d77aaaf88fb2d2ff.json",
+  "raw_response_sha256": "bbd4dd5f002dd11ff4201b05bbe4ff8219dc49b8a2d3e888233e9097c884aca4",
+  "reasoning_tokens": 0,
+  "record_id": "d6ca45629bdfbe9e85c92b08",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "PD"
+}

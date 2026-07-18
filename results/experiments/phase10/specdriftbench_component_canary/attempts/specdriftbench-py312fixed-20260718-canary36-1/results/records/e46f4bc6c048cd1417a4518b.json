@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 511,
+  "cost_cny_delta": 0.008112635999999895,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": true
+  },
+  "evidence_sha256": "538fdf73a772333cd654b15dc2f00dc46caeb1b5a56eaed7d60741c907f681d3",
+  "evidence_view": "FIRST_FAILURE",
+  "fallback_used": false,
+  "family": "M06",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7644,
+  "latency_ms": 2126.437166999949,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The runtime response returns 'id' instead of the specified 'issue_id' field in the Issue schema, causing a persistent response field name mismatch.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.data.id",
+      "spec_pointer": "/components/schemas/Issue/properties/issue_id",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "output_tokens": 147,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The runtime response returns 'id' instead of the specified 'issue_id' field in the Issue schema, causing a persistent response field name mismatch.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.data.id",
+      "spec_pointer": "/components/schemas/Issue/properties/issue_id",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-ef4f2cacef0c",
+  "raw_response_ref": "deepseek/aa6a310e61b4a9469c7f3ef08466dfb2bd365f7b9b58532d7efb595b5f0cf97e.json",
+  "raw_response_sha256": "48801d2d2b05980b04a78df97c77dc68b03da342132cfeb3fa4f52ebeb7b1774",
+  "reasoning_tokens": 0,
+  "record_id": "e46f4bc6c048cd1417a4518b",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "PD"
+}

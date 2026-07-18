@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 870,
+  "cost_cny_delta": 0.016657999999999618,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "93450bf110a38827d50f4f13c7ea911ed2baf0557b378ed75ca55970db1e3329",
+  "evidence_view": "FIRST_FAILURE",
+  "fallback_used": false,
+  "family": "M01",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7461,
+  "latency_ms": 6432.565791999878,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The agent called create_issue with only repo_id and title, omitting the required field 'priority' as defined in the displayed specification (CreateIssueRequest requires ['title', 'priority']). The runtime correctly returned a 422 VALIDATION_ERROR indicating the missing field. Since the runtime behavior matches the specification and the failure is due to the agent's incomplete request, this is an Agent Error.",
+    "confidence": 1.0,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/requestBody/content/application/json/schema/properties/priority",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues/post/requestBody/content/application~1json/schema/required",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "create_issue"
+  },
+  "output_tokens": 217,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The agent called create_issue with only repo_id and title, omitting the required field 'priority' as defined in the displayed specification (CreateIssueRequest requires ['title', 'priority']). The runtime correctly returned a 422 VALIDATION_ERROR indicating the missing field. Since the runtime behavior matches the specification and the failure is due to the agent's incomplete request, this is an Agent Error.",
+    "confidence": 1.0,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/requestBody/content/application/json/schema/properties/priority",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues/post/requestBody/content/application~1json/schema/required",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "create_issue"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 1,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "public_scenario_id": "public-78014d069b15",
+  "raw_response_ref": "dashscope/5644f55af3c48be3c291c90519b8bf8abc28cd3adea83a20d44e6a7a742f9db1.json",
+  "raw_response_sha256": "1df42dc8e75c4735517ef296d88a16c21077acc40fe1d08721d10313c08772f2",
+  "reasoning_tokens": 0,
+  "record_id": "c2afcbe873bf20a7abd38292",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "AE"
+}

@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 638,
+  "cost_cny_delta": 0.03715399999999924,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "a489831419afab0d537d4c2925ae6ad1ef121257b6f557a09ec6f1ee921bdcbd",
+  "evidence_view": "RETRY_HISTORY",
+  "fallback_used": false,
+  "family": "M01",
+  "finish_reason": "stop",
+  "format_repairs": 1,
+  "input_tokens": 16829,
+  "latency_ms": 11400.717251000515,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Spec defines 'priority' as optional with default 'medium', but runtime initially rejected missing 'priority' as VALIDATION_ERROR. This input validation mismatch (ICD) persists despite retry success.",
+    "confidence": 0.9,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/issues",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues/post/requestBody/content/application~1json/schema/properties/priority",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "output_tokens": 437,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Spec defines 'priority' as optional with default 'medium', but runtime initially rejected missing 'priority' as VALIDATION_ERROR. This input validation mismatch (ICD) persists despite retry success.",
+    "confidence": 0.9,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/issues",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues/post/requestBody/content/application~1json/schema/properties/priority",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "public_scenario_id": "public-ba31a2577791",
+  "raw_response_ref": "dashscope/fcb43fb53a3a5c067512108d105cc81bdca26fe8e59a5581a1403f3f8a6539b3.json",
+  "raw_response_sha256": "cb16a709ad1d556b5c5e27b591f2650a6c2573025d2e390b60a0c382e3af2577",
+  "reasoning_tokens": 0,
+  "record_id": "fcdb88f551a159f3ea585ee5",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "TF"
+}

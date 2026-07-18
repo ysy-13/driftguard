@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 780,
+  "cost_cny_delta": 0.03398004000000032,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "efa915394dedba6b33fe7f29a7dcd5dbc48e9a362b31390afcacd13892eac3de",
+  "evidence_view": "FIRST_FAILURE",
+  "fallback_used": false,
+  "family": "M16",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7033,
+  "latency_ms": 5155.511583999669,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The specification's x-state-effects for close_issue explicitly state 'response claims closed, persistent state remains open, get_issue commits closed state'. The runtime response returns state=closed with 200 OK, but the normalized_observation shows the immediate persisted state remains open (issue.state == open). This is a stable mismatch between the successful response and the actual persisted state, fitting SED (state-effect drift).",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "issue.state",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-state-effects",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "output_tokens": 174,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The specification's x-state-effects for close_issue explicitly state 'response claims closed, persistent state remains open, get_issue commits closed state'. The runtime response returns state=closed with 200 OK, but the normalized_observation shows the immediate persisted state remains open (issue.state == open). This is a stable mismatch between the successful response and the actual persisted state, fitting SED (state-effect drift).",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "issue.state",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-state-effects",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 1,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "public_scenario_id": "public-73e94b46d5cc",
+  "raw_response_ref": "moonshot/22f03479482403979e0bcb441beb8be96f153dea542f59befd632d68bcbd7320.json",
+  "raw_response_sha256": "46b1eff212cbd2b5c625827987f75602dcd12219058df3b0be2a3990cac4a9f5",
+  "reasoning_tokens": 1,
+  "record_id": "0dba8f47df0b9a15ff1edb30",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "AE"
+}

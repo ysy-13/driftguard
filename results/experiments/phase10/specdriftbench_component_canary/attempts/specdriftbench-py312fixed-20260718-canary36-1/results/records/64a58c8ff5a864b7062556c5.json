@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 728,
+  "cost_cny_delta": 0.041856010000000055,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "718d6b057f371c20258fe3d5e07feb4fbb0cf290495c82d5504917794cb064b2",
+  "evidence_view": "FULL_EVIDENCE",
+  "fallback_used": false,
+  "family": "M01",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 8927,
+  "latency_ms": 6905.403707999994,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed specification for create_issue shows priority as optional with a default of 'medium', but the runtime rejects the same valid request with VALIDATION_ERROR claiming 'Missing required field: priority'. The exact retry and independent instance reproduction both fail identically, confirming a stable mismatch between the spec and runtime input validation.",
+    "confidence": 0.97,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "priority",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues/post/requestBody/content/application/json/schema/properties/priority",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "output_tokens": 151,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed specification for create_issue shows priority as optional with a default of 'medium', but the runtime rejects the same valid request with VALIDATION_ERROR claiming 'Missing required field: priority'. The exact retry and independent instance reproduction both fail identically, confirming a stable mismatch between the spec and runtime input validation.",
+    "confidence": 0.97,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "priority",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues/post/requestBody/content/application/json/schema/properties/priority",
+      "tool_id": "create_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "create_issue"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 1,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "public_scenario_id": "public-3cf1c03db24c",
+  "raw_response_ref": "moonshot/61e20dc54afd28d99e2210c26a45660782cc70ac1ece428cd7841d36fceed12f.json",
+  "raw_response_sha256": "86d67bfa3fa969a6bb9bf73739e8b00e6915e5a71af1d59ef42e195c1b4d7e64",
+  "reasoning_tokens": 1,
+  "record_id": "64a58c8ff5a864b7062556c5",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "PD"
+}

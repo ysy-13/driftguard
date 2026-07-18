@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 880,
+  "cost_cny_delta": 0.03718692999999984,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "009b032a1d3d05198618f60f3ee56aa8161af342cd2497d6f08b70febad11f34",
+  "evidence_view": "RETRY_HISTORY",
+  "fallback_used": false,
+  "family": "M16",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 7586,
+  "latency_ms": 6021.541957999943,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The close_issue tool returned HTTP 200 with a response body showing state='closed', but the immediate state observation shows issue.state == 'open'. The exact retry (EV006) reproduced the same successful response, confirming this is persistent. The spec's x-state-effects explicitly state 'state becomes closed', but the runtime state does not reflect this write effect despite the successful response. This is a stable mismatch between successful response and persisted state (SED).",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "issue.state",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-state-effects",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "output_tokens": 217,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The close_issue tool returned HTTP 200 with a response body showing state='closed', but the immediate state observation shows issue.state == 'open'. The exact retry (EV006) reproduced the same successful response, confirming this is persistent. The spec's x-state-effects explicitly state 'state becomes closed', but the runtime state does not reflect this write effect despite the successful response. This is a stable mismatch between successful response and persisted state (SED).",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "issue.state",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-state-effects",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 1,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "public_scenario_id": "public-46cdfa236b16",
+  "raw_response_ref": "moonshot/b3eb64e1f25cd220ec8a229916a8d9164c01e9e8c363649e11ff7d41765b23a1.json",
+  "raw_response_sha256": "84cb2eb3749f85ff880a3dd448c7a6c406f89758cde37cfb98f5ffb845856b94",
+  "reasoning_tokens": 1,
+  "record_id": "326278a0acbc12dc2e66558a",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "TF"
+}

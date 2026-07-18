@@ -1,0 +1,407 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_namespaces": {
+    "dashscope": "dashscope/specdriftbench_component_real_k26_nonthinking_v1",
+    "deepseek": "deepseek/specdriftbench_component_real_k26_nonthinking_v1",
+    "moonshot": "moonshot/specdriftbench_component_real_k26_nonthinking_v1"
+  },
+  "config_hash": "b24478842a0ffd26389317379b57c58ce63092f416454328f009206875341c37",
+  "evidence_view_definition_sha256": "94376b30b8554539602922f6da656dedcfc7a376650daec64735658af39585ac",
+  "git_commit": "3624d6c0a61555071997b98fc31dcb8d4c684dfc",
+  "heldout48_overlap": 0,
+  "ledger_before": {
+    "api_attempts": 977,
+    "provider_reported_input_tokens": 4504859,
+    "provider_reported_output_tokens": 101668,
+    "reserved_cny": 0.0,
+    "spent_cny": 6.591862226000004
+  },
+  "ledger_before_sha256": "315fe6c934623166a1876626f3bc0dfae067c573ff6055bd40a7765a2406bd63",
+  "output_schema_sha256": "fb1a66c6d331fc1af98ef6985518f19e08ef9733f2ad07624dbfd962ce44b6f9",
+  "plan": [
+    {
+      "evidence_view": "FIRST_FAILURE",
+      "family": "M01",
+      "model": "deepseek-v4-flash",
+      "ordinal": 1,
+      "provider": "deepseek",
+      "record_id": "e7e2f7b638eb49a9bcec46de",
+      "variant": "AE"
+    },
+    {
+      "evidence_view": "RETRY_HISTORY",
+      "family": "M01",
+      "model": "deepseek-v4-flash",
+      "ordinal": 2,
+      "provider": "deepseek",
+      "record_id": "9e0872e50b3816eaf77e9187",
+      "variant": "TF"
+    },
+    {
+      "evidence_view": "FULL_EVIDENCE",
+      "family": "M01",
+      "model": "deepseek-v4-flash",
+      "ordinal": 3,
+      "provider": "deepseek",
+      "record_id": "10429d16b53b42704da1dc90",
+      "variant": "PD"
+    },
+    {
+      "evidence_view": "RETRY_HISTORY",
+      "family": "M06",
+      "model": "deepseek-v4-flash",
+      "ordinal": 4,
+      "provider": "deepseek",
+      "record_id": "45fba703fa72f175ee42d121",
+      "variant": "AE"
+    },
+    {
+      "evidence_view": "FULL_EVIDENCE",
+      "family": "M06",
+      "model": "deepseek-v4-flash",
+      "ordinal": 5,
+      "provider": "deepseek",
+      "record_id": "109ef44322d00ec8dafe16a7",
+      "variant": "TF"
+    },
+    {
+      "evidence_view": "FIRST_FAILURE",
+      "family": "M06",
+      "model": "deepseek-v4-flash",
+      "ordinal": 6,
+      "provider": "deepseek",
+      "record_id": "e46f4bc6c048cd1417a4518b",
+      "variant": "PD"
+    },
+    {
+      "evidence_view": "FULL_EVIDENCE",
+      "family": "M11",
+      "model": "deepseek-v4-flash",
+      "ordinal": 7,
+      "provider": "deepseek",
+      "record_id": "bb9efa3c576306573ff9753a",
+      "variant": "AE"
+    },
+    {
+      "evidence_view": "FIRST_FAILURE",
+      "family": "M11",
+      "model": "deepseek-v4-flash",
+      "ordinal": 8,
+      "provider": "deepseek",
+      "record_id": "3164f4ceb089d8bfc40c803f",
+      "variant": "TF"
+    },
+    {
+      "evidence_view": "RETRY_HISTORY",
+      "family": "M11",
+      "model": "deepseek-v4-flash",
+      "ordinal": 9,
+      "provider": "deepseek",
+      "record_id": "d6411e4ccb78332dba0fe1c9",
+      "variant": "PD"
+    },
+    {
+      "evidence_view": "FIRST_FAILURE",
+      "family": "M16",
+      "model": "deepseek-v4-flash",
+      "ordinal": 10,
+      "provider": "deepseek",
+      "record_id": "66e824c04927ab5f7f5d2358",
+      "variant": "AE"
+    },
+    {
+      "evidence_view": "RETRY_HISTORY",
+      "family": "M16",
+      "model": "deepseek-v4-flash",
+      "ordinal": 11,
+      "provider": "deepseek",
+      "record_id": "b4fa17a0ede287f6c1772870",
+      "variant": "TF"
+    },
+    {
+      "evidence_view": "FULL_EVIDENCE",
+      "family": "M16",
+      "model": "deepseek-v4-flash",
+      "ordinal": 12,
+      "provider": "deepseek",
+      "record_id": "b9e4361cef86bcba3437c8b9",
+      "variant": "PD"
+    },
+    {
+      "evidence_view": "FIRST_FAILURE",
+      "family": "M01",
+      "model": "qwen3.7-plus",
+      "ordinal": 13,
+      "provider": "dashscope",
+      "record_id": "c2afcbe873bf20a7abd38292",
+      "variant": "AE"
+    },
+    {
+      "evidence_view": "RETRY_HISTORY",
+      "family": "M01",
+      "model": "qwen3.7-plus",
+      "ordinal": 14,
+      "provider": "dashscope",
+      "record_id": "fcdb88f551a159f3ea585ee5",
+      "variant": "TF"
+    },
+    {
+      "evidence_view": "FULL_EVIDENCE",
+      "family": "M01",
+      "model": "qwen3.7-plus",
+      "ordinal": 15,
+      "provider": "dashscope",
+      "record_id": "458950488eec723e8e8ec5a4",
+      "variant": "PD"
+    },
+    {
+      "evidence_view": "RETRY_HISTORY",
+      "family": "M06",
+      "model": "qwen3.7-plus",
+      "ordinal": 16,
+      "provider": "dashscope",
+      "record_id": "a72180df9c0cb3428df63e92",
+      "variant": "AE"
+    },
+    {
+      "evidence_view": "FULL_EVIDENCE",
+      "family": "M06",
+      "model": "qwen3.7-plus",
+      "ordinal": 17,
+      "provider": "dashscope",
+      "record_id": "cd31d76194419459e04224e1",
+      "variant": "TF"
+    },
+    {
+      "evidence_view": "FIRST_FAILURE",
+      "family": "M06",
+      "model": "qwen3.7-plus",
+      "ordinal": 18,
+      "provider": "dashscope",
+      "record_id": "dba6deccd61319ecd5782021",
+      "variant": "PD"
+    },
+    {
+      "evidence_view": "FULL_EVIDENCE",
+      "family": "M11",
+      "model": "qwen3.7-plus",
+      "ordinal": 19,
+      "provider": "dashscope",
+      "record_id": "5a9b93f2e8c9265297982360",
+      "variant": "AE"
+    },
+    {
+      "evidence_view": "FIRST_FAILURE",
+      "family": "M11",
+      "model": "qwen3.7-plus",
+      "ordinal": 20,
+      "provider": "dashscope",
+      "record_id": "6f48e1762660f5cc1508c017",
+      "variant": "TF"
+    },
+    {
+      "evidence_view": "RETRY_HISTORY",
+      "family": "M11",
+      "model": "qwen3.7-plus",
+      "ordinal": 21,
+      "provider": "dashscope",
+      "record_id": "f532fdcc200a922b71fb5ec5",
+      "variant": "PD"
+    },
+    {
+      "evidence_view": "FIRST_FAILURE",
+      "family": "M16",
+      "model": "qwen3.7-plus",
+      "ordinal": 22,
+      "provider": "dashscope",
+      "record_id": "309493a2b84ae34a2181ab6b",
+      "variant": "AE"
+    },
+    {
+      "evidence_view": "RETRY_HISTORY",
+      "family": "M16",
+      "model": "qwen3.7-plus",
+      "ordinal": 23,
+      "provider": "dashscope",
+      "record_id": "76b2e4e21d42770a0930b18c",
+      "variant": "TF"
+    },
+    {
+      "evidence_view": "FULL_EVIDENCE",
+      "family": "M16",
+      "model": "qwen3.7-plus",
+      "ordinal": 24,
+      "provider": "dashscope",
+      "record_id": "d6ca45629bdfbe9e85c92b08",
+      "variant": "PD"
+    },
+    {
+      "evidence_view": "FIRST_FAILURE",
+      "family": "M01",
+      "model": "kimi-k2.6",
+      "ordinal": 25,
+      "provider": "moonshot",
+      "record_id": "05652c9fbda30e4f4840757a",
+      "variant": "AE"
+    },
+    {
+      "evidence_view": "RETRY_HISTORY",
+      "family": "M01",
+      "model": "kimi-k2.6",
+      "ordinal": 26,
+      "provider": "moonshot",
+      "record_id": "ac3191b580b111226b0165df",
+      "variant": "TF"
+    },
+    {
+      "evidence_view": "FULL_EVIDENCE",
+      "family": "M01",
+      "model": "kimi-k2.6",
+      "ordinal": 27,
+      "provider": "moonshot",
+      "record_id": "64a58c8ff5a864b7062556c5",
+      "variant": "PD"
+    },
+    {
+      "evidence_view": "RETRY_HISTORY",
+      "family": "M06",
+      "model": "kimi-k2.6",
+      "ordinal": 28,
+      "provider": "moonshot",
+      "record_id": "20b7c6ee721339d9b2cad2b1",
+      "variant": "AE"
+    },
+    {
+      "evidence_view": "FULL_EVIDENCE",
+      "family": "M06",
+      "model": "kimi-k2.6",
+      "ordinal": 29,
+      "provider": "moonshot",
+      "record_id": "192bc8aaacc6c39b8ea77892",
+      "variant": "TF"
+    },
+    {
+      "evidence_view": "FIRST_FAILURE",
+      "family": "M06",
+      "model": "kimi-k2.6",
+      "ordinal": 30,
+      "provider": "moonshot",
+      "record_id": "0fadfcc08f119973d1d6ce3f",
+      "variant": "PD"
+    },
+    {
+      "evidence_view": "FULL_EVIDENCE",
+      "family": "M11",
+      "model": "kimi-k2.6",
+      "ordinal": 31,
+      "provider": "moonshot",
+      "record_id": "e93a5e0eef712c6ab77519d8",
+      "variant": "AE"
+    },
+    {
+      "evidence_view": "FIRST_FAILURE",
+      "family": "M11",
+      "model": "kimi-k2.6",
+      "ordinal": 32,
+      "provider": "moonshot",
+      "record_id": "93ab92ed23a480c756b878b7",
+      "variant": "TF"
+    },
+    {
+      "evidence_view": "RETRY_HISTORY",
+      "family": "M11",
+      "model": "kimi-k2.6",
+      "ordinal": 33,
+      "provider": "moonshot",
+      "record_id": "b109fb67ae34fd202922503e",
+      "variant": "PD"
+    },
+    {
+      "evidence_view": "FIRST_FAILURE",
+      "family": "M16",
+      "model": "kimi-k2.6",
+      "ordinal": 34,
+      "provider": "moonshot",
+      "record_id": "0dba8f47df0b9a15ff1edb30",
+      "variant": "AE"
+    },
+    {
+      "evidence_view": "RETRY_HISTORY",
+      "family": "M16",
+      "model": "kimi-k2.6",
+      "ordinal": 35,
+      "provider": "moonshot",
+      "record_id": "326278a0acbc12dc2e66558a",
+      "variant": "TF"
+    },
+    {
+      "evidence_view": "FULL_EVIDENCE",
+      "family": "M16",
+      "model": "kimi-k2.6",
+      "ordinal": 36,
+      "provider": "moonshot",
+      "record_id": "c90123e272f742b57a0e4e9c",
+      "variant": "PD"
+    }
+  ],
+  "prompt_sha256": "d499cdb339972ad5a9424339519f4c64a9cb9096afcddd46b6309ccd7cc2a47e",
+  "provider_capability_profiles": {
+    "dashscope": {
+      "model_id": "qwen3.7-plus",
+      "profile_id": "dashscope-openai-compatible-v1",
+      "provider": "dashscope",
+      "schema_version": "provider-capability-profile-v1"
+    },
+    "deepseek": {
+      "model_id": "deepseek-v4-flash",
+      "profile_id": "deepseek-openai-compatible-v1",
+      "provider": "deepseek",
+      "schema_version": "provider-capability-profile-v1"
+    },
+    "moonshot": {
+      "max_tokens": 1024,
+      "model_id": "kimi-k2.6",
+      "profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+      "provider": "moonshot",
+      "sampling_parameters": {
+        "frequency_penalty": 0.0,
+        "n": 1,
+        "presence_penalty": 0.0,
+        "temperature": 0.6,
+        "top_p": 0.95
+      },
+      "schema_version": "provider-capability-profile-v1",
+      "stream": false,
+      "structured_output": {
+        "type": "json_object"
+      },
+      "thinking_mode": "disabled"
+    }
+  },
+  "provider_order": [
+    "deepseek",
+    "dashscope",
+    "moonshot"
+  ],
+  "result_namespace": "specdriftbench_component_canary_v1",
+  "schema_version": "specdriftbench-component-manifest-v2",
+  "source_snapshot": "9ada4db50831e39d8944dfeb3885f48c59f82b8e7b66b585bd2f1392070caf33",
+  "tool_registry": {
+    "aliases": {
+      "T01": "get_repository",
+      "T02": "update_repository",
+      "T03": "create_issue",
+      "T04": "get_issue",
+      "T05": "assign_issue",
+      "T06": "close_issue",
+      "T07": "get_member",
+      "T08": "update_member_role",
+      "T09": "add_member",
+      "T10": "get_pipeline_status",
+      "T11": "retry_pipeline",
+      "T12": "trigger_pipeline"
+    },
+    "schema_version": "specdriftbench-tool-registry-v1"
+  },
+  "tool_registry_sha256": "5be5dacb739ed05cb81b5a005de0faf414312d9bb9ef0664eafe8a1000ed7205"
+}

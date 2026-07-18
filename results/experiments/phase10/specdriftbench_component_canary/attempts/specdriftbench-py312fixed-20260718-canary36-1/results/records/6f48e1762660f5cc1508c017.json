@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 580,
+  "cost_cny_delta": 0.03376800000000024,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "ae3243c87fd57eae1ce940c37e25b470f89cf0e1f6556ca87308324fbb9bcf5a",
+  "evidence_view": "FIRST_FAILURE",
+  "fallback_used": false,
+  "family": "M11",
+  "finish_reason": "stop",
+  "format_repairs": 1,
+  "input_tokens": 15204,
+  "latency_ms": 10094.602250000207,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Runtime enforces 'active assignee' precondition for close_issue (409), but spec omits this requirement. This is a persistent workflow precondition mismatch.",
+    "confidence": 0.95,
+    "drift_category": "WPD",
+    "normalized_location": {
+      "layer": "workflow",
+      "runtime_path": "/repositories/{repo_id}/issues/{issue_id}/close",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/x-preconditions",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "output_tokens": 420,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Runtime enforces 'active assignee' precondition for close_issue (409), but spec omits this requirement. This is a persistent workflow precondition mismatch.",
+    "confidence": 0.95,
+    "drift_category": "WPD",
+    "normalized_location": {
+      "layer": "workflow",
+      "runtime_path": "/repositories/{repo_id}/issues/{issue_id}/close",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/x-preconditions",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "public_scenario_id": "public-31a3fa24eb31",
+  "raw_response_ref": "dashscope/4d765d89ee12d1e89dff416a139309a3577f1cea1d9e98480a070f157ed1e8bf.json",
+  "raw_response_sha256": "db6e8ba2a8229d75130e852a5812bd3fd73e663b954e8a575a9c0be7c6777019",
+  "reasoning_tokens": 0,
+  "record_id": "6f48e1762660f5cc1508c017",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "TF"
+}

@@ -1,0 +1,71 @@
+{
+  "attempt_id": "specdriftbench-py312fixed-20260718-canary36-1",
+  "cache_hit": false,
+  "content_length": 705,
+  "cost_cny_delta": 0.010415201999999901,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": true
+  },
+  "evidence_sha256": "9acfc8d48ee199affba997d6f728735c98733d82b74bb2bd27e5c2e78e4e9067",
+  "evidence_view": "FULL_EVIDENCE",
+  "fallback_used": false,
+  "family": "M16",
+  "finish_reason": "stop",
+  "format_repairs": 0,
+  "input_tokens": 9811,
+  "latency_ms": 2440.170667000075,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The close_issue tool returns a 200 response with state=closed, but the immediate state remains open (confirmed by independent probe and read-after-write probe). This persistent mismatch between the successful response and the actual persisted state indicates a stable specification drift in the state effect.",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "issue.state",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-state-effects",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "output_tokens": 190,
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The close_issue tool returns a 200 response with state=closed, but the immediate state remains open (confirmed by independent probe and read-after-write probe). This persistent mismatch between the successful response and the actual persisted state indicates a stable specification drift in the state effect.",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "issue.state",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1issues~1{issue_id}~1close/post/x-state-effects",
+      "tool_id": "close_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "close_issue"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "public_scenario_id": "public-4c541458af93",
+  "raw_response_ref": "deepseek/9c53c2395451671c1ac5e0aa76d06d76afdb296ef57886be8371fbbb0fd5fdbf.json",
+  "raw_response_sha256": "209de8485b9c7c375303292d9d990259b6458bb69d9b7505543b5e6465eba11d",
+  "reasoning_tokens": 0,
+  "record_id": "b9e4361cef86bcba3437c8b9",
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-record-v2",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "variant": "PD"
+}
