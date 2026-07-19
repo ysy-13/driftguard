@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 669,
+  "cost_cny_delta": 0.0,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "a8aa28c88c30e69a49b86b75717ee2113560dc037dbd879797341884843d9b4d",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M02",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 17820,
+  "latency_ms": 12529.518126000767,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Initial call with 'ref' failed (runtime hinted 'branch'), but identical retry succeeded. This inconsistency indicates a transient validation glitch rather than persistent drift.",
+    "confidence": 0.85,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/workflows/{workflow_id}/runs",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1workflows~1{workflow_id}~1runs/post/requestBody/content/application~1json/schema/properties/ref",
+      "tool_id": "trigger_pipeline"
+    },
+    "predicted_class": "TRANSIENT_FAILURE",
+    "target_tool": "trigger_pipeline"
+  },
+  "output_tokens": 505,
+  "paired_group_id": "pair-681cd5e95115eab7",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Initial call with 'ref' failed (runtime hinted 'branch'), but identical retry succeeded. This inconsistency indicates a transient validation glitch rather than persistent drift.",
+    "confidence": 0.85,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/workflows/{workflow_id}/runs",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1workflows~1{workflow_id}~1runs/post/requestBody/content/application~1json/schema/properties/ref",
+      "tool_id": "trigger_pipeline"
+    },
+    "predicted_class": "TRANSIENT_FAILURE",
+    "target_tool": "trigger_pipeline"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-4425647282ad",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/92a3c11fd4e3c3855a350f3b44ce74fb7028cde5de3379595e5e603ed9b3862e.json",
+  "raw_response_sha256": "b0c66f7aad24671146eb86b99ae8f1ca20d0f3aad5ac9a2e0b085050a4518c5b",
+  "reasoning_tokens": 0,
+  "record_id": "903470bdc4b82a2d013f2ad0",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 17820,
+    "output_tokens": 505,
+    "reasoning_tokens": 0
+  },
+  "variant": "TF"
+}

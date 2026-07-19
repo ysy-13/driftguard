@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 720,
+  "cost_cny_delta": 0.034402000000000044,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": true
+  },
+  "evidence_sha256": "55dff14e2961c5674e9784e829033ca69a812c0750a8109bafd5b736a55ae60f",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M10",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 15685,
+  "latency_ms": 11885.4792930033,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The runtime response for retry_pipeline returns the field 'run_attempt' instead of the spec-defined 'attempt'. The normalized observation explicitly flags 'missing_output_field' for 'attempt', and the visible payload confirms the name mismatch while state effects (incrementing attempt) are correct. This is a Response Schema Drift (RSD).",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.data.run_attempt",
+      "spec_pointer": "/components/schemas/PipelineRun/properties/attempt",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "output_tokens": 379,
+  "paired_group_id": "pair-dee992314e7ffdc7",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The runtime response for retry_pipeline returns the field 'run_attempt' instead of the spec-defined 'attempt'. The normalized observation explicitly flags 'missing_output_field' for 'attempt', and the visible payload confirms the name mismatch while state effects (incrementing attempt) are correct. This is a Response Schema Drift (RSD).",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.data.run_attempt",
+      "spec_pointer": "/components/schemas/PipelineRun/properties/attempt",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-9226a0d28ee8",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/aa9c4c6e0cedd1820bf697cacdb2bfd7af92dc5302f701343b3c626909a573c6.json",
+  "raw_response_sha256": "41d68671e6b9a8978aacb3eeb1ac0af391778b1aad10eb1a4bfdcc4779ba3d3d",
+  "reasoning_tokens": 0,
+  "record_id": "cb450ef7d180217e78908af0",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 15685,
+    "output_tokens": 379,
+    "reasoning_tokens": 0
+  },
+  "variant": "PD"
+}

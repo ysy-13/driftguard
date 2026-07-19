@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 761,
+  "cost_cny_delta": 0.039169999999998595,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "c4af62464530507dd1415ad382ef6580a782113c90cf0612649237b9da33ed6d",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M04",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 17681,
+  "latency_ms": 11653.360083000734,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Spec marks retry_pipeline.failed_only as optional (default true), but runtime returned 422 VALIDATION_ERROR 'Missing required field: failed_only'. This indicates a persistent ICD mismatch where the runtime enforces the field as required contrary to the specification.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/pipeline-runs/{run_id}/retry",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/requestBody/content/application~1json/schema/properties/failed_only",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "output_tokens": 476,
+  "paired_group_id": "pair-8963c9d46c1e6784",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Spec marks retry_pipeline.failed_only as optional (default true), but runtime returned 422 VALIDATION_ERROR 'Missing required field: failed_only'. This indicates a persistent ICD mismatch where the runtime enforces the field as required contrary to the specification.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/pipeline-runs/{run_id}/retry",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/requestBody/content/application~1json/schema/properties/failed_only",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-5bbd50d7b350",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/008a29171b1b05e991257310bc404194014567edfbe4354e636a4b62786b87da.json",
+  "raw_response_sha256": "707a3e6652d9c7f7fec0836dc67dff7b43eef4a4920633b0636ef51ccd86d9d5",
+  "reasoning_tokens": 0,
+  "record_id": "ab07c2915b6c220d8231cc69",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 17681,
+    "output_tokens": 476,
+    "reasoning_tokens": 0
+  },
+  "variant": "TF"
+}

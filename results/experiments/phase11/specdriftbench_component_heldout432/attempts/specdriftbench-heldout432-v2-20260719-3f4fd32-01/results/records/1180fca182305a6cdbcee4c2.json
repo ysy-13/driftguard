@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 1,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 742,
+  "cost_cny_delta": 0.0080462059999995,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": true
+  },
+  "evidence_sha256": "c0e4088518e66125265ea1fd4a1a32cb66fccbf05f167ab9d9ee96e0e38ddd2f",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M18",
+  "finish_reason": "stop",
+  "format_repair_count": 0,
+  "format_repairs": 0,
+  "input_tokens": 7483,
+  "latency_ms": 3219.990958998096,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 1,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Specification states that after add_member returns 201, the membership is active and usable. However, the runtime response returns membership_state=active but the probe metadata indicates the membership is not yet usable (independent_failure). This is a persistent state-effect drift where the successful response disagrees with the actual state usability.",
+    "confidence": 0.85,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "membership_state",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/put/x-state-effects",
+      "tool_id": "get_pipeline_status"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "add_member"
+  },
+  "output_tokens": 195,
+  "paired_group_id": "pair-1b1dcaf194cf1869",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Specification states that after add_member returns 201, the membership is active and usable. However, the runtime response returns membership_state=active but the probe metadata indicates the membership is not yet usable (independent_failure). This is a persistent state-effect drift where the successful response disagrees with the actual state usability.",
+    "confidence": 0.85,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "membership_state",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/put/x-state-effects",
+      "tool_id": "T10"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "add_member"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-2302471c0bb7",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v2/raw/68d4744c2ef245c5e1ea413d0411656a591dc0fd451ddf50696a21d30aab6a2c.json",
+  "raw_response_sha256": "888e353de92d2391f892a63edf9f0eee34549380c46ebf672df5addc0c281c18",
+  "reasoning_tokens": 0,
+  "record_id": "1180fca182305a6cdbcee4c2",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 7483,
+    "output_tokens": 195,
+    "reasoning_tokens": 0
+  },
+  "variant": "PD"
+}

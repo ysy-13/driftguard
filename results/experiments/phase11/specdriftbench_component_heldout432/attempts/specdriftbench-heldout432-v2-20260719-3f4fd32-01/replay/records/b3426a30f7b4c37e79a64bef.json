@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 732,
+  "cost_cny_delta": 0.0,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "52c9087bd35509e833fb099501d44298cff42d2d13657be087af4d9f8d1cd1e9",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M15",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 14037,
+  "latency_ms": 10191.67308300166,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Spec defines role enum [\"read\"] with default \"read\", but runtime rejects \"triage\" with error \"Initial role must be read.\" The spec under-constrains valid input: it implies role is optional/defaultable, while runtime strictly enforces role must be read. This is a stable input constraint mismatch between displayed specification and runtime behavior.",
+    "confidence": 0.92,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "request.body.role",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/put/requestBody/content/application/json/schema/properties/role",
+      "tool_id": "add_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "add_member"
+  },
+  "output_tokens": 412,
+  "paired_group_id": "pair-1f7dc0d3bcc265c8",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Spec defines role enum [\"read\"] with default \"read\", but runtime rejects \"triage\" with error \"Initial role must be read.\" The spec under-constrains valid input: it implies role is optional/defaultable, while runtime strictly enforces role must be read. This is a stable input constraint mismatch between displayed specification and runtime behavior.",
+    "confidence": 0.92,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "request.body.role",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/put/requestBody/content/application/json/schema/properties/role",
+      "tool_id": "add_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "add_member"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 2,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-2f8547687fbc",
+  "raw_response_ref": "moonshot/specdriftbench_component_heldout432_real_v2/raw/b28da8e42d742a8a7994ade11890beea5fca57c80d5d601cbe336860f7c9cbab.json",
+  "raw_response_sha256": "4f9f5710acdbf2d5cf3b8ba9c58e0e03ba81ff7f773913090103c5a0492f96e7",
+  "reasoning_tokens": 2,
+  "record_id": "b3426a30f7b4c37e79a64bef",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 14037,
+    "output_tokens": 412,
+    "reasoning_tokens": 2
+  },
+  "variant": "AE"
+}

@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 904,
+  "cost_cny_delta": 0.0,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "2a0429fd9bd2e54a9b97fbfc7bd9c07660ff9f77fc8a2a91e559ae18db520144",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M05",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 20082,
+  "latency_ms": 11742.255500001193,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed specification for update_member_role (T12) defines the 'role' parameter with enum values including 'write'. The agent provided a valid request with role='write', which passed local validation against the spec. However, the runtime consistently returned a 422 VALIDATION_ERROR stating 'Invalid enum value: write'. This indicates a stable mismatch where the runtime rejects a value explicitly allowed by the displayed specification, constituting persistent input contract drift.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/members/{username}",
+      "spec_pointer": "/components/schemas/UpdateMemberRoleRequest/properties/role",
+      "tool_id": "update_member_role"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "update_member_role"
+  },
+  "output_tokens": 445,
+  "paired_group_id": "pair-a541e5e5ddb84239",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed specification for update_member_role (T12) defines the 'role' parameter with enum values including 'write'. The agent provided a valid request with role='write', which passed local validation against the spec. However, the runtime consistently returned a 422 VALIDATION_ERROR stating 'Invalid enum value: write'. This indicates a stable mismatch where the runtime rejects a value explicitly allowed by the displayed specification, constituting persistent input contract drift.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/members/{username}",
+      "spec_pointer": "/components/schemas/UpdateMemberRoleRequest/properties/role",
+      "tool_id": "update_member_role"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "update_member_role"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-040e91221946",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/c71672f124084a6604fb659e2daef139c1adb8cec13f27500b25ba89b66c397a.json",
+  "raw_response_sha256": "d7c0bf7c7466073c9188a8b788f694e3ac079f3d59a950d17f0f75b548b00e1a",
+  "reasoning_tokens": 0,
+  "record_id": "124dc71e449ca412692e371a",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 20082,
+    "output_tokens": 445,
+    "reasoning_tokens": 0
+  },
+  "variant": "PD"
+}

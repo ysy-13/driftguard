@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 1,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 757,
+  "cost_cny_delta": 0.009082513999999264,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "e3788819f209074afcd8291787e793ff0a110985dcfd892d62fef9bb4fb125dc",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M08",
+  "finish_reason": "stop",
+  "format_repair_count": 0,
+  "format_repairs": 0,
+  "input_tokens": 8481,
+  "latency_ms": 3486.794958000246,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 1,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The initial response to get_member returned a nested 'permissions' object with 'role_name' and 'base' fields instead of the spec's top-level 'role' and 'base_permission' fields. An exact retry succeeded with the correct fields, indicating a transient inconsistency. However, the initial failure is a persistent drift in response shape that was later corrected, but the drift is real and not an agent error.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.role",
+      "spec_pointer": "/components/schemas/Member/properties/role",
+      "tool_id": "get_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_member"
+  },
+  "output_tokens": 203,
+  "paired_group_id": "pair-f7cfc45eec8e971e",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The initial response to get_member returned a nested 'permissions' object with 'role_name' and 'base' fields instead of the spec's top-level 'role' and 'base_permission' fields. An exact retry succeeded with the correct fields, indicating a transient inconsistency. However, the initial failure is a persistent drift in response shape that was later corrected, but the drift is real and not an agent error.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.role",
+      "spec_pointer": "/components/schemas/Member/properties/role",
+      "tool_id": "get_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_member"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-4b5a95c8d459",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v2/raw/9129ae0ab377eb2eea1f90c1916db36f6fa6923faadca7b52acebb7041af0b08.json",
+  "raw_response_sha256": "28b849b13fd305c533b57ae64c3071a39b3cd992907c7ee69ef1066d20f6caea",
+  "reasoning_tokens": 0,
+  "record_id": "ea7ad7e47ed7a72e815b0385",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 8481,
+    "output_tokens": 203,
+    "reasoning_tokens": 0
+  },
+  "variant": "TF"
+}

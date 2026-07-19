@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 1,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 710,
+  "cost_cny_delta": 0.008578668000000178,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "468f0b77ffbd96576d9156691b9d3f55cbc1c3ccf9247edc55945572ef952431",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M07",
+  "finish_reason": "stop",
+  "format_repair_count": 0,
+  "format_repairs": 0,
+  "input_tokens": 8000,
+  "latency_ms": 3309.7972920004395,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 1,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Specification defines PipelineRun with 'status' and 'conclusion' fields, but runtime response returns 'state' and 'result' instead. The agent correctly requested those fields but the response does not contain them, indicating a persistent response schema drift.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.state, data.result",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}/get/responses/200/content/application~1json/schema",
+      "tool_id": "get_pipeline_status"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_pipeline_status"
+  },
+  "output_tokens": 197,
+  "paired_group_id": "pair-061e56d65a0ef130",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Specification defines PipelineRun with 'status' and 'conclusion' fields, but runtime response returns 'state' and 'result' instead. The agent correctly requested those fields but the response does not contain them, indicating a persistent response schema drift.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.state, data.result",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}/get/responses/200/content/application~1json/schema",
+      "tool_id": "get_pipeline_status"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_pipeline_status"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-38dc6189c374",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v2/raw/0b6051d24e9d900f0b2df61621c66a843029b16fe1f5e9e921b5b7198a480506.json",
+  "raw_response_sha256": "e6e3f945079ea596cb723e4f40b1c3f93346db0e28489b6940466340869ae46f",
+  "reasoning_tokens": 0,
+  "record_id": "84427029517e1b7e4d8b49cd",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 8000,
+    "output_tokens": 197,
+    "reasoning_tokens": 0
+  },
+  "variant": "AE"
+}

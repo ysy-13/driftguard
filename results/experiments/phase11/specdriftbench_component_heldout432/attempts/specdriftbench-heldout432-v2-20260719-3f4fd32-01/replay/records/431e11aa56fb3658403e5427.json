@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 627,
+  "cost_cny_delta": 0.0,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "967a0ea65052200eecee6ceb1f8f1020d170c3513850232c69ae3cd739ca7fb7",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M15",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 17650,
+  "latency_ms": 11030.818291998003,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Runtime rejects 'triage' as initial role (PRECONDITION_FAILED), contradicting spec enum which includes 'triage'. Spec allows it; runtime enforces 'read' only for creation.",
+    "confidence": 0.9,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/members/{username}",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/put/requestBody/content/application~1json/schema/properties/role",
+      "tool_id": "add_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "add_member"
+  },
+  "output_tokens": 461,
+  "paired_group_id": "pair-61604e2774ed65d3",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Runtime rejects 'triage' as initial role (PRECONDITION_FAILED), contradicting spec enum which includes 'triage'. Spec allows it; runtime enforces 'read' only for creation.",
+    "confidence": 0.9,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/members/{username}",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/put/requestBody/content/application~1json/schema/properties/role",
+      "tool_id": "add_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "add_member"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-d2c07869097a",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/a80cf2de24d498ea21c2cf299fd40aefb971aec5762c6911d219c6adddbbe5ce.json",
+  "raw_response_sha256": "e5cea3a5336f69328b6bacdb81749faf3c3ca32eaed1c6baa6bf1be2f9c155a4",
+  "reasoning_tokens": 0,
+  "record_id": "431e11aa56fb3658403e5427",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 17650,
+    "output_tokens": 461,
+    "reasoning_tokens": 0
+  },
+  "variant": "TF"
+}

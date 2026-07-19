@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 526,
+  "cost_cny_delta": 0.06913975999999877,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "c4238643531cb9900286d5bfc7bfe2d572ba3fc7c661818802178ba67f4834ab",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M07",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 14202,
+  "latency_ms": 13903.6370419999,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Runtime returns 'state' and 'result' fields instead of spec-defined 'status' and 'conclusion'. HTTP 200 success with wrong field names is stable RSD.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.state",
+      "spec_pointer": "/components/schemas/PipelineRun/properties/status",
+      "tool_id": "get_pipeline_status"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_pipeline_status"
+  },
+  "output_tokens": 380,
+  "paired_group_id": "pair-5e3f9295b5e8e9fc",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Runtime returns 'state' and 'result' fields instead of spec-defined 'status' and 'conclusion'. HTTP 200 success with wrong field names is stable RSD.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.state",
+      "spec_pointer": "/components/schemas/PipelineRun/properties/status",
+      "tool_id": "get_pipeline_status"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_pipeline_status"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 2,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-e0cf0c40ecbc",
+  "raw_response_ref": "moonshot/specdriftbench_component_heldout432_real_v2/raw/a97e4ebd9f3f48b8bdd231e31b0c6ea6474e0f2abba81f1dad868b90c251475c.json",
+  "raw_response_sha256": "423947c7240c39a6444d445a6e76a12da4333cd7f649be72f72ba83f3b590d4b",
+  "reasoning_tokens": 2,
+  "record_id": "b070d32f8771612ace109d00",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 14202,
+    "output_tokens": 380,
+    "reasoning_tokens": 2
+  },
+  "variant": "TF"
+}

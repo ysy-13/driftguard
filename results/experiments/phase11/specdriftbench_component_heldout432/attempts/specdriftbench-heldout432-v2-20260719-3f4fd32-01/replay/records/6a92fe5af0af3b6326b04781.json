@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 602,
+  "cost_cny_delta": 0.0,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "380e9cc5ff26f81839d293d7acd70ab0d80b32e532229d7b2d4f480f69456e54",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M15",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 16355,
+  "latency_ms": 13267.346833999909,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Spec allows role='triage' for add_member, but runtime rejects it with 'Initial role must be read', indicating a mismatch in allowed input values.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/members/{username}",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/put/requestBody/content/application~1json/schema/properties/role",
+      "tool_id": "add_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "add_member"
+  },
+  "output_tokens": 452,
+  "paired_group_id": "pair-82206e81a57d6856",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Spec allows role='triage' for add_member, but runtime rejects it with 'Initial role must be read', indicating a mismatch in allowed input values.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/members/{username}",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/put/requestBody/content/application~1json/schema/properties/role",
+      "tool_id": "add_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "add_member"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-2f8547687fbc",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/1883d59e6e9adf20dc1413c8ff0f5aaf9b83b4d3929a11327d3637fc96980258.json",
+  "raw_response_sha256": "39481ab769ff5cbd3fae47bb7df44128367591f50ddb2d2d3cf454e5b24e03ad",
+  "reasoning_tokens": 0,
+  "record_id": "6a92fe5af0af3b6326b04781",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 16355,
+    "output_tokens": 452,
+    "reasoning_tokens": 0
+  },
+  "variant": "AE"
+}

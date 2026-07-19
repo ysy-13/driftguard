@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 591,
+  "cost_cny_delta": 0.03419000000000061,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "43cf56651b793db5f3e0279115eb3ee7506fcece4d129ba8a6a752d19370e867",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M17",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 15455,
+  "latency_ms": 10413.325124998664,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Tool returned 200 OK with updated role, but normalized_observation flags state_mismatch: role remained unchanged in persisted state. This indicates a mismatch between successful response and actual state effect.",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "update_member_role",
+      "spec_pointer": "/repositories/{repo_id}/members/{username}",
+      "tool_id": "update_member_role"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "update_member_role"
+  },
+  "output_tokens": 410,
+  "paired_group_id": "pair-60daf9030c706de3",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Tool returned 200 OK with updated role, but normalized_observation flags state_mismatch: role remained unchanged in persisted state. This indicates a mismatch between successful response and actual state effect.",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "update_member_role",
+      "spec_pointer": "/repositories/{repo_id}/members/{username}",
+      "tool_id": "update_member_role"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "update_member_role"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-05cb282e289e",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/f195d8f2878780af603d6d9f48a4ef1cb06c1d4c6a424b7ae28d2b58969029a9.json",
+  "raw_response_sha256": "8e482f16531dd260db37ef45d8529d9bb35ab3ed88ed9e74c9aa513a3896f210",
+  "reasoning_tokens": 0,
+  "record_id": "c164f15b5f46b7f19f9aa2a9",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 15455,
+    "output_tokens": 410,
+    "reasoning_tokens": 0
+  },
+  "variant": "PD"
+}

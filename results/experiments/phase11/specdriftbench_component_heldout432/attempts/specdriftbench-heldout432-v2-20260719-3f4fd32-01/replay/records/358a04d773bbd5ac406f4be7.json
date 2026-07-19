@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 619,
+  "cost_cny_delta": 0.0,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "a8aa28c88c30e69a49b86b75717ee2113560dc037dbd879797341884843d9b4d",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M02",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 15895,
+  "latency_ms": 11369.049458004156,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Spec defines input field 'ref' but runtime rejects it with 'Unknown field: ref or Missing required field: branch', then later accepts same request. This indicates a stable mismatch where runtime expects 'branch' not 'ref'.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "request.body.ref",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1workflows~1{workflow_id}~1runs/post/requestBody/content/application/json/schema/properties/ref",
+      "tool_id": "trigger_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "trigger_pipeline"
+  },
+  "output_tokens": 354,
+  "paired_group_id": "pair-e200981236b2fb66",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Spec defines input field 'ref' but runtime rejects it with 'Unknown field: ref or Missing required field: branch', then later accepts same request. This indicates a stable mismatch where runtime expects 'branch' not 'ref'.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "request.body.ref",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1workflows~1{workflow_id}~1runs/post/requestBody/content/application/json/schema/properties/ref",
+      "tool_id": "trigger_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "trigger_pipeline"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 2,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-4425647282ad",
+  "raw_response_ref": "moonshot/specdriftbench_component_heldout432_real_v2/raw/e4900b37c455b8db2c1c8accddea84983bda809930f5382cf61d388461ba8ad0.json",
+  "raw_response_sha256": "4f4228e5a476b6445e1f1d96571d055d1c11d3a13bca9f81942fdccbaa3d29e9",
+  "reasoning_tokens": 2,
+  "record_id": "358a04d773bbd5ac406f4be7",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 15895,
+    "output_tokens": 354,
+    "reasoning_tokens": 2
+  },
+  "variant": "TF"
+}

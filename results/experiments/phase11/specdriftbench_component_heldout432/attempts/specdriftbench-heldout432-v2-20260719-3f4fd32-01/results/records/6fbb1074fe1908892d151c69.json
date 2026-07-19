@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 1,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 988,
+  "cost_cny_delta": 0.016911999999999594,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "7ead73778369c3c3c8acb38dd525320e86556700615ede9e8226eb5108ab44ef",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M02",
+  "finish_reason": "stop",
+  "format_repair_count": 0,
+  "format_repairs": 0,
+  "input_tokens": 7448,
+  "latency_ms": 6440.176292002434,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 1,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed specification for trigger_pipeline defines 'ref' as a required field in the request body. The agent provided 'ref': 'main', which passed local validation against the spec. However, the runtime returned a 422 VALIDATION_ERROR with message 'Unknown field: ref or Missing required field: branch'. This indicates the runtime expects a field named 'branch' instead of 'ref', representing a stable mismatch between the specified input schema and the runtime's actual parameter requirements.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/workflows/{workflow_id}/runs",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1workflows~1{workflow_id}~1runs/post/requestBody/content/application~1json/schema/properties/ref",
+      "tool_id": "trigger_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "trigger_pipeline"
+  },
+  "output_tokens": 252,
+  "paired_group_id": "pair-681cd5e95115eab7",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed specification for trigger_pipeline defines 'ref' as a required field in the request body. The agent provided 'ref': 'main', which passed local validation against the spec. However, the runtime returned a 422 VALIDATION_ERROR with message 'Unknown field: ref or Missing required field: branch'. This indicates the runtime expects a field named 'branch' instead of 'ref', representing a stable mismatch between the specified input schema and the runtime's actual parameter requirements.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/workflows/{workflow_id}/runs",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1workflows~1{workflow_id}~1runs/post/requestBody/content/application~1json/schema/properties/ref",
+      "tool_id": "trigger_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "trigger_pipeline"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 1,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-4425647282ad",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/ee91d5d87547cd9a5f6749ae2d1771e33fe65754fd1097cea640c45aa7088483.json",
+  "raw_response_sha256": "967f207a09790b8d951dc2d3ba190b8409364657ac1607594a967705bdf32910",
+  "reasoning_tokens": 0,
+  "record_id": "6fbb1074fe1908892d151c69",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 7448,
+    "output_tokens": 252,
+    "reasoning_tokens": 0
+  },
+  "variant": "TF"
+}

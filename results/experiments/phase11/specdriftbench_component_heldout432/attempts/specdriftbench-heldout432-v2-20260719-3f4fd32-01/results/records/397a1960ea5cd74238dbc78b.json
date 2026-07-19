@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 1,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 687,
+  "cost_cny_delta": 0.008876069999999459,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "c8ec91034cf9bf690ee13ce5c99982727bec7d5063174316efe1060418f03092",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M09",
+  "finish_reason": "stop",
+  "format_repair_count": 0,
+  "format_repairs": 0,
+  "input_tokens": 8321,
+  "latency_ms": 3158.052750000934,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 1,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The spec requires 'default_branch' in the response, but the initial runtime response returns 'defaultBranch' (camelCase). An exact retry returns the correct field, indicating the runtime is inconsistent but the drift is persistent across calls without retry logic. This is a response shape mismatch (RSD).",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.defaultBranch",
+      "spec_pointer": "/components/schemas/Repository/properties/default_branch",
+      "tool_id": "get_repository"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_repository"
+  },
+  "output_tokens": 182,
+  "paired_group_id": "pair-cc2f9b71addf923b",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The spec requires 'default_branch' in the response, but the initial runtime response returns 'defaultBranch' (camelCase). An exact retry returns the correct field, indicating the runtime is inconsistent but the drift is persistent across calls without retry logic. This is a response shape mismatch (RSD).",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.defaultBranch",
+      "spec_pointer": "/components/schemas/Repository/properties/default_branch",
+      "tool_id": "get_repository"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_repository"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-c6e70af37ade",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v2/raw/1854e6150b5149e352277edef05862de453bc8bdfe31051012c3b4b2621e1f7d.json",
+  "raw_response_sha256": "603fc5d95baf07ecc0872a1c02dab9d66e1965303e1edc75b132da4c69697859",
+  "reasoning_tokens": 0,
+  "record_id": "397a1960ea5cd74238dbc78b",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 8321,
+    "output_tokens": 182,
+    "reasoning_tokens": 0
+  },
+  "variant": "TF"
+}

@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 1,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 817,
+  "cost_cny_delta": 0.03852575000000158,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "a3ebd3fdd09d168d07f1a6a0a47007f14e57fe5df37edf5d3759f406606d389f",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M19",
+  "finish_reason": "stop",
+  "format_repair_count": 0,
+  "format_repairs": 0,
+  "input_tokens": 8000,
+  "latency_ms": 6344.873540998378,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 1,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The specification states that retrying a pipeline run preserves the original run_id, increments attempt, and updates the existing run. However, the first call returned a new run (run_id 504) while leaving run 501 unchanged, and only the exact retry probe later showed the spec-compliant behavior (run_id 501, attempt 2). This demonstrates a stable mismatch between the documented state effects and actual runtime behavior on the initial call.",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "/repositories/R1/pipeline_runs/504",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/x-state-effects",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "output_tokens": 191,
+  "paired_group_id": "pair-a29fa6629a8237c6",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The specification states that retrying a pipeline run preserves the original run_id, increments attempt, and updates the existing run. However, the first call returned a new run (run_id 504) while leaving run 501 unchanged, and only the exact retry probe later showed the spec-compliant behavior (run_id 501, attempt 2). This demonstrates a stable mismatch between the documented state effects and actual runtime behavior on the initial call.",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "/repositories/R1/pipeline_runs/504",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/x-state-effects",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 1,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-b29189efccd9",
+  "raw_response_ref": "moonshot/specdriftbench_component_heldout432_real_v2/raw/f8c3186ee8d4a224ca38ec74812706c75baa90aedf714e393f9943d9cb0ef32b.json",
+  "raw_response_sha256": "b6353da3763f314a620b741c819e986b124ed0a0a52b7c3f1b218f567521ba10",
+  "reasoning_tokens": 1,
+  "record_id": "912b735059673c2deb8c7bac",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 8000,
+    "output_tokens": 191,
+    "reasoning_tokens": 1
+  },
+  "variant": "TF"
+}

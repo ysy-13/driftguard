@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 692,
+  "cost_cny_delta": 0.035378000000001464,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "eb7a4f6e6ed3bfc1a3e3e6c80a024f6d11930e8babc5d70177daf3254ca56ee3",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M04",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 15789,
+  "latency_ms": 12375.493250998261,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Spec defines retry_pipeline.failed_only as required, but runtime rejects omission with VALIDATION_ERROR despite user intent expecting a default. This indicates an ICD mismatch between spec and intended/actual API behavior.",
+    "confidence": 0.9,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/pipeline-runs/{run_id}/retry",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/requestBody/content/application~1json/schema",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "output_tokens": 475,
+  "paired_group_id": "pair-f87a2ef8d05f07b4",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Spec defines retry_pipeline.failed_only as required, but runtime rejects omission with VALIDATION_ERROR despite user intent expecting a default. This indicates an ICD mismatch between spec and intended/actual API behavior.",
+    "confidence": 0.9,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/pipeline-runs/{run_id}/retry",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/requestBody/content/application~1json/schema",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-5962ef35ced3",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/35d502102bef738de4b88470d49cc0df7b184fdd21c26236d878777e89e2ce11.json",
+  "raw_response_sha256": "30d234b4e5a2466a9a98394d81d77a97ea1e2c1088e8cd5e796ebeb50f230fc2",
+  "reasoning_tokens": 0,
+  "record_id": "6408ac2756e1394ea41cf4a8",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 15789,
+    "output_tokens": 475,
+    "reasoning_tokens": 0
+  },
+  "variant": "AE"
+}

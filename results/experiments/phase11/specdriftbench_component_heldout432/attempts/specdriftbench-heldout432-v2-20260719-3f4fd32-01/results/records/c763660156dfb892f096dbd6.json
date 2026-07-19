@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 540,
+  "cost_cny_delta": 0.07131005000000101,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "f2e462ed9006f926f62889f292792f38d796c7316ce57ed91fd048894d043e25",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M09",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 15085,
+  "latency_ms": 9158.926916999917,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Spec requires snake_case 'default_branch' but runtime initially returns camelCase 'defaultBranch'. Exact retry later returns correct field name, yet the first response shows a stable response-field naming mismatch.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.defaultBranch",
+      "spec_pointer": "/components/schemas/Repository/properties/default_branch",
+      "tool_id": "get_repository"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_repository"
+  },
+  "output_tokens": 287,
+  "paired_group_id": "pair-796b9d024156b5e1",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Spec requires snake_case 'default_branch' but runtime initially returns camelCase 'defaultBranch'. Exact retry later returns correct field name, yet the first response shows a stable response-field naming mismatch.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.defaultBranch",
+      "spec_pointer": "/components/schemas/Repository/properties/default_branch",
+      "tool_id": "get_repository"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_repository"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 2,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-c6e70af37ade",
+  "raw_response_ref": "moonshot/specdriftbench_component_heldout432_real_v2/raw/1b801cab9b121ac79046560dfee67cb3725b06d98f54d1b78490e73d9c83743f.json",
+  "raw_response_sha256": "3f5f72ec08fa19d8be6d8ed9d13f473468864ad250f45932388672d984f01397",
+  "reasoning_tokens": 2,
+  "record_id": "c763660156dfb892f096dbd6",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 15085,
+    "output_tokens": 287,
+    "reasoning_tokens": 2
+  },
+  "variant": "TF"
+}

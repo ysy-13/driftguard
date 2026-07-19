@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 617,
+  "cost_cny_delta": 0.0,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "a3ebd3fdd09d168d07f1a6a0a47007f14e57fe5df37edf5d3759f406606d389f",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M19",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 18092,
+  "latency_ms": 11431.136333998438,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Spec states retry updates existing run_id in-place. Runtime created new run (504) instead, violating state effect. Mismatch between spec semantics and observed behavior.",
+    "confidence": 0.9,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "/repositories/{repo_id}/pipeline-runs/{run_id}/retry",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/x-state-effects",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "output_tokens": 460,
+  "paired_group_id": "pair-17e8331c40103d0f",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Spec states retry updates existing run_id in-place. Runtime created new run (504) instead, violating state effect. Mismatch between spec semantics and observed behavior.",
+    "confidence": 0.9,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "/repositories/{repo_id}/pipeline-runs/{run_id}/retry",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/x-state-effects",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-b29189efccd9",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/bf8e970b5274d6147413a81e93ee712378d1396a56aaa529f048c8480eb1e5b1.json",
+  "raw_response_sha256": "ba28f849c6771fd37a8935185dffbc4a8bf0553577b1a5fb9a9e94017e6e257d",
+  "reasoning_tokens": 0,
+  "record_id": "4f52ff3e62f79d5be153bc46",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 18092,
+    "output_tokens": 460,
+    "reasoning_tokens": 0
+  },
+  "variant": "TF"
+}

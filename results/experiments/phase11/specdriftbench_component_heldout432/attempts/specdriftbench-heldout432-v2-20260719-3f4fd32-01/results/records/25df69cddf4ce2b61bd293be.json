@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 718,
+  "cost_cny_delta": 0.036221999999998644,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "0c0b03c2fd0b1b2742ade1c01b51ae82a8fbd29883050030e62a63da18947539",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M04",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 16267,
+  "latency_ms": 12526.077582999278,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Spec marks retry_pipeline.failed_only as optional, but runtime rejects calls without it (422 VALIDATION_ERROR). Probe confirms adding the field fixes the error, indicating a stable spec-runtime mismatch on input requirement.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/pipeline-runs/{run_id}/retry",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/requestBody/content/application~1json/schema/properties/failed_only",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "output_tokens": 461,
+  "paired_group_id": "pair-f87a2ef8d05f07b4",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Spec marks retry_pipeline.failed_only as optional, but runtime rejects calls without it (422 VALIDATION_ERROR). Probe confirms adding the field fixes the error, indicating a stable spec-runtime mismatch on input requirement.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/pipeline-runs/{run_id}/retry",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/requestBody/content/application~1json/schema/properties/failed_only",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-5962ef35ced3",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/05e6a9f72f6683f2c5eef6ed3c43654690bf97d83940d5af2dc7fb6c288e0f1c.json",
+  "raw_response_sha256": "b0762f30aa69aad04aca481307250ef1794407d299d9e7c785c5738d447130f7",
+  "reasoning_tokens": 0,
+  "record_id": "25df69cddf4ce2b61bd293be",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 16267,
+    "output_tokens": 461,
+    "reasoning_tokens": 0
+  },
+  "variant": "AE"
+}

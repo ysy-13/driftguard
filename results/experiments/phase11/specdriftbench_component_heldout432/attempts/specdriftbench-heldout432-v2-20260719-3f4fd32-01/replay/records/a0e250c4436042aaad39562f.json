@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 623,
+  "cost_cny_delta": 0.0,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "74d4569be0e368e9776720425dd35b44adc15d14c4502d0ed382a6fa69d64e1e",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M20",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 14105,
+  "latency_ms": 9274.801792002108,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "HTTP 200 response claimed default_branch='develop' but state remained unchanged (identical before/after hashes). Read-after-write inconsistency: successful response disagrees with persisted state, violating spec's x-state-effects.",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "data.default_branch",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}/patch/x-state-effects/0",
+      "tool_id": "update_repository"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "update_repository"
+  },
+  "output_tokens": 391,
+  "paired_group_id": "pair-95c8049bbbf38cc2",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "HTTP 200 response claimed default_branch='develop' but state remained unchanged (identical before/after hashes). Read-after-write inconsistency: successful response disagrees with persisted state, violating spec's x-state-effects.",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "data.default_branch",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}/patch/x-state-effects/0",
+      "tool_id": "update_repository"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "update_repository"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 2,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-56bdd292f11a",
+  "raw_response_ref": "moonshot/specdriftbench_component_heldout432_real_v2/raw/66e60f09019525471e22a9da41cb28887ca0cfe7ec6ce0579a1af98278c0151b.json",
+  "raw_response_sha256": "470a60c1c46f0c075e832188103e357b802c6791137447b57e80e2bc6c4828e5",
+  "reasoning_tokens": 2,
+  "record_id": "a0e250c4436042aaad39562f",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 14105,
+    "output_tokens": 391,
+    "reasoning_tokens": 2
+  },
+  "variant": "TF"
+}

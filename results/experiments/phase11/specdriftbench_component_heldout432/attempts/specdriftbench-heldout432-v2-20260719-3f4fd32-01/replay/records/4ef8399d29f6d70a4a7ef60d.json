@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 1,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 748,
+  "cost_cny_delta": 0.0,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "bf1ec4dd26559859d5bb7479bb7d43c6ba7eafe050c8a7e1343080b96d84d88a",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M20",
+  "finish_reason": "stop",
+  "format_repair_count": 0,
+  "format_repairs": 0,
+  "input_tokens": 8414,
+  "latency_ms": 2515.263208999386,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 1,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The update_repository call returned HTTP 200 with default_branch='develop' in the response, but the state diff shows no change (before and after state hashes identical). The exact retry also succeeded but state remained unchanged. This indicates a persistent mismatch between the successful response and the actual persisted state, consistent with SED drift.",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "visible_state_diff",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}/patch/x-state-effects",
+      "tool_id": "update_repository"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "update_repository"
+  },
+  "output_tokens": 192,
+  "paired_group_id": "pair-94dffd4fb585283b",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The update_repository call returned HTTP 200 with default_branch='develop' in the response, but the state diff shows no change (before and after state hashes identical). The exact retry also succeeded but state remained unchanged. This indicates a persistent mismatch between the successful response and the actual persisted state, consistent with SED drift.",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "visible_state_diff",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}/patch/x-state-effects",
+      "tool_id": "update_repository"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "update_repository"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-56bdd292f11a",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v2/raw/402da95997cb321d322f6c3cd2d8338e2c7d7d4080530edc00e2e40f8c9ed030.json",
+  "raw_response_sha256": "6c59d98b79d48655745e9c2bf5ef35233eec956ebd42afbca91f04c6eccf8410",
+  "reasoning_tokens": 0,
+  "record_id": "4ef8399d29f6d70a4a7ef60d",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 8414,
+    "output_tokens": 192,
+    "reasoning_tokens": 0
+  },
+  "variant": "TF"
+}

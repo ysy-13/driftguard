@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 1,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 631,
+  "cost_cny_delta": 0.007948093999999628,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "e0644d3bd818711758925edcb0cf04dac9e556e19be62276b75fe6eaa80178ff",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M02",
+  "finish_reason": "stop",
+  "format_repair_count": 0,
+  "format_repairs": 0,
+  "input_tokens": 7399,
+  "latency_ms": 4542.676584002038,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 1,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Agent sent 'ref' instead of 'branch' in request body, causing 422 validation error. The spec requires 'branch' (required, minLength 1). This is an agent-side input error, not persistent drift.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "ref",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1workflows~1{workflow_id}~1runs/post/requestBody/content/application~1json/schema/properties/branch",
+      "tool_id": "trigger_pipeline"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "trigger_pipeline"
+  },
+  "output_tokens": 189,
+  "paired_group_id": "pair-2292d3f60d2c976d",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Agent sent 'ref' instead of 'branch' in request body, causing 422 validation error. The spec requires 'branch' (required, minLength 1). This is an agent-side input error, not persistent drift.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "ref",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1workflows~1{workflow_id}~1runs/post/requestBody/content/application~1json/schema/properties/branch",
+      "tool_id": "trigger_pipeline"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "trigger_pipeline"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-d19fcd113d97",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v2/raw/bc1f677067704186aff5ebf1fca43ca7fd8b497223160f08773274415f00808d.json",
+  "raw_response_sha256": "fd1d583e87e0892643c526e4ba4684322a4ac2034874e659e20b348d753e3d01",
+  "reasoning_tokens": 0,
+  "record_id": "2b95896be342be327683f6f6",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 7399,
+    "output_tokens": 189,
+    "reasoning_tokens": 0
+  },
+  "variant": "AE"
+}

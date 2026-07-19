@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 729,
+  "cost_cny_delta": 0.0,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "e3788819f209074afcd8291787e793ff0a110985dcfd892d62fef9bb4fb125dc",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M08",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 17582,
+  "latency_ms": 10847.854998999537,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The initial tool response for get_member returned a payload with nested 'permissions' object instead of flat 'role' and 'base_permission' fields as specified. However, the subsequent retry (exact_retry) returned the correct flat structure matching the specification. This indicates the initial failure was transient and recovered, rather than a persistent specification drift.",
+    "confidence": 0.95,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.role",
+      "spec_pointer": "/components/schemas/Member/properties/role",
+      "tool_id": "get_member"
+    },
+    "predicted_class": "TRANSIENT_FAILURE",
+    "target_tool": "get_member"
+  },
+  "output_tokens": 367,
+  "paired_group_id": "pair-f7d267f2ca156cf9",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The initial tool response for get_member returned a payload with nested 'permissions' object instead of flat 'role' and 'base_permission' fields as specified. However, the subsequent retry (exact_retry) returned the correct flat structure matching the specification. This indicates the initial failure was transient and recovered, rather than a persistent specification drift.",
+    "confidence": 0.95,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.role",
+      "spec_pointer": "/components/schemas/Member/properties/role",
+      "tool_id": "get_member"
+    },
+    "predicted_class": "TRANSIENT_FAILURE",
+    "target_tool": "get_member"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-4b5a95c8d459",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/29028aebffe5c690f6cf819980361534192f1d9a399c1ddf30b33dcdf657f57f.json",
+  "raw_response_sha256": "83ca530960c67d69bdde2bd800bb7b3b2fedbad11f7e3bd287576adf754bf340",
+  "reasoning_tokens": 0,
+  "record_id": "45492228fae1cea0deb1bd0e",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 17582,
+    "output_tokens": 367,
+    "reasoning_tokens": 0
+  },
+  "variant": "TF"
+}

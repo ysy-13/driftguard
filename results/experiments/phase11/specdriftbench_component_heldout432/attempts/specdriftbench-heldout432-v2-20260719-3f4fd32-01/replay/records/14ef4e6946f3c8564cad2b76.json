@@ -1,0 +1,61 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 879,
+  "cost_cny_delta": 0.0,
+  "error": {
+    "sanitized_message": "\"Spec states role promotions advance one level at a time (read\u2192triage\u2192write\u2192maintain\u2192admin). Agent requested read\u2192write, violating this. Runtime rejected with 409 PRECONDITION_FAILED 'Role transition not allowed.' While the rule is documented, the local validator flagged non-conformance and the runtime's specific error pattern suggests stricter enforcement than spec implies. The unchanged state hash confirms precondition enforcement, but the workflow constraint surface differs from spec expectations.\" is to",
+    "type": "InvalidStructuredOutput"
+  },
+  "error_class": "INVALID_STRUCTURED_OUTPUT",
+  "evaluation": {
+    "category_correct": null,
+    "class_correct": null,
+    "location_correct": null,
+    "target_correct": null
+  },
+  "evidence_sha256": "97218a92c5a36af4bf018c6245b23de4eca5fe2bc6a1925287d4eaa30c5f0b34",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M14",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 14459,
+  "latency_ms": 18237.66062499999,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": null,
+  "output_tokens": 584,
+  "paired_group_id": "pair-e244217a35958a4d",
+  "parsed_result": null,
+  "provider": "moonshot",
+  "provider_attempts": 2,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-fe296a0a6d31",
+  "raw_response_ref": "moonshot/specdriftbench_component_heldout432_real_v2/raw/6fec961b36d40a5f7ea1ecc347be0ebe586d9724c1fefc521e6c27047e6bfcfc.json",
+  "raw_response_sha256": "2a640641b0d8b3278da40261fa4e497b3bb30e5dbaf13bbbdc7721249458c8a8",
+  "reasoning_tokens": 2,
+  "record_id": "14ef4e6946f3c8564cad2b76",
+  "repetition": 1,
+  "schema_valid": false,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "INVALID_STRUCTURED_OUTPUT",
+  "usage_if_available": {
+    "input_tokens": 14459,
+    "output_tokens": 584,
+    "reasoning_tokens": 2
+  },
+  "variant": "AE"
+}

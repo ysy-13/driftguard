@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 528,
+  "cost_cny_delta": 0.0864809099999988,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "eda2acbc262c436afc3f3039daf09e9449572412741cd561396a378e9a7af5d7",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M07",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 18482,
+  "latency_ms": 8518.821499001206,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Runtime returns 'state' and 'result' fields where spec defines 'status' and 'conclusion'. Exact retry and independent reproduction confirm stable mismatch. Response shape inspection passed as discriminative.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.state",
+      "spec_pointer": "/components/schemas/PipelineRun/properties/status",
+      "tool_id": "get_pipeline_status"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_pipeline_status"
+  },
+  "output_tokens": 303,
+  "paired_group_id": "pair-ed6bc9ec2b859dd7",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Runtime returns 'state' and 'result' fields where spec defines 'status' and 'conclusion'. Exact retry and independent reproduction confirm stable mismatch. Response shape inspection passed as discriminative.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.state",
+      "spec_pointer": "/components/schemas/PipelineRun/properties/status",
+      "tool_id": "get_pipeline_status"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_pipeline_status"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 2,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-0a0344458ac0",
+  "raw_response_ref": "moonshot/specdriftbench_component_heldout432_real_v2/raw/dd8a5e0411df01950b71f37bdb4c86f911c47a55c2199037bbbe6cce3f1c0ea1.json",
+  "raw_response_sha256": "e89a09b35c4c5a0fadc82f9805ba1588edb2c4273edf37065be97e9aa5a37a8d",
+  "reasoning_tokens": 2,
+  "record_id": "0074c4447497235c9048b2b4",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 18482,
+    "output_tokens": 303,
+    "reasoning_tokens": 2
+  },
+  "variant": "PD"
+}

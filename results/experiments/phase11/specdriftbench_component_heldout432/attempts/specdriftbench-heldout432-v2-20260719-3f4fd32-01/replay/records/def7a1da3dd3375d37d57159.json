@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 636,
+  "cost_cny_delta": 0.0,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "bb49f980a9393c968dbfecfd9d62cf0ac9a0c3d8dfa97be3dfb4fa6d21cf7707",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M05",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 14098,
+  "latency_ms": 12381.613583998842,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Spec enum for UpdateMemberRoleRequest.role is ['read','triage','developer','maintain','admin'], but runtime rejects 'write' as invalid. AddMemberRequest.role enum correctly includes 'write'. Runtime enforces wrong enum set on update endpoint.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "request.body.role",
+      "spec_pointer": "/components/schemas/UpdateMemberRoleRequest/properties/role/enum",
+      "tool_id": "update_member_role"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "update_member_role"
+  },
+  "output_tokens": 401,
+  "paired_group_id": "pair-b76fafc0123d80f8",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Spec enum for UpdateMemberRoleRequest.role is ['read','triage','developer','maintain','admin'], but runtime rejects 'write' as invalid. AddMemberRequest.role enum correctly includes 'write'. Runtime enforces wrong enum set on update endpoint.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "request.body.role",
+      "spec_pointer": "/components/schemas/UpdateMemberRoleRequest/properties/role/enum",
+      "tool_id": "update_member_role"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "update_member_role"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 2,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-7a2923f7ae40",
+  "raw_response_ref": "moonshot/specdriftbench_component_heldout432_real_v2/raw/41d5d4a615ad01fabc2dcbcfa886290aabb8f9d6fa08553860cb4e8ac272495e.json",
+  "raw_response_sha256": "475d6d6668bd874dc5523ec03e2c524fb15bf7088b5eeb24a2908ae43c1dfb01",
+  "reasoning_tokens": 2,
+  "record_id": "def7a1da3dd3375d37d57159",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 14098,
+    "output_tokens": 401,
+    "reasoning_tokens": 2
+  },
+  "variant": "AE"
+}

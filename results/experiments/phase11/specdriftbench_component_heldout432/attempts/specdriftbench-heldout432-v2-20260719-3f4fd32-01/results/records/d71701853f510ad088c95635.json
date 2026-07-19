@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 1,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 612,
+  "cost_cny_delta": 0.007972622000000484,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "59459ef620f7ff47519735dae0b240c50d081c96c9804148302df75524318104",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M08",
+  "finish_reason": "stop",
+  "format_repair_count": 0,
+  "format_repairs": 0,
+  "input_tokens": 7453,
+  "latency_ms": 2880.75170799857,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 1,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed spec defines a flat 'role' field in the Member schema, but the runtime response nests role and base_permission under a 'permissions' object with keys 'role_name' and 'base'. This is a persistent response structure mismatch (RSD).",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.data.permissions.role_name",
+      "spec_pointer": "/components/schemas/Member/properties/role",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_member"
+  },
+  "output_tokens": 174,
+  "paired_group_id": "pair-62ad16ba1c2997ac",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed spec defines a flat 'role' field in the Member schema, but the runtime response nests role and base_permission under a 'permissions' object with keys 'role_name' and 'base'. This is a persistent response structure mismatch (RSD).",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.data.permissions.role_name",
+      "spec_pointer": "/components/schemas/Member/properties/role",
+      "tool_id": "T11"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_member"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-93373d4ff3d7",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v2/raw/8610e714feac327d72160c6d101963d162a64d5e57a7fd51d70401badc269f45.json",
+  "raw_response_sha256": "4701afa833dfe18c3b8048ae1e845a6ab9e6e01d912e96392893814815e93c23",
+  "reasoning_tokens": 0,
+  "record_id": "d71701853f510ad088c95635",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 7453,
+    "output_tokens": 174,
+    "reasoning_tokens": 0
+  },
+  "variant": "PD"
+}

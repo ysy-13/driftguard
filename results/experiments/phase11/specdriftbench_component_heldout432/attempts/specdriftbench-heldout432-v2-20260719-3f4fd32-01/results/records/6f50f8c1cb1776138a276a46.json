@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 847,
+  "cost_cny_delta": 0.03621599999999958,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": true,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "44d471cd2b8e5469cc973930e6f9e48ab536094ad08099a73a575e0a298cfb64",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M15",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 16376,
+  "latency_ms": 11246.484833001887,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed specification for add_member allows 'triage' as a valid role enum value and sets no precondition restricting the initial role. However, the runtime returns a 409 PRECONDITION_FAILED with message 'Initial role must be read.', indicating a stable mismatch between the spec's allowed inputs and the runtime's enforcement logic. This is an Input Contract Drift (ICD) because the runtime rejects a parameter value that the spec explicitly permits.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/members/{username}",
+      "spec_pointer": "/components/schemas/AddMemberRequest/properties/role",
+      "tool_id": "add_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "add_member"
+  },
+  "output_tokens": 433,
+  "paired_group_id": "pair-f2190d4a496e4544",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed specification for add_member allows 'triage' as a valid role enum value and sets no precondition restricting the initial role. However, the runtime returns a 409 PRECONDITION_FAILED with message 'Initial role must be read.', indicating a stable mismatch between the spec's allowed inputs and the runtime's enforcement logic. This is an Input Contract Drift (ICD) because the runtime rejects a parameter value that the spec explicitly permits.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/members/{username}",
+      "spec_pointer": "/components/schemas/AddMemberRequest/properties/role",
+      "tool_id": "add_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "add_member"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-3004093b28b5",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/4a5aeb6f6c4c3318a67b0e10585b223d758c3d84557c01fde9478c65514d4d27.json",
+  "raw_response_sha256": "aba80c0e0ff17650a6c85c42ae1e38d50e4125102bc3fe37cdf6f4ff40d04684",
+  "reasoning_tokens": 0,
+  "record_id": "6f50f8c1cb1776138a276a46",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 16376,
+    "output_tokens": 433,
+    "reasoning_tokens": 0
+  },
+  "variant": "PD"
+}

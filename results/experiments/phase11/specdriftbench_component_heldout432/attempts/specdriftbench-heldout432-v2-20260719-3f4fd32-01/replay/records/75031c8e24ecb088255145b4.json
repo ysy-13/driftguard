@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 586,
+  "cost_cny_delta": 0.0,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "c08efb14d1ce7fd11c3a07c2d62aef8e3c755c26329ae270598628326c2ab9a8",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M08",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 14754,
+  "latency_ms": 13361.519459002011,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Spec requires top-level fields data.role and data.base_permission, but runtime returns them nested as data.permissions.role_name and data.permissions.base. Stable response structure mismatch with normal state behavior.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.permissions.role_name",
+      "spec_pointer": "/components/schemas/Member/properties/role",
+      "tool_id": "get_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_member"
+  },
+  "output_tokens": 393,
+  "paired_group_id": "pair-c552bea3dc5e754a",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Spec requires top-level fields data.role and data.base_permission, but runtime returns them nested as data.permissions.role_name and data.permissions.base. Stable response structure mismatch with normal state behavior.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.permissions.role_name",
+      "spec_pointer": "/components/schemas/Member/properties/role",
+      "tool_id": "get_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_member"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 2,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-4428482ce42e",
+  "raw_response_ref": "moonshot/specdriftbench_component_heldout432_real_v2/raw/92042715772af4b9863a87e12f6eadb65682b305acde3e723703ecb2b9679ded.json",
+  "raw_response_sha256": "158021e0061ff789b34b1dbe65dd18387fa3662842730a2be6cd1ee552d6c6d5",
+  "reasoning_tokens": 2,
+  "record_id": "75031c8e24ecb088255145b4",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 14754,
+    "output_tokens": 393,
+    "reasoning_tokens": 2
+  },
+  "variant": "AE"
+}

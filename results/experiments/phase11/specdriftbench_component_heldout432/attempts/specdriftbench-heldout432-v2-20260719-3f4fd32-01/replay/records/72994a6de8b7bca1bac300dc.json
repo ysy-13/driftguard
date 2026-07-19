@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 631,
+  "cost_cny_delta": 0.0,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "f967d46264509dfa67ac10de7e8c7bdc93b78836c738b4e95a64de457d54ef63",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M20",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 15871,
+  "latency_ms": 11221.559583998896,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "update_repository returned 200 OK with requested default_branch, but normalized observation confirms persistent state remains unchanged. This mismatch between successful response and actual state effect constitutes State Effect Drift (SED).",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "data.default_branch",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}/patch/x-state-effects",
+      "tool_id": "update_repository"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "update_repository"
+  },
+  "output_tokens": 405,
+  "paired_group_id": "pair-eb2e4c3080899fe6",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "update_repository returned 200 OK with requested default_branch, but normalized observation confirms persistent state remains unchanged. This mismatch between successful response and actual state effect constitutes State Effect Drift (SED).",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "data.default_branch",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}/patch/x-state-effects",
+      "tool_id": "update_repository"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "update_repository"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-0672abe29feb",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/c0516495b38790994a385e9fba5ae9ba6688dba256496706e957d03a16dc4564.json",
+  "raw_response_sha256": "4c3b515bfeb8adbc60379c07f9447fec08a13d61c6e85746e0d7dcc3e760be4e",
+  "reasoning_tokens": 0,
+  "record_id": "72994a6de8b7bca1bac300dc",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 15871,
+    "output_tokens": 405,
+    "reasoning_tokens": 0
+  },
+  "variant": "AE"
+}

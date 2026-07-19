@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 570,
+  "cost_cny_delta": 0.03620800000000024,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": true
+  },
+  "evidence_sha256": "41d0c3a7a6ec4fddfcc9391a4df76ab228a972a1d3859690ea3b0d5e5266e37c",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M03",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 16524,
+  "latency_ms": 10308.244124997145,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Spec defines 'assignee' as required input, but runtime rejects it requiring 'assignee_username'. This field name mismatch is an ICD drift.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/requestBody/content/application/json/schema/properties/assignee_username",
+      "spec_pointer": "/components/schemas/AssignIssueRequest/properties/assignee",
+      "tool_id": "assign_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "assign_issue"
+  },
+  "output_tokens": 395,
+  "paired_group_id": "pair-edf835946079d657",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Spec defines 'assignee' as required input, but runtime rejects it requiring 'assignee_username'. This field name mismatch is an ICD drift.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/requestBody/content/application/json/schema/properties/assignee_username",
+      "spec_pointer": "/components/schemas/AssignIssueRequest/properties/assignee",
+      "tool_id": "assign_issue"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "assign_issue"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-8349a855a78f",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/c9480c321f3b8bc33e806b7de0f8a8d729773c5872bce769a03bf4b1f8e4bf0e.json",
+  "raw_response_sha256": "9b37edc101219bf9370f499a4c480b9595c4d3a6e19b6f55440e6410f836a442",
+  "reasoning_tokens": 0,
+  "record_id": "c6b770c5d9f5382c3fdb07d4",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 16524,
+    "output_tokens": 395,
+    "reasoning_tokens": 0
+  },
+  "variant": "PD"
+}

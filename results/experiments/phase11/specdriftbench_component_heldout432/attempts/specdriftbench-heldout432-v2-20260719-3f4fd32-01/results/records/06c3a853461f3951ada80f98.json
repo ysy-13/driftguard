@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 577,
+  "cost_cny_delta": 0.07464760999999953,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "c8ec91034cf9bf690ee13ce5c99982727bec7d5063174316efe1060418f03092",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M09",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 15747,
+  "latency_ms": 11418.018707998272,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Spec requires snake_case 'default_branch' but runtime returned camelCase 'defaultBranch' in EV005. Exact retry EV006 returned correct snake_case, showing runtime inconsistency, but the visible evidence supports a stable response-field naming mismatch.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.defaultBranch",
+      "spec_pointer": "/components/schemas/Repository/properties/default_branch",
+      "tool_id": "get_repository"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_repository"
+  },
+  "output_tokens": 311,
+  "paired_group_id": "pair-796b9d024156b5e1",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Spec requires snake_case 'default_branch' but runtime returned camelCase 'defaultBranch' in EV005. Exact retry EV006 returned correct snake_case, showing runtime inconsistency, but the visible evidence supports a stable response-field naming mismatch.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.defaultBranch",
+      "spec_pointer": "/components/schemas/Repository/properties/default_branch",
+      "tool_id": "get_repository"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_repository"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 2,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-c6e70af37ade",
+  "raw_response_ref": "moonshot/specdriftbench_component_heldout432_real_v2/raw/cac0fcaf9a5ec406e61e2a066c46e95b97c7aa804ded8dc75bf3d43e4e2219dc.json",
+  "raw_response_sha256": "03d1ccbd99329ec1510bcfc089df750c48a7c8410b8ff1604a27b840b8a86d30",
+  "reasoning_tokens": 2,
+  "record_id": "06c3a853461f3951ada80f98",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 15747,
+    "output_tokens": 311,
+    "reasoning_tokens": 2
+  },
+  "variant": "TF"
+}

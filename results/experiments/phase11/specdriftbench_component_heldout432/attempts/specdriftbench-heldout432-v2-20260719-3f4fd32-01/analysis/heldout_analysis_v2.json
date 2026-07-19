@@ -1,0 +1,607 @@
+{
+  "analysis_plan_sha256": "c0f52ae987c2600be71685b14c3d171d2cbd34651bd2db11919b621ca6101d71",
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "by_evidence_view": {
+    "FIRST_FAILURE": {
+      "accuracy_all_records": 0.4375,
+      "accuracy_evaluable_subset": 0.4405594405594406,
+      "confusion_matrix": {
+        "AGENT_ERROR": {
+          "AGENT_ERROR": 18,
+          "NOT_EVALUABLE": 1,
+          "PERSISTENT_DRIFT": 29,
+          "TRANSIENT_FAILURE": 0
+        },
+        "PERSISTENT_DRIFT": {
+          "AGENT_ERROR": 3,
+          "NOT_EVALUABLE": 0,
+          "PERSISTENT_DRIFT": 45,
+          "TRANSIENT_FAILURE": 0
+        },
+        "TRANSIENT_FAILURE": {
+          "AGENT_ERROR": 5,
+          "NOT_EVALUABLE": 0,
+          "PERSISTENT_DRIFT": 43,
+          "TRANSIENT_FAILURE": 0
+        }
+      },
+      "coverage": 0.9930555555555556,
+      "evaluable_records": 143,
+      "macro_f1": 0.34398034398034394,
+      "macro_precision": 0.358974358974359,
+      "macro_recall": 0.4375,
+      "per_class": {
+        "AGENT_ERROR": {
+          "f1": 0.48648648648648646,
+          "precision": 0.6923076923076923,
+          "recall": 0.375,
+          "support": 48
+        },
+        "PERSISTENT_DRIFT": {
+          "f1": 0.5454545454545454,
+          "precision": 0.38461538461538464,
+          "recall": 0.9375,
+          "support": 48
+        },
+        "TRANSIENT_FAILURE": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 48
+        }
+      },
+      "records": 144
+    },
+    "FULL_EVIDENCE": {
+      "accuracy_all_records": 0.5347222222222222,
+      "accuracy_evaluable_subset": 0.5422535211267606,
+      "confusion_matrix": {
+        "AGENT_ERROR": {
+          "AGENT_ERROR": 25,
+          "NOT_EVALUABLE": 1,
+          "PERSISTENT_DRIFT": 22,
+          "TRANSIENT_FAILURE": 0
+        },
+        "PERSISTENT_DRIFT": {
+          "AGENT_ERROR": 2,
+          "NOT_EVALUABLE": 0,
+          "PERSISTENT_DRIFT": 46,
+          "TRANSIENT_FAILURE": 0
+        },
+        "TRANSIENT_FAILURE": {
+          "AGENT_ERROR": 4,
+          "NOT_EVALUABLE": 1,
+          "PERSISTENT_DRIFT": 37,
+          "TRANSIENT_FAILURE": 6
+        }
+      },
+      "coverage": 0.9861111111111112,
+      "evaluable_records": 142,
+      "macro_f1": 0.4854802680565898,
+      "macro_precision": 0.7481822836661546,
+      "macro_recall": 0.5347222222222222,
+      "per_class": {
+        "AGENT_ERROR": {
+          "f1": 0.6329113924050633,
+          "precision": 0.8064516129032258,
+          "recall": 0.5208333333333334,
+          "support": 48
+        },
+        "PERSISTENT_DRIFT": {
+          "f1": 0.6013071895424837,
+          "precision": 0.4380952380952381,
+          "recall": 0.9583333333333334,
+          "support": 48
+        },
+        "TRANSIENT_FAILURE": {
+          "f1": 0.2222222222222222,
+          "precision": 1.0,
+          "recall": 0.125,
+          "support": 48
+        }
+      },
+      "records": 144
+    },
+    "RETRY_HISTORY": {
+      "accuracy_all_records": 0.5138888888888888,
+      "accuracy_evaluable_subset": 0.5211267605633803,
+      "confusion_matrix": {
+        "AGENT_ERROR": {
+          "AGENT_ERROR": 17,
+          "NOT_EVALUABLE": 2,
+          "PERSISTENT_DRIFT": 29,
+          "TRANSIENT_FAILURE": 0
+        },
+        "PERSISTENT_DRIFT": {
+          "AGENT_ERROR": 4,
+          "NOT_EVALUABLE": 0,
+          "PERSISTENT_DRIFT": 44,
+          "TRANSIENT_FAILURE": 0
+        },
+        "TRANSIENT_FAILURE": {
+          "AGENT_ERROR": 1,
+          "NOT_EVALUABLE": 0,
+          "PERSISTENT_DRIFT": 34,
+          "TRANSIENT_FAILURE": 13
+        }
+      },
+      "coverage": 0.9861111111111112,
+      "evaluable_records": 142,
+      "macro_f1": 0.4932285764649593,
+      "macro_precision": 0.7279807419994335,
+      "macro_recall": 0.5138888888888888,
+      "per_class": {
+        "AGENT_ERROR": {
+          "f1": 0.4857142857142857,
+          "precision": 0.7727272727272727,
+          "recall": 0.3541666666666667,
+          "support": 48
+        },
+        "PERSISTENT_DRIFT": {
+          "f1": 0.567741935483871,
+          "precision": 0.411214953271028,
+          "recall": 0.9166666666666666,
+          "support": 48
+        },
+        "TRANSIENT_FAILURE": {
+          "f1": 0.4262295081967213,
+          "precision": 1.0,
+          "recall": 0.2708333333333333,
+          "support": 48
+        }
+      },
+      "records": 144
+    }
+  },
+  "by_provider": {
+    "dashscope": {
+      "accuracy_all_records": 0.5763888888888888,
+      "accuracy_evaluable_subset": 0.5804195804195804,
+      "confusion_matrix": {
+        "AGENT_ERROR": {
+          "AGENT_ERROR": 28,
+          "NOT_EVALUABLE": 0,
+          "PERSISTENT_DRIFT": 20,
+          "TRANSIENT_FAILURE": 0
+        },
+        "PERSISTENT_DRIFT": {
+          "AGENT_ERROR": 4,
+          "NOT_EVALUABLE": 0,
+          "PERSISTENT_DRIFT": 44,
+          "TRANSIENT_FAILURE": 0
+        },
+        "TRANSIENT_FAILURE": {
+          "AGENT_ERROR": 7,
+          "NOT_EVALUABLE": 1,
+          "PERSISTENT_DRIFT": 29,
+          "TRANSIENT_FAILURE": 11
+        }
+      },
+      "coverage": 0.9930555555555556,
+      "evaluable_records": 143,
+      "macro_f1": 0.5468909973430162,
+      "macro_precision": 0.7303556658395368,
+      "macro_recall": 0.5763888888888888,
+      "per_class": {
+        "AGENT_ERROR": {
+          "f1": 0.6436781609195402,
+          "precision": 0.717948717948718,
+          "recall": 0.5833333333333334,
+          "support": 48
+        },
+        "PERSISTENT_DRIFT": {
+          "f1": 0.624113475177305,
+          "precision": 0.4731182795698925,
+          "recall": 0.9166666666666666,
+          "support": 48
+        },
+        "TRANSIENT_FAILURE": {
+          "f1": 0.37288135593220334,
+          "precision": 1.0,
+          "recall": 0.22916666666666666,
+          "support": 48
+        }
+      },
+      "records": 144
+    },
+    "deepseek": {
+      "accuracy_all_records": 0.4791666666666667,
+      "accuracy_evaluable_subset": 0.4791666666666667,
+      "confusion_matrix": {
+        "AGENT_ERROR": {
+          "AGENT_ERROR": 19,
+          "NOT_EVALUABLE": 0,
+          "PERSISTENT_DRIFT": 29,
+          "TRANSIENT_FAILURE": 0
+        },
+        "PERSISTENT_DRIFT": {
+          "AGENT_ERROR": 5,
+          "NOT_EVALUABLE": 0,
+          "PERSISTENT_DRIFT": 43,
+          "TRANSIENT_FAILURE": 0
+        },
+        "TRANSIENT_FAILURE": {
+          "AGENT_ERROR": 3,
+          "NOT_EVALUABLE": 0,
+          "PERSISTENT_DRIFT": 38,
+          "TRANSIENT_FAILURE": 7
+        }
+      },
+      "coverage": 1.0,
+      "evaluable_records": 144,
+      "macro_f1": 0.4351719728934919,
+      "macro_precision": 0.6982042648709316,
+      "macro_recall": 0.4791666666666667,
+      "per_class": {
+        "AGENT_ERROR": {
+          "f1": 0.5066666666666667,
+          "precision": 0.7037037037037037,
+          "recall": 0.3958333333333333,
+          "support": 48
+        },
+        "PERSISTENT_DRIFT": {
+          "f1": 0.5443037974683544,
+          "precision": 0.39090909090909093,
+          "recall": 0.8958333333333334,
+          "support": 48
+        },
+        "TRANSIENT_FAILURE": {
+          "f1": 0.2545454545454546,
+          "precision": 1.0,
+          "recall": 0.14583333333333334,
+          "support": 48
+        }
+      },
+      "records": 144
+    },
+    "moonshot": {
+      "accuracy_all_records": 0.4305555555555556,
+      "accuracy_evaluable_subset": 0.44285714285714284,
+      "confusion_matrix": {
+        "AGENT_ERROR": {
+          "AGENT_ERROR": 13,
+          "NOT_EVALUABLE": 4,
+          "PERSISTENT_DRIFT": 31,
+          "TRANSIENT_FAILURE": 0
+        },
+        "PERSISTENT_DRIFT": {
+          "AGENT_ERROR": 0,
+          "NOT_EVALUABLE": 0,
+          "PERSISTENT_DRIFT": 48,
+          "TRANSIENT_FAILURE": 0
+        },
+        "TRANSIENT_FAILURE": {
+          "AGENT_ERROR": 0,
+          "NOT_EVALUABLE": 0,
+          "PERSISTENT_DRIFT": 47,
+          "TRANSIENT_FAILURE": 1
+        }
+      },
+      "coverage": 0.9722222222222222,
+      "evaluable_records": 140,
+      "macro_f1": 0.3395899908861227,
+      "macro_precision": 0.7936507936507936,
+      "macro_recall": 0.4305555555555555,
+      "per_class": {
+        "AGENT_ERROR": {
+          "f1": 0.4262295081967213,
+          "precision": 1.0,
+          "recall": 0.2708333333333333,
+          "support": 48
+        },
+        "PERSISTENT_DRIFT": {
+          "f1": 0.5517241379310345,
+          "precision": 0.38095238095238093,
+          "recall": 1.0,
+          "support": 48
+        },
+        "TRANSIENT_FAILURE": {
+          "f1": 0.04081632653061225,
+          "precision": 1.0,
+          "recall": 0.020833333333333332,
+          "support": 48
+        }
+      },
+      "records": 144
+    }
+  },
+  "denominator_policy": {
+    "all_record_metrics": "correct / all records; missing, refused, or invalid predictions are not correct",
+    "coverage": "evaluable records / all records in the stated slice",
+    "evaluable_subset_metrics": "correct / records with an evaluable prediction for the metric",
+    "pd_target_accuracy": "correct PD target predictions / all evaluable PD records",
+    "pd_target_coverage": "evaluable PD target predictions / all PD records",
+    "zero_division": 0.0
+  },
+  "frozen_fingerprints": {
+    "attribution_schema_sha256": "fb1a66c6d331fc1af98ef6985518f19e08ef9733f2ad07624dbfd962ce44b6f9",
+    "evidence_view_sha256": "94376b30b8554539602922f6da656dedcfc7a376650daec64735658af39585ac",
+    "pricing_sha256": "5ba33e1c6769dd208ab43241504dce0c161d4bbd2d92b3db580d26ea41868351",
+    "prompt_sha256": "d499cdb339972ad5a9424339519f4c64a9cb9096afcddd46b6309ccd7cc2a47e",
+    "tool_registry_sha256": "5be5dacb739ed05cb81b5a005de0faf414312d9bb9ef0664eafe8a1000ed7205"
+  },
+  "ledger": {
+    "after": {
+      "api_attempts": 1689,
+      "provider_reported_input_tokens": 10139862,
+      "provider_reported_output_tokens": 243536,
+      "reserved_cny": 0.0,
+      "spent_cny": 21.814057367999997
+    },
+    "after_sha256": "317106473bef64ca6407e6130b72511da14d4f995e06634461bd2f98202f8ebb",
+    "attempts_delta": 605,
+    "before": {
+      "api_attempts": 1084,
+      "provider_reported_input_tokens": 5344878,
+      "provider_reported_output_tokens": 122093,
+      "reserved_cny": 0.0,
+      "spent_cny": 8.035446274000003
+    },
+    "before_sha256": "5460cb961d7cf28f6fc5bd40047e91a448e27c92510b51435377c6e136a15f90",
+    "cost_cny_delta": 13.778611093999993,
+    "input_tokens_delta": 4794984,
+    "output_tokens_delta": 121443,
+    "reserved_cny_after": 0.0
+  },
+  "manifest_source_snapshot": "bdf229df6225a1242ca6ca30b0b127d03b8ac901a101442d1721c8ad31f0e6c8",
+  "overall": {
+    "accuracy_all_records": 0.49537037037037035,
+    "accuracy_evaluable_subset": 0.5011709601873536,
+    "confusion_matrix": {
+      "AGENT_ERROR": {
+        "AGENT_ERROR": 60,
+        "NOT_EVALUABLE": 4,
+        "PERSISTENT_DRIFT": 80,
+        "TRANSIENT_FAILURE": 0
+      },
+      "PERSISTENT_DRIFT": {
+        "AGENT_ERROR": 9,
+        "NOT_EVALUABLE": 0,
+        "PERSISTENT_DRIFT": 135,
+        "TRANSIENT_FAILURE": 0
+      },
+      "TRANSIENT_FAILURE": {
+        "AGENT_ERROR": 10,
+        "NOT_EVALUABLE": 1,
+        "PERSISTENT_DRIFT": 114,
+        "TRANSIENT_FAILURE": 19
+      }
+    },
+    "coverage": 0.9884259259259259,
+    "evaluable_records": 427,
+    "macro_f1": 0.44735665019899196,
+    "macro_precision": 0.7232760057968785,
+    "macro_recall": 0.49537037037037035,
+    "per_class": {
+      "AGENT_ERROR": {
+        "f1": 0.5381165919282511,
+        "precision": 0.759493670886076,
+        "recall": 0.4166666666666667,
+        "support": 144
+      },
+      "PERSISTENT_DRIFT": {
+        "f1": 0.5708245243128964,
+        "precision": 0.41033434650455924,
+        "recall": 0.9375,
+        "support": 144
+      },
+      "TRANSIENT_FAILURE": {
+        "f1": 0.23312883435582823,
+        "precision": 1.0,
+        "recall": 0.13194444444444445,
+        "support": 144
+      }
+    },
+    "records": 432
+  },
+  "paired_evidence_view": {
+    "bootstrap": {
+      "confidence_level": 0.95,
+      "repetitions": 10000,
+      "seed": 20260718,
+      "unit": "family"
+    },
+    "comparisons": {
+      "FULL_EVIDENCE - FIRST_FAILURE": {
+        "accuracy_delta": 0.09722222222222222,
+        "ci95_family_clustered_bootstrap": [
+          0.041666666666666664,
+          0.1527777777777778
+        ],
+        "families": 16,
+        "paired_groups": 144
+      },
+      "FULL_EVIDENCE - RETRY_HISTORY": {
+        "accuracy_delta": 0.020833333333333332,
+        "ci95_family_clustered_bootstrap": [
+          -0.04861111111111111,
+          0.09027777777777778
+        ],
+        "families": 16,
+        "paired_groups": 144
+      },
+      "RETRY_HISTORY - FIRST_FAILURE": {
+        "accuracy_delta": 0.0763888888888889,
+        "ci95_family_clustered_bootstrap": [
+          0.020833333333333332,
+          0.13194444444444445
+        ],
+        "families": 16,
+        "paired_groups": 144
+      }
+    },
+    "completed_families": [
+      "M02",
+      "M03",
+      "M04",
+      "M05",
+      "M07",
+      "M08",
+      "M09",
+      "M10",
+      "M12",
+      "M13",
+      "M14",
+      "M15",
+      "M17",
+      "M18",
+      "M19",
+      "M20"
+    ],
+    "paired_groups": 144,
+    "status": "FROZEN_CONFIRMATORY_HELDOUT"
+  },
+  "paper_eligibility": "ELIGIBLE_FORMAL_HELDOUT_RESULT",
+  "pd": {
+    "category": {
+      "accuracy_all_pd_records": 0.9375,
+      "accuracy_evaluable_subset": 0.9375,
+      "all_pd_records": 144,
+      "correct": 135,
+      "coverage": 1.0,
+      "denominator": "correct category_correct / evaluable PD records; coverage = evaluable PD / all PD records",
+      "evaluable": 144
+    },
+    "location": {
+      "accuracy_all_pd_records": 0.5486111111111112,
+      "accuracy_evaluable_subset": 0.5486111111111112,
+      "all_pd_records": 144,
+      "correct": 79,
+      "coverage": 1.0,
+      "denominator": "correct location_correct / evaluable PD records; coverage = evaluable PD / all PD records",
+      "evaluable": 144
+    },
+    "target": {
+      "accuracy_all_pd_records": 1.0,
+      "accuracy_evaluable_subset": 1.0,
+      "all_pd_records": 144,
+      "correct": 144,
+      "coverage": 1.0,
+      "denominator": "correct target_correct / evaluable PD records; coverage = evaluable PD / all PD records",
+      "evaluable": 144
+    }
+  },
+  "provider_counts": {
+    "dashscope": 144,
+    "deepseek": 144,
+    "moonshot": 144
+  },
+  "quality": {
+    "abstention_count": 1,
+    "abstention_rate": 0.0023148148148148147,
+    "api_key_leakage_count": 0,
+    "error_class_counts": {
+      "INVALID_STRUCTURED_OUTPUT": 4,
+      "OUTPUT_TRUNCATED": 1
+    },
+    "fallback_count": 0,
+    "format_repair_by_provider": {
+      "dashscope": 87,
+      "deepseek": 1,
+      "moonshot": 80
+    },
+    "format_repair_count": 168,
+    "format_repair_rate": 0.3888888888888889,
+    "hidden_ground_truth_leakage_count": 0,
+    "infrastructure_error_count": 0,
+    "infrastructure_error_rate": 0.0,
+    "invalid_structured_output_count": 4,
+    "invalid_structured_output_rate": 0.009259259259259259,
+    "leakage_count": 0,
+    "main_state_pollution_count": 0,
+    "output_truncated_count": 1,
+    "replay_consistency": "432_OF_432_SEMANTIC_MATCH",
+    "replay_semantic_matches": 432,
+    "response_availability_rate": 1.0,
+    "response_available_count": 432,
+    "schema_valid_count": 427,
+    "schema_valid_rate": 0.9884259259259259
+  },
+  "records_completed": 432,
+  "records_planned": 432,
+  "replay": {
+    "attempts_delta": 0,
+    "cache_misses": 0,
+    "cost_cny_delta": 0.0,
+    "fallback_count": 0,
+    "input_tokens_delta": 0,
+    "ledger_after_sha256": "317106473bef64ca6407e6130b72511da14d4f995e06634461bd2f98202f8ebb",
+    "network_calls": 0,
+    "output_tokens_delta": 0,
+    "provider_instances": 0,
+    "records": 432,
+    "semantic_matches": 432
+  },
+  "schema_version": "specdriftbench-heldout432-analysis-v2",
+  "status": "COMPLETE",
+  "usage": {
+    "by_provider": {
+      "dashscope": {
+        "cost_cny": 4.23167999999999,
+        "input_tokens": 1918104,
+        "latency_ms_mean": 8998.111369250057,
+        "latency_ms_total": 1295728.037172008,
+        "network_attempts": 231,
+        "output_tokens": 49434,
+        "reasoning_tokens": 0,
+        "records": 144
+      },
+      "deepseek": {
+        "cost_cny": 1.2485794440000006,
+        "input_tokens": 1165750,
+        "latency_ms_mean": 6190.986890604235,
+        "latency_ms_total": 891502.1122470098,
+        "network_attempts": 150,
+        "output_tokens": 27976,
+        "reasoning_tokens": 0,
+        "records": 144
+      },
+      "moonshot": {
+        "cost_cny": 8.298351650000003,
+        "input_tokens": 1711130,
+        "latency_ms_mean": 9218.576699347193,
+        "latency_ms_total": 1327475.044705996,
+        "network_attempts": 224,
+        "output_tokens": 44033,
+        "reasoning_tokens": 224,
+        "records": 144
+      }
+    },
+    "cost_cny_total": 13.778611093999993,
+    "input_tokens": 4794984,
+    "latency_ms_mean_all_records": 8135.891653067161,
+    "latency_ms_total": 3514705.194125014,
+    "network_attempts": 605,
+    "output_tokens": 121443,
+    "reasoning_tokens": 224
+  },
+  "validation": {
+    "analysis_plan_match": true,
+    "frozen_assets_match_manifest": true,
+    "paired_groups_144": true,
+    "record_cost_reconciles_ledger": true,
+    "records_432": true,
+    "replay_432": true,
+    "schema_valid_or_formal_error_432": true
+  },
+  "variant_classification": {
+    "AE": {
+      "f1": 0.5381165919282511,
+      "precision": 0.759493670886076,
+      "recall": 0.4166666666666667,
+      "support": 144
+    },
+    "PD": {
+      "f1": 0.5708245243128964,
+      "precision": 0.41033434650455924,
+      "recall": 0.9375,
+      "support": 144
+    },
+    "TF": {
+      "f1": 0.23312883435582823,
+      "precision": 1.0,
+      "recall": 0.13194444444444445,
+      "support": 144
+    }
+  }
+}

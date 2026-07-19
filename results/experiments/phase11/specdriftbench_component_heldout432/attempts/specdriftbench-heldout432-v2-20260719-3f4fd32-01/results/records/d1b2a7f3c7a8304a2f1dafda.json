@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 617,
+  "cost_cny_delta": 0.08572170999999962,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "d50bfafc67a7cec03aaabc685acccad402b62b7b1651960cd8357941b0483e1d",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M02",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 18067,
+  "latency_ms": 12003.471249998256,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Spec defines required field 'ref' but runtime rejects it with 'Unknown field: ref or Missing required field: branch'. Exact retry and independent reproduction both fail, confirming stable input field naming drift.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "request.body.field: ref",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1workflows~1{workflow_id}~1runs/post/requestBody/content/application/json/schema/properties/ref",
+      "tool_id": "trigger_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "trigger_pipeline"
+  },
+  "output_tokens": 361,
+  "paired_group_id": "pair-a5eef7714f410b9b",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Spec defines required field 'ref' but runtime rejects it with 'Unknown field: ref or Missing required field: branch'. Exact retry and independent reproduction both fail, confirming stable input field naming drift.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "request.body.field: ref",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1workflows~1{workflow_id}~1runs/post/requestBody/content/application/json/schema/properties/ref",
+      "tool_id": "trigger_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "trigger_pipeline"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 2,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-adafe0a41cca",
+  "raw_response_ref": "moonshot/specdriftbench_component_heldout432_real_v2/raw/63864402f166adabf0da764e582a6dabe68d26a3a2df2817c34081fb24f4e358.json",
+  "raw_response_sha256": "ae21a5e3e87617bd07e2d8b782ca03a145ff499364d623973cdc3d87b2c6dad8",
+  "reasoning_tokens": 2,
+  "record_id": "d1b2a7f3c7a8304a2f1dafda",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 18067,
+    "output_tokens": 361,
+    "reasoning_tokens": 2
+  },
+  "variant": "PD"
+}

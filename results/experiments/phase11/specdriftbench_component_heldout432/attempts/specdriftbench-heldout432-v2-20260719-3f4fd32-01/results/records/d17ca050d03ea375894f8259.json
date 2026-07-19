@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 582,
+  "cost_cny_delta": 0.07443664000000183,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": true
+  },
+  "evidence_sha256": "1b1b520266a8afa24713ece2d56a2b0e2fa17d59d3cb2d41c163e2e15f62e7c6",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M18",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 15353,
+  "latency_ms": 12279.436291995808,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "add_member returns 201 with active state, but membership is not usable. Exact retry reproduces same response. Success response disagrees with actual state usability.",
+    "confidence": 0.9,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "membership_state usability after creation",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/put/x-state-effects",
+      "tool_id": "add_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "add_member"
+  },
+  "output_tokens": 394,
+  "paired_group_id": "pair-c848865d268fc919",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "add_member returns 201 with active state, but membership is not usable. Exact retry reproduces same response. Success response disagrees with actual state usability.",
+    "confidence": 0.9,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "membership_state usability after creation",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/put/x-state-effects",
+      "tool_id": "add_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "add_member"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 2,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-2302471c0bb7",
+  "raw_response_ref": "moonshot/specdriftbench_component_heldout432_real_v2/raw/186a720b9a55829179fc60ddb9476f27bba1f5b11f99bce19dfd9a6e3248851f.json",
+  "raw_response_sha256": "22cbb4b704f59a2b3910146848b9eb019684cd5adb4368d44fab77e9718d8aa7",
+  "reasoning_tokens": 2,
+  "record_id": "d17ca050d03ea375894f8259",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 15353,
+    "output_tokens": 394,
+    "reasoning_tokens": 2
+  },
+  "variant": "PD"
+}

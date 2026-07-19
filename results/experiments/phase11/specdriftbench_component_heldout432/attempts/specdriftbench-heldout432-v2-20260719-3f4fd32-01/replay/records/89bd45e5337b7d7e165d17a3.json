@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 678,
+  "cost_cny_delta": 0.0,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "da516666a34faca3104097f4541ee78af75b32f35b32541d97cc702bbadb7c4a",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M12",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 15298,
+  "latency_ms": 10376.93741700059,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Spec preconditions require only completed status with failure/cancelled conclusion. Runtime initially rejected valid request with 409 'Current run state must be verified', then succeeded on exact retry. This indicates an unlisted workflow prerequisite (state verification step) absent from the spec, constituting persistent WPD.",
+    "confidence": 0.92,
+    "drift_category": "WPD",
+    "normalized_location": {
+      "layer": "workflow",
+      "runtime_path": "error.message",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/x-preconditions",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "output_tokens": 383,
+  "paired_group_id": "pair-b0bb249429636e19",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Spec preconditions require only completed status with failure/cancelled conclusion. Runtime initially rejected valid request with 409 'Current run state must be verified', then succeeded on exact retry. This indicates an unlisted workflow prerequisite (state verification step) absent from the spec, constituting persistent WPD.",
+    "confidence": 0.92,
+    "drift_category": "WPD",
+    "normalized_location": {
+      "layer": "workflow",
+      "runtime_path": "error.message",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/x-preconditions",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 2,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-3df5648bf121",
+  "raw_response_ref": "moonshot/specdriftbench_component_heldout432_real_v2/raw/bc544b6be209c2b7ac04ff59c1030137f295c0558ba8da4820b668d815464328.json",
+  "raw_response_sha256": "495f6164627e5f8dd90b7591383850c3948cea2ed5ff545ab3dcda1f8e9df14c",
+  "reasoning_tokens": 2,
+  "record_id": "89bd45e5337b7d7e165d17a3",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 15298,
+    "output_tokens": 383,
+    "reasoning_tokens": 2
+  },
+  "variant": "TF"
+}

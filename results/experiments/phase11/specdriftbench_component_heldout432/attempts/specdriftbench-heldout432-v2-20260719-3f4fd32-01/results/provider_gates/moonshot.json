@@ -1,0 +1,17 @@
+{
+  "completed": 144,
+  "consecutive_final_infrastructure_errors": 0,
+  "consecutive_gate_threshold": 3,
+  "expected": 144,
+  "final_infrastructure_errors": 0,
+  "infrastructure_error_rate": 0.0,
+  "infrastructure_errors": 0,
+  "infrastructure_gate_version": 2,
+  "minimum_records_for_rate_gate": 24,
+  "protocol_amendment": "1.1",
+  "provider": "moonshot",
+  "rate_gate_threshold": 0.1,
+  "schema_version": "specdriftbench-heldout-infrastructure-gate-v2",
+  "stop_reason": null,
+  "stopped": false
+}

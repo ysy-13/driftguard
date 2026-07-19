@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 1,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 948,
+  "cost_cny_delta": 0.0,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": true,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "38b8a2ee270bc24e926b20bd76f53dad447779ee83464d459ccd70b7515a773c",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M15",
+  "finish_reason": "stop",
+  "format_repair_count": 0,
+  "format_repairs": 0,
+  "input_tokens": 7454,
+  "latency_ms": 5557.044167002459,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 1,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The agent called add_member with role='triage', which the displayed spec allows (enum includes 'triage'). The runtime rejected this with PRECONDITION_FAILED and message 'Initial role must be read.', indicating a hidden precondition not present in the displayed specification. This is a stable mismatch between the spec (which implies any enum value is valid) and runtime behavior (which restricts initial role to 'read'). This constitutes persistent drift in input constraints/preconditions.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/members/{username}",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/put/requestBody/content/application~1json/schema/properties/role",
+      "tool_id": "add_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "add_member"
+  },
+  "output_tokens": 239,
+  "paired_group_id": "pair-f2190d4a496e4544",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The agent called add_member with role='triage', which the displayed spec allows (enum includes 'triage'). The runtime rejected this with PRECONDITION_FAILED and message 'Initial role must be read.', indicating a hidden precondition not present in the displayed specification. This is a stable mismatch between the spec (which implies any enum value is valid) and runtime behavior (which restricts initial role to 'read'). This constitutes persistent drift in input constraints/preconditions.",
+    "confidence": 0.95,
+    "drift_category": "ICD",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "/repositories/{repo_id}/members/{username}",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/put/requestBody/content/application~1json/schema/properties/role",
+      "tool_id": "add_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "add_member"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 1,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-3004093b28b5",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/b902284840e24b504d0634b32724215e9079598595ba16c726721f79663f81ec.json",
+  "raw_response_sha256": "721e4ef335bdcdaa4d4cf22eef5aab2e1c26f32dc5231656fa8d8e0a7ca5f3d0",
+  "reasoning_tokens": 0,
+  "record_id": "45a820facedcb37fd903da39",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 7454,
+    "output_tokens": 239,
+    "reasoning_tokens": 0
+  },
+  "variant": "PD"
+}

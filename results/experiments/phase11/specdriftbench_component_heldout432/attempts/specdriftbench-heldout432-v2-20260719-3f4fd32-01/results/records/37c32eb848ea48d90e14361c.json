@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 1,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 746,
+  "cost_cny_delta": 0.0332244899999985,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "6a7dd4256b5afc459ede4fc966ca45db083b60208378092bffee8164f8525c94",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M17",
+  "finish_reason": "stop",
+  "format_repair_count": 0,
+  "format_repairs": 0,
+  "input_tokens": 6898,
+  "latency_ms": 4136.370708998584,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 1,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The specification states that update_member_role should update role, base_permission, and updated_at. The runtime returned HTTP 200 with role='write' (matching request), but the normalized observation indicates the persisted state still held the previous role, confirming a successful response disagrees with actual persisted state (read-after-write mismatch). This is SED drift, not agent error.",
+    "confidence": 0.92,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "member.role",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/patch/x-state-effects",
+      "tool_id": "update_member_role"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "update_member_role"
+  },
+  "output_tokens": 165,
+  "paired_group_id": "pair-e8319dfc2ff8b259",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The specification states that update_member_role should update role, base_permission, and updated_at. The runtime returned HTTP 200 with role='write' (matching request), but the normalized observation indicates the persisted state still held the previous role, confirming a successful response disagrees with actual persisted state (read-after-write mismatch). This is SED drift, not agent error.",
+    "confidence": 0.92,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "member.role",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/patch/x-state-effects",
+      "tool_id": "update_member_role"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "update_member_role"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 1,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-dca374ae8970",
+  "raw_response_ref": "moonshot/specdriftbench_component_heldout432_real_v2/raw/3d2685428ef02f42d424bd202def0defdb6c26986c581f36c392eb8fb5dd9720.json",
+  "raw_response_sha256": "59237044f5a0899587895dff5dac7cb1ed7242f7d2e33435bac5f3eca285a8d2",
+  "reasoning_tokens": 1,
+  "record_id": "37c32eb848ea48d90e14361c",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 6898,
+    "output_tokens": 165,
+    "reasoning_tokens": 1
+  },
+  "variant": "TF"
+}

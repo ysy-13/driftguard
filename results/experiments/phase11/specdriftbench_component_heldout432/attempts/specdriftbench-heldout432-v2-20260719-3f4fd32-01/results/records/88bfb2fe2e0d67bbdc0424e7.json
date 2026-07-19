@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 1,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 614,
+  "cost_cny_delta": 0.010300737999999754,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "838f6bbe0c6a85d27c7f38625faa4926278cba3483c2a73c3f745c5315f4fcee",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M08",
+  "finish_reason": "stop",
+  "format_repair_count": 0,
+  "format_repairs": 0,
+  "input_tokens": 9741,
+  "latency_ms": 3161.325125001895,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 1,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed spec expects a top-level 'role' field in the Member object, but the runtime returns 'role' nested under 'permissions.role_name'. This mismatch is persistent across multiple calls and probes, indicating a stable response shape drift.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.permissions.role_name",
+      "spec_pointer": "/components/schemas/Member/properties/role",
+      "tool_id": "get_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_member"
+  },
+  "output_tokens": 169,
+  "paired_group_id": "pair-62ad16ba1c2997ac",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed spec expects a top-level 'role' field in the Member object, but the runtime returns 'role' nested under 'permissions.role_name'. This mismatch is persistent across multiple calls and probes, indicating a stable response shape drift.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.permissions.role_name",
+      "spec_pointer": "/components/schemas/Member/properties/role",
+      "tool_id": "get_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_member"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-93373d4ff3d7",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v2/raw/207297ed84090bfab1c03049464404f714a695d2a9b668efc9d2a345eb566334.json",
+  "raw_response_sha256": "bf13db0b80225f8ad2cb11c821d10886545fa665b3bd0f05a0779ba565974902",
+  "reasoning_tokens": 0,
+  "record_id": "88bfb2fe2e0d67bbdc0424e7",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 9741,
+    "output_tokens": 169,
+    "reasoning_tokens": 0
+  },
+  "variant": "PD"
+}

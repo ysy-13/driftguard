@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 597,
+  "cost_cny_delta": 0.0,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "5c6763419c235e3c7edff6ff12566f6bb98a1906b38c762bfc6207a287a6489d",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M07",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 15482,
+  "latency_ms": 9508.015458995942,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Spec defines fields 'status' and 'conclusion' in PipelineRun. Initial runtime response (EV005) returns 'state' and 'result' instead, with probe flagging missing_output_field for 'status'. Retry (EV006) returns correct fields. Persistent response-field naming drift in runtime.",
+    "confidence": 0.92,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.state",
+      "spec_pointer": "/components/schemas/PipelineRun/properties/status",
+      "tool_id": "get_pipeline_status"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_pipeline_status"
+  },
+  "output_tokens": 360,
+  "paired_group_id": "pair-5e3f9295b5e8e9fc",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Spec defines fields 'status' and 'conclusion' in PipelineRun. Initial runtime response (EV005) returns 'state' and 'result' instead, with probe flagging missing_output_field for 'status'. Retry (EV006) returns correct fields. Persistent response-field naming drift in runtime.",
+    "confidence": 0.92,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.state",
+      "spec_pointer": "/components/schemas/PipelineRun/properties/status",
+      "tool_id": "get_pipeline_status"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_pipeline_status"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 2,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-e0cf0c40ecbc",
+  "raw_response_ref": "moonshot/specdriftbench_component_heldout432_real_v2/raw/d0ae062322bd27f8c2df43472ac461bf83acaedf578cf4e9414eb0b66a8be294.json",
+  "raw_response_sha256": "ff669b12325b5701f8cfb7ea146c3e365f3966738e13497ba0f694ece351f746",
+  "reasoning_tokens": 2,
+  "record_id": "de93627f923414214adcdd40",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 15482,
+    "output_tokens": 360,
+    "reasoning_tokens": 2
+  },
+  "variant": "TF"
+}

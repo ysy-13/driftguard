@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 668,
+  "cost_cny_delta": 0.03664000000000023,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "57f0af304613c51cc6febe36f5ec95fd7894518374fd12df7964d24a2e0f47c6",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M20",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 16476,
+  "latency_ms": 11534.210124998935,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The update_repository call returned 200 OK with the new default_branch in the payload, but the persistent state hash remained unchanged. This mismatch between the successful response indicating an update and the actual persisted state remaining old is a State Effect Drift (SED).",
+    "confidence": 0.9,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "visible_state_diff",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}/patch/x-state-effects",
+      "tool_id": "update_repository"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "update_repository"
+  },
+  "output_tokens": 461,
+  "paired_group_id": "pair-eb2e4c3080899fe6",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The update_repository call returned 200 OK with the new default_branch in the payload, but the persistent state hash remained unchanged. This mismatch between the successful response indicating an update and the actual persisted state remaining old is a State Effect Drift (SED).",
+    "confidence": 0.9,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "visible_state_diff",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}/patch/x-state-effects",
+      "tool_id": "update_repository"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "update_repository"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-0672abe29feb",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/596e7229f413fe33057a022865cdfd6dd3df121d9b109a3cce0c7be5342e0229.json",
+  "raw_response_sha256": "245be8b54a326ebcad84121d46ea1339df415967f161d248501b10a016cd8848",
+  "reasoning_tokens": 0,
+  "record_id": "cc5d024bad10961180afe3b7",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 16476,
+    "output_tokens": 461,
+    "reasoning_tokens": 0
+  },
+  "variant": "AE"
+}

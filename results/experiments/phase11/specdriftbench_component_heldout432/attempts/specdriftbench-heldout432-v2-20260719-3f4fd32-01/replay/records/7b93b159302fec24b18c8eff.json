@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 582,
+  "cost_cny_delta": 0.0,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "4b7d0af6503d74802fca5a924d843dd753af2f4d913423f34afebd936b1f35ec",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M10",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 15128,
+  "latency_ms": 14792.693333001807,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The spec defines 'run_attempt' and the runtime returns 'run_attempt' at data.run_attempt. The agent incorrectly requested 'data.attempt'. Spec and runtime agree; this is an agent misinterpretation, not drift.",
+    "confidence": 0.95,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.run_attempt",
+      "spec_pointer": "/components/schemas/PipelineRun/properties/run_attempt",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "retry_pipeline"
+  },
+  "output_tokens": 567,
+  "paired_group_id": "pair-229d47b4674440e2",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The spec defines 'run_attempt' and the runtime returns 'run_attempt' at data.run_attempt. The agent incorrectly requested 'data.attempt'. Spec and runtime agree; this is an agent misinterpretation, not drift.",
+    "confidence": 0.95,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.run_attempt",
+      "spec_pointer": "/components/schemas/PipelineRun/properties/run_attempt",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "retry_pipeline"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 2,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-bc85205f99f8",
+  "raw_response_ref": "moonshot/specdriftbench_component_heldout432_real_v2/raw/0cdd7473c723f15032ea1a95305eb26897041d3f86aecf75add4057367a28ccf.json",
+  "raw_response_sha256": "850de0d904ae152f4657cc8d09223951dac2e7108ee79d6d83a9721b78d4edc0",
+  "reasoning_tokens": 2,
+  "record_id": "7b93b159302fec24b18c8eff",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 15128,
+    "output_tokens": 567,
+    "reasoning_tokens": 2
+  },
+  "variant": "AE"
+}

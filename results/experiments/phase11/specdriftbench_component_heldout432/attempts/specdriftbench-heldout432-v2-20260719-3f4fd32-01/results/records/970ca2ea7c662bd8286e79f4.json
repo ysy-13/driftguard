@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 744,
+  "cost_cny_delta": 0.03876599999999897,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "21182d1561836597de5a4ce2804cb4a8e9e6fe35475571e4f323a550193dafe0",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M14",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 16875,
+  "latency_ms": 14133.886624997103,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Agent called update_member_role with valid schema. Runtime returned 409 PRECONDITION_FAILED ('Role transition not allowed'). Spec preconditions do not list transition constraints, but error indicates invalid state change. Request conforms to spec; failure is due to business logic/state, implying agent chose an invalid transition.",
+    "confidence": 0.85,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "workflow",
+      "runtime_path": "/repositories/{repo_id}/members/{username}",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/patch",
+      "tool_id": "update_member_role"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "update_member_role"
+  },
+  "output_tokens": 627,
+  "paired_group_id": "pair-bf94d74acc52b080",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Agent called update_member_role with valid schema. Runtime returned 409 PRECONDITION_FAILED ('Role transition not allowed'). Spec preconditions do not list transition constraints, but error indicates invalid state change. Request conforms to spec; failure is due to business logic/state, implying agent chose an invalid transition.",
+    "confidence": 0.85,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "workflow",
+      "runtime_path": "/repositories/{repo_id}/members/{username}",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/patch",
+      "tool_id": "update_member_role"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "update_member_role"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-302906882764",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/5e47b769687759d1b2bb8196ef886f644b11b29d979ba4bd13c99d480cfbd470.json",
+  "raw_response_sha256": "39cd5aeb200b1444d3f6275c7d97b9d0283b050c7d7046847cc024455c0c15a3",
+  "reasoning_tokens": 0,
+  "record_id": "970ca2ea7c662bd8286e79f4",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 16875,
+    "output_tokens": 627,
+    "reasoning_tokens": 0
+  },
+  "variant": "PD"
+}

@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 632,
+  "cost_cny_delta": 0.07779464000000047,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "e3788819f209074afcd8291787e793ff0a110985dcfd892d62fef9bb4fb125dc",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M08",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 16178,
+  "latency_ms": 11895.202541003528,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Runtime returns nested permissions.role_name/permissions.base instead of spec-mandated top-level role/base_permission fields. The retry later returned canonical structure, but EV005's normalized_observation explicitly flags missing_output_field for 'role' at canonical paths, confirming a stable response shape mismatch.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.permissions.role_name",
+      "spec_pointer": "/components/schemas/Member/properties/role",
+      "tool_id": "get_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_member"
+  },
+  "output_tokens": 380,
+  "paired_group_id": "pair-6495304210ea3d80",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Runtime returns nested permissions.role_name/permissions.base instead of spec-mandated top-level role/base_permission fields. The retry later returned canonical structure, but EV005's normalized_observation explicitly flags missing_output_field for 'role' at canonical paths, confirming a stable response shape mismatch.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.permissions.role_name",
+      "spec_pointer": "/components/schemas/Member/properties/role",
+      "tool_id": "get_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_member"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 2,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-4b5a95c8d459",
+  "raw_response_ref": "moonshot/specdriftbench_component_heldout432_real_v2/raw/64fe13fd5f4b6bcf2843a2e50f5d98d5aa316d72ca722f10a796079f12af4a60.json",
+  "raw_response_sha256": "aafecd82c3b202681a8ebe0827bf3211c24609e28eba55b9ad144f4eb6ada9ee",
+  "reasoning_tokens": 2,
+  "record_id": "3c93dee27da8339d99fc28f3",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 16178,
+    "output_tokens": 380,
+    "reasoning_tokens": 2
+  },
+  "variant": "TF"
+}

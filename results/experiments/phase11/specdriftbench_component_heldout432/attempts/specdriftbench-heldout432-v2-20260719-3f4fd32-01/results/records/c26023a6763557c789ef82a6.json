@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 1,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 789,
+  "cost_cny_delta": 0.033331799999999134,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "6336fd8d610520bd0cf35b147b52ce9029f42a74bbdc793932dcdc0bd0a2e85c",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M07",
+  "finish_reason": "stop",
+  "format_repair_count": 0,
+  "format_repairs": 0,
+  "input_tokens": 6910,
+  "latency_ms": 6860.415416998876,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 1,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The runtime response uses 'state' instead of the specified 'status' field, and 'result' instead of 'conclusion'. This is a stable field-name mismatch in the response payload: spec requires PipelineRun with fields 'status' and 'conclusion', but runtime returns 'state' and 'result'. The normalized_observation explicitly flags 'missing_output_field' for 'status' with message about canonical paths being unavailable, confirming persistent response-schema drift.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.data.state",
+      "spec_pointer": "/components/schemas/PipelineRun/properties/status",
+      "tool_id": "get_pipeline_status"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_pipeline_status"
+  },
+  "output_tokens": 168,
+  "paired_group_id": "pair-ed6bc9ec2b859dd7",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The runtime response uses 'state' instead of the specified 'status' field, and 'result' instead of 'conclusion'. This is a stable field-name mismatch in the response payload: spec requires PipelineRun with fields 'status' and 'conclusion', but runtime returns 'state' and 'result'. The normalized_observation explicitly flags 'missing_output_field' for 'status' with message about canonical paths being unavailable, confirming persistent response-schema drift.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.data.state",
+      "spec_pointer": "/components/schemas/PipelineRun/properties/status",
+      "tool_id": "get_pipeline_status"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_pipeline_status"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 1,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-0a0344458ac0",
+  "raw_response_ref": "moonshot/specdriftbench_component_heldout432_real_v2/raw/8191c419e157495bd8429f9d6bc908705a67a7cad9147c1f7b42d8936bf90ce4.json",
+  "raw_response_sha256": "7a00e30cfc11132846dda1418c3b076a301fa51e647c7bc26bcc77193e4e8243",
+  "reasoning_tokens": 1,
+  "record_id": "c26023a6763557c789ef82a6",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 6910,
+    "output_tokens": 168,
+    "reasoning_tokens": 1
+  },
+  "variant": "PD"
+}

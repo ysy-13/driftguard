@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 678,
+  "cost_cny_delta": 0.0,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "aded331e89398c4e41750757b76282df9c753863b43f619d82370f8fa08ae28a",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M02",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 15124,
+  "latency_ms": 14246.730333001324,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The agent sent 'ref' instead of the spec-required 'branch' field. Both local validation (conforms_to_displayed_spec: false) and runtime rejection (VALIDATION_ERROR: Missing required field: branch) agree. Specification and runtime are consistent; this is an agent field-naming error.",
+    "confidence": 0.95,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "request.body.ref",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1workflows~1{workflow_id}~1runs/post/requestBody/content/application/json/schema/properties/branch",
+      "tool_id": "trigger_pipeline"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "trigger_pipeline"
+  },
+  "output_tokens": 492,
+  "paired_group_id": "pair-5d0a7a88a6bae4fb",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The agent sent 'ref' instead of the spec-required 'branch' field. Both local validation (conforms_to_displayed_spec: false) and runtime rejection (VALIDATION_ERROR: Missing required field: branch) agree. Specification and runtime are consistent; this is an agent field-naming error.",
+    "confidence": 0.95,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "input",
+      "runtime_path": "request.body.ref",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1workflows~1{workflow_id}~1runs/post/requestBody/content/application/json/schema/properties/branch",
+      "tool_id": "trigger_pipeline"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "trigger_pipeline"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 2,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-d19fcd113d97",
+  "raw_response_ref": "moonshot/specdriftbench_component_heldout432_real_v2/raw/32553577cc84e52867419956b420dd200b4fb92a2e4ab6a7af47702412e87a75.json",
+  "raw_response_sha256": "37e4825eb455a2fe4dc64051f1da8e4aeeb9a2c1d7b6fd73b6e8ac51b6af720f",
+  "reasoning_tokens": 2,
+  "record_id": "64dbea2c2112708f6837f8d3",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 15124,
+    "output_tokens": 492,
+    "reasoning_tokens": 2
+  },
+  "variant": "AE"
+}

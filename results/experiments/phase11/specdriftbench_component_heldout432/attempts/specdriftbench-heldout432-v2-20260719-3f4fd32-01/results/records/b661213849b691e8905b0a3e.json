@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 808,
+  "cost_cny_delta": 0.03541400000000117,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "c08efb14d1ce7fd11c3a07c2d62aef8e3c755c26329ae270598628326c2ab9a8",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M08",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 15975,
+  "latency_ms": 10679.564875001233,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The runtime response for get_member (T11) returns a Member object where 'role' and 'base_permission' are nested under 'data.permissions' as 'role_name' and 'base'. However, the displayed specification defines the Member schema with 'role' and 'base_permission' as top-level required fields. This is a stable mismatch between the spec's expected flat structure and the runtime's nested structure, constituting Response Structure Drift (RSD).",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.permissions.role_name",
+      "spec_pointer": "/components/schemas/Member/properties/role",
+      "tool_id": "get_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_member"
+  },
+  "output_tokens": 433,
+  "paired_group_id": "pair-7ecca0ef3a462170",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The runtime response for get_member (T11) returns a Member object where 'role' and 'base_permission' are nested under 'data.permissions' as 'role_name' and 'base'. However, the displayed specification defines the Member schema with 'role' and 'base_permission' as top-level required fields. This is a stable mismatch between the spec's expected flat structure and the runtime's nested structure, constituting Response Structure Drift (RSD).",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.permissions.role_name",
+      "spec_pointer": "/components/schemas/Member/properties/role",
+      "tool_id": "get_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_member"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-4428482ce42e",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/df6d42db1259214feb846fc208e4d95cd6a53a49c61fbc84fa29568bd6e6f94c.json",
+  "raw_response_sha256": "2200966e9edb59e666a10e75d6b99fbbb005d3be0fddb14cb8aa06e03f3a0f7e",
+  "reasoning_tokens": 0,
+  "record_id": "b661213849b691e8905b0a3e",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 15975,
+    "output_tokens": 433,
+    "reasoning_tokens": 0
+  },
+  "variant": "AE"
+}

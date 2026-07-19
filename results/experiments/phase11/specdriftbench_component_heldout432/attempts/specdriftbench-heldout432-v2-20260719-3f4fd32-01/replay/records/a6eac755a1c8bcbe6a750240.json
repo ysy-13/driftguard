@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 580,
+  "cost_cny_delta": 0.0,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "4e9adc6cf2a6183c61f8372eb40976c1e5f560b43d37f1f9fd5d518401bf1cf9",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M17",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 14790,
+  "latency_ms": 11385.464541002875,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "kimi-k2.6",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "Spec documents x-state-effects: 'response shows new role, persistent role remains old'. Runtime returns 200 with role='write' but observed persistent state remains previous role. Successful response disagrees with persisted state.",
+    "confidence": 0.92,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "member.role",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/patch/x-state-effects",
+      "tool_id": "update_member_role"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "update_member_role"
+  },
+  "output_tokens": 333,
+  "paired_group_id": "pair-19e876084183e58b",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "Spec documents x-state-effects: 'response shows new role, persistent role remains old'. Runtime returns 200 with role='write' but observed persistent state remains previous role. Successful response disagrees with persisted state.",
+    "confidence": 0.92,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "member.role",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/patch/x-state-effects",
+      "tool_id": "update_member_role"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "update_member_role"
+  },
+  "provider": "moonshot",
+  "provider_attempts": 2,
+  "provider_profile_id": "moonshot-kimi-k2.6-nonthinking-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-fa7fc1fd77b4",
+  "raw_response_ref": "moonshot/specdriftbench_component_heldout432_real_v2/raw/08894030180102d23cb855246be7c13625f6a2d66cab67fefdb6132a9b5f9c3e.json",
+  "raw_response_sha256": "87a3888256b161db44f5c5e6be23b55f01fbb61dd80aeba01f9ad84236b09308",
+  "reasoning_tokens": 2,
+  "record_id": "a6eac755a1c8bcbe6a750240",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 14790,
+    "output_tokens": 333,
+    "reasoning_tokens": 2
+  },
+  "variant": "AE"
+}

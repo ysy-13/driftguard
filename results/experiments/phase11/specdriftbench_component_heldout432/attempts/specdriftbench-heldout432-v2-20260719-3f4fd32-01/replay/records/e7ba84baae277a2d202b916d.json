@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 769,
+  "cost_cny_delta": 0.0,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "d08227c0b17928bcce6042a7d108f6491a3e4d02f9187407db0d27417231d0b5",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M07",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 15501,
+  "latency_ms": 10259.720124999149,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The agent attempted to access 'data.status' and 'data.conclusion', but the runtime response for get_pipeline_status (T08) returns fields named 'state' and 'result' as defined in the PipelineRun schema. The displayed specification clearly defines these field names, so the mismatch is due to the agent's incorrect interpretation/request of field names rather than a specification drift.",
+    "confidence": 0.95,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.state,data.result",
+      "spec_pointer": "/components/schemas/PipelineRun/properties/state",
+      "tool_id": "get_pipeline_status"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "get_pipeline_status"
+  },
+  "output_tokens": 404,
+  "paired_group_id": "pair-51fa130b4cd7ed2c",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The agent attempted to access 'data.status' and 'data.conclusion', but the runtime response for get_pipeline_status (T08) returns fields named 'state' and 'result' as defined in the PipelineRun schema. The displayed specification clearly defines these field names, so the mismatch is due to the agent's incorrect interpretation/request of field names rather than a specification drift.",
+    "confidence": 0.95,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.state,data.result",
+      "spec_pointer": "/components/schemas/PipelineRun/properties/state",
+      "tool_id": "get_pipeline_status"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "get_pipeline_status"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-38dc6189c374",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/68693e87485cc65d753a101d23f197171ab0c98275fdebb17af7d763261fc5e6.json",
+  "raw_response_sha256": "a2e847a8242d5ee3136941a6b66df643430b7a6b55603565276e90b1d63c5bf5",
+  "reasoning_tokens": 0,
+  "record_id": "e7ba84baae277a2d202b916d",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 15501,
+    "output_tokens": 404,
+    "reasoning_tokens": 0
+  },
+  "variant": "AE"
+}

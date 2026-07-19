@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 4,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 638,
+  "cost_cny_delta": 0.008250606000000715,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "55dff14e2961c5674e9784e829033ca69a812c0750a8109bafd5b736a55ae60f",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M10",
+  "finish_reason": "stop",
+  "format_repair_count": 0,
+  "format_repairs": 0,
+  "input_tokens": 7687,
+  "latency_ms": 246098.27199999927,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 1,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The runtime response returns 'run_attempt' instead of the spec-defined 'attempt' field, and the spec's PipelineRun schema requires 'attempt'. This is a persistent response field name mismatch (RSD).",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.run_attempt",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/responses/201/content/application~1json/schema",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "output_tokens": 193,
+  "paired_group_id": "pair-34cdee82e203e1cb",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The runtime response returns 'run_attempt' instead of the spec-defined 'attempt' field, and the spec's PipelineRun schema requires 'attempt'. This is a persistent response field name mismatch (RSD).",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.run_attempt",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1pipeline-runs~1{run_id}~1retry/post/responses/201/content/application~1json/schema",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 4,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "provider_retry_count": 3,
+  "public_scenario_id": "public-9226a0d28ee8",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v2/raw/c2ad6e9dab32e482128b32d3508e07653450db37aef2574b2e59938ec7c70acb.json",
+  "raw_response_sha256": "1b0205473064745f6bd4950bacca8070f8d78a7f426b73a1e27476209ca65bbe",
+  "reasoning_tokens": 0,
+  "record_id": "f9a590d0cb9c41d53917f128",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 7687,
+    "output_tokens": 193,
+    "reasoning_tokens": 0
+  },
+  "variant": "PD"
+}

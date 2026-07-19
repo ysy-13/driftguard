@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 1,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 897,
+  "cost_cny_delta": 0.018204000000000775,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "31221e0d9bf27502a231251a0db3c0ce9cffc0c82fc59b1094aded64f67b4b17",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M15",
+  "finish_reason": "stop",
+  "format_repair_count": 0,
+  "format_repairs": 0,
+  "input_tokens": 8198,
+  "latency_ms": 5340.344416999869,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 1,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed specification for add_member allows any enum role (including 'triage') with a default of 'read'. The runtime initially rejected 'triage' with PRECONDITION_FAILED ('Initial role must be read'), indicating a hidden runtime constraint not present in the spec. However, the exact same request succeeded on retry, returning the requested 'triage' role. This inconsistency (failure then success without change) characterizes a transient failure rather than persistent drift or agent error.",
+    "confidence": 0.9,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "workflow",
+      "runtime_path": "/repositories/{repo_id}/members/{username}",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/put",
+      "tool_id": "add_member"
+    },
+    "predicted_class": "TRANSIENT_FAILURE",
+    "target_tool": "add_member"
+  },
+  "output_tokens": 226,
+  "paired_group_id": "pair-61604e2774ed65d3",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed specification for add_member allows any enum role (including 'triage') with a default of 'read'. The runtime initially rejected 'triage' with PRECONDITION_FAILED ('Initial role must be read'), indicating a hidden runtime constraint not present in the spec. However, the exact same request succeeded on retry, returning the requested 'triage' role. This inconsistency (failure then success without change) characterizes a transient failure rather than persistent drift or agent error.",
+    "confidence": 0.9,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "workflow",
+      "runtime_path": "/repositories/{repo_id}/members/{username}",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/put",
+      "tool_id": "add_member"
+    },
+    "predicted_class": "TRANSIENT_FAILURE",
+    "target_tool": "add_member"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 1,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-d2c07869097a",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/bd0d975e4ced72c263e6b4c5c8a0794ebd68324f62cee1acf7ff58214163829a.json",
+  "raw_response_sha256": "94b2dbc8302f9f6f22b0250166d08d85f77276d5cdd1e15c42a3a0f90f440d6b",
+  "reasoning_tokens": 0,
+  "record_id": "4664a0f39470a03aa59e036f",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 8198,
+    "output_tokens": 226,
+    "reasoning_tokens": 0
+  },
+  "variant": "TF"
+}

@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 751,
+  "cost_cny_delta": 0.03351799999999905,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "7e943dc660b6ef1f9a6bb19730b2f8167aa4894f46aa7e6408237c9ef70673b2",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M09",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 15251,
+  "latency_ms": 10681.984501003171,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed specification defines the field as 'defaultBranch' (camelCase) in the Repository schema. The runtime response correctly returns 'defaultBranch'. However, the agent's local validation failed because it attempted to access 'data.default_branch' (snake_case), which does not exist in the response. This is an agent interpretation error, not a specification drift.",
+    "confidence": 0.95,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.defaultBranch",
+      "spec_pointer": "/components/schemas/Repository/properties/defaultBranch",
+      "tool_id": "get_repository"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "get_repository"
+  },
+  "output_tokens": 377,
+  "paired_group_id": "pair-aabfd9366635ebbd",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed specification defines the field as 'defaultBranch' (camelCase) in the Repository schema. The runtime response correctly returns 'defaultBranch'. However, the agent's local validation failed because it attempted to access 'data.default_branch' (snake_case), which does not exist in the response. This is an agent interpretation error, not a specification drift.",
+    "confidence": 0.95,
+    "drift_category": "NONE",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.defaultBranch",
+      "spec_pointer": "/components/schemas/Repository/properties/defaultBranch",
+      "tool_id": "get_repository"
+    },
+    "predicted_class": "AGENT_ERROR",
+    "target_tool": "get_repository"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-4bf040e046e4",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/0b6cdb1f383c3be1212056922d2266e8bad10ff7f6682a6768b8be6e17b2e0d5.json",
+  "raw_response_sha256": "09dac266a0b6be4ffe9edc3ad8e11c30a4583ca87fe38131fbbf4eca400e80ff",
+  "reasoning_tokens": 0,
+  "record_id": "6afcbed32b542f09aaa72003",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 15251,
+    "output_tokens": 377,
+    "reasoning_tokens": 0
+  },
+  "variant": "AE"
+}

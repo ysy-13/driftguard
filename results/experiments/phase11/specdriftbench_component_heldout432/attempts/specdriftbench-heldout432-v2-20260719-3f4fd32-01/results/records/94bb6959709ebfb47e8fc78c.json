@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 711,
+  "cost_cny_delta": 0.034276000000000195,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "228ee911a447d1bba896eaca824b62e92392d2800cfbdedc35db92609ca99356",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M10",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 15646,
+  "latency_ms": 10517.712625998684,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The runtime response for retry_pipeline returns the field 'run_attempt' instead of the spec-defined 'attempt'. The normalized observation explicitly flags 'missing_output_field' for 'attempt', and the visible payload confirms the mismatch (runtime has 'run_attempt': 2, spec requires 'attempt'). This is a stable response schema mismatch.",
+    "confidence": 1.0,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.run_attempt",
+      "spec_pointer": "/components/schemas/PipelineRun/properties/attempt",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "output_tokens": 373,
+  "paired_group_id": "pair-460965e5c95f615c",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The runtime response for retry_pipeline returns the field 'run_attempt' instead of the spec-defined 'attempt'. The normalized observation explicitly flags 'missing_output_field' for 'attempt', and the visible payload confirms the mismatch (runtime has 'run_attempt': 2, spec requires 'attempt'). This is a stable response schema mismatch.",
+    "confidence": 1.0,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.run_attempt",
+      "spec_pointer": "/components/schemas/PipelineRun/properties/attempt",
+      "tool_id": "retry_pipeline"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "retry_pipeline"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-af4b696fde1f",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/e6a8452df3c7b126048f1809327af1679113f973261cec701ba0df1c995c4567.json",
+  "raw_response_sha256": "9209fbe43c0566eed6f75a00f52cc3352e4c750f31635051286e195af954e9ea",
+  "reasoning_tokens": 0,
+  "record_id": "94bb6959709ebfb47e8fc78c",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 15646,
+    "output_tokens": 373,
+    "reasoning_tokens": 0
+  },
+  "variant": "TF"
+}

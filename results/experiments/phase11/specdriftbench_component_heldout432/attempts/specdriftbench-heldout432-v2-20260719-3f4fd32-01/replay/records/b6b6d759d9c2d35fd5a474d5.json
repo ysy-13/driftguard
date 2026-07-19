@@ -1,0 +1,61 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 586,
+  "cost_cny_delta": 0.0,
+  "error": {
+    "sanitized_message": "'#/components/schemas/PipelineRun/properties/status' does not match '^/'",
+    "type": "InvalidStructuredOutput"
+  },
+  "error_class": "INVALID_STRUCTURED_OUTPUT",
+  "evaluation": {
+    "category_correct": null,
+    "class_correct": null,
+    "location_correct": null,
+    "target_correct": null
+  },
+  "evidence_sha256": "7ae80f38c32dd47afb9d9bf70d24ce2e7c22ca4e325fdfbe02263adb60c854e1",
+  "evidence_view": "FULL_EVIDENCE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M07",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 17636,
+  "latency_ms": 10234.278209001786,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": null,
+  "output_tokens": 393,
+  "paired_group_id": "pair-768fd41693641088",
+  "parsed_result": null,
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-e0cf0c40ecbc",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/3f5d7fd49b3eeae2fec3b60efdc0c27722d07c280d27513ecc0755984bb745ec.json",
+  "raw_response_sha256": "530b38badddab16589ddea5ddfd8ee3863af1a6e66c6adcf076965ef32dbf5a0",
+  "reasoning_tokens": 0,
+  "record_id": "b6b6d759d9c2d35fd5a474d5",
+  "repetition": 1,
+  "schema_valid": false,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "INVALID_STRUCTURED_OUTPUT",
+  "usage_if_available": {
+    "input_tokens": 17636,
+    "output_tokens": 393,
+    "reasoning_tokens": 0
+  },
+  "variant": "TF"
+}

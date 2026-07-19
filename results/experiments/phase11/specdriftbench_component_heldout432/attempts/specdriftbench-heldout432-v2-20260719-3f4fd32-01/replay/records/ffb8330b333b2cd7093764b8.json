@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 1,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 893,
+  "cost_cny_delta": 0.0,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": true,
+    "target_correct": true
+  },
+  "evidence_sha256": "1b1b520266a8afa24713ece2d56a2b0e2fa17d59d3cb2d41c163e2e15f62e7c6",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M18",
+  "finish_reason": "stop",
+  "format_repair_count": 0,
+  "format_repairs": 0,
+  "input_tokens": 8171,
+  "latency_ms": 6393.72345800075,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 1,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The tool call to add_member returns a 201 success with correct payload structure (RSD check passes), but the normalized_observation indicates a state mismatch: 'Successful response is followed by membership unavailability.' The after_state_hash equals the before_state_hash, confirming the write did not persist despite the success response. This is a State-Effect Drift (SED) where the runtime behavior (no state change) contradicts the specification's promised state effect (membership created).",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "state_hash_equality",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/put/x-state-effects",
+      "tool_id": "add_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "add_member"
+  },
+  "output_tokens": 232,
+  "paired_group_id": "pair-ee53064baa87515d",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The tool call to add_member returns a 201 success with correct payload structure (RSD check passes), but the normalized_observation indicates a state mismatch: 'Successful response is followed by membership unavailability.' The after_state_hash equals the before_state_hash, confirming the write did not persist despite the success response. This is a State-Effect Drift (SED) where the runtime behavior (no state change) contradicts the specification's promised state effect (membership created).",
+    "confidence": 0.95,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "state_hash_equality",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/put/x-state-effects",
+      "tool_id": "add_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "add_member"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 1,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-2302471c0bb7",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/b2d5afe2c6276918e1fdeb28d867a366dd6d40f20b717f90d3126c2f3b5cd8de.json",
+  "raw_response_sha256": "30e7a128d09f114deea2465a7d31dbea40921e0133ef137564d767f0a80f19e0",
+  "reasoning_tokens": 0,
+  "record_id": "ffb8330b333b2cd7093764b8",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 8171,
+    "output_tokens": 232,
+    "reasoning_tokens": 0
+  },
+  "variant": "PD"
+}

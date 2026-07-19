@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 1,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": true,
+  "content_length": 668,
+  "cost_cny_delta": 0.0,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": true,
+    "class_correct": true,
+    "location_correct": false,
+    "target_correct": true
+  },
+  "evidence_sha256": "92ecb6604a16091a879dff6628b78ab0a83f8c0a8a34ec2555d93c2c87cef454",
+  "evidence_view": "FIRST_FAILURE",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M09",
+  "finish_reason": "stop",
+  "format_repair_count": 0,
+  "format_repairs": 0,
+  "input_tokens": 7397,
+  "latency_ms": 2989.1906670018216,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 1,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed specification requires a 'default_branch' field in the response, but the runtime returns 'defaultBranch' (camelCase). This is a persistent naming mismatch, not a transient failure or agent error.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.data.defaultBranch",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}/get/responses/200/content/application~1json/schema/properties/data/properties/default_branch",
+      "tool_id": "get_repository"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_repository"
+  },
+  "output_tokens": 183,
+  "paired_group_id": "pair-1018c42da59e0acc",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed specification requires a 'default_branch' field in the response, but the runtime returns 'defaultBranch' (camelCase). This is a persistent naming mismatch, not a transient failure or agent error.",
+    "confidence": 0.95,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "payload.data.defaultBranch",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}/get/responses/200/content/application~1json/schema/properties/data/properties/default_branch",
+      "tool_id": "get_repository"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_repository"
+  },
+  "provider": "deepseek",
+  "provider_attempts": 1,
+  "provider_profile_id": "deepseek-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-9c6340cc26ca",
+  "raw_response_ref": "deepseek/specdriftbench_component_heldout432_real_v2/raw/1930ca6937f82db73b637b09014b348a0f484d436b22764c22f219dc30a6d4cb.json",
+  "raw_response_sha256": "ebc20a3eb67370a8cffcc0a86c9b57a50824307639f81c2b102ad9fbad106b44",
+  "reasoning_tokens": 0,
+  "record_id": "06273b9c998dbed577c8a1b6",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 7397,
+    "output_tokens": 183,
+    "reasoning_tokens": 0
+  },
+  "variant": "PD"
+}

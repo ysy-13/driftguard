@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 606,
+  "cost_cny_delta": 0.03742800000000024,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "7d48a2c4b39daa091108b0bcbfcfdfa9948a809d5113a24dfecd5cd10d6bf5ab",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M18",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 16990,
+  "latency_ms": 11816.914291001012,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "add_member returns 201 success but state hash is unchanged (EV005), indicating the write did not persist immediately. This contradicts the spec's x-state-effects guarantee, constituting Stable Effect Drift (SED).",
+    "confidence": 0.9,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "visible_state_diff",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/put/x-state-effects",
+      "tool_id": "add_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "add_member"
+  },
+  "output_tokens": 431,
+  "paired_group_id": "pair-38ff752f5357e3dd",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "add_member returns 201 success but state hash is unchanged (EV005), indicating the write did not persist immediately. This contradicts the spec's x-state-effects guarantee, constituting Stable Effect Drift (SED).",
+    "confidence": 0.9,
+    "drift_category": "SED",
+    "normalized_location": {
+      "layer": "state_effect",
+      "runtime_path": "visible_state_diff",
+      "spec_pointer": "/paths/~1repositories~1{repo_id}~1members~1{username}/put/x-state-effects",
+      "tool_id": "add_member"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "add_member"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-6e864360b256",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/b6844eb8e51235f2973ab6b67d89a03675936dcc65e0642ba9c4c3c20f1d4418.json",
+  "raw_response_sha256": "c6775220ccbc5cc276ea426afaa2f1ae656d5f04e980ebbff5767045bcf7bc76",
+  "reasoning_tokens": 0,
+  "record_id": "e5d23f296931abed59c115ee",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 16990,
+    "output_tokens": 431,
+    "reasoning_tokens": 0
+  },
+  "variant": "TF"
+}

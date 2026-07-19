@@ -1,0 +1,84 @@
+{
+  "actual_network_attempts": 2,
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "cache_hit": false,
+  "content_length": 702,
+  "cost_cny_delta": 0.03453000000000017,
+  "error": null,
+  "error_class": "NONE",
+  "evaluation": {
+    "category_correct": false,
+    "class_correct": false,
+    "location_correct": true,
+    "target_correct": false
+  },
+  "evidence_sha256": "1bf03f13826c42c750c43520a5d4537e757d9ec3ef31db3fe764522f3d2d8881",
+  "evidence_view": "RETRY_HISTORY",
+  "execution_status": "REAL_PROVIDER",
+  "experiment_mode": "SPECDRIFTBENCH_COMPONENT_HELDOUT_432",
+  "fallback_used": false,
+  "family": "M09",
+  "finish_reason": "stop",
+  "format_repair_count": 1,
+  "format_repairs": 1,
+  "input_tokens": 15789,
+  "latency_ms": 10215.476415996818,
+  "leakage": {
+    "api_key_value_present": false,
+    "hidden_fields": [],
+    "passed": true
+  },
+  "logical_boundary_calls": 2,
+  "main_state_pollution": false,
+  "max_tokens": 1024,
+  "model": "qwen3.7-plus",
+  "normalized_prediction": {
+    "abstain": false,
+    "concise_reason": "The displayed specification defines the field as 'default_branch' (snake_case) in the Repository schema. The runtime response returns the field as 'defaultBranch' (camelCase). This is a stable mismatch in returned field naming between the spec and the actual API response, constituting Response Specification Drift (RSD).",
+    "confidence": 1.0,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.defaultBranch",
+      "spec_pointer": "/components/schemas/Repository/properties/default_branch",
+      "tool_id": "get_repository"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_repository"
+  },
+  "output_tokens": 369,
+  "paired_group_id": "pair-aabfd9366635ebbd",
+  "parsed_result": {
+    "abstain": false,
+    "concise_reason": "The displayed specification defines the field as 'default_branch' (snake_case) in the Repository schema. The runtime response returns the field as 'defaultBranch' (camelCase). This is a stable mismatch in returned field naming between the spec and the actual API response, constituting Response Specification Drift (RSD).",
+    "confidence": 1.0,
+    "drift_category": "RSD",
+    "normalized_location": {
+      "layer": "response",
+      "runtime_path": "data.defaultBranch",
+      "spec_pointer": "/components/schemas/Repository/properties/default_branch",
+      "tool_id": "get_repository"
+    },
+    "predicted_class": "PERSISTENT_DRIFT",
+    "target_tool": "get_repository"
+  },
+  "provider": "dashscope",
+  "provider_attempts": 2,
+  "provider_profile_id": "dashscope-openai-compatible-v1",
+  "provider_retry_count": 0,
+  "public_scenario_id": "public-4bf040e046e4",
+  "raw_response_ref": "dashscope/specdriftbench_component_heldout432_real_v2/raw/736a675fdf7bff91d0c230d3c3abe598351327c241e3248c6b30e2a21faebd9f.json",
+  "raw_response_sha256": "f37d0410f455230c355e7ad69e36b3e34fa5687cf7a1ab444aef68caf71b1aaa",
+  "reasoning_tokens": 0,
+  "record_id": "0628c297b2c33c352cd4df88",
+  "repetition": 1,
+  "schema_valid": true,
+  "schema_version": "specdriftbench-component-heldout-record-v1",
+  "termination_reason": "COMPONENT_COMPLETE",
+  "usage_if_available": {
+    "input_tokens": 15789,
+    "output_tokens": 369,
+    "reasoning_tokens": 0
+  },
+  "variant": "AE"
+}
