@@ -12,18 +12,22 @@ import pytest
 import yaml
 
 from driftguard.contracts.loader import PROJECT_ROOT
-from driftguard.llm import ProviderRequest, ProviderResponse
+from driftguard.llm import ProviderError, ProviderRequest, ProviderResponse
 from driftguard.phase10.pricing import PricingCatalog
 from driftguard.runners.focused_live_healing_runner import AtomicFocusedLedger
 from driftguard.specdriftbench import heldout
 from driftguard.specdriftbench.heldout import (
-    ANALYSIS_PLAN_PATH, CONFIG_PATH, CONFIRM_432, DEVELOPMENT_FAMILIES,
+    ANALYSIS_PLAN_PATH, CONFIG_PATH, CONFIG_V2_PATH, CONFIRM_432, CONFIRM_432_V2,
+    DEVELOPMENT_FAMILIES,
     EVIDENCE_VIEWS, FAKE_CACHE_NAMESPACE, FROZEN_FINGERPRINTS,
     HELDOUT_FAMILIES, PROVIDER_ORDER, REAL_CACHE_NAMESPACE, VARIANTS,
     HeldoutCacheMiss, HeldoutConfig, HeldoutEvidenceViewBuilder, HeldoutFakeProvider,
     HeldoutProtocolError, HeldoutRunner, assert_heldout_provider_visible,
     run_offline_fake_validation, validate_frozen_fingerprints,
     validate_heldout_plan, validate_paired_evidence, _HeldoutLedgerConfigAdapter,
+)
+from driftguard.specdriftbench.heldout_gate import (
+    InfrastructureGateV2, classify_gate_record, descriptive_availability_metrics,
 )
 from driftguard.specdriftbench.runner import PRICING_PATH
 from driftguard.specdriftbench.protocol import TrueEvidenceLeakage
@@ -48,6 +52,39 @@ def _config_copy(path: Path, mutate) -> Path:
     mutate(raw)
     path.write_text(yaml.safe_dump(raw, sort_keys=False), encoding="utf-8")
     return path
+
+
+def _v2_config_copy(path: Path, mutate) -> Path:
+    raw = yaml.safe_load(CONFIG_V2_PATH.read_text(encoding="utf-8"))
+    mutate(raw)
+    path.write_text(yaml.safe_dump(raw, sort_keys=False), encoding="utf-8")
+    return path
+
+
+def _gate_record(
+    *, status=None, message="transient", error_class="PROVIDER_ERROR",
+    predicted=True, correct=True,
+):
+    if status == "success":
+        return {
+            "error": None, "error_class": "NONE", "normalized_prediction": {"class": "AE"},
+            "raw_response_ref": "cache/raw/success.json", "schema_valid": True,
+            "evaluation": {"class_correct": correct}, "leakage": {"passed": True},
+            "fallback_used": False, "main_state_pollution": False,
+        }
+    return {
+        "error": {
+            "status_code": status, "provider_error_code": None,
+            "sanitized_message": message, "failure_layer": "UNKNOWN",
+        },
+        "error_class": error_class,
+        "normalized_prediction": {"class": "AE"} if predicted else None,
+        "raw_response_ref": None,
+        "schema_valid": False,
+        "evaluation": {"class_correct": correct if predicted else None},
+        "leakage": {"passed": True}, "fallback_used": False,
+        "main_state_pollution": False,
+    }
 
 
 @pytest.fixture(scope="module")
@@ -426,3 +463,169 @@ def test_analysis_plan_is_frozen_before_results():
         "FULL_EVIDENCE - FIRST_FAILURE",
         "FULL_EVIDENCE - RETRY_HISTORY",
     ]
+
+
+def test_v2_config_preserves_432_design_models_and_fingerprints():
+    v1, v2 = HeldoutConfig.load(), HeldoutConfig.load(CONFIG_V2_PATH)
+    assert v2.infrastructure_gate_version == 2
+    assert len(v2.plan) == v2.counts["records"] == 432
+    assert v2.counts["paired_groups"] == 144
+    assert v2.raw["models"] == v1.raw["models"]
+    assert v2.raw["controls"] == v1.raw["controls"]
+    assert v2.raw["budget"] == v1.raw["budget"]
+    assert v2.raw["development_families"] == v1.raw["development_families"]
+    assert v2.raw["heldout_families"] == v1.raw["heldout_families"]
+    assert v2.raw["variants"] == v1.raw["variants"]
+    assert v2.raw["evidence_views"] == v1.raw["evidence_views"]
+    assert v2.raw["frozen_fingerprints"] == v1.raw["frozen_fingerprints"]
+    assert v2.raw["analysis_plan"] == v1.raw["analysis_plan"]
+    assert not set(DEVELOPMENT_FAMILIES) & {row.family for row in v2.plan}
+
+
+def test_v2_gate_two_of_63_does_not_stop():
+    records = [_gate_record(status=None, predicted=False) if index in {10, 50} else _gate_record(status="success") for index in range(63)]
+    gate = InfrastructureGateV2.from_records("deepseek", records)
+    assert gate.completed == 63 and gate.final_infrastructure_errors == 2
+    assert gate.stop is False
+
+
+def test_v2_gate_two_of_24_does_not_stop_but_three_of_24_does():
+    two = [_gate_record(status=None, predicted=False) if index in {2, 18} else _gate_record(status="success") for index in range(24)]
+    gate = InfrastructureGateV2.from_records("deepseek", two)
+    assert gate.infrastructure_error_rate == pytest.approx(2 / 24)
+    assert gate.stop is False
+    three = [_gate_record(status=None, predicted=False) if index in {2, 12, 23} else _gate_record(status="success") for index in range(24)]
+    gate = InfrastructureGateV2.from_records("deepseek", three)
+    assert gate.stop is True
+    assert gate.stop_reason == "FINAL_INFRASTRUCTURE_ERROR_RATE_AT_LEAST_10_PERCENT"
+
+
+def test_v2_gate_three_consecutive_stops_and_success_resets_counter():
+    gate = InfrastructureGateV2("deepseek")
+    gate.observe(_gate_record(status=None, predicted=False))
+    gate.observe(_gate_record(status=None, predicted=False))
+    gate.observe(_gate_record(status="success"))
+    assert gate.consecutive_final_infrastructure_errors == 0 and gate.stop is False
+    gate.observe(_gate_record(status=None, predicted=False))
+    gate.observe(_gate_record(status=None, predicted=False))
+    state = gate.observe(_gate_record(status=None, predicted=False))
+    assert state["stopped"] is True
+    assert state["stop_reason"] == "THREE_CONSECUTIVE_FINAL_INFRASTRUCTURE_ERRORS"
+
+
+@pytest.mark.parametrize("status,message", [
+    (401, "unauthorized"), (402, "payment required"),
+    (400, "invalid api key"), (400, "insufficient balance"),
+    (403, "permission denied"), (404, "model not found"), (None, "invalid endpoint"),
+])
+def test_v2_systemic_permanent_provider_errors_stop_immediately(status, message):
+    gate = InfrastructureGateV2("deepseek")
+    state = gate.observe(_gate_record(status=status, message=message, predicted=False))
+    assert state["stopped"] is True
+    assert state["stop_reason"] == "IMMEDIATE_PERMANENT_PROVIDER_ERROR"
+
+
+@pytest.mark.parametrize("status", [400, 413, 415, 422])
+def test_v2_single_record_request_errors_are_retained_and_continue(status):
+    record = _gate_record(status=status, message="record request rejected", predicted=False)
+    assert classify_gate_record(record) == "RECORD_REQUEST_ERROR"
+    gate = InfrastructureGateV2("deepseek")
+    gate.observe(record)
+    assert gate.completed == 1 and gate.final_infrastructure_errors == 0
+    assert gate.stop is False
+
+
+def test_non_evaluable_record_uses_all_record_denominator_and_reduces_coverage():
+    records = [
+        _gate_record(status="success", correct=True),
+        _gate_record(status="success", correct=False),
+        _gate_record(status=None, predicted=False),
+    ]
+    metrics = descriptive_availability_metrics(records)
+    assert metrics["all_record_accuracy"] == pytest.approx(1 / 3)
+    assert metrics["evaluable_accuracy"] == pytest.approx(1 / 2)
+    assert metrics["coverage"] == pytest.approx(2 / 3)
+    assert metrics["infrastructure_error_rate"] == pytest.approx(1 / 3)
+
+
+def test_v1_and_v2_confirmation_tokens_are_isolated(tmp_path):
+    v1 = _config_copy(tmp_path / "v1-authorized.yaml", lambda raw: raw.__setitem__("run_authorized", True))
+    v2 = _v2_config_copy(tmp_path / "v2-authorized.yaml", lambda raw: raw.__setitem__("run_authorized", True))
+    with pytest.raises(PermissionError, match="RUN-EXACTLY-432"):
+        HeldoutRunner(
+            v1, attempt_id="v1-token-isolation", mode="real", output_root=tmp_path / "v1",
+            ledger_path=_ledger(tmp_path / "v1-ledger.json"), allow_real_api=True,
+            confirmation=CONFIRM_432_V2,
+        )
+    with pytest.raises(PermissionError, match="RUN-EXACTLY-432-V2"):
+        HeldoutRunner(
+            v2, attempt_id="v2-token-isolation", mode="real", output_root=tmp_path / "v2",
+            ledger_path=_ledger(tmp_path / "v2-ledger.json"), allow_real_api=True,
+            confirmation=CONFIRM_432,
+        )
+
+
+def test_v2_rejects_incomplete_v1_attempt_and_cache_namespace(tmp_path):
+    with pytest.raises(HeldoutProtocolError, match="excluded incomplete V1"):
+        HeldoutRunner(
+            CONFIG_V2_PATH, attempt_id="specdriftbench-heldout432-20260718-af3db03-01",
+            mode="fake", output_root=tmp_path / "excluded",
+            ledger_path=_ledger(tmp_path / "ledger.json"),
+        )
+    bad = _v2_config_copy(
+        tmp_path / "bad-cache.yaml",
+        lambda raw: raw["execution"].__setitem__("cache_namespace", REAL_CACHE_NAMESPACE),
+    )
+    with pytest.raises(HeldoutProtocolError, match="Cache namespace"):
+        HeldoutConfig.load(bad)
+
+
+def test_v2_failed_record_checkpoint_gate_resume_and_observability(tmp_path):
+    root = tmp_path / "v2-attempt"
+    ledger = _ledger(tmp_path / "ledger.json")
+    before = hashlib.sha256(ledger.read_bytes()).hexdigest()
+
+    class OneFailureProvider(HeldoutFakeProvider):
+        def complete(self, request):
+            if self.model.provider == "deepseek" and self.calls == 0:
+                self.calls += 1
+                raise ProviderError(
+                    "offline protocol error", retryable=False,
+                    attempt_number=1, failure_layer="UNKNOWN",
+                    exception_type="OfflineInjectedHTTPError", latency_ms=1.25,
+                )
+            return super().complete(request)
+
+    report = HeldoutRunner(
+        CONFIG_V2_PATH, attempt_id="heldout432-v2-offline-test", mode="fake",
+        output_root=root, ledger_path=ledger,
+        provider_factory=lambda model: OneFailureProvider(model),
+    ).run()
+    summary = report["summary"]
+    assert summary["status"] == "COMPLETE" and summary["records_completed"] == 432
+    assert summary["network_calls"] == summary["attempts_delta"] == 0
+    assert hashlib.sha256(ledger.read_bytes()).hexdigest() == before
+    failed = next(row for row in report["records"] if row["error"] is not None)
+    assert failed["evaluation"]["class_correct"] is None
+    assert failed["logical_boundary_calls"] == failed["actual_network_attempts"] == 1
+    assert failed["provider_retry_count"] == failed["format_repair_count"] == 0
+    assert failed["usage_if_available"] is None and failed["latency_ms"] == pytest.approx(1.25)
+    checkpoint = root / "results/checkpoint/deepseek" / f"{failed['record_id']}.json"
+    assert checkpoint.exists()
+    gate = json.loads((root / "results/provider_gates/deepseek.json").read_text())
+    assert gate["infrastructure_gate_version"] == 2
+    assert gate["final_infrastructure_errors"] == 1 and gate["stopped"] is False
+    manifest = json.loads((root / "results/manifest.json").read_text())
+    assert manifest["excluded_attempts"] == ["specdriftbench-heldout432-20260718-af3db03-01"]
+
+    class MustNotRun:
+        def complete(self, request):
+            raise AssertionError("V2 resume repeated a completed Provider call")
+
+    resumed = HeldoutRunner(
+        CONFIG_V2_PATH, attempt_id="heldout432-v2-offline-test", mode="fake",
+        output_root=root, ledger_path=ledger,
+        provider_factory=lambda model: MustNotRun(),
+    ).run(resume=True)
+    assert resumed["summary"]["records_completed"] == 432
+    assert hashlib.sha256(ledger.read_bytes()).hexdigest() == before

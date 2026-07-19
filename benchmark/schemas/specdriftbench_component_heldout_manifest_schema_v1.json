@@ -88,7 +88,12 @@
         "moonshot": {"type": "string"}
       }
     },
-    "result_namespace": {"const": "specdriftbench_component_heldout432_v1"},
+    "result_namespace": {"enum": ["specdriftbench_component_heldout432_v1", "specdriftbench_component_heldout432_v2"]},
+    "infrastructure_gate_version": {"const": 2},
+    "protocol_amendment": {"const": "1.1"},
+    "excluded_attempts": {
+      "const": ["specdriftbench-heldout432-20260718-af3db03-01"]
+    },
     "ledger_before": {"type": "object"},
     "ledger_before_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
   }

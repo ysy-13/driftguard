@@ -1095,14 +1095,23 @@ class FocusedLiveHealingRunner:
     @staticmethod
     def _controller_provider_errors(raw: Mapping[str, Any]) -> list[dict[str, Any]]:
         return [
-            deepcopy(item["provider_error"])
+            FocusedLiveHealingRunner._focused_provider_error(item["provider_error"])
             for item in raw.get("controller_runs", [])
             if isinstance(item.get("provider_error"), Mapping)
         ]
 
     @staticmethod
     def _public_provider_error(exc: ProviderError) -> dict[str, Any]:
-        return exc.public_dict()
+        return FocusedLiveHealingRunner._focused_provider_error(exc.public_dict())
+
+    @staticmethod
+    def _focused_provider_error(value: Mapping[str, Any]) -> dict[str, Any]:
+        fields = (
+            "category", "status_code", "provider_error_code", "sanitized_message",
+            "request_id", "retryable", "attempt_number", "actual_network_attempts",
+            "failure_layer",
+        )
+        return {field: deepcopy(value.get(field)) for field in fields}
 
     def _read_ledger(self) -> dict[str, Any]:
         if not self.ledger_path.exists():

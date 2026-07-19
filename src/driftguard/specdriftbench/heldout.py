@@ -35,11 +35,14 @@ from .protocol import (
     classify_error, expected_for_evaluator, normalize_prediction,
 )
 from .runner import OUTPUT_SCHEMA_PATH, PRICING_PATH, PROMPT_PATH, VIEW_DEFINITION_PATH
+from .heldout_gate import InfrastructureGateV2
 
 
 EXPERIMENT_MODE = "SPECDRIFTBENCH_COMPONENT_HELDOUT_432"
 CONFIRM_432 = "RUN-EXACTLY-432"
+CONFIRM_432_V2 = "RUN-EXACTLY-432-V2"
 CONFIG_PATH = PROJECT_ROOT / "configs/experiments/specdriftbench_component_heldout432_v1.yaml"
+CONFIG_V2_PATH = PROJECT_ROOT / "configs/experiments/specdriftbench_component_heldout432_v2.yaml"
 CANARY_CONFIG_PATH = PROJECT_ROOT / "configs/experiments/specdriftbench_component_canary_v1_moonshot_cn_k26_nonthinking_v1.yaml"
 ANALYSIS_PLAN_PATH = PROJECT_ROOT / "benchmark/analysis/specdriftbench_heldout432_analysis_plan_v1.json"
 RECORD_SCHEMA_PATH = PROJECT_ROOT / "benchmark/schemas/specdriftbench_component_heldout_record_schema_v1.json"
@@ -57,6 +60,9 @@ EVIDENCE_VIEWS = ("FIRST_FAILURE", "RETRY_HISTORY", "FULL_EVIDENCE")
 PROVIDER_ORDER = ("deepseek", "dashscope", "moonshot")
 REAL_CACHE_NAMESPACE = "specdriftbench_component_heldout432_real_v1"
 FAKE_CACHE_NAMESPACE = "specdriftbench_component_heldout432_fake_validation_v1"
+REAL_CACHE_NAMESPACE_V2 = "specdriftbench_component_heldout432_real_v2"
+FAKE_CACHE_NAMESPACE_V2 = "specdriftbench_component_heldout432_fake_validation_v2"
+EXCLUDED_V1_ATTEMPT = "specdriftbench-heldout432-20260718-af3db03-01"
 
 FROZEN_FINGERPRINTS = {
     "prompt_sha256": "d499cdb339972ad5a9424339519f4c64a9cb9096afcddd46b6309ccd7cc2a47e",
@@ -358,8 +364,16 @@ class HeldoutConfig:
             "development_families", "heldout_families", "variants", "evidence_views", "models",
             "controls", "budget", "execution", "analysis_plan", "frozen_fingerprints",
         }
+        is_v2 = raw.get("infrastructure_gate_version") == 2
+        if is_v2:
+            required |= {"infrastructure_gate_version", "protocol_amendment", "excluded_attempts"}
         if set(raw) != required:
             raise HeldoutProtocolError("held-out config fields changed")
+        if is_v2 and (
+            raw["protocol_amendment"] != "1.1"
+            or raw["excluded_attempts"] != [EXCLUDED_V1_ATTEMPT]
+        ):
+            raise HeldoutProtocolError("V2 amendment identity or excluded V1 Attempt changed")
         if raw["experiment_mode"] != EXPERIMENT_MODE:
             raise HeldoutProtocolError("wrong held-out experiment mode")
         if not isinstance(raw["run_authorized"], bool):
@@ -397,24 +411,45 @@ class HeldoutConfig:
         execution = raw["execution"]
         if tuple(execution["provider_order"]) != PROVIDER_ORDER:
             raise HeldoutProtocolError("execution Provider order changed")
-        if execution["cache_namespace"] != REAL_CACHE_NAMESPACE:
+        expected_real_cache = REAL_CACHE_NAMESPACE_V2 if is_v2 else REAL_CACHE_NAMESPACE
+        expected_fake_cache = FAKE_CACHE_NAMESPACE_V2 if is_v2 else FAKE_CACHE_NAMESPACE
+        if execution["cache_namespace"] != expected_real_cache:
             raise HeldoutProtocolError("real held-out Cache namespace changed")
-        if execution["fake_cache_namespace"] != FAKE_CACHE_NAMESPACE:
+        if execution["fake_cache_namespace"] != expected_fake_cache:
             raise HeldoutProtocolError("FakeProvider Cache namespace changed")
         forbidden = ("canary", "focused", "phase9", "end_to_end", "fake")
         if any(token in execution["cache_namespace"].lower() for token in forbidden):
             raise HeldoutProtocolError("real held-out Cache namespace reuses a prohibited experiment")
+        expected_result_namespace = (
+            "specdriftbench_component_heldout432_v2" if is_v2
+            else "specdriftbench_component_heldout432_v1"
+        )
+        common_execution_valid = execution["result_namespace"] == expected_result_namespace
         if (
-            execution["result_namespace"] != "specdriftbench_component_heldout432_v1"
+            not common_execution_valid
             or int(execution["parallelism"]) != 1
             or int(execution["checkpoint_interval"]) != 1
             or execution["resume_enabled"] is not True
             or execution["replay_enabled"] is not True
             or float(execution["rate_limit_per_second"]) != 1.0
-            or int(execution["infrastructure_error_limit"]) != 2
             or int(execution["seed"]) != 20260718
         ):
             raise HeldoutProtocolError("held-out result, checkpoint, resume, or replay gate changed")
+        if is_v2:
+            if (
+                set(execution) != {
+                    "cache_namespace", "fake_cache_namespace", "result_namespace", "provider_order",
+                    "parallelism", "rate_limit_per_second", "checkpoint_interval", "resume_enabled",
+                    "replay_enabled", "consecutive_final_infrastructure_error_limit",
+                    "minimum_records_for_error_rate_gate", "final_infrastructure_error_rate_limit", "seed",
+                }
+                or int(execution["consecutive_final_infrastructure_error_limit"]) != 3
+                or int(execution["minimum_records_for_error_rate_gate"]) != 24
+                or float(execution["final_infrastructure_error_rate_limit"]) != 0.10
+            ):
+                raise HeldoutProtocolError("V2 infrastructure gate thresholds changed")
+        elif int(execution["infrastructure_error_limit"]) != 2:
+            raise HeldoutProtocolError("V1 infrastructure gate changed")
         validate_frozen_fingerprints(raw["frozen_fingerprints"])
         if raw["analysis_plan"] != "benchmark/analysis/specdriftbench_heldout432_analysis_plan_v1.json":
             raise HeldoutProtocolError("held-out analysis plan path changed")
@@ -444,6 +479,10 @@ class HeldoutConfig:
     @property
     def run_authorized(self) -> bool:
         return self.raw["run_authorized"] is True
+
+    @property
+    def infrastructure_gate_version(self) -> int:
+        return int(self.raw.get("infrastructure_gate_version", 1))
 
     def model(self, provider: str) -> ModelConfig:
         return next(model for model in self.models if model.provider == provider)
@@ -515,13 +554,20 @@ def _git_state() -> dict[str, Any]:
     return {"commit": commit, "tree": tree, "dirty": bool(status.strip())}
 
 
-def heldout_source_snapshot() -> str:
+def heldout_source_snapshot(config: HeldoutConfig | None = None) -> str:
+    config = config or HeldoutConfig.load()
+    config_path = (
+        "configs/experiments/specdriftbench_component_heldout432_v2.yaml"
+        if config.infrastructure_gate_version == 2
+        else "configs/experiments/specdriftbench_component_heldout432_v1.yaml"
+    )
     paths = (
         "src/driftguard/specdriftbench/heldout.py",
+        "src/driftguard/specdriftbench/heldout_gate.py",
         "src/driftguard/specdriftbench/protocol.py",
         "src/driftguard/llm/provider.py",
         "src/driftguard/llm/provider_capabilities.py",
-        "configs/experiments/specdriftbench_component_heldout432_v1.yaml",
+        config_path,
         "benchmark/analysis/specdriftbench_heldout432_analysis_plan_v1.json",
         "benchmark/schemas/specdriftbench_component_heldout_record_schema_v1.json",
         "benchmark/schemas/specdriftbench_component_heldout_manifest_schema_v1.json",
@@ -555,7 +601,7 @@ class HeldoutRunner:
         self.execution_status = "FAKE_PROVIDER_TEST" if mode == "fake" else "REAL_PROVIDER"
         self.validation_status = "OFFLINE_PROTOCOL_VALIDATION" if mode == "fake" else "REAL_EXPERIMENT"
         self.git_state = _git_state()
-        self.source_snapshot = heldout_source_snapshot()
+        self.source_snapshot = heldout_source_snapshot(self.config)
         self.registry = CanonicalToolRegistry.from_displayed_spec()
         self.builder = HeldoutEvidenceViewBuilder()
         self.prompt = PROMPT_PATH.read_text(encoding="utf-8")
@@ -570,6 +616,8 @@ class HeldoutRunner:
         self._evidence: dict[tuple[str, str, str], dict[str, Any]] = {}
         formal_root = FORMAL_ATTEMPT_ROOT / attempt_id
         self.root = Path(output_root or formal_root)
+        if self.config.infrastructure_gate_version == 2 and attempt_id in self.config.raw["excluded_attempts"]:
+            raise HeldoutProtocolError("V2 refuses the excluded incomplete V1 Attempt ID")
         if mode == "fake" and self._is_within(self.root, FORMAL_ATTEMPT_ROOT):
             raise PermissionError("FakeProvider validation output must not enter the formal real-attempt root")
         if mode == "real":
@@ -619,11 +667,17 @@ class HeldoutRunner:
         }
 
     def _validate_real_authorization(self) -> None:
+        expected_confirmation = (
+            CONFIRM_432_V2 if self.config.infrastructure_gate_version == 2 else CONFIRM_432
+        )
         if not (
             self.config.run_authorized and self.allow_real_api
-            and self.confirmation == CONFIRM_432
+            and self.confirmation == expected_confirmation
         ):
-            raise PermissionError("real held-out requires run_authorized:true, --allow-real-api, and RUN-EXACTLY-432")
+            raise PermissionError(
+                "real held-out requires run_authorized:true, --allow-real-api, and "
+                + expected_confirmation
+            )
         if self.provider_factory is not None:
             raise PermissionError("formal real held-out forbids injected or Fake providers")
         if self.git_state["dirty"]:
@@ -691,6 +745,8 @@ class HeldoutRunner:
             "experiment_mode": EXPERIMENT_MODE, "attempt_id": self.attempt_id,
             "execution_status": self.execution_status, "config_hash": self.config.config_hash,
             "source_snapshot": self.source_snapshot, "plan_records": 432,
+            "infrastructure_gate_version": self.config.infrastructure_gate_version,
+            "protocol_amendment": self.config.raw.get("protocol_amendment"),
         }
 
     def _bind_checkpoint(self, resume: bool) -> None:
@@ -725,6 +781,8 @@ class HeldoutRunner:
             "config_hash": self.config.config_hash, "source_snapshot": self.source_snapshot,
             "cache_namespace": namespace,
             "canary_cache": False, "end_to_end_cache": False,
+            "infrastructure_gate_version": self.config.infrastructure_gate_version,
+            "excluded_v1_attempt": EXCLUDED_V1_ATTEMPT if self.config.infrastructure_gate_version == 2 else None,
         }
         if self.mode == "replay":
             if not identity_path.exists():
@@ -754,7 +812,7 @@ class HeldoutRunner:
     def _manifest(self) -> dict[str, Any]:
         if self.original_manifest is not None:
             return self.original_manifest
-        return {
+        manifest = {
             "schema_version": "specdriftbench-component-heldout-manifest-v1",
             "experiment_mode": EXPERIMENT_MODE,
             "execution_status": self.execution_status,
@@ -782,6 +840,13 @@ class HeldoutRunner:
             "ledger_before": self.ledger_before,
             "ledger_before_sha256": self.ledger_before_hash,
         }
+        if self.config.infrastructure_gate_version == 2:
+            manifest.update({
+                "infrastructure_gate_version": 2,
+                "protocol_amendment": "1.1",
+                "excluded_attempts": list(self.config.raw["excluded_attempts"]),
+            })
+        return manifest
 
     def _write_manifest(self) -> None:
         manifest = self._manifest()
@@ -798,11 +863,16 @@ class HeldoutRunner:
         completed: list[dict[str, Any]] = []
         gates: list[dict[str, Any]] = []
         self._write_summary(completed, gates, "INCOMPLETE")
+        stop_attempt = False
         for provider_name in PROVIDER_ORDER:
             model = self.config.model(provider_name)
             cache = self._cache(provider_name)
             boundary = self._provider(model) if self.mode != "replay" else None
             provider_records: list[dict[str, Any]] = []
+            gate_v2 = (
+                InfrastructureGateV2(provider_name)
+                if self.config.infrastructure_gate_version == 2 else None
+            )
             for plan in (item for item in self.config.plan if item.provider == provider_name):
                 checkpoint = self.results / "checkpoint" / provider_name / f"{plan.record_id}.json"
                 if checkpoint.exists():
@@ -820,16 +890,27 @@ class HeldoutRunner:
                 completed.append(record)
                 provider_records.append(record)
                 self._write_summary(completed, gates, "INCOMPLETE")
-                if self._is_infrastructure(record) and sum(self._is_infrastructure(row) for row in provider_records) >= int(self.config.raw["execution"]["infrastructure_error_limit"]):
+                if gate_v2 is not None:
+                    gate = gate_v2.observe(record)
+                    _atomic_json(self.results / "provider_gates" / f"{provider_name}.json", gate)
+                    if gate["stopped"]:
+                        stop_attempt = True
+                        break
+                elif (
+                    self._is_infrastructure(record)
+                    and sum(self._is_infrastructure(row) for row in provider_records)
+                    >= int(self.config.raw["execution"]["infrastructure_error_limit"])
+                ):
+                    stop_attempt = True
                     break
-            gate = {
-                "provider": provider_name, "completed": len(provider_records),
-                "infrastructure_errors": sum(self._is_infrastructure(row) for row in provider_records),
-                "expected": 144,
-            }
+            gate = gate_v2.public_dict() if gate_v2 is not None else {
+                    "provider": provider_name, "completed": len(provider_records),
+                    "infrastructure_errors": sum(self._is_infrastructure(row) for row in provider_records),
+                    "expected": 144,
+                }
             _atomic_json(self.results / "provider_gates" / f"{provider_name}.json", gate)
             gates.append(gate)
-            if gate["infrastructure_errors"] >= int(self.config.raw["execution"]["infrastructure_error_limit"]):
+            if stop_attempt:
                 break
         status = "COMPLETE" if len(completed) == 432 else "STOPPED"
         summary = self._write_summary(completed, gates, status)
@@ -861,8 +942,10 @@ class HeldoutRunner:
         error: BaseException | None = None
         raw_ref = raw_sha = None
         format_repairs = 0
+        logical_boundary_calls = 0
         record_ledger_before = _public_ledger_snapshot(_validated_ledger(self.ledger_path, allow_reserved=True)[0])
         for repair_index in range(2):
+            logical_boundary_calls += 1
             request = ProviderRequest(
                 messages, self.output_schema, prompt_hash, evidence["public_scenario_id"],
                 5, "component_attribution", plan.repetition,
@@ -918,6 +1001,42 @@ class HeldoutRunner:
         evaluation = self._evaluate(normalized, expected)
         after = _public_ledger_snapshot(_validated_ledger(self.ledger_path, allow_reserved=True)[0])
         real_attempts = int(after["api_attempts"] - record_ledger_before["api_attempts"])
+        ledger_input_tokens = int(
+            after["provider_reported_input_tokens"]
+            - record_ledger_before["provider_reported_input_tokens"]
+        )
+        ledger_output_tokens = int(
+            after["provider_reported_output_tokens"]
+            - record_ledger_before["provider_reported_output_tokens"]
+        )
+        response_attempts = sum(response.provider_attempts for response in responses)
+        error_public = self._public_error(error)
+        offline_error_attempts = (
+            int((error_public or {}).get("actual_network_attempts", 0))
+            if isinstance(error, ProviderError) else 0
+        )
+        actual_network_attempts = (
+            real_attempts if self.mode == "real"
+            else response_attempts + offline_error_attempts
+        )
+        input_tokens = ledger_input_tokens if self.mode == "real" else sum(
+            response.input_tokens for response in responses
+        )
+        output_tokens = ledger_output_tokens if self.mode == "real" else sum(
+            response.output_tokens for response in responses
+        )
+        reasoning_tokens = sum(response.reasoning_tokens for response in responses)
+        latency_ms = sum(response.latency_ms for response in responses) + float(
+            (error_public or {}).get("latency_ms", 0.0)
+        )
+        usage_if_available = (
+            {
+                "input_tokens": input_tokens,
+                "output_tokens": output_tokens,
+                "reasoning_tokens": reasoning_tokens,
+            }
+            if responses or input_tokens or output_tokens else None
+        )
         if self.mode == "real":
             self.network_calls += real_attempts
         record = {
@@ -934,13 +1053,18 @@ class HeldoutRunner:
             "raw_response_ref": raw_ref, "raw_response_sha256": raw_sha,
             "parsed_result": parsed, "normalized_prediction": normalized,
             "schema_valid": normalized is not None, "format_repairs": format_repairs,
-            "error_class": error_class.value, "error": self._public_error(error),
+            "error_class": error_class.value, "error": error_public,
             "evaluation": evaluation,
-            "input_tokens": sum(response.input_tokens for response in responses),
-            "output_tokens": sum(response.output_tokens for response in responses),
-            "reasoning_tokens": sum(response.reasoning_tokens for response in responses),
-            "latency_ms": sum(response.latency_ms for response in responses),
-            "provider_attempts": real_attempts if self.mode == "real" else sum(response.provider_attempts for response in responses),
+            "input_tokens": input_tokens,
+            "output_tokens": output_tokens,
+            "reasoning_tokens": reasoning_tokens,
+            "latency_ms": latency_ms,
+            "provider_attempts": actual_network_attempts,
+            "logical_boundary_calls": logical_boundary_calls,
+            "actual_network_attempts": actual_network_attempts,
+            "provider_retry_count": max(0, actual_network_attempts - logical_boundary_calls),
+            "format_repair_count": format_repairs,
+            "usage_if_available": usage_if_available,
             "finish_reason": responses[-1].finish_reason if responses else None,
             "content_length": len(responses[-1].raw_text) if responses else 0,
             "cost_cny_delta": max(0.0, float(after["spent_cny"]) - float(record_ledger_before["spent_cny"])) if self.mode == "real" else 0.0,

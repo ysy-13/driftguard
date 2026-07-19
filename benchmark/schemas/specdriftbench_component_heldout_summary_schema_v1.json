@@ -36,7 +36,18 @@
           "provider": {"enum": ["deepseek", "dashscope", "moonshot"]},
           "completed": {"type": "integer", "minimum": 0, "maximum": 144},
           "infrastructure_errors": {"type": "integer", "minimum": 0},
-          "expected": {"const": 144}
+          "expected": {"const": 144},
+          "schema_version": {"const": "specdriftbench-heldout-infrastructure-gate-v2"},
+          "infrastructure_gate_version": {"const": 2},
+          "protocol_amendment": {"const": "1.1"},
+          "final_infrastructure_errors": {"type": "integer", "minimum": 0},
+          "consecutive_final_infrastructure_errors": {"type": "integer", "minimum": 0},
+          "infrastructure_error_rate": {"type": "number", "minimum": 0, "maximum": 1},
+          "minimum_records_for_rate_gate": {"const": 24},
+          "rate_gate_threshold": {"const": 0.1},
+          "consecutive_gate_threshold": {"const": 3},
+          "stopped": {"type": "boolean"},
+          "stop_reason": {"type": ["string", "null"]}
         }
       }
     }

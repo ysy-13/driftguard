@@ -163,16 +163,31 @@ class OpenAICompatibleProvider(LLMProvider):
             except httpx.TimeoutException as exc:
                 last_error = ProviderTimeout(
                     "provider request timed out", attempt_number=attempts,
+                    exception_type=type(exc).__name__,
                 )
             except httpx.ConnectError as exc:
                 last_error = ProviderError(
                     self._transport_summary(exc), retryable=True,
                     attempt_number=attempts, failure_layer=self._connection_layer(exc),
+                    exception_type=type(exc).__name__,
                 )
             except httpx.NetworkError as exc:
                 last_error = ProviderError(
                     self._transport_summary(exc), retryable=True,
                     attempt_number=attempts, failure_layer=FailureLayer.CONNECTION,
+                    exception_type=type(exc).__name__,
+                )
+            except httpx.UnsupportedProtocol as exc:
+                last_error = ProviderError(
+                    "provider endpoint uses an unsupported protocol", retryable=False,
+                    attempt_number=attempts, failure_layer=FailureLayer.CONNECTION,
+                    exception_type=type(exc).__name__,
+                )
+            except (httpx.ProtocolError, httpx.ProxyError) as exc:
+                last_error = ProviderError(
+                    self._transport_summary(exc), retryable=True,
+                    attempt_number=attempts, failure_layer=FailureLayer.CONNECTION,
+                    exception_type=type(exc).__name__,
                 )
             except ProviderError as exc:
                 last_error = exc
@@ -180,11 +195,13 @@ class OpenAICompatibleProvider(LLMProvider):
                 last_error = ProviderError(
                     "provider HTTP client error", retryable=False,
                     attempt_number=attempts, failure_layer=FailureLayer.UNKNOWN,
+                    exception_type=type(exc).__name__,
                 )
             finally:
                 if reservation is not None and self._cost_controller is not None:
                     self._cost_controller.release(reservation)
             if last_error is not None:
+                last_error.latency_ms = (time.monotonic() - started) * 1000
                 assert_secret_absent(last_error.public_dict(), self._api_key)
             if last_error is not None and not last_error.retryable:
                 raise last_error

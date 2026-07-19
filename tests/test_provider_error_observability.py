@@ -125,6 +125,32 @@ def test_transport_errors_are_retryable_and_classified(kind, expected_type, expe
     assert costs.snapshot()["reserved_cny"] == 0
 
 
+@pytest.mark.parametrize("exception_type", [httpx.RemoteProtocolError, httpx.ProxyError])
+def test_protocol_and_proxy_transport_errors_use_frozen_retries(exception_type):
+    calls = 0
+    costs = _costs()
+
+    def handler(request):
+        nonlocal calls
+        calls += 1
+        raise exception_type("transient transport failure", request=request)
+
+    provider, client = _call(handler, costs)
+    try:
+        with pytest.raises(ProviderError) as caught:
+            provider.complete(REQUEST)
+    finally:
+        client.close()
+    public = caught.value.public_dict()
+    assert calls == costs.snapshot()["api_attempts"] == 4
+    assert public["retryable"] is True
+    assert public["actual_network_attempts"] == 4
+    assert public["failure_layer"] == "CONNECTION"
+    assert public["exception_type"] == exception_type.__name__
+    assert public["latency_ms"] > 0
+    assert costs.snapshot()["reserved_cny"] == 0
+
+
 def test_http_metadata_is_sanitized_and_request_id_is_preserved():
     long_message = f"Authorization: Bearer {SECRET} api_key={SECRET} " + "x" * 800
 
@@ -142,6 +168,7 @@ def test_http_metadata_is_sanitized_and_request_id_is_preserved():
         client.close()
     public = caught.value.public_dict()
     encoded = json.dumps(public)
+    assert public["error_category"] == "PROVIDER_ERROR"
     assert public["status_code"] == 400
     assert public["provider_error_code"] == "invalid_api_key"
     assert public["request_id"] == "safe-request-123"

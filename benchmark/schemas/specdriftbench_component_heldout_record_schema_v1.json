@@ -44,6 +44,20 @@
     "reasoning_tokens": {"type": "integer", "minimum": 0},
     "latency_ms": {"type": "number", "minimum": 0},
     "provider_attempts": {"type": "integer", "minimum": 0},
+    "logical_boundary_calls": {"type": "integer", "minimum": 0, "maximum": 2},
+    "actual_network_attempts": {"type": "integer", "minimum": 0},
+    "provider_retry_count": {"type": "integer", "minimum": 0},
+    "format_repair_count": {"type": "integer", "minimum": 0, "maximum": 1},
+    "usage_if_available": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["input_tokens", "output_tokens", "reasoning_tokens"],
+      "properties": {
+        "input_tokens": {"type": "integer", "minimum": 0},
+        "output_tokens": {"type": "integer", "minimum": 0},
+        "reasoning_tokens": {"type": "integer", "minimum": 0}
+      }
+    },
     "finish_reason": {"type": ["string", "null"]},
     "content_length": {"type": "integer", "minimum": 0},
     "cost_cny_delta": {"type": "number", "minimum": 0},

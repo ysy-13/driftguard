@@ -67,6 +67,8 @@ class ProviderError(RuntimeError):
         retryable: bool = False,
         attempt_number: int = 1,
         failure_layer: FailureLayer | str = FailureLayer.UNKNOWN,
+        exception_type: str | None = None,
+        latency_ms: float = 0.0,
     ) -> None:
         message = sanitize_provider_text(sanitized_message)
         super().__init__(message)
@@ -83,6 +85,11 @@ class ProviderError(RuntimeError):
         self.retryable = bool(retryable)
         self.attempt_number = max(0, int(attempt_number))
         self.failure_layer = FailureLayer(failure_layer)
+        self.exception_type = (
+            sanitize_provider_text(exception_type, limit=128)
+            if exception_type is not None else None
+        )
+        self.latency_ms = max(0.0, float(latency_ms))
 
     @property
     def actual_network_attempts(self) -> int:
@@ -92,7 +99,9 @@ class ProviderError(RuntimeError):
         category = self.category.value if isinstance(self.category, ErrorCategory) else str(self.category)
         return {
             "category": category,
+            "error_category": category,
             "status_code": self.status_code,
+            "http_status": self.status_code,
             "provider_error_code": self.provider_error_code,
             "sanitized_message": self.sanitized_message,
             "request_id": self.request_id,
@@ -100,6 +109,8 @@ class ProviderError(RuntimeError):
             "attempt_number": self.attempt_number,
             "actual_network_attempts": self.actual_network_attempts,
             "failure_layer": self.failure_layer.value,
+            "exception_type": self.exception_type,
+            "latency_ms": self.latency_ms,
         }
 
 
