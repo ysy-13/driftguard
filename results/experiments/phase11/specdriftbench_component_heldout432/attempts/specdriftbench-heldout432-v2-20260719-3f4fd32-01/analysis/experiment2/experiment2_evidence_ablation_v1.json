@@ -1,0 +1,1095 @@
+{
+  "analysis_scope": "OFFLINE_EVIDENCE_ABLATION_AND_BASELINE_COMPARISON",
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "baselines": {
+    "always_persistent_drift": {
+      "accuracy_all_records": 0.3333333333333333,
+      "accuracy_evaluable_subset": 0.3333333333333333,
+      "confusion_matrix": {
+        "AGENT_ERROR": {
+          "AGENT_ERROR": 0,
+          "NOT_EVALUABLE": 0,
+          "PERSISTENT_DRIFT": 144,
+          "TRANSIENT_FAILURE": 0
+        },
+        "PERSISTENT_DRIFT": {
+          "AGENT_ERROR": 0,
+          "NOT_EVALUABLE": 0,
+          "PERSISTENT_DRIFT": 144,
+          "TRANSIENT_FAILURE": 0
+        },
+        "TRANSIENT_FAILURE": {
+          "AGENT_ERROR": 0,
+          "NOT_EVALUABLE": 0,
+          "PERSISTENT_DRIFT": 144,
+          "TRANSIENT_FAILURE": 0
+        }
+      },
+      "coverage": 1.0,
+      "evaluable_records": 432,
+      "label": "DETERMINISTIC_BASELINE",
+      "macro_f1": 0.16666666666666666,
+      "macro_precision": 0.1111111111111111,
+      "macro_recall": 0.3333333333333333,
+      "per_class": {
+        "AGENT_ERROR": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 144
+        },
+        "PERSISTENT_DRIFT": {
+          "f1": 0.5,
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "support": 144
+        },
+        "TRANSIENT_FAILURE": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 144
+        }
+      },
+      "records": 432
+    },
+    "symbolic_oracle": {
+      "audit": {
+        "identical_evidence_mapping_proven": false,
+        "identical_family_set_proven": false,
+        "phase7_result_count": 60,
+        "phase7_source_present": true,
+        "required_heldout_scenarios": 48
+      },
+      "display": "N/A",
+      "label": "NON_COMPARABLE_SYMBOLIC_ORACLE_UPPER_BOUND",
+      "reason": "protocol alignment not proven",
+      "value": null
+    },
+    "uniform_random": {
+      "accuracy": 0.3333333333333333,
+      "label": "ANALYTICAL_EXPECTED_BASELINE",
+      "macro_f1": 0.3333333333333333,
+      "macro_precision": 0.3333333333333333,
+      "macro_recall": 0.3333333333333333,
+      "method": "closed-form expectation for balanced three-class labels",
+      "samples_drawn": 0
+    }
+  },
+  "bootstrap": {
+    "paired_accuracy_delta_intervals": {
+      "FULL_EVIDENCE - FIRST_FAILURE": [
+        0.041666666666666685,
+        0.1527777777777778
+      ],
+      "FULL_EVIDENCE - RETRY_HISTORY": [
+        -0.048611111111111105,
+        0.09027777777777779
+      ],
+      "RETRY_HISTORY - FIRST_FAILURE": [
+        0.020833333333333315,
+        0.13194444444444448
+      ]
+    },
+    "settings": {
+      "confidence_level": 0.95,
+      "families_per_replicate": 16,
+      "interval": "percentile",
+      "repetitions": 10000,
+      "seed": 20260718,
+      "unit": "family"
+    },
+    "view_intervals": {
+      "FIRST_FAILURE": {
+        "accuracy_ci95": [
+          0.3888888888888889,
+          0.4861111111111111
+        ],
+        "macro_f1_ci95": [
+          0.28024385597256624,
+          0.3970489604292422
+        ]
+      },
+      "FULL_EVIDENCE": {
+        "accuracy_ci95": [
+          0.4583333333333333,
+          0.6111111111111112
+        ],
+        "macro_f1_ci95": [
+          0.39202714042360093,
+          0.5716183135687324
+        ]
+      },
+      "RETRY_HISTORY": {
+        "accuracy_ci95": [
+          0.4583333333333333,
+          0.5694444444444444
+        ],
+        "macro_f1_ci95": [
+          0.40585495675316036,
+          0.565661624215429
+        ]
+      }
+    }
+  },
+  "by_evidence_view": {
+    "FIRST_FAILURE": {
+      "accuracy_all_records": 0.4375,
+      "accuracy_evaluable_subset": 0.4405594405594406,
+      "confusion_matrix": {
+        "AGENT_ERROR": {
+          "AGENT_ERROR": 18,
+          "NOT_EVALUABLE": 1,
+          "PERSISTENT_DRIFT": 29,
+          "TRANSIENT_FAILURE": 0
+        },
+        "PERSISTENT_DRIFT": {
+          "AGENT_ERROR": 3,
+          "NOT_EVALUABLE": 0,
+          "PERSISTENT_DRIFT": 45,
+          "TRANSIENT_FAILURE": 0
+        },
+        "TRANSIENT_FAILURE": {
+          "AGENT_ERROR": 5,
+          "NOT_EVALUABLE": 0,
+          "PERSISTENT_DRIFT": 43,
+          "TRANSIENT_FAILURE": 0
+        }
+      },
+      "coverage": 0.9930555555555556,
+      "evaluable_records": 143,
+      "macro_f1": 0.34398034398034394,
+      "macro_precision": 0.358974358974359,
+      "macro_recall": 0.4375,
+      "per_class": {
+        "AGENT_ERROR": {
+          "f1": 0.48648648648648646,
+          "precision": 0.6923076923076923,
+          "recall": 0.375,
+          "support": 48
+        },
+        "PERSISTENT_DRIFT": {
+          "f1": 0.5454545454545454,
+          "precision": 0.38461538461538464,
+          "recall": 0.9375,
+          "support": 48
+        },
+        "TRANSIENT_FAILURE": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 48
+        }
+      },
+      "records": 144
+    },
+    "FULL_EVIDENCE": {
+      "accuracy_all_records": 0.5347222222222222,
+      "accuracy_evaluable_subset": 0.5422535211267606,
+      "confusion_matrix": {
+        "AGENT_ERROR": {
+          "AGENT_ERROR": 25,
+          "NOT_EVALUABLE": 1,
+          "PERSISTENT_DRIFT": 22,
+          "TRANSIENT_FAILURE": 0
+        },
+        "PERSISTENT_DRIFT": {
+          "AGENT_ERROR": 2,
+          "NOT_EVALUABLE": 0,
+          "PERSISTENT_DRIFT": 46,
+          "TRANSIENT_FAILURE": 0
+        },
+        "TRANSIENT_FAILURE": {
+          "AGENT_ERROR": 4,
+          "NOT_EVALUABLE": 1,
+          "PERSISTENT_DRIFT": 37,
+          "TRANSIENT_FAILURE": 6
+        }
+      },
+      "coverage": 0.9861111111111112,
+      "evaluable_records": 142,
+      "macro_f1": 0.4854802680565897,
+      "macro_precision": 0.7481822836661546,
+      "macro_recall": 0.5347222222222222,
+      "per_class": {
+        "AGENT_ERROR": {
+          "f1": 0.6329113924050633,
+          "precision": 0.8064516129032258,
+          "recall": 0.5208333333333334,
+          "support": 48
+        },
+        "PERSISTENT_DRIFT": {
+          "f1": 0.6013071895424837,
+          "precision": 0.4380952380952381,
+          "recall": 0.9583333333333334,
+          "support": 48
+        },
+        "TRANSIENT_FAILURE": {
+          "f1": 0.2222222222222222,
+          "precision": 1.0,
+          "recall": 0.125,
+          "support": 48
+        }
+      },
+      "records": 144
+    },
+    "RETRY_HISTORY": {
+      "accuracy_all_records": 0.5138888888888888,
+      "accuracy_evaluable_subset": 0.5211267605633803,
+      "confusion_matrix": {
+        "AGENT_ERROR": {
+          "AGENT_ERROR": 17,
+          "NOT_EVALUABLE": 2,
+          "PERSISTENT_DRIFT": 29,
+          "TRANSIENT_FAILURE": 0
+        },
+        "PERSISTENT_DRIFT": {
+          "AGENT_ERROR": 4,
+          "NOT_EVALUABLE": 0,
+          "PERSISTENT_DRIFT": 44,
+          "TRANSIENT_FAILURE": 0
+        },
+        "TRANSIENT_FAILURE": {
+          "AGENT_ERROR": 1,
+          "NOT_EVALUABLE": 0,
+          "PERSISTENT_DRIFT": 34,
+          "TRANSIENT_FAILURE": 13
+        }
+      },
+      "coverage": 0.9861111111111112,
+      "evaluable_records": 142,
+      "macro_f1": 0.4932285764649593,
+      "macro_precision": 0.7279807419994335,
+      "macro_recall": 0.5138888888888888,
+      "per_class": {
+        "AGENT_ERROR": {
+          "f1": 0.4857142857142857,
+          "precision": 0.7727272727272727,
+          "recall": 0.3541666666666667,
+          "support": 48
+        },
+        "PERSISTENT_DRIFT": {
+          "f1": 0.567741935483871,
+          "precision": 0.411214953271028,
+          "recall": 0.9166666666666666,
+          "support": 48
+        },
+        "TRANSIENT_FAILURE": {
+          "f1": 0.4262295081967213,
+          "precision": 1.0,
+          "recall": 0.2708333333333333,
+          "support": 48
+        }
+      },
+      "records": 144
+    }
+  },
+  "by_label_and_evidence_view": {
+    "AGENT_ERROR": {
+      "FIRST_FAILURE": {
+        "correct": 18,
+        "coverage": 0.9791666666666666,
+        "incorrect": 29,
+        "non_evaluable": 1,
+        "recall_all_records": 0.375,
+        "records": 48
+      },
+      "FULL_EVIDENCE": {
+        "correct": 25,
+        "coverage": 0.9791666666666666,
+        "incorrect": 22,
+        "non_evaluable": 1,
+        "recall_all_records": 0.5208333333333334,
+        "records": 48
+      },
+      "RETRY_HISTORY": {
+        "correct": 17,
+        "coverage": 0.9583333333333334,
+        "incorrect": 29,
+        "non_evaluable": 2,
+        "recall_all_records": 0.3541666666666667,
+        "records": 48
+      },
+      "recall_deltas": {
+        "FULL_EVIDENCE - FIRST_FAILURE": 0.14583333333333337,
+        "FULL_EVIDENCE - RETRY_HISTORY": 0.16666666666666669,
+        "RETRY_HISTORY - FIRST_FAILURE": -0.020833333333333315
+      }
+    },
+    "PERSISTENT_DRIFT": {
+      "FIRST_FAILURE": {
+        "correct": 45,
+        "coverage": 1.0,
+        "incorrect": 3,
+        "non_evaluable": 0,
+        "recall_all_records": 0.9375,
+        "records": 48
+      },
+      "FULL_EVIDENCE": {
+        "correct": 46,
+        "coverage": 1.0,
+        "incorrect": 2,
+        "non_evaluable": 0,
+        "recall_all_records": 0.9583333333333334,
+        "records": 48
+      },
+      "RETRY_HISTORY": {
+        "correct": 44,
+        "coverage": 1.0,
+        "incorrect": 4,
+        "non_evaluable": 0,
+        "recall_all_records": 0.9166666666666666,
+        "records": 48
+      },
+      "recall_deltas": {
+        "FULL_EVIDENCE - FIRST_FAILURE": 0.02083333333333337,
+        "FULL_EVIDENCE - RETRY_HISTORY": 0.04166666666666674,
+        "RETRY_HISTORY - FIRST_FAILURE": -0.02083333333333337
+      }
+    },
+    "TRANSIENT_FAILURE": {
+      "FIRST_FAILURE": {
+        "correct": 0,
+        "coverage": 1.0,
+        "incorrect": 48,
+        "non_evaluable": 0,
+        "recall_all_records": 0.0,
+        "records": 48
+      },
+      "FULL_EVIDENCE": {
+        "correct": 6,
+        "coverage": 0.9791666666666666,
+        "incorrect": 41,
+        "non_evaluable": 1,
+        "recall_all_records": 0.125,
+        "records": 48
+      },
+      "RETRY_HISTORY": {
+        "correct": 13,
+        "coverage": 1.0,
+        "incorrect": 35,
+        "non_evaluable": 0,
+        "recall_all_records": 0.2708333333333333,
+        "records": 48
+      },
+      "recall_deltas": {
+        "FULL_EVIDENCE - FIRST_FAILURE": 0.125,
+        "FULL_EVIDENCE - RETRY_HISTORY": -0.14583333333333331,
+        "RETRY_HISTORY - FIRST_FAILURE": 0.2708333333333333
+      }
+    }
+  },
+  "by_provider_and_evidence_view": {
+    "dashscope": {
+      "FIRST_FAILURE": {
+        "accuracy_all_records": 0.5208333333333334,
+        "accuracy_evaluable_subset": 0.5208333333333334,
+        "confusion_matrix": {
+          "AGENT_ERROR": {
+            "AGENT_ERROR": 10,
+            "NOT_EVALUABLE": 0,
+            "PERSISTENT_DRIFT": 6,
+            "TRANSIENT_FAILURE": 0
+          },
+          "PERSISTENT_DRIFT": {
+            "AGENT_ERROR": 1,
+            "NOT_EVALUABLE": 0,
+            "PERSISTENT_DRIFT": 15,
+            "TRANSIENT_FAILURE": 0
+          },
+          "TRANSIENT_FAILURE": {
+            "AGENT_ERROR": 3,
+            "NOT_EVALUABLE": 0,
+            "PERSISTENT_DRIFT": 13,
+            "TRANSIENT_FAILURE": 0
+          }
+        },
+        "coverage": 1.0,
+        "evaluable_records": 48,
+        "macro_f1": 0.4222222222222222,
+        "macro_precision": 0.3851540616246498,
+        "macro_recall": 0.5208333333333334,
+        "per_class": {
+          "AGENT_ERROR": {
+            "f1": 0.6666666666666666,
+            "precision": 0.7142857142857143,
+            "recall": 0.625,
+            "support": 16
+          },
+          "PERSISTENT_DRIFT": {
+            "f1": 0.6,
+            "precision": 0.4411764705882353,
+            "recall": 0.9375,
+            "support": 16
+          },
+          "TRANSIENT_FAILURE": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 16
+          }
+        },
+        "records": 48
+      },
+      "FULL_EVIDENCE": {
+        "accuracy_all_records": 0.5833333333333334,
+        "accuracy_evaluable_subset": 0.5957446808510638,
+        "confusion_matrix": {
+          "AGENT_ERROR": {
+            "AGENT_ERROR": 9,
+            "NOT_EVALUABLE": 0,
+            "PERSISTENT_DRIFT": 7,
+            "TRANSIENT_FAILURE": 0
+          },
+          "PERSISTENT_DRIFT": {
+            "AGENT_ERROR": 1,
+            "NOT_EVALUABLE": 0,
+            "PERSISTENT_DRIFT": 15,
+            "TRANSIENT_FAILURE": 0
+          },
+          "TRANSIENT_FAILURE": {
+            "AGENT_ERROR": 3,
+            "NOT_EVALUABLE": 1,
+            "PERSISTENT_DRIFT": 8,
+            "TRANSIENT_FAILURE": 4
+          }
+        },
+        "coverage": 0.9791666666666666,
+        "evaluable_records": 47,
+        "macro_f1": 0.5576211894052974,
+        "macro_precision": 0.7307692307692308,
+        "macro_recall": 0.5833333333333334,
+        "per_class": {
+          "AGENT_ERROR": {
+            "f1": 0.6206896551724138,
+            "precision": 0.6923076923076923,
+            "recall": 0.5625,
+            "support": 16
+          },
+          "PERSISTENT_DRIFT": {
+            "f1": 0.6521739130434783,
+            "precision": 0.5,
+            "recall": 0.9375,
+            "support": 16
+          },
+          "TRANSIENT_FAILURE": {
+            "f1": 0.4,
+            "precision": 1.0,
+            "recall": 0.25,
+            "support": 16
+          }
+        },
+        "records": 48
+      },
+      "RETRY_HISTORY": {
+        "accuracy_all_records": 0.625,
+        "accuracy_evaluable_subset": 0.625,
+        "confusion_matrix": {
+          "AGENT_ERROR": {
+            "AGENT_ERROR": 9,
+            "NOT_EVALUABLE": 0,
+            "PERSISTENT_DRIFT": 7,
+            "TRANSIENT_FAILURE": 0
+          },
+          "PERSISTENT_DRIFT": {
+            "AGENT_ERROR": 2,
+            "NOT_EVALUABLE": 0,
+            "PERSISTENT_DRIFT": 14,
+            "TRANSIENT_FAILURE": 0
+          },
+          "TRANSIENT_FAILURE": {
+            "AGENT_ERROR": 1,
+            "NOT_EVALUABLE": 0,
+            "PERSISTENT_DRIFT": 8,
+            "TRANSIENT_FAILURE": 7
+          }
+        },
+        "coverage": 1.0,
+        "evaluable_records": 48,
+        "macro_f1": 0.6245916724177594,
+        "macro_precision": 0.7442528735632185,
+        "macro_recall": 0.625,
+        "per_class": {
+          "AGENT_ERROR": {
+            "f1": 0.6428571428571429,
+            "precision": 0.75,
+            "recall": 0.5625,
+            "support": 16
+          },
+          "PERSISTENT_DRIFT": {
+            "f1": 0.6222222222222222,
+            "precision": 0.4827586206896552,
+            "recall": 0.875,
+            "support": 16
+          },
+          "TRANSIENT_FAILURE": {
+            "f1": 0.6086956521739131,
+            "precision": 1.0,
+            "recall": 0.4375,
+            "support": 16
+          }
+        },
+        "records": 48
+      }
+    },
+    "deepseek": {
+      "FIRST_FAILURE": {
+        "accuracy_all_records": 0.3958333333333333,
+        "accuracy_evaluable_subset": 0.3958333333333333,
+        "confusion_matrix": {
+          "AGENT_ERROR": {
+            "AGENT_ERROR": 5,
+            "NOT_EVALUABLE": 0,
+            "PERSISTENT_DRIFT": 11,
+            "TRANSIENT_FAILURE": 0
+          },
+          "PERSISTENT_DRIFT": {
+            "AGENT_ERROR": 2,
+            "NOT_EVALUABLE": 0,
+            "PERSISTENT_DRIFT": 14,
+            "TRANSIENT_FAILURE": 0
+          },
+          "TRANSIENT_FAILURE": {
+            "AGENT_ERROR": 2,
+            "NOT_EVALUABLE": 0,
+            "PERSISTENT_DRIFT": 14,
+            "TRANSIENT_FAILURE": 0
+          }
+        },
+        "coverage": 1.0,
+        "evaluable_records": 48,
+        "macro_f1": 0.303030303030303,
+        "macro_precision": 0.30484330484330485,
+        "macro_recall": 0.3958333333333333,
+        "per_class": {
+          "AGENT_ERROR": {
+            "f1": 0.39999999999999997,
+            "precision": 0.5555555555555556,
+            "recall": 0.3125,
+            "support": 16
+          },
+          "PERSISTENT_DRIFT": {
+            "f1": 0.509090909090909,
+            "precision": 0.358974358974359,
+            "recall": 0.875,
+            "support": 16
+          },
+          "TRANSIENT_FAILURE": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 16
+          }
+        },
+        "records": 48
+      },
+      "FULL_EVIDENCE": {
+        "accuracy_all_records": 0.5208333333333334,
+        "accuracy_evaluable_subset": 0.5208333333333334,
+        "confusion_matrix": {
+          "AGENT_ERROR": {
+            "AGENT_ERROR": 9,
+            "NOT_EVALUABLE": 0,
+            "PERSISTENT_DRIFT": 7,
+            "TRANSIENT_FAILURE": 0
+          },
+          "PERSISTENT_DRIFT": {
+            "AGENT_ERROR": 1,
+            "NOT_EVALUABLE": 0,
+            "PERSISTENT_DRIFT": 15,
+            "TRANSIENT_FAILURE": 0
+          },
+          "TRANSIENT_FAILURE": {
+            "AGENT_ERROR": 1,
+            "NOT_EVALUABLE": 0,
+            "PERSISTENT_DRIFT": 14,
+            "TRANSIENT_FAILURE": 1
+          }
+        },
+        "coverage": 1.0,
+        "evaluable_records": 48,
+        "macro_f1": 0.4537456008044243,
+        "macro_precision": 0.7449494949494949,
+        "macro_recall": 0.5208333333333334,
+        "per_class": {
+          "AGENT_ERROR": {
+            "f1": 0.6666666666666666,
+            "precision": 0.8181818181818182,
+            "recall": 0.5625,
+            "support": 16
+          },
+          "PERSISTENT_DRIFT": {
+            "f1": 0.5769230769230769,
+            "precision": 0.4166666666666667,
+            "recall": 0.9375,
+            "support": 16
+          },
+          "TRANSIENT_FAILURE": {
+            "f1": 0.11764705882352941,
+            "precision": 1.0,
+            "recall": 0.0625,
+            "support": 16
+          }
+        },
+        "records": 48
+      },
+      "RETRY_HISTORY": {
+        "accuracy_all_records": 0.5208333333333334,
+        "accuracy_evaluable_subset": 0.5208333333333334,
+        "confusion_matrix": {
+          "AGENT_ERROR": {
+            "AGENT_ERROR": 5,
+            "NOT_EVALUABLE": 0,
+            "PERSISTENT_DRIFT": 11,
+            "TRANSIENT_FAILURE": 0
+          },
+          "PERSISTENT_DRIFT": {
+            "AGENT_ERROR": 2,
+            "NOT_EVALUABLE": 0,
+            "PERSISTENT_DRIFT": 14,
+            "TRANSIENT_FAILURE": 0
+          },
+          "TRANSIENT_FAILURE": {
+            "AGENT_ERROR": 0,
+            "NOT_EVALUABLE": 0,
+            "PERSISTENT_DRIFT": 10,
+            "TRANSIENT_FAILURE": 6
+          }
+        },
+        "coverage": 1.0,
+        "evaluable_records": 48,
+        "macro_f1": 0.5097522539977782,
+        "macro_precision": 0.7047619047619048,
+        "macro_recall": 0.5208333333333334,
+        "per_class": {
+          "AGENT_ERROR": {
+            "f1": 0.43478260869565216,
+            "precision": 0.7142857142857143,
+            "recall": 0.3125,
+            "support": 16
+          },
+          "PERSISTENT_DRIFT": {
+            "f1": 0.5490196078431373,
+            "precision": 0.4,
+            "recall": 0.875,
+            "support": 16
+          },
+          "TRANSIENT_FAILURE": {
+            "f1": 0.5454545454545454,
+            "precision": 1.0,
+            "recall": 0.375,
+            "support": 16
+          }
+        },
+        "records": 48
+      }
+    },
+    "moonshot": {
+      "FIRST_FAILURE": {
+        "accuracy_all_records": 0.3958333333333333,
+        "accuracy_evaluable_subset": 0.40425531914893614,
+        "confusion_matrix": {
+          "AGENT_ERROR": {
+            "AGENT_ERROR": 3,
+            "NOT_EVALUABLE": 1,
+            "PERSISTENT_DRIFT": 12,
+            "TRANSIENT_FAILURE": 0
+          },
+          "PERSISTENT_DRIFT": {
+            "AGENT_ERROR": 0,
+            "NOT_EVALUABLE": 0,
+            "PERSISTENT_DRIFT": 16,
+            "TRANSIENT_FAILURE": 0
+          },
+          "TRANSIENT_FAILURE": {
+            "AGENT_ERROR": 0,
+            "NOT_EVALUABLE": 0,
+            "PERSISTENT_DRIFT": 16,
+            "TRANSIENT_FAILURE": 0
+          }
+        },
+        "coverage": 0.9791666666666666,
+        "evaluable_records": 47,
+        "macro_f1": 0.2830409356725146,
+        "macro_precision": 0.4545454545454546,
+        "macro_recall": 0.3958333333333333,
+        "per_class": {
+          "AGENT_ERROR": {
+            "f1": 0.3157894736842105,
+            "precision": 1.0,
+            "recall": 0.1875,
+            "support": 16
+          },
+          "PERSISTENT_DRIFT": {
+            "f1": 0.5333333333333333,
+            "precision": 0.36363636363636365,
+            "recall": 1.0,
+            "support": 16
+          },
+          "TRANSIENT_FAILURE": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 16
+          }
+        },
+        "records": 48
+      },
+      "FULL_EVIDENCE": {
+        "accuracy_all_records": 0.5,
+        "accuracy_evaluable_subset": 0.5106382978723404,
+        "confusion_matrix": {
+          "AGENT_ERROR": {
+            "AGENT_ERROR": 7,
+            "NOT_EVALUABLE": 1,
+            "PERSISTENT_DRIFT": 8,
+            "TRANSIENT_FAILURE": 0
+          },
+          "PERSISTENT_DRIFT": {
+            "AGENT_ERROR": 0,
+            "NOT_EVALUABLE": 0,
+            "PERSISTENT_DRIFT": 16,
+            "TRANSIENT_FAILURE": 0
+          },
+          "TRANSIENT_FAILURE": {
+            "AGENT_ERROR": 0,
+            "NOT_EVALUABLE": 0,
+            "PERSISTENT_DRIFT": 15,
+            "TRANSIENT_FAILURE": 1
+          }
+        },
+        "coverage": 0.9791666666666666,
+        "evaluable_records": 47,
+        "macro_f1": 0.43605363093854144,
+        "macro_precision": 0.8034188034188033,
+        "macro_recall": 0.5,
+        "per_class": {
+          "AGENT_ERROR": {
+            "f1": 0.6086956521739131,
+            "precision": 1.0,
+            "recall": 0.4375,
+            "support": 16
+          },
+          "PERSISTENT_DRIFT": {
+            "f1": 0.5818181818181819,
+            "precision": 0.41025641025641024,
+            "recall": 1.0,
+            "support": 16
+          },
+          "TRANSIENT_FAILURE": {
+            "f1": 0.11764705882352941,
+            "precision": 1.0,
+            "recall": 0.0625,
+            "support": 16
+          }
+        },
+        "records": 48
+      },
+      "RETRY_HISTORY": {
+        "accuracy_all_records": 0.3958333333333333,
+        "accuracy_evaluable_subset": 0.41304347826086957,
+        "confusion_matrix": {
+          "AGENT_ERROR": {
+            "AGENT_ERROR": 3,
+            "NOT_EVALUABLE": 2,
+            "PERSISTENT_DRIFT": 11,
+            "TRANSIENT_FAILURE": 0
+          },
+          "PERSISTENT_DRIFT": {
+            "AGENT_ERROR": 0,
+            "NOT_EVALUABLE": 0,
+            "PERSISTENT_DRIFT": 16,
+            "TRANSIENT_FAILURE": 0
+          },
+          "TRANSIENT_FAILURE": {
+            "AGENT_ERROR": 0,
+            "NOT_EVALUABLE": 0,
+            "PERSISTENT_DRIFT": 16,
+            "TRANSIENT_FAILURE": 0
+          }
+        },
+        "coverage": 0.9583333333333334,
+        "evaluable_records": 46,
+        "macro_f1": 0.28605411834671424,
+        "macro_precision": 0.4573643410852713,
+        "macro_recall": 0.3958333333333333,
+        "per_class": {
+          "AGENT_ERROR": {
+            "f1": 0.3157894736842105,
+            "precision": 1.0,
+            "recall": 0.1875,
+            "support": 16
+          },
+          "PERSISTENT_DRIFT": {
+            "f1": 0.5423728813559322,
+            "precision": 0.37209302325581395,
+            "recall": 1.0,
+            "support": 16
+          },
+          "TRANSIENT_FAILURE": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 16
+          }
+        },
+        "records": 48
+      }
+    }
+  },
+  "claims": {
+    "diminishing_returns": "Retry history captures most of the observed accuracy gain; full evidence adds no clear further gain over retry history.",
+    "full_vs_first": "SUPPORTED: positive paired accuracy gain; family-clustered 95% CI excludes zero.",
+    "full_vs_retry": "NOT SUPPORTED as an additional accuracy gain: 95% CI crosses zero.",
+    "prompt_tuning": "PROHIBITED: formal held-out outcomes are reported without system changes.",
+    "retry_vs_first": "SUPPORTED: positive paired accuracy gain; family-clustered 95% CI excludes zero."
+  },
+  "denominator_policy": {
+    "accuracy_all_records": "correct / all records; non-evaluable records are not correct",
+    "accuracy_evaluable_subset": "correct / evaluable records",
+    "class_recall": "correct records for class / all actual records for class",
+    "coverage": "evaluable records / all records",
+    "paired_delta": "(correct under view A - correct under view B) / all paired groups"
+  },
+  "families": 16,
+  "paired_comparisons": {
+    "FULL_EVIDENCE - FIRST_FAILURE": {
+      "accuracy_delta_all_records": 0.09722222222222222,
+      "accuracy_delta_jointly_evaluable": 0.09219858156028368,
+      "ci95_family_clustered_bootstrap": [
+        0.041666666666666664,
+        0.1527777777777778
+      ],
+      "ci_excludes_zero": true,
+      "coverage_delta": -0.006944444444444444,
+      "jointly_evaluable": 141,
+      "jointly_evaluable_rate": 0.9791666666666666,
+      "paired_groups": 144,
+      "transitions": {
+        "a_correct_b_incorrect": 16,
+        "a_incorrect_b_correct": 2,
+        "both_correct": 61,
+        "both_incorrect": 65
+      },
+      "view_a": "FULL_EVIDENCE",
+      "view_b": "FIRST_FAILURE"
+    },
+    "FULL_EVIDENCE - RETRY_HISTORY": {
+      "accuracy_delta_all_records": 0.020833333333333332,
+      "accuracy_delta_jointly_evaluable": 0.02127659574468085,
+      "ci95_family_clustered_bootstrap": [
+        -0.04861111111111111,
+        0.09027777777777778
+      ],
+      "ci_excludes_zero": false,
+      "coverage_delta": 0.0,
+      "jointly_evaluable": 141,
+      "jointly_evaluable_rate": 0.9791666666666666,
+      "paired_groups": 144,
+      "transitions": {
+        "a_correct_b_incorrect": 13,
+        "a_incorrect_b_correct": 10,
+        "both_correct": 64,
+        "both_incorrect": 57
+      },
+      "view_a": "FULL_EVIDENCE",
+      "view_b": "RETRY_HISTORY"
+    },
+    "RETRY_HISTORY - FIRST_FAILURE": {
+      "accuracy_delta_all_records": 0.0763888888888889,
+      "accuracy_delta_jointly_evaluable": 0.0851063829787234,
+      "ci95_family_clustered_bootstrap": [
+        0.020833333333333332,
+        0.13194444444444445
+      ],
+      "ci_excludes_zero": true,
+      "coverage_delta": -0.006944444444444444,
+      "jointly_evaluable": 141,
+      "jointly_evaluable_rate": 0.9791666666666666,
+      "paired_groups": 144,
+      "transitions": {
+        "a_correct_b_incorrect": 17,
+        "a_incorrect_b_correct": 6,
+        "both_correct": 57,
+        "both_incorrect": 64
+      },
+      "view_a": "RETRY_HISTORY",
+      "view_b": "FIRST_FAILURE"
+    }
+  },
+  "phenomena": {
+    "accuracy_macro_f1_divergence": {
+      "FIRST_FAILURE": {
+        "accuracy": 0.4375,
+        "gap_accuracy_minus_macro_f1": 0.09351965601965606,
+        "macro_f1": 0.34398034398034394,
+        "per_class": {
+          "AGENT_ERROR": {
+            "f1": 0.48648648648648646,
+            "precision": 0.6923076923076923,
+            "recall": 0.375,
+            "support": 48
+          },
+          "PERSISTENT_DRIFT": {
+            "f1": 0.5454545454545454,
+            "precision": 0.38461538461538464,
+            "recall": 0.9375,
+            "support": 48
+          },
+          "TRANSIENT_FAILURE": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 48
+          }
+        }
+      },
+      "FULL_EVIDENCE": {
+        "accuracy": 0.5347222222222222,
+        "gap_accuracy_minus_macro_f1": 0.049241954165632484,
+        "macro_f1": 0.4854802680565897,
+        "per_class": {
+          "AGENT_ERROR": {
+            "f1": 0.6329113924050633,
+            "precision": 0.8064516129032258,
+            "recall": 0.5208333333333334,
+            "support": 48
+          },
+          "PERSISTENT_DRIFT": {
+            "f1": 0.6013071895424837,
+            "precision": 0.4380952380952381,
+            "recall": 0.9583333333333334,
+            "support": 48
+          },
+          "TRANSIENT_FAILURE": {
+            "f1": 0.2222222222222222,
+            "precision": 1.0,
+            "recall": 0.125,
+            "support": 48
+          }
+        }
+      },
+      "RETRY_HISTORY": {
+        "accuracy": 0.5138888888888888,
+        "gap_accuracy_minus_macro_f1": 0.020660312423929517,
+        "macro_f1": 0.4932285764649593,
+        "per_class": {
+          "AGENT_ERROR": {
+            "f1": 0.4857142857142857,
+            "precision": 0.7727272727272727,
+            "recall": 0.3541666666666667,
+            "support": 48
+          },
+          "PERSISTENT_DRIFT": {
+            "f1": 0.567741935483871,
+            "precision": 0.411214953271028,
+            "recall": 0.9166666666666666,
+            "support": 48
+          },
+          "TRANSIENT_FAILURE": {
+            "f1": 0.4262295081967213,
+            "precision": 1.0,
+            "recall": 0.2708333333333333,
+            "support": 48
+          }
+        }
+      }
+    },
+    "interpretation": "Persistent-drift predictions remain concentrated across views. Retry evidence primarily restores transient-failure recall, while full evidence raises agent-error recall but gives back part of the transient-failure gain; this explains why accuracy and Macro-F1 order the two richest views differently.",
+    "persistent_drift_prediction_concentration": {
+      "FIRST_FAILURE": {
+        "count": 117,
+        "from_actual_class": {
+          "AGENT_ERROR": 29,
+          "PERSISTENT_DRIFT": 45,
+          "TRANSIENT_FAILURE": 43
+        },
+        "proportion": 0.8125
+      },
+      "FULL_EVIDENCE": {
+        "count": 105,
+        "from_actual_class": {
+          "AGENT_ERROR": 22,
+          "PERSISTENT_DRIFT": 46,
+          "TRANSIENT_FAILURE": 37
+        },
+        "proportion": 0.7291666666666666
+      },
+      "RETRY_HISTORY": {
+        "count": 107,
+        "from_actual_class": {
+          "AGENT_ERROR": 29,
+          "PERSISTENT_DRIFT": 44,
+          "TRANSIENT_FAILURE": 34
+        },
+        "proportion": 0.7430555555555556
+      }
+    }
+  },
+  "provider_paired_accuracy_deltas_descriptive": {
+    "dashscope": {
+      "FULL_EVIDENCE - FIRST_FAILURE": 0.0625,
+      "FULL_EVIDENCE - RETRY_HISTORY": -0.041666666666666664,
+      "RETRY_HISTORY - FIRST_FAILURE": 0.10416666666666667
+    },
+    "deepseek": {
+      "FULL_EVIDENCE - FIRST_FAILURE": 0.125,
+      "FULL_EVIDENCE - RETRY_HISTORY": 0.0,
+      "RETRY_HISTORY - FIRST_FAILURE": 0.125
+    },
+    "moonshot": {
+      "FULL_EVIDENCE - FIRST_FAILURE": 0.10416666666666667,
+      "FULL_EVIDENCE - RETRY_HISTORY": 0.10416666666666667,
+      "RETRY_HISTORY - FIRST_FAILURE": 0.0
+    }
+  },
+  "quality": {
+    "error_class_counts": {
+      "INVALID_STRUCTURED_OUTPUT": 4,
+      "OUTPUT_TRUNCATED": 1
+    },
+    "fallbacks": 0,
+    "infrastructure_errors": 0,
+    "invalid_structured_output": 4,
+    "leakage_failures": 0,
+    "not_evaluable": 5,
+    "output_truncated": 1,
+    "schema_valid": 427,
+    "schema_valid_rate": 0.9884259259259259
+  },
+  "records": 432,
+  "safety": {
+    "api_calls": 0,
+    "cache_reads": 0,
+    "credentials_read": 0,
+    "ground_truth_exposed_to_provider": false,
+    "network_calls": 0,
+    "provider_instances": 0
+  },
+  "schema_version": "specdriftbench-experiment2-analysis-v1",
+  "source_integrity": {
+    "analysis_plan_sha256": "c0f52ae987c2600be71685b14c3d171d2cbd34651bd2db11919b621ca6101d71",
+    "frozen_fingerprints": {
+      "attribution_schema_sha256": "fb1a66c6d331fc1af98ef6985518f19e08ef9733f2ad07624dbfd962ce44b6f9",
+      "evidence_view_sha256": "94376b30b8554539602922f6da656dedcfc7a376650daec64735658af39585ac",
+      "pricing_sha256": "5ba33e1c6769dd208ab43241504dce0c161d4bbd2d92b3db580d26ea41868351",
+      "prompt_sha256": "d499cdb339972ad5a9424339519f4c64a9cb9096afcddd46b6309ccd7cc2a47e",
+      "tool_registry_sha256": "5be5dacb739ed05cb81b5a005de0faf414312d9bb9ef0664eafe8a1000ed7205"
+    },
+    "heldout_analysis_v2_sha256": "ebaa34388e86a7dd256443f40f625c37b5f7ee015eebbb4be514f8ca97153ffc",
+    "ledger_at_analysis_start": {
+      "api_attempts": 1689,
+      "provider_reported_input_tokens": 10139862,
+      "provider_reported_output_tokens": 243536,
+      "reserved_cny": 0.0,
+      "spent_cny": 21.814057367999997
+    },
+    "ledger_sha256_at_analysis_start": "317106473bef64ca6407e6130b72511da14d4f995e06634461bd2f98202f8ebb",
+    "manifest_sha256": "895f129bcf38a20ad414203b0b45a2aa3710e2deb2b042dc524bb8d524c61a1b",
+    "records_tree_sha256": "bee6b8c065a1f4612db1ae8da482717fc236043f25c8075e143431cc36712499",
+    "summary_sha256": "1fbb5b31d4563a74fa70938b16354a71237143718b434bf4ea168bd056592f22",
+    "v1_classification": "INCOMPLETE_INFRASTRUCTURE_GATE_CALIBRATION_NOT_FOR_PAPER",
+    "v1_used": false
+  },
+  "status": "EXPERIMENT_2_COMPLETE"
+}

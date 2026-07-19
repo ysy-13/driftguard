@@ -1,0 +1,79 @@
+{
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "baselines": {
+    "always_persistent_drift": {
+      "accuracy_all_records": 0.3333333333333333,
+      "accuracy_evaluable_subset": 0.3333333333333333,
+      "confusion_matrix": {
+        "AGENT_ERROR": {
+          "AGENT_ERROR": 0,
+          "NOT_EVALUABLE": 0,
+          "PERSISTENT_DRIFT": 144,
+          "TRANSIENT_FAILURE": 0
+        },
+        "PERSISTENT_DRIFT": {
+          "AGENT_ERROR": 0,
+          "NOT_EVALUABLE": 0,
+          "PERSISTENT_DRIFT": 144,
+          "TRANSIENT_FAILURE": 0
+        },
+        "TRANSIENT_FAILURE": {
+          "AGENT_ERROR": 0,
+          "NOT_EVALUABLE": 0,
+          "PERSISTENT_DRIFT": 144,
+          "TRANSIENT_FAILURE": 0
+        }
+      },
+      "coverage": 1.0,
+      "evaluable_records": 432,
+      "label": "DETERMINISTIC_BASELINE",
+      "macro_f1": 0.16666666666666666,
+      "macro_precision": 0.1111111111111111,
+      "macro_recall": 0.3333333333333333,
+      "per_class": {
+        "AGENT_ERROR": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 144
+        },
+        "PERSISTENT_DRIFT": {
+          "f1": 0.5,
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "support": 144
+        },
+        "TRANSIENT_FAILURE": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 144
+        }
+      },
+      "records": 432
+    },
+    "symbolic_oracle": {
+      "audit": {
+        "identical_evidence_mapping_proven": false,
+        "identical_family_set_proven": false,
+        "phase7_result_count": 60,
+        "phase7_source_present": true,
+        "required_heldout_scenarios": 48
+      },
+      "display": "N/A",
+      "label": "NON_COMPARABLE_SYMBOLIC_ORACLE_UPPER_BOUND",
+      "reason": "protocol alignment not proven",
+      "value": null
+    },
+    "uniform_random": {
+      "accuracy": 0.3333333333333333,
+      "label": "ANALYTICAL_EXPECTED_BASELINE",
+      "macro_f1": 0.3333333333333333,
+      "macro_precision": 0.3333333333333333,
+      "macro_recall": 0.3333333333333333,
+      "method": "closed-form expectation for balanced three-class labels",
+      "samples_drawn": 0
+    }
+  },
+  "schema_version": "specdriftbench-experiment2-baselines-v1"
+}
