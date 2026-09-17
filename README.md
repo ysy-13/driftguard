@@ -8,6 +8,9 @@ Its canonical
 OpenAPI 3.1 contract is
 [`benchmark/openapi/driftguard_openapi_v1.yaml`](benchmark/openapi/driftguard_openapi_v1.yaml).
 
+The code and released artifact are available under the
+[`MIT License`](LICENSE).
+
 At experiment initialization, both `displayed_spec` (the contract shown to an
 agent) and `runtime_contract` (the contract enforced by the API) are generated
 from this canonical v1 file, so they begin identical. The canonical file must
