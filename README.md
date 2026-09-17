@@ -1,6 +1,10 @@
-# DriftGuard
+# DriftGuard / SpecDriftBench
 
-This repository contains Phases 1–8 of the **DriftGuard** benchmark. Its canonical
+This repository contains the implementation and released research artifact for
+**SpecDriftBench**. For the paper-specific artifact inventory, frozen formal
+results, and offline reproduction instructions, see [`ARTIFACT.md`](ARTIFACT.md).
+
+Its canonical
 OpenAPI 3.1 contract is
 [`benchmark/openapi/driftguard_openapi_v1.yaml`](benchmark/openapi/driftguard_openapi_v1.yaml).
 
