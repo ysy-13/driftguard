@@ -1,0 +1,128 @@
+{
+  "attempt_id": "specdriftbench-heldout432-v2-20260719-3f4fd32-01",
+  "by_provider": {
+    "dashscope": {
+      "accuracy_all_records": 0.5763888888888888,
+      "accuracy_evaluable_subset": 0.5804195804195804,
+      "cost_cny": 4.23167999999999,
+      "cost_per_correct_record_cny": 0.05098409638554205,
+      "cost_per_evaluable_record_cny": 0.029592167832167764,
+      "cost_per_record_cny": 0.0293866666666666,
+      "coverage": 0.9930555555555556,
+      "format_repairs": 87,
+      "input_tokens": 1918104,
+      "latency_ms": {
+        "high_outlier_records": 0,
+        "iqr": 5258.994365502986,
+        "max": 14967.355875003705,
+        "mean": 8998.111369250057,
+        "median": 10235.089875503036,
+        "p90": 12280.496837700777,
+        "p95": 12682.443430550482,
+        "q1": 5827.022374500302,
+        "q3": 11086.016740003288,
+        "tukey_high_cutoff": 18974.508288257766
+      },
+      "macro_f1": 0.5468909973430162,
+      "near_or_exceeded_timeout_records": [],
+      "near_timeout_records_ge_90pct": 0,
+      "network_attempts": 231,
+      "output_tokens": 49434,
+      "records": 144,
+      "repairs_per_100_records": 60.416666666666664,
+      "timeout_exceeded_records": 0,
+      "tokens_per_correct_record": 23705.277108433736
+    },
+    "deepseek": {
+      "accuracy_all_records": 0.4791666666666667,
+      "accuracy_evaluable_subset": 0.4791666666666667,
+      "cost_cny": 1.2485794440000006,
+      "cost_per_correct_record_cny": 0.018095354260869573,
+      "cost_per_evaluable_record_cny": 0.008670690583333338,
+      "cost_per_record_cny": 0.008670690583333338,
+      "coverage": 1.0,
+      "format_repairs": 1,
+      "input_tokens": 1165750,
+      "latency_ms": {
+        "high_outlier_records": 5,
+        "iqr": 670.6299060006131,
+        "max": 246098.27199999927,
+        "mean": 6190.986890604235,
+        "median": 3121.090896500391,
+        "p90": 3794.103025000732,
+        "p95": 4015.1328249996363,
+        "q1": 2782.4842497502686,
+        "q3": 3453.1141557508818,
+        "tukey_high_cutoff": 4459.059014751801
+      },
+      "macro_f1": 0.4351719728934919,
+      "near_or_exceeded_timeout_records": [
+        {
+          "evidence_view": "FULL_EVIDENCE",
+          "family": "M10",
+          "latency_ms": 124673.47495899958,
+          "record_id": "e47d1db5fb95616ca490aafc",
+          "threshold_status": "EXCEEDED_TIMEOUT",
+          "variant": "TF"
+        },
+        {
+          "evidence_view": "FIRST_FAILURE",
+          "family": "M10",
+          "latency_ms": 246098.27199999927,
+          "record_id": "f9a590d0cb9c41d53917f128",
+          "threshold_status": "EXCEEDED_TIMEOUT",
+          "variant": "PD"
+        }
+      ],
+      "near_timeout_records_ge_90pct": 2,
+      "network_attempts": 150,
+      "output_tokens": 27976,
+      "records": 144,
+      "repairs_per_100_records": 0.6944444444444444,
+      "timeout_exceeded_records": 2,
+      "tokens_per_correct_record": 17300.376811594204
+    },
+    "moonshot": {
+      "accuracy_all_records": 0.4305555555555556,
+      "accuracy_evaluable_subset": 0.44285714285714284,
+      "cost_cny": 8.298351650000003,
+      "cost_per_correct_record_cny": 0.13384438145161295,
+      "cost_per_evaluable_record_cny": 0.059273940357142875,
+      "cost_per_record_cny": 0.057627442013888905,
+      "coverage": 0.9722222222222222,
+      "format_repairs": 80,
+      "input_tokens": 1711130,
+      "latency_ms": {
+        "high_outlier_records": 2,
+        "iqr": 5984.24786374926,
+        "max": 26351.619458997448,
+        "mean": 9218.576699347195,
+        "median": 8872.744374999456,
+        "p90": 14143.802345700902,
+        "p95": 15025.211227697218,
+        "q1": 5819.21654125199,
+        "q3": 11803.46440500125,
+        "tukey_high_cutoff": 20779.83620062514
+      },
+      "macro_f1": 0.3395899908861227,
+      "near_or_exceeded_timeout_records": [],
+      "near_timeout_records_ge_90pct": 0,
+      "network_attempts": 224,
+      "output_tokens": 44033,
+      "records": 144,
+      "repairs_per_100_records": 55.55555555555556,
+      "timeout_exceeded_records": 0,
+      "tokens_per_correct_record": 28309.08064516129
+    }
+  },
+  "latency_interpretation": "HOST_SUSPENSION_OR_NETWORK_DELAY_CANNOT_BE_DISAMBIGUATED",
+  "pareto_dominance": [
+    {
+      "dominant": "deepseek",
+      "dominated": "moonshot"
+    }
+  ],
+  "schema_version": "specdriftbench-experiment3-efficiency-v1",
+  "status": "FORMAL_V2_HELDOUT_OFFLINE_ANALYSIS",
+  "warning": "Provider strata are descriptive outcomes under the frozen configuration; no causal or universal best-provider claim is made."
+}

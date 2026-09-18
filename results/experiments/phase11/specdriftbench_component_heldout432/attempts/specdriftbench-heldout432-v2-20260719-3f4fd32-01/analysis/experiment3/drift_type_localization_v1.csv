@@ -1,0 +1,5 @@
+drift_type,class_correct,class_all_records,class_evaluable_records,class_coverage,class_accuracy_all_records,class_accuracy_evaluable_subset,category_correct,category_all_records,category_evaluable_records,category_coverage,category_accuracy_all_records,category_accuracy_evaluable_subset,target_correct,target_all_records,target_evaluable_records,target_coverage,target_accuracy_all_records,target_accuracy_evaluable_subset,location_correct,location_all_records,location_evaluable_records,location_coverage,location_accuracy_all_records,location_accuracy_evaluable_subset
+ICD,36,36,36,1.0,1.0,1.0,36,36,36,1.0,1.0,1.0,36,36,36,1.0,1.0,1.0,8,36,36,1.0,0.2222222222222222,0.2222222222222222
+RSD,36,36,36,1.0,1.0,1.0,36,36,36,1.0,1.0,1.0,36,36,36,1.0,1.0,1.0,16,36,36,1.0,0.4444444444444444,0.4444444444444444
+SED,36,36,36,1.0,1.0,1.0,36,36,36,1.0,1.0,1.0,36,36,36,1.0,1.0,1.0,32,36,36,1.0,0.8888888888888888,0.8888888888888888
+WPD,27,36,36,1.0,0.75,0.75,27,36,36,1.0,0.75,0.75,36,36,36,1.0,1.0,1.0,23,36,36,1.0,0.6388888888888888,0.6388888888888888

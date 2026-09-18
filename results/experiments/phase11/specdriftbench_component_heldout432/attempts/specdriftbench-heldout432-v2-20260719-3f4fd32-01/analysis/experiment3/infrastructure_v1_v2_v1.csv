@@ -1,0 +1,3 @@
+attempt_id,audit_classification,classification,fallback,final_infrastructure_error_rate,final_infrastructure_errors,network_attempts,performance_use,records_completed,records_planned,replay_cache_misses,replay_records,version
+specdriftbench-heldout432-20260718-af3db03-01,INCOMPLETE_INFRASTRUCTURE_GATE_CALIBRATION_NOT_FOR_PAPER,INCOMPLETE_INFRASTRUCTURE_GATE_CALIBRATION_NOT_FOR_PAPER,,0.031746031746031744,2,65,PROHIBITED,63,432,,,V1
+specdriftbench-heldout432-v2-20260719-3f4fd32-01,,,0,,0,605,,432,432,0,432,V2

@@ -1,0 +1,10 @@
+provider,evidence_view,records,evaluable_records,non_evaluable_records,predicted_persistent_drift,false_drift_attribution_rate_all_records,false_drift_attribution_rate_evaluable_subset
+dashscope,FIRST_FAILURE,32,32,0,19,0.59375,0.59375
+dashscope,FULL_EVIDENCE,32,31,1,15,0.46875,0.4838709677419355
+dashscope,RETRY_HISTORY,32,32,0,15,0.46875,0.46875
+deepseek,FIRST_FAILURE,32,32,0,25,0.78125,0.78125
+deepseek,FULL_EVIDENCE,32,32,0,21,0.65625,0.65625
+deepseek,RETRY_HISTORY,32,32,0,21,0.65625,0.65625
+moonshot,FIRST_FAILURE,32,31,1,28,0.875,0.9032258064516129
+moonshot,FULL_EVIDENCE,32,31,1,23,0.71875,0.7419354838709677
+moonshot,RETRY_HISTORY,32,30,2,27,0.84375,0.9

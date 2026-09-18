@@ -111,6 +111,18 @@ python -m pip install Pillow reportlab
 python scripts/analyze_specdriftbench_experiment2.py --render-only
 ```
 
+Regenerate the failure-attribution, PD-localization, format-robustness, and
+efficiency analyses used by the paper with:
+
+```bash
+python scripts/analyze_specdriftbench_experiment3.py --analysis-only
+```
+
+The command validates the frozen source hashes before writing its JSON, CSV,
+and Markdown outputs to the formal attempt's `analysis/experiment3/`
+directory. Its figures can be regenerated with `--render-only` after the same
+optional figure dependencies are installed.
+
 ## Released and excluded material
 
 The release includes normalized model predictions, usage metadata, manifests,
