@@ -1,0 +1,3541 @@
+{
+  "development": {
+    "by_evidence_view": {
+      "FIRST_FAILURE": {
+        "accuracy": 0.6666666666666666,
+        "confusion_matrix": {
+          "AGENT_ERROR": {
+            "AGENT_ERROR": 4,
+            "PERSISTENT_DRIFT": 0,
+            "TRANSIENT_FAILURE": 0
+          },
+          "PERSISTENT_DRIFT": {
+            "AGENT_ERROR": 0,
+            "PERSISTENT_DRIFT": 4,
+            "TRANSIENT_FAILURE": 0
+          },
+          "TRANSIENT_FAILURE": {
+            "AGENT_ERROR": 0,
+            "PERSISTENT_DRIFT": 4,
+            "TRANSIENT_FAILURE": 0
+          }
+        },
+        "correct": 8,
+        "coverage": 1.0,
+        "macro_f1": 0.5555555555555555,
+        "macro_precision": 0.5,
+        "macro_recall": 0.6666666666666666,
+        "per_class": {
+          "AGENT_ERROR": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 4
+          },
+          "PERSISTENT_DRIFT": {
+            "f1": 0.6666666666666666,
+            "precision": 0.5,
+            "recall": 1.0,
+            "support": 4
+          },
+          "TRANSIENT_FAILURE": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 4
+          }
+        },
+        "records": 12
+      },
+      "FULL_EVIDENCE": {
+        "accuracy": 1.0,
+        "confusion_matrix": {
+          "AGENT_ERROR": {
+            "AGENT_ERROR": 4,
+            "PERSISTENT_DRIFT": 0,
+            "TRANSIENT_FAILURE": 0
+          },
+          "PERSISTENT_DRIFT": {
+            "AGENT_ERROR": 0,
+            "PERSISTENT_DRIFT": 4,
+            "TRANSIENT_FAILURE": 0
+          },
+          "TRANSIENT_FAILURE": {
+            "AGENT_ERROR": 0,
+            "PERSISTENT_DRIFT": 0,
+            "TRANSIENT_FAILURE": 4
+          }
+        },
+        "correct": 12,
+        "coverage": 1.0,
+        "macro_f1": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "per_class": {
+          "AGENT_ERROR": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 4
+          },
+          "PERSISTENT_DRIFT": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 4
+          },
+          "TRANSIENT_FAILURE": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 4
+          }
+        },
+        "records": 12
+      },
+      "RETRY_HISTORY": {
+        "accuracy": 1.0,
+        "confusion_matrix": {
+          "AGENT_ERROR": {
+            "AGENT_ERROR": 4,
+            "PERSISTENT_DRIFT": 0,
+            "TRANSIENT_FAILURE": 0
+          },
+          "PERSISTENT_DRIFT": {
+            "AGENT_ERROR": 0,
+            "PERSISTENT_DRIFT": 4,
+            "TRANSIENT_FAILURE": 0
+          },
+          "TRANSIENT_FAILURE": {
+            "AGENT_ERROR": 0,
+            "PERSISTENT_DRIFT": 0,
+            "TRANSIENT_FAILURE": 4
+          }
+        },
+        "correct": 12,
+        "coverage": 1.0,
+        "macro_f1": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "per_class": {
+          "AGENT_ERROR": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 4
+          },
+          "PERSISTENT_DRIFT": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 4
+          },
+          "TRANSIENT_FAILURE": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 4
+          }
+        },
+        "records": 12
+      }
+    },
+    "errors": [
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-ba31a2577791-EV005"
+        ],
+        "evidence_sha256": "5f8a53f81fe92dd0ce417a2e13b6f70140b1ead0d95f20c5051c69b42f0ce96c",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M01",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-ba31a2577791",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-f2ea596f965a-EV005"
+        ],
+        "evidence_sha256": "3b64534e7009e7f7eea9a8fd37416f990d8fe563d8b9df6fc90e0afff612301a",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M06",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-f2ea596f965a",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-31a3fa24eb31-EV005"
+        ],
+        "evidence_sha256": "ae3243c87fd57eae1ce940c37e25b470f89cf0e1f6556ca87308324fbb9bcf5a",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M11",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-31a3fa24eb31",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-46cdfa236b16-EV005"
+        ],
+        "evidence_sha256": "6f44aedee0d0fd8b2ea59b99232969eebda1ab99b24a511e25ba5f28160ba253",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M16",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-46cdfa236b16",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      }
+    ],
+    "fallback_count": 8,
+    "families": [
+      "M01",
+      "M06",
+      "M11",
+      "M16"
+    ],
+    "overall": {
+      "accuracy": 0.8888888888888888,
+      "confusion_matrix": {
+        "AGENT_ERROR": {
+          "AGENT_ERROR": 12,
+          "PERSISTENT_DRIFT": 0,
+          "TRANSIENT_FAILURE": 0
+        },
+        "PERSISTENT_DRIFT": {
+          "AGENT_ERROR": 0,
+          "PERSISTENT_DRIFT": 12,
+          "TRANSIENT_FAILURE": 0
+        },
+        "TRANSIENT_FAILURE": {
+          "AGENT_ERROR": 0,
+          "PERSISTENT_DRIFT": 4,
+          "TRANSIENT_FAILURE": 8
+        }
+      },
+      "correct": 32,
+      "coverage": 1.0,
+      "macro_f1": 0.8857142857142857,
+      "macro_precision": 0.9166666666666666,
+      "macro_recall": 0.8888888888888888,
+      "per_class": {
+        "AGENT_ERROR": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 12
+        },
+        "PERSISTENT_DRIFT": {
+          "f1": 0.8571428571428571,
+          "precision": 0.75,
+          "recall": 1.0,
+          "support": 12
+        },
+        "TRANSIENT_FAILURE": {
+          "f1": 0.8,
+          "precision": 1.0,
+          "recall": 0.6666666666666666,
+          "support": 12
+        }
+      },
+      "records": 36
+    },
+    "predictions": [
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-78014d069b15-EV004"
+        ],
+        "evidence_sha256": "93450bf110a38827d50f4f13c7ea911ed2baf0557b378ed75ca55970db1e3329",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M01",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-78014d069b15",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-78014d069b15-EV004"
+        ],
+        "evidence_sha256": "297d4cccbe7c0d7dfcf0d061e1d903b630f6fd997c992bf473380df10cef2ff7",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M01",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-78014d069b15",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-78014d069b15-EV004"
+        ],
+        "evidence_sha256": "479fee0ab8f115a86cd6d58b645ee85c8a82774224ed007b4b6045f884a6c8e2",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M01",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-78014d069b15",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-ba31a2577791-EV005"
+        ],
+        "evidence_sha256": "5f8a53f81fe92dd0ce417a2e13b6f70140b1ead0d95f20c5051c69b42f0ce96c",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M01",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-ba31a2577791",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-ba31a2577791-EV006"
+        ],
+        "evidence_sha256": "a489831419afab0d537d4c2925ae6ad1ef121257b6f557a09ec6f1ee921bdcbd",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M01",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-ba31a2577791",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-ba31a2577791-EV006"
+        ],
+        "evidence_sha256": "b5ace9b79674477c058148432a571240f7088641c680130431ebd551fac43b1d",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M01",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-ba31a2577791",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-3cf1c03db24c-EV005"
+        ],
+        "evidence_sha256": "5a330a4bebac443928301349a4374593c219d88ae1294de953d6ec2d569448a6",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M01",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-3cf1c03db24c",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-3cf1c03db24c-EV006"
+        ],
+        "evidence_sha256": "ba0ee69d52c44a9c69bf78749955744f0f5b797d2bd9ea487a815a6b40e939d7",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M01",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-3cf1c03db24c",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-3cf1c03db24c-EV006"
+        ],
+        "evidence_sha256": "718d6b057f371c20258fe3d5e07feb4fbb0cf290495c82d5504917794cb064b2",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M01",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-3cf1c03db24c",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-adeb8ef1688f-EV004",
+          "trace-adeb8ef1688f-EV005"
+        ],
+        "evidence_sha256": "c690d7bf2cf050d74587370217f1d562ccae5df8657465993ca528355552f428",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M06",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-adeb8ef1688f",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-adeb8ef1688f-EV004",
+          "trace-adeb8ef1688f-EV005"
+        ],
+        "evidence_sha256": "00a5ca1f2a54939e0bb95b03fddfaa618ee14a9c734b279d7531c25d3904e865",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M06",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-adeb8ef1688f",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-adeb8ef1688f-EV004",
+          "trace-adeb8ef1688f-EV005"
+        ],
+        "evidence_sha256": "8815662e426f6183850fe1bbf52d3c66cf16303ca58c3951edc223b7caeef1f4",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M06",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-adeb8ef1688f",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-f2ea596f965a-EV005"
+        ],
+        "evidence_sha256": "3b64534e7009e7f7eea9a8fd37416f990d8fe563d8b9df6fc90e0afff612301a",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M06",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-f2ea596f965a",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-f2ea596f965a-EV006"
+        ],
+        "evidence_sha256": "acdfa2c4843966e4a2d7769ec6e301caec78b978e70139c7d42ab5cd23057b06",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M06",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-f2ea596f965a",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-f2ea596f965a-EV006"
+        ],
+        "evidence_sha256": "8c85bd7a2a2b5a5c43def79c8fc37b3e1935920c37764a29676362230d3fb6a0",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M06",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-f2ea596f965a",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-ef4f2cacef0c-EV005"
+        ],
+        "evidence_sha256": "538fdf73a772333cd654b15dc2f00dc46caeb1b5a56eaed7d60741c907f681d3",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M06",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-ef4f2cacef0c",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-ef4f2cacef0c-EV006"
+        ],
+        "evidence_sha256": "d3f1cf79aa891da31230a123262f285d09850c506be2cf6d70302986fefe5848",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M06",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-ef4f2cacef0c",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-ef4f2cacef0c-EV006"
+        ],
+        "evidence_sha256": "7473c18f4493c195249aab9fbd9419e3c485e32f1019d184b4512c8e25a5be53",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M06",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-ef4f2cacef0c",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-97b54f531f43-EV004"
+        ],
+        "evidence_sha256": "5cdc27c5231827fc6b5be4fb381afe978f81a5ef67b891b14e8181ddb6a23052",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M11",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-97b54f531f43",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-97b54f531f43-EV004"
+        ],
+        "evidence_sha256": "e23304755c04d0261e7db21602efbfa77aa7cf215b89e171a953d6ca6514b91f",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M11",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-97b54f531f43",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-97b54f531f43-EV004"
+        ],
+        "evidence_sha256": "13260e41969f485c6b6c94d8095a94c6e1fe2a50225348cd8e62ffdf8971d056",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M11",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-97b54f531f43",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-31a3fa24eb31-EV005"
+        ],
+        "evidence_sha256": "ae3243c87fd57eae1ce940c37e25b470f89cf0e1f6556ca87308324fbb9bcf5a",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M11",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-31a3fa24eb31",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-31a3fa24eb31-EV006"
+        ],
+        "evidence_sha256": "f9368742c13d88fbc377c175ad7e60c9690c8cc7aa3159f59f072b1157554423",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M11",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-31a3fa24eb31",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-31a3fa24eb31-EV006"
+        ],
+        "evidence_sha256": "15e3f230bf1e7e3d5d1879f6e878c815b75289189658c813aa0732ea8b2e6e60",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M11",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-31a3fa24eb31",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-0a949bbdd232-EV005"
+        ],
+        "evidence_sha256": "12adbb7b06dfd01557eb11752b102426f3910fae2c6801777a4f98f6362aa97e",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M11",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-0a949bbdd232",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-0a949bbdd232-EV006"
+        ],
+        "evidence_sha256": "5e028cb0762be9ced3d39155cf82fb334f96bedf3b2b1f4eb472a5176b066b79",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M11",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-0a949bbdd232",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-0a949bbdd232-EV006"
+        ],
+        "evidence_sha256": "5d83a10a7623923686bc6b8a00784863c1873876117a335ed771865af107c881",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M11",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-0a949bbdd232",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-73e94b46d5cc-EV004",
+          "trace-73e94b46d5cc-EV005"
+        ],
+        "evidence_sha256": "efa915394dedba6b33fe7f29a7dcd5dbc48e9a362b31390afcacd13892eac3de",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M16",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-73e94b46d5cc",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-73e94b46d5cc-EV004",
+          "trace-73e94b46d5cc-EV005"
+        ],
+        "evidence_sha256": "246e5cf681b325c211525230df88c123e95a07a06379c9c21d2f6ba52125f28a",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M16",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-73e94b46d5cc",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-73e94b46d5cc-EV004",
+          "trace-73e94b46d5cc-EV005"
+        ],
+        "evidence_sha256": "7a5f3c41c59bc882610e171d4b3d10a4b1d7a378e47ab5e38672ef1b03a6f01c",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M16",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-73e94b46d5cc",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-46cdfa236b16-EV005"
+        ],
+        "evidence_sha256": "6f44aedee0d0fd8b2ea59b99232969eebda1ab99b24a511e25ba5f28160ba253",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M16",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-46cdfa236b16",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-46cdfa236b16-EV006"
+        ],
+        "evidence_sha256": "009b032a1d3d05198618f60f3ee56aa8161af342cd2497d6f08b70febad11f34",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M16",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-46cdfa236b16",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-46cdfa236b16-EV006"
+        ],
+        "evidence_sha256": "56c595548e68a368486b41f0cadd37699803c02b10ec46e4d2048f6f67f7436a",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M16",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-46cdfa236b16",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-4c541458af93-EV005"
+        ],
+        "evidence_sha256": "284722bc42a04b2f3f36d928642d6b0e44eb9f4cfec6ff9761776563dd3905c9",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M16",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-4c541458af93",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-4c541458af93-EV006"
+        ],
+        "evidence_sha256": "1e0e5746bf16ea13f6cb6e82fca0dec2fd1f9f6cce1e1fe228ba31b7ec815dd1",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M16",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-4c541458af93",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-4c541458af93-EV006"
+        ],
+        "evidence_sha256": "9acfc8d48ee199affba997d6f728735c98733d82b74bb2bd27e5c2e78e4e9067",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M16",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-4c541458af93",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      }
+    ],
+    "reason_counts": {
+      "EXACT_LEGAL_RETRY_RECOVERED": 8,
+      "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE": 8,
+      "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK": 8,
+      "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT": 12
+    },
+    "unique_evidence_records": 36
+  },
+  "heldout": {
+    "by_evidence_view": {
+      "FIRST_FAILURE": {
+        "accuracy": 0.6666666666666666,
+        "confusion_matrix": {
+          "AGENT_ERROR": {
+            "AGENT_ERROR": 16,
+            "PERSISTENT_DRIFT": 0,
+            "TRANSIENT_FAILURE": 0
+          },
+          "PERSISTENT_DRIFT": {
+            "AGENT_ERROR": 0,
+            "PERSISTENT_DRIFT": 16,
+            "TRANSIENT_FAILURE": 0
+          },
+          "TRANSIENT_FAILURE": {
+            "AGENT_ERROR": 0,
+            "PERSISTENT_DRIFT": 16,
+            "TRANSIENT_FAILURE": 0
+          }
+        },
+        "correct": 32,
+        "coverage": 1.0,
+        "macro_f1": 0.5555555555555555,
+        "macro_precision": 0.5,
+        "macro_recall": 0.6666666666666666,
+        "per_class": {
+          "AGENT_ERROR": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 16
+          },
+          "PERSISTENT_DRIFT": {
+            "f1": 0.6666666666666666,
+            "precision": 0.5,
+            "recall": 1.0,
+            "support": 16
+          },
+          "TRANSIENT_FAILURE": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 16
+          }
+        },
+        "records": 48
+      },
+      "FULL_EVIDENCE": {
+        "accuracy": 1.0,
+        "confusion_matrix": {
+          "AGENT_ERROR": {
+            "AGENT_ERROR": 16,
+            "PERSISTENT_DRIFT": 0,
+            "TRANSIENT_FAILURE": 0
+          },
+          "PERSISTENT_DRIFT": {
+            "AGENT_ERROR": 0,
+            "PERSISTENT_DRIFT": 16,
+            "TRANSIENT_FAILURE": 0
+          },
+          "TRANSIENT_FAILURE": {
+            "AGENT_ERROR": 0,
+            "PERSISTENT_DRIFT": 0,
+            "TRANSIENT_FAILURE": 16
+          }
+        },
+        "correct": 48,
+        "coverage": 1.0,
+        "macro_f1": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "per_class": {
+          "AGENT_ERROR": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 16
+          },
+          "PERSISTENT_DRIFT": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 16
+          },
+          "TRANSIENT_FAILURE": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 16
+          }
+        },
+        "records": 48
+      },
+      "RETRY_HISTORY": {
+        "accuracy": 1.0,
+        "confusion_matrix": {
+          "AGENT_ERROR": {
+            "AGENT_ERROR": 16,
+            "PERSISTENT_DRIFT": 0,
+            "TRANSIENT_FAILURE": 0
+          },
+          "PERSISTENT_DRIFT": {
+            "AGENT_ERROR": 0,
+            "PERSISTENT_DRIFT": 16,
+            "TRANSIENT_FAILURE": 0
+          },
+          "TRANSIENT_FAILURE": {
+            "AGENT_ERROR": 0,
+            "PERSISTENT_DRIFT": 0,
+            "TRANSIENT_FAILURE": 16
+          }
+        },
+        "correct": 48,
+        "coverage": 1.0,
+        "macro_f1": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "per_class": {
+          "AGENT_ERROR": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 16
+          },
+          "PERSISTENT_DRIFT": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 16
+          },
+          "TRANSIENT_FAILURE": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 16
+          }
+        },
+        "records": 48
+      }
+    },
+    "errors": [
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-4425647282ad-EV005"
+        ],
+        "evidence_sha256": "7ead73778369c3c3c8acb38dd525320e86556700615ede9e8226eb5108ab44ef",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M02",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-4425647282ad",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-7c872aa0c484-EV005"
+        ],
+        "evidence_sha256": "9e962796789254b0b55c8370be04dd41541fa3756a0f90a65fd9862b91335d94",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M03",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-7c872aa0c484",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-5bbd50d7b350-EV005"
+        ],
+        "evidence_sha256": "528144f51472c9f03c82b1970dcf9818b9b49d3ca61ee4f80c2ba47e9395661a",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M04",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-5bbd50d7b350",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-2e15853617f9-EV005"
+        ],
+        "evidence_sha256": "26b0eb805f54796a839700e2a1402fbc79e5e5fc9c407bec3621348975b2b8ad",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M05",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-2e15853617f9",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-e0cf0c40ecbc-EV005"
+        ],
+        "evidence_sha256": "c4238643531cb9900286d5bfc7bfe2d572ba3fc7c661818802178ba67f4834ab",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M07",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-e0cf0c40ecbc",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-4b5a95c8d459-EV005"
+        ],
+        "evidence_sha256": "c116efb5a587fbc80d0c87f46c1c0e0e75d53e5008040a062f27c935e969a863",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M08",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-4b5a95c8d459",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-c6e70af37ade-EV005"
+        ],
+        "evidence_sha256": "79a64b06201ad82dd91f9368fc1e45899439ca8ce7b6908e557fb02b710da371",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M09",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-c6e70af37ade",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-af4b696fde1f-EV005"
+        ],
+        "evidence_sha256": "228ee911a447d1bba896eaca824b62e92392d2800cfbdedc35db92609ca99356",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M10",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-af4b696fde1f",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-3df5648bf121-EV005"
+        ],
+        "evidence_sha256": "f43c1b38ddff1902272effeec90bf53944867299f617abb331eb46ea78a91e00",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M12",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-3df5648bf121",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-cb311422fd06-EV005"
+        ],
+        "evidence_sha256": "716f8ab0f49b5f16d06adbe2bb96d9eb38b87caf1b098448f856ba045fad1704",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M13",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-cb311422fd06",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-a66b9ef4fc95-EV005"
+        ],
+        "evidence_sha256": "76a4a4bf24393f0b50c65d21cf569e9638ef8ee5ca41545647c8ab7eb7815fe1",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M14",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-a66b9ef4fc95",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-d2c07869097a-EV005"
+        ],
+        "evidence_sha256": "1adca55e9e1613ce2b9a4bfb865b646837e2786a6c281e2b0768e5b25d62ebfa",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M15",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-d2c07869097a",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-dca374ae8970-EV005"
+        ],
+        "evidence_sha256": "6a7dd4256b5afc459ede4fc966ca45db083b60208378092bffee8164f8525c94",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M17",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-dca374ae8970",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-6e864360b256-EV005"
+        ],
+        "evidence_sha256": "3730c8e9e75fd3bbc63b27811ed068fdec9d0ec48309dc75123c17de82da6dbe",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M18",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-6e864360b256",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-b29189efccd9-EV005"
+        ],
+        "evidence_sha256": "34a615bd294f81af6ed78df611bfec81714b003f960e471362e030bc452e4ec6",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M19",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-b29189efccd9",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-56bdd292f11a-EV005"
+        ],
+        "evidence_sha256": "74d4569be0e368e9776720425dd35b44adc15d14c4502d0ed382a6fa69d64e1e",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M20",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-56bdd292f11a",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      }
+    ],
+    "fallback_count": 32,
+    "families": [
+      "M02",
+      "M03",
+      "M04",
+      "M05",
+      "M07",
+      "M08",
+      "M09",
+      "M10",
+      "M12",
+      "M13",
+      "M14",
+      "M15",
+      "M17",
+      "M18",
+      "M19",
+      "M20"
+    ],
+    "overall": {
+      "accuracy": 0.8888888888888888,
+      "confusion_matrix": {
+        "AGENT_ERROR": {
+          "AGENT_ERROR": 48,
+          "PERSISTENT_DRIFT": 0,
+          "TRANSIENT_FAILURE": 0
+        },
+        "PERSISTENT_DRIFT": {
+          "AGENT_ERROR": 0,
+          "PERSISTENT_DRIFT": 48,
+          "TRANSIENT_FAILURE": 0
+        },
+        "TRANSIENT_FAILURE": {
+          "AGENT_ERROR": 0,
+          "PERSISTENT_DRIFT": 16,
+          "TRANSIENT_FAILURE": 32
+        }
+      },
+      "correct": 128,
+      "coverage": 1.0,
+      "macro_f1": 0.8857142857142857,
+      "macro_precision": 0.9166666666666666,
+      "macro_recall": 0.8888888888888888,
+      "per_class": {
+        "AGENT_ERROR": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 48
+        },
+        "PERSISTENT_DRIFT": {
+          "f1": 0.8571428571428571,
+          "precision": 0.75,
+          "recall": 1.0,
+          "support": 48
+        },
+        "TRANSIENT_FAILURE": {
+          "f1": 0.8,
+          "precision": 1.0,
+          "recall": 0.6666666666666666,
+          "support": 48
+        }
+      },
+      "records": 144
+    },
+    "predictions": [
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-d19fcd113d97-EV004"
+        ],
+        "evidence_sha256": "e0644d3bd818711758925edcb0cf04dac9e556e19be62276b75fe6eaa80178ff",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M02",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-d19fcd113d97",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-d19fcd113d97-EV004"
+        ],
+        "evidence_sha256": "a66b08164630c3272a45d15059a3cc0ad179be9fa15ffab6a844079e73a61286",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M02",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-d19fcd113d97",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-d19fcd113d97-EV004"
+        ],
+        "evidence_sha256": "aded331e89398c4e41750757b76282df9c753863b43f619d82370f8fa08ae28a",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M02",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-d19fcd113d97",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-4425647282ad-EV005"
+        ],
+        "evidence_sha256": "7ead73778369c3c3c8acb38dd525320e86556700615ede9e8226eb5108ab44ef",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M02",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-4425647282ad",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-4425647282ad-EV006"
+        ],
+        "evidence_sha256": "af3da7b868403c99c378267bfd7306f9fe49e424a0d3d521e681b6b34a9fe74f",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M02",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-4425647282ad",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-4425647282ad-EV006"
+        ],
+        "evidence_sha256": "a8aa28c88c30e69a49b86b75717ee2113560dc037dbd879797341884843d9b4d",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M02",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-4425647282ad",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-adafe0a41cca-EV005"
+        ],
+        "evidence_sha256": "552a8684cb3f1b9411848351000fa0aa4b4c4dba416c7251587a266ef41b37b5",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M02",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-adafe0a41cca",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-adafe0a41cca-EV006"
+        ],
+        "evidence_sha256": "c0ddeaa5b077a2d17d4d883fc436230131a198ee44451e6ee85fbdc3aee7a818",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M02",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-adafe0a41cca",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-adafe0a41cca-EV006"
+        ],
+        "evidence_sha256": "d50bfafc67a7cec03aaabc685acccad402b62b7b1651960cd8357941b0483e1d",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M02",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-adafe0a41cca",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-9b9e9bee7de2-EV004"
+        ],
+        "evidence_sha256": "8a9a5bb1c86ac649a7a77eb47353bbcd8c1a8bdb084a0e0c8e3ee61d0dac28d0",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M03",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-9b9e9bee7de2",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-9b9e9bee7de2-EV004"
+        ],
+        "evidence_sha256": "79cdbd8effb079de70c1eb2f06233c0ad781244e05dfe2ceab1f552ec9d5faca",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M03",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-9b9e9bee7de2",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-9b9e9bee7de2-EV004"
+        ],
+        "evidence_sha256": "6a7f1d532e60670fbb43db9371d9a16789f73b4ad1b5cf08cbe6c32e6787d2ab",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M03",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-9b9e9bee7de2",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-7c872aa0c484-EV005"
+        ],
+        "evidence_sha256": "9e962796789254b0b55c8370be04dd41541fa3756a0f90a65fd9862b91335d94",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M03",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-7c872aa0c484",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-7c872aa0c484-EV006"
+        ],
+        "evidence_sha256": "1ab25723cd9248d04b3bd34cc9859a84415f6d7d38966ced2a645ac3b8949141",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M03",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-7c872aa0c484",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-7c872aa0c484-EV006"
+        ],
+        "evidence_sha256": "e5a9829a01e2e39738a38b54ceb66840e7153690e9b4639a9b40de9d51a466b2",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M03",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-7c872aa0c484",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-8349a855a78f-EV005"
+        ],
+        "evidence_sha256": "8fda277ab480cf762c4f9caa1d755f46b17fe2f2089cdb33aa162ebed30a6990",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M03",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-8349a855a78f",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-8349a855a78f-EV006"
+        ],
+        "evidence_sha256": "41d0c3a7a6ec4fddfcc9391a4df76ab228a972a1d3859690ea3b0d5e5266e37c",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M03",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-8349a855a78f",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-8349a855a78f-EV006"
+        ],
+        "evidence_sha256": "24a5d5dc2c941ec2382ba854c9be9251e58490f3e4f1e0f0625298b01b8d7cbe",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M03",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-8349a855a78f",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-5962ef35ced3-EV004"
+        ],
+        "evidence_sha256": "d4abd23fc49673b047b65b0eddfb3245ce232051a88a56c4dc2e0b6046fd48a6",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M04",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-5962ef35ced3",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-5962ef35ced3-EV004"
+        ],
+        "evidence_sha256": "eb7a4f6e6ed3bfc1a3e3e6c80a024f6d11930e8babc5d70177daf3254ca56ee3",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M04",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-5962ef35ced3",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-5962ef35ced3-EV004"
+        ],
+        "evidence_sha256": "0c0b03c2fd0b1b2742ade1c01b51ae82a8fbd29883050030e62a63da18947539",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M04",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-5962ef35ced3",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-5bbd50d7b350-EV005"
+        ],
+        "evidence_sha256": "528144f51472c9f03c82b1970dcf9818b9b49d3ca61ee4f80c2ba47e9395661a",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M04",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-5bbd50d7b350",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-5bbd50d7b350-EV006"
+        ],
+        "evidence_sha256": "b3bd13f8e7da2d1cc5933e18814739ad1178f162cd3f5b5e606e31cb713250ae",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M04",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-5bbd50d7b350",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-5bbd50d7b350-EV006"
+        ],
+        "evidence_sha256": "c4af62464530507dd1415ad382ef6580a782113c90cf0612649237b9da33ed6d",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M04",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-5bbd50d7b350",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-ab66fe9b5923-EV005"
+        ],
+        "evidence_sha256": "4c4d9c118439b3313cdf034a18e5a4f9fb1521387996fe48955564a4c737aeb4",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M04",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-ab66fe9b5923",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-ab66fe9b5923-EV006"
+        ],
+        "evidence_sha256": "ef829ee953c1df72f5c81332a30b3d36c7b39c39a3517352c6be00bdfdec1452",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M04",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-ab66fe9b5923",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-ab66fe9b5923-EV006"
+        ],
+        "evidence_sha256": "55ab42b9033a94936f7881b0fb673c512c0945d509199dda2067b9be5f9f34fe",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M04",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-ab66fe9b5923",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-7a2923f7ae40-EV004"
+        ],
+        "evidence_sha256": "bb49f980a9393c968dbfecfd9d62cf0ac9a0c3d8dfa97be3dfb4fa6d21cf7707",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M05",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-7a2923f7ae40",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-7a2923f7ae40-EV004"
+        ],
+        "evidence_sha256": "2b4df0147425abf5ad8c21643441b30ec64c2d9109c84248ca00f85465c6c629",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M05",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-7a2923f7ae40",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-7a2923f7ae40-EV004"
+        ],
+        "evidence_sha256": "e4660a130f9f374b8cadbcda7ec0035c5d831700d14622e35931ec0883255b71",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M05",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-7a2923f7ae40",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-2e15853617f9-EV005"
+        ],
+        "evidence_sha256": "26b0eb805f54796a839700e2a1402fbc79e5e5fc9c407bec3621348975b2b8ad",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M05",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-2e15853617f9",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-2e15853617f9-EV006"
+        ],
+        "evidence_sha256": "994473e6b06e8e99a82dc367d574cad6134246d82d1458adbd7537cdac429b98",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M05",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-2e15853617f9",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-2e15853617f9-EV006"
+        ],
+        "evidence_sha256": "b28bdec50b88c7551bc9d4866dc32e9a5dfcb39b34a49f476befd66d611e5aaa",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M05",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-2e15853617f9",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-040e91221946-EV005"
+        ],
+        "evidence_sha256": "2a0059ca7f373731ba4378d9125f74efd944048c669c1975016ac5ae96c292fa",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M05",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-040e91221946",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-040e91221946-EV006"
+        ],
+        "evidence_sha256": "bdbc81f4f469fd581803ce954fcb267773755f7a218abc81e671c401652baa5a",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M05",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-040e91221946",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-040e91221946-EV006"
+        ],
+        "evidence_sha256": "2a0429fd9bd2e54a9b97fbfc7bd9c07660ff9f77fc8a2a91e559ae18db520144",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M05",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-040e91221946",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-38dc6189c374-EV004",
+          "trace-38dc6189c374-EV005"
+        ],
+        "evidence_sha256": "d08227c0b17928bcce6042a7d108f6491a3e4d02f9187407db0d27417231d0b5",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M07",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-38dc6189c374",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-38dc6189c374-EV004",
+          "trace-38dc6189c374-EV005"
+        ],
+        "evidence_sha256": "06822de5ef00308b61c1ad3b8ac5b0d591c10ab326bf3315eba72399aebc70d7",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M07",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-38dc6189c374",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-38dc6189c374-EV004",
+          "trace-38dc6189c374-EV005"
+        ],
+        "evidence_sha256": "468f0b77ffbd96576d9156691b9d3f55cbc1c3ccf9247edc55945572ef952431",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M07",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-38dc6189c374",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-e0cf0c40ecbc-EV005"
+        ],
+        "evidence_sha256": "c4238643531cb9900286d5bfc7bfe2d572ba3fc7c661818802178ba67f4834ab",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M07",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-e0cf0c40ecbc",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-e0cf0c40ecbc-EV006"
+        ],
+        "evidence_sha256": "5c6763419c235e3c7edff6ff12566f6bb98a1906b38c762bfc6207a287a6489d",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M07",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-e0cf0c40ecbc",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-e0cf0c40ecbc-EV006"
+        ],
+        "evidence_sha256": "7ae80f38c32dd47afb9d9bf70d24ce2e7c22ca4e325fdfbe02263adb60c854e1",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M07",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-e0cf0c40ecbc",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-0a0344458ac0-EV005"
+        ],
+        "evidence_sha256": "6336fd8d610520bd0cf35b147b52ce9029f42a74bbdc793932dcdc0bd0a2e85c",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M07",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-0a0344458ac0",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-0a0344458ac0-EV006"
+        ],
+        "evidence_sha256": "085b9023edd700d548c439c8927b10d015f6321d18cdc438bfe67c7a19663344",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M07",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-0a0344458ac0",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-0a0344458ac0-EV006"
+        ],
+        "evidence_sha256": "eda2acbc262c436afc3f3039daf09e9449572412741cd561396a378e9a7af5d7",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M07",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-0a0344458ac0",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-4428482ce42e-EV004",
+          "trace-4428482ce42e-EV005"
+        ],
+        "evidence_sha256": "c308b819575ee26286d22795e8a389f48cdd80085598fc7d6bdd0f6a1750618e",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M08",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-4428482ce42e",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-4428482ce42e-EV004",
+          "trace-4428482ce42e-EV005"
+        ],
+        "evidence_sha256": "c08efb14d1ce7fd11c3a07c2d62aef8e3c755c26329ae270598628326c2ab9a8",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M08",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-4428482ce42e",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-4428482ce42e-EV004",
+          "trace-4428482ce42e-EV005"
+        ],
+        "evidence_sha256": "1b3b2af8bcae25bf636a002ab225b467fd19565c48afde20d32d4072fac72dfd",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M08",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-4428482ce42e",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-4b5a95c8d459-EV005"
+        ],
+        "evidence_sha256": "c116efb5a587fbc80d0c87f46c1c0e0e75d53e5008040a062f27c935e969a863",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M08",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-4b5a95c8d459",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-4b5a95c8d459-EV006"
+        ],
+        "evidence_sha256": "25f9b6e0f43df79849d28c5a3b22c6581fb24e2bd71c8dd40e6ed165a0a62f50",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M08",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-4b5a95c8d459",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-4b5a95c8d459-EV006"
+        ],
+        "evidence_sha256": "e3788819f209074afcd8291787e793ff0a110985dcfd892d62fef9bb4fb125dc",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M08",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-4b5a95c8d459",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-93373d4ff3d7-EV005"
+        ],
+        "evidence_sha256": "59459ef620f7ff47519735dae0b240c50d081c96c9804148302df75524318104",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M08",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-93373d4ff3d7",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-93373d4ff3d7-EV006"
+        ],
+        "evidence_sha256": "9e5a2ce7a9ed312c3b992294c67204065f773c572704b48aaaa418066876e478",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M08",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-93373d4ff3d7",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-93373d4ff3d7-EV006"
+        ],
+        "evidence_sha256": "838f6bbe0c6a85d27c7f38625faa4926278cba3483c2a73c3f745c5315f4fcee",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M08",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-93373d4ff3d7",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-4bf040e046e4-EV004",
+          "trace-4bf040e046e4-EV005"
+        ],
+        "evidence_sha256": "7e943dc660b6ef1f9a6bb19730b2f8167aa4894f46aa7e6408237c9ef70673b2",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M09",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-4bf040e046e4",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-4bf040e046e4-EV004",
+          "trace-4bf040e046e4-EV005"
+        ],
+        "evidence_sha256": "1bf03f13826c42c750c43520a5d4537e757d9ec3ef31db3fe764522f3d2d8881",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M09",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-4bf040e046e4",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-4bf040e046e4-EV004",
+          "trace-4bf040e046e4-EV005"
+        ],
+        "evidence_sha256": "dae311d11f96e102fa1624b2205ecd482f12300f0e99d1b07bc33cf7029909b7",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M09",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-4bf040e046e4",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-c6e70af37ade-EV005"
+        ],
+        "evidence_sha256": "79a64b06201ad82dd91f9368fc1e45899439ca8ce7b6908e557fb02b710da371",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M09",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-c6e70af37ade",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-c6e70af37ade-EV006"
+        ],
+        "evidence_sha256": "f2e462ed9006f926f62889f292792f38d796c7316ce57ed91fd048894d043e25",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M09",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-c6e70af37ade",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-c6e70af37ade-EV006"
+        ],
+        "evidence_sha256": "c8ec91034cf9bf690ee13ce5c99982727bec7d5063174316efe1060418f03092",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M09",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-c6e70af37ade",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-9c6340cc26ca-EV005"
+        ],
+        "evidence_sha256": "92ecb6604a16091a879dff6628b78ab0a83f8c0a8a34ec2555d93c2c87cef454",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M09",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-9c6340cc26ca",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-9c6340cc26ca-EV006"
+        ],
+        "evidence_sha256": "febb5a657826bc2aabe5ab2b2bfbafdbf53d3e066e415e44a8914aa60a1c3eef",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M09",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-9c6340cc26ca",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-9c6340cc26ca-EV006"
+        ],
+        "evidence_sha256": "e822235fff8588aa34c73749859ab2190854deefe5ce2547cf1b315428e87612",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M09",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-9c6340cc26ca",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-bc85205f99f8-EV004",
+          "trace-bc85205f99f8-EV005"
+        ],
+        "evidence_sha256": "4b7d0af6503d74802fca5a924d843dd753af2f4d913423f34afebd936b1f35ec",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M10",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-bc85205f99f8",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-bc85205f99f8-EV004",
+          "trace-bc85205f99f8-EV005"
+        ],
+        "evidence_sha256": "81a9d27db6b8d34747f6561191c76480871a2aa3cad5617f56f129e0911dbd9e",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M10",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-bc85205f99f8",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-bc85205f99f8-EV004",
+          "trace-bc85205f99f8-EV005"
+        ],
+        "evidence_sha256": "d4e8f4af33776cd7238992479fd653e281b3a9bbe8d031e4903634d872ceea0a",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M10",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-bc85205f99f8",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-af4b696fde1f-EV005"
+        ],
+        "evidence_sha256": "228ee911a447d1bba896eaca824b62e92392d2800cfbdedc35db92609ca99356",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M10",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-af4b696fde1f",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-af4b696fde1f-EV006"
+        ],
+        "evidence_sha256": "765e326abc56828a32a35af488984ccecb435fc4572c0f14c03c8ba870b110f3",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M10",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-af4b696fde1f",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-af4b696fde1f-EV006"
+        ],
+        "evidence_sha256": "22079baf500a5bd377557d8f0ce272ef803a743e78c6abb267d972c38ad8752e",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M10",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-af4b696fde1f",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-9226a0d28ee8-EV005"
+        ],
+        "evidence_sha256": "55dff14e2961c5674e9784e829033ca69a812c0750a8109bafd5b736a55ae60f",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M10",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-9226a0d28ee8",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-9226a0d28ee8-EV006"
+        ],
+        "evidence_sha256": "d832ac120cb919b5aafea7ff3cdac67025c26a15e77763869cc7ac36d7c18301",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M10",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-9226a0d28ee8",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-9226a0d28ee8-EV006"
+        ],
+        "evidence_sha256": "41e6b0ec4148a1a0ce9aa75001bedec7288db0ce6f7b975f5c9e7b5bc669c9d1",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M10",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-9226a0d28ee8",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-d5188b01fd32-EV004"
+        ],
+        "evidence_sha256": "c995fa12c842beb8b458329671baccebc5fd31ccab7075771492a374b8f2961b",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M12",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-d5188b01fd32",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-d5188b01fd32-EV004"
+        ],
+        "evidence_sha256": "6faaab750a86cdb043255c12a32c3b6fa8ae69aa3c73f55f43be0c61cf854a7c",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M12",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-d5188b01fd32",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-d5188b01fd32-EV004"
+        ],
+        "evidence_sha256": "c6b668c2d46e75cdbecf968b77da8f9f37431b2b503364195744800c86f55828",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M12",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-d5188b01fd32",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-3df5648bf121-EV005"
+        ],
+        "evidence_sha256": "f43c1b38ddff1902272effeec90bf53944867299f617abb331eb46ea78a91e00",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M12",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-3df5648bf121",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-3df5648bf121-EV006"
+        ],
+        "evidence_sha256": "da516666a34faca3104097f4541ee78af75b32f35b32541d97cc702bbadb7c4a",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M12",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-3df5648bf121",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-3df5648bf121-EV006"
+        ],
+        "evidence_sha256": "ebe45d354f077b42789f5793de6da15194b8636b092c8d9f932df925ad8e6d1a",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M12",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-3df5648bf121",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-4fd3580e2332-EV005"
+        ],
+        "evidence_sha256": "cc6948771c89a1a5c65a183764c524e407a8018e0474a331485f6ef186ebe38f",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M12",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-4fd3580e2332",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-4fd3580e2332-EV006"
+        ],
+        "evidence_sha256": "2a01aeb2c54a1e2f35950492ca200c3175fc6d3eae8c56fc2affea63e6991ab0",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M12",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-4fd3580e2332",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-4fd3580e2332-EV006"
+        ],
+        "evidence_sha256": "f449a36b1d2cf1c6ac6f4a92dd0c75a6892d4575404e9267ba3cb3600026e0fb",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M12",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-4fd3580e2332",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-102e80486232-EV004"
+        ],
+        "evidence_sha256": "0b4ddc126ad6c48d6e50c0d32e13bb3b5a7609ca9f5d63c45493dfbd144e6da5",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M13",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-102e80486232",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-102e80486232-EV004"
+        ],
+        "evidence_sha256": "4e4ce7982a33af0a8c7d608a7e8951ea4e0ae6c56d48c9f82df1b5ddb35f2dac",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M13",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-102e80486232",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-102e80486232-EV004"
+        ],
+        "evidence_sha256": "fda05eed0216b96d22ca3b6090b23d412835213a8112e8340e81e622ad05c9b8",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M13",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-102e80486232",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-cb311422fd06-EV005"
+        ],
+        "evidence_sha256": "716f8ab0f49b5f16d06adbe2bb96d9eb38b87caf1b098448f856ba045fad1704",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M13",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-cb311422fd06",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-cb311422fd06-EV006"
+        ],
+        "evidence_sha256": "ad6213237eafd79c19163ff6a5667f4aec388b2659abf182ab27500fe0eddf1e",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M13",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-cb311422fd06",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-cb311422fd06-EV006"
+        ],
+        "evidence_sha256": "957a8ef7367686e011bf423651662d80dcc89cb8b59a22952c162539c3507bc8",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M13",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-cb311422fd06",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-73584d492300-EV005"
+        ],
+        "evidence_sha256": "dc0b5b6923569db75da1183b6b0d39476b87dc8e1256de219a263750aa8fcd1f",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M13",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-73584d492300",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-73584d492300-EV006"
+        ],
+        "evidence_sha256": "3c2559270db8bdc072d4a7d777bddb3c3fbe5408676479fc1200c0ba542ed077",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M13",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-73584d492300",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-73584d492300-EV006"
+        ],
+        "evidence_sha256": "f5e61db8e96abe2aad56cbe3cbf50adb535954896d9ef92b31f6430eacc7b4b2",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M13",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-73584d492300",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-fe296a0a6d31-EV004"
+        ],
+        "evidence_sha256": "97218a92c5a36af4bf018c6245b23de4eca5fe2bc6a1925287d4eaa30c5f0b34",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M14",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-fe296a0a6d31",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-fe296a0a6d31-EV004"
+        ],
+        "evidence_sha256": "d7e01f24f697b712205b8af473f71b40e79b6b468f49ad1bdf0988e5a183d82a",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M14",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-fe296a0a6d31",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-fe296a0a6d31-EV004"
+        ],
+        "evidence_sha256": "91b8b16c651dafffabc2a5cc24c6b567802db5d82dbc59c967ec71a7f1b17719",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M14",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-fe296a0a6d31",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-a66b9ef4fc95-EV005"
+        ],
+        "evidence_sha256": "76a4a4bf24393f0b50c65d21cf569e9638ef8ee5ca41545647c8ab7eb7815fe1",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M14",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-a66b9ef4fc95",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-a66b9ef4fc95-EV006"
+        ],
+        "evidence_sha256": "df51f3284ca8be2de6106e29a03e42c2bd62e98ff5be60aa7d2fd1b8d9ece723",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M14",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-a66b9ef4fc95",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-a66b9ef4fc95-EV006"
+        ],
+        "evidence_sha256": "8e3849014b2539a8d3dd011b371c512adf74eb4cb5e4d051a2b1afff28a7e5f1",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M14",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-a66b9ef4fc95",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-302906882764-EV005"
+        ],
+        "evidence_sha256": "95f0bc387f13ea097dec4d7d205fe145a415a199daee79b1b96badd711bea88b",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M14",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-302906882764",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-302906882764-EV006"
+        ],
+        "evidence_sha256": "21182d1561836597de5a4ce2804cb4a8e9e6fe35475571e4f323a550193dafe0",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M14",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-302906882764",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-302906882764-EV006"
+        ],
+        "evidence_sha256": "d11f05bdcff70a4300ff968b68aeb554d4fa47902e171a4ac0c2798399bff362",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M14",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-302906882764",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-2f8547687fbc-EV004"
+        ],
+        "evidence_sha256": "52c9087bd35509e833fb099501d44298cff42d2d13657be087af4d9f8d1cd1e9",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M15",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-2f8547687fbc",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-2f8547687fbc-EV004"
+        ],
+        "evidence_sha256": "c98ccdc13271e96a8b0930cd9b73b29470fbc8eea535a7e8658a1e1b2ffa4ae5",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M15",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-2f8547687fbc",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-2f8547687fbc-EV004"
+        ],
+        "evidence_sha256": "380e9cc5ff26f81839d293d7acd70ab0d80b32e532229d7b2d4f480f69456e54",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M15",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-2f8547687fbc",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-d2c07869097a-EV005"
+        ],
+        "evidence_sha256": "1adca55e9e1613ce2b9a4bfb865b646837e2786a6c281e2b0768e5b25d62ebfa",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M15",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-d2c07869097a",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-d2c07869097a-EV006"
+        ],
+        "evidence_sha256": "31221e0d9bf27502a231251a0db3c0ce9cffc0c82fc59b1094aded64f67b4b17",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M15",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-d2c07869097a",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-d2c07869097a-EV006"
+        ],
+        "evidence_sha256": "967a0ea65052200eecee6ceb1f8f1020d170c3513850232c69ae3cd739ca7fb7",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M15",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-d2c07869097a",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-3004093b28b5-EV005"
+        ],
+        "evidence_sha256": "38b8a2ee270bc24e926b20bd76f53dad447779ee83464d459ccd70b7515a773c",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M15",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-3004093b28b5",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-3004093b28b5-EV006"
+        ],
+        "evidence_sha256": "44d471cd2b8e5469cc973930e6f9e48ab536094ad08099a73a575e0a298cfb64",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M15",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-3004093b28b5",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-3004093b28b5-EV006"
+        ],
+        "evidence_sha256": "faa6236ddb9885b7d4b8106ca3c11be73f386e73dbb25107a80d9851af50d109",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M15",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-3004093b28b5",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-fa7fc1fd77b4-EV004",
+          "trace-fa7fc1fd77b4-EV005"
+        ],
+        "evidence_sha256": "603f520dc9ada809a6d5fc7908e01038ca28c9cc55b32fd749564e7d08e19d7f",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M17",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-fa7fc1fd77b4",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-fa7fc1fd77b4-EV004",
+          "trace-fa7fc1fd77b4-EV005"
+        ],
+        "evidence_sha256": "4e9adc6cf2a6183c61f8372eb40976c1e5f560b43d37f1f9fd5d518401bf1cf9",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M17",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-fa7fc1fd77b4",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-fa7fc1fd77b4-EV004",
+          "trace-fa7fc1fd77b4-EV005"
+        ],
+        "evidence_sha256": "b322c0f1a87838147af9a9387bdb692065e50e64d5805b3a6249b2f36c3d215a",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M17",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-fa7fc1fd77b4",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-dca374ae8970-EV005"
+        ],
+        "evidence_sha256": "6a7dd4256b5afc459ede4fc966ca45db083b60208378092bffee8164f8525c94",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M17",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-dca374ae8970",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-dca374ae8970-EV006"
+        ],
+        "evidence_sha256": "70b00006b1c065485aa5225764603092ce9ee39a2cd5fb255516b749c1e43085",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M17",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-dca374ae8970",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-dca374ae8970-EV006"
+        ],
+        "evidence_sha256": "bbb98f5177987e7f7ef9b008e3796315acbee634a931f96119e0c090fbc00a0e",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M17",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-dca374ae8970",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-05cb282e289e-EV005"
+        ],
+        "evidence_sha256": "43cf56651b793db5f3e0279115eb3ee7506fcece4d129ba8a6a752d19370e867",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M17",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-05cb282e289e",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-05cb282e289e-EV006"
+        ],
+        "evidence_sha256": "647f0d2b9b03db8795d9998644b16d66268eb90ebb2b8224c45c61169dbad0e0",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M17",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-05cb282e289e",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-05cb282e289e-EV006"
+        ],
+        "evidence_sha256": "4651d3c71b74f704528d35fdc73d1b889ae8bc228e1f2531d4afcc6c2d00d22c",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M17",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-05cb282e289e",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-f7c3a0e1ebc3-EV004",
+          "trace-f7c3a0e1ebc3-EV005"
+        ],
+        "evidence_sha256": "e12c340508e38aee16d7c7628bcf29f60405584bc8f9402c6c6124837c39cd2d",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M18",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-f7c3a0e1ebc3",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-f7c3a0e1ebc3-EV004",
+          "trace-f7c3a0e1ebc3-EV005"
+        ],
+        "evidence_sha256": "51d805e640d6ba8efe805b8c43c705f2f09a1b0aa28adff567717e8152ade34a",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M18",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-f7c3a0e1ebc3",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-f7c3a0e1ebc3-EV004",
+          "trace-f7c3a0e1ebc3-EV005"
+        ],
+        "evidence_sha256": "ac5537e2c8d0cd971591e7700098ec8d94015986ea0f4a5bc2833f538f5f1f68",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M18",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-f7c3a0e1ebc3",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-6e864360b256-EV005"
+        ],
+        "evidence_sha256": "3730c8e9e75fd3bbc63b27811ed068fdec9d0ec48309dc75123c17de82da6dbe",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M18",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-6e864360b256",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-6e864360b256-EV006"
+        ],
+        "evidence_sha256": "7d48a2c4b39daa091108b0bcbfcfdfa9948a809d5113a24dfecd5cd10d6bf5ab",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M18",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-6e864360b256",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-6e864360b256-EV006"
+        ],
+        "evidence_sha256": "f25d088b19fb46147fd928bb1b7371d7124845ff1471d30b3f066c858866238b",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M18",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-6e864360b256",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-2302471c0bb7-EV005"
+        ],
+        "evidence_sha256": "c0e4088518e66125265ea1fd4a1a32cb66fccbf05f167ab9d9ee96e0e38ddd2f",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M18",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-2302471c0bb7",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-2302471c0bb7-EV006"
+        ],
+        "evidence_sha256": "1b1b520266a8afa24713ece2d56a2b0e2fa17d59d3cb2d41c163e2e15f62e7c6",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M18",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-2302471c0bb7",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-2302471c0bb7-EV006"
+        ],
+        "evidence_sha256": "5475c12101496427774526dd58a4c58bd6e5824a2f1504ace28ea3433e4a2929",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M18",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-2302471c0bb7",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-ea9db0110d72-EV004",
+          "trace-ea9db0110d72-EV005"
+        ],
+        "evidence_sha256": "6d530afb6f1e65cba0c485cf6453eda8bdc3eeeaf5021f28a31875d84f150348",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M19",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-ea9db0110d72",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-ea9db0110d72-EV004",
+          "trace-ea9db0110d72-EV005"
+        ],
+        "evidence_sha256": "dc25458a477a8be10ed4e0222a803dfe34fc5958ec012102421cc15eb193494e",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M19",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-ea9db0110d72",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-ea9db0110d72-EV004",
+          "trace-ea9db0110d72-EV005"
+        ],
+        "evidence_sha256": "023cd5852870cef2c2b6b30678f268c3f5af4bf71fe4ddc4da789f71ec1dc6d9",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M19",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-ea9db0110d72",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-b29189efccd9-EV005"
+        ],
+        "evidence_sha256": "34a615bd294f81af6ed78df611bfec81714b003f960e471362e030bc452e4ec6",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M19",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-b29189efccd9",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-b29189efccd9-EV006"
+        ],
+        "evidence_sha256": "7cee77a016f237556ac4cd7007fcaf02d747387c4e0d5499d052739494bdf7ce",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M19",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-b29189efccd9",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-b29189efccd9-EV006"
+        ],
+        "evidence_sha256": "a3ebd3fdd09d168d07f1a6a0a47007f14e57fe5df37edf5d3759f406606d389f",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M19",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-b29189efccd9",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-8354cffa4164-EV005"
+        ],
+        "evidence_sha256": "ba45c1abaae0e735bc74b8a1b960d9d0f3307254846fbd5279eb252a94631b22",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M19",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-8354cffa4164",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-8354cffa4164-EV006"
+        ],
+        "evidence_sha256": "863881f6f2fcac9c2ace607d244717b74d2d3a60d8df178849a5c9c7d9106c93",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M19",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-8354cffa4164",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-8354cffa4164-EV006"
+        ],
+        "evidence_sha256": "ddb8852520ec643780870a17874b229f424a0d3feb19d010a59bd840a28b7c4c",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M19",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-8354cffa4164",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-0672abe29feb-EV004",
+          "trace-0672abe29feb-EV005"
+        ],
+        "evidence_sha256": "aba585b88136a1ff9ba2b8006730c08f5f758361fac9ac1e4fd804cee18aeeba",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M20",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-0672abe29feb",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-0672abe29feb-EV004",
+          "trace-0672abe29feb-EV005"
+        ],
+        "evidence_sha256": "f967d46264509dfa67ac10de7e8c7bdc93b78836c738b4e95a64de457d54ef63",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M20",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-0672abe29feb",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "AGENT_ERROR",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-0672abe29feb-EV004",
+          "trace-0672abe29feb-EV005"
+        ],
+        "evidence_sha256": "57f0af304613c51cc6febe36f5ec95fd7894518374fd12df7964d24a2e0f47c6",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M20",
+        "predicted_class": "AGENT_ERROR",
+        "public_scenario_id": "public-0672abe29feb",
+        "reason_code": "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT",
+        "used_fallback": false,
+        "variant": "AE"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": false,
+        "evidence_event_ids": [
+          "trace-56bdd292f11a-EV005"
+        ],
+        "evidence_sha256": "74d4569be0e368e9776720425dd35b44adc15d14c4502d0ed382a6fa69d64e1e",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M20",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-56bdd292f11a",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-56bdd292f11a-EV006"
+        ],
+        "evidence_sha256": "68a4d6262911bf89e08c45a24c78b54a2ae749620b5c5cc5ff3937a5ededdebc",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M20",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-56bdd292f11a",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "TRANSIENT_FAILURE",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-56bdd292f11a-EV006"
+        ],
+        "evidence_sha256": "bf1ec4dd26559859d5bb7479bb7d43c6ba7eafe050c8a7e1343080b96d84d88a",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M20",
+        "predicted_class": "TRANSIENT_FAILURE",
+        "public_scenario_id": "public-56bdd292f11a",
+        "reason_code": "EXACT_LEGAL_RETRY_RECOVERED",
+        "used_fallback": false,
+        "variant": "TF"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-fd0ae5ce7514-EV005"
+        ],
+        "evidence_sha256": "3316ce7e01e42a6ffd66d210e66a6b32fa8709dc9902ec68dcb75c52fa613900",
+        "evidence_view": "FIRST_FAILURE",
+        "family": "M20",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-fd0ae5ce7514",
+        "reason_code": "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK",
+        "used_fallback": true,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-fd0ae5ce7514-EV006"
+        ],
+        "evidence_sha256": "0233425753351bb1029996a4df5d3f7b33f2f3600f47d7caf358af270a361c27",
+        "evidence_view": "RETRY_HISTORY",
+        "family": "M20",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-fd0ae5ce7514",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      },
+      {
+        "actual_class": "PERSISTENT_DRIFT",
+        "correct": true,
+        "evidence_event_ids": [
+          "trace-fd0ae5ce7514-EV006"
+        ],
+        "evidence_sha256": "3b91a6fe1073a527acaa79dc2354978cc7669ee0be1cb382b608e2c237098076",
+        "evidence_view": "FULL_EVIDENCE",
+        "family": "M20",
+        "predicted_class": "PERSISTENT_DRIFT",
+        "public_scenario_id": "public-fd0ae5ce7514",
+        "reason_code": "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE",
+        "used_fallback": false,
+        "variant": "PD"
+      }
+    ],
+    "reason_counts": {
+      "EXACT_LEGAL_RETRY_RECOVERED": 32,
+      "EXACT_LEGAL_RETRY_REPRODUCED_FAILURE": 32,
+      "FIRST_FAILURE_CONSERVATIVE_PD_FALLBACK": 32,
+      "VISIBLE_CALL_OR_INTERPRETATION_VIOLATES_DISPLAYED_CONTRACT": 48
+    },
+    "unique_evidence_records": 144
+  },
+  "heldout_provider_aligned": {
+    "accuracy": 0.8888888888888888,
+    "aligned_rows": 432,
+    "confusion_matrix": {
+      "AGENT_ERROR": {
+        "AGENT_ERROR": 144,
+        "PERSISTENT_DRIFT": 0,
+        "TRANSIENT_FAILURE": 0
+      },
+      "PERSISTENT_DRIFT": {
+        "AGENT_ERROR": 0,
+        "PERSISTENT_DRIFT": 144,
+        "TRANSIENT_FAILURE": 0
+      },
+      "TRANSIENT_FAILURE": {
+        "AGENT_ERROR": 0,
+        "PERSISTENT_DRIFT": 48,
+        "TRANSIENT_FAILURE": 96
+      }
+    },
+    "correct": 384,
+    "coverage": 1.0,
+    "independence_note": "The 432 rows repeat 144 deterministic predictions across three provider slots; rates are unchanged and inferential sample size is not increased.",
+    "macro_f1": 0.8857142857142857,
+    "macro_precision": 0.9166666666666666,
+    "macro_recall": 0.8888888888888888,
+    "per_class": {
+      "AGENT_ERROR": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 144
+      },
+      "PERSISTENT_DRIFT": {
+        "f1": 0.8571428571428571,
+        "precision": 0.75,
+        "recall": 1.0,
+        "support": 144
+      },
+      "TRANSIENT_FAILURE": {
+        "f1": 0.8,
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "support": 144
+      }
+    },
+    "provider_slots": 3,
+    "records": 432,
+    "unique_evidence_records": 144
+  },
+  "limitations": [
+    "This baseline was added after peer review and was not preregistered with the original analysis plan.",
+    "The conservative first-failure fallback is a declared tie-breaking policy, not evidence that drift is present.",
+    "The rule baseline evaluates causal classification only; it does not provide drift-category or location predictions."
+  ],
+  "method": {
+    "api_calls": 0,
+    "family_specific_rules": 0,
+    "input_boundary": "the same Agent-visible evidence object supplied to the LLMs",
+    "learned_parameters": 0,
+    "model_calls": 0,
+    "name": "Protocol-Rule",
+    "provider_specific_rules": 0,
+    "rules_in_order": [
+      "visible call or response interpretation violates the displayed contract -> AGENT_ERROR",
+      "exact legal retry recovers -> TRANSIENT_FAILURE",
+      "exact legal retry reproduces the failure -> PERSISTENT_DRIFT",
+      "otherwise, a conforming first failure uses a declared conservative PERSISTENT_DRIFT fallback"
+    ]
+  },
+  "safety": {
+    "credentials_read": 0,
+    "evaluator_labels_used_only_after_prediction": true,
+    "ground_truth_available_to_classifier": false,
+    "model_predictions_read": 0,
+    "network_calls": 0,
+    "provider_instances": 0
+  },
+  "schema_version": "specdriftbench-protocol-rule-baseline-v1",
+  "source": {
+    "classifier": "src/driftguard/specdriftbench/rule_baseline.py",
+    "classifier_sha256": "11fb59a2d3e68c3cb6b445c70739c4ded8ffafac264f8b81aa1a1f916df6ddcd",
+    "runner": "scripts/run_specdriftbench_rule_baseline.py"
+  },
+  "status": "POST_HOC_CAMERA_READY_BASELINE"
+}

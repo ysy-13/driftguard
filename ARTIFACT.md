@@ -82,6 +82,16 @@ python scripts/run_attribution_conformance.py
 python scripts/run_healing_conformance.py
 ```
 
+Run the post-hoc Protocol-Rule diagnostic baseline, which consumes only the
+same Agent-visible evidence used by the models:
+
+```bash
+python scripts/run_specdriftbench_rule_baseline.py
+```
+
+Its machine-readable output and concise report are written under the formal
+attempt's `analysis/rule_baseline/` directory.
+
 ## Reproduce the paper analysis
 
 The primary statistical analysis is deterministic, performs no provider calls,
